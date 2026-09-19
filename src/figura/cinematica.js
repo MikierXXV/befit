@@ -50,7 +50,13 @@ const EJE = {
 
 /** Rangos articulares, en grados. De la tabla de la AAOS con margen: esto caza poses imposibles, no técnica mejorable. */
 export const RANGOS = {
-  'hombro.flexion': [-60, 180],
+  /*
+   * 185 y no 180 arriba. La flexión de hombro de un manual llega a 180°, pero ahí el húmero no va
+   * solo: los últimos grados del bloqueo por encima de la cabeza los pone la escápula girando, y
+   * este esqueleto no tiene escápula. Sin ese margen, el press militar quedaba en 183° —el brazo
+   * un pelo por detrás de la vertical, que es exactamente donde acaba un press— y no se publicaba.
+   */
+  'hombro.flexion': [-60, 185],
   'hombro.abduccion': [-30, 180],
   'hombro.rotacion': [-90, 90],
   'codo.flexion': [0, 150],
@@ -341,11 +347,31 @@ function ejeDe(imp) {
  * los dedos se cerraban en puño AL LADO de la barra en vez de rodearla. Una mano que agarra tiene
  * dos condiciones, no una: sigue al antebrazo (eje largo) Y la palma mira al eje del cilindro.
  */
+/**
+ * La mano sobre una barra: LA BARRA MANDA EN DOS EJES, el antebrazo solo en el tercero.
+ *
+ * Una mano que agarra no rota sobre el mango. El eje que cruza la palma —por donde pasa la barra—
+ * tiene que ser paralelo al eje de la barra en todos los fotogramas del ciclo, y eso no es una
+ * preferencia estética: es lo que significa agarrar.
+ *
+ * La versión anterior tomaba el antebrazo como eje largo de la mano tal cual y dejaba el eje
+ * transversal a lo que saliera. Como el antebrazo gira durante el movimiento, la palma se iba
+ * saliendo de la barra. MEDIDO con `48` fotogramas por ejercicio: hasta 73° en las dominadas, 66°
+ * en el press militar, 41° en el de banca, 29° en la sentadilla. En pantalla eso es un puño que se
+ * va retorciendo sobre una barra que no se mueve.
+ *
+ * Ahora la barra fija dos ejes —el que cruza la palma es el suyo, y la palma mira a la barra— y el
+ * antebrazo solo decide hacia dónde apuntan los dedos DENTRO del plano perpendicular a la barra,
+ * que es exactamente la libertad que deja una muñeca cerrada sobre un mango.
+ */
 function marcoAgarre(muneca, imp, Fantebrazo, l) {
   const A = ejeDe(imp);
   const radial = perpendicular(imp.posicion.clone().sub(muneca), A);
-  const largo = ABAJO.clone().applyQuaternion(Fantebrazo);
-  const palma = radial ? perpendicular(radial, largo) : null;
+  if (!radial) return Fantebrazo;
+  // El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
+  // antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
+  const largo = perpendicular(ABAJO.clone().applyQuaternion(Fantebrazo), A) ?? radial.clone();
+  const palma = perpendicular(radial, largo);
   if (!palma) return Fantebrazo;
   return mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);
 }
@@ -358,12 +384,61 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
 
   if (m.objetivo !== undefined) {
     const raiz = posicion(huesos[`brazo_${l}`]);
-    const r = resolverDosHuesos({
-      raiz,
-      objetivo: resolverPunto(esq, m, l, implementos, raiz),
-      polo: v3(m.codo_hacia ?? [SIGNO[l], 0, -1]),
-      l1: longitudes.brazo, l2: longitudes.antebrazo, b0: DELANTE,
+    const polo = v3(m.codo_hacia ?? [SIGNO[l], 0, -1]);
+    const resolver = (objetivo) => resolverDosHuesos({
+      raiz, objetivo, polo, l1: longitudes.brazo, l2: longitudes.antebrazo, b0: DELANTE,
     });
+    let r = resolver(resolverPunto(esq, m, l, implementos, raiz));
+
+    /*
+     * LA BARRA TIENE QUE CAER DENTRO DE LA MANO, y eso no se consigue de una pasada.
+     *
+     * Lo que resuelve la cinemática inversa es dónde va la MUÑECA. El primer objetivo la pone a un
+     * palmo de la barra «en la dirección del hombro», y eso solo acierta si la mano apunta justo a
+     * la barra. En la sentadilla no apunta: el codo va abierto, la mano sale de lado, y el puño
+     * acababa cerrado sobre el aire con la barra pasando por detrás de los nudillos. En primer
+     * plano se ve perfectamente y es de las cosas que tiran por tierra el resto del trabajo.
+     *
+     * Aquí se le da la vuelta a la cuenta: se calcula el marco de la mano, se mira dónde cruzaría la
+     * palma, y se corrige la muñeca para que ese punto sea el agarre. Como el marco depende a su vez
+     * de dónde esté la muñeca, se repite. Converge en dos vueltas; se hacen tres porque son cuatro
+     * multiplicaciones de cuaternión y no aparecen en ningún perfil.
+     */
+    if (m.objetivo === 'barra' && implementos.barra) {
+      const barra = implementos.barra;
+      const A = ejeDe(barra);
+      const agarre = barra.posicion.clone().addScaledVector(A, SIGNO[l] * (barra.agarre ?? 0.4));
+      for (let vuelta = 0; vuelta < 3; vuelta += 1) {
+        // La muñeca, siguiendo la cadena: hombro → codo → muñeca. Se calcula en vez de leerla del
+        // hueso para no tener que ir colocando el brazo en cada vuelta.
+        const Fant = r.F1.clone().multiply(eje(EJE.flexionMiembro, r.flexion));
+        const muneca = raiz.clone()
+          .addScaledVector(ABAJO.clone().applyQuaternion(r.F1), longitudes.brazo)
+          .addScaledVector(ABAJO.clone().applyQuaternion(Fant), longitudes.antebrazo);
+        const F = marcoAgarre(muneca, barra, Fant, l);
+        const largo = ABAJO.clone().applyQuaternion(F);
+        const palma = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(F);
+        // Del centro de la palma a la muñeca: medio palmo hacia atrás y el radio de la barra más
+        // el grosor de la mano hacia el lado contrario al que mira la palma.
+        const objetivo = agarre.clone()
+          .addScaledVector(largo, -LARGO_PALMA)
+          .addScaledVector(palma, -(RADIO_BARRA + 0.03));
+        /*
+         * Y UNA MANO NO LLEGA MÁS LEJOS QUE SU BRAZO.
+         *
+         * Colocar bien la palma mueve la muñeca unos nueve centímetros respecto a donde la ponía la
+         * cuenta anterior, y con el brazo casi estirado —el peso muerto, el final del press militar—
+         * eso bastaba para dejar el objetivo fuera de alcance: el validador cantaba «la mano no
+         * llega: faltan 3 cm» en media docena de fotogramas. Se acerca el objetivo hasta el borde
+         * de lo que el brazo alcanza. Prefiero la mano un centímetro corta y el brazo creíble que
+         * un brazo estirado apuntando a un sitio al que no llega.
+         */
+        const alcance = (longitudes.brazo + longitudes.antebrazo) * 0.999;
+        const desdeHombro = objetivo.clone().sub(raiz);
+        if (desdeHombro.length() > alcance) objetivo.copy(raiz).addScaledVector(desdeHombro.normalize(), alcance);
+        r = resolver(objetivo);
+      }
+    }
     // El aviso son DATOS, no una frase: quien lo lee es el validador, que corre en node y le pone
     // palabras. Una frase aquí sería texto en español dentro de src/, que es justo lo que prohíbe
     // check-idiomas.mjs — y con razón, porque nadie distingue a simple vista un mensaje de consola
@@ -377,7 +452,15 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     // −62° de "flexión" con el brazo casi horizontal). Ahí se mide la flexión horizontal: cuánto sale
     // el brazo del plano frontal.
     const abierto = abduccionDe(dir, l) > 45;
-    anotar(l, 'hombro.flexion', (abierto ? Math.asin(Math.max(-1, Math.min(1, dir.z))) : Math.atan2(dir.z, -dir.y)) / GRAD);
+    /*
+     * Y el ángulo se da en el lado bueno de la vuelta. Con el brazo justo vertical —el final del
+     * press militar— el atan2 devuelve ±180 según de qué lado caiga un milímetro: el mismo gesto
+     * salía como 180° en un fotograma y como −180° en el siguiente, y el validador lo cantaba
+     * fuera del rango [−60, 180] sin que nada se hubiera movido. Por debajo de −90 no hay gesto
+     * posible, así que ahí lo que hay es una vuelta de más.
+     */
+    const flexionBruta = (abierto ? Math.asin(Math.max(-1, Math.min(1, dir.z))) : Math.atan2(dir.z, -dir.y)) / GRAD;
+    anotar(l, 'hombro.flexion', flexionBruta < -90 ? flexionBruta + 360 : flexionBruta);
     anotar(l, 'hombro.abduccion', abduccionDe(dir, l));
   } else {
     Fbrazo = Ftorax.clone().multiply(rotacionEsferica(m.hombro, l));

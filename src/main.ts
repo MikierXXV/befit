@@ -350,12 +350,19 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
       <a class="volver boton" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">
         <span class="icono" aria-hidden="true">←</span>${t('ficha.volver')}
       </a>
+      <!--
+        EL MANIQUÍ VA PRIMERO, antes que el título.
+
+        Es a lo que se entra: quien abre un ejercicio viene a ver cómo se hace, no a leer cómo se
+        llama. Con el encabezado delante, en un móvil había que bajar para encontrar el movimiento,
+        y el nombre ya venía leído desde la tarjeta del catálogo.
+      -->
+      <div class="figura" ${proporcion ? `style="--proporcion-lienzo: ${proporcion}"` : ''}></div>
       <header>
         <p class="grupo" ${acentoDe(f.grupo_id) ? `style="--acento-chip: ${acentoDe(f.grupo_id)}"` : ''}>${escapar(grupo?.nombre ?? '')}</p>
         <h1>${escapar(f.nombre)}</h1>
         ${botonFavorito(f, true)}
       </header>
-      <div class="figura" ${proporcion ? `style="--proporcion-lienzo: ${proporcion}"` : ''}></div>
       <div class="cuerpo">
       <p class="resumen">${escapar(f.resumen)}</p>
       ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>

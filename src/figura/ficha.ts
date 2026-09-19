@@ -51,14 +51,18 @@ export async function montarFigura(
       <canvas class="lienzo" aria-label="${ficha.nombre}"></canvas>
       <p class="etapa" aria-live="polite"></p>
       <div class="controles">
-        <button type="button" data-accion="pausa" aria-pressed="false">${t('figura.pausa')}</button>
+        <button type="button" class="reproducir" data-accion="pausa" aria-pressed="false"
+                aria-label="${t('figura.pausa')}"><span class="icono" aria-hidden="true">❚❚</span></button>
         <span class="grupo" role="group" aria-label="${t('figura.velocidad')}">
           <span class="rotulo">${t('figura.velocidad')}</span>
-          <button type="button" data-velocidad="0.5">½×</button>
-          <button type="button" data-velocidad="1" aria-pressed="true">1×</button>
+          <span class="segmentado">
+            <button type="button" data-velocidad="0.5">½×</button>
+            <button type="button" data-velocidad="1" aria-pressed="true">1×</button>
+          </span>
         </span>
         <span class="grupo vistas" role="group" aria-label="${t('figura.vista')}">
           <span class="rotulo">${t('figura.vista')}</span>
+          <span class="segmentado"></span>
         </span>
       </div>
     </div>
@@ -76,8 +80,8 @@ export async function montarFigura(
   const grupoVistas = contenedor.querySelector('.vistas')!;
   let vista: Vista = (parametros.get('vista') as Vista) ?? mov.camara.vista;
   // Se conserva el rótulo del grupo al rellenarlo con los botones de vista.
-  const rotuloVistas = grupoVistas.querySelector('.rotulo')!;
-  grupoVistas.replaceChildren(rotuloVistas, ...vistasDe(mov).map((v) => {
+  const segmentoVistas = grupoVistas.querySelector('.segmentado')!;
+  segmentoVistas.replaceChildren(...vistasDe(mov).map((v) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.dataset.vista = v;
@@ -109,7 +113,13 @@ export async function montarFigura(
     if (!b) return;
     if (b.dataset.accion === 'pausa') {
       pausado = !pausado;
-      b.textContent = t(pausado ? 'figura.seguir' : 'figura.pausa');
+      /*
+       * Cambia el ICONO, y la palabra vive en la etiqueta accesible. Con el texto dentro, el botón
+       * cambiaba de ancho al pulsarlo —«Pausa» y «Seguir» no miden lo mismo— y toda la fila de
+       * controles daba un salto lateral cada vez.
+       */
+      b.querySelector('.icono')!.textContent = pausado ? '▶' : '❚❚';
+      b.setAttribute('aria-label', t(pausado ? 'figura.seguir' : 'figura.pausa'));
       b.setAttribute('aria-pressed', String(pausado));
     }
     if (b.dataset.velocidad) {

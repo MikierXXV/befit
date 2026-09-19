@@ -346,9 +346,14 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   transition: rotate var(--m-instantaneo) var(--curva-suave);
 }
 .faceta[open] > summary::after { rotate: 180deg; }
-/* Con insignia, es ella la que empuja hasta el final y la flecha va justo detrás. */
+/*
+ * Con insignia, empuja ella hasta el final y la flecha va pegada detrás.
+ *
+ * Las dos llevaban `margin-left: auto` y el hueco sobrante se repartía entre ambas: la cuenta se
+ * quedaba flotando en mitad del rótulo, a cien píxeles de la flecha y de todo lo demás.
+ */
 .faceta > summary .insignia { margin-left: auto; }
-.faceta > summary .insignia ~ ::after { margin-left: var(--e2); }
+.faceta > summary:has(.insignia)::after { margin-left: var(--e2); }
 
 .opciones { list-style: none; margin: 0; padding: 0 var(--e2) var(--e2); display: grid; gap: 1px; }
 /* Con muchos valores —veinticinco músculos—, la lista se desplaza dentro en vez de estirar la
@@ -557,8 +562,9 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--e2) var(--e4);
-  padding-bottom: var(--e4);
-  border-bottom: 1px solid var(--separador);
+  /* Sin filete debajo: desde que el encabezado va DESPUÉS del maniquí, esa línea quedaba entre el
+     título y su propio resumen, separando lo que va junto. */
+  padding-bottom: var(--e2);
 }
 .ficha header .grupo {
   grid-column: 1;
@@ -582,7 +588,7 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
  * columna de lectura. La versión anterior lo metía en una columna lateral de 24rem, y lo que ganaba
  * el texto lo perdía el movimiento, que es justo al revés de lo que hace falta aquí.
  */
-.ficha .figura { margin-block: var(--e6) var(--e8); }
+.ficha .figura { margin-block: var(--e4) var(--e6); }
 .ficha .resumen { margin-block: 0 var(--e6); max-width: var(--medida-texto); color: var(--texto-secundario); }
 @media (min-width: 60rem) {
   .ficha .cuerpo {

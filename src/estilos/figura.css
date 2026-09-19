@@ -46,16 +46,80 @@
   font-size: var(--t-pequeno);
 }
 
-.figura .controles { display: flex; flex-wrap: wrap; gap: var(--e4); margin-top: var(--e3); align-items: center; }
+/*
+ * La botonera del maniquí: una barra, no una fila de píldoras sueltas.
+ *
+ * Estaba resuelta con botones independientes uno al lado de otro y un rótulo delante, y parecía lo
+ * que era: el sitio donde se dejó de trabajar. Ahora es reproducir + dos grupos segmentados, que es
+ * como se resuelve esto en cualquier reproductor: el grupo dice de qué va y la pastilla marcada
+ * dice dónde estás, sin tener que leer nada.
+ */
+.figura .controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e4);
+  margin-top: var(--e3);
+  align-items: center;
+}
 /* El grupo también envuelve: con las etiquetas sin partir, la fila de vistas se salía del ancho del
    móvil y "agarre" quedaba cortado contra el borde. Antes de salirse, se baja de línea. */
-.figura .controles .grupo { display: inline-flex; flex-wrap: wrap; gap: var(--e1); align-items: center; }
+.figura .controles .grupo { display: inline-flex; flex-wrap: wrap; gap: var(--e2); align-items: center; }
+
+/*
+ * El control segmentado: una sola pastilla hundida con las opciones dentro. La marcada se levanta
+ * —fondo elevado y sombra— en vez de invertirse a negro, que es lo que hacía que la fila pareciera
+ * un tablero de ajedrez cuando había cuatro vistas.
+ */
+.figura .controles .segmentado {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radio-pildora);
+  background: var(--fondo-hundido);
+  border: 1px solid var(--separador);
+}
+.figura .controles .segmentado button {
+  /* Mismo alto que cualquier otro control: una pastilla de 34 px dentro de una fila de 40 se ve
+     como un descuido, y con el dedo es el botón que se falla. */
+  min-height: 40px;
+  border: 0;
+  background: transparent;
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}
+.figura .controles .segmentado button:hover { background: transparent; color: var(--texto); }
+.figura .controles .segmentado button[aria-pressed='true'] {
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  border: 0;
+  box-shadow: var(--sombra);
+}
+
+/* Reproducir/pausar: redondo, del tamaño del pulgar y el único con el acento, porque es la acción
+   de la que va la pantalla. */
+.figura .controles .reproducir {
+  width: 40px;
+  min-height: 40px;
+  padding: 0;
+  border-radius: var(--radio-pildora);
+  background: var(--accion);
+  border-color: var(--accion);
+  color: #14110C;
+}
+.figura .controles .reproducir:hover {
+  background: color-mix(in oklab, var(--accion) 88%, white);
+  border-color: color-mix(in oklab, var(--accion) 88%, white);
+}
+.figura .controles .reproducir .icono { font-size: 0.9em; }
 /* Los grupos llevan rótulo visible: "½×" y "1×" sueltos, en la misma fila que Pausa y las vistas,
    no dicen de qué son ni qué los separa. */
 .figura .controles .rotulo {
-  margin-right: var(--e1);
   color: var(--texto-secundario);
-  font-size: var(--t-pequeno);
+  font-size: var(--t-micro);
+  font-weight: var(--peso-medio);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 /*
  * Estos botones tienen que verse EXACTAMENTE igual que los del resto del sitio.
@@ -142,5 +206,10 @@
 .figura .nota-roles { margin: var(--e3) 0 0; color: var(--texto-secundario); font-size: var(--t-micro); }
 
 @media (pointer: coarse) {
-  .figura .controles button { min-height: 44px; }
+  /* Los segmentados se nombran aparte: su regla lleva una clase más y gana a la general por
+     especificidad, así que sin esta línea se quedaban en 40 px mientras el resto subía a 44. */
+  .figura .controles button,
+  .figura .controles .segmentado button,
+  .figura .controles .reproducir { min-height: 44px; }
+  .figura .controles .reproducir { width: 44px; }
 }
