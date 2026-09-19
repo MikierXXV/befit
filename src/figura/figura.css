@@ -29,10 +29,8 @@
      montar la pieza, para que el hueco reservado y el lienzo midan lo mismo y no haya salto. */
   aspect-ratio: var(--proporcion-lienzo, 1);
   /* Con el maniquí a ancho completo, un lienzo cuadrado ocupaba la pantalla entera y había que
-     desplazarse para ver los controles. La cámara se adapta a la proporción que quede.
-     72svh es el tope que deja ver el lienzo Y la primera fila de controles sin desplazarse: es lo
-     que se está mirando, así que se lleva el alto que sobre. */
-  max-height: min(72svh, 720px);
+     desplazarse para ver los controles. La cámara se adapta a la proporción que quede. */
+  max-height: min(62svh, 620px);
   display: block;
   border-radius: var(--radio-grande);
   background: var(--fondo-hundido);
@@ -55,33 +53,16 @@
   color: var(--texto-secundario);
   font-size: var(--t-pequeno);
 }
-/*
- * Estos botones tienen que verse EXACTAMENTE igual que los del resto del sitio.
- *
- * La pieza se monta también en la plantilla base, que no carga los estilos de la app, así que no
- * puede depender de `.boton`; pero repetir la regla con otros valores es lo que hacía que dentro
- * del maniquí los controles salieran sin relleno y sin respuesta al ratón, como de otra página.
- * Mismos tokens, mismo alto, mismo radio.
- */
 .figura .controles button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-height: 44px;
   padding: 0 var(--e3);
   border: 1px solid var(--separador);
   border-radius: var(--radio-pildora);
-  background: var(--fondo-elevado);
+  background: transparent;
   color: inherit;
   font: inherit;
-  /* Ninguna etiqueta parte: "tres cuartos" se rompía en dos líneas en el móvil y esa píldora
-     quedaba el doble de alta que las de al lado. */
-  white-space: nowrap;
   cursor: pointer;
-  transition: border-color var(--m-rapido) var(--curva-suave),
-              background-color var(--m-rapido) var(--curva-suave);
 }
-.figura .controles button:hover { border-color: var(--borde-interactivo); }
 .figura .controles button[aria-pressed='true'] { background: var(--texto); color: var(--fondo); border-color: var(--texto); }
 
 .figura.cartel .controles, .figura.cartel .etapa, .figura.cartel .musculos { display: none; }

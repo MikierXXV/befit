@@ -25,6 +25,16 @@ body {
   font-family: var(--fuente-texto);
   font-size: var(--t-base);
   line-height: var(--il-texto);
+  /*
+   * Los ajustes finos de la tipografía, ahora que se sirve de verdad.
+   *
+   * `optical-sizing`: la variable trae el eje; sin esto el titular grande se ve con el grosor de
+   * palo pensado para 16 px y sale basto.
+   * `cv05`/`ss03`: la ele con asta y la eñe de Inter. Sin ellas, "Il1" es la misma raya tres veces.
+   * `tabular-nums` NO va aquí, sino donde hay cifras que se comparan en columna.
+   */
+  font-optical-sizing: auto;
+  font-feature-settings: 'cv05', 'ss03';
   /* La transición hace que el cambio de tema no sea un parpadeo. Corta a propósito: más larga se
      percibe como lentitud del sitio, no como una transición. */
   transition: background-color var(--m-medio) var(--curva-suave),
@@ -35,6 +45,9 @@ h1, h2, h3 {
   font-family: var(--fuente-titulo);
   font-weight: var(--peso-semibold);
   line-height: var(--il-titulo);
+  /* A tamaño de titular, el espaciado pensado para texto corrido se ve suelto: la serif pide
+     cerrarlo un poco. Es la diferencia entre un titular compuesto y uno escrito. */
+  letter-spacing: -0.015em;
   text-wrap: balance;
   max-width: var(--medida-corta);
   margin: 0 0 var(--e4);

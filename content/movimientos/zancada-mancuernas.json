@@ -84,11 +84,8 @@
             0,
             1
           ],
-          "pie_plano": true,
           "apertura": 8,
-          "tobillo": {
-            "dorsiflexion": 14
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -141,7 +138,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.26,
+            0.112,
             0.24
           ],
           "rodilla_hacia": [
@@ -149,9 +146,7 @@
             0,
             1
           ],
-          "tobillo": {
-            "dorsiflexion": 10
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -202,7 +197,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.16,
+            0.118,
             0.5
           ],
           "rodilla_hacia": [
@@ -210,9 +205,7 @@
             0,
             1
           ],
-          "tobillo": {
-            "dorsiflexion": 10
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -266,7 +259,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.104,
+            0.124,
             0.58
           ],
           "rodilla_hacia": [
@@ -274,11 +267,8 @@
             0,
             1
           ],
-          "pie_plano": true,
           "apertura": 8,
-          "tobillo": {
-            "dorsiflexion": 14
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -333,7 +323,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.104,
+            0.134,
             0.58
           ],
           "rodilla_hacia": [
@@ -341,11 +331,8 @@
             0,
             1
           ],
-          "pie_plano": true,
           "apertura": 8,
-          "tobillo": {
-            "dorsiflexion": 14
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -399,7 +386,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.104,
+            0.126,
             0.58
           ],
           "rodilla_hacia": [
@@ -407,11 +394,8 @@
             0,
             1
           ],
-          "pie_plano": true,
           "apertura": 8,
-          "tobillo": {
-            "dorsiflexion": 14
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -462,7 +446,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.22,
+            0.12,
             0.4
           ],
           "rodilla_hacia": [
@@ -470,9 +454,7 @@
             0,
             1
           ],
-          "tobillo": {
-            "dorsiflexion": 10
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -523,7 +505,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.26,
+            0.114,
             0.24
           ],
           "rodilla_hacia": [
@@ -531,9 +513,7 @@
             0,
             1
           ],
-          "tobillo": {
-            "dorsiflexion": 10
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -544,7 +524,7 @@
         "posicion": [
           0,
           0.89,
-          0.0
+          0
         ]
       },
       "columna": {
@@ -586,7 +566,7 @@
         "d": {
           "objetivo": [
             -0.11,
-            0.18,
+            0.109,
             0.1
           ],
           "rodilla_hacia": [
@@ -594,9 +574,7 @@
             0,
             1
           ],
-          "tobillo": {
-            "dorsiflexion": 22
-          }
+          "apoyo": "metatarso"
         }
       }
     },
@@ -656,11 +634,8 @@
             0,
             1
           ],
-          "pie_plano": true,
           "apertura": 8,
-          "tobillo": {
-            "dorsiflexion": 14
-          }
+          "apoyo": "metatarso"
         }
       }
     }

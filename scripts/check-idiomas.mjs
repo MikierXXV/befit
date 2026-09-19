@@ -77,6 +77,12 @@ function sinInterpolaciones(texto) {
 function limpiar(fuente) {
   const enBlanco = (t) => t.replace(/[^\n]/g, ' ');
   return fuente
+    /*
+     * El valor de `class="…"` nunca es texto visible: son nombres de clase, y varios están en
+     * español porque el proyecto entero lo está. Sin esto, `class="volver boton"` se marcaba como
+     * una frase, y la única salida era renombrar clases para contentar al guion.
+     */
+    .replace(/\bclass(Name)?="[^"]*"/g, enBlanco)
     .replace(/\/\*[\s\S]*?\*\//g, enBlanco)
     .replace(/^[ \t]*\/\/.*$/gm, enBlanco)
     .replace(/throw new Error\((?:[^()]|\([^()]*\))*\)/g, enBlanco)

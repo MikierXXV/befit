@@ -46,6 +46,7 @@ export async function montarFigura(
   }
 
   contenedor.innerHTML = `
+    <div class="caja">
     <div class="escenario">
       <canvas class="lienzo" aria-label="${ficha.nombre}"></canvas>
       <p class="etapa" aria-live="polite"></p>
@@ -65,6 +66,7 @@ export async function montarFigura(
       <h2>${t('figura.musculos')}</h2>
       <div class="mapas"></div>
       <ul class="leyenda"></ul>
+    </div>
     </div>`;
 
   const lienzo = contenedor.querySelector<HTMLCanvasElement>('.lienzo')!;

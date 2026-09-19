@@ -27,6 +27,8 @@ const SIGNO = { i: 1, d: -1 };
 
 const RADIO_BARRA = 0.014;
 const LARGO_PALMA = 0.05;
+/** Grosor de la almohadilla del pie: lo que queda entre la articulación de los dedos y el suelo. */
+const ALTURA_ALMOHADILLA = 0.028;
 
 const ABAJO = new Vector3(0, -1, 0);
 const DELANTE = new Vector3(0, 0, 1);
@@ -58,6 +60,8 @@ export const RANGOS = {
   'cadera.rotacion': [-45, 45],
   'rodilla.flexion': [0, 155],
   'tobillo.dorsiflexion': [-50, 40],
+  /* Los dedos del pie doblan hasta unos 80° al apoyar sobre el metatarso; más es una lesión. */
+  'dedos.flexion': [0, 85],
   'columna.flexion': [-30, 80],
   'columna.lateral': [-35, 35],
   'columna.rotacion': [-45, 45],
@@ -137,10 +141,13 @@ export function prepararEsqueleto(modelo) {
     neutra.set(huesos[`clavicula_${l}`], mundo(huesos[`clavicula_${l}`]));
     for (const seg of ['brazo', 'antebrazo', 'mano', 'muslo', 'pierna']) enderezar(huesos[`${seg}_${l}`], ABAJO);
     neutra.set(huesos[`pie_${l}`], mundo(huesos[`pie_${l}`]));
+    // Los dedos también: sin su neutra, orientarlos reventaba con un error que solo decía "_x".
+    neutra.set(huesos[`dedos_pie_${l}`], mundo(huesos[`dedos_pie_${l}`]));
   }
 
   const distancia = (a, b) => a.getWorldPosition(new Vector3()).distanceTo(b.getWorldPosition(new Vector3()));
   const longitudes = {
+    pie: distancia(huesos.pie_i, huesos.dedos_pie_i),
     brazo: distancia(huesos.brazo_i, huesos.antebrazo_i),
     antebrazo: distancia(huesos.antebrazo_i, huesos.mano_i),
     muslo: distancia(huesos.muslo_i, huesos.pierna_i),
@@ -161,6 +168,24 @@ function orientar(esq, hueso, F) {
 }
 
 const posicion = (h) => h.getWorldPosition(new Vector3());
+
+/**
+ * Dorsiflexión anatómica: 0 es el pie en ángulo recto con la pierna, que es como se está de pie.
+ *
+ * Antes se medía con un atan2 en el plano del pie, y con el cuerpo tumbado —una flexión, una
+ * plancha— daba 59° donde no hay 59° de nada: el tobillo estaba en su sitio y la cuenta no.
+ */
+function dorsiflexionDe(pierna, pie) {
+  // `pierna` va de la rodilla al tobillo y `pie` del tobillo a los dedos. De pie forman 90°; cuando
+  // la espinilla se adelanta el ángulo crece (dorsiflexión) y de puntillas se cierra (plantar).
+  const entre = Math.acos(Math.min(1, Math.max(-1, pierna.dot(pie)))) / GRAD;
+  return entre - 90;
+}
+
+/** Hacia dónde apunta un hueso en su postura neutra: su eje largo, en el mundo. */
+function direccionNeutra(esq, hueso) {
+  return new Vector3(0, 1, 0).applyQuaternion(esq.neutra.get(hueso));
+}
 
 function rotacionTronco(r = {}, parte = 1) {
   return eje(EJE.flexionTronco, (r.flexion ?? 0) * parte)
@@ -252,15 +277,10 @@ export function aplicarPose(esq, pose, definicion = {}) {
 
   // La mancuerna va en la mano, así que se coloca cuando la mano ya está.
   for (const imp of Object.values(implementos)) {
-    if (imp.en_mano) {
-      const mano = huesos[`mano_${imp.en_mano}`];
-      const W = mano.getWorldQuaternion(new Quaternion());
-      const largo = ABAJO.clone().applyQuaternion(W);
-      const palma = new Vector3(-SIGNO[imp.en_mano], 0, 0).applyQuaternion(W);
-      // El mango cruza la palma, no sigue los dedos: 5 cm hacia la punta de la mano y 1,5 cm hacia
-      // el lado de la palma, que es donde apoya de verdad.
-      imp.posicion = posicion(mano).addScaledVector(largo, 0.05).addScaledVector(palma, 0.015);
-      imp.orientacion = W.clone().multiply(new Quaternion().setFromUnitVectors(new Vector3(1, 0, 0), new Vector3(0, 0, 1)));
+    if (imp.en_mano && imp.eje) {
+      imp.posicion = imp.punto;
+      // El eje del cilindro se modela en X, así que basta con llevarlo al eje del mango.
+      imp.orientacion = new Quaternion().setFromUnitVectors(new Vector3(1, 0, 0), imp.eje);
     }
   }
 
@@ -332,6 +352,7 @@ function marcoAgarre(muneca, imp, Fantebrazo, l) {
 
 function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
   const m = miembro(pose.brazos, l) ?? {};
+  const enMano = Object.values(implementos).find((i) => i.en_mano === l);
   const { huesos, longitudes } = esq;
   let Fbrazo, flexionCodo;
 
@@ -392,6 +413,25 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     anotar(l, 'muneca.extension', Math.acos(Math.max(-1, Math.min(1, antebrazo.dot(DELANTE.clone().applyQuaternion(rumbo))))) / GRAD);
   } else if (m.objetivo === 'barra' && implementos.barra) {
     orientar(esq, huesos[`mano_${l}`], marcoAgarre(posicion(huesos[`mano_${l}`]), implementos.barra, Fantebrazo, l));
+  } else if (enMano) {
+    /*
+     * MANDA EL IMPLEMENTO, NO LA MANO. Antes la mancuerna seguía a la mano y, como la mano seguía al
+     * antebrazo, el mango se iba girando a lo largo del movimiento: en el remo acababa casi vertical.
+     * Una mancuerna que cuelga mantiene el mango horizontal; lo que se adapta es la muñeca.
+     */
+    const largo = ABAJO.clone().applyQuaternion(Fantebrazo);
+    const eje = perpendicular(new Vector3(0, 1, 0), largo)
+      ? new Vector3().crossVectors(largo, new Vector3(0, 1, 0)).normalize()
+      : new Vector3(1, 0, 0);
+    const palma = new Vector3().crossVectors(eje, largo).normalize().multiplyScalar(-SIGNO[l]);
+    const Fmano = mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);
+    orientar(esq, huesos[`mano_${l}`], Fmano);
+
+    // El mango cruza la palma: se guarda dónde y con qué eje para colocar el implemento después.
+    enMano.eje = eje;
+    // El mango, en el hueco de la palma: a medio palmo de la muñeca y hundido hacia el lado de la
+    // palma lo que mide el propio mango, o los dedos se cierran por detrás de él.
+    enMano.punto = posicion(huesos[`mano_${l}`]).addScaledVector(largo, LARGO_PALMA).addScaledVector(palma, 0.032);
   } else {
     orientar(esq, huesos[`mano_${l}`], Fantebrazo);
   }
@@ -427,7 +467,52 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
   const Fpierna = Fmuslo.clone().multiply(eje(EJE.flexionRodilla, flexionRodilla));
   orientar(esq, huesos[`pierna_${l}`], Fpierna);
 
-  if (m.pie_plano) {
+  /*
+   * APOYO SOBRE EL METATARSO. En una flexión, una plancha o el pie de atrás de una zancada, lo que
+   * toca el suelo es la almohadilla del pie y los dedos se doblan; el talón sube. Sin doblar los
+   * dedos, el único modo de que la punta llegara al suelo era subir el tobillo hasta 27 cm: en la
+   * vista lateral el maniquí se leía "de puntillas muy alto" y no apoyado.
+   *
+   * El maniquí tiene hueso de dedos (DEF-toe) y no se estaba usando para nada.
+   */
+  if (m.apoyo === 'metatarso') {
+    const rumbo = (pose.pelvis?.orientacion?.giro ?? 0) + SIGNO[l] * (m.apertura ?? 0);
+    const giro = eje(new Vector3(0, 1, 0), rumbo);
+
+    /*
+     * El ángulo del pie NO se escribe: se calcula. Con el tobillo a la altura que pida la pose, el
+     * pie se inclina lo justo para que la articulación de los dedos toque el suelo, y los dedos se
+     * quedan planos. Escribirlo a mano significaba reajustarlo en cada pose intermedia.
+     */
+    const alturaTobillo = posicion(huesos[`pie_${l}`]).y;
+    const seno = Math.min(1, Math.max(-1, (alturaTobillo - ALTURA_ALMOHADILLA) / esq.longitudes.pie));
+    let inclinacion = Math.min(Math.asin(seno), 85 * GRAD);
+
+    /*
+     * MANDA EL TOBILLO, NO EL SUELO. Si para tocar el suelo hiciera falta estirar el tobillo más de
+     * lo que se estira, el pie se queda en su límite y la punta flota unos milímetros: invisible, y
+     * desde luego menos falso que un tobillo doblado 66°.
+     *
+     * Perseguir esto desde la ficha no funcionaba: cada pose intermedia pedía una altura distinta y
+     * el ciclo se rompía entre poses buenas.
+     */
+    const pierna = ABAJO.clone().applyQuaternion(Fpierna);
+    const direccion = (angulo) => new Vector3(0, -Math.sin(angulo), Math.cos(angulo)).applyQuaternion(giro);
+    const LIMITE_PLANTAR = RANGOS['tobillo.dorsiflexion'][0];
+    for (let intento = 0; intento < 90 && dorsiflexionDe(pierna, direccion(inclinacion)) < LIMITE_PLANTAR; intento += 1) {
+      inclinacion -= GRAD;
+    }
+    const haciaDedos = direccion(inclinacion);
+
+    const Fpie = new Quaternion().setFromUnitVectors(direccionNeutra(esq, huesos[`pie_${l}`]), haciaDedos);
+    orientar(esq, huesos[`pie_${l}`], Fpie);
+
+    // Los dedos, planos y hacia delante: su reposo ya apunta al frente, así que basta con el rumbo.
+    orientar(esq, huesos[`dedos_pie_${l}`], giro);
+
+    anotar(l, 'tobillo.dorsiflexion', dorsiflexionDe(ABAJO.clone().applyQuaternion(Fpierna), haciaDedos));
+    anotar(l, 'dedos.flexion', inclinacion / GRAD);
+  } else if (m.pie_plano) {
     // Pie apoyado: plano en el suelo, girado lo que diga `apertura`. La dorsiflexión sale sola, y es
     // lo que se valida: si pasa de 40°, la pose pide un tobillo que casi nadie tiene.
     // El rumbo sale del `giro` declarado, no de hacia dónde mira la pelvis: tumbado en el banco la
@@ -435,8 +520,10 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
     const rumbo = pose.pelvis?.orientacion?.giro ?? 0;
     const Fpie = eje(new Vector3(0, 1, 0), rumbo + SIGNO[l] * (m.apertura ?? 0));
     orientar(esq, huesos[`pie_${l}`], Fpie);
-    const tibia = ABAJO.clone().applyQuaternion(Fpierna).negate().applyQuaternion(Fpie.clone().invert());
-    anotar(l, 'tobillo.dorsiflexion', Math.atan2(tibia.z, tibia.y) / GRAD);
+    anotar(l, 'tobillo.dorsiflexion', dorsiflexionDe(
+      ABAJO.clone().applyQuaternion(Fpierna),
+      direccionNeutra(esq, huesos[`pie_${l}`]).applyQuaternion(Fpie),
+    ));
   } else {
     const Fpie = Fpierna.clone().multiply(eje(EJE.dorsiflexion, m.tobillo?.dorsiflexion ?? 0));
     orientar(esq, huesos[`pie_${l}`], Fpie);

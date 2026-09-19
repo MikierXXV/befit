@@ -58,7 +58,12 @@
 
 /* --------------------------------------------------------- botones y píldoras -- */
 
-.chip, .favorito, .barra nav a, .barra nav button, .compartir button, .filtros summary, .vecinos a, .vacio a {
+/*
+ * UN SOLO COMPONENTE DE CONTROL. Todo lo que se pulsa —botón o enlace— se ve igual: mismo alto,
+ * mismo borde, mismo radio. Un "← Volver al catálogo" en texto subrayado al lado de píldoras es lo
+ * que hace que una página parezca a medio hacer, y además da un objetivo táctil de 27 px de alto.
+ */
+.boton, .chip, .favorito, .barra nav a, .barra nav button, .filtros summary, .vecinos a, .vacio a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,12 +77,24 @@
   font: inherit;
   text-decoration: none;
   cursor: pointer;
+  /* Un control nunca parte su texto. En el móvil, "tres cuartos" se rompía en dos líneas dentro de
+     la píldora: esa quedaba el doble de alta que las de al lado y la fila entera se descuadraba. */
+  white-space: nowrap;
   transition: border-color var(--m-rapido) var(--curva-suave),
               background-color var(--m-rapido) var(--curva-suave);
 }
-.chip:hover, .favorito:hover, .barra nav a:hover, .barra nav button:hover,
+.boton:hover, .chip:hover, .favorito:hover, .barra nav a:hover, .barra nav button:hover,
 .filtros summary:hover, .vecinos a:hover, .vacio a:hover {
   border-color: var(--borde-interactivo);
+}
+
+/* El icono, centrado y sin línea base que lo descuadre respecto al texto. */
+.icono {
+  display: inline-grid;
+  place-items: center;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
 }
 .chip[aria-pressed='true'] {
   background: var(--texto);
@@ -136,8 +153,26 @@
   letter-spacing: 0.06em;
 }
 .chip { padding-inline: var(--e3); }
-/* El chip de un grupo lleva su acento: es lo que ata el color del catálogo al de la ficha. */
-.chip[style*='--acento-chip'] { border-left: 3px solid var(--acento-chip); }
+
+/*
+ * El chip de un grupo lleva su acento en un punto, no en el borde: es lo que ata el color del
+ * catálogo al de la ficha.
+ *
+ * Estuvo como `border-left: 3px`, y sobre una píldora un borde lateral no es una barra: es un arco
+ * que sigue el radio y queda como una media luna descolgada del texto. El punto se alinea con la
+ * primera letra y funciona igual a cualquier alto.
+ */
+.chip[style*='--acento-chip']::before {
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: var(--radio-pildora);
+  background: var(--acento-chip);
+  /* El punto es decoración: el nombre del grupo ya está escrito al lado. */
+  flex: none;
+}
+/* Pulsado, el chip se invierte y el acento —pensado para el fondo claro— se apaga contra él. */
+.chip[aria-pressed='true']::before { background: var(--fondo); }
 
 .acciones-filtro {
   display: flex;
@@ -148,18 +183,6 @@
   margin-top: var(--e4);
 }
 .cuenta { color: var(--texto-secundario); font-size: var(--t-pequeno); margin: 0; }
-.limpiar {
-  min-height: 44px;
-  padding: 0 var(--e3);
-  border: 0;
-  background: none;
-  color: var(--enlace);
-  font: inherit;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
 /* ------------------------------------------------------------------- catálogo -- */
 
 .rejilla {
@@ -256,12 +279,13 @@
 .ficha .figura:empty::before {
   content: '';
   aspect-ratio: var(--proporcion-lienzo, 1);
+  max-height: min(62svh, 620px);
   border-radius: var(--radio-grande);
   background: var(--fondo-hundido);
 }
 
 .ficha { padding-block: var(--e4) var(--e12); }
-.ficha .volver { display: inline-flex; min-height: 44px; align-items: center; }
+.ficha .volver { margin-bottom: var(--e4); }
 
 .ficha header {
   display: grid;
@@ -282,11 +306,14 @@
 .ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); }
 .ficha header .favorito { position: static; grid-column: 2; grid-row: 1 / span 2; }
 
+/*
+ * El resumen, en segundo plano. Lo que manda en una ficha es el movimiento: el texto explica lo que
+ * ya se está viendo, así que va después del maniquí y a tamaño de lectura, no de titular.
+ */
 .ficha .resumen {
-  font-size: var(--t-medio);
-  line-height: var(--il-titulo);
-  color: var(--texto);
-  margin-block: var(--e6) var(--e4);
+  font-size: var(--t-base);
+  color: var(--texto-secundario);
+  margin-block: 0 var(--e6);
   max-width: var(--medida-texto);
 }
 
@@ -295,22 +322,18 @@
  * ficha era una sola columna estrecha con el 45 % derecho en blanco durante más de mil píxeles, y
  * el maniquí y su mapa muscular se leían ANTES que la frase que dice qué es el ejercicio.
  */
+/*
+ * El maniquí ocupa el ancho entero y va primero: es lo que se viene a ver. Debajo, el texto en una
+ * columna de lectura. La versión anterior lo metía en una columna lateral de 24rem y lo que ganaba
+ * el texto lo perdía el movimiento, que es justo al revés de lo que hace falta aquí.
+ */
+.ficha .figura { margin-block: var(--e6) var(--e8); }
 @media (min-width: 60rem) {
-  .ficha .cuerpo {
-    display: grid;
-    /* La columna del maniquí, ancha de verdad: con 20rem el lienzo bajaba de 300 px y el mapa
-       muscular no se leía. Lo que se mira es el movimiento; el texto puede ser más estrecho. */
-    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
-    gap: var(--e8);
-    align-items: start;
-  }
-  .ficha .figura {
-    grid-column: 2;
-    grid-row: 1 / span 10;
-    position: sticky;
-    top: 5.5rem;
-    margin-block: 0;
-  }
+  .ficha .cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: var(--e8); align-items: start; }
+  .ficha .cuerpo > .resumen { grid-column: 1 / -1; }
+  .ficha .cuerpo > .fuentes, .ficha .cuerpo > .matices, .ficha .cuerpo > .datos { grid-column: 2; }
+  .ficha .cuerpo > section:first-of-type { grid-column: 1; grid-row: 2 / span 6; }
+  .ficha .cuerpo > .vecinos { grid-column: 1 / -1; }
 }
 .ficha h2 { font-size: var(--t-medio); margin-bottom: var(--e4); }
 .ficha section { margin-bottom: var(--e8); }

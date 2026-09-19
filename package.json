@@ -19,7 +19,8 @@
     "validar:contenido": "node scripts/validar-contenido.mjs",
     "validar:contraste": "node scripts/check-contraste.mjs",
     "validar:idiomas": "node scripts/check-idiomas.mjs",
-    "validar:movimiento": "node scripts/validar-movimiento.mjs"
+    "validar:movimiento": "node scripts/validar-movimiento.mjs",
+    "metricas": "node scripts/metricas-respaldo.mjs"
   },
   "devDependencies": {
     "@gltf-transform/core": "^3.10.1",

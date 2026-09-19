@@ -101,12 +101,12 @@ function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
     </div>
     <div class="acciones-filtro">
       <p class="cuenta" role="status">${t('catalogo.resultados').replace('{n}', String(lista.length))}</p>
-      ${activos || ruta.busqueda ? `<button type="button" class="limpiar" data-accion="limpiar">${t('catalogo.limpiar')}</button>` : ''}
+      ${activos || ruta.busqueda ? `<button type="button" class="boton" data-accion="limpiar">${t('catalogo.limpiar')}</button>` : ''}
     </div>
     ${lista.length
       ? `<ul class="rejilla" id="catalogo" tabindex="-1">${lista.map((f, n) => tarjeta(f, n)).join('')}</ul>`
       : `<div class="vacio" id="catalogo" tabindex="-1"><p>${t(ruta.vista === 'favoritos' ? 'favoritos.vacio' : 'catalogo.sin_resultados')}</p>
-           <a href="${enlace({ vista: 'catalogo', filtros: {} })}">${t('catalogo.ver_todos')}</a></div>`}
+           <a class="boton" href="${enlace({ vista: 'catalogo', filtros: {} })}">${t('catalogo.ver_todos')}</a></div>`}
     ${aviso()}`;
 
   const buscador = sitio.querySelector<HTMLInputElement>('#q')!;
@@ -151,8 +151,9 @@ function vecinos(f: Ficha, ruta: Ruta): string {
   const anterior = hermanas[n - 1];
   const siguiente = hermanas[n + 1];
   if (!anterior && !siguiente) return '';
-  const enlaceA = (x: Ficha, texto: string) =>
-    `<a href="${enlace({ vista: 'ficha', id: x.id, filtros: ruta.filtros })}">${texto} ${escapar(x.nombre)}</a>`;
+  const enlaceA = (x: Ficha, flecha: string) =>
+    `<a class="boton" href="${enlace({ vista: 'ficha', id: x.id, filtros: ruta.filtros })}">
+       <span class="icono" aria-hidden="true">${flecha}</span>${escapar(x.nombre)}</a>`;
   return `<nav class="vecinos" aria-label="${escapar(grupoPorId(f.grupo_id)?.nombre ?? '')}">
     ${anterior ? enlaceA(anterior, '←') : '<span></span>'}
     ${siguiente ? enlaceA(siguiente, '→') : ''}
@@ -213,15 +214,17 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
   portadaEl.hidden = true;
   sitio.innerHTML = `
     <article class="ficha">
-      <a class="volver" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">${t('ficha.volver')}</a>
+      <a class="volver boton" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">
+        <span class="icono" aria-hidden="true">←</span>${t('ficha.volver')}
+      </a>
       <header>
         <p class="grupo" ${acentoDe(f.grupo_id) ? `style="--acento-chip: ${acentoDe(f.grupo_id)}"` : ''}>${escapar(grupo?.nombre ?? '')}</p>
         <h1>${escapar(f.nombre)}</h1>
         ${botonFavorito(f)}
       </header>
-      <p class="resumen">${escapar(f.resumen)}</p>
-      <div class="cuerpo">
       <div class="figura" ${proporcion ? `style="--proporcion-lienzo: ${proporcion}"` : ''}></div>
+      <div class="cuerpo">
+      <p class="resumen">${escapar(f.resumen)}</p>
       ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>
         <ol class="pasos">${f.ejecucion.map((p) => `<li>${escapar(p)}</li>`).join('')}</ol></section>` : ''}
       <dl class="datos">
@@ -303,7 +306,7 @@ function pintar(): void {
     // El botón de compartir se añade aquí y no dentro del catálogo porque solo existe en favoritos.
     if (lista.length) {
       sitio.querySelector('.acciones-filtro')?.insertAdjacentHTML('beforeend', `
-        <button type="button" class="limpiar" data-accion="compartir">${t('favoritos.compartir')}</button>`);
+        <button type="button" class="boton" data-accion="compartir">${t('favoritos.compartir')}</button>`);
     }
   } else {
     pintarCatalogo(ruta, FICHAS.filter((f) => coincide(f, ruta)));

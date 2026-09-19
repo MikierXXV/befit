@@ -5,10 +5,68 @@
  * porque son contenido. Verificar con `npm run validar:contraste` después de tocar cualquier color.
  */
 
+/*
+ * LAS TIPOGRAFÍAS SE SIRVEN DESDE EL PROPIO SITIO.
+ *
+ * Los tokens las nombraban y nadie las cargaba: todo se veía con las de respaldo del sistema, que
+ * es la diferencia entre un sitio con voz propia y uno que parece una plantilla sin terminar.
+ *
+ * Van en variable y con el subconjunto latino —48 kB y 132 kB—, sin pedirlas a un tercero: una
+ * hoja de estilos de fuentes ajena añade dos conexiones antes de poder pintar una letra, y de paso
+ * le cuenta a alguien quién visita el sitio.
+ *
+ * `swap`: el texto se pinta desde el primer momento con la de respaldo y cambia al llegar la buena.
+ * Con `block` la portada se quedaría en blanco esperando, que es justo lo que mide el LCP.
+ */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fuentes/inter-latin.woff2') format('woff2-variations');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2070-209F, U+20AC, U+2122, U+2212;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  src: url('/fuentes/newsreader-latin.woff2') format('woff2-variations');
+  font-weight: 400 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2070-209F, U+20AC, U+2122, U+2212;
+}
+
+/*
+ * LAS DE RESPALDO, AJUSTADAS PARA QUE EL CAMBIO NO MUEVA NADA.
+ *
+ * Con `swap` el texto se pinta antes con la del sistema. Si ocupa otra cosa, al llegar la buena
+ * salta todo lo que hay debajo: el CLS del móvil se fue de 0,000 a 0,071 el día que se cargaron las
+ * fuentes. Estas dos caras son la del sistema con el tamaño y la caja de la nuestra, así que las
+ * líneas caen donde van a caer desde el primer pintado.
+ *
+ * Los números NO se copian de ningún sitio: los mide `scripts/metricas-respaldo.mjs` preguntándole
+ * al navegador. Al cambiar de tipografía, se vuelve a correr.
+ */
+@font-face {
+  font-family: 'Inter respaldo';
+  src: local('Arial'), local('Helvetica'), local('Liberation Sans');
+  size-adjust: 104.48%;
+  ascent-override: 92.75%;
+  descent-override: 23.07%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Newsreader respaldo';
+  src: local('Times New Roman'), local('Times'), local('Liberation Serif');
+  size-adjust: 110.23%;
+  ascent-override: 66.68%;
+  descent-override: 24.04%;
+  line-gap-override: 0%;
+}
+
 :root {
   /* ---- tipografía ---- */
-  --fuente-titulo: "Newsreader", ui-serif, Georgia, serif;
-  --fuente-texto: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --fuente-titulo: "Newsreader", "Newsreader respaldo", ui-serif, Georgia, serif;
+  --fuente-texto: "Inter", "Inter respaldo", ui-sans-serif, system-ui, sans-serif;
 
   --peso-regular: 400;
   --peso-medio: 500;

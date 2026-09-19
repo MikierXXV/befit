@@ -7,6 +7,13 @@
     <meta name="description" content="Ejercicios de gimnasio explicados con un maniquí 3D." />
 
     <!--
+      Se precarga solo la tipografía de interfaz. La de los titulares llega un instante después y el
+      texto ya se está leyendo con la de respaldo: precargarlo todo compite con lo que de verdad
+      bloquea la primera pantalla.
+    -->
+    <link rel="preload" href="/fuentes/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!--
       Tema e idioma se resuelven ANTES de pintar, en un script síncrono. El tema, porque si no se ve
       el destello blanco al entrar en un sitio oscuro. El idioma, porque `lang` manda en dos cosas a
       la vez: qué ui.json carga la app y qué lee un lector de pantalla; resolverlo después obligaría
