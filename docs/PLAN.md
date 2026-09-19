@@ -61,15 +61,20 @@ No «que se mueva»: que un entrenador no señale nada raro.
   un presupuesto de 2.500, pero el mismo código medía 984 ms por la mañana: era carga de la máquina,
   comprobado reconstruyendo el commit anterior.
 
-## Fase 4 — Publicar ⬜ ← **aquí estamos**
+## Fase 4 — Publicar ✅ (falta el móvil de verdad)
 
-1. ⬜ Crear el repositorio en GitHub *(lo estás haciendo)*.
-2. ⬜ `git remote add origin …` y `git push -u origin main`. Cuatro commits esperando.
-3. ⬜ Activar Pages con origen «GitHub Actions». El flujo ya está escrito:
-   `.github/workflows/desplegar.yml`.
-4. ⬜ Comprobar la primera publicación: `BASE_PATH` se deduce del nombre del repositorio, así que
-   hay que mirar que los carteles y el modelo carguen bajo `/befit/`.
+**En el aire: https://mikierxxv.github.io/befit/**
+
+1. ✅ Repositorio: `MikierXXV/befit`.
+2. ✅ Siete commits subidos.
+3. ✅ Pages con origen «GitHub Actions». El primer intento falló en `configure-pages` porque Pages
+   aún no estaba habilitado; el flujo en sí estaba bien.
+4. ✅ Recorrido entero contra la URL publicada, en dos temas y dos anchos, sin un solo error: la
+   portada, los carteles, la tipografía y el `.glb` del maniquí cargan todos bajo `/befit/`.
 5. ⬜ Repasar la web publicada en un móvil de verdad.
+
+Y una cosa que solo se sabe publicando: **los presupuestos de rendimiento pasan en el runner de
+CI**, LCP del móvil de gama baja incluido. El 2.904 ms de la máquina local era carga del equipo.
 
 ## Fase 5 — Crecer ⬜
 
