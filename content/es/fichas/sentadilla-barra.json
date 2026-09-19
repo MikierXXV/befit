@@ -31,5 +31,17 @@
       "abdomen",
       "isquiotibiales"
     ]
-  }
+  },
+  "matices": "Cuánto más trabaja el glúteo cuanto más se baja no está cerrado: la activación sube con claridad de media sentadilla a paralela, y de ahí hacia abajo los estudios se contradicen.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://ijspt.scholasticahq.com/article/94600-a-biomechanical-review-of-the-squat-exercise-implications-for-clinical-practice"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

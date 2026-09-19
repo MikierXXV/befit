@@ -29,5 +29,17 @@
       "antebrazo",
       "abdomen"
     ]
-  }
+  },
+  "matices": "En la revisión de peso muerto y sus variantes, erectores y cuádriceps salen más activos que glúteo e isquiotibiales. El reparto cambia mucho con la variante y con cómo se mide, así que los roles de aquí describen el gesto, no una medición.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

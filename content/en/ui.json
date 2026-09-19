@@ -59,7 +59,8 @@
     "ejecucion": "How to do it",
     "material": "Equipment",
     "nivel": "Level",
-    "fuentes": "Sources"
+    "fuentes": "Sources",
+    "matices": "What is less settled"
   },
   "favoritos": {
     "titulo": "Favourites",
@@ -99,5 +100,8 @@
       "espalda": "Back"
     },
     "sin_destacados": "no muscles highlighted"
+  },
+  "aviso": {
+    "salud": "This explains how an exercise is done, not whether it suits you. If you have an injury, pain or any medical condition, check with a professional first."
   }
 }

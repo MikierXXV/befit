@@ -26,5 +26,17 @@
       "cuadriceps",
       "deltoides_anterior"
     ]
-  }
+  },
+  "matices": "Meter el abdomen mientras se aguanta —lo que se llama maniobra de hollowing— sube la activación de todo el core, y sobre todo la de los oblicuos.",
+  "fuentes": [
+    {
+      "titulo": "Influence of Abdominal Hollowing Maneuver on the Core Musculature Activation during the Prone Plank Exercise",
+      "autor": "García-Jaén, Cortell-Tormo, Hernández-Sánchez y Tortosa-Martínez, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7600276/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

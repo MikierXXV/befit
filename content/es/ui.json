@@ -61,7 +61,8 @@
     "ejecucion": "Cómo se hace",
     "material": "Material",
     "nivel": "Nivel",
-    "fuentes": "Fuentes"
+    "fuentes": "Fuentes",
+    "matices": "Lo que no está tan claro"
   },
   "favoritos": {
     "titulo": "Favoritos",
@@ -102,5 +103,8 @@
       "espalda": "De espalda"
     },
     "sin_destacados": "sin músculos destacados"
+  },
+  "aviso": {
+    "salud": "Esto explica cómo se hace un ejercicio, no si te conviene a ti. Si tienes una lesión, dolor o cualquier condición médica, consúltalo antes con un profesional."
   }
 }

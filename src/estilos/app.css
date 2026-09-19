@@ -126,3 +126,16 @@
 .datos { display: grid; grid-template-columns: auto 1fr; gap: var(--e1) var(--e3); margin: var(--e4) 0; }
 .datos dt { color: var(--texto-secundario); }
 .datos dd { margin: 0; }
+
+.matices p, .fuentes li { color: var(--texto-secundario); }
+.matices { border-left: 3px solid var(--separador); padding-left: var(--e3); }
+
+/* El aviso, discreto pero presente en todas las pantallas: es información, no un obstáculo. */
+.aviso {
+  max-width: 1100px;
+  margin: var(--e6) auto 0;
+  padding: var(--e3) var(--e4) var(--e6);
+  border-top: 1px solid var(--separador);
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}

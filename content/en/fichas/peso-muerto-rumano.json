@@ -29,5 +29,17 @@
       "antebrazo",
       "abdomen"
     ]
-  }
+  },
+  "matices": "In the review of the deadlift and its variants, erectors and quadriceps come out more active than glutes and hamstrings. The balance shifts a lot with the variant and with how it is measured, so the roles here describe the movement, not a measurement.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

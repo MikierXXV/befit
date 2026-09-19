@@ -34,6 +34,8 @@ export interface Ficha {
   material?: string[];
   nivel?: 'inicial' | 'intermedio' | 'avanzado';
   musculos?: Partial<Record<Rol, string[]>>;
+  /** Lo que las fuentes no cierran. Se pinta aparte, no mezclado con lo que sí se sostiene. */
+  matices?: string;
   /** Fichero de content/movimientos/. Sin él, la ficha es solo texto. */
   movimiento_id?: string;
   fuentes?: Array<{ titulo: string; url?: string; autor?: string }>;

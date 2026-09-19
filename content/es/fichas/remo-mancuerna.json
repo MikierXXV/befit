@@ -30,5 +30,17 @@
       "erectores",
       "oblicuos"
     ]
-  }
+  },
+  "matices": "La revisión sobre el dorsal no encuentra diferencias claras entre remos ni entre agarres. Lo que sí cambia la activación es por dónde pasa la carga respecto al cuerpo.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

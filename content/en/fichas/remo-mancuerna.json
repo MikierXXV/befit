@@ -30,5 +30,17 @@
       "erectores",
       "oblicuos"
     ]
-  }
+  },
+  "matices": "The review on the lats finds no clear differences between rows or between grips. What does change activation is the path the load takes relative to the body.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

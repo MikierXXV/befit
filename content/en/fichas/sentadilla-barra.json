@@ -31,5 +31,17 @@
       "abdomen",
       "isquiotibiales"
     ]
-  }
+  },
+  "matices": "How much more the glutes work the deeper you go is not settled: activation clearly rises from half to parallel squat, and below that the studies disagree.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://ijspt.scholasticahq.com/article/94600-a-biomechanical-review-of-the-squat-exercise-implications-for-clinical-practice"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

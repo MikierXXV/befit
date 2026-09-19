@@ -30,5 +30,17 @@
       "erectores",
       "gluteo_mayor"
     ]
-  }
+  },
+  "matices": "The variant shifts the balance: behind the neck brings out more rear and side delt, in front brings in more chest. With a barbell the body also stabilises more than on a machine.",
+  "fuentes": [
+    {
+      "titulo": "Front vs Back and Barbell vs Machine Overhead Press: An Electromyographic Analysis and Implications For Resistance Training",
+      "autor": "Coratella, Tornatore, Longo, Esposito y Cè, Front Physiol, 2022",
+      "url": "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2022.825880/full"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }

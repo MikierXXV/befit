@@ -3,41 +3,105 @@
   "title": "Ficha",
   "description": "Una unidad del catálogo, con su texto. El movimiento NO va aquí: va en content/movimientos/ y se referencia con movimiento_id, porque la geometría no se traduce.",
   "type": "object",
-  "required": ["id", "grupo_id", "orden", "nombre", "resumen"],
+  "required": [
+    "id",
+    "grupo_id",
+    "orden",
+    "nombre",
+    "resumen"
+  ],
   "additionalProperties": false,
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
-    "grupo_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
-    "orden": { "type": "integer", "minimum": 1 },
-    "nombre": { "type": "string" },
-    "resumen": { "type": "string" },
-    "movimiento_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "grupo_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "orden": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "resumen": {
+      "type": "string"
+    },
+    "movimiento_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
     "ejecucion": {
       "type": "array",
       "description": "Los pasos, en orden. Es también la alternativa para quien no ve el maniquí, así que tienen que bastar por sí solos.",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "material": { "type": "array", "items": { "type": "string" } },
-    "nivel": { "type": "string", "enum": ["inicial", "intermedio", "avanzado"] },
+    "material": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "nivel": {
+      "type": "string",
+      "enum": [
+        "inicial",
+        "intermedio",
+        "avanzado"
+      ]
+    },
     "musculos": {
       "type": "object",
       "description": "Por rol, no por porcentaje. Un porcentaje de activación sugiere una precisión que la electromiografía no da.",
       "additionalProperties": false,
       "properties": {
-        "principal": { "type": "array", "items": { "type": "string" } },
-        "sinergista": { "type": "array", "items": { "type": "string" } },
-        "estabilizador": { "type": "array", "items": { "type": "string" } }
+        "principal": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sinergista": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "estabilizador": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
+    },
+    "matices": {
+      "type": "string",
+      "description": "Lo que no está cerrado: dónde se contradicen las fuentes, o qué depende tanto de la variante que no se puede afirmar. Publicar un reparto muscular como hecho cerrado es el error que esta plantilla ya cometió una vez.",
+      "minLength": 40
     },
     "fuentes": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["titulo"],
+        "required": [
+          "titulo"
+        ],
         "properties": {
-          "titulo": { "type": "string" },
-          "url": { "type": "string" },
-          "autor": { "type": "string" }
+          "titulo": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "autor": {
+            "type": "string"
+          }
         }
       }
     }

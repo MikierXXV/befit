@@ -72,7 +72,8 @@ function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
         </fieldset>` : '').join('')}
     </div>
     <p class="cuenta" role="status">${t('catalogo.resultados').replace('{n}', String(lista.length))}</p>
-    ${lista.length ? `<ul class="rejilla">${lista.map(tarjeta).join('')}</ul>` : `<p class="vacio">${t('catalogo.sin_resultados')}</p>`}`;
+    ${lista.length ? `<ul class="rejilla">${lista.map(tarjeta).join('')}</ul>` : `<p class="vacio">${t('catalogo.sin_resultados')}</p>`}
+    ${aviso()}`;
 
   const buscador = sitio.querySelector<HTMLInputElement>('#q')!;
   let temporizador = 0;
@@ -148,10 +149,14 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
         ${f.material?.length ? `<dt>${t('ficha.material')}</dt><dd>${f.material.map((m) => escapar(etiqueta('material', m))).join(', ')}</dd>` : ''}
         ${f.nivel ? `<dt>${t('ficha.nivel')}</dt><dd>${escapar(etiqueta('nivel', f.nivel))}</dd>` : ''}
       </dl>
+      ${f.matices ? `<section class="matices"><h2>${t('ficha.matices')}</h2><p>${escapar(f.matices)}</p></section>` : ''}
       ${f.fuentes?.length ? `<section class="fuentes"><h2>${t('ficha.fuentes')}</h2><ul>${f.fuentes.map(
-        (s) => `<li>${s.url ? `<a href="${escapar(s.url)}" rel="noreferrer">${escapar(s.titulo)}</a>` : escapar(s.titulo)}</li>`,
+        // Con el autor y el año a la vista: una fuente sin ellos obliga a abrir el enlace para saber
+        // si es de este año o de hace veinte, y una fuente que hay que abrir para valorarla no se abre.
+        (s) => `<li>${s.url ? `<a href="${escapar(s.url)}" rel="noreferrer">${escapar(s.titulo)}</a>` : escapar(s.titulo)}${s.autor ? ` · ${escapar(s.autor)}` : ''}</li>`,
       ).join('')}</ul></section>` : ''}
-    </article>`;
+    </article>
+    ${aviso()}`;
 
   /*
    * El acento del grupo entra como variable en la ficha, no como clase: los estilos del módulo del
@@ -170,6 +175,12 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
 }
 
 /* ----------------------------------------------------------------- común -- */
+
+/*
+ * El aviso va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por enlace
+ * directo —es lo que hace el botón de compartir— y quien entra así no pasa por ninguna portada.
+ */
+const aviso = (): string => `<p class="aviso">${t('aviso.salud')}</p>`;
 
 function cabecera(ruta: Ruta): string {
   return `

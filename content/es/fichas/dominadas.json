@@ -29,5 +29,17 @@
       "abdomen",
       "serrato"
     ]
-  }
+  },
+  "matices": "Dominada y dominada supina salen por encima del jalón y de los remos en activación del dorsal, pero entre los distintos agarres las diferencias son pequeñas.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
 }
