@@ -324,12 +324,23 @@ function tarjeta(f: Ficha, n: number): string {
  * La etiqueta accesible describe la ACCIÓN, no el estado, que es lo que un lector de pantalla
  * necesita anunciar al llegar al botón.
  */
-const botonFavorito = (f: Ficha, conTexto = false): string => {
+/*
+ * El favorito: SOLO la estrella, en la tarjeta y en la ficha.
+ *
+ * Llevó la palabra «Guardar» al lado en la ficha, y sobraba: la estrella es el símbolo universal de
+ * esto y el botón acababa midiendo lo que una frase. Lo que sí hace falta es que se vea y que se
+ * acierte con el dedo, así que es más grande que el resto de controles —de los pocos sitios donde
+ * romper la retícula de alturas está justificado— y tiene fondo propio, no medio transparente.
+ *
+ * La palabra sigue existiendo para quien no ve el icono: va en la etiqueta accesible y describe la
+ * ACCIÓN —guardar o quitar—, que es lo que un lector de pantalla necesita anunciar.
+ */
+const botonFavorito = (f: Ficha): string => {
   const guardado = esFavorito(f.id);
   return `
   <button type="button" class="favorito" data-favorito="${f.id}" aria-pressed="${guardado}"
           aria-label="${t(guardado ? 'favoritos.quitar' : 'favoritos.guardar').replace('{nombre}', f.nombre)}">
-    <span class="icono" aria-hidden="true">${guardado ? '★' : '☆'}</span>${conTexto ? t(guardado ? 'favoritos.guardado' : 'favoritos.guardar_corto') : ''}
+    <span class="icono" aria-hidden="true">${guardado ? '★' : '☆'}</span>
   </button>`;
 };
 
@@ -355,7 +366,7 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
         <a class="boton" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">
           <span class="icono" aria-hidden="true">←</span>${t('ficha.volver')}
         </a>
-        ${botonFavorito(f, true)}
+        ${botonFavorito(f)}
       </div>
       <!--
         EL MANIQUÍ VA PRIMERO, antes que el título.

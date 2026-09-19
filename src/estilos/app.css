@@ -548,17 +548,17 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   position: absolute;
   top: var(--e2);
   right: var(--e2);
-  width: 40px;
-  min-height: 40px;
+  /* Más grande que el resto de controles a propósito: es el único que se pulsa sobre una imagen,
+     con el dedo y sin mirar. A 40 px y medio transparente había que buscarla. */
+  width: 44px;
+  min-height: 44px;
   padding: 0;
   border-radius: var(--radio-pildora);
-  background: color-mix(in oklab, var(--fondo-elevado) 78%, transparent);
-  font-size: 1rem;
+  background: var(--fondo-elevado);
+  font-size: 1.25rem;
   line-height: 1;
 }
-@supports (backdrop-filter: blur(1px)) {
-  .favorito { backdrop-filter: blur(8px); }
-}
+.favorito .icono { width: 1em; height: 1em; font-size: 1em; }
 .favorito[aria-pressed='true'] { background: var(--accion); border-color: var(--accion); color: var(--sobre-accion); }
 .favorito:active { scale: 0.88; }
 @media (prefers-reduced-motion: no-preference) {
@@ -569,8 +569,8 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   }
 }
 
-/* En la ficha no es un icono suelto en una esquina: es un botón con su palabra. */
-.ficha .favorito { position: static; width: auto; padding-inline: var(--e4); }
+/* En la ficha va en la fila de acciones, no flotando sobre nada: deja de estar posicionada. */
+.ficha .favorito { position: static; }
 
 /* --------------------------------------------------------------------- ficha -- */
 
@@ -602,15 +602,12 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 
 .ficha header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: var(--e2) var(--e4);
+  gap: var(--e2);
   /* Sin filete debajo: desde que el encabezado va DESPUÉS del maniquí, esa línea quedaba entre el
      título y su propio resumen, separando lo que va junto. */
   padding-bottom: var(--e2);
 }
 .ficha header .grupo {
-  grid-column: 1;
   display: flex;
   align-items: center;
   gap: var(--e2);
@@ -621,10 +618,7 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-.ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); line-height: var(--il-apretado); }
-/* El botón de guardar ocupa las dos filas y se centra en ellas: pegado arriba quedaba a la altura
-   del rótulo de grupo y a 34 px del centro del título, que es lo que se mira. */
-.ficha header .favorito { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.ficha header h1 { margin: 0; font-size: var(--t-grande); line-height: var(--il-apretado); }
 
 /*
  * El maniquí ocupa el ancho entero y va primero: es lo que se viene a ver. Debajo, el texto en una
@@ -810,6 +804,6 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   .vacio a,
   .faceta > summary,
   .opciones label { min-height: 44px; }
-  .favorito { width: 44px; }
+  .favorito { width: 48px; min-height: 48px; }
   .quitar { min-height: 36px; }
 }
