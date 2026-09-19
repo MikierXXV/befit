@@ -23,6 +23,10 @@ export function vistasDe(mov: Movimiento): Vista[] {
 }
 
 export interface Movimiento {
+  /* En qué punto del ciclo se le ve mejor, para la imagen fija del catálogo. Por defecto el
+     principio, que es lo que vale para casi todos; pero hay movimientos cuyo primer fotograma no
+     dice nada —el press Pallof empieza con las manos pegadas al pecho, igual que estar de pie—. */
+  cartel?: { fase?: number };
   duracion: number;
   camara: { vista: Vista; detalle?: string; proporcion?: string };
   implementos?: Record<string, { tipo: string; [k: string]: unknown }>;
@@ -355,7 +359,9 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
         g.add(punta);
       }
     }
-    const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 1, 8), material(COLOR.metal, 0.4, 0.6));
+    /* 9 mm y no 6: a 6 el cable se veía como un pelo y el press Pallof parecía alguien sujetando un
+       palo. Un cable de gimnasio es grueso de verdad, y aquí además tiene que contar algo. */
+    const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.009, 0.009, 1, 8), material(COLOR.metal, 0.4, 0.6));
     cable.name = 'cable';
     g.add(cable);
   } else if (def.tipo === 'mancuerna') {

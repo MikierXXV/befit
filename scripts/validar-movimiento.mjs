@@ -139,6 +139,10 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
 function redactar(aviso) {
   const parte = { mano: 'La mano', pie: 'El pie' }[aviso.miembro];
   const lado = { i: 'izquierda', d: 'derecha' }[aviso.lado];
+  if (aviso.tipo === 'recorte') {
+    // Con un decimal: este aviso salta con medio centímetro, y "0 cm" no dice nada.
+    return `${parte} ${lado} tendría que ir ${(aviso.falta * 100).toFixed(1)} cm más lejos de lo que da el brazo: el implemento está demasiado lejos y la mano lo suelta`;
+  }
   return `${parte} ${lado} no llega a su objetivo: faltan ${(aviso.falta * 100).toFixed(0)} cm`;
 }
 

@@ -137,7 +137,8 @@ export async function montarFigura(
 
   let velocidad = 1;
   let pausado = cartel;
-  let fase = 0;
+  // El cartel se saca del punto que el movimiento diga, no siempre del principio.
+  let fase = cartel ? (mov.cartel?.fase ?? 0) : 0;
   let claveAnterior: string | undefined;
   let anterior = performance.now();
   let animacion = 0;

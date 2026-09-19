@@ -457,7 +457,16 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
          */
         const alcance = (longitudes.brazo + longitudes.antebrazo) * 0.999;
         const desdeHombro = objetivo.clone().sub(raiz);
-        if (desdeHombro.length() > alcance) objetivo.copy(raiz).addScaledVector(desdeHombro.normalize(), alcance);
+        if (desdeHombro.length() > alcance) {
+          /*
+           * Y AVISA. Acercar el objetivo en silencio es lo que convirtió esto en una trampa: como
+           * después la mano SÍ llega a donde se le pide, el validador no veía nada y el maniquí
+           * soltaba la barra a mitad de recorrido sin que ninguna comprobación dijese ni mu. Pasó
+           * con el jalón —20,8 cm fuera de alcance en 46 fotogramas de 48— y solo se vio mirando.
+           */
+          avisos.push({ tipo: 'recorte', miembro: 'mano', lado: l, falta: desdeHombro.length() - alcance });
+          objetivo.copy(raiz).addScaledVector(desdeHombro.normalize(), alcance);
+        }
         r = resolver(objetivo);
       }
     }
