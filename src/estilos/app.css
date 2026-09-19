@@ -189,6 +189,9 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  /* Todas las filas miden lo mismo. Sin esto, una fila de nombres de una línea salía 22 px más baja
+     que la de arriba y la rejilla se veía descuadrada por abajo. */
+  grid-auto-rows: 1fr;
   gap: var(--e6);
   padding-block: var(--e4) var(--e6);
 }
@@ -244,13 +247,20 @@
   line-height: var(--il-titulo);
   text-wrap: balance;
 }
+/*
+ * El rótulo del grupo arranca EN LA MISMA VERTICAL que el nombre de arriba.
+ *
+ * Llevaba un filete de 3 px más su relleno, así que su texto empezaba 11 px a la derecha del
+ * nombre: en una rejilla de nueve tarjetas, nueve escalones. El color del grupo ahora lo lleva la
+ * propia letra —los acentos se verifican contra AA en los dos temas—, y el borde izquierdo
+ * desaparece. Misma información, un solo margen.
+ */
 .tarjeta .etiqueta-grupo {
   justify-self: start;
   margin-inline: var(--e4);
-  padding-left: var(--e2);
-  border-left: 3px solid var(--acento-chip, var(--separador));
-  color: var(--texto-secundario);
+  color: var(--acento-chip, var(--texto-secundario));
   font-size: var(--t-pequeno);
+  font-weight: var(--peso-medio);
 }
 
 .favorito {
@@ -279,7 +289,9 @@
 .ficha .figura:empty::before {
   content: '';
   aspect-ratio: var(--proporcion-lienzo, 1);
-  max-height: min(62svh, 620px);
+  /* MISMO TOPE QUE EL LIENZO de figura.css. Si los dos números se separan, el hueco reservado y lo
+     que luego llega miden distinto y vuelve exactamente el salto que esta regla evita. */
+  max-height: min(72svh, 720px);
   border-radius: var(--radio-grande);
   background: var(--fondo-hundido);
 }
@@ -295,16 +307,18 @@
   padding-bottom: var(--e6);
   border-bottom: 1px solid var(--separador);
 }
+/* Igual que en la tarjeta: alineado con el título, y el color del grupo en la letra. */
 .ficha header .grupo {
   grid-column: 1;
   margin: 0;
-  padding-left: var(--e2);
-  border-left: 3px solid var(--acento-chip, var(--separador));
-  color: var(--texto-secundario);
+  color: var(--acento-chip, var(--texto-secundario));
   font-size: var(--t-pequeno);
+  font-weight: var(--peso-medio);
 }
 .ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); }
-.ficha header .favorito { position: static; grid-column: 2; grid-row: 1 / span 2; }
+/* La estrella ocupa las dos filas del encabezado y se centra en ellas: pegada arriba quedaba a la
+   altura del rótulo de grupo y a 34 px del centro del título, que es lo que se mira. */
+.ficha header .favorito { position: static; grid-column: 2; grid-row: 1 / span 2; align-self: center; }
 
 /*
  * El resumen, en segundo plano. Lo que manda en una ficha es el movimiento: el texto explica lo que

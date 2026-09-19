@@ -47,7 +47,9 @@
 }
 
 .figura .controles { display: flex; flex-wrap: wrap; gap: var(--e4); margin-top: var(--e3); align-items: center; }
-.figura .controles .grupo { display: inline-flex; gap: var(--e1); align-items: center; }
+/* El grupo también envuelve: con las etiquetas sin partir, la fila de vistas se salía del ancho del
+   móvil y "agarre" quedaba cortado contra el borde. Antes de salirse, se baja de línea. */
+.figura .controles .grupo { display: inline-flex; flex-wrap: wrap; gap: var(--e1); align-items: center; }
 /* Los grupos llevan rótulo visible: "½×" y "1×" sueltos, en la misma fila que Pausa y las vistas,
    no dicen de qué son ni qué los separa. */
 .figura .controles .rotulo {
@@ -93,7 +95,24 @@
  */
 .figura.cartel .lienzo { background: transparent; }
 
-.figura .mapas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
+/*
+ * El mapa muscular acompaña; no compite con el maniquí.
+ *
+ * En una columna —móvil— las dos siluetas a ancho completo medían 478 px de alto contra los 368 del
+ * lienzo: lo secundario salía más grande que lo que se viene a ver. Se limita el ancho del bloque y
+ * se centra, con lo que queda por debajo del alto del lienzo. Cuando hay dos columnas, el ancho lo
+ * manda la rejilla y este tope no llega a aplicarse.
+ */
+.figura .mapas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--e2);
+  max-width: 17rem;
+  margin-inline: auto;
+}
+@container (min-width: 44rem) {
+  .figura .mapas { max-width: none; margin-inline: 0; }
+}
 .figura .mapa { width: 100%; height: auto; }
 
 /*

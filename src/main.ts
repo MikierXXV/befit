@@ -85,8 +85,18 @@ function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
     ruta.vista === 'favoritos' ? t('favoritos.entradilla') : t('sitio.entradilla'),
   );
 
+  /*
+   * Sin nada guardado, no se pinta ni buscador ni filtros ni cuenta.
+   *
+   * Estaban: un buscador, veinticinco píldoras de filtro y un "0 resultados" encima de un mensaje
+   * que dice que no hay nada. Filtrar una lista vacía no lleva a ninguna parte, y toda esa
+   * maquinaria delante hace que la pantalla parezca rota en vez de recién empezada.
+   */
+  const sinGuardados = ruta.vista === 'favoritos' && favoritos().length === 0;
+
   sitio.innerHTML = `
     <a class="saltar" href="#catalogo">${t('catalogo.saltar')}</a>
+    ${sinGuardados ? '' : `
     <form class="buscador" role="search">
       <label class="oculto" for="q">${t('catalogo.buscar')}</label>
       <input id="q" type="search" name="q" value="${escapar(ruta.busqueda ?? '')}" placeholder="${t('catalogo.buscar')}" />
@@ -102,16 +112,17 @@ function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
     <div class="acciones-filtro">
       <p class="cuenta" role="status">${t('catalogo.resultados').replace('{n}', String(lista.length))}</p>
       ${activos || ruta.busqueda ? `<button type="button" class="boton" data-accion="limpiar">${t('catalogo.limpiar')}</button>` : ''}
-    </div>
+    </div>`}
     ${lista.length
       ? `<ul class="rejilla" id="catalogo" tabindex="-1">${lista.map((f, n) => tarjeta(f, n)).join('')}</ul>`
       : `<div class="vacio" id="catalogo" tabindex="-1"><p>${t(ruta.vista === 'favoritos' ? 'favoritos.vacio' : 'catalogo.sin_resultados')}</p>
            <a class="boton" href="${enlace({ vista: 'catalogo', filtros: {} })}">${t('catalogo.ver_todos')}</a></div>`}
     ${aviso()}`;
 
-  const buscador = sitio.querySelector<HTMLInputElement>('#q')!;
+  // Puede no haber buscador: en favoritos vacío no se pinta. Lo que sigue solo tiene sentido si lo hay.
+  const buscador = sitio.querySelector<HTMLInputElement>('#q');
   let temporizador = 0;
-  buscador.addEventListener('input', () => {
+  buscador?.addEventListener('input', () => {
     // Se espera a que pare de teclear: cada pulsación cambia la ruta, y sin esto el historial se
     // llena de una entrada por letra y el botón de atrás deja de servir para nada.
     clearTimeout(temporizador);
