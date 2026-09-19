@@ -113,6 +113,7 @@ jobs:
 
           fallos=0
           URL_BASE=http://localhost:4173/ node scripts/capturar-sitio.mjs || fallos=1
+          URL_BASE=http://localhost:4173/ node scripts/check-alineacion.mjs || fallos=1
           URL_BASE=http://localhost:4173/ node scripts/auditar.mjs || fallos=1
 
           kill $servidor 2>/dev/null || true
