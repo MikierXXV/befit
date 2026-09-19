@@ -367,9 +367,17 @@ if (revisar && cargarHoja) {
     await montarHoja(sitio, movimiento, `${ficha.nombre} — ${ficha.id}`);
   })();
 } else {
-  // Un solo oyente para toda la app: como el contenedor sobrevive a cada repintado, registrarlo
-  // dentro de pintar() sumaría un oyente por navegación y acabaría alternando el favorito dos veces.
+  /*
+   * Un solo oyente por contenedor que sobrevive al repintado. Registrarlo dentro de pintar() sumaría
+   * uno por navegación y acabaría alternando el favorito dos veces.
+   *
+   * Y SON DOS, no uno: la cabecera es hermana de `#sitio`, no hija. Estuvo dentro, se sacó fuera
+   * para que el navegador pudiera pintarla antes de ejecutar nada, y el oyente se quedó atrás: los
+   * botones de idioma y de tema dejaron de hacer absolutamente nada. Sin error en consola, sin
+   * fallo de compilación y sin que lo viera ninguna comprobación, porque ninguna los pulsaba.
+   */
   sitio.addEventListener('click', alPulsar);
+  cabeceraEl.addEventListener('click', alPulsar);
   alCambiarRuta(pintar);
   // Repintar al cambiar de tema: el acento del grupo se resuelve en JavaScript, así que un cambio de
   // tema sin repintado dejaría el mapa muscular con el color del tema anterior.

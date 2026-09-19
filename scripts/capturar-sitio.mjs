@@ -364,6 +364,49 @@ for (const vista of VISTAS) {
       );
     }
 
+    /*
+     * CADA CONTROL DE LA CABECERA TIENE QUE HACER ALGO AL PULSARLO.
+     *
+     * Los botones de idioma y de tema estuvieron muertos sin que nadie se enterara: el oyente de
+     * clics vivía en `#sitio` y la cabecera se sacó fuera para poder pintarla antes de ejecutar
+     * JavaScript, así que los clics no llegaban a ninguna parte. Sin error en consola, sin fallo de
+     * compilación, y ninguna comprobación los pulsaba. Se pulsan aquí: si tras el clic no cambia ni
+     * el tema, ni el idioma, ni la ruta, ni lo guardado, ni el contenido, el botón es decorativo.
+     */
+    const huella = () => pagina.evaluate(() => {
+      let guardado = '';
+      try { guardado = JSON.stringify({ ...localStorage }); } catch { guardado = 'sin acceso'; }
+      return [
+        document.documentElement.dataset.tema,
+        document.documentElement.lang,
+        location.href,
+        guardado,
+        String(document.querySelector('#sitio')?.textContent?.length ?? 0),
+      ].join('|');
+    });
+    const SELECTOR_MANDOS = '#cabecera [data-accion], #cabecera button';
+    const cuantos = (await pagina.$$(SELECTOR_MANDOS)).length;
+    for (let i = 0; i < cuantos; i += 1) {
+      /* Se vuelve a buscar por posición en cada vuelta: la cabecera se repinta entera y el idioma
+         recarga la página, así que una referencia guardada apunta a un elemento que ya no existe
+         —«Element is not attached to the DOM»— y la comprobación reventaba en el segundo botón. */
+      const mando = (await pagina.$$(SELECTOR_MANDOS))[i];
+      if (!mando) continue;
+      const etq = (await mando.textContent())?.trim().slice(0, 20) || '(sin texto)';
+      const antes = await huella();
+      await mando.click();
+      // El de idioma recarga la página a propósito; hay que esperar a que vuelva a estar en pie.
+      await pagina.waitForLoadState('networkidle').catch(() => {});
+      await pagina.waitForTimeout(500);
+      if ((await huella()) === antes) {
+        fallos.push(`[${etiqueta}] el control "${etq}" de la cabecera no hace nada al pulsarlo.`);
+      }
+      // Se vuelve al punto de partida: el siguiente control se prueba desde el mismo sitio.
+      await pagina.goto(BASE, { waitUntil: 'networkidle', timeout: 60000 });
+      await pagina.evaluate(() => { try { localStorage.clear(); } catch {} });
+      await pagina.reload({ waitUntil: 'networkidle' });
+    }
+
     await pagina.screenshot({ path: join(SALIDA, `${etiqueta}.png`), fullPage: true });
     console.log(`  · capturas/${etiqueta}.png`);
 
