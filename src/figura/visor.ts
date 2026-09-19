@@ -55,7 +55,18 @@ function colorDelTema(token: string, respaldo: number): THREE.Color {
 
 export async function crearVisor(lienzo: HTMLCanvasElement) {
   const render = new THREE.WebGLRenderer({ canvas: lienzo, antialias: true, powerPreference: 'low-power', alpha: true });
-  render.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  /*
+   * SE DIBUJA A MÁS RESOLUCIÓN DE LA QUE TIENE LA PANTALLA, y luego el navegador lo reduce.
+   *
+   * En un monitor normal —un píxel de pantalla por píxel de CSS— el maniquí salía dentado: es un
+   * modelo de pocos polígonos, con lo que los bordes son rectas largas, y ahí el antialias del
+   * propio WebGL no llega. Dibujando a 1,6× y dejando que el navegador encoja, cada píxel final es
+   * la media de dos y medio: es supermuestreo de toda la vida y se nota muchísimo.
+   *
+   * El tope de 2 sigue mandando, así que en una pantalla de alta densidad —los móviles— no se
+   * dibuja ni un píxel de más: ahí ya sobra resolución y lo que falta es batería.
+   */
+  render.setPixelRatio(Math.min(Math.max(window.devicePixelRatio, 1.6), 2));
   // ?sombras=0 para medir su coste. Ver scripts/medir.mjs.
   render.shadowMap.enabled = new URLSearchParams(location.search).get('sombras') !== '0';
   render.shadowMap.type = THREE.PCFSoftShadowMap;

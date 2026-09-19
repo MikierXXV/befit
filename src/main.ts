@@ -371,27 +371,27 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
       </header>
       <div class="cuerpo">
       <p class="resumen">${escapar(f.resumen)}</p>
-      ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>
-        <ol class="pasos">${f.ejecucion.map((p) => `<li>${escapar(p)}</li>`).join('')}</ol></section>` : ''}
       <!--
-        Material, matices y fuentes van dentro de UN solo elemento, no sueltos en la rejilla.
-        Sueltos, cada uno ocupaba su fila y obligaban a estirar la columna del texto seis filas:
-        si al lado había menos de seis cosas —lo normal—, sobraban filas vacías y la ficha acababa
-        con un palmo de nada antes del pie. (Sin comillas invertidas en este comentario: está dentro
-        de una plantilla de texto y una sola cierra la cadena. Costó un error de compilación.)
+        ORDEN DE LECTURA: qué necesitas, cómo se hace, qué no está cerrado, de dónde sale.
+
+        Material y nivel van ANTES de los pasos porque son lo que decide si el ejercicio te sirve
+        hoy: enterarte de que hace falta un rack después de leerte siete pasos es tarde. Y matices y
+        fuentes van después, que es cuando importan: primero se aprende el gesto y luego se
+        pregunta qué hay detrás. Estaban los tres en una columna lateral, leyéndose en paralelo a
+        los pasos y sin orden ninguno.
       -->
-      <aside class="lateral">
       <dl class="datos">
         ${f.material?.length ? `<div class="dato"><dt>${t('ficha.material')}</dt><dd>${f.material.map((m) => escapar(etiqueta('material', m))).join(', ')}</dd></div>` : ''}
         ${f.nivel ? `<div class="dato"><dt>${t('ficha.nivel')}</dt><dd>${escapar(etiqueta('nivel', f.nivel))}</dd></div>` : ''}
       </dl>
+      ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>
+        <ol class="pasos">${f.ejecucion.map((p) => `<li>${escapar(p)}</li>`).join('')}</ol></section>` : ''}
       ${f.matices ? `<section class="matices"><h2>${t('ficha.matices')}</h2><p>${escapar(f.matices)}</p></section>` : ''}
       ${f.fuentes?.length ? `<section class="fuentes"><h2>${t('ficha.fuentes')}</h2><ul>${f.fuentes.map(
         // Con el autor y el año a la vista: una fuente sin ellos obliga a abrir el enlace para saber
         // si es de este año o de hace veinte, y una fuente que hay que abrir para valorarla no se abre.
         (s) => `<li>${s.url ? `<a href="${escapar(s.url)}" rel="noreferrer">${escapar(s.titulo)}</a>` : escapar(s.titulo)}${s.autor ? ` · ${escapar(s.autor)}` : ''}</li>`,
       ).join('')}</ul></section>` : ''}
-      </aside>
       ${vecinos(f, ruta)}
       </div>
     </article>

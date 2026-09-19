@@ -128,16 +128,20 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 .vacio a:hover,
 .quitar:hover {
   border-color: var(--borde-interactivo);
-  background: color-mix(in oklab, var(--fondo-elevado) 82%, var(--texto));
+  /* 94 % y no 82: la mezcla se comporta distinto en cada tema. Un 18 % de texto sobre el elevado
+     del oscuro es un realce sutil; sobre el blanco del claro es un gris de #d0d0d3 que parecía un
+     botón pulsado o deshabilitado. Con 6 % se levanta en los dos sin gritar en ninguno. */
+  background: color-mix(in oklab, var(--fondo-elevado) 94%, var(--texto));
 }
 
 /* El botón que lleva la acción principal de la pantalla. Uno por pantalla, por definición. */
 .boton.principal {
   background: var(--accion);
   border-color: var(--accion);
-  /* Texto oscuro FIJO, no `--fondo`: el naranja es claro en los dos temas, y con el fondo del tema
-     claro encima se quedaba en 2,3:1. Por eso este color no sale de la paleta. */
-  color: #14110C;
+  /* El texto sobre el acento lo pone el TEMA, no una constante: el naranja del tema claro es
+     oscuro y el del oscuro es claro, así que un solo color encima falla en uno de los dos. Con el
+     negro fijo que había antes, en claro se quedaba en 1,9:1. */
+  color: var(--sobre-accion);
   font-weight: var(--peso-semibold);
 }
 .boton.principal:hover {
@@ -159,15 +163,26 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   font-size: 1.1em;
 }
 
+/*
+ * La insignia: una pastilla con un número DENTRO Y CENTRADO.
+ *
+ * Estaba resuelta con relleno y línea base, y el número quedaba un pelo alto dentro del círculo:
+ * de esas cosas que no se sabe nombrar pero se ven. Con una rejilla centrada y alto fijo, el número
+ * cae en el centro tenga la cifra que tenga.
+ */
 .insignia {
-  min-width: 1.35em;
-  padding: 0.05em 0.4em;
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.4em;
+  height: 1.4em;
+  padding-inline: 0.35em;
   border-radius: var(--radio-pildora);
   background: var(--accion);
-  color: #14110C;
+  color: var(--sobre-accion);
   font-size: var(--t-micro);
   font-weight: var(--peso-semibold);
   font-variant-numeric: tabular-nums;
+  line-height: 1;
 }
 /* Sin nada que contar, la insignia es una mancha naranja que no informa de nada. */
 .insignia:empty { display: none; }
@@ -544,7 +559,7 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 @supports (backdrop-filter: blur(1px)) {
   .favorito { backdrop-filter: blur(8px); }
 }
-.favorito[aria-pressed='true'] { background: var(--accion); border-color: var(--accion); color: #14110C; }
+.favorito[aria-pressed='true'] { background: var(--accion); border-color: var(--accion); color: var(--sobre-accion); }
 .favorito:active { scale: 0.88; }
 @media (prefers-reduced-motion: no-preference) {
   .favorito {
@@ -619,23 +634,18 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 .ficha .figura { margin-block: var(--e4) var(--e6); }
 .ficha .resumen { margin-block: 0 var(--e6); max-width: var(--medida-texto); color: var(--texto-secundario); }
 /*
- * Dos columnas y UNA fila: el texto a la izquierda, lo de consulta a la derecha dentro de un solo
- * elemento. La versión anterior metía material, matices y fuentes sueltos en la rejilla, cada uno
- * en su fila, y obligaba a estirar la columna del texto con `grid-row: 2 / span 6`. Cuando al lado
- * había menos de seis cosas —siempre—, sobraban filas vacías: de ahí el palmo de nada que quedaba
- * entre el final de la ficha y el aviso del pie.
+ * UNA columna de lectura, en el orden en que se necesita: qué hace falta, cómo se hace, qué no está
+ * cerrado, de dónde sale.
+ *
+ * Hubo dos columnas con material, matices y fuentes al lado de los pasos. Dos problemas: se leían
+ * en paralelo, sin orden —y ese contenido SÍ tiene orden—, y cada bloque suelto ocupaba una fila de
+ * la rejilla, lo que obligaba a estirar la columna del texto seis filas y dejaba filas vacías
+ * cuando al lado había menos cosas. De ahí venía el palmo de nada antes del pie.
+ *
+ * El ancho se limita a la medida de lectura: el maniquí de arriba ya ocupa la pantalla entera, y
+ * una línea de texto de mil píxeles no se lee, se recorre.
  */
-@media (min-width: 60rem) {
-  .ficha .cuerpo {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 19rem);
-    gap: var(--e4) var(--e8);
-    align-items: start;
-  }
-  .ficha .cuerpo > .resumen,
-  .ficha .cuerpo > .vecinos { grid-column: 1 / -1; }
-}
-.ficha .lateral > :last-child { margin-bottom: 0; }
+.ficha .cuerpo { max-width: var(--medida-texto); }
 .ficha .cuerpo > :last-child { margin-bottom: 0; }
 .ficha h2 { font-size: var(--t-medio); margin-bottom: var(--e4); }
 .ficha section { margin-bottom: var(--e8); }
@@ -684,14 +694,22 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 }
 /* El hilo entre nodos. En el último no se pinta: una secuencia que sigue después del final es
    justo lo que no se quiere decir. */
+/*
+ * El hilo entre nodos, con trazo de 2 px y un color más firme que el del separador.
+ *
+ * A 1 px y con `--separador`, en el tema claro no se veía: una línea de 1,1:1 contra el fondo
+ * desaparece, y los pasos volvían a ser una lista de círculos sueltos. Los separadores de caja
+ * pueden ser tenues porque la caja ya se lee por su fondo; una línea suelta, no.
+ */
 .pasos li:not(:last-child)::after {
   content: '';
   position: absolute;
-  left: calc(0.875rem - 0.5px);
+  left: calc(0.875rem - 1px);
   top: 1.75rem;
   bottom: calc(var(--e4) * -1);
-  width: 1px;
-  background: var(--separador);
+  width: 2px;
+  border-radius: var(--radio-pildora);
+  background: color-mix(in oklab, var(--separador) 55%, var(--texto));
 }
 
 .datos { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0 0 var(--e8); }

@@ -154,6 +154,10 @@ for (const [nombreTema, tema] of Object.entries(tokens.temas)) {
     // se le exige contraste de texto, no el 3:1 de un elemento de interfaz.
     if (tema.accion) comprobar(`accion sobre ${nf}`, tema.accion, fondo, umbrales.texto_normal);
   }
+  // Y el texto que va ENCIMA del acento: es donde vive el número de favoritos y la etiqueta del
+  // botón principal, y ahí no vale el 3:1 de un elemento de interfaz.
+  if (tema.sobre_accion) comprobar('sobre_accion sobre accion', tema.sobre_accion, tema.accion, umbrales.texto_normal);
+
   comprobar('borde_interactivo sobre fondo', tema.borde_interactivo, tema.fondo, umbrales.elemento_ui);
   comprobar('borde_interactivo sobre elevado', tema.borde_interactivo, tema.fondo_elevado, umbrales.elemento_ui);
   comprobar('foco sobre fondo', tema.foco, tema.fondo, umbrales.elemento_ui);

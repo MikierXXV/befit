@@ -105,7 +105,7 @@
   border-radius: var(--radio-pildora);
   background: var(--accion);
   border-color: var(--accion);
-  color: #14110C;
+  color: var(--sobre-accion);
 }
 .figura .controles .reproducir:hover {
   background: color-mix(in oklab, var(--accion) 88%, white);
@@ -190,9 +190,16 @@
  * Salen del acento del grupo mezclado con el fondo, no de tres colores propios: así el mapa de cada
  * familia mantiene su color y los tres grados se distinguen por intensidad, que es lo que significan.
  */
-/* La silueta se mezcla con el texto, no con el fondo hundido: en tema oscuro, el cuerpo quedaba
-   negro sobre negro y solo flotaban los músculos resaltados, sin cuerpo que los situara. */
-.figura .zona { fill: color-mix(in oklab, var(--texto) 14%, var(--fondo)); stroke: var(--fondo); stroke-width: 0.15; }
+/*
+ * La silueta se mezcla con el texto, no con el fondo hundido: en tema oscuro, el cuerpo quedaba
+ * negro sobre negro y solo flotaban los músculos resaltados, sin cuerpo que los situara.
+ *
+ * Y con 24 %, no con 14. El 14 se ajustó mirando el tema oscuro, donde un gris claro al 14 % sobre
+ * casi negro ya se ve; en el claro, ese mismo 14 % es un gris palidísimo sobre blanco y el cuerpo
+ * desaparecía: quedaban los músculos pintados flotando sin nadie debajo. Mismo número para los dos
+ * temas, elegido mirando el que peor lo tenía.
+ */
+.figura .zona { fill: color-mix(in oklab, var(--texto) 24%, var(--fondo)); stroke: var(--fondo); stroke-width: 0.15; }
 .figura .zona.principal { fill: var(--acento); }
 .figura .zona.sinergista { fill: color-mix(in oklab, var(--acento) 70%, var(--fondo)); }
 .figura .zona.estabilizador { fill: color-mix(in oklab, var(--acento) 45%, var(--fondo)); }
