@@ -150,6 +150,9 @@ for (const [nombreTema, tema] of Object.entries(tokens.temas)) {
     // El enlace también como texto normal: es texto que se lee, no un adorno, y suele salir en
     // párrafos y en listas de fuentes donde el tamaño es pequeño.
     if (tema.enlace) comprobar(`enlace sobre ${nf}`, tema.enlace, fondo, umbrales.texto_normal);
+    // El acento de acción acaba en etiquetas de botón y en cifras pequeñas, no solo en rellenos:
+    // se le exige contraste de texto, no el 3:1 de un elemento de interfaz.
+    if (tema.accion) comprobar(`accion sobre ${nf}`, tema.accion, fondo, umbrales.texto_normal);
   }
   comprobar('borde_interactivo sobre fondo', tema.borde_interactivo, tema.fondo, umbrales.elemento_ui);
   comprobar('borde_interactivo sobre elevado', tema.borde_interactivo, tema.fondo_elevado, umbrales.elemento_ui);

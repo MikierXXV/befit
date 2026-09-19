@@ -54,69 +54,137 @@ function coincide(f: Ficha, ruta: Ruta): boolean {
 
 /* --------------------------------------------------------------- catálogo -- */
 
-function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
-  const filtros = [
-    ['material', valoresDe('material'), (v: string) => etiqueta('material', v)],
-    ['nivel', valoresDe('nivel'), (v: string) => etiqueta('nivel', v)],
-    ['musculo', valoresDe('musculos'), (v: string) => etiqueta('musculos', v)],
-  ] as const;
+/*
+ * Cómo se saca de una ficha el valor de cada faceta. En un solo sitio: estaba repartido entre el
+ * filtrado, el recuento y el pintado, y añadir una faceta obligaba a acordarse de los tres.
+ */
+const VALORES: Record<string, (f: Ficha) => string[]> = {
+  grupo: (f) => [f.grupo_id],
+  nivel: (f) => (f.nivel ? [f.nivel] : []),
+  material: (f) => f.material ?? [],
+  musculo: (f) => Object.values(f.musculos ?? {}).flat(),
+};
 
-  const activos = Object.values(ruta.filtros).flat().length;
-  const chip = (campo: string, valor: string, nombre: string, acento?: string) => `
-    <button type="button" class="chip" data-campo="${campo}" data-valor="${valor}"
-            ${acento ? `style="--acento-chip: ${acento}"` : ''}
-            aria-pressed="${(ruta.filtros[campo] ?? []).includes(valor)}">${escapar(nombre)}</button>`;
+/*
+ * Qué facetas hay y en qué orden. El grupo primero: es el filtro que de verdad se usa, y en la
+ * versión anterior quedaba a la misma altura que veintidós músculos.
+ */
+const FACETAS = [
+  { campo: 'grupo', valores: () => GRUPOS.map((g) => g.id), nombre: (v: string) => grupoPorId(v)?.nombre ?? v, punto: true, buscable: false },
+  { campo: 'nivel', valores: () => valoresDe('nivel'), nombre: (v: string) => etiqueta('nivel', v), punto: false, buscable: false },
+  { campo: 'material', valores: () => valoresDe('material'), nombre: (v: string) => etiqueta('material', v), punto: false, buscable: false },
+  { campo: 'musculo', valores: () => valoresDe('musculos'), nombre: (v: string) => etiqueta('musculos', v), punto: false, buscable: true },
+];
+
+/*
+ * Qué facetas están desplegadas y si el cajón del móvil está abierto.
+ *
+ * Vive FUERA de pintar(): marcar una casilla cambia la ruta y repinta el catálogo entero, y sin
+ * guardarlo aquí el panel volvía a su estado inicial a cada clic —en el móvil, el cajón se cerraba
+ * en la cara justo al marcar el primer filtro—.
+ */
+const desplegadas = new Set<string>(['grupo']);
+let panelAbierto = false;
+
+function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
+  const puestos = Object.entries(ruta.filtros).flatMap(([campo, vs]) => (vs ?? []).map((v) => [campo, v] as [string, string]));
+  const sinGuardados = ruta.vista === 'favoritos' && favoritos().length === 0;
+  const universo = ruta.vista === 'favoritos' ? FICHAS.filter((f) => esFavorito(f.id)) : FICHAS;
 
   /*
-   * El grupo siempre a la vista; lo demás, plegado. Con los cuatro campos desplegados había que
-   * pasar dos pantallas de píldoras en móvil antes de ver una sola ficha, y el filtro más usado
-   * —el patrón de movimiento— quedaba a la misma altura que veintidós músculos.
+   * Cuántos resultados daría cada valor contando los demás filtros pero NO los de su propia faceta.
+   * Es lo que convierte una lista de casillas en algo utilizable: se ve de antemano que "avanzado"
+   * no lleva a ninguna parte, en vez de descubrirlo marcándolo y quedándose con la pantalla vacía.
    */
-  const porGrupo = GRUPOS.map((g) => chip('grupo', g.id, g.nombre, acentoDe(g.id))).join('');
-  const resto = filtros.map(([campo, valores, nombrar]) => valores.length ? `
-    <div class="grupo-filtros">
-      <h2>${t(`catalogo.campo.${campo}`)}</h2>
-      ${valores.map((v) => chip(campo, v, nombrar(v))).join('')}
-    </div>` : '').join('');
-  const otrosActivos = activos - (ruta.filtros.grupo?.length ?? 0);
+  const cuantasCon = (campo: string, valor: string): number => {
+    const otros = { ...ruta.filtros };
+    delete otros[campo];
+    return universo.filter((f) => coincide(f, { ...ruta, filtros: otros }) && (VALORES[campo]?.(f) ?? []).includes(valor)).length;
+  };
+
+  const faceta = (f: (typeof FACETAS)[number]): string => {
+    const valores = f.valores();
+    if (!valores.length) return '';
+    const marcados = ruta.filtros[f.campo] ?? [];
+    const opciones = valores.map((v) => {
+      const n = cuantasCon(f.campo, v);
+      const nombre = f.nombre(v);
+      const acento = f.punto ? acentoDe(v) : undefined;
+      return `<li><label data-vacia="${n ? 'no' : 'si'}" data-texto="${escapar(nombre.toLowerCase())}">
+        <input type="checkbox" data-campo="${f.campo}" data-valor="${escapar(v)}" ${marcados.includes(v) ? 'checked' : ''} />
+        ${acento ? `<span class="punto" style="--acento-chip: ${acento}"></span>` : ''}
+        <span class="nombre">${escapar(nombre)}</span>
+        <span class="cuantas">${n}</span>
+      </label></li>`;
+    }).join('');
+    return `
+      <details class="faceta" data-faceta="${f.campo}" ${desplegadas.has(f.campo) ? 'open' : ''}>
+        <summary>${t(`catalogo.campo.${f.campo}`)}${marcados.length ? `<span class="insignia">${marcados.length}</span>` : ''}</summary>
+        ${f.buscable ? `<input class="buscar-faceta" type="search" data-filtra="${f.campo}" placeholder="${t('catalogo.buscar_en')}" aria-label="${t('catalogo.buscar_en')}" />` : ''}
+        <ul class="opciones${valores.length > 8 ? ' larga' : ''}">${opciones}</ul>
+      </details>`;
+  };
 
   ponerPortada(
-    ruta.vista === 'favoritos' ? t('favoritos.titulo') : t('sitio.titulo'),
-    ruta.vista === 'favoritos' ? t('favoritos.entradilla') : t('sitio.entradilla'),
+    ruta.vista === 'favoritos' ? t('favoritos.titulo') : t('sitio.titular'),
+    ruta.vista === 'favoritos' ? t('favoritos.entradilla') : '',
   );
 
   /*
-   * Sin nada guardado, no se pinta ni buscador ni filtros ni cuenta.
-   *
-   * Estaban: un buscador, veinticinco píldoras de filtro y un "0 resultados" encima de un mensaje
-   * que dice que no hay nada. Filtrar una lista vacía no lleva a ninguna parte, y toda esa
-   * maquinaria delante hace que la pantalla parezca rota en vez de recién empezada.
+   * Sin nada guardado, no se pinta ni buscador ni filtros ni cuenta. Estaban: un buscador, cuatro
+   * facetas y un "0 resultados" encima de un mensaje que dice que no hay nada. Filtrar una lista
+   * vacía no lleva a ninguna parte, y toda esa maquinaria delante hace que la pantalla parezca rota
+   * en vez de recién empezada.
    */
-  const sinGuardados = ruta.vista === 'favoritos' && favoritos().length === 0;
-
   sitio.innerHTML = `
-    <a class="saltar" href="#catalogo">${t('catalogo.saltar')}</a>
+    <a class="saltar boton" href="#catalogo">${t('catalogo.saltar')}</a>
     ${sinGuardados ? '' : `
-    <form class="buscador" role="search">
-      <label class="oculto" for="q">${t('catalogo.buscar')}</label>
-      <input id="q" type="search" name="q" value="${escapar(ruta.busqueda ?? '')}" placeholder="${t('catalogo.buscar')}" />
-    </form>
-    <div class="filtros">
-      <div class="grupo-filtros"><h2>${t('catalogo.campo.grupo')}</h2>${porGrupo}</div>
-      ${resto ? `
-        <details ${otrosActivos ? 'open' : ''}>
-          <summary>${t('catalogo.mas_filtros')}${otrosActivos ? ` <span class="insignia">${otrosActivos}</span>` : ''}</summary>
-          ${resto}
-        </details>` : ''}
-    </div>
-    <div class="acciones-filtro">
-      <p class="cuenta" role="status">${t('catalogo.resultados').replace('{n}', String(lista.length))}</p>
-      ${activos || ruta.busqueda ? `<button type="button" class="boton" data-accion="limpiar">${t('catalogo.limpiar')}</button>` : ''}
+    <div class="reparto">
+      <dialog class="panel" id="panel-filtros" aria-label="${t('catalogo.filtros')}">
+        <div class="panel-cabeza">
+          <h2>${t('catalogo.filtros')}</h2>
+          <button type="button" class="boton plano" data-accion="cerrar-filtros" aria-label="${t('catalogo.cerrar')}">
+            <span class="icono" aria-hidden="true">✕</span>
+          </button>
+        </div>
+        <div class="panel-grupos">${FACETAS.map(faceta).join('')}</div>
+        <div class="panel-pie">
+          <button type="button" class="boton principal" data-accion="cerrar-filtros">
+            ${t('catalogo.ver_resultados').replace('{n}', String(lista.length))}
+          </button>
+        </div>
+      </dialog>
+      <div class="resultados">
+        <form class="buscador" role="search">
+          <label class="oculto" for="q">${t('catalogo.buscar')}</label>
+          <input id="q" type="search" name="q" value="${escapar(ruta.busqueda ?? '')}" placeholder="${t('catalogo.buscar')}" />
+        </form>
+        <div class="barra-resultados">
+          <button type="button" class="boton abrir-filtros" data-accion="abrir-filtros">
+            <span class="icono" aria-hidden="true">≡</span>${t('catalogo.filtrar')}
+            ${puestos.length ? `<span class="insignia">${puestos.length}</span>` : ''}
+          </button>
+          <p class="cuenta" role="status">${t('catalogo.resultados').replace('{n}', String(lista.length))}</p>
+        </div>
+        <div class="activos">
+          ${puestos.map(([campo, valor]) => {
+            const cual = FACETAS.find((x) => x.campo === campo);
+            const nombre = cual ? cual.nombre(valor) : valor;
+            return `<button type="button" class="quitar" data-campo="${campo}" data-valor="${escapar(valor)}"
+                      aria-label="${t('catalogo.quitar').replace('{valor}', escapar(nombre))}">
+              ${escapar(nombre)}<span class="icono" aria-hidden="true">✕</span>
+            </button>`;
+          }).join('')}
+          ${puestos.length || ruta.busqueda ? `<button type="button" class="boton plano" data-accion="limpiar">${t('catalogo.limpiar')}</button>` : ''}
+        </div>
+        ${lista.length
+          ? `<ul class="rejilla" id="catalogo" tabindex="-1">${lista.map((f, n) => tarjeta(f, n)).join('')}</ul>`
+          : `<div class="vacio" id="catalogo" tabindex="-1"><p>${t('catalogo.sin_resultados')}</p>
+               <a class="boton" href="${enlace({ vista: ruta.vista, filtros: {} })}">${t('catalogo.limpiar')}</a></div>`}
+      </div>
     </div>`}
-    ${lista.length
-      ? `<ul class="rejilla" id="catalogo" tabindex="-1">${lista.map((f, n) => tarjeta(f, n)).join('')}</ul>`
-      : `<div class="vacio" id="catalogo" tabindex="-1"><p>${t(ruta.vista === 'favoritos' ? 'favoritos.vacio' : 'catalogo.sin_resultados')}</p>
-           <a class="boton" href="${enlace({ vista: 'catalogo', filtros: {} })}">${t('catalogo.ver_todos')}</a></div>`}
+    ${sinGuardados ? `<div class="vacio" id="catalogo" tabindex="-1"><p>${t('favoritos.vacio')}</p>
+         <a class="boton principal" href="${enlace({ vista: 'catalogo', filtros: {} })}">${t('catalogo.ver_todos')}</a></div>` : ''}
     ${aviso()}`;
 
   // Puede no haber buscador: en favoritos vacío no se pinta. Lo que sigue solo tiene sentido si lo hay.
@@ -139,14 +207,57 @@ function pintarCatalogo(ruta: Ruta, lista: Ficha[]): void {
     }, 250);
   });
 
-  sitio.querySelectorAll<HTMLButtonElement>('.chip').forEach((boton) => {
-    boton.addEventListener('click', () => {
-      const { campo, valor } = boton.dataset as { campo: string; valor: string };
+  // Marcar o desmarcar una casilla es cambiar de ruta: así el filtro se comparte con un enlace y el
+  // botón de atrás lo deshace, que es lo que espera cualquiera que haya usado un navegador.
+  sitio.querySelectorAll<HTMLInputElement>('.opciones input').forEach((casilla) => {
+    casilla.addEventListener('change', () => {
+      const { campo, valor } = casilla.dataset as { campo: string; valor: string };
       const actuales = ruta.filtros[campo] ?? [];
-      const siguientes = actuales.includes(valor) ? actuales.filter((v) => v !== valor) : [...actuales, valor];
-      irA({ ...ruta, vista: ruta.vista, filtros: { ...ruta.filtros, [campo]: siguientes } });
+      const siguientes = casilla.checked ? [...actuales, valor] : actuales.filter((v) => v !== valor);
+      irA({ ...ruta, filtros: { ...ruta.filtros, [campo]: siguientes } });
     });
   });
+
+  // Recordar qué facetas quedan desplegadas, para que el repintado no las cierre todas.
+  sitio.querySelectorAll<HTMLDetailsElement>('.faceta').forEach((det) => {
+    det.addEventListener('toggle', () => {
+      const campo = det.dataset.faceta!;
+      if (det.open) desplegadas.add(campo);
+      else desplegadas.delete(campo);
+    });
+  });
+
+  /*
+   * Buscar dentro de una faceta esconde opciones SIN repintar: si esto cambiara la ruta, cada letra
+   * volvería a pintar el panel entero y el campo perdería el foco a la primera.
+   */
+  sitio.querySelectorAll<HTMLInputElement>('.buscar-faceta').forEach((campo) => {
+    campo.addEventListener('input', () => {
+      const q = campo.value.trim().toLowerCase();
+      campo.closest('.faceta')!.querySelectorAll<HTMLElement>('.opciones label').forEach((op) => {
+        (op.parentElement as HTMLElement).hidden = q !== '' && !(op.dataset.texto ?? '').includes(q);
+      });
+    });
+  });
+
+  // El cajón del móvil se vuelve a abrir tras el repintado si estaba abierto.
+  if (panelAbierto) abrirPanel();
+}
+
+/** El panel de filtros: columna fija en escritorio, cajón modal en móvil. */
+const panelEl = (): HTMLDialogElement | null => sitio.querySelector<HTMLDialogElement>('#panel-filtros');
+
+function abrirPanel(): void {
+  const el = panelEl();
+  // `showModal` sobre un diálogo ya abierto lanza una excepción. Tras un repintado el elemento es
+  // otro y no lo está, pero esta comprobación es la diferencia entre eso y un error por cada filtro.
+  if (el && !el.open) el.showModal();
+  panelAbierto = true;
+}
+
+function cerrarPanel(): void {
+  panelEl()?.close();
+  panelAbierto = false;
 }
 
 /**
@@ -205,11 +316,22 @@ function tarjeta(f: Ficha, n: number): string {
     </li>`;
 }
 
-const botonFavorito = (f: Ficha): string => `
-  <button type="button" class="favorito" data-favorito="${f.id}" aria-pressed="${esFavorito(f.id)}"
-          aria-label="${t(esFavorito(f.id) ? 'favoritos.quitar' : 'favoritos.guardar').replace('{nombre}', f.nombre)}">
-    <span aria-hidden="true">${esFavorito(f.id) ? '★' : '☆'}</span>
+/*
+ * El favorito. En la tarjeta es un icono en una esquina; en la ficha, un botón con su palabra.
+ *
+ * El mismo icono suelto en los dos sitios era el problema: en la ficha, una estrella hueca sin
+ * texto al lado del título no dice qué hace, y era el control que más se pulsaba sin querer.
+ * La etiqueta accesible describe la ACCIÓN, no el estado, que es lo que un lector de pantalla
+ * necesita anunciar al llegar al botón.
+ */
+const botonFavorito = (f: Ficha, conTexto = false): string => {
+  const guardado = esFavorito(f.id);
+  return `
+  <button type="button" class="favorito" data-favorito="${f.id}" aria-pressed="${guardado}"
+          aria-label="${t(guardado ? 'favoritos.quitar' : 'favoritos.guardar').replace('{nombre}', f.nombre)}">
+    <span class="icono" aria-hidden="true">${guardado ? '★' : '☆'}</span>${conTexto ? t(guardado ? 'favoritos.guardado' : 'favoritos.guardar_corto') : ''}
   </button>`;
+};
 
 /* ------------------------------------------------------------------ ficha -- */
 
@@ -231,7 +353,7 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
       <header>
         <p class="grupo" ${acentoDe(f.grupo_id) ? `style="--acento-chip: ${acentoDe(f.grupo_id)}"` : ''}>${escapar(grupo?.nombre ?? '')}</p>
         <h1>${escapar(f.nombre)}</h1>
-        ${botonFavorito(f)}
+        ${botonFavorito(f, true)}
       </header>
       <div class="figura" ${proporcion ? `style="--proporcion-lienzo: ${proporcion}"` : ''}></div>
       <div class="cuerpo">
@@ -284,22 +406,31 @@ function cabecera(ruta: Ruta): string {
       <a class="marca" href="${enlace({ vista: 'catalogo', filtros: {} })}">befit</a>
       <nav>
         <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${ruta.vista === 'favoritos' ? 'aria-current="page"' : ''}>
-          ${t('favoritos.titulo')} <span class="insignia">${favoritos().length}</span>
+          <span class="icono" aria-hidden="true">★</span>${t('favoritos.titulo')}
+          ${favoritos().length ? `<span class="insignia">${favoritos().length}</span>` : ''}
         </a>
         <button type="button" data-accion="idioma">${document.documentElement.lang === 'es' ? 'EN' : 'ES'}</button>
-        <button type="button" data-accion="tema" aria-label="${t('ui.tema')}">◐</button>
+        <button type="button" data-accion="tema" aria-label="${t('ui.tema')}">
+          <span class="icono" aria-hidden="true">${temaActual() === 'oscuro' ? '☀' : '☾'}</span>
+        </button>
       </nav>
       </div>
     </header>`;
 }
 
-/** Cambia el texto de la portada sin reemplazar el elemento, que es lo que arruinaba el LCP. */
+/*
+ * Cambia el texto de la portada sin reemplazar el elemento, que es lo que arruinaba el LCP.
+ *
+ * La entradilla puede venir vacía, y entonces el párrafo se esconde: en el catálogo, el titular ya
+ * dice de qué va el sitio y debajo iba una frase que repetía lo mismo con otras palabras.
+ */
 function ponerPortada(titulo: string, entradilla: string): void {
   portadaEl.hidden = false;
   const h1 = portadaEl.querySelector('h1')!;
   const p = portadaEl.querySelector('p')!;
   if (h1.textContent !== titulo) h1.textContent = titulo;
   if (p.textContent !== entradilla) p.textContent = entradilla;
+  p.hidden = entradilla === '';
 }
 
 function pintar(): void {
@@ -333,6 +464,13 @@ async function alPulsar(e: MouseEvent): Promise<void> {
     pintar();
   }
   if (boton.dataset.accion === 'limpiar') irA({ vista: rutaActual().vista, filtros: {} });
+  if (boton.dataset.accion === 'abrir-filtros') abrirPanel();
+  if (boton.dataset.accion === 'cerrar-filtros') cerrarPanel();
+  if (boton.classList.contains('quitar')) {
+    const { campo, valor } = boton.dataset as { campo: string; valor: string };
+    const ruta = rutaActual();
+    irA({ ...ruta, filtros: { ...ruta.filtros, [campo]: (ruta.filtros[campo] ?? []).filter((v) => v !== valor) } });
+  }
   if (boton.dataset.accion === 'tema') cambiarTema();
   if (boton.dataset.accion === 'idioma') {
     // Recarga a propósito: las cadenas se resuelven una vez al arrancar, y repintar con el idioma

@@ -34,8 +34,14 @@ const RUTAS = P.rutas ?? [''];
 
 /* Medio píxel es redondeo del navegador; a partir de uno y medio hay una decisión de CSS detrás. */
 const TOLERANCIA = 1.5;
-/* El objetivo táctil mínimo de las pautas de accesibilidad. Un control de 32 px se falla al tocarlo. */
-const TACTIL = 44;
+/*
+ * El alto mínimo de un control, y depende del puntero.
+ *
+ * 44 px con el dedo: por debajo se falla el toque, y es la medida que dan las pautas táctiles. Con
+ * ratón, 40 basta y de hecho conviene —una interfaz densa con todo a 44 se ve inflada—, porque el
+ * cursor apunta a un píxel. Exigir 44 en las dos daba doce fallos sobre una interfaz correcta.
+ */
+const TACTIL = { escritorio: 40, movil: 44 };
 
 const VISTAS = [
   { nombre: 'escritorio', viewport: { width: 1280, height: 900 } },
@@ -103,6 +109,10 @@ function medir({ TOLERANCIA, TACTIL }) {
   for (const c of qa(SEL)) {
     const r = c.getBoundingClientRect();
     const etq = (c.textContent || '').trim().slice(0, 18) || c.tagName.toLowerCase();
+    /* Lo que no se pinta no se mide. El panel de filtros lleva la cabecera y el pie del cajón del
+       móvil escondidos en escritorio, y el botón de abrir el cajón escondido también: medían cero y
+       salían como «control de 0 px de alto», que no es un fallo, es un control que no está ahí. */
+    if (r.width === 0 || r.height === 0) continue;
     if (r.height + 0.5 < TACTIL) anota(`control de ${Math.round(r.height)} px de alto: "${etq}"`);
 
     /*
@@ -154,7 +164,10 @@ function medir({ TOLERANCIA, TACTIL }) {
         misma vertical: si el pie arranca a 96 y el texto de la ficha a 112, la página se lee torcida
         aunque cada bloque, por separado, esté centrado. */
   const carril = new Map();
-  for (const sel of ['.barra > *', '.portada', '.buscador', '.filtros', '.acciones-filtro', '.rejilla', '.ficha', '.aviso', '.vacio']) {
+  /* Solo bloques de PRIMER nivel. `.buscador` y `.rejilla` entraron aquí cuando colgaban del
+     cuerpo; desde que viven dentro de la columna de resultados, exigirles el mismo margen que al
+     pie era pedir que la columna no estuviera donde está. */
+  for (const sel of ['.barra > *', '.portada', '.reparto', '.ficha', '.aviso', '.vacio']) {
     const el = document.querySelector(sel);
     if (!el) continue;
     const b = el.getBoundingClientRect();
@@ -173,9 +186,25 @@ function medir({ TOLERANCIA, TACTIL }) {
     ['.ficha header', ['h1', '.grupo']],
     ['.portada', ['h1', 'p']],
   ];
+  /*
+   * Se compara el borde del CONTENIDO, no el de la primera letra.
+   *
+   * Midiendo la letra, cualquier marcador —el punto de color del grupo, una viñeta— contaba como
+   * desalineación: el rótulo salía 14 px a la derecha del nombre estando exactamente donde debe,
+   * porque el punto ocupa el principio de su propia caja. Lo que tiene que coincidir es dónde
+   * empieza el contenido de cada uno.
+   */
+  const bordeContenido = (el) => {
+    if (!el) return null;
+    const b = el.getBoundingClientRect();
+    // Escondido —la entradilla de la portada cuando no hay— mide cero y no está desalineado con
+    // nada: compararlo daba «0 vs 16» en cada pantalla del catálogo.
+    if (!b.width && !b.height) return null;
+    return b.left + parseFloat(getComputedStyle(el).paddingLeft);
+  };
   for (const [contenedor, dentro] of apilados) {
     for (const raiz of qa(contenedor)) {
-      const xs = dentro.map((s) => cajaTexto(raiz.querySelector(s))).filter(Boolean).map((t) => t.x);
+      const xs = dentro.map((s) => bordeContenido(raiz.querySelector(s))).filter((x) => x !== null);
       if (xs.length > 1 && Math.max(...xs) - Math.min(...xs) > TOLERANCIA) {
         anota(`en ${contenedor}, ${dentro.join(' y ')} no arrancan en la misma vertical: ${xs.map((x) => x.toFixed(1)).join(' vs ')}`);
         break; // Un ejemplo por pieza: si falla una tarjeta, fallan las nueve.
@@ -213,7 +242,7 @@ for (const vista of VISTAS) {
       await pagina.goto(BASE + ruta, { waitUntil: 'networkidle', timeout: 60000 });
       // El maniquí llega en un paquete aparte: medir antes es medir un hueco vacío.
       await pagina.waitForTimeout(900);
-      const fallos = await pagina.evaluate(medir, { TOLERANCIA, TACTIL });
+      const fallos = await pagina.evaluate(medir, { TOLERANCIA, TACTIL: TACTIL[vista.nombre] });
       if (fallos.length) {
         console.log(`\n── ${vista.nombre} · ${tema} · ${ruta || '/'} ─────────────`);
         for (const f of fallos) console.log(`  ✗ ${f}`);

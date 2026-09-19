@@ -69,7 +69,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  /* 40 px, el mismo alto que el resto de controles del sitio: con 44 aquí y 40 fuera, en la ficha
+     convivían dos alturas de botón a cuatro píxeles de distancia, que es de las cosas que se ven
+     sin saber qué se está viendo. Con el dedo sube a 44, igual que los demás. */
+  min-height: 40px;
   padding: 0 var(--e3);
   border: 1px solid var(--separador);
   border-radius: var(--radio-pildora);
@@ -137,3 +140,7 @@
 .figura .muestra.estabilizador { background: color-mix(in oklab, var(--acento) 45%, var(--fondo)); }
 
 .figura .nota-roles { margin: var(--e3) 0 0; color: var(--texto-secundario); font-size: var(--t-micro); }
+
+@media (pointer: coarse) {
+  .figura .controles button { min-height: 44px; }
+}

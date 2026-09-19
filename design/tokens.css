@@ -141,27 +141,29 @@
  * respaldo de prefers-color-scheme—, y tres copias de una paleta divergen a la primera corrección.
  */
 :root {
-  --claro-fondo: #FBFAF8;
+  --claro-fondo: #FAFAFB;
   --claro-fondo-elevado: #FFFFFF;
-  --claro-fondo-hundido: #F1EFEA;
-  --claro-texto: #1A1917;
-  --claro-texto-secundario: #5C5850;
-  --claro-separador: #DDD9D1;
-  --claro-borde-interactivo: #7A736A;
-  --claro-foco: #1A1917;
-  --claro-enlace: #0F5C53;
-  --claro-sombra: 0 1px 2px rgba(26, 25, 23, 0.06), 0 10px 28px rgba(26, 25, 23, 0.07);
+  --claro-fondo-hundido: #F0F0F3;
+  --claro-texto: #141418;
+  --claro-texto-secundario: #56565F;
+  --claro-separador: #E3E3E8;
+  --claro-borde-interactivo: #76767F;
+  --claro-foco: #141418;
+  --claro-enlace: #B54708;
+  --claro-accion: #B54708;
+  --claro-sombra: 0 1px 2px rgba(20, 20, 24, 0.05), 0 8px 24px rgba(20, 20, 24, 0.06);
 
-  --oscuro-fondo: #141317;
-  --oscuro-fondo-elevado: #1D1C22;
-  --oscuro-fondo-hundido: #0E0D10;
-  --oscuro-texto: #EDEBE6;
-  --oscuro-texto-secundario: #A8A39A;
-  --oscuro-separador: #2E2C34;
-  --oscuro-borde-interactivo: #6E6979;
-  --oscuro-foco: #EDEBE6;
-  --oscuro-enlace: #7FD2C4;
-  --oscuro-sombra: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px rgba(0, 0, 0, 0.45);
+  --oscuro-fondo: #0B0B0F;
+  --oscuro-fondo-elevado: #15151C;
+  --oscuro-fondo-hundido: #08080B;
+  --oscuro-texto: #F4F4F7;
+  --oscuro-texto-secundario: #9B9BAA;
+  --oscuro-separador: #26262F;
+  --oscuro-borde-interactivo: #6D6D7E;
+  --oscuro-foco: #FF7A1A;
+  --oscuro-enlace: #FF7A1A;
+  --oscuro-accion: #FF7A1A;
+  --oscuro-sombra: 0 1px 2px rgba(0, 0, 0, 0.6), 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 /*
@@ -175,6 +177,12 @@
  */
 :root[data-tema="claro"],
 [data-tono="claro"] {
+  /*
+   * `color-scheme` le dice al navegador de qué color pintar lo que pinta ÉL: casillas, barras de
+   * desplazamiento, la x de un campo de búsqueda. Sin esto, el tema oscuro salía con casillas
+   * blancas como azulejos y una barra de desplazamiento clara en mitad de una página casi negra.
+   */
+  color-scheme: light;
   --fondo: var(--claro-fondo);
   --fondo-elevado: var(--claro-fondo-elevado);
   --fondo-hundido: var(--claro-fondo-hundido);
@@ -184,11 +192,13 @@
   --borde-interactivo: var(--claro-borde-interactivo);
   --foco: var(--claro-foco);
   --enlace: var(--claro-enlace);
+  --accion: var(--claro-accion);
   --sombra: var(--claro-sombra);
 }
 
 :root[data-tema="oscuro"],
 [data-tono="oscuro"] {
+  color-scheme: dark;
   --fondo: var(--oscuro-fondo);
   --fondo-elevado: var(--oscuro-fondo-elevado);
   --fondo-hundido: var(--oscuro-fondo-hundido);
@@ -198,6 +208,7 @@
   --borde-interactivo: var(--oscuro-borde-interactivo);
   --foco: var(--oscuro-foco);
   --enlace: var(--oscuro-enlace);
+  --accion: var(--oscuro-accion);
   --sombra: var(--oscuro-sombra);
 }
 

@@ -1,92 +1,150 @@
 /*
- * Estilos de la app de catálogo. Los valores salen de design/tokens.css; aquí solo hay disposición.
+ * La variante app: cabecera, panel de filtros, rejilla y ficha.
  *
- * Móvil primero, y no por moda: un catálogo se consulta de pie y con una mano. De ahí las dos
- * decisiones que más se notan: los objetivos táctiles miden 44 px, y **los filtros van plegados**.
- * Con todos desplegados había que pasar dos pantallas de píldoras antes de ver una sola ficha.
+ * CARÁCTER: aplicación, no revista. Fondo casi negro, una sola familia sin serifa, densidad alta y
+ * UN acento —el naranja de `--accion`— reservado a lo que se pulsa y a lo que marca avance (los
+ * números de los pasos). La versión anterior era un
+ * sitio divulgativo con aire editorial: serif en los titulares, papel cálido y mucho blanco entre
+ * bloques. Se veía bien en una captura y poco seria como herramienta, que es lo que esto es.
+ *
+ * La regla del acento es la que más fácil se rompe: si el naranja aparece también en adornos, deja
+ * de querer decir «esto se toca» y la pantalla vuelve a ser una mancha de colores.
  */
 
-.oculto {
-  position: absolute;
-  width: 1px; height: 1px;
-  margin: -1px; padding: 0; border: 0;
-  clip-path: inset(50%);
-  overflow: hidden;
+/*
+ * Sin serifa también en los titulares. El token sigue existiendo —la plantilla base lo usa con
+ * Newsreader para los sitios divulgativos—; aquí se redefine para toda la variante en vez de
+ * repetir `font-family` en cada regla, que es como se acaba con un h2 que no cambió.
+ */
+:root {
+  --fuente-titulo: var(--fuente-texto);
+  /* El ancho del panel y el alto de la barra, en tokens: los usan la rejilla, el panel pegajoso y
+     el cajón del móvil, y tres números sueltos se desincronizan a la primera corrección. */
+  --ancho-filtros: 16rem;
+  --alto-barra: 3.75rem;
+  --ancho-pagina: 72rem;
 }
 
-.barra > *, .portada, .buscador, .filtros, .acciones-filtro, .rejilla, .vacio, .ficha, .aviso {
-  max-width: 68rem;
+h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
+
+/* --------------------------------------------------------------------- barra -- */
+
+/*
+ * La cabecera se queda arriba al bajar. En un catálogo se baja mucho, y volver al principio para
+ * cambiar de idioma o abrir los favoritos era un viaje de tres pantallas.
+ *
+ * El desenfoque va con `@supports`: donde no existe, el fondo queda opaco y se ve igual de bien;
+ * sin la guarda, el navegador que no lo soporta se come una barra translúcida ilegible.
+ */
+.barra {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in oklab, var(--fondo) 86%, transparent);
+  border-bottom: 1px solid var(--separador);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .barra { backdrop-filter: blur(12px) saturate(140%); }
+}
+.barra > div {
+  display: flex;
+  align-items: center;
+  gap: var(--e4);
+  min-height: var(--alto-barra);
+  max-width: var(--ancho-pagina);
   margin-inline: auto;
   padding-inline: var(--e4);
 }
 
-/* ------------------------------------------------------------------- cabecera -- */
-
-/* El hueco de la cabecera, reservado: la pinta el JavaScript, y al aparecer empujaba la portada
-   hacia abajo —0,054 de CLS por una barra de 70 px—. */
-#cabecera { min-height: 4.4rem; }
-
-.barra {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  padding-block: var(--e3);
-  border-bottom: 1px solid var(--separador);
-  /* Fondo opaco, no translúcido: detrás pasan carteles con maniquíes, y el desenfoque de un
-     backdrop-filter se paga en cada fotograma de scroll justo en los móviles donde vamos justos. */
-  background: var(--fondo);
-}
-.barra > * {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--e3);
-}
-
+/*
+ * La marca NO es un titular. Era un h1 con el nombre del sitio y la portada repetía el mismo nombre
+ * debajo, en grande: se leía dos veces antes de ver un solo ejercicio, y la página se quedaba sin
+ * un titular que dijera de qué va. Aquí es una marca —un punto de acento y el nombre—, y el h1 es
+ * el titular de la página.
+ */
 .marca {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  font-family: var(--fuente-titulo);
-  font-size: var(--t-medio);
-  font-weight: var(--peso-semibold);
-  letter-spacing: -0.01em;
-  text-decoration: none;
+  gap: var(--e2);
+  margin-right: auto;
   color: var(--texto);
+  font-weight: var(--peso-semibold);
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
 }
+.marca::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radio-pildora);
+  background: var(--accion);
+}
+
 .barra nav { display: flex; align-items: center; gap: var(--e2); }
 
-/* --------------------------------------------------------- botones y píldoras -- */
+/* ------------------------------------------------------------------ controles -- */
 
 /*
- * UN SOLO COMPONENTE DE CONTROL. Todo lo que se pulsa —botón o enlace— se ve igual: mismo alto,
- * mismo borde, mismo radio. Un "← Volver al catálogo" en texto subrayado al lado de píldoras es lo
- * que hace que una página parezca a medio hacer, y además da un objetivo táctil de 27 px de alto.
+ * UN SOLO COMPONENTE. Todo lo que se pulsa —botón o enlace— tiene el mismo alto, el mismo borde y
+ * el mismo radio. Un «volver al catálogo» subrayado al lado de píldoras es lo que hace que una
+ * página parezca a medio hacer, y encima da un objetivo táctil de 27 px de alto.
  */
-.boton, .chip, .favorito, .barra nav a, .barra nav button, .filtros summary, .vecinos a, .vacio a {
+.boton,
+.favorito,
+.barra nav a,
+.barra nav button,
+.vecinos a,
+.vacio a,
+.quitar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--e2);
-  min-height: 44px;
-  padding: 0 var(--e4);
+  min-height: 40px;
+  padding: 0 var(--e3);
   border: 1px solid var(--separador);
-  border-radius: var(--radio-pildora);
+  border-radius: var(--radio-medio);
   background: var(--fondo-elevado);
   color: var(--texto);
   font: inherit;
+  font-size: var(--t-pequeno);
+  font-weight: var(--peso-medio);
   text-decoration: none;
-  cursor: pointer;
-  /* Un control nunca parte su texto. En el móvil, "tres cuartos" se rompía en dos líneas dentro de
-     la píldora: esa quedaba el doble de alta que las de al lado y la fila entera se descuadraba. */
   white-space: nowrap;
-  transition: border-color var(--m-rapido) var(--curva-suave),
-              background-color var(--m-rapido) var(--curva-suave);
+  cursor: pointer;
+  transition: border-color var(--m-instantaneo) var(--curva-suave),
+              background-color var(--m-instantaneo) var(--curva-suave),
+              color var(--m-instantaneo) var(--curva-suave);
 }
-.boton:hover, .chip:hover, .favorito:hover, .barra nav a:hover, .barra nav button:hover,
-.filtros summary:hover, .vecinos a:hover, .vacio a:hover {
+.boton:hover,
+.favorito:hover,
+.barra nav a:hover,
+.barra nav button:hover,
+.vecinos a:hover,
+.vacio a:hover,
+.quitar:hover {
   border-color: var(--borde-interactivo);
+  background: color-mix(in oklab, var(--fondo-elevado) 82%, var(--texto));
 }
+
+/* El botón que lleva la acción principal de la pantalla. Uno por pantalla, por definición. */
+.boton.principal {
+  background: var(--accion);
+  border-color: var(--accion);
+  /* Texto oscuro FIJO, no `--fondo`: el naranja es claro en los dos temas, y con el fondo del tema
+     claro encima se quedaba en 2,3:1. Por eso este color no sale de la paleta. */
+  color: #14110C;
+  font-weight: var(--peso-semibold);
+}
+.boton.principal:hover {
+  background: color-mix(in oklab, var(--accion) 88%, white);
+  border-color: color-mix(in oklab, var(--accion) 88%, white);
+}
+
+/* Sin caja: acciones secundarias dentro de una fila que ya tiene botones de verdad. */
+.boton.plano { background: none; border-color: transparent; color: var(--texto-secundario); }
+.boton.plano:hover { background: var(--fondo-elevado); border-color: var(--separador); color: var(--texto); }
 
 /* El icono, centrado y sin línea base que lo descuadre respecto al texto. */
 .icono {
@@ -95,34 +153,48 @@
   width: 1em;
   height: 1em;
   line-height: 1;
-}
-.chip[aria-pressed='true'] {
-  background: var(--texto);
-  border-color: var(--texto);
-  color: var(--fondo);
+  font-size: 1.1em;
 }
 
 .insignia {
-  min-width: 1.5em;
-  padding: 0 0.45em;
+  min-width: 1.35em;
+  padding: 0.05em 0.4em;
   border-radius: var(--radio-pildora);
-  background: var(--fondo-hundido);
-  font-size: var(--t-pequeno);
+  background: var(--accion);
+  color: #14110C;
+  font-size: var(--t-micro);
+  font-weight: var(--peso-semibold);
   font-variant-numeric: tabular-nums;
 }
+/* Sin nada que contar, la insignia es una mancha naranja que no informa de nada. */
+.insignia:empty { display: none; }
 
-/* -------------------------------------------------------------------- portada -- */
+.barra nav a[aria-current='page'] { border-color: var(--borde-interactivo); }
 
-.portada { padding-block: var(--e8) var(--e4); }
-.portada h1 { font-size: var(--t-grande); margin-bottom: var(--e2); }
-.portada p { color: var(--texto-secundario); max-width: var(--medida-corta); margin: 0; }
+/* --------------------------------------------------------------------- página -- */
 
-/* -------------------------------------------------------------------- filtros -- */
+#sitio {
+  max-width: var(--ancho-pagina);
+  margin-inline: auto;
+  padding-inline: var(--e4);
+}
 
+/*
+ * El titular de la página. Es el h1 y dice de qué va el sitio, no cómo se llama: el nombre ya está
+ * en la barra. Compacto a propósito —esto es una app y lo que se viene a ver son los ejercicios—,
+ * pero sigue siendo lo primero que pinta el navegador, y por eso vive escrito en index.html.
+ */
+.portada { padding-block: var(--e8) var(--e6); }
+.portada h1 { max-width: 24ch; margin: 0; font-size: var(--t-grande); line-height: var(--il-apretado); }
+.portada p { max-width: var(--medida-corta); margin: var(--e3) 0 0; color: var(--texto-secundario); }
+
+/* ------------------------------------------------------------------ buscador -- */
+
+.buscador { position: relative; }
 .buscador input {
   width: 100%;
-  min-height: 48px;
-  padding: 0 var(--e4);
+  min-height: 46px;
+  padding: 0 var(--e4) 0 2.5rem;
   border: 1px solid var(--separador);
   border-radius: var(--radio-medio);
   background: var(--fondo-elevado);
@@ -130,150 +202,333 @@
   font: inherit;
 }
 .buscador input::placeholder { color: var(--texto-secundario); }
-
-.filtros { margin-top: var(--e3); }
-.filtros summary { list-style: none; width: fit-content; }
-.filtros summary::-webkit-details-marker { display: none; }
-.filtros summary::after { content: '▾'; font-size: var(--t-pequeno); }
-.filtros details[open] summary::after { content: '▴'; }
-
-.grupo-filtros { display: flex; flex-wrap: wrap; gap: var(--e2); align-items: center; margin-top: var(--e4); }
-.grupo-filtros h2 {
-  margin: 0;
-  /* Línea propia. Y `max-width: none` porque la base limita los titulares a 46 caracteres —buena
-     regla para un titular, no para un rótulo de una palabra—: con ese tope, el rótulo medía 383 px,
-     las píldoras se colocaban a su derecha y "GRUPO" se leía como una píldora más. */
-  flex: 0 0 100%;
-  max-width: none;
-  font-family: var(--fuente-texto);
-  font-size: var(--t-pequeno);
-  font-weight: var(--peso-medio);
-  color: var(--texto-secundario);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+.buscador input:focus-visible { border-color: var(--borde-interactivo); }
+/*
+ * La lupa, decorativa y fuera del flujo: metida dentro del campo desplazaba el texto del marcador.
+ *
+ * Dibujada, no escrita: el carácter ⌕ de la tipografía sale minúsculo y descolgado de la línea, y
+ * cambia de forma en cada sistema. Como máscara, hereda el color del tema sin dos versiones.
+ */
+.buscador::before {
+  content: '';
+  position: absolute;
+  left: var(--e4);
+  top: 50%;
+  translate: 0 -50%;
+  width: 1rem;
+  height: 1rem;
+  background: var(--texto-secundario);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4.2-4.2'/%3E%3C/svg%3E") center / contain no-repeat;
+  pointer-events: none;
 }
-.chip { padding-inline: var(--e3); }
+
+/* ------------------------------------------------------------------- reparto -- */
 
 /*
- * El chip de un grupo lleva su acento en un punto, no en el borde: es lo que ata el color del
- * catálogo al de la ficha.
- *
- * Estuvo como `border-left: 3px`, y sobre una píldora un borde lateral no es una barra: es un arco
- * que sigue el radio y queda como una media luna descolgada del texto. El punto se alinea con la
- * primera letra y funciona igual a cualquier alto.
+ * Filtros a la izquierda, resultados a la derecha. Antes eran cuatro campos de píldoras apilados
+ * ENCIMA de la rejilla: veinticinco músculos por delante de la primera ficha, y en el móvil dos
+ * pantallas de píldoras antes de ver un solo ejercicio. Un panel lateral deja ver los resultados
+ * mientras se filtra, que es de lo que va filtrar.
  */
-.chip[style*='--acento-chip']::before {
-  content: '';
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: var(--radio-pildora);
-  background: var(--acento-chip);
-  /* El punto es decoración: el nombre del grupo ya está escrito al lado. */
-  flex: none;
+.reparto { display: grid; gap: var(--e8); align-items: start; }
+@media (min-width: 60rem) {
+  .reparto { grid-template-columns: var(--ancho-filtros) minmax(0, 1fr); }
 }
-/* Pulsado, el chip se invierte y el acento —pensado para el fondo claro— se apaga contra él. */
-.chip[aria-pressed='true']::before { background: var(--fondo); }
 
-.acciones-filtro {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--e3);
-  align-items: center;
-  justify-content: space-between;
-  margin-top: var(--e4);
+.resultados { display: grid; gap: var(--e4); }
+
+.barra-resultados { display: flex; align-items: center; gap: var(--e3); flex-wrap: wrap; }
+.cuenta {
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+  font-variant-numeric: tabular-nums;
 }
-.cuenta { color: var(--texto-secundario); font-size: var(--t-pequeno); margin: 0; }
-/* ------------------------------------------------------------------- catálogo -- */
+
+/* Los filtros puestos, a la vista y quitables de un toque. Un filtro activo que no se ve es la
+   causa número uno de «no aparece nada y no sé por qué». */
+.activos { display: flex; flex-wrap: wrap; gap: var(--e2); }
+.activos:empty { display: none; }
+.quitar { min-height: 32px; border-radius: var(--radio-pildora); color: var(--texto-secundario); }
+.quitar .icono { font-size: 0.9em; }
+.quitar:hover { color: var(--texto); }
+
+/* --------------------------------------------------------------------- panel -- */
+
+/*
+ * El panel es un <dialog> SIEMPRE, y en escritorio se le quita la condición de diálogo por CSS.
+ *
+ * Así el móvil se lleva gratis lo que cuesta caro a mano: el foco atrapado dentro, el cierre con
+ * Escape y el fondo inerte. La alternativa era pintar el panel dos veces —una en la columna y otra
+ * en el cajón—, y dos copias del mismo marcado divergen a la primera corrección.
+ */
+.panel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  max-width: none;
+  max-height: none;
+}
+.panel::backdrop { background: rgba(0, 0, 0, 0.6); }
+.panel-cabeza, .panel-pie { display: none; }
+.panel-grupos { display: grid; gap: var(--e2); }
+
+@media (min-width: 60rem) {
+  /* En escritorio está siempre abierto y no es modal: es una columna más. Pegajoso, para que los
+     filtros sigan a mano después de bajar por la rejilla. */
+  .panel {
+    display: block;
+    position: sticky;
+    top: calc(var(--alto-barra) + var(--e4));
+    max-height: calc(100svh - var(--alto-barra) - var(--e8));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .abrir-filtros { display: none; }
+}
+@media (max-width: 59.99rem) {
+  .panel[open] {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-height: 88svh;
+    border-radius: var(--radio-grande) var(--radio-grande) 0 0;
+    background: var(--fondo);
+    box-shadow: var(--sombra);
+  }
+  .panel-cabeza {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--e4);
+    padding: var(--e4);
+    border-bottom: 1px solid var(--separador);
+  }
+  .panel-cabeza h2 { margin: 0; font-size: var(--t-medio); }
+  .panel-grupos { overflow-y: auto; padding: var(--e4); }
+  .panel-pie {
+    display: block;
+    padding: var(--e4);
+    /* El botón no se mete debajo de la barra del teléfono. */
+    padding-bottom: calc(var(--e4) + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--separador);
+  }
+  .panel-pie .boton { width: 100%; min-height: 48px; }
+}
+
+/* Cada faceta, plegable. Solo el grupo —el filtro que de verdad se usa— viene abierto. */
+.faceta {
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+}
+.faceta > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  min-height: 44px;
+  padding-inline: var(--e3);
+  list-style: none;
+  cursor: pointer;
+  font-size: var(--t-pequeno);
+  font-weight: var(--peso-semibold);
+}
+.faceta > summary::-webkit-details-marker { display: none; }
+/* La flecha, al final y girando: sin ella no se ve que el bloque se puede abrir. */
+.faceta > summary::after {
+  content: '▾';
+  margin-left: auto;
+  color: var(--texto-secundario);
+  transition: rotate var(--m-instantaneo) var(--curva-suave);
+}
+.faceta[open] > summary::after { rotate: 180deg; }
+/* Con insignia, es ella la que empuja hasta el final y la flecha va justo detrás. */
+.faceta > summary .insignia { margin-left: auto; }
+.faceta > summary .insignia ~ ::after { margin-left: var(--e2); }
+
+.opciones { list-style: none; margin: 0; padding: 0 var(--e2) var(--e2); display: grid; gap: 1px; }
+/* Con muchos valores —veinticinco músculos—, la lista se desplaza dentro en vez de estirar la
+   columna hasta que el panel deja de caber en la pantalla. */
+.opciones.larga { max-height: 15rem; overflow-y: auto; overscroll-behavior: contain; }
+
+.opciones label {
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  min-height: 36px;
+  padding-inline: var(--e2);
+  border-radius: var(--radio-pequeno);
+  font-size: var(--t-pequeno);
+  cursor: pointer;
+}
+.opciones label:hover { background: var(--fondo-hundido); }
+.opciones input { accent-color: var(--accion); width: 1rem; height: 1rem; flex: none; }
+.opciones .nombre { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.opciones .cuantas { color: var(--texto-secundario); font-size: var(--t-micro); font-variant-numeric: tabular-nums; }
+/* Un valor que no daría ningún resultado se apaga, pero no se esconde: saber que existe y que ahora
+   no lleva a nada es información; que desaparezca parece un fallo del sitio. */
+.opciones label[data-vacia='si'] { opacity: 0.45; }
+
+/* El punto del color del grupo, el mismo que en la tarjeta: es lo que ata el filtro con lo filtrado. */
+.opciones .punto {
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-radius: var(--radio-pildora);
+  background: var(--acento-chip, var(--separador));
+}
+
+/* Buscar dentro de la propia faceta. Veinticinco músculos no se recorren con la vista. */
+.buscar-faceta {
+  width: calc(100% - var(--e4));
+  margin: 0 var(--e2) var(--e2);
+  min-height: 34px;
+  padding-inline: var(--e2);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-pequeno);
+  background: var(--fondo);
+  color: inherit;
+  font: inherit;
+  font-size: var(--t-pequeno);
+}
+
+/* -------------------------------------------------------------------- rejilla -- */
 
 .rejilla {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
-  /* Todas las filas miden lo mismo. Sin esto, una fila de nombres de una línea salía 22 px más baja
-     que la de arriba y la rejilla se veía descuadrada por abajo. */
+  /* Dos columnas ya en el móvil: con el mínimo en 14rem entraba UNA tarjeta por fila en 360 px y el
+     catálogo medía cinco mil píxeles de largo. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+  /* Todas las filas iguales: una fila de nombres de una línea salía 22 px más baja que la de arriba
+     y la rejilla se veía descuadrada por abajo. */
   grid-auto-rows: 1fr;
-  gap: var(--e6);
-  padding-block: var(--e4) var(--e6);
+  gap: var(--e4);
+  margin: 0;
+  padding: 0;
+}
+
+/* Y en cuanto hay sitio, tarjetas anchas: con el mínimo del móvil, el escritorio sacaba cinco
+   columnas estrechas y "empuje horizontal" se partía en dos líneas en unas tarjetas sí y otras no. */
+@media (min-width: 40rem) {
+  .rejilla { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); }
 }
 
 .tarjeta { position: relative; }
 .tarjeta a {
   display: grid;
-  /* El nombre crece y la etiqueta del grupo se queda abajo: con filas automáticas, un nombre de dos
-     líneas empujaba su etiqueta y dejaba la fila del catálogo con las etiquetas a distinta altura. */
+  /* El nombre crece y el grupo se queda abajo: con filas automáticas, un nombre de dos líneas
+     empujaba su etiqueta y dejaba la fila con las etiquetas a distinta altura. */
   grid-template-rows: auto 1fr auto;
-  gap: var(--e2);
+  gap: var(--e1);
   height: 100%;
-  padding-bottom: var(--e4);
+  padding-bottom: var(--e3);
   border: 1px solid var(--separador);
-  border-radius: var(--radio-grande);
+  border-radius: var(--radio-medio);
   background: var(--fondo-elevado);
-  text-decoration: none;
   color: var(--texto);
+  text-decoration: none;
   overflow: hidden;
-  transition: transform var(--m-rapido) var(--curva-suave),
-              box-shadow var(--m-rapido) var(--curva-suave),
-              border-color var(--m-rapido) var(--curva-suave);
+  transition: border-color var(--m-instantaneo) var(--curva-suave),
+              background-color var(--m-instantaneo) var(--curva-suave);
 }
 .tarjeta a:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--sombra);
   border-color: var(--borde-interactivo);
+  background: color-mix(in oklab, var(--fondo-elevado) 88%, var(--texto));
 }
-@media (prefers-reduced-motion: reduce) {
-  .tarjeta a:hover { transform: none; }
-}
+.tarjeta a:hover .cartel img { scale: 1.04; }
 
 .tarjeta .cartel {
   display: grid;
   place-items: center;
-  /* El hueco se reserva ANTES de que cargue el cartel: sin aspect-ratio la rejilla salta al aparecer
-     cada imagen y el presupuesto de CLS se incumple sin que nadie toque nada. */
+  /* El hueco se reserva ANTES de que cargue el cartel: sin aspect-ratio la rejilla salta al
+     aparecer cada imagen y el presupuesto de CLS se incumple sin que nadie toque nada. */
   aspect-ratio: 4 / 5;
   background: var(--fondo-hundido);
+  overflow: hidden;
 }
-.tarjeta img { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: contain; }
+.tarjeta img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: scale var(--m-rapido) var(--curva-suave);
+}
 .tarjeta .pendiente {
   grid-area: 1 / 1;
+  padding: var(--e3);
   color: var(--texto-secundario);
   font-size: var(--t-pequeno);
   text-align: center;
-  padding: var(--e3);
 }
 
 .tarjeta .nombre {
-  padding-inline: var(--e4);
+  padding: var(--e3) var(--e3) 0;
   font-weight: var(--peso-semibold);
+  font-size: var(--t-pequeno);
   line-height: var(--il-titulo);
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
-/*
- * El rótulo del grupo arranca EN LA MISMA VERTICAL que el nombre de arriba.
- *
- * Llevaba un filete de 3 px más su relleno, así que su texto empezaba 11 px a la derecha del
- * nombre: en una rejilla de nueve tarjetas, nueve escalones. El color del grupo ahora lo lleva la
- * propia letra —los acentos se verifican contra AA en los dos temas—, y el borde izquierdo
- * desaparece. Misma información, un solo margen.
- */
+/* El rótulo del grupo arranca en la misma vertical que el nombre: llevaba un filete de 3 px más su
+   relleno y su texto empezaba 11 px a la derecha. Nueve tarjetas, nueve escalones. */
 .tarjeta .etiqueta-grupo {
-  justify-self: start;
-  margin-inline: var(--e4);
-  color: var(--acento-chip, var(--texto-secundario));
-  font-size: var(--t-pequeno);
-  font-weight: var(--peso-medio);
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  padding-inline: var(--e3);
+  color: var(--texto-secundario);
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.tarjeta .etiqueta-grupo::before {
+  content: '';
+  width: 0.4rem;
+  height: 0.4rem;
+  flex: none;
+  border-radius: var(--radio-pildora);
+  background: var(--acento-chip, var(--separador));
 }
 
+/* ------------------------------------------------------------------ favorito -- */
+
+/*
+ * El favorito era una estrellita con borde, igual que cualquier otro botón: guardado o no, se
+ * distinguía solo por si la estrella era hueca o llena. Ahora, guardado, se pinta con el acento y
+ * da un salto corto al pulsarlo, que es lo que confirma que la acción ha ocurrido.
+ */
 .favorito {
   position: absolute;
-  top: var(--e3);
-  right: var(--e3);
-  width: 44px;
+  top: var(--e2);
+  right: var(--e2);
+  width: 40px;
+  min-height: 40px;
   padding: 0;
-  font-size: 1.1rem;
+  border-radius: var(--radio-pildora);
+  background: color-mix(in oklab, var(--fondo-elevado) 78%, transparent);
+  font-size: 1rem;
   line-height: 1;
-  background: var(--fondo-elevado);
 }
-.favorito[aria-pressed='true'] { border-color: var(--texto); }
+@supports (backdrop-filter: blur(1px)) {
+  .favorito { backdrop-filter: blur(8px); }
+}
+.favorito[aria-pressed='true'] { background: var(--accion); border-color: var(--accion); color: #14110C; }
+.favorito:active { scale: 0.88; }
+@media (prefers-reduced-motion: no-preference) {
+  .favorito {
+    transition: scale var(--m-instantaneo) var(--curva-suave),
+                background-color var(--m-instantaneo) var(--curva-suave),
+                border-color var(--m-instantaneo) var(--curva-suave);
+  }
+}
+
+/* En la ficha no es un icono suelto en una esquina: es un botón con su palabra. */
+.ficha .favorito { position: static; width: auto; padding-inline: var(--e4); }
 
 /* --------------------------------------------------------------------- ficha -- */
 
@@ -282,10 +537,8 @@
  *
  * El módulo llega en un paquete aparte —con Three.js detrás— unos 300 ms después. Hasta entonces el
  * contenedor está vacío y mide cero: cuando el lienzo aparece, empuja hacia abajo el resto de la
- * ficha. Medido por la auditoría: CLS de 0,28 a 0,35 con un presupuesto de 0,1. El `aspect-ratio`
- * del lienzo no lo evita, porque solo reserva sitio cuando el lienzo ya existe.
+ * ficha. Medido por la auditoría: CLS de 0,28 a 0,35 con un presupuesto de 0,1.
  */
-.ficha .figura { margin-block: var(--e4) var(--e8); }
 .ficha .figura:empty::before {
   content: '';
   aspect-ratio: var(--proporcion-lienzo, 1);
@@ -301,49 +554,43 @@
 
 .ficha header {
   display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
   gap: var(--e2) var(--e4);
-  padding-bottom: var(--e6);
+  padding-bottom: var(--e4);
   border-bottom: 1px solid var(--separador);
 }
-/* Igual que en la tarjeta: alineado con el título, y el color del grupo en la letra. */
 .ficha header .grupo {
   grid-column: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
   margin: 0;
   color: var(--acento-chip, var(--texto-secundario));
-  font-size: var(--t-pequeno);
+  font-size: var(--t-micro);
   font-weight: var(--peso-medio);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
-.ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); }
-/* La estrella ocupa las dos filas del encabezado y se centra en ellas: pegada arriba quedaba a la
-   altura del rótulo de grupo y a 34 px del centro del título, que es lo que se mira. */
-.ficha header .favorito { position: static; grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); line-height: var(--il-apretado); }
+/* El botón de guardar ocupa las dos filas y se centra en ellas: pegado arriba quedaba a la altura
+   del rótulo de grupo y a 34 px del centro del título, que es lo que se mira. */
+.ficha header .favorito { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
 
-/*
- * El resumen, en segundo plano. Lo que manda en una ficha es el movimiento: el texto explica lo que
- * ya se está viendo, así que va después del maniquí y a tamaño de lectura, no de titular.
- */
-.ficha .resumen {
-  font-size: var(--t-base);
-  color: var(--texto-secundario);
-  margin-block: 0 var(--e6);
-  max-width: var(--medida-texto);
-}
-
-/*
- * En escritorio, el texto a la izquierda y el maniquí a la derecha, fijo mientras se lee. Antes la
- * ficha era una sola columna estrecha con el 45 % derecho en blanco durante más de mil píxeles, y
- * el maniquí y su mapa muscular se leían ANTES que la frase que dice qué es el ejercicio.
- */
 /*
  * El maniquí ocupa el ancho entero y va primero: es lo que se viene a ver. Debajo, el texto en una
- * columna de lectura. La versión anterior lo metía en una columna lateral de 24rem y lo que ganaba
+ * columna de lectura. La versión anterior lo metía en una columna lateral de 24rem, y lo que ganaba
  * el texto lo perdía el movimiento, que es justo al revés de lo que hace falta aquí.
  */
 .ficha .figura { margin-block: var(--e6) var(--e8); }
+.ficha .resumen { margin-block: 0 var(--e6); max-width: var(--medida-texto); color: var(--texto-secundario); }
 @media (min-width: 60rem) {
-  .ficha .cuerpo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: var(--e8); align-items: start; }
+  .ficha .cuerpo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
+    gap: var(--e8);
+    align-items: start;
+  }
   .ficha .cuerpo > .resumen { grid-column: 1 / -1; }
   .ficha .cuerpo > .fuentes, .ficha .cuerpo > .matices, .ficha .cuerpo > .datos { grid-column: 2; }
   .ficha .cuerpo > section:first-of-type { grid-column: 1; grid-row: 2 / span 6; }
@@ -354,74 +601,99 @@
 
 /* Los pasos numerados: el número manda, porque es lo que se busca al volver a mirar a mitad de serie. */
 .pasos { list-style: none; counter-reset: paso; padding: 0; display: grid; gap: var(--e4); }
-.pasos li {
-  counter-increment: paso;
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  gap: var(--e3);
-  max-width: var(--medida-texto);
-}
+.pasos li { counter-increment: paso; display: grid; grid-template-columns: 1.75rem 1fr; gap: var(--e3); }
 .pasos li::before {
   content: counter(paso);
-  font-family: var(--fuente-titulo);
-  font-size: var(--t-medio);
-  color: var(--texto-secundario);
-  line-height: 1.1;
+  color: var(--accion);
+  font-size: var(--t-pequeno);
+  font-weight: var(--peso-semibold);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--il-texto);
 }
 
-.datos { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0; }
-.datos .dato {
-  display: inline-flex;
+.datos { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0 0 var(--e8); }
+.dato {
+  display: flex;
+  align-items: baseline;
   gap: var(--e2);
   padding: var(--e2) var(--e3);
-  border-radius: var(--radio-medio);
-  background: var(--fondo-hundido);
-  font-size: var(--t-pequeno);
-}
-.datos dt { color: var(--texto-secundario); margin: 0; }
-.datos dd { margin: 0; }
-
-.matices {
-  border-left: 3px solid var(--separador);
-  padding: var(--e2) 0 var(--e2) var(--e4);
-}
-.matices p, .fuentes li { color: var(--texto-secundario); }
-.fuentes ul { padding-left: 1.1em; display: grid; gap: var(--e2); }
-
-/* Ir al anterior y al siguiente del mismo grupo: un catálogo se recorre, no solo se busca. */
-.vecinos { display: flex; flex-wrap: wrap; gap: var(--e2); justify-content: space-between; }
-
-/* -------------------------------------------------------------- estados vacíos -- */
-
-.vacio {
-  display: grid;
-  gap: var(--e4);
-  justify-items: start;
-  padding-block: var(--e12);
-  color: var(--texto-secundario);
-}
-.vacio p { margin: 0; max-width: var(--medida-corta); }
-
-/* Saltar los filtros con el teclado: entre la cabecera y la primera ficha hay cuarenta tabulaciones. */
-.saltar {
-  position: absolute;
-  left: var(--e4);
-  top: var(--e2);
-  z-index: 20;
-  padding: var(--e2) var(--e3);
+  border: 1px solid var(--separador);
   border-radius: var(--radio-medio);
   background: var(--fondo-elevado);
-  border: 1px solid var(--separador);
-  transform: translateY(-200%);
+  font-size: var(--t-pequeno);
 }
-.saltar:focus { transform: none; }
+.dato dt { margin: 0; color: var(--texto-secundario); }
+.dato dd { margin: 0; font-weight: var(--peso-medio); }
 
-/* ------------------------------------------------------------------------ pie -- */
+.matices { padding-left: var(--e4); border-left: 2px solid var(--separador); }
+.matices p { margin-bottom: 0; color: var(--texto-secundario); }
 
+.fuentes ul { padding-left: var(--e4); color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.fuentes li { margin-bottom: var(--e3); }
+
+.vecinos { display: flex; justify-content: space-between; gap: var(--e4); flex-wrap: wrap; }
+
+/* ---------------------------------------------------------------- lo que falta -- */
+
+.vacio { display: grid; justify-items: start; gap: var(--e4); padding-block: var(--e8); color: var(--texto-secundario); }
+.vacio p { margin: 0; max-width: var(--medida-corta); }
+
+/*
+ * El aviso de salud va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por
+ * enlace directo —es lo que hace el botón de compartir— y quien entra así no pasa por la portada.
+ */
 .aviso {
-  margin-top: var(--e12);
-  padding-block: var(--e4) var(--e12);
+  margin-block: var(--e12) var(--e8);
+  padding-top: var(--e4);
   border-top: 1px solid var(--separador);
   color: var(--texto-secundario);
   font-size: var(--t-pequeno);
+  max-width: var(--medida-texto);
+}
+
+/*
+ * El salto al contenido, visible solo con teclado: sin él, quien navega tabulando recorre el panel
+ * de filtros entero antes de llegar a un ejercicio.
+ *
+ * Escondido recortándolo, no mandándolo a `left: -9999px`: así colocado seguía ocupando su sitio
+ * a la izquierda de la ventana y contaba como desbordamiento horizontal de la página.
+ */
+.saltar:not(:focus-visible) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.saltar:focus-visible { display: inline-flex; margin-block: var(--e2); }
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/*
+ * Con el dedo, 44 px. Por debajo se falla el toque, y es la medida de las pautas táctiles; con
+ * ratón 40 basta y conviene, porque una interfaz densa con todo a 44 se ve inflada. Se decide por
+ * el PUNTERO y no por el ancho: un portátil con pantalla táctil también se toca con el dedo.
+ *
+ * Va AL FINAL de la hoja: puesto arriba, las reglas de después —el favorito, que fija su propio
+ * alto— lo pisaban con la misma especificidad y las estrellas se quedaban en 40 px.
+ */
+@media (pointer: coarse) {
+  .boton,
+  .favorito,
+  .barra nav a,
+  .barra nav button,
+  .vecinos a,
+  .vacio a,
+  .faceta > summary,
+  .opciones label { min-height: 44px; }
+  .favorito { width: 44px; }
+  .quitar { min-height: 36px; }
 }

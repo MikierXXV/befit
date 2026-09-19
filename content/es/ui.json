@@ -4,7 +4,8 @@
     "titulo": "befit",
     "entradilla": "Ejercicios de gimnasio explicados con un maniquí 3D.",
     "tema_claro": "Tema claro",
-    "tema_oscuro": "Tema oscuro"
+    "tema_oscuro": "Tema oscuro",
+    "titular": "Ejercicios de gimnasio, vistos con un maniquí 3D"
   },
   "vis": {
     "respaldo_3d": "Esta escena necesita 3D. Debajo tienes la explicación en texto.",
@@ -15,7 +16,7 @@
   },
   "catalogo": {
     "buscar": "Buscar",
-    "resultados": "{n} resultados",
+    "resultados": "{n} ejercicios",
     "sin_resultados": "Nada coincide con esos filtros.",
     "campo": {
       "grupo": "Grupo",
@@ -66,7 +67,13 @@
       "banco": "Banco",
       "rack": "Soporte"
     },
-    "saltar": "Saltar a los resultados"
+    "saltar": "Saltar a los resultados",
+    "filtros": "Filtros",
+    "filtrar": "Filtrar",
+    "cerrar": "Cerrar",
+    "buscar_en": "Buscar músculo",
+    "ver_resultados": "Ver {n} ejercicios",
+    "quitar": "Quitar el filtro {valor}"
   },
   "ficha": {
     "volver": "Volver al catálogo",
@@ -83,7 +90,9 @@
     "vacio": "Aún no has guardado nada. La estrella de cada ficha lo guarda en este dispositivo.",
     "compartir": "Copiar enlace de mi selección",
     "copiado": "Enlace copiado",
-    "entradilla": "Lo que has guardado en este dispositivo."
+    "entradilla": "Lo que has guardado en este dispositivo.",
+    "guardar_corto": "Guardar",
+    "guardado": "Guardado"
   },
   "figura": {
     "pausa": "Pausa",
