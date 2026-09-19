@@ -1,0 +1,100 @@
+/*
+ * El marco común de las visualizaciones.
+ *
+ * Todas las piezas viven en el mismo hueco, con la misma proporción y los mismos controles. Ese
+ * marco compartido es la mitad de lo que hace que N piezas distintas se sientan del mismo sistema;
+ * la otra mitad es src/vis/lenguaje.ts.
+ */
+
+/*
+ * El hueco contiene DOS cosas: el lienzo, que dibuja, y el texto que va debajo de él. Están
+ * separados porque el lienzo tiene que recortar lo que se salga —un trazo desbordado ensuciaría la
+ * página— y la resolución de la pieza es texto que va fuera. Cuando compartían caja, la resolución
+ * se escribía y el recorte se la comía: no se veía nunca, y sin ningún síntoma que lo delatara.
+ */
+.vis-hueco {
+  width: 100%;
+  margin: var(--e6) 0;
+}
+
+/* Antes de montarse, el hueco reserva el alto que va a ocupar el lienzo. Sin esto, el contenido de
+   debajo da un salto al aparecer la pieza, que es exactamente lo que mide el CLS. */
+.vis-hueco:empty {
+  aspect-ratio: var(--vis-proporcion);
+  background: var(--fondo-hundido);
+  border-radius: var(--e2);
+}
+
+.vis-lienzo {
+  aspect-ratio: var(--vis-proporcion);
+  width: 100%;
+  background: var(--fondo-hundido);
+  border-radius: var(--e2);
+  overflow: hidden;
+  position: relative;
+}
+
+.vis-svg,
+.vis-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.vis-rotulo {
+  font-family: var(--fuente-texto);
+  /* La calcula crearSvg() con el ancho real, para que se vea igual de grande en cualquier pantalla.
+     El 15px de respaldo solo se usa si algo va mal antes del primer ajuste. */
+  font-size: var(--tam-rotulo, 15px);
+  fill: var(--texto);
+}
+
+.vis-rotulo-enfasis { font-weight: var(--peso-semibold); }
+
+.vis-marca { cursor: grab; }
+.vis-marca:active { cursor: grabbing; }
+
+.vis-controles {
+  position: absolute;
+  bottom: var(--e3);
+  left: var(--e3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2);
+}
+
+/*
+ * Alternativa textual: fuera de la vista, presente para el lector de pantalla.
+ *
+ * NO se usa `display: none` ni `visibility: hidden`: ambos la esconden también del lector, que es
+ * justo lo contrario de lo que se busca. Este es el patrón que sí funciona.
+ */
+.vis-alternativa {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* La resolución SÍ se ve: es el cierre de la pieza, lo que el usuario debía entender. */
+.vis-resolucion {
+  font-size: var(--t-pequeno);
+  color: var(--texto-secundario);
+  border-left: var(--trazo-enfasis) solid var(--acento, var(--separador));
+  padding-left: var(--e3);
+  margin-top: var(--e4);
+}
+
+/* Lo que se ve cuando no hay WebGL o el sistema pide no moverse. */
+.vis-respaldo {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  padding: var(--e6);
+  text-align: center;
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}

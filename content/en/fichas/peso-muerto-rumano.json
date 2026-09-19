@@ -1,0 +1,33 @@
+{
+  "id": "peso-muerto-rumano",
+  "grupo_id": "bisagra-cadera",
+  "orden": 1,
+  "nombre": "Barbell Romanian deadlift",
+  "resumen": "The bar travels down along the legs while the hips go back and the knees stay nearly fixed. It is the reference hip hinge for hamstrings and glutes.",
+  "movimiento_id": "peso-muerto-rumano",
+  "ejecucion": [
+    "Stand with the bar hanging at thigh height and your feet hip-width apart.",
+    "Push the hips back and let the bar slide down along your legs, knees almost fixed.",
+    "Go as low as you can keep a flat back: the moment it starts to round, that is your limit.",
+    "Come back by driving the hips forward until you stand tall, without leaning the shoulders back."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "isquiotibiales",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "erectores"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "trapecio_medio",
+      "antebrazo",
+      "abdomen"
+    ]
+  }
+}

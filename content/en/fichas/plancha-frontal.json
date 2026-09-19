@@ -1,0 +1,30 @@
+{
+  "id": "plancha-frontal",
+  "grupo_id": "core",
+  "orden": 1,
+  "nombre": "Front plank",
+  "resumen": "Holding the body straight on forearms and toes. Nothing bends: the work is keeping the hips from sagging.",
+  "movimiento_id": "plancha-frontal",
+  "ejecucion": [
+    "Put your forearms on the floor, elbows right under your shoulders.",
+    "Straighten your legs and rest on your toes, body in a straight line.",
+    "Squeeze glutes and abs and tuck the hips slightly: that is what keeps the back from sagging.",
+    "Hold while breathing normally, and stop when the hips start to drop."
+  ],
+  "material": [],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "serrato"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "deltoides_anterior"
+    ]
+  }
+}

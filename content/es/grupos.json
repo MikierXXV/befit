@@ -1,0 +1,84 @@
+{
+  "grupos": [
+    {
+      "id": "sentadilla",
+      "nombre": "Sentadilla",
+      "descripcion": "Flexionar cadera y rodillas a la vez con el tronco más o menos vertical, y volver a subir.",
+      "orden": 1,
+      "color_acento": {
+        "claro": "#8a4a22",
+        "oscuro": "#e8a271"
+      }
+    },
+    {
+      "id": "bisagra-cadera",
+      "nombre": "Bisagra de cadera",
+      "descripcion": "Llevar la cadera atrás con las rodillas casi fijas: el movimiento ocurre en la cadera, no en la espalda.",
+      "orden": 2,
+      "color_acento": {
+        "claro": "#816311",
+        "oscuro": "#e0bd54"
+      }
+    },
+    {
+      "id": "zancada",
+      "nombre": "Zancada",
+      "descripcion": "Un pie delante y otro detrás: la misma flexión de cadera y rodilla, pero con una pierna cada vez.",
+      "orden": 3,
+      "color_acento": {
+        "claro": "#4f7011",
+        "oscuro": "#a9cd63"
+      }
+    },
+    {
+      "id": "empuje-horizontal",
+      "nombre": "Empuje horizontal",
+      "descripcion": "Alejar una carga del pecho, con el cuerpo o la carga en horizontal.",
+      "orden": 4,
+      "color_acento": {
+        "claro": "#1c5f96",
+        "oscuro": "#84c0ec"
+      }
+    },
+    {
+      "id": "empuje-vertical",
+      "nombre": "Empuje vertical",
+      "descripcion": "Llevar una carga por encima de la cabeza.",
+      "orden": 5,
+      "color_acento": {
+        "claro": "#4a5bc4",
+        "oscuro": "#a8b4f5"
+      }
+    },
+    {
+      "id": "tiron-horizontal",
+      "nombre": "Tirón horizontal",
+      "descripcion": "Traer una carga hacia el tronco, con el cuerpo o la carga en horizontal.",
+      "orden": 6,
+      "color_acento": {
+        "claro": "#1c7a55",
+        "oscuro": "#72d3a8"
+      }
+    },
+    {
+      "id": "tiron-vertical",
+      "nombre": "Tirón vertical",
+      "descripcion": "Traer una carga desde arriba hacia el tronco, o subir el cuerpo hasta ella.",
+      "orden": 7,
+      "color_acento": {
+        "claro": "#17727f",
+        "oscuro": "#72cdda"
+      }
+    },
+    {
+      "id": "core",
+      "nombre": "Core",
+      "descripcion": "Resistir que el tronco se doble o se gire, más que doblarlo a propósito.",
+      "orden": 8,
+      "color_acento": {
+        "claro": "#9c3b73",
+        "oscuro": "#ee9bc8"
+      }
+    }
+  ]
+}

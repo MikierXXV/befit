@@ -1,0 +1,67 @@
+/*
+ * La pieza del maniquí dentro de una ficha. Valores desde tokens; aquí solo disposición.
+ *
+ * El lienzo reserva su hueco con aspect-ratio ANTES de que cargue nada. Es la misma regla que las
+ * visualizaciones de la plantilla: sin el hueco reservado, el modelo aparece de golpe, empuja el
+ * texto hacia abajo y el presupuesto de CLS se incumple sin que nadie toque nada.
+ */
+
+.figura { display: grid; gap: var(--e6); margin-block: var(--e4); }
+@media (min-width: 900px) {
+  .figura { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
+}
+
+.figura .escenario { position: relative; }
+.figura .lienzo {
+  width: 100%;
+  aspect-ratio: 1;
+  display: block;
+  border-radius: var(--radio-grande);
+  background: var(--fondo-hundido);
+}
+.figura .etapa {
+  position: absolute;
+  top: var(--e3);
+  left: var(--e3);
+  margin: 0;
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}
+
+.figura .controles { display: flex; flex-wrap: wrap; gap: var(--e2); margin-top: var(--e3); }
+.figura .controles .grupo { display: inline-flex; gap: var(--e1); }
+.figura .controles button {
+  min-height: 44px;
+  padding: 0 var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-pildora);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.figura .controles button[aria-pressed='true'] { background: var(--texto); color: var(--fondo); border-color: var(--texto); }
+
+.figura.cartel .controles, .figura.cartel .etapa, .figura.cartel .musculos { display: none; }
+
+.figura .mapas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
+.figura .mapa { width: 100%; height: auto; }
+
+/*
+ * Los tres grados de esfuerzo. Son TRES y no una escala continua a propósito: pintar "70 % de
+ * activación" es una precisión que la electromiografía no da, y un degradado invita a leerlo así.
+ * Lo que sí se sostiene es el papel de cada músculo en el movimiento, y eso son tres niveles.
+ *
+ * Salen del acento del grupo mezclado con el fondo, no de tres colores propios: así el mapa de cada
+ * familia mantiene su color y los tres grados se distinguen por intensidad, que es lo que significan.
+ */
+.figura .zona { fill: var(--fondo-hundido); stroke: var(--fondo); stroke-width: 0.15; }
+.figura .zona.principal { fill: var(--acento); }
+.figura .zona.sinergista { fill: color-mix(in oklab, var(--acento) 62%, var(--fondo)); }
+.figura .zona.estabilizador { fill: color-mix(in oklab, var(--acento) 32%, var(--fondo)); }
+
+.figura .leyenda { list-style: none; padding: 0; display: grid; gap: var(--e1); font-size: var(--t-pequeno); }
+.figura .muestra { display: inline-block; width: 12px; height: 12px; border-radius: var(--radio-pequeno); margin-right: var(--e2); vertical-align: -1px; }
+.figura .muestra.principal { background: var(--acento); }
+.figura .muestra.sinergista { background: color-mix(in oklab, var(--acento) 62%, var(--fondo)); }
+.figura .muestra.estabilizador { background: color-mix(in oklab, var(--acento) 32%, var(--fondo)); }

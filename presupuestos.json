@@ -1,0 +1,29 @@
+{
+  "$comment": "Presupuestos de rendimiento. Los vigila scripts/auditar.mjs sobre el sitio COMPILADO, no en desarrollo. Son compromisos, no aspiraciones: si uno se pasa, o se arregla o se sube a conciencia dejando escrito por qué.",
+
+  "js_critico_kb": 200,
+  "$comment_js": "JavaScript transferido hasta que el sitio es usable, comprimido y SIN contar Three.js. Three va aparte porque solo lo descarga quien abre una escena; meterlo en el mismo número escondería una regresión del JS que sí carga todo el mundo.",
+
+  "lcp_ms": 2500,
+  "cls": 0.1,
+  "$comment_web_vitals": "Los umbrales 'buenos' de Core Web Vitals. El CLS se cumple sobre todo reservando el hueco de las visualizaciones con aspect-ratio antes de que carguen; ver src/estilos/visualizacion.css.",
+
+  "scroll_fotogramas_lentos_pct": 40,
+  "$comment_scroll": "Porcentaje de fotogramas por encima de 50 ms mientras se recorre el sitio entero. El umbral es DELIBERADAMENTE LAXO, y no por conformismo: se mide con la CPU frenada cuatro veces, sobre una máquina que además está compilando, así que un presupuesto estricto falla unas veces sí y otras no. Una comprobación que falla sin motivo reproducible se acaba desactivando, y entonces deja de vigilar también lo que sí importa. A 40 % no se cuela lo que este número busca: alguien midiendo cajas dentro del evento de scroll en vez de dentro de un requestAnimationFrame, que multiplica los fotogramas largos, no los aumenta un poco.",
+
+  "contextos_webgl_vivos": 1,
+  "$comment_webgl": "Un solo contexto WebGL vivo a la vez. Los navegadores limitan los contextos simultáneos, así que el que falla no es el primero sino el noveno: el síntoma aparece lejos de su causa. Lo garantiza destruir() en src/vis/escena3d.ts y el desmontaje al salir de pantalla en src/main.ts.",
+
+  "three_no_bloquea_pintado": true,
+  "$comment_three": "Exigir que Three.js NO se pida en la carga inicial sería incorrecto si el sitio tiene una escena en la portada: entonces se pide, y con razón. Lo que hay que exigir es que no bloquee el primer pintado.",
+
+  "escenarios": [
+    { "nombre": "escritorio", "cpu": 1, "red": null },
+    {
+      "nombre": "movil de gama baja",
+      "cpu": 4,
+      "red": { "latencia": 150, "bajada": 1638400, "subida": 675840 },
+      "$comment": "CPU cuatro veces más lenta y una 3G rápida. Es donde estas piezas se rompen de verdad, y donde nunca se prueba."
+    }
+  ]
+}

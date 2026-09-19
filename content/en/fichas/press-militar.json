@@ -1,0 +1,34 @@
+{
+  "id": "press-militar",
+  "grupo_id": "empuje-vertical",
+  "orden": 1,
+  "nombre": "Barbell overhead press",
+  "resumen": "Standing, the bar goes from the shoulders to overhead. The whole trunk works to avoid arching while the shoulders press.",
+  "movimiento_id": "press-militar",
+  "ejecucion": [
+    "Stand with the bar resting on the upper chest, hands slightly wider than your shoulders.",
+    "Squeeze glutes and abs: that is what keeps the back from arching as you press.",
+    "Press the bar up, moving your head slightly back to let it pass.",
+    "Finish with the bar over your head and arms straight, then lower under control."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral",
+      "triceps"
+    ],
+    "sinergista": [
+      "trapecio_superior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "gluteo_mayor"
+    ]
+  }
+}

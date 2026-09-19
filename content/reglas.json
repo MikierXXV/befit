@@ -1,0 +1,68 @@
+{
+  "$comment": "Reglas del contenido de ESTE proyecto. scripts/validar-contenido.mjs es genérico y no sabe nada del tema: lo que comprueba lo lee de aquí. Ajustar este fichero es cómo se adapta la validación a un sitio nuevo, sin tocar el guion.",
+  "idiomas": [
+    "es",
+    "en"
+  ],
+  "colecciones": {
+    "grupos": {
+      "fichero": "grupos.json",
+      "lista": "grupos",
+      "schema": "grupo.schema.json"
+    },
+    "fichas": {
+      "directorio": "fichas",
+      "schema": "ficha.schema.json"
+    }
+  },
+  "$comment_referencias": "Integridad referencial en los dos sentidos: ninguna pieza apunta a una familia que no existe, y ninguna familia se queda sin piezas. Lo segundo también es un error: una familia vacía sale en el recorrido como una parada en blanco.",
+  "referencias": [
+    {
+      "de": "fichas",
+      "campo": "grupo_id",
+      "a": "grupos",
+      "exigir_uso": true
+    }
+  ],
+  "$comment_orden": "El orden dentro de cada familia debe ser 1..n sin huecos ni repetidos. Un hueco no rompe nada visible, y por eso se cuela: el recorrido simplemente salta un número y nadie lo nota hasta que hay que insertar algo en medio.",
+  "orden": [
+    {
+      "coleccion": "fichas",
+      "agrupado_por": "grupo_id",
+      "campo": "orden"
+    }
+  ],
+  "$comment_longitudes": "Límites editoriales, en caracteres. No son manías: un resumen de 900 caracteres deja de ser un resumen y desmonta la jerarquía de lectura del sitio.",
+  "longitudes": {
+    "fichas": {
+      "nombre": [
+        3,
+        80
+      ],
+      "resumen": [
+        40,
+        300
+      ]
+    }
+  },
+  "$comment_citas": "Regla de derechos de autor: cita textual breve con atribución marcada, nunca un párrafo traducido. Quitar este bloque si el proyecto no cita a nadie.",
+  "$comment_escenografia": "Los efectos que el contenido puede pedir. Mismo trato que las mecánicas: la lista de válidos vive en el registro y se lee de ahí, nunca se copia aquí.",
+  "$comment_paridad": "Con más de un idioma, todos deben tener los mismos ids y las mismas claves de ui.json. Sin esta comprobación, una traducción incompleta se descubre en producción.",
+  "paridad_idiomas": true,
+  "$comment_colecciones": "Una ficha por ejercicio y por idioma, con el TEXTO. El movimiento no vive aquí: ver `movimiento`.",
+  "$comment_movimiento": "Lo que valida scripts/validar-movimiento.mjs. Tolerancias en metros. Los rangos articulares NO están aquí: viven en src/figura/cinematica.js porque son anatomía, no criterio del proyecto.",
+  "movimiento": {
+    "directorio": "content/movimientos",
+    "referencia": {
+      "coleccion": "fichas",
+      "campo": "movimiento_id"
+    },
+    "muestras_por_ciclo": 48,
+    "holgura_suelo": 0.012,
+    "holgura_solido": 0.02
+  },
+  "acentos": {
+    "fichero": "grupos.json",
+    "lista": "grupos"
+  }
+}

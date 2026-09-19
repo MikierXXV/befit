@@ -1,0 +1,10 @@
+# Finales de línea LF siempre, también en Windows. Con core.autocrlf activado, un clon sacaba los
+# ficheros con CRLF y crear.mjs los copiaba así a cada sitio nuevo: diffs enteros cambiados sin tocar
+# una letra, y guiones de shell que en el ejecutor de Linux fallan por un \r invisible.
+* text=auto eol=lf
+
+*.glb binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary

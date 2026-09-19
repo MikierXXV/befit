@@ -1,0 +1,34 @@
+{
+  "id": "remo-mancuerna",
+  "grupo_id": "tiron-horizontal",
+  "orden": 1,
+  "nombre": "Remo a una mano con mancuerna",
+  "resumen": "Con una rodilla y una mano apoyadas en el banco, la mancuerna sube hasta la cadera llevando el codo pegado al cuerpo. Trabaja el dorsal y la espalda media de un lado cada vez.",
+  "movimiento_id": "remo-mancuerna",
+  "ejecucion": [
+    "Apoya en el banco la rodilla y la mano del mismo lado, con el tronco casi horizontal.",
+    "Deja el otro pie en el suelo, algo separado, y la mancuerna colgando bajo el hombro.",
+    "Sube la mancuerna hacia la cadera llevando el codo atrás, pegado al cuerpo.",
+    "Baja de forma controlada hasta estirar el brazo, sin girar el tronco."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "oblicuos"
+    ]
+  }
+}

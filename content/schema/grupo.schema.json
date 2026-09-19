@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Grupo",
+  "description": "Cómo se agrupa el catálogo. Una parada del índice, un color y un orden. En una app de ejercicios, el patrón de movimiento.",
+  "type": "object",
+  "required": [
+    "id",
+    "nombre",
+    "orden"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "string"
+    },
+    "orden": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "color_acento": {
+      "type": "object",
+      "description": "Un acento por tema. El modo oscuro no es invertir: son dos colores decididos aparte, y scripts/check-contraste.mjs exige AA a los dos.",
+      "required": [
+        "claro",
+        "oscuro"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "claro": {
+          "type": "string"
+        },
+        "oscuro": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

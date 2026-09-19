@@ -1,0 +1,34 @@
+{
+  "id": "remo-mancuerna",
+  "grupo_id": "tiron-horizontal",
+  "orden": 1,
+  "nombre": "One-arm dumbbell row",
+  "resumen": "With one knee and one hand on the bench, the dumbbell is pulled up to the hip with the elbow close to the body. It works the lats and mid-back one side at a time.",
+  "movimiento_id": "remo-mancuerna",
+  "ejecucion": [
+    "Put the knee and hand of the same side on the bench, torso almost horizontal.",
+    "Keep the other foot on the floor, slightly out, and let the dumbbell hang under the shoulder.",
+    "Pull the dumbbell up towards the hip, driving the elbow back and close to the body.",
+    "Lower it under control until the arm is straight, without twisting the torso."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "oblicuos"
+    ]
+  }
+}

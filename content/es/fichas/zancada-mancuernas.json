@@ -1,0 +1,33 @@
+{
+  "id": "zancada-mancuernas",
+  "grupo_id": "zancada",
+  "orden": 1,
+  "nombre": "Zancada hacia delante con mancuernas",
+  "resumen": "Un paso al frente, se baja hasta que las dos rodillas quedan a 90 grados y se vuelve. Cada pierna trabaja por su cuenta, y el equilibrio entra en el ejercicio.",
+  "movimiento_id": "zancada-mancuernas",
+  "ejecucion": [
+    "De pie, con una mancuerna en cada mano y los brazos relajados a los lados.",
+    "Da un paso al frente y baja recto, doblando las dos rodillas hasta unos 90 grados.",
+    "La rodilla de delante se queda sobre el pie, y la de atrás baja cerca del suelo sin tocarlo.",
+    "Empuja con el pie de delante para volver a la posición inicial, y cambia de pierna."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "press-banca",
+  "duracion": 3,
+  "$comment_ritmo": "Naturalidad: la cadera manda y el tronco y la cabeza la siguen con unas centésimas de retraso (por defecto, ver cinematica.js); `asimetria` rompe la simetría exacta de los dos lados y `respiracion` mueve el tronco un poco, con un número entero de ciclos para que el bucle siga cerrando.",
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_i"
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.15
+      ],
+      "largo": 1.2,
+      "ancho": 0.3,
+      "alto": 0.43,
+      "solido": true
+    },
+    "barra": {
+      "tipo": "barra",
+      "posicion": [
+        0,
+        1.1,
+        -0.2
+      ],
+      "agarre": 0.4,
+      "solido": true
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.575,
+          0.3
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.05,
+            -0.2
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.3
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.3,
+            0.104,
+            0.62
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.575,
+          0.3
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.74,
+            -0.05
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.3
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.3,
+            0.104,
+            0.62
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.575,
+          0.3
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.05,
+            -0.2
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.3
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.3,
+            0.104,
+            0.62
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    }
+  ]
+}

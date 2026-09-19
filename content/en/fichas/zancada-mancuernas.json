@@ -1,0 +1,33 @@
+{
+  "id": "zancada-mancuernas",
+  "grupo_id": "zancada",
+  "orden": 1,
+  "nombre": "Dumbbell forward lunge",
+  "resumen": "One step forward, down until both knees are at about 90 degrees, and back. Each leg works on its own, and balance becomes part of the exercise.",
+  "movimiento_id": "zancada-mancuernas",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, arms relaxed at your sides.",
+    "Step forward and lower straight down, bending both knees to about 90 degrees.",
+    "The front knee stays over the foot; the back knee comes close to the floor without touching it.",
+    "Push through the front foot to return to the start, then switch legs."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  }
+}

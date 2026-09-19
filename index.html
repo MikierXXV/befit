@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es" data-tema="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>befit</title>
+    <meta name="description" content="Ejercicios de gimnasio explicados con un maniquí 3D." />
+
+    <!--
+      Tema e idioma se resuelven ANTES de pintar, en un script síncrono. El tema, porque si no se ve
+      el destello blanco al entrar en un sitio oscuro. El idioma, porque `lang` manda en dos cosas a
+      la vez: qué ui.json carga la app y qué lee un lector de pantalla; resolverlo después obligaría
+      a repintar la página entera y dejaría el idioma del documento mintiendo mientras tanto.
+    -->
+    <script>
+      (() => {
+        const guardado = localStorage.getItem('tema');
+        const oscuro = guardado ? guardado === 'oscuro' : matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.tema = oscuro ? 'oscuro' : 'claro';
+
+        const idiomas = ['es', 'en'];
+        const pedido = localStorage.getItem('idioma') ?? navigator.language.slice(0, 2);
+        document.documentElement.lang = idiomas.includes(pedido) ? pedido : 'es';
+      })();
+    </script>
+  </head>
+  <body>
+    <main id="sitio"></main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{
+  "id": "peso-muerto-rumano",
+  "grupo_id": "bisagra-cadera",
+  "orden": 1,
+  "nombre": "Peso muerto rumano con barra",
+  "resumen": "La barra baja pegada a las piernas mientras la cadera va atrás y las rodillas apenas se doblan. Es la bisagra de cadera de referencia para isquiotibiales y glúteo.",
+  "movimiento_id": "peso-muerto-rumano",
+  "ejecucion": [
+    "De pie, con la barra colgando a la altura de los muslos y los pies a la anchura de la cadera.",
+    "Lleva la cadera hacia atrás y deja que la barra baje rozando las piernas, con las rodillas casi fijas.",
+    "Baja mientras puedas mantener la espalda plana: cuando empiece a redondearse, ahí está tu límite.",
+    "Vuelve empujando la cadera hacia delante hasta ponerte de pie, sin echar los hombros atrás."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "isquiotibiales",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "erectores"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "trapecio_medio",
+      "antebrazo",
+      "abdomen"
+    ]
+  }
+}

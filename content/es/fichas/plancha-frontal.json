@@ -1,0 +1,30 @@
+{
+  "id": "plancha-frontal",
+  "grupo_id": "core",
+  "orden": 1,
+  "nombre": "Plancha frontal",
+  "resumen": "Sostener el cuerpo recto apoyado en antebrazos y puntas de los pies. No se dobla nada: el trabajo es evitar que la cadera se hunda.",
+  "movimiento_id": "plancha-frontal",
+  "ejecucion": [
+    "Apoya los antebrazos en el suelo, con los codos justo debajo de los hombros.",
+    "Estira las piernas y apóyate en las puntas de los pies, con el cuerpo en línea recta.",
+    "Aprieta glúteos y abdomen y mete un poco la cadera: es lo que evita que la espalda se hunda.",
+    "Aguanta respirando con normalidad, y para cuando la cadera empiece a caerse."
+  ],
+  "material": [],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "serrato"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "deltoides_anterior"
+    ]
+  }
+}

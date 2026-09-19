@@ -1,0 +1,35 @@
+{
+  "id": "sentadilla-barra",
+  "grupo_id": "sentadilla",
+  "orden": 1,
+  "nombre": "Barbell back squat",
+  "resumen": "The bar rests on the traps and the body goes down until the thighs are parallel to the floor. It works quads and glutes while the torso holds the load.",
+  "movimiento_id": "sentadilla-barra",
+  "ejecucion": [
+    "Rest the bar on your traps, never on your neck, and grip it slightly wider than your shoulders.",
+    "Set your feet shoulder-width apart, toes slightly out.",
+    "Send the hips back and bend hips and knees together, knees tracking over the feet.",
+    "Go down until the thighs are parallel to the floor, keeping the bar over the mid-foot.",
+    "Stand up by driving the floor away, without letting the hips rise ahead of the chest."
+  ],
+  "material": [
+    "barra",
+    "rack"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "isquiotibiales"
+    ]
+  }
+}

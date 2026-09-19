@@ -1,0 +1,31 @@
+{
+  "id": "flexiones",
+  "grupo_id": "empuje-horizontal",
+  "orden": 2,
+  "nombre": "Push-up",
+  "resumen": "The same horizontal push as the bench press, but moving the body instead of the load, with the trunk working to keep from sagging.",
+  "movimiento_id": "flexiones",
+  "ejecucion": [
+    "Put your hands on the floor slightly wider than your shoulders, body in a straight line from head to heels.",
+    "Squeeze glutes and abs so the hips neither sag nor pike up.",
+    "Lower by bending the elbows about 45 degrees from the body, until the chest is close to the floor.",
+    "Push the floor away until the arms are straight, keeping the body line."
+  ],
+  "material": [],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  }
+}

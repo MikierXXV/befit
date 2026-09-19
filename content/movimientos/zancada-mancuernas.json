@@ -1,0 +1,668 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "zancada-mancuernas",
+  "duracion": 4.4,
+  "$comment_ritmo": "Naturalidad: la cadera manda y el tronco y la cabeza la siguen con unas centésimas de retraso (por defecto, ver cinematica.js); `asimetria` rompe la simetría exacta de los dos lados y `respiracion` mueve el tronco un poco, con un número entero de ciclos para que el bucle siga cerrando.",
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "$comment_lados": "Adelanta la pierna DERECHA (d), que en la vista lateral —cámara en -X— es la que queda cerca: si adelantase la izquierda, la de atrás taparía justo la rodilla que hay que mirar.",
+  "$comment_talon": "El pie de atrás deja de ser `pie_plano` en cuanto empieza la bajada: con el talón pegado al suelo, la dorsiflexión que pide la zancada pasa de 50° y el validador la rechaza —que es exactamente por lo que en una zancada real el talón sube—. Y el `tobillo` que llevan las poses de pie plano no lo usa el motor: lo usa la INTERPOLACIÓN, para que el fotograma en el que cambia la bandera no mezcle 0° con el pie ya de puntillas y meta los dedos bajo el suelo.",
+  "$comment_vuelta": "El pie de delante se recoge antes de acabar de subir (t=0.74): de pie y con la zancada abierta, la cadera queda a más de los 83 cm que mide la pierna desde el tobillo de delante. Empujar y recoger es además lo que dice el paso 4 de la ficha.",
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_d"
+  },
+  "implementos": {
+    "mancuerna_i": {
+      "tipo": "mancuerna",
+      "en_mano": "i"
+    },
+    "mancuerna_d": {
+      "tipo": "mancuerna",
+      "en_mano": "d"
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      }
+    },
+    {
+      "t": 0.14,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.88,
+          0.02
+        ]
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.26,
+            0.24
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 10
+          }
+        }
+      }
+    },
+    {
+      "t": 0.24,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.84,
+          0.07
+        ]
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": -2
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.115,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.16,
+            0.5
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 10
+          }
+        }
+      }
+    },
+    {
+      "t": 0.34,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.78,
+          0.11
+        ],
+        "orientacion": {
+          "inclinacion": 3
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -3
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.24,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 35
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.104,
+            0.58
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.555,
+          0.14
+        ],
+        "orientacion": {
+          "inclinacion": 6
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.275,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 25
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.104,
+            0.58
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      }
+    },
+    {
+      "t": 0.64,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.73,
+          0.12
+        ],
+        "orientacion": {
+          "inclinacion": 3
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -3
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.235,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 35
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.104,
+            0.58
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      }
+    },
+    {
+      "t": 0.74,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.8,
+          0.09
+        ]
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.175,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 35
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.22,
+            0.4
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 10
+          }
+        }
+      }
+    },
+    {
+      "t": 0.84,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.86,
+          0.02
+        ]
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.115,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.26,
+            0.24
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 10
+          }
+        }
+      }
+    },
+    {
+      "t": 0.92,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.89,
+          0.0
+        ]
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.18,
+            0.1
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 22
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 5
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 32
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8,
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      }
+    }
+  ]
+}

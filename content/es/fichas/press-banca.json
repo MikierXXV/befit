@@ -1,0 +1,31 @@
+{
+  "id": "press-banca",
+  "grupo_id": "empuje-horizontal",
+  "orden": 1,
+  "nombre": "Press de banca con barra",
+  "resumen": "Tumbado en el banco, la barra baja al pecho y vuelve a subir con los brazos. Es el empuje horizontal de referencia para pectoral, tríceps y deltoides anterior.",
+  "movimiento_id": "press-banca",
+  "ejecucion": [
+    "Túmbate en el banco con los pies apoyados en el suelo y los omóplatos juntos contra el respaldo.",
+    "Agarra la barra algo más abierto que los hombros, con las muñecas rectas.",
+    "Baja la barra al pecho de forma controlada, con los codos a unos 45-60 grados del cuerpo.",
+    "Empuja la barra hasta estirar los brazos, sin despegar la espalda del banco."
+  ],
+  "material": [
+    "barra",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [],
+    "estabilizador": [
+      "serrato",
+      "biceps"
+    ]
+  }
+}

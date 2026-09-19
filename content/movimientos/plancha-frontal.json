@@ -1,0 +1,164 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "plancha-frontal",
+  "duracion": 4,
+  "$comment_isometrico": "Aquí no hay recorrido: las tres poses son la misma y lo único que se mueve es la respiración, que sube y baja la pelvis 6 mm y abre y cierra el tronco medio grado. Un isométrico animado con poses distintas contaría una mentira —que la cadera sube y baja—, que es justo el fallo que la ficha manda evitar.",
+  "asimetria": 0.25,
+  "respiracion": {
+    "amplitud": 0.006,
+    "ciclos": 1
+  },
+  "$comment_camara": "Sin `detalle`: no hay agarre, el apoyo es el antebrazo entero y eso se ve mejor de lado que en un primer plano de la muñeca.",
+  "camara": {
+    "vista": "lateral"
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "lineal",
+      "etiqueta": "sostener",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.323,
+          0.034
+        ],
+        "orientacion": {
+          "inclinacion": 89
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -25
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.19,
+            0.075,
+            0.83
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.255,
+            -0.78
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ]
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "lineal",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.323,
+          0.034
+        ],
+        "orientacion": {
+          "inclinacion": 89
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -25
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.19,
+            0.075,
+            0.83
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.255,
+            -0.78
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ]
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.323,
+          0.034
+        ],
+        "orientacion": {
+          "inclinacion": 89
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -25
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.19,
+            0.075,
+            0.83
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.255,
+            -0.78
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ]
+        }
+      }
+    }
+  ]
+}

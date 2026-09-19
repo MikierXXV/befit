@@ -1,0 +1,127 @@
+# Publica el sitio en GitHub Pages.
+#
+# El despliegue va DESPUÉS de las comprobaciones y en el mismo flujo, no en paralelo: si el contenido
+# no valida, si hay texto visible escrito en el código o si el contraste no llega, no se publica. Es
+# la única forma de que estas comprobaciones sirvan para algo, porque un aviso que no bloquea acaba
+# ignorándose.
+#
+# Las comprobaciones con navegador van en su propio trabajo. Tardan varios minutos por la descarga de
+# Chromium, así que corren en paralelo con la publicación en vez de retrasarla: lo que puede romper
+# el sitio de verdad —contenido inválido, TypeScript roto, compilación fallida— ya lo cubre el
+# trabajo rápido, y no conviene que una corrección urgente de contenido espere a Chromium.
+
+name: Desplegar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permisos mínimos para publicar con el despliegue oficial de Pages, sin rama gh-pages ni secretos.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Una publicación a la vez. `cancel-in-progress: false` porque cancelar un despliegue a medias deja
+# el sitio en un estado indeterminado; es preferible encolar.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    # La plantilla también vive en un repositorio, marcado como «template» en GitHub. Sin esta guarda,
+    # cada push a la plantilla intentaba publicar un sitio con los marcadores sin sustituir y dejaba el
+    # flujo en rojo. En un sitio creado a partir de ella la condición siempre se cumple: se copia tal
+    # cual. `desplegar` no la necesita porque depende de este trabajo y se salta con él.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Las tres comprobaciones rápidas, sin navegador: reglas del contenido, contraste WCAG AA en
+      # ambos temas, y ningún texto visible dentro del código.
+      - name: Validar
+        run: npm run validar
+
+      - name: Compilar
+        env:
+          # Se deduce del nombre del repositorio en vez de escribirse a mano: renombrar el
+          # repositorio no puede romper el despliegue en silencio.
+          BASE_PATH: /${{ github.event.repository.name }}/
+          URL_SITIO: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+        with:
+          # Intenta activar Pages la primera vez. Solo funciona si el repositorio permite escritura
+          # al GITHUB_TOKEN (Settings → Actions → General → Workflow permissions). Si no, hay que
+          # activarlo a mano una vez en Settings → Pages, y a partir de ahí este paso lo encuentra
+          # ya hecho.
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  desplegar:
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - id: despliegue
+        uses: actions/deploy-pages@v4
+
+  # Las comprobaciones caras, sobre el sitio ya compilado. No bloquean la publicación, pero fallan
+  # visiblemente: sirven para enterarse, no para frenar una corrección urgente de contenido.
+  revisar:
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+
+      # El servidor y las comprobaciones van en un solo paso. Dejar un proceso en segundo plano de un
+      # paso para el siguiente depende de cómo el ejecutor limpia entre pasos, y no hay motivo para
+      # apostar. La espera es un bucle sobre curl en vez de `npx wait-on`: no hace falta traer una
+      # dependencia que no está en el package.json solo para esperar a un puerto.
+      - name: Comprobar el sitio compilado
+        run: |
+          npx vite preview --port 4173 &
+          servidor=$!
+          for i in $(seq 1 60); do
+            curl -sf -o /dev/null http://localhost:4173/ && break
+            sleep 1
+          done
+          curl -sf -o /dev/null http://localhost:4173/ || { echo 'el servidor no llegó a responder'; exit 1; }
+
+          fallos=0
+          URL_BASE=http://localhost:4173/ node scripts/capturar-sitio.mjs || fallos=1
+          URL_BASE=http://localhost:4173/ node scripts/auditar.mjs || fallos=1
+
+          kill $servidor 2>/dev/null || true
+          exit $fallos
+
+      - name: Guardar las capturas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: capturas
+          path: capturas/
+          if-no-files-found: ignore

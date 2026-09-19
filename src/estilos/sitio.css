@@ -1,0 +1,126 @@
+/*
+ * Estilos del sitio. Los valores no se escriben aquí: salen de los tokens.
+ *
+ * Si hace falta un valor que no está en design/tokens.css, la respuesta casi siempre es añadirlo
+ * allí, no escribirlo suelto aquí. Un `2.3rem` perdido en una regla es el primer paso para tener
+ * cuatro escalas tipográficas distintas y ninguna razón que las explique.
+ */
+
+/*
+ * Solo lo que usa CUALQUIER sitio hecho con la plantilla. La escenografía y el índice los importa
+ * src/main.ts, porque son del recorrido: una variante que no recorre nada (una app de catálogo) los
+ * quita, y si estuvieran aquí se quedaría sin poder quitarlos sin romper la compilación.
+ */
+@import '../../design/tokens.css';
+@import './visualizacion.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: var(--t-base);
+  line-height: var(--il-texto);
+  /* La transición hace que el cambio de tema no sea un parpadeo. Corta a propósito: más larga se
+     percibe como lentitud del sitio, no como una transición. */
+  transition: background-color var(--m-medio) var(--curva-suave),
+              color var(--m-medio) var(--curva-suave);
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulo);
+  font-weight: var(--peso-semibold);
+  line-height: var(--il-titulo);
+  text-wrap: balance;
+  max-width: var(--medida-corta);
+  margin: 0 0 var(--e4);
+}
+
+h1 { font-size: var(--t-hero); }
+h2 { font-size: var(--t-grande); }
+h3 { font-size: var(--t-medio); }
+
+p { max-width: var(--medida-texto); margin: 0 0 var(--e4); }
+
+/*
+ * Foco visible SIEMPRE. Quitar el contorno del foco deja el sitio inutilizable con teclado, y es
+ * un fallo que quien lo comete nunca ve porque navega con el ratón.
+ */
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+ * La columna de lectura mide siempre lo mismo; lo que crece es la caja que la contiene, para dejar
+ * a la izquierda el hueco del índice fijo. Así el texto no se estrecha por tener índice, y el índice
+ * no se pone encima del texto por no tener sitio. `--hueco-indice` vale 0 mientras el índice no se
+ * muestra; lo decide src/estilos/indice.css, que es quien sabe cuándo aparece.
+ */
+.cabecera,
+.parada-cuerpo {
+  max-width: calc(72rem + var(--hueco-indice, 0px));
+  margin: 0 auto;
+}
+
+.cabecera {
+  padding: var(--e24) var(--e6) var(--e16) max(var(--e6), var(--hueco-indice, 0px));
+}
+
+.entradilla {
+  font-size: var(--t-medio);
+  color: var(--texto-secundario);
+  max-width: var(--medida-corta);
+}
+
+.boton-tema,
+.vis-controles button {
+  font: inherit;
+  font-size: var(--t-pequeno);
+  color: var(--texto);
+  background: var(--fondo-elevado);
+  border: var(--trazo-fino) solid var(--borde-interactivo);
+  border-radius: 999px;
+  /* Alto mínimo de 44px: es el objetivo táctil que pide la WCAG, y un botón de 30px se falla con
+     el pulgar aunque en el ratón parezca de sobra. */
+  min-height: 44px;
+  padding: var(--e2) var(--e4);
+  cursor: pointer;
+  transition: background-color var(--m-rapido) var(--curva-suave);
+}
+
+.boton-tema:hover,
+.vis-controles button:hover { background: var(--fondo-hundido); }
+
+/*
+ * La parada ocupa el ancho completo y el cuerpo es la columna de lectura.
+ *
+ * Están separados porque una parada con tono propio tiene que pintar su fondo hasta los bordes de la
+ * pantalla mientras el texto sigue midiendo lo que se puede leer. Cuando eran el mismo elemento, una
+ * sección oscura salía como una tarjeta oscura flotando dentro del fondo claro.
+ */
+.parada {
+  position: relative;
+  border-top: var(--trazo-fino) solid var(--separador);
+}
+
+.parada-cuerpo {
+  position: relative;
+  padding: var(--e16) var(--e6) var(--e16) max(var(--e6), var(--hueco-indice, 0px));
+  /* Para que un salto desde el índice no deje el titular pegado al borde de arriba. */
+  scroll-margin-top: var(--e6);
+}
+
+/* El acento de la familia lo inyecta main.ts como --acento. Aquí solo se usa. */
+.parada h2 { color: var(--acento, var(--texto)); }
+
+.descripcion-familia { color: var(--texto-secundario); }
+
+.pieza { margin: var(--e12) 0; }
+
+.resumen { color: var(--texto-secundario); }

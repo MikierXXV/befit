@@ -1,0 +1,39 @@
+{
+  "name": "befit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ejercicios de gimnasio explicados con un maniquí 3D.",
+  "scripts": {
+    "auditar": "node scripts/auditar.mjs",
+    "build": "npm run validar && tsc --noEmit && vite build",
+    "capturar": "node scripts/capturar-sitio.mjs",
+    "carteles": "node scripts/generar-carteles.mjs",
+    "dev": "vite",
+    "hoja": "node scripts/capturar-hoja.mjs",
+    "maniqui": "node scripts/extraer-maniqui.mjs",
+    "modelo": "node scripts/optimizar-modelo.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "validar": "node scripts/validar-contenido.mjs --completo && node scripts/check-contraste.mjs && node scripts/check-idiomas.mjs && node scripts/validar-movimiento.mjs",
+    "validar:contenido": "node scripts/validar-contenido.mjs",
+    "validar:contraste": "node scripts/check-contraste.mjs",
+    "validar:idiomas": "node scripts/check-idiomas.mjs",
+    "validar:movimiento": "node scripts/validar-movimiento.mjs"
+  },
+  "devDependencies": {
+    "@gltf-transform/core": "^3.10.1",
+    "@gltf-transform/extensions": "^3.10.1",
+    "@gltf-transform/functions": "^3.10.1",
+    "@types/node": "^22.10.0",
+    "@types/three": "^0.171.0",
+    "meshoptimizer": "^0.20.0",
+    "playwright": "1.62.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.3"
+  },
+  "dependencies": {
+    "body-muscles": "1.0.0",
+    "three": "^0.171.0"
+  }
+}

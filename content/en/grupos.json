@@ -1,0 +1,84 @@
+{
+  "grupos": [
+    {
+      "id": "sentadilla",
+      "nombre": "Squat",
+      "descripcion": "Bending hips and knees together with a fairly upright torso, then standing back up.",
+      "orden": 1,
+      "color_acento": {
+        "claro": "#8a4a22",
+        "oscuro": "#e8a271"
+      }
+    },
+    {
+      "id": "bisagra-cadera",
+      "nombre": "Hip hinge",
+      "descripcion": "Sending the hips back with the knees nearly fixed: the movement happens at the hip, not in the back.",
+      "orden": 2,
+      "color_acento": {
+        "claro": "#816311",
+        "oscuro": "#e0bd54"
+      }
+    },
+    {
+      "id": "zancada",
+      "nombre": "Lunge",
+      "descripcion": "One foot forward, one back: the same hip and knee bend, one leg at a time.",
+      "orden": 3,
+      "color_acento": {
+        "claro": "#4f7011",
+        "oscuro": "#a9cd63"
+      }
+    },
+    {
+      "id": "empuje-horizontal",
+      "nombre": "Horizontal push",
+      "descripcion": "Pushing a load away from the chest, with the body or the load horizontal.",
+      "orden": 4,
+      "color_acento": {
+        "claro": "#1c5f96",
+        "oscuro": "#84c0ec"
+      }
+    },
+    {
+      "id": "empuje-vertical",
+      "nombre": "Vertical push",
+      "descripcion": "Pressing a load overhead.",
+      "orden": 5,
+      "color_acento": {
+        "claro": "#4a5bc4",
+        "oscuro": "#a8b4f5"
+      }
+    },
+    {
+      "id": "tiron-horizontal",
+      "nombre": "Horizontal pull",
+      "descripcion": "Pulling a load towards the torso, with the body or the load horizontal.",
+      "orden": 6,
+      "color_acento": {
+        "claro": "#1c7a55",
+        "oscuro": "#72d3a8"
+      }
+    },
+    {
+      "id": "tiron-vertical",
+      "nombre": "Vertical pull",
+      "descripcion": "Pulling a load down to the torso, or pulling the body up to it.",
+      "orden": 7,
+      "color_acento": {
+        "claro": "#17727f",
+        "oscuro": "#72cdda"
+      }
+    },
+    {
+      "id": "core",
+      "nombre": "Core",
+      "descripcion": "Resisting the trunk bending or twisting, rather than bending it on purpose.",
+      "orden": 8,
+      "color_acento": {
+        "claro": "#9c3b73",
+        "oscuro": "#ee9bc8"
+      }
+    }
+  ]
+}

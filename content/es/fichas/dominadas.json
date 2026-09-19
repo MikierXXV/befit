@@ -1,0 +1,33 @@
+{
+  "id": "dominadas",
+  "grupo_id": "tiron-vertical",
+  "orden": 1,
+  "nombre": "Dominadas",
+  "resumen": "Colgado de una barra, el cuerpo sube hasta que la barbilla la pasa. Es el tirón vertical con el propio peso, y el más exigente del grupo.",
+  "movimiento_id": "dominadas",
+  "ejecucion": [
+    "Cuélgate de la barra con las manos algo más abiertas que los hombros y los brazos estirados.",
+    "Antes de tirar, baja los hombros: separan la cabeza de las orejas y ponen el dorsal a trabajar.",
+    "Tira llevando los codos hacia abajo y atrás, hasta pasar la barbilla por encima de la barra.",
+    "Baja controlando hasta estirar los brazos del todo, sin dejarte caer."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "trapecio_medio",
+      "deltoides_posterior",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato"
+    ]
+  }
+}

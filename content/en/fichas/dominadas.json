@@ -1,0 +1,33 @@
+{
+  "id": "dominadas",
+  "grupo_id": "tiron-vertical",
+  "orden": 1,
+  "nombre": "Pull-up",
+  "resumen": "Hanging from a bar, the body comes up until the chin clears it. It is the bodyweight vertical pull, and the most demanding of the group.",
+  "movimiento_id": "dominadas",
+  "ejecucion": [
+    "Hang from the bar with your hands slightly wider than your shoulders and arms straight.",
+    "Before pulling, pull the shoulders down: it takes your head away from your ears and puts the lats to work.",
+    "Pull by driving the elbows down and back, until your chin clears the bar.",
+    "Lower under control until the arms are fully straight, without dropping."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "trapecio_medio",
+      "deltoides_posterior",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato"
+    ]
+  }
+}

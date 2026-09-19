@@ -1,0 +1,31 @@
+{
+  "id": "flexiones",
+  "grupo_id": "empuje-horizontal",
+  "orden": 2,
+  "nombre": "Flexiones",
+  "resumen": "El mismo empuje horizontal que el press de banca, pero moviendo el cuerpo en vez de la carga, y con el tronco trabajando para no combarse.",
+  "movimiento_id": "flexiones",
+  "ejecucion": [
+    "Apoya las manos en el suelo algo más abiertas que los hombros, con el cuerpo en línea recta de la cabeza a los talones.",
+    "Aprieta glúteos y abdomen para que la cadera no se hunda ni se levante.",
+    "Baja doblando los codos a unos 45 grados del cuerpo, hasta que el pecho quede cerca del suelo.",
+    "Empuja el suelo hasta estirar los brazos, manteniendo la línea del cuerpo."
+  ],
+  "material": [],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  }
+}

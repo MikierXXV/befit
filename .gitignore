@@ -1,0 +1,18 @@
+node_modules/
+dist/
+capturas/
+.vite/
+*.local
+.DS_Store
+
+# Modelos 3D originales descargados. Pesan megas, no son del proyecto y `npm run modelo` los
+# convierte en el GLB que sí se versiona (public/modelos/). Ver assets-originales/CREDITOS.md.
+assets-originales/*
+!assets-originales/CREDITOS*.md
+
+# Rastro de las sesiones con navegador dirigido. Es material de quien depura, no del proyecto.
+.playwright-mcp/
+
+# Ajustes personales del asistente: llevan rutas absolutas de cada máquina. El fichero compartido
+# sería `.claude/settings.json`; este, por convenio, es el de uno.
+.claude/settings.local.json

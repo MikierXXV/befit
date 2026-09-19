@@ -1,0 +1,103 @@
+{
+  "$comment": "English strings. Key parity with es/ui.json is enforced by scripts/validar-contenido.mjs.",
+  "sitio": {
+    "titulo": "befit",
+    "entradilla": "Ejercicios de gimnasio explicados con un maniquí 3D.",
+    "tema_claro": "Light theme",
+    "tema_oscuro": "Dark theme"
+  },
+  "vis": {
+    "respaldo_3d": "This scene needs 3D. The text explanation is below.",
+    "cargando": "Loading…"
+  },
+  "ui": {
+    "tema": "Switch theme"
+  },
+  "catalogo": {
+    "buscar": "Search",
+    "resultados": "{n} results",
+    "sin_resultados": "Nothing matches those filters.",
+    "campo": {
+      "grupo": "Group",
+      "material": "Equipment",
+      "nivel": "Level",
+      "musculo": "Muscle"
+    },
+    "nivel": {
+      "inicial": "Beginner",
+      "intermedio": "Intermediate",
+      "avanzado": "Advanced"
+    },
+    "musculos": {
+      "pectoral": "Chest",
+      "deltoides_anterior": "Front delt",
+      "deltoides_lateral": "Side delt",
+      "deltoides_posterior": "Rear delt",
+      "biceps": "Biceps",
+      "triceps": "Triceps",
+      "antebrazo": "Forearm",
+      "trapecio_superior": "Upper traps",
+      "trapecio_medio": "Mid traps",
+      "dorsal": "Lats",
+      "serrato": "Serratus anterior",
+      "erectores": "Spinal erectors",
+      "abdomen": "Abs",
+      "oblicuos": "Obliques",
+      "gluteo_mayor": "Glute max",
+      "gluteo_medio": "Glute med",
+      "cuadriceps": "Quads",
+      "aductores": "Adductors",
+      "isquiotibiales": "Hamstrings",
+      "gemelos": "Calves",
+      "soleo": "Soleus",
+      "flexores_cadera": "Hip flexors"
+    },
+    "sin_maniqui": "No figure yet"
+  },
+  "ficha": {
+    "volver": "← Back to catalogue",
+    "ejecucion": "How to do it",
+    "material": "Equipment",
+    "nivel": "Level",
+    "fuentes": "Sources"
+  },
+  "favoritos": {
+    "titulo": "Favourites",
+    "guardar": "Save {nombre} to favourites",
+    "quitar": "Remove {nombre} from favourites",
+    "vacio": "Nothing saved yet. The star on each card saves it on this device.",
+    "compartir": "Copy link to my selection",
+    "copiado": "Link copied"
+  },
+  "figura": {
+    "pausa": "Pause",
+    "seguir": "Play",
+    "velocidad": "Speed",
+    "vista": "View",
+    "vistas": {
+      "frontal": "front",
+      "lateral": "side",
+      "tres_cuartos": "three-quarter",
+      "detalle": "grip"
+    },
+    "musculos": "What it works",
+    "roles": {
+      "principal": "Drives the movement",
+      "sinergista": "Assists",
+      "estabilizador": "Holds the position"
+    },
+    "etapas": {
+      "sostener": "Hold",
+      "arriba": "Top",
+      "abajo": "Bottom",
+      "estirado": "Stretched",
+      "contraido": "Contracted"
+    },
+    "sin_3d": "Your browser can't show the figure. The step-by-step is below.",
+    "lado": {
+      "frente": "Front",
+      "espalda": "Back"
+    },
+    "sin_destacados": "no muscles highlighted"
+  }
+}

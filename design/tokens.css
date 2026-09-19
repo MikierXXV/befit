@@ -1,0 +1,171 @@
+/*
+ * Tokens del sistema de diseño. Refleja design/tokens.json.
+ *
+ * Los acentos por familia NO están aquí: los inyecta el runtime desde content/<idioma>/familias.json,
+ * porque son contenido. Verificar con `npm run validar:contraste` después de tocar cualquier color.
+ */
+
+:root {
+  /* ---- tipografía ---- */
+  --fuente-titulo: "Newsreader", ui-serif, Georgia, serif;
+  --fuente-texto: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --peso-regular: 400;
+  --peso-medio: 500;
+  --peso-semibold: 600;
+
+  --t-micro: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
+  --t-pequeno: clamp(0.875rem, 0.85rem + 0.12vw, 0.9375rem);
+  --t-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --t-medio: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --t-grande: clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+  --t-titulo: clamp(2.25rem, 1.7rem + 2.7vw, 4rem);
+  --t-hero: clamp(2.5rem, 1.6rem + 3.2vw, 4rem);
+
+  /* Forma. Ver design/tokens.json. */
+  --radio-pequeno: 6px;
+  --radio-medio: 10px;
+  --radio-grande: 16px;
+  --radio-pildora: 999px;
+
+  --medida-texto: 68ch;
+  --medida-corta: min(100%, 46ch);
+  --il-apretado: 1.15;
+  --il-titulo: 1.2;
+  --il-texto: 1.65;
+
+  /* ---- espaciado (escala de 4px) ---- */
+  --e1: 0.25rem;  --e2: 0.5rem;   --e3: 0.75rem;  --e4: 1rem;
+  --e6: 1.5rem;   --e8: 2rem;     --e12: 3rem;    --e16: 4rem;
+  --e24: 6rem;    --e32: 8rem;
+
+  /* ---- movimiento ---- */
+  --m-instantaneo: 120ms;
+  --m-rapido: 220ms;
+  --m-medio: 400ms;
+  --m-lento: 700ms;
+  --m-trazo: 900ms;
+  --curva-entrada: cubic-bezier(0.16, 1, 0.3, 1);
+  --curva-salida: cubic-bezier(0.4, 0, 1, 1);
+  --curva-suave: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- visualizaciones ----
+     CON UNIDADES. Ver la nota de design/tokens.json: un token de longitud sin unidad invalida en
+     silencio cada regla que lo use. */
+  --vis-proporcion: 7 / 3;
+  --trazo-fino: 1px;
+  --trazo-base: 1.5px;
+  --trazo-enfasis: 3px;
+  --vis-atenuado: 0.35;
+
+  /* ---- escenografía ---- */
+  --entrada-desplazamiento: 20px;
+  --entrada-desenfoque: 8px;
+  --entrada-escala: 0.985;
+  --escalonado: 60ms;
+  --paralaje-recorrido: 10%;
+  --portada-alto: min(88svh, 760px);
+  --franja-ancho-tarjeta: min(78vw, 22rem);
+  --velo-alto: clamp(4rem, 12vh, 9rem);
+
+  /* Lo publica src/app/escenografia.ts: 0 cuando la parada entra por abajo, 1 cuando sale por
+     arriba. El respaldo 0.5 —posición media— es el que se usa si el motor no llega a arrancar, y
+     por eso deja las capas centradas en vez de en un extremo. */
+  --avance: 0.5;
+}
+
+/*
+ * Los dos juegos de color, con nombre propio y disponibles SIEMPRE.
+ *
+ * Están declarados aparte de --fondo/--texto porque el tema no es lo único que los elige: una
+ * parada puede pedir tono contrario al del sitio (`escena.tono` en familias.json) y necesita los
+ * valores del otro juego sin repetirlos. Antes estaban escritos tres veces —claro, oscuro y el
+ * respaldo de prefers-color-scheme—, y tres copias de una paleta divergen a la primera corrección.
+ */
+:root {
+  --claro-fondo: #FBFAF8;
+  --claro-fondo-elevado: #FFFFFF;
+  --claro-fondo-hundido: #F1EFEA;
+  --claro-texto: #1A1917;
+  --claro-texto-secundario: #5C5850;
+  --claro-separador: #DDD9D1;
+  --claro-borde-interactivo: #7A736A;
+  --claro-foco: #1A1917;
+
+  --oscuro-fondo: #141317;
+  --oscuro-fondo-elevado: #1D1C22;
+  --oscuro-fondo-hundido: #0E0D10;
+  --oscuro-texto: #EDEBE6;
+  --oscuro-texto-secundario: #A8A39A;
+  --oscuro-separador: #2E2C34;
+  --oscuro-borde-interactivo: #6E6979;
+  --oscuro-foco: #EDEBE6;
+}
+
+/*
+ * Qué juego está activo. Se resuelve por atributo, no por media query, porque el sitio ofrece un
+ * selector y una preferencia guardada tiene que poder ganarle al sistema. El atributo lo pone el
+ * script síncrono de index.html antes del primer pintado.
+ *
+ * `[data-tono]` es lo mismo aplicado a un trozo del documento. Al usar los mismos ocho valores,
+ * una parada de tono contrario cumple el contraste que check-contraste.mjs ya verifica: no hay una
+ * segunda paleta a la que nadie esté mirando.
+ */
+:root[data-tema="claro"],
+[data-tono="claro"] {
+  --fondo: var(--claro-fondo);
+  --fondo-elevado: var(--claro-fondo-elevado);
+  --fondo-hundido: var(--claro-fondo-hundido);
+  --texto: var(--claro-texto);
+  --texto-secundario: var(--claro-texto-secundario);
+  --separador: var(--claro-separador);
+  --borde-interactivo: var(--claro-borde-interactivo);
+  --foco: var(--claro-foco);
+}
+
+:root[data-tema="oscuro"],
+[data-tono="oscuro"] {
+  --fondo: var(--oscuro-fondo);
+  --fondo-elevado: var(--oscuro-fondo-elevado);
+  --fondo-hundido: var(--oscuro-fondo-hundido);
+  --texto: var(--oscuro-texto);
+  --texto-secundario: var(--oscuro-texto-secundario);
+  --separador: var(--oscuro-separador);
+  --borde-interactivo: var(--oscuro-borde-interactivo);
+  --foco: var(--oscuro-foco);
+}
+
+/*
+ * `--acento` NO se resuelve aquí, aunque encajaría. Una variable se resuelve en el elemento donde
+ * se declara: si `--acento: var(--acento-claro)` se escribiera en :root, leería el --acento-claro
+ * de :root —que no existe— y no el de la parada, y todas las familias saldrían del mismo color.
+ * Lo pone aplicarAcento() en src/main.ts, que sí sabe el tono efectivo de cada parada.
+ */
+
+/*
+ * Respaldo por si el atributo no llegara a ponerse (JavaScript desactivado). Va después para no
+ * ganarle a la elección explícita, y usa :not() para no pisarla cuando sí existe.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --fondo: var(--oscuro-fondo);
+    --fondo-elevado: var(--oscuro-fondo-elevado);
+    --fondo-hundido: var(--oscuro-fondo-hundido);
+    --texto: var(--oscuro-texto);
+    --texto-secundario: var(--oscuro-texto-secundario);
+    --separador: var(--oscuro-separador);
+    --borde-interactivo: var(--oscuro-borde-interactivo);
+    --foco: var(--oscuro-foco);
+  }
+}
+
+/* Nadie se mueve si el sistema pide que no. Es la red de seguridad global; las piezas además lo
+   consultan con movimientoReducido() para elegir un estado final en vez de una animación cortada. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
