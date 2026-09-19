@@ -200,11 +200,23 @@ function medir({ TOLERANCIA, TACTIL }) {
     // Escondido —la entradilla de la portada cuando no hay— mide cero y no está desalineado con
     // nada: compararlo daba «0 vs 16» en cada pantalla del catálogo.
     if (!b.width && !b.height) return null;
-    return b.left + parseFloat(getComputedStyle(el).paddingLeft);
+    const e = getComputedStyle(el);
+    /*
+     * Lo que tiene que coincidir depende de CÓMO esté alineado el bloque: dos textos centrados
+     * comparten centro, no borde izquierdo. La frase de la portada va centrada y a ancho completo
+     * y su entradilla centrada y estrecha: por la izquierda se llevan trescientos píxeles y están
+     * perfectamente alineadas. Comparar siempre la izquierda daba ese falso positivo.
+     */
+    if (e.textAlign === 'center') return { eje: 'centro', x: b.left + b.width / 2 };
+    return { eje: 'izquierda', x: b.left + parseFloat(e.paddingLeft) };
   };
   for (const [contenedor, dentro] of apilados) {
     for (const raiz of qa(contenedor)) {
-      const xs = dentro.map((s) => bordeContenido(raiz.querySelector(s))).filter((x) => x !== null);
+      const medidas = dentro.map((s) => bordeContenido(raiz.querySelector(s))).filter((x) => x !== null);
+      // Con alineaciones distintas no hay nada que comparar: un titular centrado sobre una lista a
+      // la izquierda es una decisión, no un descuadre.
+      if (medidas.length > 1 && new Set(medidas.map((m) => m.eje)).size > 1) continue;
+      const xs = medidas.map((m) => m.x);
       if (xs.length > 1 && Math.max(...xs) - Math.min(...xs) > TOLERANCIA) {
         anota(`en ${contenedor}, ${dentro.join(' y ')} no arrancan en la misma vertical: ${xs.map((x) => x.toFixed(1)).join(' vs ')}`);
         break; // Un ejemplo por pieza: si falla una tarjeta, fallan las nueve.

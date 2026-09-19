@@ -347,9 +347,16 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
   portadaEl.hidden = true;
   sitio.innerHTML = `
     <article class="ficha">
-      <a class="volver boton" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">
-        <span class="icono" aria-hidden="true">←</span>${t('ficha.volver')}
-      </a>
+      <!--
+        Volver y guardar, la misma fila y en los dos extremos: son las dos acciones de la pantalla
+        y estaban a alturas distintas, una arriba del todo y la otra flotando junto al título.
+      -->
+      <div class="acciones">
+        <a class="boton" href="${enlace({ vista: 'catalogo', filtros: ruta.filtros })}">
+          <span class="icono" aria-hidden="true">←</span>${t('ficha.volver')}
+        </a>
+        ${botonFavorito(f, true)}
+      </div>
       <!--
         EL MANIQUÍ VA PRIMERO, antes que el título.
 
@@ -361,12 +368,19 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
       <header>
         <p class="grupo" ${acentoDe(f.grupo_id) ? `style="--acento-chip: ${acentoDe(f.grupo_id)}"` : ''}>${escapar(grupo?.nombre ?? '')}</p>
         <h1>${escapar(f.nombre)}</h1>
-        ${botonFavorito(f, true)}
       </header>
       <div class="cuerpo">
       <p class="resumen">${escapar(f.resumen)}</p>
       ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>
         <ol class="pasos">${f.ejecucion.map((p) => `<li>${escapar(p)}</li>`).join('')}</ol></section>` : ''}
+      <!--
+        Material, matices y fuentes van dentro de UN solo elemento, no sueltos en la rejilla.
+        Sueltos, cada uno ocupaba su fila y obligaban a estirar la columna del texto seis filas:
+        si al lado había menos de seis cosas —lo normal—, sobraban filas vacías y la ficha acababa
+        con un palmo de nada antes del pie. (Sin comillas invertidas en este comentario: está dentro
+        de una plantilla de texto y una sola cierra la cadena. Costó un error de compilación.)
+      -->
+      <aside class="lateral">
       <dl class="datos">
         ${f.material?.length ? `<div class="dato"><dt>${t('ficha.material')}</dt><dd>${f.material.map((m) => escapar(etiqueta('material', m))).join(', ')}</dd></div>` : ''}
         ${f.nivel ? `<div class="dato"><dt>${t('ficha.nivel')}</dt><dd>${escapar(etiqueta('nivel', f.nivel))}</dd></div>` : ''}
@@ -377,6 +391,7 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
         // si es de este año o de hace veinte, y una fuente que hay que abrir para valorarla no se abre.
         (s) => `<li>${s.url ? `<a href="${escapar(s.url)}" rel="noreferrer">${escapar(s.titulo)}</a>` : escapar(s.titulo)}${s.autor ? ` · ${escapar(s.autor)}` : ''}</li>`,
       ).join('')}</ul></section>` : ''}
+      </aside>
       ${vecinos(f, ruta)}
       </div>
     </article>

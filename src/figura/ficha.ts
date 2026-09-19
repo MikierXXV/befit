@@ -49,7 +49,31 @@ export async function montarFigura(
     <div class="caja">
     <div class="escenario">
       <canvas class="lienzo" aria-label="${ficha.nombre}"></canvas>
-      <p class="etapa" aria-live="polite"></p>
+      <!--
+        La etapa NO va aquí como rótulo suelto: se enciende sobre la línea de tiempo, que es donde
+        significa algo. Una palabra en una esquina dice en qué punto está; encendida sobre la línea
+        dice además dónde cae ese punto dentro del ciclo y qué viene después.
+        El aria-live va en la propia marca, para que un lector de pantalla siga anunciando el cambio.
+      -->
+      <!--
+        LA FASE DEL MOVIMIENTO, EN UNA LÍNEA DE TIEMPO.
+
+        Antes era una palabra suelta en una esquina del lienzo —«Abajo»— y no decía lo que de verdad
+        se quiere saber: por dónde va el ciclo, cuánto falta para el punto bajo, y dónde estaba eso
+        que acaba de pasar. Aquí las etapas están marcadas sobre la línea y el cursor va por ella.
+        Y se puede arrastrar: parar el movimiento justo en el punto que interesa es media razón por
+        la que alguien mira esto.
+
+        Es un input de tipo range de verdad, no una barra dibujada: así se maneja con el teclado y
+        lo anuncia un lector de pantalla sin escribir una línea para ello. (Y sin comillas
+        invertidas en este comentario: está dentro de una plantilla de texto, donde una sola cierra
+        la cadena. Ya costó un error de compilación una vez.)
+      -->
+      <div class="tiempo">
+        <input class="cursor" type="range" min="0" max="1000" step="1" value="0"
+               aria-label="${t('figura.fase')}" />
+        <div class="etapas"></div>
+      </div>
       <div class="controles">
         <button type="button" class="reproducir" data-accion="pausa" aria-pressed="false"
                 aria-label="${t('figura.pausa')}"><span class="icono" aria-hidden="true">❚❚</span></button>
@@ -72,6 +96,16 @@ export async function montarFigura(
       <ul class="leyenda"></ul>
     </div>
     </div>`;
+
+  /*
+   * Las marcas son las poses que llevan etiqueta, y solo esas: una pose intermedia sin nombre no es
+   * un hito del movimiento, es un fotograma de paso. La etiqueta es una CLAVE, no texto: el
+   * movimiento es común a los dos idiomas y la traducción vive en ui.json.
+   */
+  const hitos = (mov.poses as Array<{ t: number; etiqueta?: string }>).filter((x) => x.etiqueta);
+  contenedor.querySelector('.etapas')!.innerHTML = hitos
+    .map((x) => `<span style="--t: ${x.t}" data-clave="${x.etiqueta}" aria-live="polite">${t(`figura.etapas.${x.etiqueta}`)}</span>`)
+    .join('');
 
   const lienzo = contenedor.querySelector<HTMLCanvasElement>('.lienzo')!;
   const visor = await crearVisor(lienzo);
@@ -104,9 +138,26 @@ export async function montarFigura(
   let velocidad = 1;
   let pausado = cartel;
   let fase = 0;
+  let claveAnterior: string | undefined;
   let anterior = performance.now();
   let animacion = 0;
-  const etapa = contenedor.querySelector('.etapa')!;
+  const marcas = [...contenedor.querySelectorAll<HTMLElement>('.etapas span')];
+  const cursor = contenedor.querySelector<HTMLInputElement>('.cursor')!;
+
+  cursor.addEventListener('input', () => {
+    fase = Number(cursor.value) / 1000;
+    /*
+     * Arrastrar PARA el movimiento. Si siguiera corriendo, el bucle devolvería el cursor a su sitio
+     * en el siguiente fotograma y sería imposible dejarlo donde uno quiere: se pelean los dos.
+     */
+    pausado = true;
+    const boton = contenedor.querySelector<HTMLButtonElement>('.reproducir')!;
+    boton.querySelector('.icono')!.textContent = '▶';
+    boton.setAttribute('aria-label', t('figura.seguir'));
+    boton.setAttribute('aria-pressed', 'true');
+    visor.posar(fase);
+    visor.pintar(vista, lienzo.clientWidth, lienzo.clientHeight);
+  });
 
   contenedor.querySelector('.controles')!.addEventListener('click', (e) => {
     const b = (e.target as HTMLElement).closest('button');
@@ -141,8 +192,13 @@ export async function montarFigura(
     // La etiqueta del movimiento es una CLAVE ("abajo"), no texto: el movimiento es común a los dos
     // idiomas. La traducción vive en ui.json, donde el validador de idiomas puede vigilarla.
     const clave = [...mov.poses].reverse().find((p) => p.t <= fase && p.etiqueta)?.etiqueta;
-    const texto = clave ? t(`figura.etapas.${clave}`) : '';
-    if (etapa.textContent !== texto) etapa.textContent = texto;
+    // Solo se toca el DOM cuando cambia de etapa: esto corre sesenta veces por segundo.
+    if (clave !== claveAnterior) {
+      claveAnterior = clave;
+      for (const m of marcas) m.classList.toggle('activa', m.dataset.clave === clave);
+    }
+    // El cursor solo se escribe cuando el movimiento corre: si no, pisa lo que se está arrastrando.
+    if (!pausado) cursor.value = String(Math.round(fase * 1000));
     animacion = requestAnimationFrame(bucle);
   }
   animacion = requestAnimationFrame(bucle);

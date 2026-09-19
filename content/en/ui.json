@@ -121,7 +121,8 @@
       "espalda": "Back"
     },
     "sin_destacados": "no muscles highlighted",
-    "roles_origen": "The roles describe the movement as technique manuals define it. They are not a measurement of how much each muscle works: that depends on the variant, the load and how it is measured."
+    "roles_origen": "The roles describe the movement as technique manuals define it. They are not a measurement of how much each muscle works: that depends on the variant, the load and how it is measured.",
+    "fase": "Movement phase"
   },
   "aviso": {
     "salud": "This explains how an exercise is done, not whether it suits you. If you have an injury, pain or any medical condition, check with a professional first."

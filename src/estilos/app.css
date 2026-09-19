@@ -18,6 +18,9 @@
  */
 :root {
   --fuente-titulo: var(--fuente-texto);
+  /* La serif no desaparece: se reserva para lo que no es interfaz —la frase de la portada—, que es
+     lo que hace que destaque. Usada también en los h2 volvía a ser el sitio divulgativo de antes. */
+  --fuente-serif: "Newsreader", "Newsreader respaldo", ui-serif, Georgia, serif;
   /* El ancho del panel y el alto de la barra, en tokens: los usan la rejilla, el panel pegajoso y
      el cajón del móvil, y tres números sueltos se desincronizan a la primera corrección. */
   --ancho-filtros: 16rem;
@@ -180,13 +183,32 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 }
 
 /*
- * El titular de la página. Es el h1 y dice de qué va el sitio, no cómo se llama: el nombre ya está
- * en la barra. Compacto a propósito —esto es una app y lo que se viene a ver son los ejercicios—,
- * pero sigue siendo lo primero que pinta el navegador, y por eso vive escrito en index.html.
+ * El titular de la página: una frase, centrada y en una línea.
+ *
+ * Es lo único de todo el sitio compuesto con la serif, y por eso destaca: el resto —barra, filtros,
+ * tarjetas, botones— es interfaz y va en la de palo. Una frase en el mismo tipo que los botones no
+ * es una frase, es otro rótulo más.
+ *
+ * Sigue siendo el h1 y lo primero que pinta el navegador, y por eso vive escrito en index.html.
  */
-.portada { padding-block: var(--e8) var(--e6); }
-.portada h1 { max-width: 24ch; margin: 0; font-size: var(--t-grande); line-height: var(--il-apretado); }
-.portada p { max-width: var(--medida-corta); margin: var(--e3) 0 0; color: var(--texto-secundario); }
+.portada { padding-block: var(--e12) var(--e8); }
+.portada h1 {
+  margin: 0;
+  max-width: none;
+  text-align: center;
+  font-family: var(--fuente-serif);
+  font-weight: var(--peso-regular);
+  font-style: italic;
+  font-size: clamp(1.5rem, 1rem + 2.4vw, 2.75rem);
+  line-height: var(--il-titulo);
+  letter-spacing: -0.01em;
+}
+/* En una línea SOLO cuando cabe. A 360 px, forzarla dejaba la frase a doce píxeles de alto para
+   que entrara entera, que es peor que partirla en dos. */
+@media (min-width: 34rem) {
+  .portada h1 { white-space: nowrap; }
+}
+.portada p { max-width: var(--medida-corta); margin: var(--e3) auto 0; text-align: center; color: var(--texto-secundario); }
 
 /* ------------------------------------------------------------------ buscador -- */
 
@@ -554,8 +576,14 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   background: var(--fondo-hundido);
 }
 
-.ficha { padding-block: var(--e4) var(--e12); }
-.ficha .volver { margin-bottom: var(--e4); }
+.ficha { padding-block: var(--e4) var(--e8); }
+.ficha .acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e4);
+  margin-bottom: var(--e4);
+}
 
 .ficha header {
   display: grid;
@@ -590,31 +618,80 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
  */
 .ficha .figura { margin-block: var(--e4) var(--e6); }
 .ficha .resumen { margin-block: 0 var(--e6); max-width: var(--medida-texto); color: var(--texto-secundario); }
+/*
+ * Dos columnas y UNA fila: el texto a la izquierda, lo de consulta a la derecha dentro de un solo
+ * elemento. La versión anterior metía material, matices y fuentes sueltos en la rejilla, cada uno
+ * en su fila, y obligaba a estirar la columna del texto con `grid-row: 2 / span 6`. Cuando al lado
+ * había menos de seis cosas —siempre—, sobraban filas vacías: de ahí el palmo de nada que quedaba
+ * entre el final de la ficha y el aviso del pie.
+ */
 @media (min-width: 60rem) {
   .ficha .cuerpo {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 20rem);
-    gap: var(--e8);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 19rem);
+    gap: var(--e4) var(--e8);
     align-items: start;
   }
-  .ficha .cuerpo > .resumen { grid-column: 1 / -1; }
-  .ficha .cuerpo > .fuentes, .ficha .cuerpo > .matices, .ficha .cuerpo > .datos { grid-column: 2; }
-  .ficha .cuerpo > section:first-of-type { grid-column: 1; grid-row: 2 / span 6; }
+  .ficha .cuerpo > .resumen,
   .ficha .cuerpo > .vecinos { grid-column: 1 / -1; }
 }
+.ficha .lateral > :last-child { margin-bottom: 0; }
+.ficha .cuerpo > :last-child { margin-bottom: 0; }
 .ficha h2 { font-size: var(--t-medio); margin-bottom: var(--e4); }
 .ficha section { margin-bottom: var(--e8); }
 
-/* Los pasos numerados: el número manda, porque es lo que se busca al volver a mirar a mitad de serie. */
-.pasos { list-style: none; counter-reset: paso; padding: 0; display: grid; gap: var(--e4); }
-.pasos li { counter-increment: paso; display: grid; grid-template-columns: 1.75rem 1fr; gap: var(--e3); }
+/*
+ * LOS PASOS SON UN RECORRIDO, no una lista de frases.
+ *
+ * Eran siete párrafos con un número delante, y a mitad de serie —que es cuando se mira esto— había
+ * que releer desde arriba para saber por dónde ibas. Con el número dentro de un círculo y el hilo
+ * que los une, el ojo salta de nodo a nodo: se ve de un vistazo cuántos pasos quedan y dónde está
+ * cada uno, que es lo que se le pide a una secuencia.
+ *
+ * Dibujado con dos pseudoelementos y ningún elemento extra en el marcado: los pasos son contenido
+ * y vienen de la ficha; el recorrido es cosa del estilo.
+ */
+.pasos {
+  list-style: none;
+  counter-reset: paso;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--e4);
+}
+.pasos li {
+  counter-increment: paso;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  gap: var(--e4);
+  align-items: start;
+}
 .pasos li::before {
   content: counter(paso);
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-pildora);
+  background: var(--fondo-elevado);
   color: var(--accion);
-  font-size: var(--t-pequeno);
+  font-size: var(--t-micro);
   font-weight: var(--peso-semibold);
   font-variant-numeric: tabular-nums;
-  line-height: var(--il-texto);
+  line-height: 1;
+}
+/* El hilo entre nodos. En el último no se pinta: una secuencia que sigue después del final es
+   justo lo que no se quiere decir. */
+.pasos li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: calc(0.875rem - 0.5px);
+  top: 1.75rem;
+  bottom: calc(var(--e4) * -1);
+  width: 1px;
+  background: var(--separador);
 }
 
 .datos { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0 0 var(--e8); }

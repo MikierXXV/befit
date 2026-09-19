@@ -213,3 +213,63 @@
   .figura .controles .reproducir { min-height: 44px; }
   .figura .controles .reproducir { width: 44px; }
 }
+
+/*
+ * LA LÍNEA DE TIEMPO DEL MOVIMIENTO.
+ *
+ * Sustituye a la palabra suelta que había en la esquina del lienzo. El cursor dice por dónde va el
+ * ciclo, las marcas dicen dónde están sus etapas, y se puede arrastrar para parar justo en el punto
+ * que interesa mirar.
+ */
+.figura .tiempo { margin-top: var(--e3); }
+.figura .cursor {
+  display: block;
+  width: 100%;
+  margin: 0;
+  /* El color del pulgar y de la parte recorrida, sin dibujar un control a mano: es un range de
+     verdad, así que se maneja con el teclado y lo anuncia un lector de pantalla. */
+  accent-color: var(--accion);
+  cursor: pointer;
+}
+.figura .etapas {
+  position: relative;
+  height: 1.25rem;
+  margin-top: var(--e1);
+}
+.figura .etapas span {
+  position: absolute;
+  /* Cada etapa, en su sitio de la línea. El 2 % y el 98 % son los topes: la primera y la última
+     caen justo en los extremos, y centradas se salían media palabra por fuera del lienzo. */
+  left: clamp(2%, calc(var(--t) * 100%), 98%);
+  translate: -50% 0;
+  color: var(--texto-secundario);
+  font-size: var(--t-micro);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition: color var(--m-instantaneo) var(--curva-suave);
+}
+/* La etapa en la que está el movimiento ahora. Es la única que se enciende: si se marcaran todas,
+   no marcaría ninguna. */
+.figura .etapas span.activa { color: var(--texto); font-weight: var(--peso-semibold); }
+
+/* La primera y la última no se centran sobre su marca: centradas, «ARRIBA» en t=0 se salía media
+   palabra por la izquierda del lienzo. Se alinean por dentro y la marca se va a su extremo. */
+.figura .etapas span:first-child { translate: 0 0; }
+.figura .etapas span:first-child::before { left: 0; }
+/* `:not(:first-child)`, porque un movimiento puede tener UNA sola etapa —la plancha, que solo
+   sostiene—: ahí el mismo span es el primero y el último, ganaba la regla del último y la palabra
+   se salía 63 px por la izquierda de la pantalla. Lo cazó la comprobación de alineaciones. */
+.figura .etapas span:last-child:not(:first-child) { translate: -100% 0; }
+.figura .etapas span:last-child:not(:first-child)::before { left: auto; right: 0; }
+
+/* La marca sobre la línea, para que la palabra no quede flotando sin referencia. */
+.figura .etapas span::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -0.45rem;
+  width: 1px;
+  height: 0.3rem;
+  background: var(--separador);
+}

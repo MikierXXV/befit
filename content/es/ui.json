@@ -125,7 +125,8 @@
       "espalda": "De espalda"
     },
     "sin_destacados": "sin músculos destacados",
-    "roles_origen": "Los roles describen el gesto según los manuales de técnica. No son una medición de cuánto trabaja cada músculo: eso depende de la variante, de la carga y de cómo se mida."
+    "roles_origen": "Los roles describen el gesto según los manuales de técnica. No son una medición de cuánto trabaja cada músculo: eso depende de la variante, de la carga y de cómo se mida.",
+    "fase": "Fase del movimiento"
   },
   "aviso": {
     "salud": "Esto explica cómo se hace un ejercicio, no si te conviene a ti. Si tienes una lesión, dolor o cualquier condición médica, consúltalo antes con un profesional."
