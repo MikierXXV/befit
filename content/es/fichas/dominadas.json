@@ -1,7 +1,7 @@
 {
   "id": "dominadas",
   "grupo_id": "tiron-vertical",
-  "orden": 1,
+  "orden": 2,
   "nombre": "Dominadas",
   "resumen": "Colgado de una barra, el cuerpo sube hasta que la barbilla la pasa. Es el tirón vertical con el propio peso, y el más exigente del grupo.",
   "movimiento_id": "dominadas",

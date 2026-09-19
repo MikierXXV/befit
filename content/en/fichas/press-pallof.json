@@ -1,0 +1,45 @@
+{
+  "id": "press-pallof",
+  "grupo_id": "core",
+  "orden": 2,
+  "nombre": "Pallof press",
+  "resumen": "Standing side-on to the cable, both hands push the handle forward while the cable pulls sideways. The work is not moving: it is keeping the trunk from turning.",
+  "movimiento_id": "press-pallof",
+  "ejecucion": [
+    "Stand side-on to the cable, handle at chest height, feet shoulder-width apart.",
+    "Hold the handle with both hands against your sternum and step away to put the cable under tension.",
+    "Squeeze glutes and abs, and press your arms straight forward without letting your trunk turn a single degree.",
+    "Hold there for a couple of seconds, breathing normally.",
+    "Bring the handle back to your chest with the same control, and switch sides when the set is done."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "The exercise rests on a reasonable idea — training the core by resisting movement rather than producing it — and there is work comparing that approach with the classic one and finding advantages in neuromuscular efficiency. That does not mean the Pallof press works the obliques harder than any particular alternative: that has not been measured.",
+  "fuentes": [
+    {
+      "titulo": "Neuromuscular activation following anti-movement and dynamic core training: a randomized controlled comparative study",
+      "autor": "Cinarli et al., Eur J Appl Physiol, 2025",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12423174/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

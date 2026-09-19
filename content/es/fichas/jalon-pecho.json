@@ -1,0 +1,52 @@
+{
+  "id": "jalon-pecho",
+  "grupo_id": "tiron-vertical",
+  "orden": 1,
+  "nombre": "Jalón al pecho en polea",
+  "resumen": "Sentado, la barra baja desde arriba hasta el pecho. Es el mismo tirón vertical que la dominada, pero con la carga que tú elijas: la entrada al grupo para quien todavía no hace dominadas.",
+  "movimiento_id": "jalon-pecho",
+  "ejecucion": [
+    "Siéntate con los muslos sujetos y agarra la barra en pronación, algo más abierto que los hombros.",
+    "Estira los brazos del todo arriba y echa el tronco un poco atrás, sin balancearte.",
+    "Antes de tirar, baja los hombros: aléjalos de las orejas.",
+    "Tira llevando los codos hacia abajo y atrás hasta que la barra llegue a la parte alta del pecho.",
+    "Sube controlando hasta estirar los brazos, sin dejar que los hombros se te suban al final."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "trapecio_medio",
+      "deltoides_posterior",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "Qué agarre activa más el dorsal no está cerrado. Lo que sí repiten los estudios es que la orientación del antebrazo pesa más que la anchura: en pronación sale más activación que en supinación, y entre anchuras las diferencias son pequeñas. La comparación con la dominada tampoco es firme: con la carga igualada, los valores se parecen.",
+  "fuentes": [
+    {
+      "titulo": "Grip width and forearm orientation effects on muscle activity during the lat pull-down",
+      "autor": "Lusk et al., J Strength Cond Res, 2010",
+      "url": "https://doi.org/10.1519/JSC.0b013e3181ddb0ab"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

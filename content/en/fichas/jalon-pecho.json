@@ -1,0 +1,52 @@
+{
+  "id": "jalon-pecho",
+  "grupo_id": "tiron-vertical",
+  "orden": 1,
+  "nombre": "Lat pulldown",
+  "resumen": "Seated, the bar comes down from overhead to the chest. Same vertical pull as the pull-up, with the load you choose: the way into the group for anyone not doing pull-ups yet.",
+  "movimiento_id": "jalon-pecho",
+  "ejecucion": [
+    "Sit with your thighs held down and grip the bar overhand, a little wider than your shoulders.",
+    "Straighten your arms fully overhead and lean your torso back slightly, without swinging.",
+    "Before you pull, drop your shoulders: move them away from your ears.",
+    "Pull by driving your elbows down and back until the bar reaches your upper chest.",
+    "Let it back up under control until your arms are straight, without letting your shoulders ride up at the end."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "trapecio_medio",
+      "deltoides_posterior",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "Which grip works the lats hardest is not settled. What studies do repeat is that forearm orientation matters more than width: an overhand grip shows more activation than an underhand one, and differences between widths are small. The comparison with the pull-up is not firm either: with the load matched, the values are similar.",
+  "fuentes": [
+    {
+      "titulo": "Grip width and forearm orientation effects on muscle activity during the lat pull-down",
+      "autor": "Lusk et al., J Strength Cond Res, 2010",
+      "url": "https://doi.org/10.1519/JSC.0b013e3181ddb0ab"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

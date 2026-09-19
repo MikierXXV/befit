@@ -1,0 +1,45 @@
+{
+  "id": "press-pallof",
+  "grupo_id": "core",
+  "orden": 2,
+  "nombre": "Press Pallof en polea",
+  "resumen": "De pie y de lado a la polea, las manos empujan el agarre hacia delante mientras el cable tira de lado. El trabajo no es mover: es que el tronco no gire.",
+  "movimiento_id": "press-pallof",
+  "ejecucion": [
+    "Ponte de lado a la polea, con el agarre a la altura del pecho y los pies a la anchura de los hombros.",
+    "Sujeta el agarre con las dos manos pegado al esternón y separa un paso para tensar el cable.",
+    "Aprieta glúteos y abdomen, y estira los brazos hacia delante sin que el tronco gire ni un grado.",
+    "Aguanta ahí un par de segundos respirando con normalidad.",
+    "Vuelve el agarre al pecho con el mismo control, y cambia de lado al terminar la serie."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "El ejercicio se apoya en una idea razonable —entrenar el core resistiendo movimiento en vez de produciéndolo—, y hay trabajo que compara ese enfoque con el clásico y le encuentra ventajas en eficiencia neuromuscular. De ahí no se sigue que el Pallof active los oblicuos más que otro ejercicio concreto: eso no está medido.",
+  "fuentes": [
+    {
+      "titulo": "Neuromuscular activation following anti-movement and dynamic core training: a randomized controlled comparative study",
+      "autor": "Cinarli et al., Eur J Appl Physiol, 2025",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12423174/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

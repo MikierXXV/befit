@@ -36,17 +36,17 @@ No «que se mueva»: que un entrenador no señale nada raro.
 
 ## Fase 2 — El catálogo ✅ (con hueco reconocido)
 
-- ✅ Nueve ejercicios, en los dos idiomas, con maniquí los nueve.
+- ✅ Once ejercicios, en los dos idiomas, con maniquí los once.
 - ✅ Ocho patrones cubiertos: sentadilla, bisagra, zancada, empuje horizontal (×2), empuje vertical,
   tirón horizontal, tirón vertical, core.
 - ✅ Buscar, filtrar por grupo/material/nivel/músculo, favoritos y enlace para llevárselos.
 - ✅ Rigor editorial revisado: fuentes verificadas, campo `matices` para lo que las fuentes no
   cierran, aviso de salud en todas las pantallas.
-- ⬜ **Huecos que dejó la revisión editorial**, pendientes a propósito:
-  - tirón vertical solo tiene un ejercicio y es **avanzado** (falta una entrada accesible: jalón o
-    dominada asistida);
-  - core no tiene **antirrotación** (pallof, por ejemplo);
-  - los roles musculares están derivados a mano, ficha a ficha.
+- ✅ **Cerrados los dos huecos de la revisión editorial**: el jalón al pecho da una entrada
+  accesible al tirón vertical —la dominada pasa a ser el segundo del grupo— y el press Pallof mete
+  el antirrotación que le faltaba al core. Los dos salen de un implemento nuevo, la polea, que es lo
+  que abre la familia entera de ejercicios que no se hacen con peso libre.
+- ⬜ Los roles musculares siguen derivados a mano, ficha a ficha.
 
 ## Fase 3 — Que parezca producto terminado ✅
 

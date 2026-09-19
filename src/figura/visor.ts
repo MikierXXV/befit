@@ -155,9 +155,19 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
         caja.union(o.boundingBox!.clone().applyMatrix4(o.matrixWorld));
       });
     }
-    // Los implementos cuentan, salvo la barra entera: con sus 2,2 m el encuadre se abriría tanto que el maniquí quedaría diminuto.
+    /*
+     * Los implementos cuentan, con dos excepciones, y las dos por lo mismo: encuadrar por algo muy
+     * largo deja al maniquí del tamaño de un sello.
+     *
+     *  - La barra olímpica entera, con sus 2,2 m.
+     *  - El cable de una polea, que llega hasta el anclaje: a metro y medio en el press Pallof y a
+     *    dos metros y medio de altura en el jalón. Los carteles de los dos salían en blanco.
+     */
     for (const [nombre, malla] of Object.entries(mallas)) {
-      if ((mov.implementos?.[nombre]?.tipo) !== 'barra') caja.expandByObject(malla);
+      if ((mov.implementos?.[nombre]?.tipo) === 'barra') continue;
+      for (const pieza of malla.children) {
+        if (pieza.name !== 'cable') caja.expandByObject(pieza);
+      }
     }
     caja.getCenter(centro);
     // Se guardan las medias medidas de la caja, no el radio de una esfera: una plancha mide 1,9 m de
@@ -193,8 +203,29 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
       if (!malla) continue;
       malla.position.copy(estado.posicion);
       malla.quaternion.copy(estado.orientacion);
+      estirarCable(malla, movimiento.implementos?.[nombre]?.ancla as number[] | undefined, estado.posicion);
     }
   }
+
+  /*
+   * El cable de una polea va del agarre al anclaje, y su largo cambia en cada fotograma. Se estira
+   * una geometría de largo 1 en vez de rehacerla: el cilindro se crea mirando a +Y y con su centro
+   * en el origen, así que hay que llevarlo a la mitad del recorrido y girarlo hacia el anclaje.
+   *
+   * Todo en coordenadas LOCALES del implemento, porque el cable es hijo suyo: el agarre ya está
+   * colocado y girado, y el anclaje está en el mundo.
+   */
+  const estirarCable = (malla: THREE.Object3D, puntoAncla: number[] | undefined, donde: THREE.Vector3) => {
+    const cable = malla.getObjectByName('cable');
+    if (!cable || !puntoAncla) return;
+    const ancla = new THREE.Vector3(puntoAncla[0], puntoAncla[1], puntoAncla[2]);
+    const largo = ancla.distanceTo(donde);
+    cable.scale.set(1, largo, 1);
+    const medio = ancla.clone().add(donde).multiplyScalar(0.5);
+    cable.position.copy(malla.worldToLocal(medio));
+    const haciaAncla = ancla.clone().sub(donde).normalize().applyQuaternion(malla.quaternion.clone().invert());
+    cable.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), haciaAncla);
+  };
 
   function encuadrar(vista: Vista, ancho: number, alto: number) {
     if (!movimiento) return;
@@ -301,6 +332,32 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
       poste.castShadow = true;
       g.add(poste);
     }
+  } else if (def.tipo === 'polea') {
+    /*
+     * POLEA: un agarre atado por un cable a un punto fijo. Es lo que abre los ejercicios que no
+     * caben con pesos libres —el jalón, el press Pallof— y de paso los únicos huecos que quedaban
+     * en el catálogo: un tirón vertical para quien no hace dominadas, y un antirrotación de core.
+     *
+     * El cable se dibuja aquí con largo 1 y se ESTIRA en cada fotograma, porque su largo cambia con
+     * el movimiento: es lo único de la escena que no es un sólido rígido. La alternativa —recalcular
+     * su geometría cada vez— reserva memoria sesenta veces por segundo para nada.
+     */
+    const mango = (def.mango as string) ?? 'barra';
+    const ancho = (def.ancho as number) ?? (mango === 'barra' ? 1.1 : 0.2);
+    g.add(cilindroX(mango === 'barra' ? 0.016 : 0.014, ancho, metal));
+    if (mango === 'barra') {
+      // Los extremos caídos de una barra de jalón: es lo que la distingue de una barra olímpica.
+      for (const s2 of [-1, 1]) {
+        const punta = new THREE.Mesh(new THREE.CylinderGeometry(0.016, 0.016, 0.16, 16), metal);
+        punta.position.set((s2 * ancho) / 2, -0.06, 0);
+        punta.rotation.z = (s2 * Math.PI) / 5;
+        punta.castShadow = true;
+        g.add(punta);
+      }
+    }
+    const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 1, 8), material(COLOR.metal, 0.4, 0.6));
+    cable.name = 'cable';
+    g.add(cable);
   } else if (def.tipo === 'mancuerna') {
     g.add(cilindroX(0.016, 0.14, metal));
     for (const s of [-1, 1]) g.add(cilindroX(0.06, 0.08, material(COLOR.disco, 0.8, 0), s * 0.11));

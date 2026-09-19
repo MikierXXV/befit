@@ -91,7 +91,9 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       if (!imp.solido) continue;
       // La barra no tiene holgura: 1,4 cm de radio no dan para meterse "un poco". El banco sí, porque
       // la espalda de verdad se hunde algo en el acolchado.
-      const holgura = imp.tipo.startsWith('barra') ? 0.002 : HOLGURA_SOLIDO;
+      // Los cilindros finos —barras y agarres de polea— van con holgura de 2 mm: con los 2 cm de
+      // un banco, una mano cerrada sobre una barra de 28 mm no tocaría nunca.
+      const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' ? 0.002 : HOLGURA_SOLIDO;
       // Sin manos: su contacto con un implemento es el agarre o el apoyo, y se revisa en la hoja.
       const dentro = vertices.filter((v) => !v.mano && profundidad(imp, v) > holgura).length;
       if (dentro > 0) fallo(`el cuerpo atraviesa ${nombre}`, `${etiqueta} (${dentro} vértices)`);
@@ -148,8 +150,11 @@ function profundidad(imp, v) {
     const dy = imp.posicion.y + imp.alto - v.y;
     return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
   }
-  if (imp.tipo === 'barra' || imp.tipo === 'barra_fija') {
-    if (Math.abs(v.x - imp.posicion.x) > 1.1) return 0;
+  if (imp.tipo === 'barra' || imp.tipo === 'barra_fija' || imp.tipo === 'polea') {
+    // Cilindro a lo largo de X. El medio ancho sale del implemento cuando lo declara —el agarre de
+    // una polea mide 20 cm, no 2,2 m— para no dar por buena una mano metida en el aire de al lado.
+    const medio = imp.tipo === 'polea' ? ((imp.ancho ?? 1.1) / 2) : 1.1;
+    if (Math.abs(v.x - imp.posicion.x) > medio) return 0;
     const d = Math.hypot(v.y - imp.posicion.y, v.z - imp.posicion.z);
     return Math.max(0, 0.014 - d);
   }
