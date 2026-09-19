@@ -17,11 +17,12 @@
       "relativo_a": "torax",
       "desplazamiento": [
         0,
-        0.1,
+        0.06,
         0.2
       ],
-      "agarre": 0.05,
-      "solido": true
+      "agarre": 0.055,
+      "solido": true,
+      "giro": 90
     }
   },
   "poses": [
@@ -46,9 +47,9 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.45,
+            0.3,
             -1,
-            0.5
+            0.15
           ],
           "cierre": 0.85
         }
@@ -91,9 +92,9 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.45,
+            0.3,
             -1,
-            0.5
+            0.15
           ],
           "cierre": 0.85
         }
@@ -134,9 +135,9 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.45,
+            0.3,
             -1,
-            0.5
+            0.15
           ],
           "cierre": 0.85
         }
@@ -158,5 +159,6 @@
         }
       }
     }
-  ]
+  ],
+  "$comment_agarre": "La mancuerna, en vertical y agarrada con una mano encima de otra: es como se sujeta en una goblet. En horizontal las manos quedaban a 10 cm una de otra y los dos puños se fundían en un bulto, porque un puño de este maniquí mide 9 cm de ancho."
 }

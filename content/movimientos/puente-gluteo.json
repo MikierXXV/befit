@@ -72,11 +72,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.3,
+          0.31,
           0
         ],
         "orientacion": {
-          "inclinacion": -90
+          "inclinacion": -68
         }
       },
       "columna": {
@@ -164,5 +164,6 @@
       }
     }
   ],
-  "$comment_pies": "Los pies a 30 cm de la cadera y no a 42: más lejos, el tobillo pedía 56° de flexión plantar —seis más de lo que da un tobillo— porque la planta está pegada al suelo y la espinilla se tumba. En un puente los pies van debajo de las rodillas."
+  "$comment_pies": "Los pies a 30 cm de la cadera y no a 42: más lejos, el tobillo pedía 56° de flexión plantar —seis más de lo que da un tobillo— porque la planta está pegada al suelo y la espinilla se tumba. En un puente los pies van debajo de las rodillas.",
+  "$comment_puente": "EL PUENTE ES UN GIRO, NO UNA SUBIDA. Antes solo se movía la altura de la pelvis y el maniquí se elevaba entero, hombros incluidos: parecía levitar. Lo que hace un puente es pivotar sobre los hombros, que se quedan en el suelo, así que la pelvis además se inclina —de -90, tumbado del todo, a -68— y sube lo justo para que el hombro siga rozando el suelo."
 }

@@ -548,7 +548,23 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
      */
     const largo = ABAJO.clone().applyQuaternion(Fantebrazo);
     const rumboCuerpo = eje(new Vector3(0, 1, 0), pose.pelvis?.orientacion?.giro ?? 0);
-    const pedido = (enMano.agarre_mango === 'prono' ? new Vector3(1, 0, 0) : DELANTE.clone()).applyQuaternion(rumboCuerpo);
+    /*
+     * El agarre prono es HORIZONTAL y perpendicular al antebrazo, no una dirección fija del cuerpo.
+     *
+     * Con el brazo abierto en cruz, el antebrazo apunta justo adonde apuntaba la dirección pedida y
+     * no quedaba nada que enderezar: el eje del mango salía de la rama de emergencia y una mancuerna
+     * acababa en línea con el brazo mientras la otra cruzaba bien. En el press con mancuernas se veía
+     * a la primera. Con el antebrazo vertical —el bloqueo de arriba— no hay horizontal perpendicular
+     * posible, y ahí sí manda el cuerpo: el mango cruza de hombro a hombro.
+     */
+    const arriba = new Vector3(0, 1, 0);
+    let pedido;
+    if (enMano.agarre_mango === 'prono') {
+      pedido = new Vector3().crossVectors(ABAJO.clone().applyQuaternion(Fantebrazo), arriba);
+      if (pedido.lengthSq() < 0.04) pedido = new Vector3(1, 0, 0).applyQuaternion(rumboCuerpo);
+    } else {
+      pedido = DELANTE.clone().applyQuaternion(rumboCuerpo);
+    }
     const enderezado = pedido.clone().addScaledVector(largo, -pedido.dot(largo));
     /* `ejeMango` y no `eje`: `eje` es la función que construye un giro, y una constante con su
        nombre la deja inaccesible en todo el bloque —incluidas las líneas de ARRIBA, por la zona
@@ -677,13 +693,39 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
  * dobla mucho los nudillos y la falange media, y poco la punta. El pulgar va aparte y menos, porque
  * se opone al resto en lugar de curvarse con ellos.
  */
-const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [22, 30, 22] };
+const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [26, 34, 24] };
 function cerrarMano(esq, l, cierre) {
   if (!cierre) return;
+  /*
+   * EL EJE DEL PULGAR SE CALCULA; EL DE LOS DEDOS SE SABE.
+   *
+   * Los cuatro dedos se doblan alrededor de la X de su propio hueso en las dos manos, y con eso
+   * basta. El pulgar no: sale del lado de la palma y se opone al resto, así que su eje de flexión
+   * depende de hacia dónde mire la palma —y eso es distinto en cada mano—. Con la X de siempre, un
+   * pulgar se cerraba bien y el otro se abría hacia fuera y cruzaba el puño por el medio; en el
+   * primer plano de la sentadilla salía un dedo atravesando la mano. Probar con el signo cambiado
+   * no arregla nada: solo cambia de mano el problema.
+   *
+   * Lo que sí vale es no suponerlo: el pulgar se dobla alrededor de la perpendicular a su propio
+   * hueso y a la normal de la palma, que es la definición de "cerrarse hacia la palma", y eso sale
+   * bien en las dos manos sin casos especiales.
+   */
+  const mano = esq.huesos[`mano_${l}`];
+  const marcoMano = mano.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(mano).clone().invert());
+  const palma = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(marcoMano);
+
   for (const h of esq.huesos[`falanges_${l}`]) {
     const pulgar = h.name.includes('thumb');
     const n = Number(h.name.match(/0(\d)/)[1]) - 1;
-    h.quaternion.multiply(eje(new Vector3(1, 0, 0), CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre));
+    let ejeDedo = new Vector3(1, 0, 0);
+    if (pulgar) {
+      const mundo = h.getWorldQuaternion(new Quaternion());
+      const largo = new Vector3(0, 1, 0).applyQuaternion(mundo);
+      const giro = new Vector3().crossVectors(palma, largo);
+      // Si el pulgar apunta justo a donde mira la palma no hay plano que valga; ahí da igual.
+      if (giro.lengthSq() > 1e-6) ejeDedo = giro.normalize().applyQuaternion(mundo.invert());
+    }
+    h.quaternion.multiply(eje(ejeDedo, CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre));
   }
 }
 
@@ -711,6 +753,13 @@ function colocarImplementos(esq, pose, definicion, marcos) {
       const origen = estado.relativo_a === 'torax' ? posicion(esq.huesos.columna[2]) : posicion(esq.huesos.pelvis);
       pos = origen.add(v3(estado.desplazamiento ?? [0, 0, 0]).applyQuaternion(marco));
       orientacion = marco.clone();
+      /*
+       * `giro`: cuánto se tumba el implemento respecto al cuerpo que lo lleva, alrededor del eje
+       * que mira adelante. Existe por la sentadilla goblet: una mancuerna se agarra de pie, en
+       * vertical y con las dos manos una encima de otra. En horizontal, las manos caen a 10 cm una
+       * de otra —y un puño de este maniquí mide 9 de ancho—, así que se fundían en un solo bulto.
+       */
+      if (estado.giro) orientacion.multiply(eje(new Vector3(0, 0, 1), estado.giro));
     }
     salida[nombre] = { ...estado, posicion: pos, orientacion };
   }
