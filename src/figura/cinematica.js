@@ -28,18 +28,21 @@ const SIGNO = { i: 1, d: -1 };
 const RADIO_BARRA = 0.014;
 
 /*
- * DÓNDE CAE EL HUECO DEL PUÑO, medido con `scripts` sobre el propio modelo y no a ojo.
+ * DÓNDE CAE EL HUECO DEL PUÑO. Medido sobre el modelo, no estimado, y en dos pasadas:
  *
- * Con la mano cerrada, los nudillos de los cuatro dedos quedan a 12 cm de la muñeca y la segunda
- * falange a 14,8: el hueco por donde pasa un mango está entre los dos, a 13, y hundido 2 cm hacia
- * el lado de la palma. El valor anterior era 5 cm —medio palmo, puesto a ojo—, y con él la barra
- * cruzaba por la MUÑECA mientras el puño se cerraba en el aire por encima. En el press de banca y
- * en el militar, que se miran de frente, cantaba.
+ *  1. La primera miró dónde queda cada falange y puso el agarre "entre el nudillo y la segunda".
+ *     Mejor que el medio palmo que había antes, pero seguía sin cuadrar: lo que importa no es dónde
+ *     está cada hueso, sino el centro del ARO que forman los tres al curvarse.
+ *  2. La segunda calcula ese centro —el circuncentro de nudillo, falange media y punta— y sale otra
+ *     cosa: 11,3 cm de avance, no 13, y bastante más hundido hacia la palma.
  *
- * Es la misma medida para la barra y para la mancuerna: un puño cerrado es un puño cerrado.
+ * El avance NO depende de cuánto se cierre la mano: el centro del aro se queda en la línea de los
+ * nudillos pase lo que pase. El hondo sí, y mucho —de 4,5 cm con la mano entreabierta a 3,2 con el
+ * puño cerrado del todo—, porque al cerrarse el aro se hace pequeño y su centro sube hacia la
+ * palma. La recta está ajustada sobre cuatro medidas entre 0,7 y 1.
  */
-const AVANCE_AGARRE = 0.13;
-const HONDO_AGARRE = 0.02;
+const AVANCE_AGARRE = 0.113;
+const hondoAgarre = (cierre) => 0.0753 - 0.0433 * cierre;
 /** Grosor de la almohadilla del pie: lo que queda entre la articulación de los dedos y el suelo. */
 const ALTURA_ALMOHADILLA = 0.028;
 
@@ -433,9 +436,15 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
         const palma = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(F);
         // Del centro de la palma a la muñeca: medio palmo hacia atrás y el radio de la barra más
         // el grosor de la mano hacia el lado contrario al que mira la palma.
+        /*
+         * El signo se comprobó de dos formas, y las dos hacían falta: renderizando las dos
+         * versiones —con la contraria la barra se despega y flota por encima de los dedos— y
+         * midiendo el aro con los MISMOS vectores que usa esta función. Medirlo reconstruyendo el
+         * marco de la mano desde el hueso daba el signo cambiado y mandó media tarde al garete.
+         */
         const objetivo = agarre.clone()
           .addScaledVector(largo, -AVANCE_AGARRE)
-          .addScaledVector(palma, -HONDO_AGARRE);
+          .addScaledVector(palma, -hondoAgarre(m.cierre ?? 0.8));
         /*
          * Y UNA MANO NO LLEGA MÁS LEJOS QUE SU BRAZO.
          *
@@ -550,7 +559,9 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     enMano.eje = ejeMango;
     // El mango, en el hueco de la palma: a medio palmo de la muñeca y hundido hacia el lado de la
     // palma lo que mide el propio mango, o los dedos se cierran por detrás de él.
-    enMano.punto = posicion(huesos[`mano_${l}`]).addScaledVector(largo, AVANCE_AGARRE).addScaledVector(palma, HONDO_AGARRE);
+    enMano.punto = posicion(huesos[`mano_${l}`])
+      .addScaledVector(largo, AVANCE_AGARRE)
+      .addScaledVector(palma, hondoAgarre(m.cierre ?? 0.8));
   } else {
     orientar(esq, huesos[`mano_${l}`], Fantebrazo);
   }
