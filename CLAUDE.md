@@ -52,6 +52,10 @@ npm run metricas              # métricas de la tipografía de respaldo, al camb
 `hoja`, `carteles`, `auditar`, `capturar` y `alineacion` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.
 
+Y `carteles` escribe en `public/`, que solo entra en `dist/` al compilar: **después de generar
+carteles hay que volver a compilar** antes de capturar, o las capturas enseñan los carteles viejos.
+Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas seguidas.
+
 ## Al añadir una ficha
 
 1. JSON en `content/es/fichas/` **y** en `content/en/fichas/`, con `orden` contiguo dentro del grupo.

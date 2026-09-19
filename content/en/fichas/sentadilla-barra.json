@@ -1,7 +1,7 @@
 {
   "id": "sentadilla-barra",
   "grupo_id": "sentadilla",
-  "orden": 1,
+  "orden": 2,
   "nombre": "Barbell back squat",
   "resumen": "The bar rests on the traps and the body goes down until the thighs are parallel to the floor. It works quads and glutes while the torso holds the load.",
   "movimiento_id": "sentadilla-barra",

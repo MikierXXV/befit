@@ -36,7 +36,7 @@ No «que se mueva»: que un entrenador no señale nada raro.
 
 ## Fase 2 — El catálogo ✅ (con hueco reconocido)
 
-- ✅ Once ejercicios, en los dos idiomas, con maniquí los once.
+- ✅ Catorce ejercicios, en los dos idiomas, con maniquí los catorce.
 - ✅ Ocho patrones cubiertos: sentadilla, bisagra, zancada, empuje horizontal (×2), empuje vertical,
   tirón horizontal, tirón vertical, core.
 - ✅ Buscar, filtrar por grupo/material/nivel/músculo, favoritos y enlace para llevárselos.
@@ -46,6 +46,11 @@ No «que se mueva»: que un entrenador no señale nada raro.
   accesible al tirón vertical —la dominada pasa a ser el segundo del grupo— y el press Pallof mete
   el antirrotación que le faltaba al core. Los dos salen de un implemento nuevo, la polea, que es lo
   que abre la familia entera de ejercicios que no se hacen con peso libre.
+- ✅ **Ningún grupo empieza en intermedio** salvo tirón horizontal: la sentadilla goblet, el puente
+  de glúteo y el press militar con mancuernas dan entrada inicial a sus tres grupos, y el ejercicio
+  con barra de cada uno pasa a segundo.
+- ⬜ Falta una entrada inicial en **tirón horizontal** (remo invertido) y **zancada** (zancada
+  inversa), y el catálogo estaría completo por abajo.
 - ⬜ Los roles musculares siguen derivados a mano, ficha a ficha.
 
 ## Fase 3 — Que parezca producto terminado ✅

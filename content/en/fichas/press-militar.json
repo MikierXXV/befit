@@ -1,7 +1,7 @@
 {
   "id": "press-militar",
   "grupo_id": "empuje-vertical",
-  "orden": 1,
+  "orden": 2,
   "nombre": "Barbell overhead press",
   "resumen": "Standing, the bar goes from the shoulders to overhead. The whole trunk works to avoid arching while the shoulders press.",
   "movimiento_id": "press-militar",

@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-goblet",
+  "grupo_id": "sentadilla",
+  "orden": 1,
+  "nombre": "Sentadilla goblet con mancuerna",
+  "resumen": "Una sola mancuerna sujeta contra el pecho y una sentadilla completa. El peso por delante obliga al tronco a mantenerse erguido, y por eso es con la que se aprende el patrón.",
+  "movimiento_id": "sentadilla-goblet",
+  "ejecucion": [
+    "Sujeta una mancuerna contra el pecho con las dos manos y los codos por dentro.",
+    "Pies a la anchura de los hombros, con las puntas ligeramente hacia fuera.",
+    "Baja doblando cadera y rodillas a la vez, con las rodillas siguiendo la línea de los pies.",
+    "Baja hasta donde puedas mantener la espalda recta: el peso delante ayuda a no irse hacia delante.",
+    "Sube empujando el suelo, sin que la mancuerna se separe del pecho."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "Colocar la carga delante cambia la exigencia respecto a la sentadilla con barra detrás, pero no hay una respuesta cerrada sobre cuánto: depende de la carga y de la profundidad, y los estudios de activación comparan sobre todo variantes con barra.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

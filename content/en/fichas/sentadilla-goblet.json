@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-goblet",
+  "grupo_id": "sentadilla",
+  "orden": 1,
+  "nombre": "Goblet squat",
+  "resumen": "One dumbbell held against the chest and a full squat. The weight up front keeps the trunk upright, which is why this is the one people learn the pattern with.",
+  "movimiento_id": "sentadilla-goblet",
+  "ejecucion": [
+    "Hold a dumbbell against your chest with both hands, elbows tucked in.",
+    "Feet shoulder-width apart, toes turned slightly out.",
+    "Go down bending hips and knees together, knees tracking over your feet.",
+    "Go as low as you can keep your back flat: the weight in front helps you not tip forward.",
+    "Come up by pushing the floor away, keeping the dumbbell against your chest."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "Holding the load in front changes the demand compared with a back squat, but there is no settled answer on how much: it depends on load and depth, and activation studies mostly compare barbell variations.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub and Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

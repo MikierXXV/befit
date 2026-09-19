@@ -1,7 +1,7 @@
 {
   "id": "press-militar",
   "grupo_id": "empuje-vertical",
-  "orden": 1,
+  "orden": 2,
   "nombre": "Press militar con barra",
   "resumen": "De pie, la barra sube desde los hombros hasta quedar encima de la cabeza. El tronco entero trabaja para no arquearse mientras los hombros empujan.",
   "movimiento_id": "press-militar",

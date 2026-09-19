@@ -1,0 +1,41 @@
+{
+  "id": "puente-gluteo",
+  "grupo_id": "bisagra-cadera",
+  "orden": 1,
+  "nombre": "Glute bridge",
+  "resumen": "Lying on your back with knees bent, the hips rise until knees, hips and shoulders line up. It is the hip hinge with no load and no technique to learn: the way into the group.",
+  "movimiento_id": "puente-gluteo",
+  "ejecucion": [
+    "Lie on your back with knees bent and feet flat, about a hand-span from your glutes.",
+    "Arms by your sides, resting on the floor.",
+    "Squeeze your glutes and lift your hips until knee, hip and shoulder are in line.",
+    "Do not go higher: anything beyond that comes from arching your back, not from the glutes.",
+    "Lower slowly until you brush the floor and start again without resting at the bottom."
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "aductores"
+    ]
+  },
+  "matices": "In the cited study the barbell glute bridge showed more gluteal activation than the hip thrust, which is the opposite of what is usually said. That is activation within a set, not growth over months, and the hip thrust lets you move a good deal more weight.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic differences of the gluteus maximus, gluteus medius, biceps femoris, and vastus lateralis between the barbell hip thrust and barbell glute bridge",
+      "autor": "Kennedy et al., Sports Biomechanics, 2022",
+      "url": "https://doi.org/10.1080/14763141.2022.2074875"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

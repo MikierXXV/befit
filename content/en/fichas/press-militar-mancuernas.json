@@ -1,0 +1,46 @@
+{
+  "id": "press-militar-mancuernas",
+  "grupo_id": "empuje-vertical",
+  "orden": 1,
+  "nombre": "Dumbbell overhead press",
+  "resumen": "Standing, both dumbbells go from shoulder height to overhead. Each arm works on its own, so you start with less weight and more control.",
+  "movimiento_id": "press-militar-mancuernas",
+  "ejecucion": [
+    "Stand with feet hip-width apart and dumbbells at shoulder height, palms facing forward.",
+    "Squeeze glutes and abs so your back does not arch.",
+    "Press up until your arms are straight, with the dumbbells over your head and not in front of it.",
+    "Lower under control to the shoulders, without letting your wrists bend back."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "You lift less weight with dumbbells than with a barbell, and measured deltoid activation is still slightly higher: that is the price of stabilising each side separately. That is activation, not growth — they are not the same thing.",
+  "fuentes": [
+    {
+      "titulo": "Effects of Body Position and Loading Modality on Muscle Activity and Strength in Shoulder Presses",
+      "autor": "Saeterbakken and Fimland, J Strength Cond Res, 2013",
+      "url": "https://doi.org/10.1519/JSC.0b013e318276b873"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

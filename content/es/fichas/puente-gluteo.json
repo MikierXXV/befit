@@ -1,0 +1,41 @@
+{
+  "id": "puente-gluteo",
+  "grupo_id": "bisagra-cadera",
+  "orden": 1,
+  "nombre": "Puente de glúteo",
+  "resumen": "Tumbado boca arriba con las rodillas dobladas, la cadera sube hasta alinear rodillas, cadera y hombros. Es la bisagra de cadera sin carga y sin técnica que aprender: la puerta de entrada al grupo.",
+  "movimiento_id": "puente-gluteo",
+  "ejecucion": [
+    "Túmbate boca arriba con las rodillas dobladas y los pies apoyados, a un palmo del glúteo.",
+    "Brazos a los lados, apoyados en el suelo.",
+    "Aprieta el glúteo y sube la cadera hasta que rodilla, cadera y hombro queden en línea.",
+    "No subas más: lo que sobra sale de arquear la espalda, no del glúteo.",
+    "Baja despacio hasta rozar el suelo y vuelve a empezar sin descansar abajo."
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "aductores"
+    ]
+  },
+  "matices": "En el trabajo citado, el puente con barra midió más activación de glúteo que el hip thrust, que es lo contrario de lo que suele decirse. La medida es de activación en una serie, no de crecimiento a lo largo de meses, y el hip thrust permite mover bastante más peso.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic differences of the gluteus maximus, gluteus medius, biceps femoris, and vastus lateralis between the barbell hip thrust and barbell glute bridge",
+      "autor": "Kennedy et al., Sports Biomechanics, 2022",
+      "url": "https://doi.org/10.1080/14763141.2022.2074875"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

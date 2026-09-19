@@ -1,0 +1,46 @@
+{
+  "id": "press-militar-mancuernas",
+  "grupo_id": "empuje-vertical",
+  "orden": 1,
+  "nombre": "Press militar con mancuernas",
+  "resumen": "De pie, las dos mancuernas suben desde los hombros hasta quedar por encima de la cabeza. Cada brazo va por su lado, así que se empieza con menos peso y más control.",
+  "movimiento_id": "press-militar-mancuernas",
+  "ejecucion": [
+    "De pie, pies a la anchura de las caderas y mancuernas a la altura de los hombros, con las palmas hacia delante.",
+    "Aprieta glúteos y abdomen para que la espalda no se arquee.",
+    "Empuja hacia arriba hasta estirar los brazos, con las mancuernas encima de la cabeza y no por delante.",
+    "Baja controlando hasta los hombros, sin que las muñecas se doblen hacia atrás."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "Con mancuernas se levanta menos peso que con barra, y aun así la activación del deltoides medida es algo mayor: es el precio de tener que estabilizar cada lado por separado. Eso es activación, no crecimiento: no es lo mismo.",
+  "fuentes": [
+    {
+      "titulo": "Effects of Body Position and Loading Modality on Muscle Activity and Strength in Shoulder Presses",
+      "autor": "Saeterbakken y Fimland, J Strength Cond Res, 2013",
+      "url": "https://doi.org/10.1519/JSC.0b013e318276b873"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
