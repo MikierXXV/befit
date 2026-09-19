@@ -15,7 +15,7 @@
     "barra": {
       "tipo": "polea",
       "mango": "puno",
-      "ancho": 0.22,
+      "ancho": 0.3,
       "ancla": [
         -1.5,
         1.2,
@@ -26,7 +26,7 @@
         1.15,
         0.23
       ],
-      "agarre": 0.05,
+      "agarre": 0.1,
       "solido": true
     }
   },
@@ -186,5 +186,5 @@
       }
     }
   ],
-  "$comment_agarre": "El agarre no llega a tocar el esternón: con la mano cerrada alrededor, el puño ocupa sitio y el validador contaba dos vértices del pecho dentro del mango."
+  "$comment_agarre": "El agarre estaba a 5 cm del centro y los dos puños se metían uno dentro del otro: un puño de este maniquí mide 9 cm de ancho. Con el mango de 30 cm y las manos a 20 una de otra, se ve lo que es —las dos manos en la misma barra— y no hay carne atravesando carne. El agarre no llega a tocar el esternón por lo mismo: el puño ocupa sitio."
 }

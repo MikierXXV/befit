@@ -35,8 +35,8 @@
       ],
       "posicion": [
         0,
-        1.85,
-        0.2
+        1.64,
+        0.14
       ],
       "agarre": 0.33,
       "solido": true
@@ -70,8 +70,8 @@
         "barra": {
           "posicion": [
             0,
-            1.85,
-            0.2
+            1.64,
+            0.14
           ]
         }
       },
@@ -124,7 +124,7 @@
         "barra": {
           "posicion": [
             0,
-            1.14,
+            1.05,
             0.26
           ]
         }
@@ -176,8 +176,8 @@
         "barra": {
           "posicion": [
             0,
-            1.85,
-            0.2
+            1.64,
+            0.14
           ]
         }
       },
@@ -209,5 +209,6 @@
         }
       }
     }
-  ]
+  ],
+  "$comment_altura": "Sentado, el hombro queda a 1,07 m —medio metro por debajo de cuando está de pie—, así que el brazo estirado llega al agarre a 1,58. Con la barra a 1,85 se quedaba a 20 cm y el maniquí la soltaba: la cinemática acerca el objetivo a lo que el brazo alcanza, y la mano se iba sola."
 }
