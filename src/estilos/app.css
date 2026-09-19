@@ -740,17 +740,32 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 .vacio p { margin: 0; max-width: var(--medida-corta); }
 
 /*
- * El aviso de salud va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por
- * enlace directo —es lo que hace el botón de compartir— y quien entra así no pasa por la portada.
+ * El pie. Va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por enlace
+ * directo —es lo que hace el botón de compartir— y quien entra así no pasa por la portada.
+ *
+ * Tres bloques en orden de urgencia: el aviso de salud primero y con el texto normal, porque es lo
+ * único del pie que alguien tiene que leer; los derechos y las licencias después y más pequeños.
  */
-.aviso {
+.pie {
   margin-block: var(--e12) var(--e8);
-  padding-top: var(--e4);
+  padding-top: var(--e6);
   border-top: 1px solid var(--separador);
+  display: grid;
+  gap: var(--e4);
   color: var(--texto-secundario);
   font-size: var(--t-pequeno);
-  max-width: var(--medida-texto);
 }
+.pie .salud { margin: 0; max-width: var(--medida-texto); }
+.pie .legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e2) var(--e4);
+  align-items: baseline;
+  margin: 0;
+  font-size: var(--t-micro);
+}
+/* Los créditos, más apagados que los derechos: son obligatorios, no protagonistas. */
+.pie .creditos { color: color-mix(in oklab, var(--texto-secundario) 78%, var(--fondo)); }
 
 /*
  * El salto al contenido, visible solo con teclado: sin él, quien navega tabulando recorre el panel

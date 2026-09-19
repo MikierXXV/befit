@@ -26,7 +26,20 @@ const SUFIJO = { i: 'L', d: 'R' };
 const SIGNO = { i: 1, d: -1 };
 
 const RADIO_BARRA = 0.014;
-const LARGO_PALMA = 0.05;
+
+/*
+ * DÓNDE CAE EL HUECO DEL PUÑO, medido con `scripts` sobre el propio modelo y no a ojo.
+ *
+ * Con la mano cerrada, los nudillos de los cuatro dedos quedan a 12 cm de la muñeca y la segunda
+ * falange a 14,8: el hueco por donde pasa un mango está entre los dos, a 13, y hundido 2 cm hacia
+ * el lado de la palma. El valor anterior era 5 cm —medio palmo, puesto a ojo—, y con él la barra
+ * cruzaba por la MUÑECA mientras el puño se cerraba en el aire por encima. En el press de banca y
+ * en el militar, que se miran de frente, cantaba.
+ *
+ * Es la misma medida para la barra y para la mancuerna: un puño cerrado es un puño cerrado.
+ */
+const AVANCE_AGARRE = 0.13;
+const HONDO_AGARRE = 0.02;
 /** Grosor de la almohadilla del pie: lo que queda entre la articulación de los dedos y el suelo. */
 const ALTURA_ALMOHADILLA = 0.028;
 
@@ -323,7 +336,7 @@ function resolverPunto(esq, spec, lado, implementos, raiz) {
     // El objetivo es la MUÑECA, y la barra tiene que cruzar la PALMA: por eso se suma también el
     // medio palmo que va de la muñeca al centro de la mano. Sin ese sumando, el primer plano
     // enseñaba el puño cerrado al lado de la barra y la barra a la altura de la muñeca.
-    return agarre.addScaledVector(radial, RADIO_BARRA + 0.03 + LARGO_PALMA);
+    return agarre.addScaledVector(radial, AVANCE_AGARRE);
   }
   if (spec.objetivo === 'banco') {
     const banco = implementos.banco;
@@ -421,8 +434,8 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
         // Del centro de la palma a la muñeca: medio palmo hacia atrás y el radio de la barra más
         // el grosor de la mano hacia el lado contrario al que mira la palma.
         const objetivo = agarre.clone()
-          .addScaledVector(largo, -LARGO_PALMA)
-          .addScaledVector(palma, -(RADIO_BARRA + 0.03));
+          .addScaledVector(largo, -AVANCE_AGARRE)
+          .addScaledVector(palma, -HONDO_AGARRE);
         /*
          * Y UNA MANO NO LLEGA MÁS LEJOS QUE SU BRAZO.
          *
@@ -537,7 +550,7 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     enMano.eje = ejeMango;
     // El mango, en el hueco de la palma: a medio palmo de la muñeca y hundido hacia el lado de la
     // palma lo que mide el propio mango, o los dedos se cierran por detrás de él.
-    enMano.punto = posicion(huesos[`mano_${l}`]).addScaledVector(largo, LARGO_PALMA).addScaledVector(palma, 0.032);
+    enMano.punto = posicion(huesos[`mano_${l}`]).addScaledVector(largo, AVANCE_AGARRE).addScaledVector(palma, HONDO_AGARRE);
   } else {
     orientar(esq, huesos[`mano_${l}`], Fantebrazo);
   }

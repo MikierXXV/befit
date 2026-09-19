@@ -130,5 +130,9 @@
   },
   "aviso": {
     "salud": "Esto explica cómo se hace un ejercicio, no si te conviene a ti. Si tienes una lesión, dolor o cualquier condición médica, consúltalo antes con un profesional."
+  },
+  "pie": {
+    "derechos": "© {anio} befit",
+    "creditos": "Maniquí 3D de Quaternius (CC0) · Mapa muscular de body-muscles (Apache 2.0) · Tipografías Inter y Newsreader (SIL OFL)"
   }
 }

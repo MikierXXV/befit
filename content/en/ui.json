@@ -126,5 +126,9 @@
   },
   "aviso": {
     "salud": "This explains how an exercise is done, not whether it suits you. If you have an injury, pain or any medical condition, check with a professional first."
+  },
+  "pie": {
+    "derechos": "© {anio} befit",
+    "creditos": "3D figure by Quaternius (CC0) · Muscle map from body-muscles (Apache 2.0) · Inter and Newsreader typefaces (SIL OFL)"
   }
 }

@@ -416,10 +416,24 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
 /* ----------------------------------------------------------------- común -- */
 
 /*
- * El aviso va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por enlace
- * directo —es lo que hace el botón de compartir— y quien entra así no pasa por ninguna portada.
+ * El pie, en TODAS las pantallas. No solo en el catálogo: a una ficha se llega por enlace directo
+ * —es lo que hace el botón de compartir— y quien entra así no pasa por ninguna portada.
+ *
+ * Lleva tres cosas y las tres tienen que estar: el aviso de salud, de quién es esto, y de quién es
+ * lo que no es nuestro. Lo último no es cortesía: el maniquí es CC0, el mapa muscular Apache 2.0 y
+ * las tipografías OFL, y las tres licencias piden que se diga.
+ *
+ * El año se calcula, no se escribe: un pie que dice 2026 en 2028 es la señal más barata de que un
+ * sitio está abandonado.
  */
-const aviso = (): string => `<p class="aviso">${t('aviso.salud')}</p>`;
+const aviso = (): string => `
+  <footer class="pie">
+    <p class="salud">${t('aviso.salud')}</p>
+    <p class="legal">
+      <span>${t('pie.derechos').replace('{anio}', String(new Date().getFullYear()))}</span>
+      <span class="creditos">${t('pie.creditos')}</span>
+    </p>
+  </footer>`;
 
 function cabecera(ruta: Ruta): string {
   return `
