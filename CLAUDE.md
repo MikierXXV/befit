@@ -45,9 +45,11 @@ npm run hoja                  # hoja de revisión de cada movimiento → captura
 npm run carteles              # carteles del catálogo → public/carteles/
 npm run auditar               # presupuestos de rendimiento, sobre el build servido
 npm run capturar              # recorre el sitio en 2 temas × 2 anchos y caza errores mudos
+npm run alineacion            # centrados, alturas, carril izquierdo y desbordes. Bloquea.
+npm run metricas              # métricas de la tipografía de respaldo, al cambiar de fuente
 ```
 
-`hoja`, `carteles`, `auditar` y `capturar` necesitan el sitio compilado y servido:
+`hoja`, `carteles`, `auditar`, `capturar` y `alineacion` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.
 
 ## Al añadir una ficha
