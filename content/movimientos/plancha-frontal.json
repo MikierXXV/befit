@@ -10,7 +10,8 @@
   },
   "$comment_camara": "Sin `detalle`: no hay agarre, el apoyo es el antebrazo entero y eso se ve mejor de lado que en un primer plano de la muñeca.",
   "camara": {
-    "vista": "lateral"
+    "vista": "lateral",
+    "proporcion": "16 / 9"
   },
   "poses": [
     {

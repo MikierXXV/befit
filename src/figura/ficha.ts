@@ -34,7 +34,16 @@ export async function montarFigura(
    */
   const parametros = new URLSearchParams(location.search);
   const cartel = parametros.has('cartel');
-  if (cartel) contenedor.classList.add('cartel');
+  if (cartel) {
+    contenedor.classList.add('cartel');
+    /*
+     * Y la página entera sin fondo. `omitBackground` de Playwright solo recorta lo que el navegador
+     * no ha pintado: con el `background` del body puesto, el PNG sale con el color del tema en el
+     * que se generó, y esos carteles claros sobre el tema oscuro eran nueve rectángulos blancos.
+     */
+    document.documentElement.style.background = 'transparent';
+    document.body.style.background = 'transparent';
+  }
 
   contenedor.innerHTML = `
     <div class="escenario">
@@ -43,10 +52,13 @@ export async function montarFigura(
       <div class="controles">
         <button type="button" data-accion="pausa" aria-pressed="false">${t('figura.pausa')}</button>
         <span class="grupo" role="group" aria-label="${t('figura.velocidad')}">
+          <span class="rotulo">${t('figura.velocidad')}</span>
           <button type="button" data-velocidad="0.5">½×</button>
           <button type="button" data-velocidad="1" aria-pressed="true">1×</button>
         </span>
-        <span class="grupo vistas" role="group" aria-label="${t('figura.vista')}"></span>
+        <span class="grupo vistas" role="group" aria-label="${t('figura.vista')}">
+          <span class="rotulo">${t('figura.vista')}</span>
+        </span>
       </div>
     </div>
     <div class="musculos">
@@ -61,7 +73,9 @@ export async function montarFigura(
 
   const grupoVistas = contenedor.querySelector('.vistas')!;
   let vista: Vista = (parametros.get('vista') as Vista) ?? mov.camara.vista;
-  grupoVistas.replaceChildren(...vistasDe(mov).map((v) => {
+  // Se conserva el rótulo del grupo al rellenarlo con los botones de vista.
+  const rotuloVistas = grupoVistas.querySelector('.rotulo')!;
+  grupoVistas.replaceChildren(rotuloVistas, ...vistasDe(mov).map((v) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.dataset.vista = v;
@@ -73,6 +87,13 @@ export async function montarFigura(
   pintarMapa(contenedor.querySelector<HTMLElement>('.mapas')!, ficha.musculos ?? {});
   contenedor.querySelector('.leyenda')!.innerHTML = (['principal', 'sinergista', 'estabilizador'] as Rol[])
     .map((rol) => `<li><span class="muestra ${rol}"></span>${t(`figura.roles.${rol}`)}</li>`).join('');
+  /*
+   * De dónde salen los roles, dicho una vez y en todas las fichas. Sin esta línea, un reparto de
+   * manual puesto al lado de una fuente de electromiografía se lee como si fuera una medición, y
+   * ninguna ficha lo desmiente salvo la que se acordó de escribirlo en su texto.
+   */
+  contenedor.querySelector('.musculos')!.insertAdjacentHTML('beforeend',
+    `<p class="nota-roles">${t('figura.roles_origen')}</p>`);
 
   let velocidad = 1;
   let pausado = cartel;

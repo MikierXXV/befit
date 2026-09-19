@@ -54,7 +54,19 @@
       "soleo": "Sóleo",
       "flexores_cadera": "Flexores de la cadera"
     },
-    "sin_maniqui": "Sin maniquí todavía"
+    "sin_maniqui": "Sin maniquí todavía",
+    "mas_filtros": "Más filtros",
+    "limpiar": "Limpiar filtros",
+    "ver_todos": "Ver el catálogo entero",
+    "$comment_material": "Los nombres visibles del material los pone CADA PROYECTO, porque el material es suyo. Si falta una clave, el catálogo enseña el valor crudo (\"mancuerna\") y en inglés se nota enseguida.",
+    "material": {
+      "barra": "Barra",
+      "barra-fija": "Barra fija",
+      "mancuerna": "Mancuerna",
+      "banco": "Banco",
+      "rack": "Soporte"
+    },
+    "saltar": "Saltar a los resultados"
   },
   "ficha": {
     "volver": "← Volver al catálogo",
@@ -70,7 +82,8 @@
     "quitar": "Quitar {nombre} de favoritos",
     "vacio": "Aún no has guardado nada. La estrella de cada ficha lo guarda en este dispositivo.",
     "compartir": "Copiar enlace de mi selección",
-    "copiado": "Enlace copiado"
+    "copiado": "Enlace copiado",
+    "entradilla": "Lo que has guardado en este dispositivo."
   },
   "figura": {
     "pausa": "Pausa",
@@ -102,7 +115,8 @@
       "frente": "De frente",
       "espalda": "De espalda"
     },
-    "sin_destacados": "sin músculos destacados"
+    "sin_destacados": "sin músculos destacados",
+    "roles_origen": "Los roles describen el gesto según los manuales de técnica. No son una medición de cuánto trabaja cada músculo: eso depende de la variante, de la carga y de cómo se mida."
   },
   "aviso": {
     "salud": "Esto explica cómo se hace un ejercicio, no si te conviene a ti. Si tienes una lesión, dolor o cualquier condición médica, consúltalo antes con un profesional."

@@ -6,14 +6,17 @@
   "resumen": "Lying on the bench, the bar comes down to the chest and is pressed back up. It is the reference horizontal push for chest, triceps and front delts.",
   "movimiento_id": "press-banca",
   "ejecucion": [
-    "Lie on the bench with your feet on the floor and your shoulder blades pinched against the pad.",
-    "Grip the bar slightly wider than your shoulders, wrists straight.",
-    "Lower the bar to your chest under control, elbows about 45-60 degrees from the body.",
-    "Press the bar up until the arms are straight, without lifting your back off the bench."
+    "Set the safety pins at chest height, or have someone spot you: getting stuck under the bar is the serious accident in this lift.",
+    "Lie on the bench with your feet on the floor and your shoulder blades pinched against the bench.",
+    "Grip the bar slightly wider than your shoulders, wrists straight, and unrack it until it sits over your shoulders.",
+    "Lower the bar to your chest under control, elbows about 45-60 degrees away from your torso.",
+    "Press the bar up until the arms are straight, without lifting your back off the bench.",
+    "When the set is done, bring the bar back to the rack and make sure it is resting before you let go."
   ],
   "material": [
     "barra",
-    "banco"
+    "banco",
+    "rack"
   ],
   "nivel": "intermedio",
   "musculos": {
@@ -28,15 +31,15 @@
       "biceps"
     ]
   },
-  "matices": "On a flat bench, chest and triceps show similar activation and the front delt sits below them. What shifts the balance most is not the grip: it is the bench angle.",
+  "matices": "What shifts the balance between chest, triceps and front delt is the bench angle: that is what the cited study measured, with a fixed grip. What happens when the grip changes, that work does not say.",
   "fuentes": [
     {
       "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
-      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes y Muyor, Int J Environ Res Public Health, 2020",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes and Muyor, Int J Environ Res Public Health, 2020",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
     },
     {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
     }
   ]

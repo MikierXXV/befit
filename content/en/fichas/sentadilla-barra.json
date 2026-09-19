@@ -6,11 +6,13 @@
   "resumen": "The bar rests on the traps and the body goes down until the thighs are parallel to the floor. It works quads and glutes while the torso holds the load.",
   "movimiento_id": "sentadilla-barra",
   "ejecucion": [
+    "Set the rack at chest height and the safety pins below the depth you plan to reach.",
     "Rest the bar on your traps, never on your neck, and grip it slightly wider than your shoulders.",
-    "Set your feet shoulder-width apart, toes slightly out.",
+    "Stand the bar up and take two steps back, feet shoulder-width apart, toes slightly out.",
     "Send the hips back and bend hips and knees together, knees tracking over the feet.",
-    "Go down until the thighs are parallel to the floor, keeping the bar over the mid-foot.",
-    "Stand up by driving the floor away, without letting the hips rise ahead of the chest."
+    "Go down until the thighs are parallel to the floor, with the weight spread across the whole foot.",
+    "Stand up by driving the floor away, without letting the hips rise ahead of the chest.",
+    "When you finish, walk forward until the bar meets the rack and let it rest there."
   ],
   "material": [
     "barra",
@@ -36,11 +38,11 @@
   "fuentes": [
     {
       "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
-      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "autor": "Straub and Powers, Int J Sports Phys Ther, 2024",
       "url": "https://ijspt.scholasticahq.com/article/94600-a-biomechanical-review-of-the-squat-exercise-implications-for-clinical-practice"
     },
     {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
     }
   ]

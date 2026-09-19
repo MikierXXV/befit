@@ -24,7 +24,7 @@ export function vistasDe(mov: Movimiento): Vista[] {
 
 export interface Movimiento {
   duracion: number;
-  camara: { vista: Vista; detalle?: string };
+  camara: { vista: Vista; detalle?: string; proporcion?: string };
   implementos?: Record<string, { tipo: string; [k: string]: unknown }>;
   poses: Array<{ t: number; etiqueta?: string; [k: string]: unknown }>;
 }
@@ -39,8 +39,19 @@ const COLOR = {
   metal: 0x3b3f45,
   disco: 0x22252a,
   banco: 0x4a4f57,
-  suelo: 0xe9e6e1,
 };
+
+/**
+ * El suelo se toma del tema, no de una constante.
+ *
+ * Con un color fijo claro, en tema oscuro quedaba una mancha blanca bajo el maniquí que parecía un
+ * fallo de carga. Se lee del token en vez de duplicar la paleta aquí: si el sitio cambia de fondo,
+ * la escena cambia con él.
+ */
+function colorDelTema(token: string, respaldo: number): THREE.Color {
+  const valor = getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+  return valor ? new THREE.Color(valor) : new THREE.Color(respaldo);
+}
 
 export async function crearVisor(lienzo: HTMLCanvasElement) {
   const render = new THREE.WebGLRenderer({ canvas: lienzo, antialias: true, powerPreference: 'low-power', alpha: true });
@@ -62,12 +73,21 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
   Object.assign(sol.shadow.camera, { left: -1.5, right: 1.5, top: 2.2, bottom: -1, near: 0.5, far: 8 });
   escena.add(sol);
 
-  const suelo = new THREE.Mesh(
-    new THREE.CircleGeometry(1.8, 48).rotateX(-Math.PI / 2),
-    new THREE.MeshStandardMaterial({ color: COLOR.suelo, roughness: 1 }),
-  );
-  suelo.receiveShadow = true;
-  escena.add(suelo);
+  /*
+   * El suelo, con el color del tema. Y SIN suelo cuando se genera un cartel: el cartel se hace una
+   * vez, en el tema que toque, y se mira en los dos. Con suelo, los carteles hechos en claro
+   * enseñaban una mancha blanca bajo el maniquí en todo el catálogo en oscuro.
+   */
+  const paraCartel = new URLSearchParams(location.search).has('cartel');
+  if (!paraCartel) {
+    const suelo = new THREE.Mesh(
+      new THREE.CircleGeometry(1.8, 48).rotateX(-Math.PI / 2),
+      new THREE.MeshStandardMaterial({ color: colorDelTema('--fondo-hundido', 0xe9e6e1), roughness: 1 }),
+    );
+    suelo.receiveShadow = true;
+    escena.add(suelo);
+  }
+  render.shadowMap.enabled = render.shadowMap.enabled && !paraCartel;
 
   const loader = new GLTFLoader();
   loader.setMeshoptDecoder(MeshoptDecoder);
@@ -112,7 +132,7 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
    * Se recorre el ciclo entero, así la cámara no se mueve durante el ejercicio.
    */
   let centro = new THREE.Vector3(0, 0.9, 0);
-  let radio = 1;
+  let medio = new THREE.Vector3(0.5, 0.9, 0.5);
   function medirCiclo(mov: Movimiento) {
     const caja = new THREE.Box3();
     for (let n = 0; n < 8; n += 1) {
@@ -128,9 +148,10 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
     for (const [nombre, malla] of Object.entries(mallas)) {
       if ((mov.implementos?.[nombre]?.tipo) !== 'barra') caja.expandByObject(malla);
     }
-    const esfera = caja.getBoundingSphere(new THREE.Sphere());
-    centro = esfera.center;
-    radio = esfera.radius;
+    caja.getCenter(centro);
+    // Se guardan las medias medidas de la caja, no el radio de una esfera: una plancha mide 1,9 m de
+    // largo y 0,4 de alto, y encuadrarla por su esfera dejaba medio lienzo vacío arriba y abajo.
+    caja.getSize(medio).multiplyScalar(0.5);
   }
 
   /**
@@ -170,8 +191,6 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
     const huesos = esq.huesos as unknown as Record<string, THREE.Object3D>;
     const detalle = vista === 'detalle' ? huesos[movimiento.camara.detalle!] : null;
     const objetivo = detalle ? detalle.getWorldPosition(new THREE.Vector3()) : centro;
-    const media = (camara.fov / 2) * (Math.PI / 180);
-    const d = ((detalle ? 0.17 : radio) * 0.92) / Math.sin(Math.min(media, Math.atan(Math.tan(media) * (ancho / alto))));
     // El maniquí mira a +Z. "Lateral" es desde su derecha (−X): así la cara queda a la derecha de la
     // pantalla, que es como se lee de izquierda a derecha el avance de un movimiento.
     const desde = {
@@ -179,10 +198,26 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
       lateral: new THREE.Vector3(-1, 0.12, 0),
       tres_cuartos: new THREE.Vector3(-0.72, 0.38, 0.72),
       detalle: new THREE.Vector3(-0.6, 0.45, 0.66),
-    }[vista].normalize().multiplyScalar(d);
-    camara.position.copy(objetivo).add(desde);
-    camara.lookAt(objetivo);
+    }[vista].clone();
     camara.aspect = ancho / alto;
+
+    /*
+     * Distancia: la que hace que la caja del movimiento quepa justo, mirada desde donde toca. Se
+     * proyectan las medias medidas de la caja sobre los ejes de la cámara y se toma la que manda.
+     */
+    const haciaCamara = desde.clone().normalize();
+    const derecha = new THREE.Vector3().crossVectors(new THREE.Vector3(0, 1, 0), haciaCamara).normalize();
+    const arriba = new THREE.Vector3().crossVectors(haciaCamara, derecha).normalize();
+    const proyectar = (eje: THREE.Vector3) =>
+      Math.abs(eje.x) * medio.x + Math.abs(eje.y) * medio.y + Math.abs(eje.z) * medio.z;
+    const tanY = Math.tan((camara.fov / 2) * (Math.PI / 180));
+    const tanX = tanY * camara.aspect;
+    const distancia = detalle
+      ? 0.17 / tanY
+      : Math.max(proyectar(arriba) / tanY, proyectar(derecha) / tanX) * 1.08 + proyectar(haciaCamara);
+
+    camara.position.copy(objetivo).addScaledVector(haciaCamara, distancia);
+    camara.lookAt(objetivo);
     camara.updateProjectionMatrix();
   }
 

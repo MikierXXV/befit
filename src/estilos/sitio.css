@@ -47,6 +47,14 @@ h3 { font-size: var(--t-medio); }
 p { max-width: var(--medida-texto); margin: 0 0 var(--e4); }
 
 /*
+ * Enlaces con color propio. Sin esto sale el azul por defecto del navegador, que no pertenece a
+ * ninguna paleta y es lo que más delata que un sitio no está terminado; en tema oscuro, además,
+ * ese azul queda por debajo del contraste exigido.
+ */
+a { color: var(--enlace); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/*
  * Foco visible SIEMPRE. Quitar el contorno del foco deja el sitio inutilizable con teclado, y es
  * un fallo que quien lo comete nunca ve porque navega con el ratón.
  */

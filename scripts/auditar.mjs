@@ -43,7 +43,8 @@ const INSTRUMENTAR = `
   const original = HTMLCanvasElement.prototype.getContext;
   HTMLCanvasElement.prototype.getContext = function (tipo, ...resto) {
     const ctx = original.call(this, tipo, ...resto);
-    if (ctx && /webgl/i.test(tipo)) {
+    // La sonda que pregunta con qué GPU se está pintando no cuenta: es de la auditoría, no del sitio.
+    if (ctx && /webgl/i.test(tipo) && !this.dataset.sonda) {
       window.__webgl.creados++;
       const ext = ctx.getExtension('WEBGL_lose_context');
       if (ext && !ext.__parcheado) {
@@ -57,7 +58,15 @@ const INSTRUMENTAR = `
 `;
 
 async function medir({ nombre, cpu = 1, red = null }) {
-  const navegador = await chromium.launch();
+  /*
+   * Con la GPU de verdad si la hay. Sin estos argumentos, Chromium headless pinta con SwiftShader
+   * —la CPU haciendo de tarjeta gráfica— y la fluidez del 3D sale en el 95 % de fotogramas lentos
+   * midiendo algo que ningún visitante verá. En CI no hay GPU y SwiftShader es lo que habrá; por eso
+   * ese presupuesto solo se exige cuando se ha pintado con hardware (ver más abajo).
+   */
+  const navegador = await chromium.launch({
+    args: ['--use-angle=d3d11', '--enable-gpu', '--ignore-gpu-blocklist'],
+  });
   const contexto = await navegador.newContext({ viewport: { width: 1280, height: 800 } });
   const pagina = await contexto.newPage();
   await pagina.addInitScript(INSTRUMENTAR);
@@ -159,10 +168,61 @@ async function medir({ nombre, cpu = 1, red = null }) {
     };
   });
 
+  /*
+   * Segunda parada: las rutas donde vive el 3D.
+   *
+   * Sin esto, en una app de catálogo la auditoría medía la portada y se iba: el maniquí no llega a
+   * montarse en ninguna de las medidas, así que el presupuesto de contextos WebGL —el que existe
+   * justamente por el 3D— no comprobaba nada. Y se vuelve a la portada para comprobar lo que de
+   * verdad importa: que al salir se libere el contexto.
+   */
+  const paradas = [];
+  const renderer = await pagina.evaluate(() => {
+    const lienzo = document.createElement('canvas');
+    lienzo.dataset.sonda = '1';
+    const gl = lienzo.getContext('webgl2') ?? lienzo.getContext('webgl');
+    const ext = gl?.getExtension('WEBGL_debug_renderer_info');
+    return ext && gl ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : 'desconocido';
+  });
+  const porSoftware = /swiftshader|llvmpipe|software/i.test(renderer);
+
+  for (const ruta of P.rutas_3d ?? []) {
+    await pagina.goto(`${BASE}${ruta}`, { waitUntil: 'networkidle', timeout: 60000 });
+    await pagina.waitForTimeout(1500);
+
+    const marcha = await pagina.evaluate(async () => {
+      const deltas = [];
+      let anterior = performance.now();
+      await new Promise((fin) => {
+        const fotograma = (ahora) => {
+          deltas.push(ahora - anterior);
+          anterior = ahora;
+          if (deltas.length >= 120) fin();
+          else requestAnimationFrame(fotograma);
+        };
+        requestAnimationFrame(fotograma);
+      });
+      const utiles = deltas.slice(2);
+      const lentos = utiles.filter((d) => d > 50).length;
+      return {
+        fotogramas: utiles.length,
+        lentos,
+        porcentaje: utiles.length ? (lentos / utiles.length) * 100 : 0,
+        peor: utiles.length ? Math.max(...utiles) : 0,
+        webgl: window.__webgl,
+      };
+    });
+
+    await pagina.goto(BASE, { waitUntil: 'networkidle', timeout: 60000 });
+    await pagina.waitForTimeout(500);
+    const alSalir = await pagina.evaluate(() => window.__webgl);
+    paradas.push({ ruta, ...marcha, alSalir, renderer, porSoftware });
+  }
+
   primerPintado = metricas.pintado;
   await navegador.close();
 
-  return { nombre, jsCritico, jsThree, ...metricas, fluidez, primerPintado };
+  return { nombre, jsCritico, jsThree, ...metricas, fluidez, primerPintado, paradas };
 }
 
 /* ------------------------------------------------------------------ informe -- */
@@ -178,6 +238,12 @@ for (const escenario of P.escenarios) {
   console.log(`  CLS                 ${(r.cls ?? 0).toFixed(3).padStart(8)}      (presupuesto ${P.cls})`);
   console.log(`  Contextos WebGL     ${String(r.webgl.creados - r.webgl.perdidos).padStart(8)}      (creados ${r.webgl.creados}, liberados ${r.webgl.perdidos})`);
   console.log(`  Fotogramas lentos   ${r.fluidez.porcentaje.toFixed(1).padStart(8)} %    (presupuesto ${P.scroll_fotogramas_lentos_pct} %, peor ${r.fluidez.peor.toFixed(0)} ms sobre ${r.fluidez.fotogramas})`);
+  for (const p of r.paradas ?? []) {
+    const vivos = p.webgl.creados - p.webgl.perdidos;
+    const tras = p.alSalir.creados - p.alSalir.perdidos;
+    console.log(`  ${p.ruta.padEnd(19).slice(0, 19)} ${p.porcentaje.toFixed(1).padStart(8)} %    (fotogramas lentos con el 3D en marcha, peor ${p.peor.toFixed(0)} ms; contextos ${vivos} ahí y ${tras} al volver)`);
+    if (p.porSoftware) console.log(`                      ${' '.repeat(8)}      pintado por software (${p.renderer.slice(0, 40)}): el dato no cuenta`);
+  }
 
   const kbCritico = r.jsCritico / 1024;
   if (kbCritico > P.js_critico_kb) {
@@ -209,6 +275,31 @@ for (const escenario of P.escenarios) {
       `[${r.nombre}] ${vivos} contextos WebGL vivos, máximo ${P.contextos_webgl_vivos}. ` +
       `Alguna escena no llama a destruir(), o lo llama sin forceContextLoss().`,
     );
+  }
+
+  for (const p of r.paradas ?? []) {
+    const enLaParada = p.webgl.creados - p.webgl.perdidos;
+    if (enLaParada > P.contextos_webgl_vivos) {
+      fallos.push(
+        `[${r.nombre}] ${enLaParada} contextos WebGL vivos en ${p.ruta}, máximo ` +
+        `${P.contextos_webgl_vivos}.`,
+      );
+    }
+    const alVolver = p.alSalir.creados - p.alSalir.perdidos;
+    if (alVolver > 0) {
+      fallos.push(
+        `[${r.nombre}] al salir de ${p.ruta} quedan ${alVolver} contextos WebGL vivos: la pieza no ` +
+        `se está liberando al cambiar de pantalla. Es el fallo que no se nota hasta la novena ficha, ` +
+        `cuando el navegador empieza a tirar contextos y las escenas se quedan en blanco.`,
+      );
+    }
+    // Solo se exige si lo pintó una GPU: con SwiftShader el número mide la CPU, no el sitio.
+    if (!p.porSoftware && P.fotogramas_lentos_3d_pct !== undefined && p.fotogramas >= 20 && p.porcentaje > P.fotogramas_lentos_3d_pct) {
+      fallos.push(
+        `[${r.nombre}] ${p.porcentaje.toFixed(1)} % de fotogramas por encima de 50 ms en ${p.ruta} ` +
+        `con el 3D en marcha, presupuesto ${P.fotogramas_lentos_3d_pct} %.`,
+      );
+    }
   }
 
   if (P.three_no_bloquea_pintado && r.threeFin !== null && r.primerPintado !== null) {

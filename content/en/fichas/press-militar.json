@@ -6,13 +6,16 @@
   "resumen": "Standing, the bar goes from the shoulders to overhead. The whole trunk works to avoid arching while the shoulders press.",
   "movimiento_id": "press-militar",
   "ejecucion": [
-    "Stand with the bar resting on the upper chest, hands slightly wider than your shoulders.",
+    "Unrack the bar at chest height, or clean it there if you know how: this card starts with the bar already resting on the upper chest.",
+    "Stand with your hands slightly wider than your shoulders and your elbows in front of the bar.",
     "Squeeze glutes and abs: that is what keeps the back from arching as you press.",
-    "Press the bar up, moving your head slightly back to let it pass.",
-    "Finish with the bar over your head and arms straight, then lower under control."
+    "Tuck your chin to let the bar pass and press straight up.",
+    "As soon as the bar clears your forehead, move your head back under it: the lockout ends with the bar over the crown of your head, not in front of your face.",
+    "Lower it under control until it rests on your chest again."
   ],
   "material": [
-    "barra"
+    "barra",
+    "rack"
   ],
   "nivel": "intermedio",
   "musculos": {
@@ -31,15 +34,15 @@
       "gluteo_mayor"
     ]
   },
-  "matices": "The variant shifts the balance: behind the neck brings out more rear and side delt, in front brings in more chest. With a barbell the body also stabilises more than on a machine.",
+  "matices": "There is no single overhead press: behind the neck brings out more rear and side delt, in front brings in more chest, and with a barbell the body stabilises more than on a machine. What it works depends on which one you do.",
   "fuentes": [
     {
       "titulo": "Front vs Back and Barbell vs Machine Overhead Press: An Electromyographic Analysis and Implications For Resistance Training",
-      "autor": "Coratella, Tornatore, Longo, Esposito y Cè, Front Physiol, 2022",
+      "autor": "Coratella, Tornatore, Longo, Esposito and Cè, Front Physiol, 2022",
       "url": "https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2022.825880/full"
     },
     {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
     }
   ]

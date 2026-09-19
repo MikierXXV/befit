@@ -6,15 +6,25 @@
  * texto hacia abajo y el presupuesto de CLS se incumple sin que nadie toque nada.
  */
 
-.figura { display: grid; gap: var(--e6); margin-block: var(--e4); }
-@media (min-width: 900px) {
+/*
+ * La pieza se reparte según SU ancho, no el de la ventana (`@container`, no `@media`).
+ *
+ * Con una consulta de ventana, la ficha puso el maniquí en una columna lateral de 20rem y la pieza
+ * siguió partiéndose en dos —lienzo y mapa muscular— dentro de ese hueco: controles encabalgados y
+ * un mapa de treinta píxeles. La pieza no sabe dónde la montan; lo que sí sabe es cuánto sitio tiene.
+ */
+.figura { container-type: inline-size; display: grid; gap: var(--e6); margin-block: var(--e4); }
+@container (min-width: 44rem) {
   .figura { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
 }
 
 .figura .escenario { position: relative; }
 .figura .lienzo {
   width: 100%;
-  aspect-ratio: 1;
+  /* La proporción la declara el movimiento (`camara.proporcion`): una plancha mide 1,9 m de largo y
+     0,4 de alto, y en un lienzo cuadrado sobraba medio alto. El valor lo pone la ficha antes de
+     montar la pieza, para que el hueco reservado y el lienzo midan lo mismo y no haya salto. */
+  aspect-ratio: var(--proporcion-lienzo, 1);
   display: block;
   border-radius: var(--radio-grande);
   background: var(--fondo-hundido);
@@ -28,8 +38,15 @@
   font-size: var(--t-pequeno);
 }
 
-.figura .controles { display: flex; flex-wrap: wrap; gap: var(--e2); margin-top: var(--e3); }
-.figura .controles .grupo { display: inline-flex; gap: var(--e1); }
+.figura .controles { display: flex; flex-wrap: wrap; gap: var(--e4); margin-top: var(--e3); align-items: center; }
+.figura .controles .grupo { display: inline-flex; gap: var(--e1); align-items: center; }
+/* Los grupos llevan rótulo visible: "½×" y "1×" sueltos, en la misma fila que Pausa y las vistas,
+   no dicen de qué son ni qué los separa. */
+.figura .controles .rotulo {
+  margin-right: var(--e1);
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}
 .figura .controles button {
   min-height: 44px;
   padding: 0 var(--e3);
@@ -44,6 +61,13 @@
 
 .figura.cartel .controles, .figura.cartel .etapa, .figura.cartel .musculos { display: none; }
 
+/*
+ * En modo cartel, el lienzo va SIN fondo. La imagen se guarda con transparencia y el fondo lo pone
+ * la tarjeta del catálogo: con el fondo incrustado, los carteles hechos en tema claro salían como
+ * nueve rectángulos blancos sobre el tema oscuro.
+ */
+.figura.cartel .lienzo { background: transparent; }
+
 .figura .mapas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
 .figura .mapa { width: 100%; height: auto; }
 
@@ -55,13 +79,17 @@
  * Salen del acento del grupo mezclado con el fondo, no de tres colores propios: así el mapa de cada
  * familia mantiene su color y los tres grados se distinguen por intensidad, que es lo que significan.
  */
-.figura .zona { fill: var(--fondo-hundido); stroke: var(--fondo); stroke-width: 0.15; }
+/* La silueta se mezcla con el texto, no con el fondo hundido: en tema oscuro, el cuerpo quedaba
+   negro sobre negro y solo flotaban los músculos resaltados, sin cuerpo que los situara. */
+.figura .zona { fill: color-mix(in oklab, var(--texto) 14%, var(--fondo)); stroke: var(--fondo); stroke-width: 0.15; }
 .figura .zona.principal { fill: var(--acento); }
-.figura .zona.sinergista { fill: color-mix(in oklab, var(--acento) 62%, var(--fondo)); }
-.figura .zona.estabilizador { fill: color-mix(in oklab, var(--acento) 32%, var(--fondo)); }
+.figura .zona.sinergista { fill: color-mix(in oklab, var(--acento) 70%, var(--fondo)); }
+.figura .zona.estabilizador { fill: color-mix(in oklab, var(--acento) 45%, var(--fondo)); }
 
 .figura .leyenda { list-style: none; padding: 0; display: grid; gap: var(--e1); font-size: var(--t-pequeno); }
 .figura .muestra { display: inline-block; width: 12px; height: 12px; border-radius: var(--radio-pequeno); margin-right: var(--e2); vertical-align: -1px; }
 .figura .muestra.principal { background: var(--acento); }
-.figura .muestra.sinergista { background: color-mix(in oklab, var(--acento) 62%, var(--fondo)); }
-.figura .muestra.estabilizador { background: color-mix(in oklab, var(--acento) 32%, var(--fondo)); }
+.figura .muestra.sinergista { background: color-mix(in oklab, var(--acento) 70%, var(--fondo)); }
+.figura .muestra.estabilizador { background: color-mix(in oklab, var(--acento) 45%, var(--fondo)); }
+
+.figura .nota-roles { margin: var(--e3) 0 0; color: var(--texto-secundario); font-size: var(--t-micro); }

@@ -6,13 +6,16 @@
   "resumen": "De pie, la barra sube desde los hombros hasta quedar encima de la cabeza. El tronco entero trabaja para no arquearse mientras los hombros empujan.",
   "movimiento_id": "press-militar",
   "ejecucion": [
-    "De pie, con la barra apoyada en la parte alta del pecho y las manos algo más abiertas que los hombros.",
+    "Saca la barra del soporte a la altura del pecho, o llévala ahí desde el suelo si sabes hacerlo: la ficha empieza con la barra ya apoyada en la parte alta del pecho.",
+    "De pie, con las manos algo más abiertas que los hombros y los codos por delante de la barra.",
     "Aprieta glúteos y abdomen: es lo que evita que la espalda se arquee al empujar.",
-    "Empuja la barra hacia arriba y echa la cabeza ligeramente atrás para dejarla pasar.",
-    "Termina con la barra sobre la cabeza y los brazos estirados, y baja controlando."
+    "Mete la barbilla para dejar pasar la barra y empuja hacia arriba en vertical.",
+    "En cuanto la barra pasa la frente, vuelve a meter la cabeza debajo: el bloqueo termina con la barra sobre la coronilla, no por delante de la cara.",
+    "Baja controlando hasta apoyarla otra vez en el pecho."
   ],
   "material": [
-    "barra"
+    "barra",
+    "rack"
   ],
   "nivel": "intermedio",
   "musculos": {
@@ -31,7 +34,7 @@
       "gluteo_mayor"
     ]
   },
-  "matices": "La variante cambia el reparto: por detrás de la nuca sale más deltoides posterior y medio, y por delante entra más pectoral. Con barra, además, el cuerpo estabiliza más que en máquina.",
+  "matices": "No hay un \"press militar\" único: por detrás de la nuca sale más deltoides posterior y medio, por delante entra más pectoral, y con barra el cuerpo estabiliza más que en máquina. Lo que trabaja depende de cuál hagas.",
   "fuentes": [
     {
       "titulo": "Front vs Back and Barbell vs Machine Overhead Press: An Electromyographic Analysis and Implications For Resistance Training",

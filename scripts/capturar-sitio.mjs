@@ -14,7 +14,7 @@
  * contraste falla en oscuro y los rótulos se pisan en móvil.
  */
 
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
@@ -29,6 +29,15 @@ const VISTAS = [
   { nombre: 'movil', viewport: { width: 360, height: 740 }, isMobile: true, hasTouch: true },
 ];
 const TEMAS = ['claro', 'oscuro'];
+
+/*
+ * Rutas que se recorren. Por defecto solo la portada, que en un sitio de contenido ES el sitio; una
+ * app de catálogo declara las suyas en presupuestos.json (`rutas`), porque si no las cuatro capturas
+ * son cuatro veces la misma pantalla y el informe dice "el sitio se recorre entero sin errores"
+ * habiendo mirado una de cuatro vistas.
+ */
+const PRESUPUESTOS = JSON.parse(await readFile(join(RAIZ, 'presupuestos.json'), 'utf8'));
+const RUTAS = PRESUPUESTOS.rutas?.length ? PRESUPUESTOS.rutas : [''];
 
 await mkdir(SALIDA, { recursive: true });
 
@@ -56,7 +65,7 @@ for (const vista of VISTAS) {
       fallos.push(`[${etiqueta}] petición fallida: ${p.url()} (${p.failure()?.errorText})`);
     });
 
-    await pagina.goto(BASE, { waitUntil: 'networkidle', timeout: 60000 });
+    await pagina.goto(`${BASE}${RUTAS[0]}`, { waitUntil: 'networkidle', timeout: 60000 });
 
     /*
      * Recorrer entero: las visualizaciones se montan al entrar en pantalla, así que sin bajar hasta
@@ -357,6 +366,18 @@ for (const vista of VISTAS) {
 
     await pagina.screenshot({ path: join(SALIDA, `${etiqueta}.png`), fullPage: true });
     console.log(`  · capturas/${etiqueta}.png`);
+
+    /*
+     * Las rutas extra: se visitan por sus errores y su captura, no por el barrido completo. El
+     * barrido de arriba está escrito para el recorrido con paradas, y lo que aquí interesa es que
+     * ninguna pantalla de la app se rompa en silencio.
+     */
+    for (const ruta of RUTAS.slice(1)) {
+      await pagina.goto(`${BASE}${ruta}`, { waitUntil: 'networkidle', timeout: 60000 });
+      await pagina.waitForTimeout(1200);
+      const nombre = ruta.replace(/[^a-z0-9]+/gi, '-').replace(/^-|-$/g, '') || 'portada';
+      await pagina.screenshot({ path: join(SALIDA, `${etiqueta}-${nombre}.png`), fullPage: true });
+    }
 
     await contexto.close();
   }

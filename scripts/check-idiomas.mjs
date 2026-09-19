@@ -104,6 +104,10 @@ function pareceEspanol(bruto) {
   // que marca lo que no debe acaba desactivada, que es peor que no tenerla.
   if (!/\s/.test(texto) && /[-_.]|[a-z][A-Z]/.test(texto)) return false;
 
+  // Trozos de marcado o de CSS: un atributo a medias (`style="--proporcion-lienzo: `) o una
+  // propiedad personalizada no son texto visible, y sus nombres en español disparaban la morfología.
+  if (/="/.test(texto) || texto.trimStart().startsWith('--')) return false;
+
   // Una palabra suelta, toda en minúsculas y sin acentos, es un identificador: una clave de objeto o
   // un valor de unión ("rotacion", "abduccion"). El texto visible en español lleva acentos, empieza
   // por mayúscula o tiene más de una palabra; marcar lo demás es ruido, y una comprobación ruidosa

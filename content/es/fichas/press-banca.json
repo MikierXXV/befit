@@ -6,14 +6,17 @@
   "resumen": "Tumbado en el banco, la barra baja al pecho y vuelve a subir con los brazos. Es el empuje horizontal de referencia para pectoral, tríceps y deltoides anterior.",
   "movimiento_id": "press-banca",
   "ejecucion": [
-    "Túmbate en el banco con los pies apoyados en el suelo y los omóplatos juntos contra el respaldo.",
-    "Agarra la barra algo más abierto que los hombros, con las muñecas rectas.",
-    "Baja la barra al pecho de forma controlada, con los codos a unos 45-60 grados del cuerpo.",
-    "Empuja la barra hasta estirar los brazos, sin despegar la espalda del banco."
+    "Ajusta los topes de seguridad a la altura del pecho, o pide a alguien que te vigile: quedarse debajo de la barra es el accidente grave de este ejercicio.",
+    "Túmbate en el banco con los pies apoyados en el suelo y los omóplatos juntos contra el banco.",
+    "Agarra la barra algo más abierto que los hombros, con las muñecas rectas, y sácala del soporte hasta tenerla sobre los hombros.",
+    "Baja la barra al pecho de forma controlada, con los codos a unos 45-60 grados respecto al tronco.",
+    "Empuja la barra hasta estirar los brazos, sin despegar la espalda del banco.",
+    "Al terminar la serie, lleva la barra hasta el soporte y asegúrate de que apoya antes de soltarla."
   ],
   "material": [
     "barra",
-    "banco"
+    "banco",
+    "rack"
   ],
   "nivel": "intermedio",
   "musculos": {
@@ -28,7 +31,7 @@
       "biceps"
     ]
   },
-  "matices": "En banca plana, pectoral y tríceps salen con activación parecida y el deltoides anterior por debajo. Lo que más cambia el reparto no es el agarre: es la inclinación del banco.",
+  "matices": "Lo que cambia el reparto entre pectoral, tríceps y deltoides es la inclinación del banco: eso es lo que midió el estudio citado, con un agarre fijo. Qué pasa al cambiar el agarre, ese trabajo no lo dice.",
   "fuentes": [
     {
       "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",

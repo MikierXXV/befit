@@ -28,8 +28,13 @@ const ids = process.argv.slice(2).length ? process.argv.slice(2) : fichas;
 
 mkdirSync(SALIDA, { recursive: true });
 const navegador = await chromium.launch({ args: ['--use-angle=d3d11', '--enable-gpu', '--ignore-gpu-blocklist'] });
-// 480 con densidad 2 = 960 px reales: sirve para una tarjeta en pantalla de móvil sin pesar de más.
-const pagina = await navegador.newPage({ viewport: { width: 480, height: 640 }, deviceScaleFactor: 2 });
+/*
+ * 400 × 560 con densidad 1,5 = 600 × 840 px reales. La tarjeta mide como mucho 272 px de ancho, así
+ * que con eso sobra incluso en pantallas de densidad doble. Con 960 px de ancho, cada cartel pesaba
+ * ~120 kB y el primero de la rejilla era el elemento más grande de la portada: el LCP en el móvil de
+ * gama baja se iba por encima del presupuesto por culpa de una imagen que nadie ve a ese tamaño.
+ */
+const pagina = await navegador.newPage({ viewport: { width: 400, height: 560 }, deviceScaleFactor: 1.5 });
 
 let hechos = 0;
 for (const id of ids) {
@@ -46,7 +51,9 @@ for (const id of ids) {
   }
   // Un respiro más para que el modelo cargue y el primer fotograma esté pintado; si no, sale el hueco.
   await pagina.waitForTimeout(1500);
-  await lienzo.screenshot({ path: `${SALIDA}/${id}.png` });
+  // `omitBackground` guarda el PNG con transparencia: el fondo lo pone la tarjeta, y así el mismo
+  // cartel vale para el tema claro y para el oscuro.
+  await lienzo.screenshot({ path: `${SALIDA}/${id}.png`, omitBackground: true });
   hechos += 1;
 }
 await navegador.close();

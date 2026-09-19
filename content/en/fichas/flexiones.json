@@ -8,7 +8,7 @@
   "ejecucion": [
     "Put your hands on the floor slightly wider than your shoulders, body in a straight line from head to heels.",
     "Squeeze glutes and abs so the hips neither sag nor pike up.",
-    "Lower by bending the elbows about 45 degrees from the body, until the chest is close to the floor.",
+    "Lower by bending the elbows, keeping them about 45 degrees away from your torso, until the chest is close to the floor.",
     "Push the floor away until the arms are straight, keeping the body line."
   ],
   "material": [],
@@ -28,15 +28,15 @@
       "erectores"
     ]
   },
-  "matices": "The load of a push-up is not fixed: it depends on body angle and hand placement, so comparing it with a bench press only makes sense once you say how much weight.",
+  "matices": "A push-up is not a fixed load: at the top you hold around 64 % of body weight, dropping to 49 % from the knees or 41 % with the hands elevated. That is why \"push-up\" says nothing about how heavy it is until you say how.",
   "fuentes": [
     {
-      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
-      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes y Muyor, Int J Environ Res Public Health, 2020",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+      "titulo": "The Effect of Position on the Percentage of Body Mass Supported During Traditional and Modified Push-up Variants",
+      "autor": "Suprak, Dawes and Stephenson, J Strength Cond Res, 2011",
+      "url": "https://journals.lww.com/nsca-jscr/fulltext/2011/02000/the_effect_of_position_on_the_percentage_of_body.29.aspx"
     },
     {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
     }
   ]

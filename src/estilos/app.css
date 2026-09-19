@@ -1,8 +1,9 @@
 /*
  * Estilos de la app de catálogo. Los valores salen de design/tokens.css; aquí solo hay disposición.
  *
- * Móvil primero, y no por moda: un catálogo de ejercicios se consulta en el gimnasio, de pie y con
- * una mano. Por eso los objetivos táctiles son de 44 px y la ficha se lee en una columna.
+ * Móvil primero, y no por moda: un catálogo se consulta de pie y con una mano. De ahí las dos
+ * decisiones que más se notan: los objetivos táctiles miden 44 px, y **los filtros van plegados**.
+ * Con todos desplegados había que pasar dos pantallas de píldoras antes de ver una sola ficha.
  */
 
 .oculto {
@@ -13,95 +14,199 @@
   overflow: hidden;
 }
 
+.barra > *, .portada, .buscador, .filtros, .acciones-filtro, .rejilla, .vacio, .ficha, .aviso {
+  max-width: 68rem;
+  margin-inline: auto;
+  padding-inline: var(--e4);
+}
+
+/* ------------------------------------------------------------------- cabecera -- */
+
+/* El hueco de la cabecera, reservado: la pinta el JavaScript, y al aparecer empujaba la portada
+   hacia abajo —0,054 de CLS por una barra de 70 px—. */
+#cabecera { min-height: 4.4rem; }
+
 .barra {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding-block: var(--e3);
+  border-bottom: 1px solid var(--separador);
+  /* Fondo opaco, no translúcido: detrás pasan carteles con maniquíes, y el desenfoque de un
+     backdrop-filter se paga en cada fotograma de scroll justo en los móviles donde vamos justos. */
+  background: var(--fondo);
+}
+.barra > * {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--e3);
-  padding: var(--e3) var(--e4);
-  border-bottom: 1px solid var(--separador);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--fondo);
 }
 
-.barra .marca { font-family: var(--fuente-titulo); font-weight: var(--peso-semibold); text-decoration: none; color: inherit; }
+.marca {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-medio);
+  font-weight: var(--peso-semibold);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--texto);
+}
 .barra nav { display: flex; align-items: center; gap: var(--e2); }
-.barra nav a { display: inline-flex; align-items: center; gap: var(--e1); min-height: 44px; padding-inline: var(--e2); }
-.cuenta-favoritos {
-  min-width: 1.6em;
-  padding: 0 0.4em;
+
+/* --------------------------------------------------------- botones y píldoras -- */
+
+.chip, .favorito, .barra nav a, .barra nav button, .compartir button, .filtros summary, .vecinos a, .vacio a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e2);
+  min-height: 44px;
+  padding: 0 var(--e4);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-pildora);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color var(--m-rapido) var(--curva-suave),
+              background-color var(--m-rapido) var(--curva-suave);
+}
+.chip:hover, .favorito:hover, .barra nav a:hover, .barra nav button:hover,
+.filtros summary:hover, .vecinos a:hover, .vacio a:hover {
+  border-color: var(--borde-interactivo);
+}
+.chip[aria-pressed='true'] {
+  background: var(--texto);
+  border-color: var(--texto);
+  color: var(--fondo);
+}
+
+.insignia {
+  min-width: 1.5em;
+  padding: 0 0.45em;
   border-radius: var(--radio-pildora);
   background: var(--fondo-hundido);
-  text-align: center;
+  font-size: var(--t-pequeno);
   font-variant-numeric: tabular-nums;
 }
 
-.buscador, .filtros, .cuenta, .rejilla, .vacio, .compartir, .ficha { max-width: 1100px; margin-inline: auto; padding-inline: var(--e4); }
+/* -------------------------------------------------------------------- portada -- */
+
+.portada { padding-block: var(--e8) var(--e4); }
+.portada h1 { font-size: var(--t-grande); margin-bottom: var(--e2); }
+.portada p { color: var(--texto-secundario); max-width: var(--medida-corta); margin: 0; }
+
+/* -------------------------------------------------------------------- filtros -- */
 
 .buscador input {
   width: 100%;
-  min-height: 44px;
-  margin-top: var(--e4);
-  padding: 0 var(--e3);
+  min-height: 48px;
+  padding: 0 var(--e4);
   border: 1px solid var(--separador);
   border-radius: var(--radio-medio);
-  background: transparent;
+  background: var(--fondo-elevado);
   color: inherit;
   font: inherit;
 }
+.buscador input::placeholder { color: var(--texto-secundario); }
 
-.filtros { display: flex; flex-wrap: wrap; gap: var(--e3); margin-top: var(--e3); }
-.filtros fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e1); align-items: center; }
-.filtros legend { float: left; margin-right: var(--e2); color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.filtros { margin-top: var(--e3); }
+.filtros summary { list-style: none; width: fit-content; }
+.filtros summary::-webkit-details-marker { display: none; }
+.filtros summary::after { content: '▾'; font-size: var(--t-pequeno); }
+.filtros details[open] summary::after { content: '▴'; }
 
-.chip, .favorito, .compartir button {
+.grupo-filtros { display: flex; flex-wrap: wrap; gap: var(--e2); align-items: center; margin-top: var(--e4); }
+.grupo-filtros h2 {
+  margin: 0;
+  /* Línea propia. Y `max-width: none` porque la base limita los titulares a 46 caracteres —buena
+     regla para un titular, no para un rótulo de una palabra—: con ese tope, el rótulo medía 383 px,
+     las píldoras se colocaban a su derecha y "GRUPO" se leía como una píldora más. */
+  flex: 0 0 100%;
+  max-width: none;
+  font-family: var(--fuente-texto);
+  font-size: var(--t-pequeno);
+  font-weight: var(--peso-medio);
+  color: var(--texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.chip { padding-inline: var(--e3); }
+/* El chip de un grupo lleva su acento: es lo que ata el color del catálogo al de la ficha. */
+.chip[style*='--acento-chip'] { border-left: 3px solid var(--acento-chip); }
+
+.acciones-filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e3);
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--e4);
+}
+.cuenta { color: var(--texto-secundario); font-size: var(--t-pequeno); margin: 0; }
+.limpiar {
   min-height: 44px;
   padding: 0 var(--e3);
-  border: 1px solid var(--separador);
-  border-radius: var(--radio-pildora);
-  background: transparent;
-  color: inherit;
+  border: 0;
+  background: none;
+  color: var(--enlace);
   font: inherit;
   cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
-.chip[aria-pressed='true'] { background: var(--texto); color: var(--fondo); border-color: var(--texto); }
 
-.cuenta { margin-top: var(--e3); color: var(--texto-secundario); font-size: var(--t-pequeno); }
+/* ------------------------------------------------------------------- catálogo -- */
 
 .rejilla {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-  gap: var(--e4);
-  padding-block: var(--e3) var(--e6);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+  gap: var(--e6);
+  padding-block: var(--e4) var(--e6);
 }
 
 .tarjeta { position: relative; }
 .tarjeta a {
   display: grid;
-  gap: var(--e1);
+  /* El nombre crece y la etiqueta del grupo se queda abajo: con filas automáticas, un nombre de dos
+     líneas empujaba su etiqueta y dejaba la fila del catálogo con las etiquetas a distinta altura. */
+  grid-template-rows: auto 1fr auto;
+  gap: var(--e2);
+  height: 100%;
+  padding-bottom: var(--e4);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-grande);
+  background: var(--fondo-elevado);
   text-decoration: none;
-  color: inherit;
+  color: var(--texto);
+  overflow: hidden;
+  transition: transform var(--m-rapido) var(--curva-suave),
+              box-shadow var(--m-rapido) var(--curva-suave),
+              border-color var(--m-rapido) var(--curva-suave);
 }
+.tarjeta a:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra);
+  border-color: var(--borde-interactivo);
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta a:hover { transform: none; }
+}
+
 .tarjeta .cartel {
   display: grid;
   place-items: center;
-  /* El hueco se reserva ANTES de que cargue el cartel. Sin aspect-ratio, la rejilla salta al
-     aparecer cada imagen y el presupuesto de CLS se va al garete. Va en el hueco y no en la imagen
-     para que una ficha sin cartel ocupe lo mismo que una con él. */
-  aspect-ratio: 1;
-  border-radius: var(--radio-grande);
+  /* El hueco se reserva ANTES de que cargue el cartel: sin aspect-ratio la rejilla salta al aparecer
+     cada imagen y el presupuesto de CLS se incumple sin que nadie toque nada. */
+  aspect-ratio: 4 / 5;
   background: var(--fondo-hundido);
-  overflow: hidden;
 }
-.tarjeta img {
-  grid-area: 1 / 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.tarjeta img { grid-area: 1 / 1; width: 100%; height: 100%; object-fit: contain; }
 .tarjeta .pendiente {
   grid-area: 1 / 1;
   color: var(--texto-secundario);
@@ -109,32 +214,176 @@
   text-align: center;
   padding: var(--e3);
 }
-.tarjeta .nombre { font-weight: var(--peso-semibold); }
-.tarjeta .grupo, .ficha .grupo { color: var(--texto-secundario); font-size: var(--t-pequeno); }
 
-.favorito { position: absolute; top: var(--e2); right: var(--e2); width: 44px; padding: 0; background: var(--fondo); }
+.tarjeta .nombre {
+  padding-inline: var(--e4);
+  font-weight: var(--peso-semibold);
+  line-height: var(--il-titulo);
+  text-wrap: balance;
+}
+.tarjeta .etiqueta-grupo {
+  justify-self: start;
+  margin-inline: var(--e4);
+  padding-left: var(--e2);
+  border-left: 3px solid var(--acento-chip, var(--separador));
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}
+
+.favorito {
+  position: absolute;
+  top: var(--e3);
+  right: var(--e3);
+  width: 44px;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  background: var(--fondo-elevado);
+}
 .favorito[aria-pressed='true'] { border-color: var(--texto); }
 
-.ficha { padding-block: var(--e4) var(--e6); }
-.ficha header { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: var(--e2); }
-.ficha header h1 { grid-column: 1; margin: 0; }
+/* --------------------------------------------------------------------- ficha -- */
+
+/*
+ * EL HUECO DEL MANIQUÍ SE RESERVA AQUÍ, en el CSS crítico, y no en el del módulo.
+ *
+ * El módulo llega en un paquete aparte —con Three.js detrás— unos 300 ms después. Hasta entonces el
+ * contenedor está vacío y mide cero: cuando el lienzo aparece, empuja hacia abajo el resto de la
+ * ficha. Medido por la auditoría: CLS de 0,28 a 0,35 con un presupuesto de 0,1. El `aspect-ratio`
+ * del lienzo no lo evita, porque solo reserva sitio cuando el lienzo ya existe.
+ */
+.ficha .figura { margin-block: var(--e4) var(--e8); }
+.ficha .figura:empty::before {
+  content: '';
+  aspect-ratio: var(--proporcion-lienzo, 1);
+  border-radius: var(--radio-grande);
+  background: var(--fondo-hundido);
+}
+
+.ficha { padding-block: var(--e4) var(--e12); }
+.ficha .volver { display: inline-flex; min-height: 44px; align-items: center; }
+
+.ficha header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: var(--e2) var(--e4);
+  padding-bottom: var(--e6);
+  border-bottom: 1px solid var(--separador);
+}
+.ficha header .grupo {
+  grid-column: 1;
+  margin: 0;
+  padding-left: var(--e2);
+  border-left: 3px solid var(--acento-chip, var(--separador));
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+}
+.ficha header h1 { grid-column: 1; margin: 0; font-size: var(--t-grande); }
 .ficha header .favorito { position: static; grid-column: 2; grid-row: 1 / span 2; }
-.ficha .volver { display: inline-block; margin-bottom: var(--e3); }
-.ficha .resumen { font-size: var(--t-medio); }
-.ficha ol { padding-left: 1.2em; max-width: var(--medida-texto); }
-.ficha ol li { margin-bottom: var(--e2); }
-.datos { display: grid; grid-template-columns: auto 1fr; gap: var(--e1) var(--e3); margin: var(--e4) 0; }
-.datos dt { color: var(--texto-secundario); }
+
+.ficha .resumen {
+  font-size: var(--t-medio);
+  line-height: var(--il-titulo);
+  color: var(--texto);
+  margin-block: var(--e6) var(--e4);
+  max-width: var(--medida-texto);
+}
+
+/*
+ * En escritorio, el texto a la izquierda y el maniquí a la derecha, fijo mientras se lee. Antes la
+ * ficha era una sola columna estrecha con el 45 % derecho en blanco durante más de mil píxeles, y
+ * el maniquí y su mapa muscular se leían ANTES que la frase que dice qué es el ejercicio.
+ */
+@media (min-width: 60rem) {
+  .ficha .cuerpo {
+    display: grid;
+    /* La columna del maniquí, ancha de verdad: con 20rem el lienzo bajaba de 300 px y el mapa
+       muscular no se leía. Lo que se mira es el movimiento; el texto puede ser más estrecho. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    gap: var(--e8);
+    align-items: start;
+  }
+  .ficha .figura {
+    grid-column: 2;
+    grid-row: 1 / span 10;
+    position: sticky;
+    top: 5.5rem;
+    margin-block: 0;
+  }
+}
+.ficha h2 { font-size: var(--t-medio); margin-bottom: var(--e4); }
+.ficha section { margin-bottom: var(--e8); }
+
+/* Los pasos numerados: el número manda, porque es lo que se busca al volver a mirar a mitad de serie. */
+.pasos { list-style: none; counter-reset: paso; padding: 0; display: grid; gap: var(--e4); }
+.pasos li {
+  counter-increment: paso;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--e3);
+  max-width: var(--medida-texto);
+}
+.pasos li::before {
+  content: counter(paso);
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-medio);
+  color: var(--texto-secundario);
+  line-height: 1.1;
+}
+
+.datos { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0; }
+.datos .dato {
+  display: inline-flex;
+  gap: var(--e2);
+  padding: var(--e2) var(--e3);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-hundido);
+  font-size: var(--t-pequeno);
+}
+.datos dt { color: var(--texto-secundario); margin: 0; }
 .datos dd { margin: 0; }
 
+.matices {
+  border-left: 3px solid var(--separador);
+  padding: var(--e2) 0 var(--e2) var(--e4);
+}
 .matices p, .fuentes li { color: var(--texto-secundario); }
-.matices { border-left: 3px solid var(--separador); padding-left: var(--e3); }
+.fuentes ul { padding-left: 1.1em; display: grid; gap: var(--e2); }
 
-/* El aviso, discreto pero presente en todas las pantallas: es información, no un obstáculo. */
+/* Ir al anterior y al siguiente del mismo grupo: un catálogo se recorre, no solo se busca. */
+.vecinos { display: flex; flex-wrap: wrap; gap: var(--e2); justify-content: space-between; }
+
+/* -------------------------------------------------------------- estados vacíos -- */
+
+.vacio {
+  display: grid;
+  gap: var(--e4);
+  justify-items: start;
+  padding-block: var(--e12);
+  color: var(--texto-secundario);
+}
+.vacio p { margin: 0; max-width: var(--medida-corta); }
+
+/* Saltar los filtros con el teclado: entre la cabecera y la primera ficha hay cuarenta tabulaciones. */
+.saltar {
+  position: absolute;
+  left: var(--e4);
+  top: var(--e2);
+  z-index: 20;
+  padding: var(--e2) var(--e3);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  border: 1px solid var(--separador);
+  transform: translateY(-200%);
+}
+.saltar:focus { transform: none; }
+
+/* ------------------------------------------------------------------------ pie -- */
+
 .aviso {
-  max-width: 1100px;
-  margin: var(--e6) auto 0;
-  padding: var(--e3) var(--e4) var(--e6);
+  margin-top: var(--e12);
+  padding-block: var(--e4) var(--e12);
   border-top: 1px solid var(--separador);
   color: var(--texto-secundario);
   font-size: var(--t-pequeno);

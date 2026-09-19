@@ -147,6 +147,9 @@ for (const [nombreTema, tema] of Object.entries(tokens.temas)) {
   for (const [nf, fondo] of Object.entries(fondos)) {
     comprobar(`texto sobre ${nf}`, tema.texto, fondo, umbrales.texto_normal);
     comprobar(`texto_secundario sobre ${nf}`, tema.texto_secundario, fondo, umbrales.texto_normal);
+    // El enlace también como texto normal: es texto que se lee, no un adorno, y suele salir en
+    // párrafos y en listas de fuentes donde el tamaño es pequeño.
+    if (tema.enlace) comprobar(`enlace sobre ${nf}`, tema.enlace, fondo, umbrales.texto_normal);
   }
   comprobar('borde_interactivo sobre fondo', tema.borde_interactivo, tema.fondo, umbrales.elemento_ui);
   comprobar('borde_interactivo sobre elevado', tema.borde_interactivo, tema.fondo_elevado, umbrales.elemento_ui);

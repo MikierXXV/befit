@@ -91,6 +91,8 @@
   --claro-separador: #DDD9D1;
   --claro-borde-interactivo: #7A736A;
   --claro-foco: #1A1917;
+  --claro-enlace: #0F5C53;
+  --claro-sombra: 0 1px 2px rgba(26, 25, 23, 0.06), 0 10px 28px rgba(26, 25, 23, 0.07);
 
   --oscuro-fondo: #141317;
   --oscuro-fondo-elevado: #1D1C22;
@@ -100,6 +102,8 @@
   --oscuro-separador: #2E2C34;
   --oscuro-borde-interactivo: #6E6979;
   --oscuro-foco: #EDEBE6;
+  --oscuro-enlace: #7FD2C4;
+  --oscuro-sombra: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
 /*
@@ -121,6 +125,8 @@
   --separador: var(--claro-separador);
   --borde-interactivo: var(--claro-borde-interactivo);
   --foco: var(--claro-foco);
+  --enlace: var(--claro-enlace);
+  --sombra: var(--claro-sombra);
 }
 
 :root[data-tema="oscuro"],
@@ -133,6 +139,8 @@
   --separador: var(--oscuro-separador);
   --borde-interactivo: var(--oscuro-borde-interactivo);
   --foco: var(--oscuro-foco);
+  --enlace: var(--oscuro-enlace);
+  --sombra: var(--oscuro-sombra);
 }
 
 /*

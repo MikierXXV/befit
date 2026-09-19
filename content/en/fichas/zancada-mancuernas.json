@@ -14,7 +14,7 @@
   "material": [
     "mancuerna"
   ],
-  "nivel": "inicial",
+  "nivel": "intermedio",
   "musculos": {
     "principal": [
       "cuadriceps",
@@ -30,15 +30,15 @@
       "erectores"
     ]
   },
-  "matices": "In that study the quadriceps vasti come out ahead of the glutes in the lunge, and the gluteus medius shows up mostly holding the hip rather than moving the leg.",
+  "matices": "The balance between quadriceps and glutes depends on step length and how much the torso leans, two things everyone does differently. In the cited study, with a standard step, the quadriceps vasti lead.",
   "fuentes": [
     {
       "titulo": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
-      "autor": "Muyor, Martín-Fuentes, Rodríguez-Ridao y Antequera-Vique, PLOS ONE, 2020",
+      "autor": "Muyor, Martín-Fuentes, Rodríguez-Ridao and Antequera-Vique, PLOS ONE, 2020",
       "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0230841"
     },
     {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
     }
   ]

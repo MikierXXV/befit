@@ -2,7 +2,7 @@
   "$comment": "English strings. Key parity with es/ui.json is enforced by scripts/validar-contenido.mjs.",
   "sitio": {
     "titulo": "befit",
-    "entradilla": "Ejercicios de gimnasio explicados con un maniquí 3D.",
+    "entradilla": "Gym exercises explained with a 3D figure.",
     "tema_claro": "Light theme",
     "tema_oscuro": "Dark theme"
   },
@@ -52,7 +52,18 @@
       "soleo": "Soleus",
       "flexores_cadera": "Hip flexors"
     },
-    "sin_maniqui": "No figure yet"
+    "sin_maniqui": "No figure yet",
+    "mas_filtros": "More filters",
+    "limpiar": "Clear filters",
+    "ver_todos": "See the whole catalogue",
+    "material": {
+      "barra": "Barbell",
+      "barra-fija": "Pull-up bar",
+      "mancuerna": "Dumbbell",
+      "banco": "Bench",
+      "rack": "Rack"
+    },
+    "saltar": "Skip to results"
   },
   "ficha": {
     "volver": "← Back to catalogue",
@@ -68,7 +79,8 @@
     "quitar": "Remove {nombre} from favourites",
     "vacio": "Nothing saved yet. The star on each card saves it on this device.",
     "compartir": "Copy link to my selection",
-    "copiado": "Link copied"
+    "copiado": "Link copied",
+    "entradilla": "What you have saved on this device."
   },
   "figura": {
     "pausa": "Pause",
@@ -99,7 +111,8 @@
       "frente": "Front",
       "espalda": "Back"
     },
-    "sin_destacados": "no muscles highlighted"
+    "sin_destacados": "no muscles highlighted",
+    "roles_origen": "The roles describe the movement as technique manuals define it. They are not a measurement of how much each muscle works: that depends on the variant, the load and how it is measured."
   },
   "aviso": {
     "salud": "This explains how an exercise is done, not whether it suits you. If you have an injury, pain or any medical condition, check with a professional first."

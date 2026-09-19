@@ -11,7 +11,8 @@
   "$comment_cuerpo": "El cuerpo es una tabla que pivota sobre las puntas de los pies: manos y tobillo están clavados en el mundo y lo único que se mueve es la pelvis con su inclinación. `inclinacion` 90 sería el cuerpo horizontal boca abajo con la cabeza a +Z; 75 es la tabla subida 15°, que es lo que da el brazo estirado con la mano bajo el hombro.",
   "$comment_camara": "Sin `detalle`: aquí no hay agarre, la mano solo apoya, y el primer plano de la muñeca no enseñaba nada que no se vea en tres cuartos.",
   "camara": {
-    "vista": "lateral"
+    "vista": "lateral",
+    "proporcion": "16 / 10"
   },
   "poses": [
     {

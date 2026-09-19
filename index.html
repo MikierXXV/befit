@@ -25,7 +25,19 @@
     </script>
   </head>
   <body>
-    <main id="sitio"></main>
+    <!--
+      La portada va escrita aquí y la app la sustituye al arrancar. No es duplicar contenido: es lo
+      único que el navegador puede pintar antes de descargar y ejecutar el JavaScript. Con el
+      contenedor vacío, el primer texto tardaba 2,7 s en el móvil de gama baja.
+    -->
+    <div id="cabecera"></div>
+    <main id="sitio">
+      <div class="portada">
+        <h1>befit</h1>
+        <p>Ejercicios de gimnasio explicados con un maniquí 3D.</p>
+      </div>
+      <div id="app"></div>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

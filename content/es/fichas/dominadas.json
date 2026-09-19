@@ -7,12 +7,12 @@
   "movimiento_id": "dominadas",
   "ejecucion": [
     "Cuélgate de la barra con las manos algo más abiertas que los hombros y los brazos estirados.",
-    "Antes de tirar, baja los hombros: separan la cabeza de las orejas y ponen el dorsal a trabajar.",
+    "Antes de tirar, baja los hombros: aléjalos de las orejas, que es lo que pone el dorsal a trabajar.",
     "Tira llevando los codos hacia abajo y atrás, hasta pasar la barbilla por encima de la barra.",
     "Baja controlando hasta estirar los brazos del todo, sin dejarte caer."
   ],
   "material": [
-    "barra"
+    "barra-fija"
   ],
   "nivel": "avanzado",
   "musculos": {
@@ -30,7 +30,7 @@
       "serrato"
     ]
   },
-  "matices": "Dominada y dominada supina salen por encima del jalón y de los remos en activación del dorsal, pero entre los distintos agarres las diferencias son pequeñas.",
+  "matices": "En la revisión citada la dominada aparece entre los ejercicios con más activación del dorsal, por encima del jalón. La comparación no es firme: con la carga igualada varios trabajos encuentran valores parecidos, y entre agarres las diferencias son pequeñas.",
   "fuentes": [
     {
       "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
