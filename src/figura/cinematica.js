@@ -685,7 +685,7 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
  * dobla mucho los nudillos y la falange media, y poco la punta. El pulgar va aparte y menos, porque
  * se opone al resto en lugar de curvarse con ellos.
  */
-const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [38, 36, 22] };
+const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [20, 24, 16] };
 
 /**
  * Cierra los dedos alrededor del agarre. 0 = mano abierta, 1 = cerrada del todo.
@@ -710,24 +710,61 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
   const marcoMano = mano.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(mano).clone().invert());
   const palma = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(marcoMano);
 
+  /*
+   * EL SENTIDO DEL CIERRE NO SE SUPONE: SE PRUEBA.
+   *
+   * Aquí se han estrellado cuatro intentos, todos por lo mismo. Doblar un dedo es girarlo alrededor
+   * de un eje, y acertar ese eje a base de convenios —la X del hueso, el signo de la mano, la normal
+   * de la palma— sale bien en una mano y mal en la otra, porque el esqueleto no está espejado como
+   * uno supone. Lo que no falla es mirar el resultado: de los dos sentidos posibles, el bueno es el
+   * que ACERCA la punta del dedo a lo que se está agarrando.
+   *
+   * Con algo en la mano, el eje es el del propio mango: enrollarse alrededor de un cilindro es
+   * girar alrededor de su eje, y ahí el dedo pasa de rozarlo a envolverlo. Sin nada que agarrar
+   * —la plancha, el puente— no hay a qué acercarse: el dedo se dobla hacia la palma y punto.
+   */
+  const sentidoDe = (h, ejeMundo, angulo, objetivo) => {
+    const mundo = h.getWorldQuaternion(new Quaternion());
+    const base = h.getWorldPosition(new Vector3());
+    const largoHueso = 0.03;
+    const dir = new Vector3(0, 1, 0).applyQuaternion(mundo);
+    const cerca = (signo) => {
+      const punta = dir.clone()
+        .applyQuaternion(new Quaternion().setFromAxisAngle(ejeMundo, signo * angulo * GRAD))
+        .multiplyScalar(largoHueso).add(base);
+      const d = punta.clone().sub(objetivo);
+      return ejeAgarre ? d.clone().addScaledVector(ejeAgarre, -d.dot(ejeAgarre)).length() : d.length();
+    };
+    return cerca(1) <= cerca(-1) ? 1 : -1;
+  };
+
+  let sentido = 0;
   for (const h of esq.huesos[`falanges_${l}`]) {
     const pulgar = h.name.includes('thumb');
     const n = Number(h.name.match(/0(\d)/)[1]) - 1;
 
     /*
-     * LA PRIMERA FALANGE DEL PULGAR SE APUNTA AL AGARRE. Las otras dos se curvan detrás.
-     *
-     * Girar el pulgar entero alrededor del eje del mango no basta, y probarlo costó tres vueltas:
-     * con un sentido salía bien la mano izquierda y con el otro la derecha, nunca las dos. El
-     * motivo es que el pulgar no arranca en la misma orientación relativa en las dos manos, así que
-     * el mismo giro las deja en sitios distintos. Apuntarlo resuelve las dos a la vez sin saber
-     * nada de cómo está montado el esqueleto: se le dice adónde tiene que mirar y mira.
+     * La primera falange del pulgar se APUNTA al agarre: no basta con doblarlo, porque se opone al
+     * resto y hay que llevarlo antes a donde está el mango.
      */
     if (pulgar && puntoAgarre && n === 0) {
       const padre = h.parent.getWorldQuaternion(new Quaternion());
       const mundo = h.getWorldQuaternion(new Quaternion());
       const actual = new Vector3(0, 1, 0).applyQuaternion(mundo);
-      const deseada = puntoAgarre.clone().sub(h.getWorldPosition(new Vector3()));
+      /*
+       * Apuntando al CENTRO del agarre, el pulgar se metía dentro del puño y asomaba entre el índice
+       * y el corazón. Un pulgar no va al centro de la barra: va a su SUPERFICIE, por el lado por el
+       * que llega. Ese punto se calcula desde la base del propio pulgar —se proyecta sobre el eje y
+       * se sale un radio hacia fuera—, así que sale bien esté donde esté la mano.
+       */
+      const base = h.getWorldPosition(new Vector3());
+      let destino = puntoAgarre.clone();
+      if (ejeAgarre) {
+        const sobreEje = puntoAgarre.clone().addScaledVector(ejeAgarre, base.clone().sub(puntoAgarre).dot(ejeAgarre));
+        const haciaFuera = base.clone().sub(sobreEje);
+        if (haciaFuera.lengthSq() > 1e-8) destino = sobreEje.addScaledVector(haciaFuera.normalize(), RADIO_BARRA + 0.012);
+      }
+      const deseada = destino.sub(base);
       if (deseada.lengthSq() > 1e-8) {
         const giro = new Quaternion().setFromUnitVectors(actual, deseada.normalize());
         h.quaternion.copy(padre.invert().multiply(giro.multiply(mundo)));
@@ -736,17 +773,31 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
       continue;
     }
 
-    let ejeDedo = new Vector3(1, 0, 0);
-    if (pulgar) {
-      const mundo = h.getWorldQuaternion(new Quaternion());
-      const giro = ejeAgarre
-        ? ejeAgarre.clone().multiplyScalar(-SIGNO[l])
-        : new Vector3().crossVectors(palma, new Vector3(0, 1, 0).applyQuaternion(mundo));
-      if (giro.lengthSq() > 1e-6) ejeDedo = giro.normalize().applyQuaternion(mundo.invert());
-    }
-    h.quaternion.multiply(eje(ejeDedo, CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre));
+    const angulo = CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre;
+    const mundo = h.getWorldQuaternion(new Quaternion());
+    const dir = new Vector3(0, 1, 0).applyQuaternion(mundo);
+
+    // El eje alrededor del que gira: el del mango si hay algo agarrado, si no el que lleva a la palma.
+    let ejeMundo = ejeAgarre ? ejeAgarre.clone() : new Vector3().crossVectors(dir, palma);
+    if (ejeMundo.lengthSq() < 1e-8) continue;
+    ejeMundo.normalize();
+
+    /*
+     * El sentido se decide UNA VEZ POR MANO, con la primera falange, y vale para todas.
+     *
+     * Decidirlo en cada falange parecía más listo y era peor: en cuanto una punta llega al mango,
+     * los dos sentidos la alejan, el desempate sale por décimas y el dedo se desenrolla a mitad de
+     * camino. Un dedo se cierra entero hacia el mismo lado o no se cierra.
+     */
+    if (sentido === 0) sentido = sentidoDe(h, ejeMundo, angulo, puntoAgarre ?? h.getWorldPosition(new Vector3()).addScaledVector(palma, 0.05));
+    const ejeDedo = ejeMundo.multiplyScalar(sentido).applyQuaternion(mundo.clone().invert());
+    h.quaternion.multiply(eje(ejeDedo, angulo));
+    // La siguiente falange lee su dirección en el mundo: sin actualizar, la lee sin el giro de su
+    // padre y el dedo sale en abanico en vez de enrollado.
+    h.updateMatrixWorld(true);
   }
 }
+
 
 
 
