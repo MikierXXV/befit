@@ -70,12 +70,14 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         },
         "i": {
           "objetivo": [
-            0.76,
-            0.205,
+            0.765,
+            0.175,
             0.01
           ],
           "rodilla_hacia": [
@@ -83,7 +85,9 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         }
       }
     },
@@ -144,12 +148,14 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         },
         "i": {
           "objetivo": [
-            0.76,
-            0.205,
+            0.765,
+            0.175,
             0.01
           ],
           "rodilla_hacia": [
@@ -157,7 +163,9 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         }
       }
     },
@@ -218,12 +226,14 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         },
         "i": {
           "objetivo": [
-            0.76,
-            0.205,
+            0.765,
+            0.175,
             0.01
           ],
           "rodilla_hacia": [
@@ -231,7 +241,9 @@
             0,
             1
           ],
-          "apoyo": "metatarso"
+          "tobillo": {
+            "dorsiflexion": 12
+          }
         }
       }
     }

@@ -15,6 +15,7 @@
  */
 
 import { mkdir, readFile } from 'node:fs/promises';
+import { readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
@@ -510,6 +511,47 @@ for (const vista of VISTAS) {
   for (const a of animaciones) fallos.push(`[maqueta] ${a}`);
 
   await contexto.close();
+}
+
+/*
+ * TODAS LAS FICHAS, UNA VEZ.
+ *
+ * Arriba solo se recorren las rutas de `presupuestos.json`: cuatro, porque capturarlas en dos temas
+ * y dos anchos ya es caro. El agujero es evidente en cuanto pasa: una ficha con un dato que hace
+ * lanzar al maniquí —un músculo que no está en el mapa— no aparece en esas cuatro, así que nadie se
+ * entera, y su cartel del catálogo sale en blanco.
+ *
+ * Esto es la otra mitad: se abren TODAS las fichas, en un solo tema y un solo ancho, sin capturar
+ * nada. Solo se mira que no lancen y que el lienzo del maniquí exista. Cuesta un par de segundos
+ * por ficha y cubre justo lo que las capturas no pueden.
+ */
+{
+  const pagina = await navegador.newPage({ viewport: { width: 900, height: 700 } });
+  const idioma = JSON.parse(await readFile(join(RAIZ, 'content/reglas.json'), 'utf8')).idiomas[0];
+  const fichas = readdirSync(join(RAIZ, `content/${idioma}/fichas`)).map((f) => f.replace(/\.json$/, ''));
+
+  for (const id of fichas) {
+    const errores = [];
+    const enConsola = (m) => m.type() === 'error' && errores.push(m.text());
+    const enPagina = (e) => errores.push(e.message);
+    pagina.on('console', enConsola);
+    pagina.on('pageerror', enPagina);
+
+    await pagina.goto(`${BASE}#/f/${id}`, { waitUntil: 'load' });
+    await pagina.waitForTimeout(2000);
+    const conManiqui = await pagina.evaluate(() => {
+      const c = document.querySelector('canvas.lienzo');
+      return c ? c.width * c.height > 0 : null;
+    });
+
+    for (const e of errores) fallos.push(`[ficha ${id}] ${e}`);
+    if (conManiqui === false) fallos.push(`[ficha ${id}] el lienzo del maniquí está vacío`);
+
+    pagina.off('console', enConsola);
+    pagina.off('pageerror', enPagina);
+  }
+
+  await pagina.close();
 }
 
 await navegador.close();

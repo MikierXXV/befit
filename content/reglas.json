@@ -61,6 +61,13 @@
     "holgura_suelo": 0.012,
     "holgura_solido": 0.02
   },
+  "$comment_musculos": "Los músculos de cada ficha tienen que existir en el mapa muscular. La lista NO se copia aquí: se lee del registro, que es quien la define. Un nombre inventado no daba error de contenido y en cambio hacía que el mapa lanzara al montarse, y la ficha se quedaba sin maniquí y su cartel salía en blanco.",
+  "musculos": {
+    "coleccion": "fichas",
+    "campo": "musculos",
+    "registro": "src/figura/musculos.ts",
+    "constante": "ZONAS"
+  },
   "acentos": {
     "fichero": "grupos.json",
     "lista": "grupos"

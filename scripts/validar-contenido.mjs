@@ -447,7 +447,48 @@ if (reglas.escenografia) {
   }
 }
 
-/* --------------------------------------------------- 8. paridad entre idiomas -- */
+/* -------------------------------------------------- 8. músculos que existen -- */
+
+/*
+ * Un músculo que no está en el mapa no es un detalle de contenido: el mapa LANZA al montarse, la
+ * ficha entera se queda sin maniquí y su cartel del catálogo sale en blanco. Pasó con
+ * `pectoral_mayor` —se llama `pectoral`— y con `romboides`, que no tiene zona propia.
+ *
+ * La lista de músculos válidos se LEE del registro en vez de copiarse aquí: copiarla es cómo se
+ * desincroniza, y entonces el validador da errores falsos en cuanto alguien añade una zona.
+ */
+if (reglas.musculos) {
+  const m = reglas.musculos;
+  const ruta = join(RAIZ, m.registro);
+
+  if (!existsSync(ruta)) {
+    error(`no encuentro ${m.registro}, declarado en reglas.json`);
+  } else {
+    const fuente = await readFile(ruta, 'utf8');
+    const i = fuente.indexOf(`const ${m.constante}`);
+    const bloque = i === -1 ? '' : fuente.slice(i, fuente.indexOf('\n};', i));
+    const validos = new Set([...bloque.matchAll(/^ {2}([a-z_]+):\s*\[/gm)].map((x) => x[1]));
+
+    if (!validos.size) {
+      error(`${m.registro} → no he sabido leer "${m.constante}"; sin eso no puedo validar los músculos`);
+    } else {
+      for (const idioma of IDIOMAS) {
+        for (const { datos: d, origen } of fichasDe(idioma, m.coleccion, 'musculos')) {
+          for (const [rol, lista] of Object.entries(d[m.campo] ?? {})) {
+            for (const musculo of lista ?? []) {
+              if (!validos.has(musculo)) {
+                error(`[${idioma}] ${origen} → músculo "${musculo}" (${rol}) no está en el mapa. `
+                  + `Con ese nombre la ficha se queda sin maniquí. Válidos: ${[...validos].join(', ')}`);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* --------------------------------------------------- 9. paridad entre idiomas -- */
 
 if (reglas.paridad_idiomas && IDIOMAS.length > 1) {
   const [base, ...resto] = IDIOMAS;
