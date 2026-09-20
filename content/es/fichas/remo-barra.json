@@ -1,0 +1,47 @@
+{
+  "id": "remo-barra",
+  "grupo_id": "tiron-horizontal",
+  "orden": 2,
+  "nombre": "Remo con barra",
+  "resumen": "Con el tronco inclinado y la espalda recta, la barra sube desde los brazos estirados hasta el abdomen. Es el tirón horizontal con más carga del grupo.",
+  "movimiento_id": "remo-barra",
+  "ejecucion": [
+    "Coge la barra en pronación, algo más abierto que los hombros, de pie y con las rodillas un poco flexionadas.",
+    "Lleva la cadera atrás hasta que el tronco quede a unos 45°, con la espalda recta y la mirada al suelo por delante.",
+    "Desde ahí, tira de la barra hacia el abdomen llevando los codos atrás y pegados al cuerpo.",
+    "Baja controlando hasta estirar los brazos, sin que el tronco suba a la vez que baja la barra.",
+    "Si el tronco se endereza para ayudarte a subir la barra, hay demasiado peso."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "En la revisión citada, el remo con barra aparece entre los ejercicios que mejor reclutan el trapecio medio, y por delante del resto en trapecio inferior. Para el dorsal, en cambio, los tirones verticales dan valores más altos. Son medidas de activación en una serie, no de crecimiento.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "url": "https://doi.org/10.3390/jfmk11030315",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

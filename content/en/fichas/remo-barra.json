@@ -1,0 +1,47 @@
+{
+  "id": "remo-barra",
+  "grupo_id": "tiron-horizontal",
+  "orden": 2,
+  "nombre": "Barbell row",
+  "resumen": "Torso hinged and back flat, the bar comes up from straight arms to the abdomen. It is the heaviest horizontal pull in the group.",
+  "movimiento_id": "remo-barra",
+  "ejecucion": [
+    "Take the bar overhand, a little wider than your shoulders, standing with knees slightly bent.",
+    "Push your hips back until your torso is at about 45°, back flat and eyes on the floor ahead.",
+    "From there, pull the bar to your abdomen, driving your elbows back and close to your body.",
+    "Lower under control until your arms are straight, without letting your torso rise as the bar comes down.",
+    "If your torso straightens up to help the bar come up, the weight is too heavy."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "In the cited review the barbell row is among the exercises that best recruit the middle trapezius, and ahead of the rest for the lower trapezius. For the lats, vertical pulls show higher values. These are activation measures within a set, not growth.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "url": "https://doi.org/10.3390/jfmk11030315",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

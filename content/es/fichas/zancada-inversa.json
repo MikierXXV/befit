@@ -1,0 +1,47 @@
+{
+  "id": "zancada-inversa",
+  "grupo_id": "zancada",
+  "orden": 1,
+  "nombre": "Zancada inversa con mancuernas",
+  "resumen": "Un paso atrás hasta apoyar la rodilla cerca del suelo, y vuelta. El pie de delante no se mueve, así que la rodilla recibe menos carga que en la zancada hacia delante.",
+  "movimiento_id": "zancada-inversa",
+  "ejecucion": [
+    "De pie, con una mancuerna en cada mano colgando a los lados.",
+    "Da un paso atrás con una pierna y apoya la punta del pie.",
+    "Baja doblando las dos rodillas hasta que la de atrás quede a un palmo del suelo.",
+    "La rodilla de delante se queda encima del pie, que no se ha movido en todo el recorrido.",
+    "Empuja con la pierna de delante para volver a la posición inicial, y alterna."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "La comparación con la zancada hacia delante está medida: en el trabajo citado, la versión hacia atrás produjo menos fuerza del cuádriceps, menos carga en la rótula y menos flexión de rodilla. Eso la hace más llevadera para una rodilla sensible, no \"mejor\": el estímulo también es algo menor.",
+  "fuentes": [
+    {
+      "titulo": "Patellofemoral joint loading during the forward and backward lunge",
+      "autor": "Goulette et al., Phys Ther Sport, 2021",
+      "url": "https://doi.org/10.1016/j.ptsp.2020.12.001"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

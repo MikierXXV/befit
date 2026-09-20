@@ -1,0 +1,47 @@
+{
+  "id": "zancada-inversa",
+  "grupo_id": "zancada",
+  "orden": 1,
+  "nombre": "Reverse lunge",
+  "resumen": "A step back until the rear knee is close to the floor, and back up. The front foot never moves, so the knee takes less load than in a forward lunge.",
+  "movimiento_id": "zancada-inversa",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, hanging at your sides.",
+    "Step back with one leg and land on the ball of your foot.",
+    "Bend both knees until the back one is a hand-span from the floor.",
+    "The front knee stays over the foot, which has not moved at any point.",
+    "Push through the front leg to come back up, and alternate sides."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "The comparison with the forward lunge is measured: in the cited study the backward version produced less quadriceps force, less kneecap loading and less knee flexion. That makes it kinder to a sensitive knee, not \"better\": the stimulus is somewhat smaller too.",
+  "fuentes": [
+    {
+      "titulo": "Patellofemoral joint loading during the forward and backward lunge",
+      "autor": "Goulette et al., Phys Ther Sport, 2021",
+      "url": "https://doi.org/10.1016/j.ptsp.2020.12.001"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
