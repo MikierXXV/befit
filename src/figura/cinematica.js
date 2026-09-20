@@ -397,13 +397,24 @@ function marcoAgarre(muneca, imp, Fantebrazo, l) {
   const A = ejeDe(imp);
   const radial = perpendicular(imp.posicion.clone().sub(muneca), A);
   if (!radial) return Fantebrazo;
-  // El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
-  // antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
+  /*
+   * El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
+   * antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
+   *
+   * CONSECUENCIA CONOCIDA: al moverse el brazo, la mano gira despacio alrededor de la barra —un
+   * agarre de verdad no resbala, lo que se dobla es la muñeca—. Medido: hasta 15° entre fotogramas
+   * en el press militar. Se intentó fijar la mano a la barra sacando los dedos por la tangente, y
+   * salió peor: el criterio para elegir el sentido de esa tangente cambia de golpe a mitad de
+   * recorrido y la mano pegaba saltos de 170°. Arreglarlo de verdad pide sacar el marco de la mano
+   * SOLO de la barra, con la orientación declarada en el movimiento, y eso es trabajo aparte.
+   */
   const largo = perpendicular(ABAJO.clone().applyQuaternion(Fantebrazo), A) ?? radial.clone();
   const palma = perpendicular(radial, largo);
   if (!palma) return Fantebrazo;
   return mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);
 }
+
+
 
 function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
   const m = miembro(pose.brazos, l) ?? {};
@@ -524,17 +535,28 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     orientar(esq, huesos[`mano_${l}`], Fmano);
 
     /*
-     * El pulgar, al plano de la palma. En reposo cuelga por debajo de ella, así que una mano apoyada
-     * dejaba el pulgar 9 cm bajo el suelo: el validador —que cuenta los vértices de la mano contra
-     * el suelo— obligaba a levantar toda la muñeca, y en las flexiones la palma quedaba flotando y
-     * el maniquí parecía apoyarse en los dedos. Se abre hacia fuera, que es como se apoya de verdad.
+     * EL PULGAR, TUMBADO EN EL PLANO DE LA PALMA Y APUNTANDO ADELANTE Y HACIA DENTRO.
      *
-     * El eje y los 70° están MEDIDOS, no probados a ojo: con el pulgar abierto, el punto más bajo de
-     * la mano pasa de 13,8 a 4,4 cm por debajo de la muñeca, que es el grosor de la palma.
+     * En reposo cuelga por debajo de la palma, así que una mano apoyada dejaba el pulgar 9 cm bajo
+     * el suelo: el validador obligaba a levantar la muñeca y el maniquí acababa apoyándose en los
+     * dedos. Se resolvía con un giro fijo de 70° alrededor de un eje supuesto, y ese eje solo
+     * acertaba en una mano: en la otra el pulgar quedaba doblado hacia atrás contra la muñeca.
+     *
+     * Ahora se APUNTA, que no depende de ningún convenio: hacia delante y 35° hacia la línea media,
+     * que es donde cae el pulgar de una mano apoyada en el suelo.
      */
+    const haciaDentro = new Vector3(-SIGNO[l], 0, 0);
+    const destinoPulgar = DELANTE.clone().multiplyScalar(0.82)
+      .addScaledVector(haciaDentro, 0.57).normalize().applyQuaternion(rumbo);
     for (const h of huesos[`falanges_${l}`]) {
       if (!h.name.includes('thumb')) continue;
-      h.quaternion.multiply(eje(new Vector3(0, 0, -SIGNO[l]), 70));
+      if (!h.name.includes('thumb01')) continue;
+      const padre = h.parent.getWorldQuaternion(new Quaternion());
+      const mundo = h.getWorldQuaternion(new Quaternion());
+      const actual = new Vector3(0, 1, 0).applyQuaternion(mundo);
+      const giro = new Quaternion().setFromUnitVectors(actual, destinoPulgar);
+      h.quaternion.copy(padre.invert().multiply(giro.multiply(mundo)));
+      h.updateMatrixWorld(true);
     }
     const antebrazo = ABAJO.clone().applyQuaternion(Fantebrazo);
     anotar(l, 'muneca.extension', Math.acos(Math.max(-1, Math.min(1, antebrazo.dot(DELANTE.clone().applyQuaternion(rumbo))))) / GRAD);
@@ -723,19 +745,18 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
    * girar alrededor de su eje, y ahí el dedo pasa de rozarlo a envolverlo. Sin nada que agarrar
    * —la plancha, el puente— no hay a qué acercarse: el dedo se dobla hacia la palma y punto.
    */
-  const sentidoDe = (h, ejeMundo, angulo, objetivo) => {
-    const mundo = h.getWorldQuaternion(new Quaternion());
-    const base = h.getWorldPosition(new Vector3());
-    const largoHueso = 0.03;
-    const dir = new Vector3(0, 1, 0).applyQuaternion(mundo);
-    const cerca = (signo) => {
-      const punta = dir.clone()
-        .applyQuaternion(new Quaternion().setFromAxisAngle(ejeMundo, signo * angulo * GRAD))
-        .multiplyScalar(largoHueso).add(base);
-      const d = punta.clone().sub(objetivo);
-      return ejeAgarre ? d.clone().addScaledVector(ejeAgarre, -d.dot(ejeAgarre)).length() : d.length();
-    };
-    return cerca(1) <= cerca(-1) ? 1 : -1;
+  /*
+   * EL SENTIDO DEL CIERRE, CONTINUO.
+   *
+   * Girar un dedo alrededor del eje `e` mueve su punta hacia `e × dir`, así que el sentido bueno es
+   * el que hace que eso apunte hacia la palma. Sale de un producto escalar, no de comparar dos
+   * distancias: comparando distancias, el resultado saltaba de un fotograma a otro cuando las dos
+   * opciones quedaban parecidas, y la mano daba un tirón a mitad del recorrido. En la sentadilla y
+   * en el press militar se veía como si la mano cambiara de agarre sola.
+   */
+  const sentidoDe = (dir, ejeMundo) => {
+    const haciaDonde = new Vector3().crossVectors(ejeMundo, dir).dot(palma);
+    return haciaDonde >= 0 ? 1 : -1;
   };
 
   let sentido = 0;
@@ -789,7 +810,7 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
      * los dos sentidos la alejan, el desempate sale por décimas y el dedo se desenrolla a mitad de
      * camino. Un dedo se cierra entero hacia el mismo lado o no se cierra.
      */
-    if (sentido === 0) sentido = sentidoDe(h, ejeMundo, angulo, puntoAgarre ?? h.getWorldPosition(new Vector3()).addScaledVector(palma, 0.05));
+    if (sentido === 0) sentido = sentidoDe(dir, ejeMundo);
     const ejeDedo = ejeMundo.multiplyScalar(sentido).applyQuaternion(mundo.clone().invert());
     h.quaternion.multiply(eje(ejeDedo, angulo));
     // La siguiente falange lee su dirección en el mundo: sin actualizar, la lee sin el giro de su
