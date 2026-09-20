@@ -294,7 +294,15 @@ export function aplicarPose(esq, pose, definicion = {}) {
     orientar(esq, huesos[`clavicula_${l}`], Ftorax);
     posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos);
     posarPierna(esq, pose, l, Fpelvis, anotar, avisos);
-    cerrarMano(esq, l, miembro(pose.brazos, l)?.cierre ?? 0);
+    /*
+     * Qué agarra esta mano, si agarra algo: la barra a la que va, o el implemento que lleva. El
+     * pulgar lo necesita para rodearlo en vez de cerrarse sobre la palma.
+     */
+    const m = miembro(pose.brazos, l);
+    const llevado = Object.values(implementos).find((i) => i.en_mano === l);
+    const agarrado = m?.objetivo === 'barra' && implementos.barra ? ejeDe(implementos.barra)
+      : (llevado?.eje ? llevado.eje.clone() : null);
+    cerrarMano(esq, l, m?.cierre ?? 0, agarrado);
   }
 
   // La mancuerna va en la mano, así que se coloca cuando la mano ya está.
@@ -693,23 +701,27 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
  * dobla mucho los nudillos y la falange media, y poco la punta. El pulgar va aparte y menos, porque
  * se opone al resto en lugar de curvarse con ellos.
  */
-const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [26, 34, 24] };
-function cerrarMano(esq, l, cierre) {
+const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [16, 18, 12] };
+
+/**
+ * Cierra los dedos alrededor del agarre. 0 = mano abierta, 1 = cerrada del todo.
+ *
+ * Un ángulo igual en las tres falanges da un puño, no un agarre: la mano cerrada sobre una barra
+ * dobla mucho los nudillos y la falange media, y poco la punta.
+ *
+ * EL PULGAR RODEA LA BARRA; NO SE CIERRA CONTRA LA PALMA. Es la diferencia entre agarrar y cerrar
+ * el puño, y se notaba: el pulgar se metía dentro del puño, la barra le pasaba por encima y en el
+ * primer plano del press de banca asomaba un muñón por un lado. Cuando hay algo agarrado, todas las
+ * falanges del pulgar giran alrededor del EJE DE ESE ALGO —igual que hacen los otros cuatro dedos,
+ * solo que llegando por el otro lado—, que es lo que hace que la mano se cierre sobre el mango en
+ * vez de sobre sí misma.
+ *
+ * Sin nada agarrado —la plancha, el puente— no hay eje al que rodear: ahí el pulgar se dobla hacia
+ * la palma, alrededor de la perpendicular a su propio hueso y a la normal de la palma. Suponer la X
+ * del hueso, como se hacía antes, valía para una mano y abría el pulgar de la otra hacia fuera.
+ */
+function cerrarMano(esq, l, cierre, ejeAgarre) {
   if (!cierre) return;
-  /*
-   * EL EJE DEL PULGAR SE CALCULA; EL DE LOS DEDOS SE SABE.
-   *
-   * Los cuatro dedos se doblan alrededor de la X de su propio hueso en las dos manos, y con eso
-   * basta. El pulgar no: sale del lado de la palma y se opone al resto, así que su eje de flexión
-   * depende de hacia dónde mire la palma —y eso es distinto en cada mano—. Con la X de siempre, un
-   * pulgar se cerraba bien y el otro se abría hacia fuera y cruzaba el puño por el medio; en el
-   * primer plano de la sentadilla salía un dedo atravesando la mano. Probar con el signo cambiado
-   * no arregla nada: solo cambia de mano el problema.
-   *
-   * Lo que sí vale es no suponerlo: el pulgar se dobla alrededor de la perpendicular a su propio
-   * hueso y a la normal de la palma, que es la definición de "cerrarse hacia la palma", y eso sale
-   * bien en las dos manos sin casos especiales.
-   */
   const mano = esq.huesos[`mano_${l}`];
   const marcoMano = mano.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(mano).clone().invert());
   const palma = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(marcoMano);
@@ -720,14 +732,20 @@ function cerrarMano(esq, l, cierre) {
     let ejeDedo = new Vector3(1, 0, 0);
     if (pulgar) {
       const mundo = h.getWorldQuaternion(new Quaternion());
-      const largo = new Vector3(0, 1, 0).applyQuaternion(mundo);
-      const giro = new Vector3().crossVectors(palma, largo);
-      // Si el pulgar apunta justo a donde mira la palma no hay plano que valga; ahí da igual.
+      let giro;
+      if (ejeAgarre) {
+        // Alrededor del mango, y en el sentido que lo rodea: el de la mano que lo sujeta.
+        giro = ejeAgarre.clone().multiplyScalar(-SIGNO[l]);
+      } else {
+        giro = new Vector3().crossVectors(palma, new Vector3(0, 1, 0).applyQuaternion(mundo));
+      }
+      // Si el pulgar apunta justo a donde gira no hay plano que valga; ahí da igual.
       if (giro.lengthSq() > 1e-6) ejeDedo = giro.normalize().applyQuaternion(mundo.invert());
     }
     h.quaternion.multiply(eje(ejeDedo, CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre));
   }
 }
+
 
 /**
  * Abducción como ángulo de salida del plano sagital, no como atan2 en el plano frontal.

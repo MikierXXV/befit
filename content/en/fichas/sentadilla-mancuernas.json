@@ -1,16 +1,16 @@
 {
-  "id": "sentadilla-goblet",
+  "id": "sentadilla-mancuernas",
   "grupo_id": "sentadilla",
   "orden": 1,
-  "nombre": "Goblet squat",
-  "resumen": "One dumbbell held against the chest and a full squat. The weight up front keeps the trunk upright, which is why this is the one people learn the pattern with.",
-  "movimiento_id": "sentadilla-goblet",
+  "nombre": "Dumbbell squat",
+  "resumen": "A dumbbell in each hand, hanging at your sides, and a full squat. No bar to rack and no stands to set: this is the one people learn the pattern with.",
+  "movimiento_id": "sentadilla-mancuernas",
   "ejecucion": [
-    "Hold a dumbbell against your chest with both hands, elbows tucked in.",
+    "Take a dumbbell in each hand and let them hang at your sides, arms straight.",
     "Feet shoulder-width apart, toes turned slightly out.",
     "Go down bending hips and knees together, knees tracking over your feet.",
-    "Go as low as you can keep your back flat: the weight in front helps you not tip forward.",
-    "Come up by pushing the floor away, keeping the dumbbell against your chest."
+    "Go as low as you can keep your back flat and your heels down.",
+    "Come up by pushing the floor away, without letting the dumbbells swing forward."
   ],
   "material": [
     "mancuerna"
@@ -32,7 +32,7 @@
       "trapecio_medio"
     ]
   },
-  "matices": "Holding the load in front changes the demand compared with a back squat, but there is no settled answer on how much: it depends on load and depth, and activation studies mostly compare barbell variations.",
+  "matices": "Where the load sits changes the demand compared with a back squat, but there is no settled answer on how much: it depends on weight and depth, and activation studies mostly compare barbell variations.",
   "fuentes": [
     {
       "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",

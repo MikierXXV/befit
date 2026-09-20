@@ -306,7 +306,7 @@ function tarjeta(f: Ficha, n: number): string {
         <span class="cartel">
           <img src="${import.meta.env.BASE_URL}carteles/${f.id}.png" alt="" decoding="async"
                loading="${primeros ? 'eager' : 'lazy'}" ${primeros ? 'fetchpriority="high"' : ''}
-               width="400" height="500" onerror="this.hidden = true" />
+               width="340" height="476" onerror="this.hidden = true" />
           ${f.movimiento_id ? '' : `<span class="pendiente">${t('catalogo.sin_maniqui')}</span>`}
         </span>
         <span class="nombre">${escapar(f.nombre)}</span>

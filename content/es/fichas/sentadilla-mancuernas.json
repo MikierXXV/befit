@@ -1,16 +1,16 @@
 {
-  "id": "sentadilla-goblet",
+  "id": "sentadilla-mancuernas",
   "grupo_id": "sentadilla",
   "orden": 1,
-  "nombre": "Sentadilla goblet con mancuerna",
-  "resumen": "Una sola mancuerna sujeta contra el pecho y una sentadilla completa. El peso por delante obliga al tronco a mantenerse erguido, y por eso es con la que se aprende el patrón.",
-  "movimiento_id": "sentadilla-goblet",
+  "nombre": "Sentadilla con mancuernas",
+  "resumen": "Una mancuerna en cada mano, colgando a los lados, y una sentadilla completa. Sin barra que colocar ni soporte que ajustar: es con la que se aprende el patrón.",
+  "movimiento_id": "sentadilla-mancuernas",
   "ejecucion": [
-    "Sujeta una mancuerna contra el pecho con las dos manos y los codos por dentro.",
+    "Coge una mancuerna en cada mano y déjalas colgar a los lados, con los brazos estirados.",
     "Pies a la anchura de los hombros, con las puntas ligeramente hacia fuera.",
     "Baja doblando cadera y rodillas a la vez, con las rodillas siguiendo la línea de los pies.",
-    "Baja hasta donde puedas mantener la espalda recta: el peso delante ayuda a no irse hacia delante.",
-    "Sube empujando el suelo, sin que la mancuerna se separe del pecho."
+    "Baja hasta donde puedas mantener la espalda recta y los talones en el suelo.",
+    "Sube empujando el suelo, sin que las mancuernas se balanceen hacia delante."
   ],
   "material": [
     "mancuerna"
@@ -32,7 +32,7 @@
       "trapecio_medio"
     ]
   },
-  "matices": "Colocar la carga delante cambia la exigencia respecto a la sentadilla con barra detrás, pero no hay una respuesta cerrada sobre cuánto: depende de la carga y de la profundidad, y los estudios de activación comparan sobre todo variantes con barra.",
+  "matices": "Dónde se coloca la carga cambia la exigencia respecto a la sentadilla con barra detrás, pero no hay una respuesta cerrada sobre cuánto: depende del peso y de la profundidad, y los estudios de activación comparan sobre todo variantes con barra.",
   "fuentes": [
     {
       "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",

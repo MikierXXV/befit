@@ -29,12 +29,16 @@ const ids = process.argv.slice(2).length ? process.argv.slice(2) : fichas;
 mkdirSync(SALIDA, { recursive: true });
 const navegador = await chromium.launch({ args: ['--use-angle=d3d11', '--enable-gpu', '--ignore-gpu-blocklist'] });
 /*
- * 400 × 560 con densidad 1,5 = 600 × 840 px reales. La tarjeta mide como mucho 272 px de ancho, así
- * que con eso sobra incluso en pantallas de densidad doble. Con 960 px de ancho, cada cartel pesaba
- * ~120 kB y el primero de la rejilla era el elemento más grande de la portada: el LCP en el móvil de
- * gama baja se iba por encima del presupuesto por culpa de una imagen que nadie ve a ese tamaño.
+ * 340 × 476 px reales, y ni uno más. La tarjeta mide 272 px de ancho como mucho, y en el móvil
+ * —dos columnas en 400 px— unos 150.
+ *
+ * Esto se ha bajado dos veces y las dos por la misma razón: el catálogo entero se descarga de golpe
+ * y el primer cartel es el elemento más grande de la portada, así que su peso ES el LCP del móvil
+ * de gama baja. Con 960 px pesaban 120 kB cada uno; con 600 × 840, unos 50, y al llegar a catorce
+ * ejercicios eran 700 kB de imágenes por una portada y el LCP se fue a 3,9 s. A 340 × 476 pesan
+ * unos 20 kB, y el número de ejercicios puede seguir creciendo sin que la portada se resienta.
  */
-const pagina = await navegador.newPage({ viewport: { width: 400, height: 560 }, deviceScaleFactor: 1.5 });
+const pagina = await navegador.newPage({ viewport: { width: 340, height: 476 }, deviceScaleFactor: 1 });
 
 let hechos = 0;
 for (const id of ids) {
