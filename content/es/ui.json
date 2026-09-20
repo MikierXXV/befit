@@ -116,7 +116,12 @@
       "arriba": "Arriba",
       "abajo": "Abajo",
       "estirado": "Estirado",
-      "contraido": "Contraído"
+      "contraido": "Contraído",
+      "colgado": "Colgado",
+      "pecho a la barra": "Al pecho",
+      "barbilla arriba": "Barbilla",
+      "de pie": "De pie",
+      "extendido": "Extendido"
     },
     "sin_3d": "Tu navegador no puede mostrar el maniquí. Los pasos de ejecución están debajo.",
     "lado": {

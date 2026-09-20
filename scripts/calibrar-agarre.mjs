@@ -58,17 +58,25 @@ for (const id of ids) {
   }
 
   /*
-   * AGARRE SUPINO: MEDIA VUELTA ALREDEDOR DE LA BARRA.
+   * AGARRE SUPINO: MEDIA VUELTA ALREDEDOR DEL EJE DE LA MANO, NO DEL DE LA BARRA.
    *
-   * La cinemática deduce siempre un agarre pronado —palmas hacia fuera—, porque saca el marco de
-   * la mano del antebrazo. Un agarre supino es exactamente ese mismo marco girado 180° sobre el eje
-   * de la barra, que en su marco local es la X. Así la mano se queda donde está y solo cambia por
-   * qué lado la rodea, que es lo que distingue una dominada de una dominada supina.
+   * La cinemática deduce siempre un agarre pronado —palmas hacia fuera—, porque saca el marco de la
+   * mano del antebrazo. Supinar es lo que hace el antebrazo al girar sobre sí mismo: la palma pasa
+   * al otro lado y el eje largo de la mano, de la muñeca a los dedos, SE QUEDA DONDE ESTABA.
+   *
+   * El primer intento giró media vuelta alrededor del eje de la barra. Eso invierte la palma, sí,
+   * pero también el eje largo, y la cinemática usa ese eje para decidir dónde poner la muñeca
+   * —`AVANCE_AGARRE` la separa del agarre «hacia atrás»—. Con el eje del revés la muñeca se iba al
+   * otro lado de la barra y el puño quedaba cerrado sobre el aire, con la barra rozando los
+   * nudillos por fuera. Se ve en el primer plano del agarre.
+   *
+   * Post-multiplicar es lo que hace que el giro sea EN EL MARCO DE LA MANO. El eje largo local es
+   * ABAJO, (0, -1, 0), así que media vuelta sobre él es el cuaternión (0, -1, 0, 0).
    */
   if (barra.agarre_supino) {
-    const media = new Quaternion(1, 0, 0, 0);
+    const media = new Quaternion(0, -1, 0, 0);
     for (const l of LADOS) {
-      const q = media.clone().multiply(new Quaternion(...marco[l]));
+      const q = new Quaternion(...marco[l]).multiply(media);
       marco[l] = [q.x, q.y, q.z, q.w].map((n) => Number(n.toFixed(6)));
     }
   }

@@ -112,7 +112,12 @@
       "arriba": "Top",
       "abajo": "Bottom",
       "estirado": "Stretched",
-      "contraido": "Contracted"
+      "contraido": "Contracted",
+      "colgado": "Hanging",
+      "pecho a la barra": "To chest",
+      "barbilla arriba": "Chin up",
+      "de pie": "Standing",
+      "extendido": "Extended"
     },
     "sin_3d": "Your browser can't show the figure. The step-by-step is below.",
     "lado": {

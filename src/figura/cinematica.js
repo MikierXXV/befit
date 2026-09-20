@@ -665,8 +665,14 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
      * pie se inclina lo justo para que la articulación de los dedos toque el suelo, y los dedos se
      * quedan planos. Escribirlo a mano significaba reajustarlo en cada pose intermedia.
      */
+    /*
+     * `superficie` es la altura de LO QUE PISA, no siempre el suelo. En la sentadilla búlgara el pie
+     * de atrás apoya la punta sobre un banco a 36 cm: dando por supuesto el suelo, la cuenta pedía
+     * estirar el tobillo casi 90° y el pie salía colgando en vertical como si señalara al suelo.
+     */
+    const superficie = m.superficie ?? 0;
     const alturaTobillo = posicion(huesos[`pie_${l}`]).y;
-    const seno = Math.min(1, Math.max(-1, (alturaTobillo - ALTURA_ALMOHADILLA) / esq.longitudes.pie));
+    const seno = Math.min(1, Math.max(-1, (alturaTobillo - ALTURA_ALMOHADILLA - superficie) / esq.longitudes.pie));
     let inclinacion = Math.min(Math.asin(seno), 85 * GRAD);
 
     /*

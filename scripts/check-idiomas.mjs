@@ -155,6 +155,45 @@ for (const ruta of await ficheros(DIRECTORIO)) {
   }
 }
 
+/*
+ * LAS ETAPAS DEL MOVIMIENTO, TRADUCIDAS EN LOS DOS IDIOMAS.
+ *
+ * Los movimientos son comunes a todos los idiomas, así que sus etiquetas son CLAVES, y la ficha las
+ * pinta con `t('figura.etapas.<etiqueta>')`. Una etiqueta sin traducir no rompe nada: `t()` devuelve
+ * la clave, y en la línea de tiempo aparece "FIGURA.ETAPAS.PECHO A LA BARRA" pisando al rótulo de al
+ * lado. Solo avisa por `console.warn`, que ninguna comprobación miraba.
+ *
+ * El comentario de ui.json ya prometía que "el validador de idiomas lo caza". No lo cazaba: cinco
+ * etiquetas llevaban sin traducir hasta que se vieron en pantalla. Ahora sí.
+ */
+const faltantes = [];
+{
+  const dirMov = join(RAIZ, 'content/movimientos');
+  const etiquetas = new Set();
+  for (const f of await readdir(dirMov)) {
+    if (!f.endsWith('.json')) continue;
+    const mov = JSON.parse(await readFile(join(dirMov, f), 'utf8'));
+    for (const pose of mov.poses ?? []) if (pose.etiqueta) etiquetas.add(pose.etiqueta);
+  }
+
+  const idiomas = JSON.parse(await readFile(join(RAIZ, 'content/reglas.json'), 'utf8')).idiomas ?? ['es'];
+  for (const idioma of idiomas) {
+    const ui = JSON.parse(await readFile(join(RAIZ, `content/${idioma}/ui.json`), 'utf8'));
+    const traducidas = ui.figura?.etapas ?? {};
+    for (const etiqueta of etiquetas) {
+      if (typeof traducidas[etiqueta] !== 'string') faltantes.push(`[${idioma}] figura.etapas.${etiqueta}`);
+    }
+  }
+}
+
+if (faltantes.length) {
+  console.error(`\n${faltantes.length} etapa(s) de movimiento sin traducir:\n`);
+  for (const f of faltantes) console.error(`  ✗ ${f}`);
+  console.error('\nSe pintan en la línea de tiempo de la ficha. Sin traducción sale la clave en crudo.');
+  console.error('Añádelas en content/<idioma>/ui.json, en figura.etapas, y cortas: el rótulo va sobre la línea.\n');
+  process.exit(1);
+}
+
 if (hallazgos.length) {
   console.error(`\n${hallazgos.length} literal(es) con texto visible dentro del código:\n`);
   for (const h of hallazgos) {
