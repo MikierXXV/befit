@@ -1,0 +1,47 @@
+{
+  "id": "dominadas-supinas",
+  "grupo_id": "tiron-vertical",
+  "orden": 3,
+  "nombre": "Chin-ups",
+  "resumen": "Pull-ups with palms facing you and hands closer together. The biceps takes on much more than in the overhand version.",
+  "movimiento_id": "dominadas-supinas",
+  "ejecucion": [
+    "Hang from the bar with your palms facing you, hands about shoulder-width apart.",
+    "Pull by driving your elbows down and your chest to the bar.",
+    "Come up until your chin passes above the bar.",
+    "Lower under control until your arms are fully straight.",
+    "If you cannot get up, use a band or an assisted version; swinging does not count."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "pectoral_mayor",
+      "trapecio_medio",
+      "romboides"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "oblicuos"
+    ]
+  },
+  "matices": "In the cited work the lats were activated equally in both versions (117-130 %), but pectoralis major and biceps worked significantly more underhand, and lower trapezius more overhand. They are two exercises with the same pattern and a different split, not one better than the other.",
+  "fuentes": [
+    {
+      "titulo": "Surface Electromyographic Activation Patterns and Elbow Joint Motion During a Pull-Up, Chin-Up, or Perfect-Pullup Rotational Exercise",
+      "autor": "Youdas et al., J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21068680/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

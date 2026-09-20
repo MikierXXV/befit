@@ -1,0 +1,47 @@
+{
+  "id": "press-banca-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 3,
+  "nombre": "Dumbbell bench press",
+  "resumen": "The same push as with a barbell, but each arm on its own. You can go deeper and you have to stabilise twice as much.",
+  "movimiento_id": "press-banca-mancuernas",
+  "ejecucion": [
+    "Lie on the bench with a dumbbell in each hand, at chest height.",
+    "Press up until your arms are straight, without clashing the dumbbells.",
+    "Lower under control until your elbows are level with your torso or slightly below.",
+    "Keep your elbows at about 45° from your body, not flared out.",
+    "Keep your feet on the floor and your back on the bench throughout."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral_mayor",
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "antebrazo"
+    ]
+  },
+  "matices": "In the cited study the maximum weight with dumbbells was 17 % lower than with a barbell, and yet deltoid activation was higher: the less stable the exercise, the less load moves and the more stabilising work there is. It is not better or worse than the barbell, it is a different split.",
+  "fuentes": [
+    {
+      "titulo": "A comparison of muscle activity and 1-RM strength of three chest-press exercises with different stability requirements",
+      "autor": "Saeterbakken et al., J Sports Sci, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21225489/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

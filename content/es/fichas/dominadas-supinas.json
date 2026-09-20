@@ -1,0 +1,47 @@
+{
+  "id": "dominadas-supinas",
+  "grupo_id": "tiron-vertical",
+  "orden": 3,
+  "nombre": "Dominadas supinas",
+  "resumen": "Dominadas con las palmas hacia la cara y las manos más juntas. El bíceps entra mucho más que en la versión pronada.",
+  "movimiento_id": "dominadas-supinas",
+  "ejecucion": [
+    "Cuélgate de la barra con las palmas hacia ti y las manos a la anchura de los hombros.",
+    "Tira llevando los codos hacia abajo y el pecho hacia la barra.",
+    "Sube hasta pasar la barbilla por encima de la barra.",
+    "Baja controlando hasta estirar los brazos del todo.",
+    "Si no llegas, usa una goma o hazlo con apoyo; balancearse no cuenta."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "pectoral_mayor",
+      "trapecio_medio",
+      "romboides"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "oblicuos"
+    ]
+  },
+  "matices": "En el trabajo citado, el dorsal ancho se activó por igual en las dos versiones (117-130 %), pero el pectoral mayor y el bíceps trabajaron significativamente más en supinación, y el trapecio inferior más en pronación. Son dos ejercicios con el mismo patrón y distinto reparto, no uno mejor que otro.",
+  "fuentes": [
+    {
+      "titulo": "Surface Electromyographic Activation Patterns and Elbow Joint Motion During a Pull-Up, Chin-Up, or Perfect-Pullup Rotational Exercise",
+      "autor": "Youdas et al., J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21068680/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

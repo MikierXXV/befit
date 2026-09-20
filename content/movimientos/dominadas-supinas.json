@@ -1,42 +1,43 @@
 {
-  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
-  "id": "dominadas",
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "dominadas-supinas",
   "duracion": 3.4,
-  "$comment_ritmo": "Naturalidad: la cadera manda y el tronco y la cabeza la siguen con unas centésimas de retraso (por defecto, ver cinematica.js); `asimetria` rompe la simetría exacta de los dos lados y `respiracion` mueve el tronco un poco, con un número entero de ciclos para que el bucle siga cerrando.",
   "asimetria": 0.4,
   "respiracion": {
-    "amplitud": 0.003,
+    "amplitud": 0.004,
     "ciclos": 1
   },
   "camara": {
     "vista": "lateral",
     "detalle": "mano_i"
   },
-  "$comment_barra_fija": "La barra fija no existe como tipo de implemento: es una `barra` normal colgada a 2,30 m y quieta todo el ciclo. Se le ven los discos, que una barra de dominadas no tiene.",
-  "$comment_altura": "Arriba, el maniquí llega con la barbilla a unos 10 cm por debajo de la barra, no por encima. El codo no puede pasar de 150° de flexión y el motor pone la muñeca 9,4 cm por debajo del eje de la barra: con esas dos cosas, el hombro no sube más.",
+  "cartel": {
+    "fase": 0.5
+  },
   "implementos": {
     "barra": {
-      "$comment": "Barra fija, no olímpica: sin discos y sujeta por arriba. El agarre de la mano lo fija `agarre_marco`, calibrado con `npm run agarre` a partir del primer fotograma.",
+      "$comment": "Barra fija. `agarre_supino` le dice al calibrador que gire la mano media vuelta alrededor de la barra: palmas hacia la cara.",
       "tipo": "barra_fija",
       "posicion": [
         0,
-        2.3,
+        2.24,
         0.12
       ],
       "ancho": 1.2,
-      "agarre": 0.32,
+      "agarre": 0.26,
+      "agarre_supino": true,
       "agarre_marco": {
         "i": [
-          -0.703046,
-          0.075668,
-          0.703046,
-          -0.075668
+          -0.202339,
+          -0.677539,
+          0.202339,
+          0.677539
         ],
         "d": [
-          -0.703198,
-          -0.074248,
-          -0.703198,
-          -0.074248
+          -0.20187,
+          0.677679,
+          -0.20187,
+          0.677679
         ]
       }
     }
@@ -51,10 +52,13 @@
           0,
           1.293,
           0.1
-        ]
+        ],
+        "orientacion": {
+          "inclinacion": 0
+        }
       },
       "columna": {
-        "flexion": 3
+        "flexion": 2
       },
       "cuello": {
         "flexion": -10
@@ -63,9 +67,9 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.4,
+            0.3,
             -1,
-            0.2
+            0.5
           ],
           "cierre": 1
         }
@@ -102,10 +106,10 @@
         }
       },
       "columna": {
-        "flexion": 0
+        "flexion": 2
       },
       "cuello": {
-        "flexion": -15
+        "flexion": -10
       },
       "brazos": {
         "ambos": {
@@ -113,7 +117,7 @@
           "codo_hacia": [
             0.42,
             -1,
-            -0.15
+            0.6
           ],
           "cierre": 1
         }
@@ -123,7 +127,7 @@
           "objetivo": [
             0.1,
             0.8,
-            -0.06
+            -0.05
           ],
           "rodilla_hacia": [
             0.2,
@@ -139,30 +143,30 @@
     {
       "t": 0.5,
       "curva": "controlada",
-      "etiqueta": "contraido",
+      "etiqueta": "barbilla arriba",
       "pelvis": {
         "posicion": [
           0,
-          1.733,
-          0.13
+          1.66,
+          0.09
         ],
         "orientacion": {
-          "inclinacion": -15
+          "inclinacion": -10
         }
       },
       "columna": {
-        "flexion": -5
+        "flexion": 2
       },
       "cuello": {
-        "flexion": -20
+        "flexion": -10
       },
       "brazos": {
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.45,
+            0.4,
             -1,
-            -0.5
+            0.7
           ],
           "cierre": 1
         }
@@ -171,8 +175,8 @@
         "ambos": {
           "objetivo": [
             0.1,
-            1.02,
-            -0.08
+            0.94,
+            -0.05
           ],
           "rodilla_hacia": [
             0.2,
@@ -199,10 +203,10 @@
         }
       },
       "columna": {
-        "flexion": 0
+        "flexion": 2
       },
       "cuello": {
-        "flexion": -15
+        "flexion": -10
       },
       "brazos": {
         "ambos": {
@@ -210,7 +214,7 @@
           "codo_hacia": [
             0.42,
             -1,
-            -0.15
+            0.6
           ],
           "cierre": 1
         }
@@ -220,7 +224,7 @@
           "objetivo": [
             0.1,
             0.8,
-            -0.06
+            -0.05
           ],
           "rodilla_hacia": [
             0.2,
@@ -240,10 +244,13 @@
           0,
           1.293,
           0.1
-        ]
+        ],
+        "orientacion": {
+          "inclinacion": 0
+        }
       },
       "columna": {
-        "flexion": 3
+        "flexion": 2
       },
       "cuello": {
         "flexion": -10
@@ -252,9 +259,9 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.4,
+            0.3,
             -1,
-            0.2
+            0.5
           ],
           "cierre": 1
         }

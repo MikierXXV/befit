@@ -57,6 +57,22 @@ for (const id of ids) {
     marco[l] = [relativo.x, relativo.y, relativo.z, relativo.w].map((n) => Number(n.toFixed(6)));
   }
 
+  /*
+   * AGARRE SUPINO: MEDIA VUELTA ALREDEDOR DE LA BARRA.
+   *
+   * La cinemática deduce siempre un agarre pronado —palmas hacia fuera—, porque saca el marco de
+   * la mano del antebrazo. Un agarre supino es exactamente ese mismo marco girado 180° sobre el eje
+   * de la barra, que en su marco local es la X. Así la mano se queda donde está y solo cambia por
+   * qué lado la rodea, que es lo que distingue una dominada de una dominada supina.
+   */
+  if (barra.agarre_supino) {
+    const media = new Quaternion(1, 0, 0, 0);
+    for (const l of LADOS) {
+      const q = media.clone().multiply(new Quaternion(...marco[l]));
+      marco[l] = [q.x, q.y, q.z, q.w].map((n) => Number(n.toFixed(6)));
+    }
+  }
+
   barra.agarre_marco = marco;
   writeFileSync(ruta, `${JSON.stringify(mov, null, 2)}\n`);
   console.log(`✓ ${id}`);

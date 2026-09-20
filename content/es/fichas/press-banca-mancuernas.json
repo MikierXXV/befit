@@ -1,0 +1,47 @@
+{
+  "id": "press-banca-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 3,
+  "nombre": "Press de banca con mancuernas",
+  "resumen": "El mismo empuje que con barra, pero con cada brazo por su lado. Se puede bajar más y hay que estabilizar el doble.",
+  "movimiento_id": "press-banca-mancuernas",
+  "ejecucion": [
+    "Túmbate en el banco con una mancuerna en cada mano, a la altura del pecho.",
+    "Empuja hacia arriba hasta estirar los brazos, sin chocar las mancuernas.",
+    "Baja controlando hasta que los codos queden a la altura del tronco o un poco por debajo.",
+    "Los codos van a unos 45° del cuerpo, no abiertos del todo.",
+    "Mantén los pies en el suelo y la espalda apoyada durante todo el recorrido."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral_mayor",
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "antebrazo"
+    ]
+  },
+  "matices": "En el estudio citado, el peso máximo con mancuernas fue un 17 % menor que con barra, y sin embargo la activación del deltoides fue mayor: cuanto menos estable es el ejercicio, menos carga se mueve y más trabajo de estabilización hay. No es mejor ni peor que la barra, es otro reparto.",
+  "fuentes": [
+    {
+      "titulo": "A comparison of muscle activity and 1-RM strength of three chest-press exercises with different stability requirements",
+      "autor": "Saeterbakken et al., J Sports Sci, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21225489/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

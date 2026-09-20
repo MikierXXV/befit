@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-frontal",
+  "grupo_id": "sentadilla",
+  "orden": 3,
+  "nombre": "Front squat",
+  "resumen": "The bar sits in front, on the shoulders. The torso stays more upright than in the back squat and the knee takes less compression.",
+  "movimiento_id": "sentadilla-frontal",
+  "ejecucion": [
+    "Rack the bar on your front delts, in front of your neck, elbows high and pointing forward.",
+    "Feet shoulder-width apart, turned slightly out.",
+    "Lower by bending hips and knees, keeping the torso as upright as you can.",
+    "Go at least to thighs parallel to the floor, if your mobility allows.",
+    "Drive up through the whole foot, without letting the elbows drop."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "erectores",
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "The comparison with the back squat is measured: the back squat produced 11.0 N/kg of knee compressive force against 9.3 N/kg for the front squat, with similar muscle activation. That is why the front squat is often proposed when the knee is a problem. The trade-off is that it asks more of wrist and ankle mobility.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Comparison of Back and Front Squats in Healthy Trained Individuals",
+      "autor": "Gullett et al., J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19002072/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
