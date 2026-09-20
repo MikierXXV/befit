@@ -69,6 +69,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    de la mano respecto a la barra tomándola del primer fotograma, y con eso deja de girar durante el
    recorrido. Lo que se congele es lo que se verá todo el rato, así que primero se revisa y luego se
    fija. Y se vuelve a fijar si se cambia la postura inicial.
+   Si el agarre es supino —palmas hacia la cara, o hacia arriba en la sentadilla frontal—, el
+   implemento lleva `"agarre_supino": true` y el calibrador gira la mano media vuelta alrededor de
+   la barra. La cinemática siempre deduce pronación, porque saca el marco de la mano del antebrazo.
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
