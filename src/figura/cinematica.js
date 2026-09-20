@@ -302,7 +302,12 @@ export function aplicarPose(esq, pose, definicion = {}) {
     const llevado = Object.values(implementos).find((i) => i.en_mano === l);
     const agarrado = m?.objetivo === 'barra' && implementos.barra ? ejeDe(implementos.barra)
       : (llevado?.eje ? llevado.eje.clone() : null);
-    cerrarMano(esq, l, m?.cierre ?? 0, agarrado);
+    /* Y dónde está: el pulgar apunta ahí. Para la barra, el punto del agarre de esta mano; para lo
+       que se lleva en la mano, el hueco del puño que ya calculó `posarBrazo`. */
+    const dondeAgarra = m?.objetivo === 'barra' && implementos.barra
+      ? implementos.barra.posicion.clone().addScaledVector(ejeDe(implementos.barra), SIGNO[l] * (implementos.barra.agarre ?? 0.4))
+      : (llevado?.punto ? llevado.punto.clone() : null);
+    cerrarMano(esq, l, m?.cierre ?? 0, agarrado, dondeAgarra);
   }
 
   // La mancuerna va en la mano, así que se coloca cuando la mano ya está.
@@ -537,61 +542,40 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     orientar(esq, huesos[`mano_${l}`], marcoAgarre(posicion(huesos[`mano_${l}`]), implementos.barra, Fantebrazo, l));
   } else if (enMano) {
     /*
-     * MANDA EL IMPLEMENTO, NO LA MANO, Y EL MANGO LO MANDA EL CUERPO.
+     * MANDA LA PALMA, Y EL MANGO SE DEDUCE DE ELLA.
      *
-     * Dos versiones anteriores, las dos mal:
+     * Tres versiones de esto, y las dos primeras estaban mal por lo mismo: decidían primero hacia
+     * dónde apunta el mango y sacaban la palma de un producto vectorial. Un producto vectorial
+     * cambia de signo cuando cambian sus factores, así que las dos manos salían con la palma hacia
+     * lados distintos —no espejados: distintos—, y una mancuerna acababa pegada al DORSO de la mano.
+     * En el press con mancuernas se veía a la primera: la derecha agarrada y la izquierda al lado.
      *
-     *  1. La mancuerna seguía a la mano y la mano al antebrazo, así que el mango se iba girando a lo
-     *     largo del movimiento y en el remo acababa casi vertical.
-     *  2. El mango se sacaba de `cross(antebrazo, vertical)`, es decir, perpendicular al antebrazo.
-     *     Suena razonable y es peor de lo que parece: el antebrazo se mueve, luego el mango giraba
-     *     con él. MEDIDO sobre el ciclo: 65° en la zancada y 42° en el remo, con dos discos en los
-     *     extremos haciendo de aguja. Nadie sujeta así una mancuerna.
+     * Lo que de verdad decide una persona al coger algo es hacia dónde mira la palma:
      *
-     * Lo que manda es el AGARRE, que es una decisión de quien levanta y no una consecuencia de dónde
-     * tenga el codo: `neutro` deja el mango apuntando adelante —los dos discos en fila, que es como
-     * cuelga una mancuerna al lado del cuerpo— y `prono` lo cruza. Como la muñeca no es una rótula
-     * libre, la dirección pedida se endereza contra el antebrazo en vez de imponerse: se le quita la
-     * parte que va en la dirección del antebrazo y queda la más cercana que sí es perpendicular.
+     *  - neutro: hacia la línea media del cuerpo, que es como cuelga una mancuerna al lado;
+     *  - prono: hacia delante, que es como se sujeta en un press.
+     *
+     * Y como la muñeca no es una rótula, esa dirección se endereza contra el antebrazo en vez de
+     * imponerse. El eje del mango sale después, de la palma y del antebrazo, con el signo de la
+     * mano: así las dos son espejo la una de la otra por construcción y no por casualidad.
      */
     const largo = ABAJO.clone().applyQuaternion(Fantebrazo);
     const rumboCuerpo = eje(new Vector3(0, 1, 0), pose.pelvis?.orientacion?.giro ?? 0);
-    /*
-     * El agarre prono es HORIZONTAL y perpendicular al antebrazo, no una dirección fija del cuerpo.
-     *
-     * Con el brazo abierto en cruz, el antebrazo apunta justo adonde apuntaba la dirección pedida y
-     * no quedaba nada que enderezar: el eje del mango salía de la rama de emergencia y una mancuerna
-     * acababa en línea con el brazo mientras la otra cruzaba bien. En el press con mancuernas se veía
-     * a la primera. Con el antebrazo vertical —el bloqueo de arriba— no hay horizontal perpendicular
-     * posible, y ahí sí manda el cuerpo: el mango cruza de hombro a hombro.
-     */
-    const arriba = new Vector3(0, 1, 0);
-    let pedido;
-    if (enMano.agarre_mango === 'prono') {
-      pedido = new Vector3().crossVectors(ABAJO.clone().applyQuaternion(Fantebrazo), arriba);
-      if (pedido.lengthSq() < 0.04) pedido = new Vector3(1, 0, 0).applyQuaternion(rumboCuerpo);
-    } else {
-      pedido = DELANTE.clone().applyQuaternion(rumboCuerpo);
-    }
-    const enderezado = pedido.clone().addScaledVector(largo, -pedido.dot(largo));
-    /* `ejeMango` y no `eje`: `eje` es la función que construye un giro, y una constante con su
-       nombre la deja inaccesible en todo el bloque —incluidas las líneas de ARRIBA, por la zona
-       muerta temporal—. Reventaba dos líneas antes de usarse. */
-    const ejeMango = enderezado.lengthSq() > 1e-4
-      ? enderezado.normalize()
-      /* Con el antebrazo apuntando justo adonde apunta el mango no queda nada que enderezar —pasa
-         con el brazo estirado del todo hacia delante—: ahí sirve cualquier perpendicular. */
-      : (perpendicular(new Vector3(0, 1, 0), largo)
-        ? new Vector3().crossVectors(largo, new Vector3(0, 1, 0)).normalize()
-        : new Vector3(1, 0, 0));
-    const palma = new Vector3().crossVectors(ejeMango, largo).normalize().multiplyScalar(-SIGNO[l]);
+    const deseada = (enMano.agarre_mango === 'prono'
+      ? DELANTE.clone()
+      : new Vector3(-SIGNO[l], 0, 0)).applyQuaternion(rumboCuerpo);
+
+    const palma = perpendicular(deseada, largo)
+      /* Con el antebrazo apuntando justo adonde mira la palma no queda nada que enderezar —pasa con
+         el brazo estirado del todo hacia delante—: ahí sirve cualquier perpendicular. */
+      ?? (perpendicular(new Vector3(0, 1, 0), largo) ?? new Vector3(1, 0, 0));
+    const ejeMango = new Vector3().crossVectors(largo, palma).multiplyScalar(-SIGNO[l]).normalize();
+
     const Fmano = mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);
     orientar(esq, huesos[`mano_${l}`], Fmano);
 
-    // El mango cruza la palma: se guarda dónde y con qué eje para colocar el implemento después.
+    // El mango, en el hueco del puño: ver AVANCE_AGARRE.
     enMano.eje = ejeMango;
-    // El mango, en el hueco de la palma: a medio palmo de la muñeca y hundido hacia el lado de la
-    // palma lo que mide el propio mango, o los dedos se cierran por detrás de él.
     enMano.punto = posicion(huesos[`mano_${l}`])
       .addScaledVector(largo, AVANCE_AGARRE)
       .addScaledVector(palma, hondoAgarre(m.cierre ?? 0.8));
@@ -701,7 +685,7 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
  * dobla mucho los nudillos y la falange media, y poco la punta. El pulgar va aparte y menos, porque
  * se opone al resto en lugar de curvarse con ellos.
  */
-const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [16, 18, 12] };
+const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [38, 36, 22] };
 
 /**
  * Cierra los dedos alrededor del agarre. 0 = mano abierta, 1 = cerrada del todo.
@@ -720,7 +704,7 @@ const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [16, 18, 12] };
  * la palma, alrededor de la perpendicular a su propio hueso y a la normal de la palma. Suponer la X
  * del hueso, como se hacía antes, valía para una mano y abría el pulgar de la otra hacia fuera.
  */
-function cerrarMano(esq, l, cierre, ejeAgarre) {
+function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
   if (!cierre) return;
   const mano = esq.huesos[`mano_${l}`];
   const marcoMano = mano.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(mano).clone().invert());
@@ -729,22 +713,41 @@ function cerrarMano(esq, l, cierre, ejeAgarre) {
   for (const h of esq.huesos[`falanges_${l}`]) {
     const pulgar = h.name.includes('thumb');
     const n = Number(h.name.match(/0(\d)/)[1]) - 1;
+
+    /*
+     * LA PRIMERA FALANGE DEL PULGAR SE APUNTA AL AGARRE. Las otras dos se curvan detrás.
+     *
+     * Girar el pulgar entero alrededor del eje del mango no basta, y probarlo costó tres vueltas:
+     * con un sentido salía bien la mano izquierda y con el otro la derecha, nunca las dos. El
+     * motivo es que el pulgar no arranca en la misma orientación relativa en las dos manos, así que
+     * el mismo giro las deja en sitios distintos. Apuntarlo resuelve las dos a la vez sin saber
+     * nada de cómo está montado el esqueleto: se le dice adónde tiene que mirar y mira.
+     */
+    if (pulgar && puntoAgarre && n === 0) {
+      const padre = h.parent.getWorldQuaternion(new Quaternion());
+      const mundo = h.getWorldQuaternion(new Quaternion());
+      const actual = new Vector3(0, 1, 0).applyQuaternion(mundo);
+      const deseada = puntoAgarre.clone().sub(h.getWorldPosition(new Vector3()));
+      if (deseada.lengthSq() > 1e-8) {
+        const giro = new Quaternion().setFromUnitVectors(actual, deseada.normalize());
+        h.quaternion.copy(padre.invert().multiply(giro.multiply(mundo)));
+        h.updateMatrixWorld(true);
+      }
+      continue;
+    }
+
     let ejeDedo = new Vector3(1, 0, 0);
     if (pulgar) {
       const mundo = h.getWorldQuaternion(new Quaternion());
-      let giro;
-      if (ejeAgarre) {
-        // Alrededor del mango, y en el sentido que lo rodea: el de la mano que lo sujeta.
-        giro = ejeAgarre.clone().multiplyScalar(-SIGNO[l]);
-      } else {
-        giro = new Vector3().crossVectors(palma, new Vector3(0, 1, 0).applyQuaternion(mundo));
-      }
-      // Si el pulgar apunta justo a donde gira no hay plano que valga; ahí da igual.
+      const giro = ejeAgarre
+        ? ejeAgarre.clone().multiplyScalar(-SIGNO[l])
+        : new Vector3().crossVectors(palma, new Vector3(0, 1, 0).applyQuaternion(mundo));
       if (giro.lengthSq() > 1e-6) ejeDedo = giro.normalize().applyQuaternion(mundo.invert());
     }
     h.quaternion.multiply(eje(ejeDedo, CURVA_DEDOS[pulgar ? 'pulgar' : 'falange'][n] * cierre));
   }
 }
+
 
 
 /**
