@@ -1,0 +1,239 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "plancha-lateral",
+  "duracion": 4,
+  "asimetria": 0.2,
+  "respiracion": {
+    "amplitud": 0.006,
+    "ciclos": 2
+  },
+  "camara": {
+    "vista": "frontal",
+    "proporcion": "16 / 9"
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "lineal",
+      "etiqueta": "sostener",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.41,
+          0
+        ],
+        "orientacion": {
+          "ladeo": 78
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "d": {
+          "objetivo": [
+            -0.55,
+            0.105,
+            0.26
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        },
+        "i": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 14,
+            "rotacion": 55
+          },
+          "codo": {
+            "flexion": 25
+          },
+          "cierre": 0.7
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            0.77,
+            0.105,
+            0.0
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        },
+        "i": {
+          "objetivo": [
+            0.76,
+            0.205,
+            0.01
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "lineal",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.415,
+          0
+        ],
+        "orientacion": {
+          "ladeo": 78
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "d": {
+          "objetivo": [
+            -0.55,
+            0.105,
+            0.26
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        },
+        "i": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 14,
+            "rotacion": 55
+          },
+          "codo": {
+            "flexion": 25
+          },
+          "cierre": 0.7
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            0.77,
+            0.105,
+            0.0
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        },
+        "i": {
+          "objetivo": [
+            0.76,
+            0.205,
+            0.01
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        }
+      }
+    },
+    {
+      "t": 1,
+      "curva": "lineal",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.41,
+          0
+        ],
+        "orientacion": {
+          "ladeo": 78
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "d": {
+          "objetivo": [
+            -0.55,
+            0.105,
+            0.26
+          ],
+          "codo_hacia": [
+            0,
+            -1,
+            -1
+          ],
+          "cierre": 1
+        },
+        "i": {
+          "hombro": {
+            "flexion": 0,
+            "abduccion": 14,
+            "rotacion": 55
+          },
+          "codo": {
+            "flexion": 25
+          },
+          "cierre": 0.7
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            0.77,
+            0.105,
+            0.0
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        },
+        "i": {
+          "objetivo": [
+            0.76,
+            0.205,
+            0.01
+          ],
+          "rodilla_hacia": [
+            0,
+            0,
+            1
+          ],
+          "apoyo": "metatarso"
+        }
+      }
+    }
+  ]
+}

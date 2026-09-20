@@ -1,0 +1,45 @@
+{
+  "id": "plancha-lateral",
+  "grupo_id": "core",
+  "orden": 3,
+  "nombre": "Plancha lateral",
+  "resumen": "De canto, apoyado en un antebrazo y en el borde del pie, con el cuerpo recto. Trabaja el lado del tronco, que la plancha frontal apenas toca.",
+  "movimiento_id": "plancha-lateral",
+  "ejecucion": [
+    "Túmbate de lado con el codo justo debajo del hombro y el antebrazo en el suelo.",
+    "Junta los pies, uno delante del otro o apilados, y levanta la cadera.",
+    "Deja el cuerpo en línea recta de la cabeza a los tobillos, sin que la cadera caiga ni suba.",
+    "Aguanta el tiempo marcado respirando con normalidad, y cambia de lado.",
+    "Si pesa demasiado, apoya la rodilla de abajo en el suelo en vez del pie."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_medio",
+      "erectores"
+    ],
+    "estabilizador": [
+      "deltoides_posterior",
+      "aductores"
+    ]
+  },
+  "matices": "De las pruebas de resistencia del tronco citadas, esta es la que carga el cuadrado lumbar con poca compresión sobre la columna. Los tiempos del trabajo original son valores de referencia en personas sanas, y sirven para comparar un lado con el otro más que para ponerse una marca.",
+  "fuentes": [
+    {
+      "titulo": "Endurance times for low back stabilization exercises: clinical targets for testing and training from a normal database",
+      "autor": "McGill, Childs y Liebenson, Arch Phys Med Rehabil, 1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10453772/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

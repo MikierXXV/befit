@@ -1,0 +1,48 @@
+{
+  "id": "sentadilla-bulgara",
+  "grupo_id": "zancada",
+  "orden": 3,
+  "nombre": "Sentadilla búlgara con mancuernas",
+  "resumen": "Una sentadilla a una pierna con el pie de atrás apoyado en un banco. Toda la carga cae en la pierna de delante, y el equilibrio se vuelve parte del ejercicio.",
+  "movimiento_id": "sentadilla-bulgara",
+  "ejecucion": [
+    "De espaldas a un banco, apoya el empeine de un pie encima, a un paso largo de distancia.",
+    "Con una mancuerna en cada mano, baja doblando la rodilla de delante hasta que el muslo quede casi paralelo al suelo.",
+    "El tronco se inclina un poco hacia delante; la rodilla de delante se queda sobre el pie.",
+    "Sube empujando con el talón de delante, sin ayudarte con la pierna de atrás.",
+    "Termina todas las repeticiones de un lado antes de cambiar."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "Comparada con la sentadilla con barra, en el trabajo citado la búlgara movió menos la rodilla y cargó más la extensión de cadera. Es útil si la rodilla molesta o si quieres trabajar una pierna cada vez, pero la carga absoluta que se puede usar es bastante menor.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanical Differences Between the Bulgarian Split-Squat and Back Squat",
+      "autor": "Mackey y Riemann, Int J Exerc Sci, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34055144/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

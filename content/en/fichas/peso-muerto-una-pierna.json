@@ -1,0 +1,47 @@
+{
+  "id": "peso-muerto-una-pierna",
+  "grupo_id": "bisagra-cadera",
+  "orden": 3,
+  "nombre": "Single-leg Romanian deadlift",
+  "resumen": "Standing on one leg, the torso lowers as the other leg rises behind until both form a single line. The dumbbell hangs, and balance does half the work.",
+  "movimiento_id": "peso-muerto-una-pierna",
+  "ejecucion": [
+    "Stand on one leg, with the dumbbell in the opposite hand.",
+    "Push your hip back and lower your torso while the free leg rises behind you.",
+    "Torso and free leg end up in the same line, roughly parallel to the floor.",
+    "The supporting knee stays barely bent, and the back flat throughout.",
+    "Come back by squeezing the glute of the supporting leg, without putting the free foot down between reps."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "oblicuos",
+      "antebrazo"
+    ]
+  },
+  "matices": "In the cited work, this dumbbell version produced very high gluteus maximus and hamstring activation, and it also demands gluteus medius because the base of support is narrow and you have to stay up. That balance is part of the exercise: if you wobble, drop the weight rather than lowering the torso further.",
+  "fuentes": [
+    {
+      "titulo": "Effects of loading positions on the activation of trunk and hip muscles during flywheel and dumbbell single-leg Romanian deadlift exercises",
+      "autor": "Frontiers in Physiology, 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38093908/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

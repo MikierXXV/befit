@@ -1,0 +1,47 @@
+{
+  "id": "peso-muerto-una-pierna",
+  "grupo_id": "bisagra-cadera",
+  "orden": 3,
+  "nombre": "Peso muerto a una pierna con mancuerna",
+  "resumen": "De pie sobre una pierna, el tronco baja y la otra pierna sube atrás hasta formar una sola línea. La mancuerna cuelga y el equilibrio hace la mitad del trabajo.",
+  "movimiento_id": "peso-muerto-una-pierna",
+  "ejecucion": [
+    "De pie sobre una pierna, con la mancuerna en la mano del lado contrario.",
+    "Lleva la cadera atrás y baja el tronco mientras la pierna libre sube por detrás.",
+    "Tronco y pierna libre acaban en la misma línea, más o menos paralelos al suelo.",
+    "La rodilla de apoyo queda apenas doblada, y la espalda recta todo el recorrido.",
+    "Vuelve apretando el glúteo de la pierna de apoyo, sin apoyar el pie libre entre repeticiones."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "oblicuos",
+      "antebrazo"
+    ]
+  },
+  "matices": "En el trabajo citado, esta versión con mancuerna dio activaciones muy altas de glúteo mayor e isquiotibiales, y además exige al glúteo medio porque la base de apoyo es estrecha y hay que no caerse. Ese equilibrio es parte del ejercicio: si te tambaleas, baja el peso antes que bajar más el tronco.",
+  "fuentes": [
+    {
+      "titulo": "Effects of loading positions on the activation of trunk and hip muscles during flywheel and dumbbell single-leg Romanian deadlift exercises",
+      "autor": "Frontiers in Physiology, 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38093908/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

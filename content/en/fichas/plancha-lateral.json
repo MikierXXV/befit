@@ -1,0 +1,45 @@
+{
+  "id": "plancha-lateral",
+  "grupo_id": "core",
+  "orden": 3,
+  "nombre": "Side plank",
+  "resumen": "On your side, propped on one forearm and the edge of your foot, body straight. It works the side of the trunk, which the front plank barely touches.",
+  "movimiento_id": "plancha-lateral",
+  "ejecucion": [
+    "Lie on your side with your elbow right under your shoulder and your forearm on the floor.",
+    "Bring your feet together, one in front of the other or stacked, and lift your hips.",
+    "Keep the body in a straight line from head to ankles, hips neither dropping nor rising.",
+    "Hold for the set time, breathing normally, then switch sides.",
+    "If it is too heavy, rest the bottom knee on the floor instead of the foot."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_medio",
+      "erectores"
+    ],
+    "estabilizador": [
+      "deltoides_posterior",
+      "aductores"
+    ]
+  },
+  "matices": "Of the trunk endurance tests cited, this is the one that loads quadratus lumborum with little spinal compression. The times in the original work are reference values in healthy people, and are better for comparing one side with the other than as a target to hit.",
+  "fuentes": [
+    {
+      "titulo": "Endurance times for low back stabilization exercises: clinical targets for testing and training from a normal database",
+      "autor": "McGill, Childs y Liebenson, Arch Phys Med Rehabil, 1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10453772/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "remo-invertido",
+  "grupo_id": "tiron-horizontal",
+  "orden": 3,
+  "nombre": "Inverted row",
+  "resumen": "Face up under a hip-height bar, body straight as a plank, chest coming up to the bar. The load is your own weight.",
+  "movimiento_id": "remo-invertido",
+  "ejecucion": [
+    "Set a rack bar at hip height and lie under it, face up.",
+    "Grip it a little wider than your shoulders and straighten your body, resting only on your heels.",
+    "Pull until your chest touches the bar, driving your elbows back.",
+    "Lower under control until your arms are straight, without letting your hips sag.",
+    "The more horizontal your body, the heavier it is; with your feet closer to underneath you, the lighter."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "In the cited study, of three rowing variations, the inverted row produced the highest activation of the lats, upper back and hip extensors, and did so with modest load on the lower back. That is why it is often proposed when the low back is a problem.",
+  "fuentes": [
+    {
+      "titulo": "Comparison of Different Rowing Exercises: Trunk Muscle Activation and Lumbar Spine Motion, Load, and Stiffness",
+      "autor": "Fenwick, Brown y McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

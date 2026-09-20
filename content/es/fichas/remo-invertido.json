@@ -1,0 +1,47 @@
+{
+  "id": "remo-invertido",
+  "grupo_id": "tiron-horizontal",
+  "orden": 3,
+  "nombre": "Remo invertido",
+  "resumen": "Boca arriba bajo una barra a la altura de la cadera, el cuerpo recto como una tabla y el pecho sube hasta la barra. La carga es tu propio peso.",
+  "movimiento_id": "remo-invertido",
+  "ejecucion": [
+    "Coloca la barra de un rack a la altura de la cadera y túmbate debajo, boca arriba.",
+    "Agárrala algo más abierto que los hombros y estira el cuerpo, apoyado solo en los talones.",
+    "Tira hasta que el pecho toque la barra, llevando los codos atrás.",
+    "Baja controlando hasta estirar los brazos sin que la cadera se hunda.",
+    "Cuanto más horizontal esté el cuerpo, más pesa; con los pies más cerca de la vertical, menos."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "En el estudio citado, de tres formas de remo, el invertido fue el que más activó el dorsal ancho, la espalda alta y los extensores de cadera, y además con poca carga sobre la zona lumbar. Por eso suele proponerse cuando la espalda baja da problemas.",
+  "fuentes": [
+    {
+      "titulo": "Comparison of Different Rowing Exercises: Trunk Muscle Activation and Lumbar Spine Motion, Load, and Stiffness",
+      "autor": "Fenwick, Brown y McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

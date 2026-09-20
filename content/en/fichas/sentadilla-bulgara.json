@@ -1,0 +1,48 @@
+{
+  "id": "sentadilla-bulgara",
+  "grupo_id": "zancada",
+  "orden": 3,
+  "nombre": "Bulgarian split squat",
+  "resumen": "A single-leg squat with the rear foot on a bench. All the load goes to the front leg, and balance becomes part of the exercise.",
+  "movimiento_id": "sentadilla-bulgara",
+  "ejecucion": [
+    "Stand with your back to a bench and rest the top of one foot on it, a long stride away.",
+    "With a dumbbell in each hand, bend the front knee until the thigh is almost parallel to the floor.",
+    "The torso leans forward a little; the front knee stays over the foot.",
+    "Come up by pushing through the front heel, without help from the rear leg.",
+    "Finish every rep on one side before switching."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "Compared with the back squat, in the cited study the Bulgarian version moved the knee less and loaded hip extension more. It is useful if your knee complains or if you want one leg at a time, but the absolute load you can use is considerably lower.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanical Differences Between the Bulgarian Split-Squat and Back Squat",
+      "autor": "Mackey y Riemann, Int J Exerc Sci, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34055144/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

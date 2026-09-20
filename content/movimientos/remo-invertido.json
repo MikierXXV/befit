@@ -1,0 +1,195 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "remo-invertido",
+  "duracion": 3.4,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "barra": {
+      "$comment": "Barra fija de rack, a la altura de la cadera: sin discos y sujeta por los extremos.",
+      "tipo": "barra_fija",
+      "posicion": [
+        0,
+        1.05,
+        -0.1
+      ],
+      "ancho": 1.4,
+      "agarre": 0.4,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          0.631946,
+          -0.317244,
+          0.631946,
+          -0.317244
+        ],
+        "d": [
+          0.632061,
+          0.317015,
+          -0.632061,
+          -0.317015
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "colgado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.45,
+          0.16
+        ],
+        "orientacion": {
+          "inclinacion": -68
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            0.2,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0.75
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": 28
+          },
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "pecho a la barra",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.58,
+          0.1
+        ],
+        "orientacion": {
+          "inclinacion": -68
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            0.2,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0.75
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": 28
+          },
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.45,
+          0.16
+        ],
+        "orientacion": {
+          "inclinacion": -68
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            0.2,
+            -1
+          ],
+          "cierre": 1
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0.75
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": 28
+          },
+          "apertura": 8
+        }
+      }
+    }
+  ]
+}
