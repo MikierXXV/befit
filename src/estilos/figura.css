@@ -111,7 +111,24 @@
   background: color-mix(in oklab, var(--accion) 88%, white);
   border-color: color-mix(in oklab, var(--accion) 88%, white);
 }
-.figura .controles .reproducir .icono { font-size: 0.9em; }
+/*
+ * EL ICONO SE DIBUJA, NO SE ESCRIBE.
+ *
+ * Eran los caracteres ❚❚ y ▶, y eso es fiarse de que la tipografía del que mira tenga ese glifo:
+ * en el runner de CI —un Linux sin las fuentes de Windows— caía a un sustituto con otra caja y el
+ * botón salía con el contenido descentrado 5 px. Lo cazó la comprobación de alineaciones, que corre
+ * allí y no aquí. Como máscara hereda el color y mide lo mismo en todas partes.
+ */
+.figura .controles .reproducir .icono {
+  width: 0.85em;
+  height: 0.85em;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='5' y='3' width='5' height='18' rx='1.5'/%3E%3Crect x='14' y='3' width='5' height='18' rx='1.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+/* Pausado: el botón ofrece seguir, así que enseña el triángulo. */
+.figura .controles .reproducir[aria-pressed='true'] .icono {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 4.5v15a1 1 0 0 0 1.54.84l11.5-7.5a1 1 0 0 0 0-1.68L8.54 3.66A1 1 0 0 0 7 4.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 /* Los grupos llevan rótulo visible: "½×" y "1×" sueltos, en la misma fila que Pausa y las vistas,
    no dicen de qué son ni qué los separa. */
 .figura .controles .rotulo {

@@ -76,7 +76,7 @@ export async function montarFigura(
       </div>
       <div class="controles">
         <button type="button" class="reproducir" data-accion="pausa" aria-pressed="false"
-                aria-label="${t('figura.pausa')}"><span class="icono" aria-hidden="true">❚❚</span></button>
+                aria-label="${t('figura.pausa')}"><span class="icono" aria-hidden="true"></span></button>
         <span class="grupo" role="group" aria-label="${t('figura.velocidad')}">
           <span class="rotulo">${t('figura.velocidad')}</span>
           <span class="segmentado">
@@ -166,11 +166,10 @@ export async function montarFigura(
     if (b.dataset.accion === 'pausa') {
       pausado = !pausado;
       /*
-       * Cambia el ICONO, y la palabra vive en la etiqueta accesible. Con el texto dentro, el botón
-       * cambiaba de ancho al pulsarlo —«Pausa» y «Seguir» no miden lo mismo— y toda la fila de
-       * controles daba un salto lateral cada vez.
+       * El icono lo dibuja el CSS a partir de `aria-pressed`, y la palabra vive en la etiqueta
+       * accesible. Con el texto dentro, el botón cambiaba de ancho al pulsarlo —«Pausa» y «Seguir»
+       * no miden lo mismo— y la fila de controles daba un salto lateral cada vez.
        */
-      b.querySelector('.icono')!.textContent = pausado ? '▶' : '❚❚';
       b.setAttribute('aria-label', t(pausado ? 'figura.seguir' : 'figura.pausa'));
       b.setAttribute('aria-pressed', String(pausado));
     }
