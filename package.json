@@ -21,7 +21,8 @@
     "validar:idiomas": "node scripts/check-idiomas.mjs",
     "validar:movimiento": "node scripts/validar-movimiento.mjs",
     "metricas": "node scripts/metricas-respaldo.mjs",
-    "alineacion": "node scripts/check-alineacion.mjs"
+    "alineacion": "node scripts/check-alineacion.mjs",
+    "agarre": "node scripts/calibrar-agarre.mjs"
   },
   "devDependencies": {
     "@gltf-transform/core": "^3.10.1",

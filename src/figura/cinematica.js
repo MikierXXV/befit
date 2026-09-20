@@ -394,25 +394,37 @@ function ejeDe(imp) {
  * que es exactamente la libertad que deja una muñeca cerrada sobre un mango.
  */
 function marcoAgarre(muneca, imp, Fantebrazo, l) {
+  /*
+   * SI EL MOVIMIENTO DECLARA EL AGARRE, LA MANO VA FIJA A LA BARRA. Es lo correcto: un agarre no
+   * resbala, y lo que se dobla al moverse el brazo es la muñeca.
+   *
+   * `agarre_marco` guarda, por mano, la orientación de la mano RESPECTO A LA BARRA, como cuaternión
+   * de cuatro números. Lo calcula `scripts/calibrar-agarre.mjs` una vez, a partir del primer
+   * fotograma del propio movimiento, así que el agarre queda exactamente como se revisó y ya no se
+   * mueve en todo el recorrido.
+   *
+   * Deducirlo del antebrazo en cada fotograma —lo que se hacía antes, y lo que sigue haciéndose si
+   * el movimiento no lo declara— hace que la mano gire despacio alrededor de la barra: hasta 15°
+   * entre fotogramas medidos en el press militar. En pantalla parece que la mano cambia de agarre
+   * sola a mitad de la serie.
+   */
+  const fijo = imp.agarre_marco?.[l];
+  if (fijo) {
+    return (imp.orientacion ?? new Quaternion()).clone()
+      .multiply(new Quaternion(fijo[0], fijo[1], fijo[2], fijo[3]));
+  }
+
   const A = ejeDe(imp);
   const radial = perpendicular(imp.posicion.clone().sub(muneca), A);
   if (!radial) return Fantebrazo;
-  /*
-   * El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
-   * antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
-   *
-   * CONSECUENCIA CONOCIDA: al moverse el brazo, la mano gira despacio alrededor de la barra —un
-   * agarre de verdad no resbala, lo que se dobla es la muñeca—. Medido: hasta 15° entre fotogramas
-   * en el press militar. Se intentó fijar la mano a la barra sacando los dedos por la tangente, y
-   * salió peor: el criterio para elegir el sentido de esa tangente cambia de golpe a mitad de
-   * recorrido y la mano pegaba saltos de 170°. Arreglarlo de verdad pide sacar el marco de la mano
-   * SOLO de la barra, con la orientación declarada en el movimiento, y eso es trabajo aparte.
-   */
+  // El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
+  // antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
   const largo = perpendicular(ABAJO.clone().applyQuaternion(Fantebrazo), A) ?? radial.clone();
   const palma = perpendicular(radial, largo);
   if (!palma) return Fantebrazo;
   return mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);
 }
+
 
 
 

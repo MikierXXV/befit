@@ -42,6 +42,7 @@ npm run dev                   # desarrollo
 npm run validar               # contenido + contraste + idiomas + movimiento. Es lo que corre CI.
 npm run build                 # validar + tsc --noEmit + vite build
 npm run hoja                  # hoja de revisión de cada movimiento → capturas/<id>.png
+npm run agarre                # fija la mano a la barra, a partir del primer fotograma
 npm run carteles              # carteles del catálogo → public/carteles/
 npm run auditar               # presupuestos de rendimiento, sobre el build servido
 npm run capturar              # recorre el sitio en 2 temas × 2 anchos y caza errores mudos
@@ -64,8 +65,12 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    articulares, objetivos que no se alcanzan, piel bajo el suelo o dentro de un implemento.
 4. `npm run hoja` y **mirar la hoja**. El validador sabe si una rodilla pasa de 155°; no sabe si el
    ejercicio parece lo que dice ser.
-5. `npm run carteles` para el cartel del catálogo.
-6. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
+5. Si las manos van a una barra, `npm run agarre` DESPUÉS de mirar la hoja: congela la orientación
+   de la mano respecto a la barra tomándola del primer fotograma, y con eso deja de girar durante el
+   recorrido. Lo que se congele es lo que se verá todo el rato, así que primero se revisa y luego se
+   fija. Y se vuelve a fijar si se cambia la postura inicial.
+6. `npm run carteles` para el cartel del catálogo.
+7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
 
 ## Al añadir un grupo
