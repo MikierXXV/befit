@@ -1,0 +1,47 @@
+{
+  "id": "remo-mancuernas-dos",
+  "grupo_id": "tiron-horizontal",
+  "orden": 4,
+  "nombre": "Two-arm dumbbell row",
+  "resumen": "The same horizontal pull as with a barbell, but each hand travels on its own and can go lower.",
+  "movimiento_id": "remo-mancuernas-dos",
+  "ejecucion": [
+    "With your torso hinged to about 45° and your back flat, let the dumbbells hang.",
+    "Pull both at once, driving your elbows back and close to your body.",
+    "Come up until the dumbbells are level with your abdomen.",
+    "Lower under control until your arms are fully straight.",
+    "The torso neither rises nor falls: if it moves, you are using your back to lift the weight."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "Against the barbell, each arm travels on its own and goes slightly lower, which adds a little range. The cited review places rows among the best exercises for middle and lower trapezius; for the lats, vertical pulls still show higher values.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

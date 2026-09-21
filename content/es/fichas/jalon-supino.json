@@ -1,0 +1,47 @@
+{
+  "id": "jalon-supino",
+  "grupo_id": "tiron-vertical",
+  "orden": 4,
+  "nombre": "Jalón al pecho supino",
+  "resumen": "El jalón con las palmas hacia la cara y las manos juntas. El bíceps entra mucho más que con el agarre normal.",
+  "movimiento_id": "jalon-supino",
+  "ejecucion": [
+    "Siéntate en la máquina con las rodillas sujetas y coge la barra con las palmas hacia ti.",
+    "Las manos van a la anchura de los hombros o algo menos.",
+    "Tira de la barra hacia la parte alta del pecho llevando los codos abajo.",
+    "Sube controlando hasta estirar los brazos sin que el tronco se vaya hacia atrás.",
+    "El tronco se inclina un poco hacia atrás y se queda ahí; no se balancea."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "pectoral",
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "erectores"
+    ]
+  },
+  "matices": "Vale lo medido en dominadas: el dorsal trabaja parecido en pronación y en supinación, pero el bíceps y el pectoral entran bastante más con las palmas hacia la cara, y el trapecio inferior algo menos. Es útil si el agarre pronado te limita antes que la espalda.",
+  "fuentes": [
+    {
+      "titulo": "Surface Electromyographic Activation Patterns and Elbow Joint Motion During a Pull-Up, Chin-Up, or Perfect-Pullup Rotational Exercise",
+      "autor": "Youdas et al., J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21068680/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "press-militar-sentado",
+  "grupo_id": "empuje-vertical",
+  "orden": 5,
+  "nombre": "Seated dumbbell shoulder press",
+  "resumen": "The overhead press with your back supported. More weight moves than standing, and the trunk works less.",
+  "movimiento_id": "press-militar-sentado",
+  "ejecucion": [
+    "Sit with a flat back and the dumbbells at ear height.",
+    "Press up until your arms are straight, without clashing the dumbbells.",
+    "Lower under control until your elbows are slightly below your shoulders.",
+    "The ribs stay down: the trunk holds firm.",
+    "If your back arches on the way up, drop the weight."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "serrato"
+    ]
+  },
+  "matices": "In the cited study the most stable combination — seated with a barbell — allowed the most weight, and the least stable — standing with dumbbells — gave the highest deltoid activation with the lowest maximum. Seated is neither better nor worse: you trade stabilising work for load.",
+  "fuentes": [
+    {
+      "titulo": "Effects of body position and loading modality on muscle activity and strength in shoulder presses",
+      "autor": "Saeterbakken y Fimland, J Strength Cond Res, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23096062/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

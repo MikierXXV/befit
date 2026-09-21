@@ -1,0 +1,47 @@
+{
+  "id": "press-militar-sentado",
+  "grupo_id": "empuje-vertical",
+  "orden": 5,
+  "nombre": "Press militar sentado con mancuernas",
+  "resumen": "El press por encima de la cabeza con la espalda apoyada. Se mueve más peso que de pie, y el tronco trabaja menos.",
+  "movimiento_id": "press-militar-sentado",
+  "ejecucion": [
+    "Siéntate con la espalda recta y las mancuernas a la altura de las orejas.",
+    "Empuja hacia arriba hasta estirar los brazos, sin chocar las mancuernas.",
+    "Baja controlando hasta que los codos queden algo por debajo de los hombros.",
+    "Las costillas no se abren: el tronco se queda firme.",
+    "Si la espalda se arquea al subir, baja el peso."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "serrato"
+    ]
+  },
+  "matices": "En el estudio citado, la combinación más estable —sentado y con barra— permitió levantar más peso, y la menos estable —de pie y con mancuernas— dio la mayor activación del deltoides con el menor máximo. Sentado no es mejor ni peor: se cambia trabajo de estabilización por carga.",
+  "fuentes": [
+    {
+      "titulo": "Effects of body position and loading modality on muscle activity and strength in shoulder presses",
+      "autor": "Saeterbakken y Fimland, J Strength Cond Res, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23096062/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

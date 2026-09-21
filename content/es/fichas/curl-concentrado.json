@@ -1,0 +1,44 @@
+{
+  "id": "curl-concentrado",
+  "grupo_id": "flexion-codo",
+  "orden": 3,
+  "nombre": "Curl concentrado con mancuerna",
+  "resumen": "Sentado, con el codo apoyado en la cara interna del muslo. El apoyo impide que el hombro ayude, y el bíceps se queda solo.",
+  "movimiento_id": "curl-concentrado",
+  "ejecucion": [
+    "Siéntate en un banco con las piernas abiertas y el tronco inclinado hacia delante.",
+    "Coge la mancuerna con una mano y apoya la parte de atrás del codo en el muslo de ese lado.",
+    "Sube la mancuerna doblando el codo, sin despegarlo del muslo.",
+    "Baja despacio hasta estirar el brazo del todo.",
+    "Acaba todas las repeticiones de un brazo antes de cambiar."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "erectores"
+    ]
+  },
+  "matices": "Es el curl que más aísla, justo porque el codo apoyado deja fuera al hombro. En el trabajo citado, las variantes de curl reparten distinto entre bíceps y braquiorradial según la posición del brazo. Aislar más no significa que crezca más: para eso cuenta la carga total, y aquí se mueve poca.",
+  "fuentes": [
+    {
+      "titulo": "Differences in electromyographic activity of biceps brachii and brachioradialis while performing three variants of curl",
+      "autor": "J Phys Ther Sci, 2018",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6047503/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

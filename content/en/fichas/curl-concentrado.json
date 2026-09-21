@@ -1,0 +1,44 @@
+{
+  "id": "curl-concentrado",
+  "grupo_id": "flexion-codo",
+  "orden": 3,
+  "nombre": "Dumbbell concentration curl",
+  "resumen": "Seated, with the elbow braced against the inner thigh. The brace keeps the shoulder out of it and leaves the biceps on its own.",
+  "movimiento_id": "curl-concentrado",
+  "ejecucion": [
+    "Sit on a bench with your legs apart and your torso leaning forward.",
+    "Take the dumbbell in one hand and brace the back of that elbow against the thigh.",
+    "Curl the dumbbell up without letting the elbow leave the thigh.",
+    "Lower slowly until the arm is fully straight.",
+    "Finish all the reps on one arm before switching."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "erectores"
+    ]
+  },
+  "matices": "It is the curl that isolates most, precisely because the braced elbow rules the shoulder out. In the cited work, curl variants split the load differently between biceps and brachioradialis depending on arm position. Isolating more does not mean growing more: total load counts for that, and little moves here.",
+  "fuentes": [
+    {
+      "titulo": "Differences in electromyographic activity of biceps brachii and brachioradialis while performing three variants of curl",
+      "autor": "J Phys Ther Sci, 2018",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6047503/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

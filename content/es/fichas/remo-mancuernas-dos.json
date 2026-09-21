@@ -1,0 +1,47 @@
+{
+  "id": "remo-mancuernas-dos",
+  "grupo_id": "tiron-horizontal",
+  "orden": 4,
+  "nombre": "Remo con mancuernas a dos manos",
+  "resumen": "El mismo tirón horizontal que con barra, pero cada mano va por su lado y puede bajar más abajo.",
+  "movimiento_id": "remo-mancuernas-dos",
+  "ejecucion": [
+    "Con el tronco inclinado a unos 45° y la espalda recta, deja colgar las mancuernas.",
+    "Tira de las dos a la vez llevando los codos atrás, cerca del cuerpo.",
+    "Sube hasta que las mancuernas queden a la altura del abdomen.",
+    "Baja controlando hasta estirar los brazos del todo.",
+    "El tronco no sube ni baja: si se mueve, estás usando la espalda para levantar el peso."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "Frente a la barra, cada brazo llega por su lado y baja algo más, lo que da algo más de recorrido. La revisión citada sitúa los remos entre los mejores ejercicios para el trapecio medio e inferior; para el dorsal, los tirones verticales siguen dando valores más altos.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

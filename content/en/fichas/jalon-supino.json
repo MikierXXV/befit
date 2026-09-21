@@ -1,0 +1,47 @@
+{
+  "id": "jalon-supino",
+  "grupo_id": "tiron-vertical",
+  "orden": 4,
+  "nombre": "Underhand lat pulldown",
+  "resumen": "The pulldown with palms facing you and hands close together. The biceps comes in far more than with the normal grip.",
+  "movimiento_id": "jalon-supino",
+  "ejecucion": [
+    "Sit at the machine with your knees held down and take the bar with palms facing you.",
+    "Hands go shoulder-width apart or slightly closer.",
+    "Pull the bar to your upper chest, driving your elbows down.",
+    "Let it up under control until your arms are straight, without leaning back.",
+    "The torso leans back slightly and stays there; it does not swing."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "biceps"
+    ],
+    "sinergista": [
+      "pectoral",
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "erectores"
+    ]
+  },
+  "matices": "What was measured for pull-ups applies: the lats work similarly overhand and underhand, but biceps and pectoralis come in considerably more with palms facing you, and lower trapezius slightly less. Useful if the overhand grip limits you before your back does.",
+  "fuentes": [
+    {
+      "titulo": "Surface Electromyographic Activation Patterns and Elbow Joint Motion During a Pull-Up, Chin-Up, or Perfect-Pullup Rotational Exercise",
+      "autor": "Youdas et al., J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21068680/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

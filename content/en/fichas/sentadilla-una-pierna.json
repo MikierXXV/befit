@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-una-pierna",
+  "grupo_id": "sentadilla",
+  "orden": 4,
+  "nombre": "Single-leg squat",
+  "resumen": "Lowering on one foot with the other leg straight in front. It asks for strength, balance and hip in equal parts.",
+  "movimiento_id": "sentadilla-una-pierna",
+  "ejecucion": [
+    "Stand on one foot with the other leg straight in front and your arms forward.",
+    "Lower by bending the supporting knee and pushing the hip back.",
+    "Go as low as you can control, without letting the knee fall inwards.",
+    "Come up pushing through the whole foot, without a jerk.",
+    "If you cannot manage it yet, do it sitting to a bench or holding on to something."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "gluteo_medio",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "flexores_cadera"
+    ]
+  },
+  "matices": "In the cited work, the single-leg squat produced more gluteus medius activation than the forward lunge or the lateral step-up: that is the price of holding the pelvis over one support. This is why it is so widely used to spot and fix the knee collapsing inwards.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
+      "autor": "PLOS One, 2020",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7112217/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

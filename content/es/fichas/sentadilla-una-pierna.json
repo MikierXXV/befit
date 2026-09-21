@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-una-pierna",
+  "grupo_id": "sentadilla",
+  "orden": 4,
+  "nombre": "Sentadilla a una pierna",
+  "resumen": "Bajar sobre un solo pie con la otra pierna estirada al frente. Exige fuerza, equilibrio y cadera a partes iguales.",
+  "movimiento_id": "sentadilla-una-pierna",
+  "ejecucion": [
+    "De pie sobre un pie, con la otra pierna estirada hacia delante y los brazos al frente.",
+    "Baja doblando la rodilla de apoyo y llevando la cadera atrás.",
+    "Baja hasta donde puedas controlar, sin que la rodilla se vaya hacia dentro.",
+    "Sube empujando con todo el pie, sin dar un tirón.",
+    "Si aún no llegas, hazla sentándote en un banco o sujetándote a algo."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "gluteo_medio",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "flexores_cadera"
+    ]
+  },
+  "matices": "En el trabajo citado, la sentadilla a una pierna dio más activación de glúteo medio que la zancada hacia delante o la subida lateral: es el precio de sostener la pelvis sobre un solo apoyo. Por eso se usa tanto para detectar y corregir que la rodilla se meta hacia dentro.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
+      "autor": "PLOS One, 2020",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7112217/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

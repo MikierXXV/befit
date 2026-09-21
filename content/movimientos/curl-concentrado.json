@@ -1,0 +1,218 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "curl-concentrado",
+  "duracion": 3.4,
+  "asimetria": 0.2,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.26
+      ],
+      "largo": 0.7,
+      "ancho": 0.34,
+      "alto": 0.45,
+      "solido": true
+    },
+    "mancuerna_d": {
+      "tipo": "mancuerna",
+      "en_mano": "d",
+      "solido": true
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.57,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 34
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": -14
+      },
+      "brazos": {
+        "d": {
+          "hombro": {
+            "flexion": 16,
+            "abduccion": 20,
+            "rotacion": 30
+          },
+          "codo": {
+            "flexion": 18
+          },
+          "cierre": 0.9
+        },
+        "i": {
+          "hombro": {
+            "flexion": 30,
+            "abduccion": 16,
+            "rotacion": 10
+          },
+          "codo": {
+            "flexion": 66
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.26,
+            0.104,
+            0.4
+          ],
+          "rodilla_hacia": [
+            0.55,
+            1,
+            0.5
+          ],
+          "pie_plano": true,
+          "apertura": 26
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.57,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 34
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": -14
+      },
+      "brazos": {
+        "d": {
+          "hombro": {
+            "flexion": 16,
+            "abduccion": 20,
+            "rotacion": 30
+          },
+          "codo": {
+            "flexion": 128
+          },
+          "cierre": 0.9
+        },
+        "i": {
+          "hombro": {
+            "flexion": 30,
+            "abduccion": 16,
+            "rotacion": 10
+          },
+          "codo": {
+            "flexion": 66
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.26,
+            0.104,
+            0.4
+          ],
+          "rodilla_hacia": [
+            0.55,
+            1,
+            0.5
+          ],
+          "pie_plano": true,
+          "apertura": 26
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.57,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 34
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": -14
+      },
+      "brazos": {
+        "d": {
+          "hombro": {
+            "flexion": 16,
+            "abduccion": 20,
+            "rotacion": 30
+          },
+          "codo": {
+            "flexion": 18
+          },
+          "cierre": 0.9
+        },
+        "i": {
+          "hombro": {
+            "flexion": 30,
+            "abduccion": 16,
+            "rotacion": 10
+          },
+          "codo": {
+            "flexion": 66
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.26,
+            0.104,
+            0.4
+          ],
+          "rodilla_hacia": [
+            0.55,
+            1,
+            0.5
+          ],
+          "pie_plano": true,
+          "apertura": 26
+        }
+      }
+    }
+  ]
+}
