@@ -1,0 +1,46 @@
+{
+  "id": "zancada-lateral",
+  "grupo_id": "zancada",
+  "orden": 4,
+  "nombre": "Zancada lateral con mancuernas",
+  "resumen": "Un paso al lado, doblando esa rodilla y dejando la otra pierna estirada. Es el único patrón del catálogo que trabaja hacia los lados.",
+  "movimiento_id": "zancada-lateral",
+  "ejecucion": [
+    "De pie, con una mancuerna en cada mano y los pies juntos.",
+    "Da un paso amplio hacia un lado y dobla esa rodilla llevando la cadera atrás.",
+    "La otra pierna se queda estirada, con el pie plano en el suelo.",
+    "El pecho mira al frente y la espalda se mantiene recta.",
+    "Empuja con la pierna doblada para volver al centro, y alterna lados."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "soleo"
+    ]
+  },
+  "matices": "Este patrón cubre un hueco: casi todo lo demás del catálogo se mueve hacia delante o hacia arriba. En el trabajo citado, la zancada lateral activó el aductor largo bastante menos que apretar un balón entre las rodillas, así que como trabajo de aductor es moderada; su valor está en enseñar a frenar el cuerpo hacia el lado.",
+  "fuentes": [
+    {
+      "titulo": "Adductor longus activation during common hip exercises",
+      "autor": "Serner et al., J Sport Rehabil, 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23945760/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

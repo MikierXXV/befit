@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talon-una-pierna",
+  "grupo_id": "flexion-plantar",
+  "orden": 3,
+  "nombre": "Elevación de talón a una pierna",
+  "resumen": "La elevación de talones sobre un solo pie. Al doblar el peso sobre una pierna, el recorrido pesa de verdad sin necesidad de mancuernas.",
+  "movimiento_id": "elevacion-talon-una-pierna",
+  "ejecucion": [
+    "De pie sobre un pie, con la otra pierna recogida por detrás.",
+    "Apóyate con una mano en una pared o un soporte para el equilibrio.",
+    "Sube el talón todo lo que puedas manteniendo la rodilla estirada.",
+    "Baja despacio hasta el suelo, o más abajo si estás en un escalón.",
+    "Haz el mismo número de repeticiones con cada pie, empezando por el lado débil."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gemelos"
+    ],
+    "sinergista": [
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "cuadriceps"
+    ]
+  },
+  "matices": "Vale lo medido para la versión de pie: con la rodilla estirada el gemelo trabaja largo, que es donde más creció en el ensayo citado. A una pierna, además, se descubre rápido si un lado aguanta bastante menos que el otro, algo que la versión a dos piernas esconde.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

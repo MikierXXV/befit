@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talon-una-pierna",
+  "grupo_id": "flexion-plantar",
+  "orden": 3,
+  "nombre": "Single-leg calf raise",
+  "resumen": "The calf raise on one foot. Doubling the load on one leg makes the range count without needing dumbbells.",
+  "movimiento_id": "elevacion-talon-una-pierna",
+  "ejecucion": [
+    "Stand on one foot with the other leg tucked behind you.",
+    "Hold a wall or a support with one hand for balance.",
+    "Raise the heel as high as you can, keeping the knee straight.",
+    "Lower slowly to the floor, or below it if you are on a step.",
+    "Do the same number of reps on each foot, starting with the weaker side."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gemelos"
+    ],
+    "sinergista": [
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "cuadriceps"
+    ]
+  },
+  "matices": "What was measured for the standing version applies: with the knee straight the gastrocnemius works long, which is where it grew most in the cited trial. On one leg you also find out quickly if one side holds far less than the other, which the two-leg version hides.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

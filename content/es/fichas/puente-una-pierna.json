@@ -1,0 +1,45 @@
+{
+  "id": "puente-una-pierna",
+  "grupo_id": "bisagra-cadera",
+  "orden": 5,
+  "nombre": "Puente de glúteo a una pierna",
+  "resumen": "El mismo puente, con una pierna en el aire. Toda la cadera la levanta un solo glúteo, y hay que evitar que la pelvis se caiga de lado.",
+  "movimiento_id": "puente-una-pierna",
+  "ejecucion": [
+    "Túmbate boca arriba con un pie apoyado y la rodilla doblada.",
+    "Estira la otra pierna o mantenla recogida, sin apoyarla.",
+    "Empuja con el talón apoyado y sube la cadera hasta alinear tronco y muslo.",
+    "Las dos crestas de la cadera deben quedar a la misma altura: si una cae, has subido demasiado.",
+    "Baja despacio sin dejar caer la cadera de golpe."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_medio",
+      "oblicuos"
+    ]
+  },
+  "matices": "En el estudio citado, de nueve ejercicios de rehabilitación, la versión a una pierna casi dobló la activación del glúteo mayor respecto al puente a dos piernas. Es la progresión natural cuando el puente normal deja de costar.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises",
+      "autor": "Ekstrom, Donatelli y Carp, J Orthop Sports Phys Ther, 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18560185/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "press-frances",
+  "grupo_id": "extension-codo",
+  "orden": 3,
+  "nombre": "Press francés con mancuernas",
+  "resumen": "Tumbado, con el brazo vertical, el codo se dobla llevando la mancuerna hacia la frente y se estira. El brazo no se mueve.",
+  "movimiento_id": "press-frances",
+  "ejecucion": [
+    "Túmbate en el banco con las mancuernas sobre el pecho y los brazos verticales.",
+    "Dobla los codos bajando las mancuernas hacia la frente o algo por detrás.",
+    "El brazo se queda vertical: lo único que se mueve es el antebrazo.",
+    "Estira los codos hasta arriba sin bloquearlos de golpe.",
+    "Si el codo se abre hacia los lados, baja el peso."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "pectoral",
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "Con el brazo vertical, la porción larga del tríceps queda a una longitud intermedia: ni tan estirada como en la versión sobre la cabeza ni tan acortada como en la patada. Es lo que mide el trabajo citado sobre la posición del hombro, y la razón de tener las tres en el catálogo.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

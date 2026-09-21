@@ -1,0 +1,45 @@
+{
+  "id": "puente-una-pierna",
+  "grupo_id": "bisagra-cadera",
+  "orden": 5,
+  "nombre": "Single-leg glute bridge",
+  "resumen": "The same bridge with one leg in the air. A single glute lifts the whole hip, and you have to stop the pelvis dropping to one side.",
+  "movimiento_id": "puente-una-pierna",
+  "ejecucion": [
+    "Lie face up with one foot planted and that knee bent.",
+    "Extend the other leg or hold it tucked, without putting it down.",
+    "Drive through the planted heel and raise the hip until torso and thigh line up.",
+    "Both hip bones should stay level: if one drops, you have gone too high.",
+    "Lower slowly rather than dropping the hip."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_medio",
+      "oblicuos"
+    ]
+  },
+  "matices": "In the cited study of nine rehabilitation exercises, the single-leg version nearly doubled gluteus maximus activation compared with the two-leg bridge. It is the natural progression once the normal bridge stops costing anything.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises",
+      "autor": "Ekstrom, Donatelli y Carp, J Orthop Sports Phys Ther, 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18560185/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

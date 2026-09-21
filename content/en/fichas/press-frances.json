@@ -1,0 +1,45 @@
+{
+  "id": "press-frances",
+  "grupo_id": "extension-codo",
+  "orden": 3,
+  "nombre": "Dumbbell skull crusher",
+  "resumen": "Lying down with the upper arm vertical, the elbow bends bringing the dumbbell towards the forehead and straightens. The upper arm does not move.",
+  "movimiento_id": "press-frances",
+  "ejecucion": [
+    "Lie on the bench with the dumbbells over your chest and your arms vertical.",
+    "Bend your elbows, lowering the dumbbells towards your forehead or slightly behind.",
+    "The upper arm stays vertical: only the forearm moves.",
+    "Straighten the elbows without snapping them locked.",
+    "If the elbows flare out to the sides, drop the weight."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "pectoral",
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "With the upper arm vertical, the long head of the triceps sits at an intermediate length: not as stretched as in the overhead version nor as shortened as in the kickback. That is what the cited work on shoulder position measures, and the reason to have all three in the catalogue.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

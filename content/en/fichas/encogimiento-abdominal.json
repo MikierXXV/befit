@@ -1,0 +1,42 @@
+{
+  "id": "encogimiento-abdominal",
+  "grupo_id": "core",
+  "orden": 6,
+  "nombre": "Abdominal crunch",
+  "resumen": "Lying face up, only the shoulders leave the floor. A short range, without lifting the whole back.",
+  "movimiento_id": "encogimiento-abdominal",
+  "ejecucion": [
+    "Lie face up with your knees bent and feet flat.",
+    "Reach your arms towards your knees so you do not pull on your neck.",
+    "Peel your shoulders off the floor, curling the upper back.",
+    "The lower back stays down: the short range is deliberate.",
+    "Lower slowly until your shoulders are down and repeat."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos"
+    ],
+    "estabilizador": [
+      "flexores_cadera"
+    ]
+  },
+  "matices": "In the cited analysis the classic crunch produced less activation than hanging raises, both of rectus abdominis and of external oblique. It is still useful because it needs nothing and is easy to control, but it is not the best value ab exercise if you have somewhere to hang from.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

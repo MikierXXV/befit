@@ -1,0 +1,42 @@
+{
+  "id": "encogimiento-abdominal",
+  "grupo_id": "core",
+  "orden": 6,
+  "nombre": "Encogimiento abdominal",
+  "resumen": "Tumbado boca arriba, solo se despegan los hombros del suelo. Recorrido corto, sin levantar la espalda entera.",
+  "movimiento_id": "encogimiento-abdominal",
+  "ejecucion": [
+    "Túmbate boca arriba con las rodillas dobladas y los pies apoyados.",
+    "Estira los brazos hacia las rodillas para no tirar del cuello.",
+    "Despega los hombros del suelo enrollando la parte alta de la espalda.",
+    "La zona baja de la espalda no se despega: el recorrido es corto a propósito.",
+    "Baja despacio hasta apoyar los hombros y repite."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos"
+    ],
+    "estabilizador": [
+      "flexores_cadera"
+    ]
+  },
+  "matices": "En el análisis citado el encogimiento clásico dio menos activación que las elevaciones colgado, tanto de recto del abdomen como de oblicuo. Sigue siendo útil porque no necesita nada y se controla fácil, pero no es el ejercicio de abdomen más rentable si tienes de dónde colgarte.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

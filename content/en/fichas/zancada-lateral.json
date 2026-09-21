@@ -1,0 +1,46 @@
+{
+  "id": "zancada-lateral",
+  "grupo_id": "zancada",
+  "orden": 4,
+  "nombre": "Dumbbell lateral lunge",
+  "resumen": "A step to the side, bending that knee and keeping the other leg straight. It is the only pattern in the catalogue that works sideways.",
+  "movimiento_id": "zancada-lateral",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand and your feet together.",
+    "Take a wide step to one side and bend that knee, pushing the hip back.",
+    "The other leg stays straight, foot flat on the floor.",
+    "Chest faces forward and the back stays flat.",
+    "Push off the bent leg to return to the middle, and alternate sides."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "soleo"
+    ]
+  },
+  "matices": "This pattern fills a gap: almost everything else in the catalogue moves forward or up. In the cited work the lateral lunge activated adductor longus considerably less than squeezing a ball between the knees, so as adductor work it is moderate; its value is in learning to brake the body sideways.",
+  "fuentes": [
+    {
+      "titulo": "Adductor longus activation during common hip exercises",
+      "autor": "Serner et al., J Sport Rehabil, 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23945760/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
