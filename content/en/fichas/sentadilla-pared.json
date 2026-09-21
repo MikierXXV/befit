@@ -1,0 +1,45 @@
+{
+  "id": "sentadilla-pared",
+  "grupo_id": "sentadilla",
+  "orden": 3,
+  "nombre": "Wall sit",
+  "resumen": "Held against a wall with your thighs parallel to the floor, without moving. There is no range of motion: the work is holding it.",
+  "movimiento_id": "sentadilla-pared",
+  "ejecucion": [
+    "With your back to a wall, rest your whole back on it and walk your feet forward.",
+    "Slide down until your knees are at 90° and your thighs parallel to the floor.",
+    "Your feet end up under your knees, hip-width apart.",
+    "Hold for the set time, breathing normally, without clenching your teeth.",
+    "If your knees complain, go down less: slightly higher thighs still count."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "soleo",
+      "erectores"
+    ]
+  },
+  "matices": "In the cited meta-analysis of 270 trials and nearly 16,000 people, isometric exercise lowered resting blood pressure the most (−8.2/−4.0 mmHg), ahead of aerobic and classic resistance training, and this wall squat was the single most effective mode for systolic pressure. That is an effect on blood pressure, not a way to gain strength or muscle: squats with a range of motion serve better for that.",
+  "fuentes": [
+    {
+      "titulo": "Exercise training and resting blood pressure: a large-scale pairwise and network meta-analysis of randomised controlled trials",
+      "autor": "Edwards et al., Br J Sports Med, 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37491419/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

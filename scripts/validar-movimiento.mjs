@@ -154,6 +154,13 @@ function profundidad(imp, v) {
     const dy = imp.posicion.y + imp.alto - v.y;
     return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
   }
+  if (imp.tipo === 'pared') {
+    // Caja de pie apoyada en el suelo: crece hacia arriba desde `posicion`, como la dibuja el visor.
+    const dx = imp.ancho / 2 - Math.abs(v.x - imp.posicion.x);
+    const dz = imp.grosor / 2 - Math.abs(v.z - imp.posicion.z);
+    const dy = imp.posicion.y + imp.alto - v.y;
+    return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
+  }
   if (imp.tipo === 'barra' || imp.tipo === 'barra_fija' || imp.tipo === 'polea') {
     // Cilindro a lo largo de X. El medio ancho sale del implemento cuando lo declara —el agarre de
     // una polea mide 20 cm, no 2,2 m— para no dar por buena una mano metida en el aire de al lado.

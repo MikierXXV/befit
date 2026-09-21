@@ -1,0 +1,45 @@
+{
+  "id": "sentadilla-pared",
+  "grupo_id": "sentadilla",
+  "orden": 3,
+  "nombre": "Sentadilla isométrica en la pared",
+  "resumen": "Apoyado en la pared con los muslos paralelos al suelo, sin moverse. No hay recorrido: el trabajo es aguantar.",
+  "movimiento_id": "sentadilla-pared",
+  "ejecucion": [
+    "De espaldas a una pared, apoya la espalda entera y camina con los pies hacia delante.",
+    "Baja deslizándote hasta que las rodillas queden a 90° y los muslos paralelos al suelo.",
+    "Los pies quedan bajo las rodillas, separados a la anchura de las caderas.",
+    "Aguanta el tiempo marcado respirando con normalidad, sin apretar los dientes.",
+    "Si las rodillas molestan, baja menos: con los muslos algo más altos también cuenta."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "soleo",
+      "erectores"
+    ]
+  },
+  "matices": "En el metaanálisis citado, de 270 ensayos y casi 16.000 personas, el ejercicio isométrico fue el que más bajó la tensión arterial en reposo (−8,2/−4,0 mmHg), por delante del aeróbico y del entrenamiento de fuerza clásico, y esta sentadilla contra la pared fue la modalidad concreta más efectiva para la sistólica. Es un efecto sobre la tensión, no una forma de ganar fuerza o masa: para eso sirven mejor las sentadillas con recorrido.",
+  "fuentes": [
+    {
+      "titulo": "Exercise training and resting blood pressure: a large-scale pairwise and network meta-analysis of randomised controlled trials",
+      "autor": "Edwards et al., Br J Sports Med, 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37491419/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

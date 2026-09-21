@@ -1,0 +1,46 @@
+{
+  "id": "perro-pajaro",
+  "grupo_id": "core",
+  "orden": 4,
+  "nombre": "Perro-pájaro",
+  "resumen": "A cuatro patas, se estiran a la vez el brazo y la pierna contrarios sin que la cadera se mueva. Enseña a sostener la espalda mientras los miembros trabajan.",
+  "movimiento_id": "perro-pajaro",
+  "ejecucion": [
+    "A cuatro patas, con las manos bajo los hombros y las rodillas bajo las caderas.",
+    "Estira a la vez un brazo hacia delante y la pierna contraria hacia atrás.",
+    "Brazo, tronco y pierna acaban en una línea, sin arquear la espalda ni girar la cadera.",
+    "Vuelve despacio a la posición de partida y cambia de lado.",
+    "La referencia es que un vaso apoyado en la espalda baja no se caería."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "erectores",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "oblicuos",
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "En el trabajo citado, que midió nueve ejercicios de rehabilitación, este es de los que mejor activan los erectores y el multífido con poca carga sobre la columna. Por eso aparece como ejercicio básico de espalda, no como ejercicio de fuerza: lo que entrena es el control, no la carga.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises",
+      "autor": "Ekstrom, Donatelli y Carp, J Orthop Sports Phys Ther, 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18560185/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

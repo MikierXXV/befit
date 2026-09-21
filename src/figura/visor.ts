@@ -374,6 +374,18 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
     const pata = new THREE.Mesh(new THREE.BoxGeometry(0.08, alto - 0.08, largo * 0.8), metal);
     pata.position.y = (alto - 0.08) / 2;
     for (const m of [acolchado, pata]) { m.castShadow = true; m.receiveShadow = true; g.add(m); }
+  } else if (def.tipo === 'pared') {
+    /*
+     * Una pared es una caja de pie, y hace falta como tipo propio: usar un banco puesto vertical
+     * dibuja su tablero horizontal a la altura `alto` más una pata, y de perfil parece una farola.
+     * Se apoya en el suelo, así que crece hacia arriba desde `posicion`.
+     */
+    const { ancho, alto, grosor } = def as unknown as { ancho: number; alto: number; grosor: number };
+    const muro = new THREE.Mesh(new THREE.BoxGeometry(ancho, alto, grosor), material(COLOR.banco, 0.95, 0));
+    muro.position.y = alto / 2;
+    muro.castShadow = true;
+    muro.receiveShadow = true;
+    g.add(muro);
   }
   return g;
 }

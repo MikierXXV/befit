@@ -1,0 +1,45 @@
+{
+  "id": "elevaciones-laterales",
+  "grupo_id": "empuje-vertical",
+  "orden": 3,
+  "nombre": "Dumbbell lateral raises",
+  "resumen": "The arms rise out to the sides up to shoulder height. This is the exercise that isolates the middle deltoid, the part that widens the shoulder.",
+  "movimiento_id": "elevaciones-laterales",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand at your sides, elbows slightly bent.",
+    "Raise your arms out to the sides until they reach shoulder height, no higher.",
+    "The elbow stays level with the hand or ahead of it, never behind.",
+    "Lower slowly, without dropping the weight or helping with a hip swing.",
+    "If you have to swing to get it up, it is too heavy: this one uses light weight."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "The cited review of the three deltoid portions places the lateral raise among the exercises that most activate the middle portion, ahead of overhead presses. In exchange it is an isolation exercise: it moves little weight and does not train pushing as such.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

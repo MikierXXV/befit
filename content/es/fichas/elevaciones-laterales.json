@@ -1,0 +1,45 @@
+{
+  "id": "elevaciones-laterales",
+  "grupo_id": "empuje-vertical",
+  "orden": 3,
+  "nombre": "Elevaciones laterales con mancuernas",
+  "resumen": "Los brazos suben por los lados hasta la altura del hombro. Es el ejercicio que aísla la parte media del deltoides, la que ensancha el hombro.",
+  "movimiento_id": "elevaciones-laterales",
+  "ejecucion": [
+    "De pie, una mancuerna en cada mano a los lados, con los codos un poco doblados.",
+    "Sube los brazos por los lados hasta que queden a la altura del hombro, no más.",
+    "El codo va siempre igual o por delante de la mano, nunca por detrás.",
+    "Baja despacio, sin dejar caer el peso ni ayudarte con un impulso de cadera.",
+    "Si necesitas balancearte para subirlo, pesa demasiado: aquí se usa poco peso."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "La revisión citada, sobre las tres porciones del deltoides, sitúa la elevación lateral entre los ejercicios que más activan la porción media, por delante de los press por encima de la cabeza. A cambio, es un ejercicio de aislamiento: mueve poco peso y no entrena el empuje como tal.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

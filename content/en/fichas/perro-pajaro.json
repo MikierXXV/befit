@@ -1,0 +1,46 @@
+{
+  "id": "perro-pajaro",
+  "grupo_id": "core",
+  "orden": 4,
+  "nombre": "Bird dog",
+  "resumen": "On all fours, the opposite arm and leg extend together without the hips moving. It teaches you to hold your back steady while your limbs work.",
+  "movimiento_id": "perro-pajaro",
+  "ejecucion": [
+    "On all fours, hands under your shoulders and knees under your hips.",
+    "Extend one arm forward and the opposite leg back at the same time.",
+    "Arm, torso and leg end up in one line, without arching your back or twisting your hips.",
+    "Return slowly to the start and switch sides.",
+    "The reference is that a glass resting on your lower back would not fall off."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "erectores",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "oblicuos",
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "In the cited study, which measured nine rehabilitation exercises, this is among those that best activate the erectors and multifidus with little load on the spine. That is why it shows up as a basic back exercise rather than a strength exercise: what it trains is control, not load.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Core Trunk, Hip, and Thigh Muscles During 9 Rehabilitation Exercises",
+      "autor": "Ekstrom, Donatelli y Carp, J Orthop Sports Phys Ther, 2007",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18560185/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

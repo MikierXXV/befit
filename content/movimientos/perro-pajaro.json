@@ -1,0 +1,266 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "perro-pajaro",
+  "duracion": 4.4,
+  "asimetria": 0.3,
+  "respiracion": {
+    "amplitud": 0.005,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 9"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "recogido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.5,
+          -0.12
+        ],
+        "orientacion": {
+          "inclinacion": 88
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -18
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.17,
+            0.09,
+            0.42
+          ],
+          "codo_hacia": [
+            0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        },
+        "d": {
+          "objetivo": [
+            -0.17,
+            0.09,
+            0.42
+          ],
+          "codo_hacia": [
+            -0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            -0.12,
+            0.17,
+            -0.52
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        },
+        "i": {
+          "objetivo": [
+            0.12,
+            0.17,
+            -0.52
+          ],
+          "rodilla_hacia": [
+            0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "extendido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.5,
+          -0.12
+        ],
+        "orientacion": {
+          "inclinacion": 88
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -18
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.17,
+            0.09,
+            0.42
+          ],
+          "codo_hacia": [
+            0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        },
+        "d": {
+          "objetivo": [
+            -0.17,
+            0.55,
+            0.9
+          ],
+          "codo_hacia": [
+            -0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            -0.12,
+            0.17,
+            -0.52
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        },
+        "i": {
+          "objetivo": [
+            0.12,
+            0.52,
+            -0.92
+          ],
+          "rodilla_hacia": [
+            0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.5,
+          -0.12
+        ],
+        "orientacion": {
+          "inclinacion": 88
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -18
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.17,
+            0.09,
+            0.42
+          ],
+          "codo_hacia": [
+            0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        },
+        "d": {
+          "objetivo": [
+            -0.17,
+            0.09,
+            0.42
+          ],
+          "codo_hacia": [
+            -0.3,
+            -1,
+            0
+          ],
+          "mano_plana": true,
+          "cierre": 0
+        }
+      },
+      "piernas": {
+        "d": {
+          "objetivo": [
+            -0.12,
+            0.17,
+            -0.52
+          ],
+          "rodilla_hacia": [
+            -0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        },
+        "i": {
+          "objetivo": [
+            0.12,
+            0.17,
+            -0.52
+          ],
+          "rodilla_hacia": [
+            0.2,
+            -1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -20
+          }
+        }
+      }
+    }
+  ]
+}
