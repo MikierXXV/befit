@@ -1,0 +1,278 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "buenos-dias",
+  "duracion": 3.6,
+  "asimetria": 0.35,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "barra": {
+      "tipo": "barra",
+      "relativo_a": "torax",
+      "desplazamiento": [
+        0,
+        0.14,
+        -0.12
+      ],
+      "agarre": 0.42,
+      "agarre_marco": {
+        "i": [
+          -0.706918,
+          -0.016324,
+          0.706918,
+          0.016324
+        ],
+        "d": [
+          -0.706904,
+          0.016932,
+          -0.706904,
+          0.016932
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "de pie",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.03
+        ],
+        "orientacion": {
+          "inclinacion": 2
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -0.9
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.2,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            -0.06
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 0.25,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.89,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 34
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -15.3
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.2,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            -0.06
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.86,
+          -0.18
+        ],
+        "orientacion": {
+          "inclinacion": 68
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -30.6
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.2,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            -0.06
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 0.75,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.89,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 34
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -15.3
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.2,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            -0.06
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.03
+        ],
+        "orientacion": {
+          "inclinacion": 2
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -0.9
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.2,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            -0.06
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    }
+  ]
+}

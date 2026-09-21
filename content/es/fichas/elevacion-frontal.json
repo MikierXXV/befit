@@ -1,0 +1,45 @@
+{
+  "id": "elevacion-frontal",
+  "grupo_id": "empuje-vertical",
+  "orden": 4,
+  "nombre": "Elevación frontal con mancuernas",
+  "resumen": "Los brazos suben por delante hasta la altura del hombro. Es la versión frontal de la elevación lateral, y carga la parte delantera del deltoides.",
+  "movimiento_id": "elevacion-frontal",
+  "ejecucion": [
+    "De pie, una mancuerna en cada mano delante de los muslos.",
+    "Sube los brazos por delante hasta la altura del hombro, con el codo casi recto.",
+    "Baja despacio, sin balancear el tronco hacia atrás para ayudarte.",
+    "Puedes alternar brazos o subir los dos a la vez.",
+    "Si tienes que arquear la espalda para subirlo, pesa demasiado."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "deltoides_lateral",
+      "pectoral"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "La revisión citada sobre las tres porciones del deltoides sitúa esta elevación entre las que más cargan la porción anterior, que ya trabaja en cualquier press. Por eso suele ser el aislamiento menos necesario de los tres: el deltoides anterior rara vez se queda corto en un programa que incluya empujes.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

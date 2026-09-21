@@ -1,0 +1,46 @@
+{
+  "id": "elevacion-rodillas",
+  "grupo_id": "core",
+  "orden": 5,
+  "nombre": "Hanging knee raises",
+  "resumen": "Hanging from a bar, the knees come up towards the chest. The abs work by curling the pelvis, not just by lifting the legs.",
+  "movimiento_id": "elevacion-rodillas",
+  "ejecucion": [
+    "Hang from the bar with hands shoulder-width apart and your body still.",
+    "Bring your knees up towards your chest, curling your pelvis up at the end.",
+    "Lower slowly, without letting your body swing.",
+    "If you start swinging, stop and begin again: momentum is doing the work.",
+    "Once you own it, you can raise straight legs instead of knees."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "In the cited analysis of abdominal exercises, hanging raises produced some of the highest activation of both rectus abdominis and external oblique, above traditional curl-ups. The part that counts most is the end, when the pelvis curls: raising the knees without that mostly trains the hip flexor.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

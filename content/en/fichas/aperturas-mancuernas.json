@@ -1,0 +1,46 @@
+{
+  "id": "aperturas-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 4,
+  "nombre": "Dumbbell flyes",
+  "resumen": "Lying on the bench, the arms open out with the elbow almost straight and come back together. The chest works by bringing the arms together, not by pushing.",
+  "movimiento_id": "aperturas-mancuernas",
+  "ejecucion": [
+    "Lie on the bench with a dumbbell in each hand, arms straight above your chest.",
+    "With the elbow slightly bent and fixed, open your arms out in an arc.",
+    "Lower until you feel the chest stretch, without your elbows dropping past bench level.",
+    "Come back by bringing your hands together along the same arc, without bending the elbow further.",
+    "If the elbow bends during the rep it becomes a press: the weight is too heavy."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "In the cited comparison, the barbell bench press activated pectoralis major more than flyes through most of the lift, while flyes activated the biceps more, since it works here holding the elbow. That is why flyes are used alongside the press rather than instead of it.",
+  "fuentes": [
+    {
+      "titulo": "A Comparison of Muscle Activation between Barbell Bench Press and Dumbbell Flyes in Resistance-Trained Males",
+      "autor": "Solstad et al., J Sports Sci Med, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33239937/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

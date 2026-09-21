@@ -1,0 +1,46 @@
+{
+  "id": "buenos-dias",
+  "grupo_id": "bisagra-cadera",
+  "orden": 4,
+  "nombre": "Buenos días con barra",
+  "resumen": "Con la barra en la espalda, el tronco baja hacia delante girando sobre la cadera y las rodillas casi no se doblan. Todo el recorrido sale de la bisagra.",
+  "movimiento_id": "buenos-dias",
+  "ejecucion": [
+    "Coloca la barra sobre los trapecios, como en una sentadilla trasera, y separa los pies a la anchura de las caderas.",
+    "Con las rodillas apenas dobladas, lleva la cadera atrás y baja el tronco.",
+    "Baja hasta donde puedas mantener la espalda recta; para la mayoría es cerca de la horizontal.",
+    "Sube empujando la cadera hacia delante, sin tirar con la espalda baja.",
+    "Empieza con la barra vacía: el brazo de palanca es muy largo y el peso engaña."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "soleo"
+    ]
+  },
+  "matices": "En el estudio citado, la actividad de los erectores y de los isquiotibiales creció con la carga entre el 50 y el 90 % del máximo. Es un ejercicio de cadena posterior con poca implicación de la rodilla, lo que lo hace útil como complemento, no como sustituto del peso muerto: se mueve bastante menos peso.",
+  "fuentes": [
+    {
+      "titulo": "Effects of load on good morning kinematics and EMG activity",
+      "autor": "Vigotsky et al., PeerJ, 2015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4304869/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

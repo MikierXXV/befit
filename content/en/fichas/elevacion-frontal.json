@@ -1,0 +1,45 @@
+{
+  "id": "elevacion-frontal",
+  "grupo_id": "empuje-vertical",
+  "orden": 4,
+  "nombre": "Dumbbell front raises",
+  "resumen": "The arms rise in front up to shoulder height. It is the front version of the lateral raise, and it loads the front of the deltoid.",
+  "movimiento_id": "elevacion-frontal",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand in front of your thighs.",
+    "Raise your arms in front up to shoulder height, elbow almost straight.",
+    "Lower slowly, without swinging your torso back to help.",
+    "You can alternate arms or raise both together.",
+    "If you have to arch your back to get it up, it is too heavy."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "deltoides_lateral",
+      "pectoral"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "The cited review of the three deltoid portions places this raise among those that most load the anterior portion, which already works in any press. That makes it the least necessary of the three isolations: the front delt rarely falls short in a program that includes pushing.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

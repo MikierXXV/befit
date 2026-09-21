@@ -1,0 +1,46 @@
+{
+  "id": "aperturas-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 4,
+  "nombre": "Aperturas con mancuernas",
+  "resumen": "Tumbado en el banco, los brazos se abren en cruz con el codo casi recto y vuelven a juntarse. El pectoral trabaja acercando los brazos, no empujando.",
+  "movimiento_id": "aperturas-mancuernas",
+  "ejecucion": [
+    "Túmbate en el banco con una mancuerna en cada mano, los brazos estirados sobre el pecho.",
+    "Con el codo ligeramente doblado y fijo, abre los brazos en arco hacia los lados.",
+    "Baja hasta que sientas el estiramiento del pecho, sin que los codos pasen del nivel del banco.",
+    "Vuelve juntando las manos por el mismo arco, sin doblar más el codo.",
+    "Si el codo se dobla durante el recorrido, se convierte en un press: el peso es excesivo."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "En la comparación citada, el press de banca con barra activó más el pectoral mayor que las aperturas en casi todo el recorrido, y en cambio las aperturas activaron más el bíceps, que aquí trabaja sosteniendo el codo. Por eso las aperturas se usan como complemento del press, no en su lugar.",
+  "fuentes": [
+    {
+      "titulo": "A Comparison of Muscle Activation between Barbell Bench Press and Dumbbell Flyes in Resistance-Trained Males",
+      "autor": "Solstad et al., J Sports Sci Med, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33239937/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

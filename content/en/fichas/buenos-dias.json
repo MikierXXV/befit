@@ -1,0 +1,46 @@
+{
+  "id": "buenos-dias",
+  "grupo_id": "bisagra-cadera",
+  "orden": 4,
+  "nombre": "Barbell good mornings",
+  "resumen": "With the bar on your back, the torso lowers forward hinging at the hips while the knees stay almost straight. The whole range comes from the hinge.",
+  "movimiento_id": "buenos-dias",
+  "ejecucion": [
+    "Rack the bar on your traps, as in a back squat, and set your feet hip-width apart.",
+    "With knees barely bent, push your hips back and lower your torso.",
+    "Go as far as you can keep your back flat; for most people that is close to horizontal.",
+    "Come up by driving your hips forward, not by pulling with your lower back.",
+    "Start with an empty bar: the lever is long and the weight is deceptive."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "soleo"
+    ]
+  },
+  "matices": "In the cited study, erector spinae and hamstring activity rose with load between 50 and 90 % of maximum. It is a posterior-chain exercise with little knee involvement, which makes it useful as an accessory rather than a replacement for the deadlift: far less weight moves.",
+  "fuentes": [
+    {
+      "titulo": "Effects of load on good morning kinematics and EMG activity",
+      "autor": "Vigotsky et al., PeerJ, 2015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4304869/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

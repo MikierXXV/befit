@@ -1,0 +1,46 @@
+{
+  "id": "elevacion-rodillas",
+  "grupo_id": "core",
+  "orden": 5,
+  "nombre": "Elevación de rodillas colgado",
+  "resumen": "Colgado de una barra, las rodillas suben hacia el pecho. El abdomen trabaja enrollando la pelvis, no solo levantando las piernas.",
+  "movimiento_id": "elevacion-rodillas",
+  "ejecucion": [
+    "Cuélgate de la barra con las manos a la anchura de los hombros y el cuerpo quieto.",
+    "Sube las rodillas hacia el pecho enrollando la pelvis hacia arriba al final.",
+    "Baja despacio, sin dejar que el cuerpo se balancee.",
+    "Si te columpias, para y empieza de nuevo: el impulso hace el trabajo por ti.",
+    "Cuando lo domines, puedes subir las piernas estiradas en vez de las rodillas."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "En el análisis citado de ejercicios abdominales, las elevaciones colgado dieron de las activaciones más altas tanto del recto del abdomen como del oblicuo externo, por encima de los encogimientos clásicos. La parte que más cuenta es el final, cuando la pelvis se enrolla: subir las rodillas sin eso trabaja sobre todo el flexor de la cadera.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

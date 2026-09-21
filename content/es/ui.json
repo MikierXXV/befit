@@ -122,7 +122,9 @@
       "barbilla arriba": "Barbilla",
       "de pie": "De pie",
       "extendido": "Extendido",
-      "recogido": "Recogido"
+      "recogido": "Recogido",
+      "abierto": "Abierto",
+      "rodillas arriba": "Rodillas"
     },
     "sin_3d": "Tu navegador no puede mostrar el maniquí. Los pasos de ejecución están debajo.",
     "lado": {
