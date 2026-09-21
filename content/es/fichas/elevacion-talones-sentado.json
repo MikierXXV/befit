@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talones-sentado",
+  "grupo_id": "flexion-plantar",
+  "orden": 2,
+  "nombre": "Elevación de talones sentado",
+  "resumen": "El mismo empuje con la rodilla doblada a 90°. Con el gemelo acortado, el trabajo recae sobre todo en el sóleo.",
+  "movimiento_id": "elevacion-talones-sentado",
+  "ejecucion": [
+    "Sentado en un banco, con los pies apoyados y las rodillas a 90°.",
+    "Apoya un peso sobre los muslos, cerca de la rodilla.",
+    "Sube los talones todo lo que puedas y aguanta un instante arriba.",
+    "Baja despacio hasta apoyar el talón.",
+    "Al ser un recorrido corto, cuenta más la pausa arriba que el peso."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "soleo"
+    ],
+    "sinergista": [
+      "gemelos"
+    ],
+    "estabilizador": [
+      "cuadriceps",
+      "abdomen"
+    ]
+  },
+  "matices": "En el ensayo citado, el sóleo creció igual sentado que de pie (2,9 % frente a 2,1 %), mientras que el gemelo apenas creció sentado. Eso mata a medias la idea de que esta versión sea imprescindible para el sóleo: sirve, pero no aporta lo que no dé ya la de pie.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

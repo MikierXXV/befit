@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talones",
+  "grupo_id": "flexion-plantar",
+  "orden": 1,
+  "nombre": "Elevación de talones de pie",
+  "resumen": "Subir el talón con la rodilla estirada. Con la pierna recta el gemelo trabaja a su longitud larga, que es donde más crece.",
+  "movimiento_id": "elevacion-talones",
+  "ejecucion": [
+    "De pie, con el peso repartido en la parte delantera de los pies.",
+    "Sube los talones todo lo que puedas manteniendo las rodillas estiradas.",
+    "Aguanta un instante arriba y baja despacio hasta el suelo.",
+    "Si tienes un escalón, deja caer el talón por debajo para ganar recorrido.",
+    "Apóyate en algo con una mano si te cuesta mantener el equilibrio."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gemelos"
+    ],
+    "sinergista": [
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "cuadriceps",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "El ensayo citado entrenó una pierna de pie y la otra sentada durante doce semanas en las mismas personas: el gemelo creció entre un 9 y un 12 % de pie frente a menos del 2 % sentado, mientras que el sóleo creció parecido en las dos. La rodilla estirada es lo que deja al gemelo trabajar largo.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

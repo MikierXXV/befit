@@ -1,0 +1,45 @@
+{
+  "id": "curl-martillo",
+  "grupo_id": "flexion-codo",
+  "orden": 2,
+  "nombre": "Curl martillo con mancuernas",
+  "resumen": "El mismo curl pero con las palmas mirándose entre sí. Cambia el reparto entre el bíceps y los músculos de debajo.",
+  "movimiento_id": "curl-martillo",
+  "ejecucion": [
+    "De pie, una mancuerna en cada mano con las palmas mirando hacia dentro.",
+    "Sube doblando el codo sin girar la muñeca: la palma sigue mirando adentro arriba.",
+    "El brazo se queda pegado al costado.",
+    "Baja despacio hasta estirar el codo.",
+    "Suele permitir algo más de peso que el curl supino; aun así, sin balanceo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps",
+      "antebrazo"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_superior",
+      "erectores"
+    ]
+  },
+  "matices": "Lo que suele decirse es que el martillo trabaja más el braquiorradial, y el estudio citado mide lo contrario: en la subida, el braquiorradial se excitó un 6 % MÁS con el agarre supino. Lo que sí crece con el agarre neutro es la participación del braquial, que va por debajo del bíceps y no se ve.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

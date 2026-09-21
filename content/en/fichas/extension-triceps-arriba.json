@@ -1,0 +1,44 @@
+{
+  "id": "extension-triceps-arriba",
+  "grupo_id": "extension-codo",
+  "orden": 1,
+  "nombre": "Overhead triceps extension",
+  "resumen": "With the upper arm vertical, the elbow bends behind the head and straightens. The long head of the triceps works stretched.",
+  "movimiento_id": "extension-triceps-arriba",
+  "ejecucion": [
+    "Stand and press the dumbbells overhead with your arms straight.",
+    "Bend your elbows, lowering the dumbbells behind your head.",
+    "The elbows point forward and do not flare out to the sides.",
+    "Straighten the elbows without snapping them locked.",
+    "If your shoulders complain, go less deep or switch to a version with the arm lower."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "In the cited work, shoulder position changes which head of the triceps works most: with the arm overhead the long head — which crosses the shoulder — takes more load than with the arm at your side. That is why this version and the kickback are not interchangeable.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

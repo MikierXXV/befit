@@ -79,6 +79,36 @@
         "claro": "#9c3b73",
         "oscuro": "#ee9bc8"
       }
+    },
+    {
+      "id": "flexion-codo",
+      "nombre": "Flexión de codo",
+      "descripcion": "Doblar el codo para acercar la mano al hombro contra una carga.",
+      "orden": 9,
+      "color_acento": {
+        "claro": "#187515",
+        "oscuro": "#85e981"
+      }
+    },
+    {
+      "id": "extension-codo",
+      "nombre": "Extensión de codo",
+      "descripcion": "Estirar el codo contra una carga, con el brazo fijo.",
+      "orden": 10,
+      "color_acento": {
+        "claro": "#4e1575",
+        "oscuro": "#bf81e9"
+      }
+    },
+    {
+      "id": "flexion-plantar",
+      "nombre": "Flexión plantar",
+      "descripcion": "Empujar con la parte delantera del pie levantando el talón.",
+      "orden": 11,
+      "color_acento": {
+        "claro": "#751915",
+        "oscuro": "#e98681"
+      }
     }
   ]
 }

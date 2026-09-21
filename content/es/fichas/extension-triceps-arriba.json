@@ -1,0 +1,44 @@
+{
+  "id": "extension-triceps-arriba",
+  "grupo_id": "extension-codo",
+  "orden": 1,
+  "nombre": "Extensión de tríceps sobre la cabeza",
+  "resumen": "Con el brazo vertical, el codo se dobla detrás de la cabeza y se estira. La porción larga del tríceps trabaja estirada.",
+  "movimiento_id": "extension-triceps-arriba",
+  "ejecucion": [
+    "De pie, sube las mancuernas por encima de la cabeza con los brazos estirados.",
+    "Dobla los codos bajando las mancuernas por detrás de la cabeza.",
+    "Los codos apuntan al frente y no se abren hacia los lados.",
+    "Estira los codos hasta arriba sin bloquearlos de golpe.",
+    "Si los hombros molestan, baja menos o pásate a una versión con el brazo más bajo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "En el trabajo citado, la posición del hombro cambia qué porción del tríceps trabaja más: con el brazo por encima de la cabeza, la porción larga —que cruza el hombro— se lleva más carga que con el brazo al costado. Por eso esta versión y la patada no son intercambiables.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

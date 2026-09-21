@@ -1,0 +1,44 @@
+{
+  "id": "curl-mancuernas",
+  "grupo_id": "flexion-codo",
+  "orden": 1,
+  "nombre": "Dumbbell biceps curl",
+  "resumen": "Bending the elbow with the palm up and the upper arm still. The classic biceps exercise.",
+  "movimiento_id": "curl-mancuernas",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, palms facing forward.",
+    "Bend the elbow, bringing the dumbbell up towards the shoulder, without moving the upper arm.",
+    "The elbow stays against your side throughout.",
+    "Lower slowly until the arm is fully straight.",
+    "If the elbow drifts forward or your back arches, the weight is too heavy."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "In the cited study the supinated grip produced 12 % more biceps excitation than the neutral one on the way up. The difference is real but small: the authors recommend rotating grips rather than picking one.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

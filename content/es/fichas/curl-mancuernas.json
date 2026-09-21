@@ -1,0 +1,44 @@
+{
+  "id": "curl-mancuernas",
+  "grupo_id": "flexion-codo",
+  "orden": 1,
+  "nombre": "Curl de bíceps con mancuernas",
+  "resumen": "Doblar el codo con la palma hacia arriba y el brazo quieto a un lado. El ejercicio de bíceps de toda la vida.",
+  "movimiento_id": "curl-mancuernas",
+  "ejecucion": [
+    "De pie, una mancuerna en cada mano con las palmas hacia delante.",
+    "Dobla el codo subiendo la mancuerna hacia el hombro, sin mover el brazo.",
+    "El codo se queda pegado al costado durante todo el recorrido.",
+    "Baja despacio hasta estirar el brazo del todo.",
+    "Si el codo se va hacia delante o la espalda se arquea, el peso es excesivo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "En el estudio citado, el agarre supino dio un 12 % más de excitación del bíceps que el neutro durante la subida. La diferencia es real pero pequeña: la recomendación de los autores es alternar agarres, no elegir uno.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

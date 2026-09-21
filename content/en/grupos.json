@@ -79,6 +79,36 @@
         "claro": "#9c3b73",
         "oscuro": "#ee9bc8"
       }
+    },
+    {
+      "id": "flexion-codo",
+      "nombre": "Elbow flexion",
+      "descripcion": "Bending the elbow to bring the hand towards the shoulder against a load.",
+      "orden": 9,
+      "color_acento": {
+        "claro": "#187515",
+        "oscuro": "#85e981"
+      }
+    },
+    {
+      "id": "extension-codo",
+      "nombre": "Elbow extension",
+      "descripcion": "Straightening the elbow against a load, with the upper arm fixed.",
+      "orden": 10,
+      "color_acento": {
+        "claro": "#4e1575",
+        "oscuro": "#bf81e9"
+      }
+    },
+    {
+      "id": "flexion-plantar",
+      "nombre": "Plantar flexion",
+      "descripcion": "Pushing through the ball of the foot, lifting the heel.",
+      "orden": 11,
+      "color_acento": {
+        "claro": "#751915",
+        "oscuro": "#e98681"
+      }
     }
   ]
 }

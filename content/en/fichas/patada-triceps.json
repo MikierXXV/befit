@@ -1,0 +1,44 @@
+{
+  "id": "patada-triceps",
+  "grupo_id": "extension-codo",
+  "orden": 2,
+  "nombre": "Dumbbell triceps kickback",
+  "resumen": "With the torso hinged and the upper arm against your side, the elbow opens backwards. The triceps works shortened.",
+  "movimiento_id": "patada-triceps",
+  "ejecucion": [
+    "Hinge your torso forward with a flat back and your elbows against your sides.",
+    "Start with the elbow bent to 90° and the dumbbell hanging.",
+    "Straighten the elbow, taking the dumbbell back, without moving the upper arm.",
+    "Return slowly to 90° under control.",
+    "The upper arm must stay still: the only thing that moves is the forearm."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "isquiotibiales"
+    ]
+  },
+  "matices": "With the arm at your side the long head of the triceps starts shortened, so it contributes less than in the overhead version — that is what the cited study measures. In exchange, the hardest point falls at the end of the range, with the elbow straight.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "curl-martillo",
+  "grupo_id": "flexion-codo",
+  "orden": 2,
+  "nombre": "Dumbbell hammer curl",
+  "resumen": "The same curl with the palms facing each other. It changes the split between the biceps and the muscles underneath.",
+  "movimiento_id": "curl-martillo",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, palms facing inwards.",
+    "Curl up without rotating the wrist: the palm still faces in at the top.",
+    "The upper arm stays against your side.",
+    "Lower slowly until the elbow is straight.",
+    "It usually allows a little more weight than the supinated curl; still no swinging."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps",
+      "antebrazo"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_superior",
+      "erectores"
+    ]
+  },
+  "matices": "The usual claim is that the hammer curl works the brachioradialis more, and the cited study measures the opposite: on the way up, the brachioradialis was 6 % MORE excited with the supinated grip. What the neutral grip does raise is the share taken by the brachialis, which sits under the biceps and cannot be seen.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

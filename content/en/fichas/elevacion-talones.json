@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talones",
+  "grupo_id": "flexion-plantar",
+  "orden": 1,
+  "nombre": "Standing calf raise",
+  "resumen": "Lifting the heel with the knee straight. With a straight leg the gastrocnemius works at long length, which is where it grows most.",
+  "movimiento_id": "elevacion-talones",
+  "ejecucion": [
+    "Stand with your weight on the front of your feet.",
+    "Raise your heels as high as you can, keeping your knees straight.",
+    "Hold for a moment at the top and lower slowly to the floor.",
+    "If you have a step, let the heel drop below it for more range.",
+    "Hold on to something with one hand if balance is an issue."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gemelos"
+    ],
+    "sinergista": [
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "cuadriceps",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "The cited trial trained one leg standing and the other seated for twelve weeks in the same people: the gastrocnemius grew 9 to 12 % standing against under 2 % seated, while the soleus grew similarly in both. The straight knee is what lets the gastrocnemius work long.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

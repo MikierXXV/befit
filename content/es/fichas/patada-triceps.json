@@ -1,0 +1,44 @@
+{
+  "id": "patada-triceps",
+  "grupo_id": "extension-codo",
+  "orden": 2,
+  "nombre": "Patada de tríceps con mancuernas",
+  "resumen": "Con el tronco inclinado y el brazo pegado al costado, el codo se abre hacia atrás. El tríceps trabaja acortado.",
+  "movimiento_id": "patada-triceps",
+  "ejecucion": [
+    "Inclina el tronco hacia delante con la espalda recta y los codos pegados al costado.",
+    "Parte con el codo doblado a 90° y la mancuerna colgando.",
+    "Estira el codo llevando la mancuerna atrás, sin mover el brazo.",
+    "Vuelve despacio a los 90° controlando el peso.",
+    "El brazo debe quedarse quieto: lo único que se mueve es el antebrazo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "isquiotibiales"
+    ]
+  },
+  "matices": "Con el brazo al costado, la porción larga del tríceps parte acortada, así que aporta menos que en la versión con el brazo sobre la cabeza —es lo que mide el estudio citado—. A cambio, el punto de mayor esfuerzo cae al final del recorrido, con el codo estirado.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

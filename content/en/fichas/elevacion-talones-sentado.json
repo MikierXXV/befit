@@ -1,0 +1,44 @@
+{
+  "id": "elevacion-talones-sentado",
+  "grupo_id": "flexion-plantar",
+  "orden": 2,
+  "nombre": "Seated calf raise",
+  "resumen": "The same push with the knee bent to 90°. With the gastrocnemius shortened, the work falls mainly on the soleus.",
+  "movimiento_id": "elevacion-talones-sentado",
+  "ejecucion": [
+    "Sit on a bench with your feet flat and your knees at 90°.",
+    "Rest a weight on your thighs, close to the knee.",
+    "Raise your heels as high as you can and hold briefly at the top.",
+    "Lower slowly until the heel is down.",
+    "Since the range is short, the pause at the top counts more than the weight."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "soleo"
+    ],
+    "sinergista": [
+      "gemelos"
+    ],
+    "estabilizador": [
+      "cuadriceps",
+      "abdomen"
+    ]
+  },
+  "matices": "In the cited trial the soleus grew the same seated as standing (2.9 % against 2.1 %), while the gastrocnemius barely grew seated. That half kills the idea that this version is essential for the soleus: it works, but it adds nothing the standing one does not already give.",
+  "fuentes": [
+    {
+      "titulo": "Triceps surae muscle hypertrophy is greater after standing versus seated calf-raise training",
+      "autor": "Kinoshita et al., Front Physiol, 2023",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10753835/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -124,7 +124,8 @@
       "extendido": "Extendido",
       "recogido": "Recogido",
       "abierto": "Abierto",
-      "rodillas arriba": "Rodillas"
+      "rodillas arriba": "Rodillas",
+      "doblado": "Doblado"
     },
     "sin_3d": "Tu navegador no puede mostrar el maniquí. Los pasos de ejecución están debajo.",
     "lado": {
