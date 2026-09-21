@@ -1,0 +1,48 @@
+{
+  "id": "subida-cajon",
+  "grupo_id": "zancada",
+  "orden": 5,
+  "nombre": "Dumbbell step-up",
+  "resumen": "Stepping up onto a box with one leg and coming down under control. The top foot never moves: what rises is the whole body.",
+  "movimiento_id": "subida-cajon",
+  "ejecucion": [
+    "Stand facing a box about 35 cm high, a dumbbell in each hand.",
+    "Place one whole foot on top, heel well inside the box.",
+    "Push up with that leg, without pushing off with the bottom one.",
+    "At the top the hip is extended and the bottom leg is just along for the ride.",
+    "Lower slowly until your toe touches the floor and repeat before switching."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "gluteo_medio",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "The catch is the launch: if you push off with the bottom foot, the leg that was meant to work barely does anything. In the cited study, the lateral step-up produced less gluteus medius activation than the single-leg squat, though more than standing: a useful intermediate step.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
+      "autor": "PLOS One, 2020",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7112217/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

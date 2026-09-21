@@ -1,0 +1,46 @@
+{
+  "id": "flexiones-diamante",
+  "grupo_id": "empuje-horizontal",
+  "orden": 5,
+  "nombre": "Diamond push-ups",
+  "resumen": "Push-ups with the hands together under the chest. The elbow travels further, and the triceps pays for that extra range.",
+  "movimiento_id": "flexiones-diamante",
+  "ejecucion": [
+    "Get into a push-up position with your hands together under your chest.",
+    "Index fingers and thumbs almost touch, forming a triangle.",
+    "Lower until your chest brushes your hands, elbows close to your body.",
+    "Press up by straightening the elbows without the hips sagging or rising.",
+    "If you cannot manage them yet, do them with your hands raised on a bench."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps",
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "In the cited work, in diamond push-ups the triceps was activated significantly more than the pectoralis, the opposite of standard and wide push-ups. Pectoralis activation, on the other hand, barely changed from the normal version: you gain triceps without losing chest.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Activation of the Pectoralis Major and Triceps Brachii Muscles During Standard, Diamond, and Wide Hand Position Push-Ups",
+      "autor": "Journal of Functional Morphology and Kinesiology, 2026",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13029269/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

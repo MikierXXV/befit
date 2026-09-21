@@ -1,0 +1,44 @@
+{
+  "id": "pajaros-mancuernas",
+  "grupo_id": "tiron-horizontal",
+  "orden": 5,
+  "nombre": "Dumbbell rear delt flyes",
+  "resumen": "With the torso hinged, the arms open out to the back. It is the direct exercise for the back of the shoulder.",
+  "movimiento_id": "pajaros-mancuernas",
+  "ejecucion": [
+    "Hinge your torso forward with a flat back and let the dumbbells hang.",
+    "Open your arms out to the sides with the elbow slightly bent and fixed.",
+    "Raise until your hands are level with your shoulders, no higher.",
+    "Lower slowly rather than dropping the weight.",
+    "If the elbows bend during the rep it turns into a row."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_posterior"
+    ],
+    "sinergista": [
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "abdomen"
+    ]
+  },
+  "matices": "The cited review places this among the exercises that most activate the posterior deltoid, the portion that almost never gets direct load: presses work the front and pulls spread it around. Very little weight moves, and overloading it is the common mistake.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

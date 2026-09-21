@@ -1,0 +1,46 @@
+{
+  "id": "flexiones-diamante",
+  "grupo_id": "empuje-horizontal",
+  "orden": 5,
+  "nombre": "Flexiones diamante",
+  "resumen": "Las flexiones con las manos juntas bajo el pecho. El codo recorre más, y ese recorrido de más lo paga el tríceps.",
+  "movimiento_id": "flexiones-diamante",
+  "ejecucion": [
+    "Ponte en posición de flexión con las manos juntas bajo el pecho.",
+    "Los índices y los pulgares casi se tocan, formando un triángulo.",
+    "Baja hasta rozar las manos con el pecho, con los codos cerca del cuerpo.",
+    "Sube estirando los codos sin que la cadera se hunda ni se levante.",
+    "Si aún no llegas, hazlas con las manos elevadas en un banco."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps",
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "En el trabajo citado, en las diamante el tríceps se activó significativamente más que el pectoral, al revés que en las flexiones estándar y las abiertas. La activación del pectoral, en cambio, apenas cambió respecto a las normales: se gana tríceps sin perder pecho.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Activation of the Pectoralis Major and Triceps Brachii Muscles During Standard, Diamond, and Wide Hand Position Push-Ups",
+      "autor": "Journal of Functional Morphology and Kinesiology, 2026",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13029269/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

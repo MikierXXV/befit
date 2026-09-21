@@ -1,0 +1,44 @@
+{
+  "id": "pajaros-mancuernas",
+  "grupo_id": "tiron-horizontal",
+  "orden": 5,
+  "nombre": "Pájaros con mancuernas",
+  "resumen": "Con el tronco inclinado, los brazos se abren en cruz hacia atrás. Es el ejercicio directo para la parte de atrás del hombro.",
+  "movimiento_id": "pajaros-mancuernas",
+  "ejecucion": [
+    "Inclina el tronco hacia delante con la espalda recta y deja colgar las mancuernas.",
+    "Abre los brazos hacia los lados con el codo ligeramente doblado y fijo.",
+    "Sube hasta que las manos queden a la altura de los hombros, no más.",
+    "Baja despacio sin dejar caer el peso.",
+    "Si los codos se doblan durante el recorrido, se convierte en un remo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "deltoides_posterior"
+    ],
+    "sinergista": [
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "abdomen"
+    ]
+  },
+  "matices": "La revisión citada sitúa este gesto entre los que más activan el deltoides posterior, la porción que casi nunca se lleva carga directa: los empujes trabajan la delantera y los tirones la reparten. Se mueve muy poco peso, y ahí está el error común de cargarlo de más.",
+  "fuentes": [
+    {
+      "titulo": "Activation of the three deltoid muscle portions during common strengthening exercises: A systematic review",
+      "autor": "J Bodyw Mov Ther, 2022",
+      "url": "https://doi.org/10.1016/j.jbmt.2022.06.003"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

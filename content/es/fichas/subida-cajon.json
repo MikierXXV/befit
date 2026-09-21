@@ -1,0 +1,48 @@
+{
+  "id": "subida-cajon",
+  "grupo_id": "zancada",
+  "orden": 5,
+  "nombre": "Subida al cajón con mancuernas",
+  "resumen": "Subir a un cajón con una pierna y bajar controlando. El pie de arriba no se mueve: lo que sube es el cuerpo entero.",
+  "movimiento_id": "subida-cajon",
+  "ejecucion": [
+    "De pie frente a un cajón de unos 35 cm, con una mancuerna en cada mano.",
+    "Apoya un pie entero encima, con el talón dentro del cajón.",
+    "Sube empujando con esa pierna, sin darte impulso con la de abajo.",
+    "Arriba, la cadera queda extendida y la pierna de abajo solo acompaña.",
+    "Baja despacio hasta tocar el suelo con la punta y repite antes de cambiar."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "gluteo_medio",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "La trampa está en el despegue: si te impulsas con el pie de abajo, la pierna que debía trabajar apenas hace nada. En el estudio citado, la subida lateral al cajón dio menos activación de glúteo medio que la sentadilla a una pierna, aunque más que estar de pie: es un escalón intermedio útil.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in the gluteus medius, gluteus maximus, biceps femoris, vastus lateralis, vastus medialis and rectus femoris during the Monopodal Squat, Forward Lunge and Lateral Step-Up exercises",
+      "autor": "PLOS One, 2020",
+      "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7112217/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

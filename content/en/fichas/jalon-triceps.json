@@ -1,0 +1,44 @@
+{
+  "id": "jalon-triceps",
+  "grupo_id": "extension-codo",
+  "orden": 4,
+  "nombre": "Cable triceps pushdown",
+  "resumen": "Standing at the high pulley, the elbow opens downwards with the upper arm against your side.",
+  "movimiento_id": "jalon-triceps",
+  "ejecucion": [
+    "Stand facing the pulley and take the bar with hands shoulder-width apart.",
+    "Tuck your elbows against your sides with your forearms at chest height.",
+    "Straighten your elbows, driving the bar towards your thighs.",
+    "Return under control until the forearm passes horizontal.",
+    "The upper arm does not move: if the elbows drift forward, you are pushing with your chest."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "dorsal",
+      "erectores"
+    ]
+  },
+  "matices": "With the arm at your side the long head of the triceps starts shortened and contributes less than in the overhead versions — which is what the cited work measures. In exchange it is the easiest to do well and the one that best allows adding load gradually.",
+  "fuentes": [
+    {
+      "titulo": "Effect of shoulder position on triceps brachii heads activity in dumbbell elbow extension exercises",
+      "autor": "J Sports Med Phys Fitness, 2018",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28677940/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

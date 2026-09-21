@@ -1,0 +1,45 @@
+{
+  "id": "curl-inverso",
+  "grupo_id": "flexion-codo",
+  "orden": 4,
+  "nombre": "Dumbbell reverse curl",
+  "resumen": "The curl with palms facing down. Far less weight moves than in the normal one, and it is not for lack of biceps.",
+  "movimiento_id": "curl-inverso",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, palms facing back.",
+    "Curl up without rotating the wrist: the palm still faces down at the top.",
+    "The upper arm stays against your side.",
+    "Lower slowly until the arm is fully straight.",
+    "Use considerably less weight than in the normal curl: it does not hold the same here."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "antebrazo",
+      "biceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_superior",
+      "erectores"
+    ]
+  },
+  "matices": "With the palm down the biceps loses mechanical advantage — part of its job is turning the forearm up — and the weight is mostly held by the muscles underneath and in the forearm. In the grip study, supinated excited the biceps most; pronated, least.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

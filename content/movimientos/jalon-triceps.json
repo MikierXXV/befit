@@ -1,0 +1,221 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "jalon-triceps",
+  "duracion": 3.2,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "barra": {
+      "tipo": "polea",
+      "mango": "barra",
+      "ancho": 0.6,
+      "ancla": [
+        0,
+        2.4,
+        0.24
+      ],
+      "posicion": [
+        0,
+        1.18,
+        0.24
+      ],
+      "agarre": 0.16,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          0.415599,
+          -0.572082,
+          0.415599,
+          -0.572082
+        ],
+        "d": [
+          0.414024,
+          0.573222,
+          -0.414024,
+          -0.573222
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "doblado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 8
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.18,
+            0.24
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.5,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "estirado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 8
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.92,
+            0.24
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.5,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 8
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.18,
+            0.24
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.5,
+            -1,
+            -0.5
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "curl-inverso",
+  "grupo_id": "flexion-codo",
+  "orden": 4,
+  "nombre": "Curl inverso con mancuernas",
+  "resumen": "El curl con las palmas hacia abajo. Se mueve bastante menos peso que en el normal, y no es por falta de bíceps.",
+  "movimiento_id": "curl-inverso",
+  "ejecucion": [
+    "De pie, una mancuerna en cada mano con las palmas mirando hacia atrás.",
+    "Sube doblando el codo sin girar la muñeca: la palma sigue hacia abajo arriba.",
+    "El codo se queda pegado al costado.",
+    "Baja despacio hasta estirar el brazo del todo.",
+    "Usa bastante menos peso que en el curl normal: aquí no aguanta lo mismo."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "antebrazo",
+      "biceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_superior",
+      "erectores"
+    ]
+  },
+  "matices": "Con la palma hacia abajo el bíceps pierde ventaja mecánica —parte de su trabajo es girar el antebrazo hacia arriba— y el peso lo sostienen sobre todo los músculos de debajo y del antebrazo. En el estudio de agarres, el supino fue el que más excitó al bíceps; el pronado, el que menos.",
+  "fuentes": [
+    {
+      "titulo": "Biceps Brachii and Brachioradialis Excitation in Biceps Curl Exercise: Different Handgrips, Different Synergy",
+      "autor": "Sports (Basel), 2023",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36976950/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
