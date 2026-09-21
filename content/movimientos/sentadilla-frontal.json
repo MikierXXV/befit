@@ -19,8 +19,8 @@
       "relativo_a": "torax",
       "desplazamiento": [
         0,
-        0.08,
-        0.09
+        0.11,
+        0.1
       ],
       "agarre": 0.34
     }
@@ -50,30 +50,30 @@
         "i": {
           "relativo_a": "articulacion",
           "objetivo": [
-            -0.3,
-            0.02,
-            0.13
+            -0.34,
+            0.008,
+            0.17
           ],
           "codo_hacia": [
-            0.2,
-            1.4,
-            0.8
+            0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         },
         "d": {
           "relativo_a": "articulacion",
           "objetivo": [
-            0.3,
-            0.07,
-            0.1
+            0.34,
+            -0.012,
+            0.14
           ],
           "codo_hacia": [
-            -0.2,
-            1.4,
-            0.8
+            -0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         }
       },
       "piernas": {
@@ -115,30 +115,30 @@
         "i": {
           "relativo_a": "articulacion",
           "objetivo": [
-            -0.3,
-            0.02,
-            0.13
+            -0.34,
+            0.008,
+            0.17
           ],
           "codo_hacia": [
-            0.2,
-            1.4,
-            0.8
+            0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         },
         "d": {
           "relativo_a": "articulacion",
           "objetivo": [
-            0.3,
-            0.07,
-            0.1
+            0.34,
+            -0.012,
+            0.14
           ],
           "codo_hacia": [
-            -0.2,
-            1.4,
-            0.8
+            -0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         }
       },
       "piernas": {
@@ -182,30 +182,30 @@
         "i": {
           "relativo_a": "articulacion",
           "objetivo": [
-            -0.3,
-            0.02,
-            0.13
+            -0.34,
+            0.008,
+            0.17
           ],
           "codo_hacia": [
-            0.2,
-            1.4,
-            0.8
+            0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         },
         "d": {
           "relativo_a": "articulacion",
           "objetivo": [
-            0.3,
-            0.07,
-            0.1
+            0.34,
+            -0.012,
+            0.14
           ],
           "codo_hacia": [
-            -0.2,
-            1.4,
-            0.8
+            -0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         }
       },
       "piernas": {
@@ -247,30 +247,30 @@
         "i": {
           "relativo_a": "articulacion",
           "objetivo": [
-            -0.3,
-            0.02,
-            0.13
+            -0.34,
+            0.008,
+            0.17
           ],
           "codo_hacia": [
-            0.2,
-            1.4,
-            0.8
+            0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         },
         "d": {
           "relativo_a": "articulacion",
           "objetivo": [
-            0.3,
-            0.07,
-            0.1
+            0.34,
+            -0.012,
+            0.14
           ],
           "codo_hacia": [
-            -0.2,
-            1.4,
-            0.8
+            -0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         }
       },
       "piernas": {
@@ -312,30 +312,30 @@
         "i": {
           "relativo_a": "articulacion",
           "objetivo": [
-            -0.3,
-            0.02,
-            0.13
+            -0.34,
+            0.008,
+            0.17
           ],
           "codo_hacia": [
-            0.2,
-            1.4,
-            0.8
+            0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         },
         "d": {
           "relativo_a": "articulacion",
           "objetivo": [
-            0.3,
-            0.07,
-            0.1
+            0.34,
+            -0.012,
+            0.14
           ],
           "codo_hacia": [
-            -0.2,
-            1.4,
-            0.8
+            -0.35,
+            -0.15,
+            1
           ],
-          "cierre": 0.5
+          "cierre": 0.45
         }
       },
       "piernas": {
