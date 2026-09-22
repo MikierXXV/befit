@@ -749,6 +749,14 @@ function posarPierna(esq, pose, l, Fpelvis, anotar, avisos) {
  * Un ángulo igual en las tres falanges da un puño, no un agarre: la mano cerrada sobre una barra
  * dobla mucho los nudillos y la falange media, y poco la punta. El pulgar va aparte y menos, porque
  * se opone al resto en lugar de curvarse con ellos.
+ *
+ * EL 1 NO ES EL TOPE: ES EL AGARRE. Estos 165° repartidos entre las tres falanges son los que hacen
+ * falta para rodear una barra; un puño de verdad pide cerca de 260. Para cerrar el puño —la
+ * plancha— el `cierre` va por encima de 1, y ahí hay un óptimo MEDIDO con la punta del índice
+ * contra la muñeca: 1.55 da un puño de 9,9 cm, y a partir de 1.8 el dedo se enrolla de más, la
+ * punta sale por debajo de la palma y vuelve a alejarse —1.7 mide 15,4 cm, peor que no cerrar—.
+ * La distancia no crece con el número, así que se mide en vez de subirlo a ojo: probando 1.7 se
+ * concluyó que el puño era imposible, y lo que pasaba es que estaba justo pasado el punto bueno.
  */
 const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [20, 24, 16] };
 
