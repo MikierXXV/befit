@@ -819,7 +819,26 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
      * La primera falange del pulgar se APUNTA al agarre: no basta con doblarlo, porque se opone al
      * resto y hay que llevarlo antes a donde está el mango.
      */
-    if (pulgar && puntoAgarre && n === 0) {
+    /*
+     * UN PUÑO CIERRA EL PULGAR SOBRE LOS DEDOS, NO LO DEJA TIESO.
+     *
+     * Curvándolo por ángulos no sale: el eje que lo dobla es `dir × palma`, y el pulgar apunta casi
+     * en la dirección de la palma, así que ese producto queda cortísimo y cada falange acaba
+     * girando en un plano distinto. Los giros se cancelan y el pulgar se queda RECTO —medido: 9,2 cm
+     * de la base a la punta con la mano abierta, 8,7 cerrando del todo—. En la plancha salía tieso,
+     * apuntando al otro puño.
+     *
+     * Se resuelve como ya se resolvía con una barra: APUNTÁNDOLO. El destino es la falange media
+     * del índice, que a estas alturas del bucle ya está cerrada —los dedos van antes que el pulgar—,
+     * así que el pulgar cae encima de ellos, que es donde va en un puño.
+     */
+    let destinoPulgar = puntoAgarre;
+    if (pulgar && !puntoAgarre && cierre > 1) {
+      const indice = esq.huesos[`falanges_${l}`].find((x) => x.name.includes('index02'));
+      if (indice) destinoPulgar = indice.getWorldPosition(new Vector3());
+    }
+
+    if (pulgar && destinoPulgar && n === 0) {
       const padre = h.parent.getWorldQuaternion(new Quaternion());
       const mundo = h.getWorldQuaternion(new Quaternion());
       const actual = new Vector3(0, 1, 0).applyQuaternion(mundo);
@@ -830,9 +849,9 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
        * se sale un radio hacia fuera—, así que sale bien esté donde esté la mano.
        */
       const base = h.getWorldPosition(new Vector3());
-      let destino = puntoAgarre.clone();
+      let destino = destinoPulgar.clone();
       if (ejeAgarre) {
-        const sobreEje = puntoAgarre.clone().addScaledVector(ejeAgarre, base.clone().sub(puntoAgarre).dot(ejeAgarre));
+        const sobreEje = destinoPulgar.clone().addScaledVector(ejeAgarre, base.clone().sub(destinoPulgar).dot(ejeAgarre));
         const haciaFuera = base.clone().sub(sobreEje);
         if (haciaFuera.lengthSq() > 1e-8) destino = sobreEje.addScaledVector(haciaFuera.normalize(), RADIO_BARRA + 0.012);
       }
