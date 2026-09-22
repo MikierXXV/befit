@@ -107,6 +107,28 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       }
     }
 
+    /*
+     * SENTADO, PERO SENTADO EN EL BANCO.
+     *
+     * Que el cuerpo no atraviese el banco y que "descanse" en él no basta: en la elevación de
+     * talones sentado la cadera estaba 3 cm POR DELANTE del borde, apoyando solo el canto del
+     * glúteo, y el maniquí parecía en cuclillas al lado del banco. Las dos comprobaciones de arriba
+     * pasaban —el glúteo llega hacia atrás y tocaba—, así que hizo falta verlo en la web.
+     *
+     * Se mira la CADERA, no la piel: tiene que caer dentro de la huella con un margen. Solo aplica
+     * cuando el maniquí está a la altura del acolchado, que es lo que distingue estar sentado de
+     * pasar por encima.
+     */
+    for (const [nombre, imp] of Object.entries(r.implementos)) {
+      if (imp.tipo !== 'banco') continue;
+      const cadera = maniqui.esq.huesos.pelvis.getWorldPosition(new Vector3());
+      if (Math.abs(cadera.y - (imp.posicion.y + imp.alto)) > 0.16) continue;
+      const margen = imp.posicion.z + imp.largo / 2 - cadera.z;
+      if (margen < 0.05) {
+        fallo(`sentado fuera de ${nombre}`, `${etiqueta} (la cadera queda a ${(margen * 100).toFixed(0)} cm del borde)`);
+      }
+    }
+
     const eq = mov.comprobaciones?.equilibrio;
     if (eq) {
       const medioPie = LADOS.map((l) => maniqui.esq.huesos[`pie_${l}`].getWorldPosition(new Vector3()))
