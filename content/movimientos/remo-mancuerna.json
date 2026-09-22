@@ -9,8 +9,7 @@
     "ciclos": 1
   },
   "camara": {
-    "vista": "tres_cuartos",
-    "detalle": "mano_d"
+    "vista": "tres_cuartos"
   },
   "implementos": {
     "banco": {

@@ -12,8 +12,7 @@
   "$comment_talon": "El pie de atrás deja de ser `pie_plano` en cuanto empieza la bajada: con el talón pegado al suelo, la dorsiflexión que pide la zancada pasa de 50° y el validador la rechaza —que es exactamente por lo que en una zancada real el talón sube—. Y el `tobillo` que llevan las poses de pie plano no lo usa el motor: lo usa la INTERPOLACIÓN, para que el fotograma en el que cambia la bandera no mezcle 0° con el pie ya de puntillas y meta los dedos bajo el suelo.",
   "$comment_vuelta": "El pie de delante se recoge antes de acabar de subir (t=0.74): de pie y con la zancada abierta, la cadera queda a más de los 83 cm que mide la pierna desde el tobillo de delante. Empujar y recoger es además lo que dice el paso 4 de la ficha.",
   "camara": {
-    "vista": "lateral",
-    "detalle": "mano_d"
+    "vista": "lateral"
   },
   "implementos": {
     "mancuerna_i": {

@@ -8,8 +8,7 @@
     "ciclos": 1
   },
   "camara": {
-    "vista": "tres_cuartos",
-    "detalle": "mano_i"
+    "vista": "tres_cuartos"
   },
   "implementos": {
     "mancuerna_i": {
@@ -78,7 +77,7 @@
       "pelvis": {
         "posicion": [
           0,
-          0.62,
+          0.52,
           -0.03
         ]
       },

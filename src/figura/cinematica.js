@@ -280,10 +280,35 @@ export function aplicarPose(esq, pose, definicion = {}) {
   });
   for (const k of ['flexion', 'lateral', 'rotacion']) anotar(null, `columna.${k}`, pose.columna?.[k] ?? 0);
   const Ftorax = F;
-  const Fcuello = Ftorax.clone().multiply(rotacionTronco(pose.cuello));
+
+  /*
+   * LA CABEZA NO SE METE EN EL PECHO.
+   *
+   * La flexión del cuello es RELATIVA AL TRONCO, y eso se olvida en cuanto el tronco se inclina: en
+   * una plancha el tronco ya está a 89°, así que unos inocentes -25° de cuello suman 114° y la
+   * cabeza acaba dentro de las costillas. Se coló en diez ejercicios —flexiones, plancha, buenos
+   * días, peso muerto a una pierna, perro-pájaro…— y en todos se veía igual: un maniquí sin cuello.
+   *
+   * Lo que se limita es el ángulo de la cabeza CON LA VERTICAL DEL MUNDO, no la flexión escrita.
+   * Mirarse el esternón son unos 95° desde erguido, y de ahí no se pasa: con el tronco ya a 89 solo
+   * quedan 6° de margen, que es exactamente lo que le queda a alguien en posición de plancha.
+   *
+   * Se recorta en vez de fallar porque la pose no está "mal": lo natural al escribirla es pensar en
+   * la cabeza mirando al suelo, y eso ya lo da el tronco. Y se anota el valor RECORTADO, que es el
+   * que de verdad se ve.
+   */
+  const LIMITE_CABEZA = 95;
+  const inclinacionTronco = Math.acos(
+    Math.min(1, Math.max(-1, new Vector3(0, 1, 0).applyQuaternion(Ftorax).y)),
+  ) / GRAD;
+  const margenCuello = Math.max(0, LIMITE_CABEZA - inclinacionTronco);
+  const cuello = { ...(pose.cuello ?? {}) };
+  if ((cuello.flexion ?? 0) < -margenCuello) cuello.flexion = -margenCuello;
+
+  const Fcuello = Ftorax.clone().multiply(rotacionTronco(cuello));
   orientar(esq, huesos.cuello, Fcuello);
   orientar(esq, huesos.cabeza, Fcuello);
-  anotar(null, 'cuello.flexion', pose.cuello?.flexion ?? 0);
+  anotar(null, 'cuello.flexion', cuello.flexion ?? 0);
 
   const marcos = { mundo: new Quaternion(), pelvis: Fpelvis, torax: Ftorax };
 

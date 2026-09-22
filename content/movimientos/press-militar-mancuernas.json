@@ -8,8 +8,7 @@
     "ciclos": 1
   },
   "camara": {
-    "vista": "frontal",
-    "detalle": "mano_i"
+    "vista": "frontal"
   },
   "implementos": {
     "mancuerna_i": {
