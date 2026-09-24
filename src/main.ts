@@ -14,7 +14,7 @@
 import './estilos/sitio.css';
 import './estilos/app.css';
 import { reloj } from './app/calculos.js';
-import { FICHAS, GRUPOS, MOVIMIENTOS, descansoDe, etiqueta, fichaPorId, grupoPorId, valoresDe, type Ficha } from './app/contenido';
+import { FICHAS, GRUPOS, cargarMovimiento, descansoDe, etiqueta, fichaPorId, grupoPorId, precargarMovimientos, proporcionDe, valoresDe, type Ficha } from './app/contenido';
 import { suscribir } from './app/almacen';
 import { alternar, enlaceCompartir, esFavorito, favoritos, recibirDeEnlace } from './app/favoritos';
 import { alCambiarRuta, enlace, irA, rutaActual, type Ruta } from './app/rutas';
@@ -357,11 +357,11 @@ const botonFavorito = (f: Ficha): string => {
 async function pintarFicha(ruta: Ruta): Promise<void> {
   const f = fichaPorId(ruta.id!);
   if (!f) { irA({ vista: 'catalogo', filtros: {} }); return; }
-  const movimiento = f.movimiento_id ? MOVIMIENTOS[f.movimiento_id] : undefined;
   const grupo = grupoPorId(f.grupo_id);
-  // La proporción del lienzo se lee del movimiento y se pone en el hueco ANTES de montar la pieza:
-  // así el sitio reservado y el lienzo miden lo mismo, y el maniquí no empuja el texto al aparecer.
-  const proporcion = (movimiento as { camara?: { proporcion?: string } } | undefined)?.camara?.proporcion;
+  // La proporción del lienzo se pone en el hueco ANTES de montar la pieza: así el sitio reservado y
+  // el lienzo miden lo mismo, y el maniquí no empuja el texto al aparecer. Sale del índice generado
+  // al compilar, no del movimiento, que aún no se ha cargado.
+  const proporcion = proporcionDe(f.movimiento_id);
 
   portadaEl.hidden = true;
   sitio.innerHTML = `
@@ -445,9 +445,10 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
  * y sin nadie que lo liberara, porque `pintar()` ya había pasado por `vivo?.destruir()`.
  */
 async function montarManiqui(hueco: HTMLElement, f: Ficha): Promise<{ destruir(): void } | null> {
-  const movimiento = f.movimiento_id ? MOVIMIENTOS[f.movimiento_id] : undefined;
-  if (!movimiento || !cargarFigura) { hueco.remove(); return null; }
-  const { montarFigura } = await cargarFigura();
+  if (!f.movimiento_id || !cargarFigura) { hueco.remove(); return null; }
+  // El movimiento y el módulo del maniquí se piden a la vez: son dos descargas independientes.
+  const [movimiento, { montarFigura }] = await Promise.all([cargarMovimiento(f.movimiento_id), cargarFigura()]);
+  if (!movimiento) { hueco.remove(); return null; }
   if (!hueco.isConnected) return null;
   const montado = await montarFigura(hueco, movimiento, f);
   if (!hueco.isConnected) { montado.destruir(); return null; }
@@ -720,7 +721,7 @@ if (revisar && cargarHoja) {
   // await de primer nivel y el fallo aparece en `vite build`, no en desarrollo.
   void (async () => {
     const ficha = fichaPorId(revisar);
-    const movimiento = ficha?.movimiento_id ? MOVIMIENTOS[ficha.movimiento_id] : undefined;
+    const movimiento = await cargarMovimiento(ficha?.movimiento_id);
     if (!ficha || !movimiento) return;
     const { montarHoja } = await cargarHoja();
     await montarHoja(sitio, movimiento, `${ficha.nombre} — ${ficha.id}`);
@@ -774,6 +775,7 @@ if (import.meta.env.PROD && 'serviceWorker' in navigator && !revisar) {
     if (matchMedia('(display-mode: standalone)').matches) {
       const precargar = (): void => {
         void cargarFigura?.();
+        precargarMovimientos();
         void fetch(`${import.meta.env.BASE_URL}modelos/maniqui.glb`).catch(() => undefined);
       };
       if ('requestIdleCallback' in window) requestIdleCallback(precargar);

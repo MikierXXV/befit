@@ -11,6 +11,7 @@
  * la rodilla vieja. Nadie lo ve, porque nadie revisa el idioma que no habla.
  */
 
+import proporciones from 'virtual:proporciones';
 import type { Rutina } from './rutinas.js';
 import { t } from './textos';
 
@@ -61,7 +62,8 @@ export interface Ficha {
 const ficherosGrupos = import.meta.glob<{ default: { grupos: Grupo[] } }>('../../content/*/grupos.json', { eager: true });
 const ficherosFichas = import.meta.glob<{ default: Ficha }>('../../content/*/fichas/*.json', { eager: true });
 const ficherosRutinas = import.meta.glob<{ default: RutinaDeInicio }>('../../content/*/rutinas/*.json', { eager: true });
-const ficherosMovimientos = import.meta.glob<{ default: unknown }>('../../content/movimientos/*.json', { eager: true });
+// Sin `eager`: cada movimiento es un trozo aparte que se pide al abrir su ficha. Ver vite.config.ts.
+const ficherosMovimientos = import.meta.glob<unknown>('../../content/movimientos/*.json', { import: 'default' });
 
 const idioma = () => document.documentElement.lang || 'es';
 const delIdioma = <T>(ficheros: Record<string, { default: T }>): T[] =>
@@ -82,9 +84,25 @@ function ordenDeGrupo(id: string): number {
   return GRUPOS.find((g) => g.id === id)?.orden ?? Number.MAX_SAFE_INTEGER;
 }
 
-export const MOVIMIENTOS: Record<string, unknown> = Object.fromEntries(
-  Object.entries(ficherosMovimientos).map(([ruta, m]) => [ruta.split('/').pop()!.replace('.json', ''), m.default]),
+const cargadores: Record<string, () => Promise<unknown>> = Object.fromEntries(
+  Object.entries(ficherosMovimientos).map(([ruta, cargar]) => [ruta.split('/').pop()!.replace('.json', ''), cargar]),
 );
+
+/** El movimiento de una ficha, cargado al pedirlo. `undefined` si la ficha no tiene maniquí. */
+export async function cargarMovimiento(id: string | undefined): Promise<unknown> {
+  return id && cargadores[id] ? cargadores[id]() : undefined;
+}
+
+/**
+ * Pide todos los movimientos, para que la app instalada abra cualquier ficha sin conexión. Desde
+ * que van aparte, una ficha que nunca se abrió con red no tenía su movimiento en la caché.
+ */
+export function precargarMovimientos(): void {
+  for (const cargar of Object.values(cargadores)) void cargar().catch(() => undefined);
+}
+
+/** La proporción del lienzo de un movimiento, sin cargarlo: para reservar su hueco antes. */
+export const proporcionDe = (id: string | undefined): string | undefined => (id ? proporciones[id] : undefined);
 
 export const fichaPorId = (id: string): Ficha | undefined => FICHAS.find((f) => f.id === id);
 export const grupoPorId = (id: string): Grupo | undefined => GRUPOS.find((g) => g.id === id);

@@ -12,7 +12,7 @@
 
 import { datos } from '../almacen';
 import { ejerciciosDelDia, hoy, volumen } from '../calculos.js';
-import { FICHAS, GRUPOS, MOVIMIENTOS, fichaPorId, type Ficha } from '../contenido';
+import { FICHAS, GRUPOS, fichaPorId, proporcionDe, type Ficha } from '../contenido';
 import { favoritos } from '../favoritos';
 import { dejarPlan, planDeHoy } from '../mis-rutinas';
 import { mantenerEncendida } from '../pantalla';
@@ -133,7 +133,7 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
   const objetivoDe = (id: string): ReturnType<typeof avance>[number] | undefined => avance().find((o) => o.ejercicio === id);
 
   const proporcion = (f: Ficha): string | undefined =>
-    (MOVIMIENTOS[f.movimiento_id ?? ''] as { camara?: { proporcion?: string } } | undefined)?.camara?.proporcion;
+    proporcionDe(f.movimiento_id);
 
   el.innerHTML = `
     <div class="hoy-cabeza">${cabeza()}</div>

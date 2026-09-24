@@ -125,9 +125,9 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   el suelo con la espalda recta), la abducción de cadera que crece con la flexión, y el apoyo de
   **espalda** en el banco (hip thrust).
 - ⬜ K · Empujes · L · Tirones y polea · M · Core · N · Grupos nuevos.
-- ⬜ **Pendiente técnico:** los movimientos van en el JS inicial (de 92,8 a 104,6 kB con seis
-  ejercicios). Cargarlos al abrir la ficha antes de seguir creciendo, o el presupuesto de 200 kB
-  no llega a los 100.
+- ✅ **Movimientos fuera del JS inicial:** se cargan al abrir la ficha, y la proporción del lienzo
+  sale de un índice generado al compilar. El JS crítico bajó de 104,6 a 87,5 kB y cada ejercicio
+  nuevo le suma bytes, no kilobytes. La app instalada los precarga todos para ir sin conexión.
 
 ---
 
