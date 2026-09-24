@@ -1,0 +1,45 @@
+{
+  "id": "flexiones-inclinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 7,
+  "nombre": "Flexiones inclinadas",
+  "resumen": "Flexiones con las manos apoyadas en un banco. Con las manos más altas que los pies, los brazos sostienen menos peso: es la forma de empezar cuando la flexión en el suelo aún cuesta.",
+  "ejecucion": [
+    "Apoya las manos en el borde de un banco, algo más abiertas que los hombros, y lleva los pies atrás.",
+    "Pon el cuerpo en línea de la cabeza a los talones, con el abdomen apretado.",
+    "Baja doblando los codos hasta que el pecho se acerque al borde del banco.",
+    "Empuja el banco hasta estirar los brazos, sin que la cadera se hunda ni se levante."
+  ],
+  "material": [
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "El estudio que midió las fuerzas en varias flexiones encontró que subir las manos a una caja carga menos los brazos que la flexión normal, y más cuanto más alta la caja. Otro estudio vio que el peso que sostienen los brazos cambia a lo largo del recorrido: más abajo que arriba.",
+  "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
+    {
+      "titulo": "The effect of position on the percentage of body mass supported during traditional and modified push-up variants",
+      "autor": "Suprak et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20179649/"
+    }
+  ]
+}

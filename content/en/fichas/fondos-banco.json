@@ -1,0 +1,37 @@
+{
+  "id": "fondos-banco",
+  "grupo_id": "extension-codo",
+  "orden": 5,
+  "nombre": "Bench dips",
+  "resumen": "Hands on the edge of a bench behind the hips, and the body goes down and up by bending the elbows. A bodyweight triceps exercise that needs only a bench.",
+  "ejecucion": [
+    "Sit on the edge of a bench and put your hands beside your hips, fingers pointing forward.",
+    "Move your hips forward off the bench, with your legs straight, or knees bent to make it easier.",
+    "Lower by bending your elbows straight back, without flaring them, until your upper arms are roughly parallel to the floor.",
+    "Push up with your hands until your arms are straight, keeping your hips close to the bench."
+  ],
+  "material": [
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "triceps"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "pectoral"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "Few studies have measured bench dips. Going very deep takes the shoulder into wide extension under load, which is why the usual advice is not to go past upper arms parallel to the floor, and to choose another triceps exercise if the shoulder hurts; this is advice from practice, not a measured result.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

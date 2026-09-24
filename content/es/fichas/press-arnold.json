@@ -1,0 +1,45 @@
+{
+  "id": "press-arnold",
+  "grupo_id": "empuje-vertical",
+  "orden": 6,
+  "nombre": "Press Arnold con mancuernas",
+  "resumen": "Un press de hombro sentado en el que las mancuernas empiezan delante de la cara, con las palmas hacia ti, y giran mientras suben hasta acabar con las palmas hacia delante.",
+  "ejecucion": [
+    "Siéntate en un banco con respaldo, con una mancuerna en cada mano a la altura de los hombros, por delante de la cara y con las palmas hacia ti.",
+    "Empuja hacia arriba y, a la vez, abre los codos hacia los lados y gira las muñecas.",
+    "Arriba, los brazos casi estirados y las palmas hacia delante, sin chocar las mancuernas.",
+    "Baja deshaciendo el giro hasta volver a la posición de partida, con la espalda apoyada todo el rato."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "serrato"
+    ]
+  },
+  "matices": "No hay estudios que midan el press Arnold en sí. Lo que sí se ha medido es el press de hombro en general: con mancuernas, el deltoides se activa algo más que con barra, y se levanta algo menos. Que el giro añada trabajo al deltoides es la explicación habitual, pero no está comprobada.",
+  "fuentes": [
+    {
+      "titulo": "Effects of body position and loading modality on muscle activity and strength in shoulder presses",
+      "autor": "Saeterbakken y Fimland, J Strength Cond Res, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23096062/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "flexiones-inclinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 7,
+  "nombre": "Incline push-ups",
+  "resumen": "Push-ups with the hands on a bench. With the hands higher than the feet, the arms support less weight: the way to start when push-ups on the floor are still hard.",
+  "ejecucion": [
+    "Put your hands on the edge of a bench, a little wider than your shoulders, and walk your feet back.",
+    "Make a straight line from head to heels, with your abs tight.",
+    "Lower by bending your elbows until your chest nears the edge of the bench.",
+    "Push the bench away until your arms are straight, without your hips sagging or rising."
+  ],
+  "material": [
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "The study that measured forces in several push-ups found that raising the hands on a box loads the arms less than a regular push-up, and less the higher the box. Another study found that the weight the arms support changes through the movement: more at the bottom than at the top.",
+  "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
+    {
+      "titulo": "The effect of position on the percentage of body mass supported during traditional and modified push-up variants",
+      "autor": "Suprak et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20179649/"
+    }
+  ]
+}

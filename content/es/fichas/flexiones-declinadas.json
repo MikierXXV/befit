@@ -1,0 +1,45 @@
+{
+  "id": "flexiones-declinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 6,
+  "nombre": "Flexiones declinadas",
+  "resumen": "Flexiones con los pies subidos a un banco. Con los pies más altos que las manos, los brazos sostienen más peso del cuerpo que en una flexión normal.",
+  "ejecucion": [
+    "Apoya las manos en el suelo, algo más abiertas que los hombros, y sube los pies a un banco.",
+    "Pon el cuerpo en línea de la cabeza a los talones, con el abdomen y el glúteo apretados.",
+    "Baja doblando los codos hasta que el pecho se acerque al suelo, sin que la cadera se hunda.",
+    "Empuja el suelo hasta estirar los brazos, manteniendo el cuerpo recto."
+  ],
+  "material": [
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "El estudio que midió las fuerzas en varias flexiones encontró que subir los pies a una caja carga más los brazos que la flexión normal, y que cuanto más alta la caja, más carga. Se midió con cajas de 30 y 60 cm; un banco queda entre las dos.",
+  "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
+    {
+      "titulo": "The effect of position on the percentage of body mass supported during traditional and modified push-up variants",
+      "autor": "Suprak et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20179649/"
+    }
+  ]
+}

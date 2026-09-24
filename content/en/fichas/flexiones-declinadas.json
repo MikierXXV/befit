@@ -1,0 +1,45 @@
+{
+  "id": "flexiones-declinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 6,
+  "nombre": "Decline push-ups",
+  "resumen": "Push-ups with the feet up on a bench. With the feet higher than the hands, the arms support more body weight than in a regular push-up.",
+  "ejecucion": [
+    "Put your hands on the floor a little wider than your shoulders and your feet up on a bench.",
+    "Make a straight line from head to heels, with your abs and glutes tight.",
+    "Lower by bending your elbows until your chest nears the floor, without your hips sagging.",
+    "Push the floor away until your arms are straight, keeping your body straight."
+  ],
+  "material": [
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "gluteo_mayor",
+      "erectores"
+    ]
+  },
+  "matices": "The study that measured forces in several push-ups found that raising the feet on a box loads the arms more than a regular push-up, and more the higher the box. It used 30 and 60 cm boxes; a bench falls between the two.",
+  "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
+    {
+      "titulo": "The effect of position on the percentage of body mass supported during traditional and modified push-up variants",
+      "autor": "Suprak et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20179649/"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "pullover-mancuerna",
+  "grupo_id": "tiron-vertical",
+  "orden": 5,
+  "nombre": "Pullover con mancuerna",
+  "resumen": "Tumbado en un banco, una mancuerna sujeta con las dos manos baja por detrás de la cabeza con los brazos casi estirados y vuelve sobre el pecho. Trabaja pectoral y dorsal a la vez.",
+  "ejecucion": [
+    "Túmbate en un banco con la cabeza apoyada y sujeta una mancuerna con las dos manos por el disco, sobre el pecho.",
+    "Con los codos un poco doblados y fijos, baja la mancuerna en arco por detrás de la cabeza.",
+    "Baja hasta notar estiramiento en el pecho y los costados, sin arquear la zona lumbar.",
+    "Vuelve por el mismo arco hasta tener la mancuerna otra vez sobre el pecho."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "dorsal"
+    ],
+    "sinergista": [
+      "triceps",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "Se suele enseñar como ejercicio de espalda, pero el estudio que lo midió encontró más actividad en el pectoral mayor que en el dorsal, y una revisión de 2026 lo confirma. Cuál trabaja más depende del recorrido y de dónde queda la carga en cada punto.",
+  "fuentes": [
+    {
+      "titulo": "Effects of the pullover exercise on the pectoralis major and latissimus dorsi muscles as evaluated by EMG",
+      "autor": "Marchetti y Uchida, J Appl Biomech, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21975179/"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42647355/"
+    }
+  ]
+}

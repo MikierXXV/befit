@@ -1,0 +1,44 @@
+{
+  "id": "press-banca-cerrado",
+  "grupo_id": "empuje-horizontal",
+  "orden": 8,
+  "nombre": "Close-grip bench press",
+  "resumen": "The bench press with the hands shoulder-width apart or slightly closer. A closer grip shifts part of the work from the chest to the triceps.",
+  "ejecucion": [
+    "Lie on the bench with your eyes under the bar and grip it with your hands shoulder-width apart.",
+    "Unrack the bar and hold it over your shoulders, arms straight.",
+    "Lower the bar towards your lower chest, with your elbows tucked in rather than flared.",
+    "Press the bar up until your arms are straight, without lifting your back off the bench."
+  ],
+  "material": [
+    "barra",
+    "banco",
+    "rack"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "triceps",
+      "pectoral",
+      "deltoides_anterior"
+    ],
+    "sinergista": [],
+    "estabilizador": [
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "In the studies, a closer grip raises triceps activity and slightly lowers that of the sternal part of the chest, and less weight is lifted. The differences between grips are small; one of the studies concludes that the choice should depend more on the goal than on trying to isolate a muscle.",
+  "fuentes": [
+    {
+      "titulo": "The influence of grip width and forearm pronation/supination on upper-body myoelectric activity during the flat bench press",
+      "autor": "Lehman, J Strength Cond Res, 2005",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16095407/"
+    },
+    {
+      "titulo": "The Effect of Grip Width on Muscle Strength and Electromyographic Activity in Bench Press among Novice- and Resistance-Trained Men",
+      "autor": "Saeterbakken et al., Int J Environ Res Public Health, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34198674/"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "pullover-mancuerna",
+  "grupo_id": "tiron-vertical",
+  "orden": 5,
+  "nombre": "Dumbbell pullover",
+  "resumen": "Lying on a bench, a dumbbell held with both hands travels behind the head with the arms almost straight and comes back over the chest. It works the chest and the lats together.",
+  "ejecucion": [
+    "Lie on a bench with your head supported and hold a dumbbell with both hands by the plate, over your chest.",
+    "With your elbows slightly bent and fixed, lower the dumbbell in an arc behind your head.",
+    "Go down until you feel a stretch in your chest and sides, without arching your lower back.",
+    "Come back along the same arc until the dumbbell is over your chest again."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "dorsal"
+    ],
+    "sinergista": [
+      "triceps",
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "It is often taught as a back exercise, but the study that measured it found more pectoralis major than latissimus dorsi activity, and a 2026 review supports this. Which one works more depends on the range and on where the load sits at each point.",
+  "fuentes": [
+    {
+      "titulo": "Effects of the pullover exercise on the pectoralis major and latissimus dorsi muscles as evaluated by EMG",
+      "autor": "Marchetti and Uchida, J Appl Biomech, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21975179/"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42647355/"
+    }
+  ]
+}

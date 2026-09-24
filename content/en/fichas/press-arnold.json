@@ -1,0 +1,45 @@
+{
+  "id": "press-arnold",
+  "grupo_id": "empuje-vertical",
+  "orden": 6,
+  "nombre": "Dumbbell Arnold press",
+  "resumen": "A seated shoulder press where the dumbbells start in front of the face, palms facing you, and rotate as they rise until the palms face forward.",
+  "ejecucion": [
+    "Sit on a bench with a backrest, with a dumbbell in each hand at shoulder height, in front of your face and palms facing you.",
+    "Press up and, at the same time, open your elbows out to the sides and rotate your wrists.",
+    "At the top, arms almost straight and palms facing forward, without knocking the dumbbells together.",
+    "Lower by reversing the rotation until you are back at the start, keeping your back against the bench."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "serrato"
+    ]
+  },
+  "matices": "No study has measured the Arnold press itself. What has been measured is the shoulder press in general: with dumbbells the deltoid is somewhat more active than with a barbell, and somewhat less weight is lifted. That the rotation adds work for the deltoid is the usual explanation, but it has not been tested.",
+  "fuentes": [
+    {
+      "titulo": "Effects of body position and loading modality on muscle activity and strength in shoulder presses",
+      "autor": "Saeterbakken and Fimland, J Strength Cond Res, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23096062/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
