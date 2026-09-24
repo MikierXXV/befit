@@ -75,6 +75,15 @@ export const RANGOS = {
   'hombro.flexion': [-60, 185],
   'hombro.abduccion': [-30, 180],
   'hombro.rotacion': [-90, 90],
+  /*
+   * La escápula, movida a través de la clavícula. Este esqueleto no tiene omóplato, y sin él el
+   * hombro no se podía bajar ni adelantar: el peso muerto no llegaba a la barra en el suelo sin
+   * redondear la espalda o sin sentarse como en una sentadilla, porque una persona real alcanza
+   * esa barra en parte bajando y adelantando los hombros. Rangos de la clavícula: elevación hasta
+   * unos 35°, depresión unos 10°, protracción y retracción unos 20° a cada lado.
+   */
+  'escapula.elevacion': [-10, 35],
+  'escapula.protraccion': [-20, 20],
   'codo.flexion': [0, 150],
   'muneca.extension': [-80, 95],
   'cadera.flexion': [-30, 130],
@@ -93,6 +102,9 @@ export const RANGOS = {
 /* ---------------------------------------------------------------- utilidades de vector -- */
 
 const v3 = (a) => new Vector3(a[0], a[1], a[2]);
+/** Sentido de giro de la clavícula en cada lado, medido: positivo eleva y adelanta el hombro. */
+const SIGNO_ESCAPULA = { elevacion: { i: 1, d: -1 }, protraccion: { i: -1, d: 1 } };
+
 const eje = (k, grados) => new Quaternion().setFromAxisAngle(k, grados * GRAD);
 
 /** Cuaternión que lleva la pareja (a0, b0) a (a1, b1). Ambas parejas, unitarias y perpendiculares. */
@@ -316,7 +328,18 @@ export function aplicarPose(esq, pose, definicion = {}) {
   const implementos = colocarImplementos(esq, pose, definicion, marcos);
 
   for (const l of LADOS) {
-    orientar(esq, huesos[`clavicula_${l}`], Ftorax);
+    /*
+     * La clavícula, con la escápula que se pida: elevar gira alrededor del eje que mira adelante, y
+     * protraer, alrededor del vertical. Con el signo del lado, para que el mismo número baje o
+     * adelante los dos hombros por igual.
+     */
+    const escapula = miembro(pose.brazos, l)?.escapula ?? {};
+    const Fclavicula = Ftorax.clone()
+      .multiply(eje(new Vector3(0, 1, 0), SIGNO_ESCAPULA.protraccion[l] * (escapula.protraccion ?? 0)))
+      .multiply(eje(new Vector3(0, 0, 1), SIGNO_ESCAPULA.elevacion[l] * (escapula.elevacion ?? 0)));
+    orientar(esq, huesos[`clavicula_${l}`], Fclavicula);
+    anotar(l, 'escapula.elevacion', escapula.elevacion ?? 0);
+    anotar(l, 'escapula.protraccion', escapula.protraccion ?? 0);
     posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos);
     posarPierna(esq, pose, l, Fpelvis, anotar, avisos);
     /*
