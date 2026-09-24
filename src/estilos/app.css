@@ -1025,11 +1025,17 @@ body.con-descanso { padding-bottom: 7.5rem; }
 }
 .activo h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
 .activo h2 a { color: inherit; text-decoration-color: var(--separador); text-underline-offset: 0.2em; }
-/* Más bajo que en la ficha: aquí el maniquí recuerda el gesto; lo que se viene a hacer es anotar. */
-.activo .figura { margin-top: var(--e8); }
+/*
+ * Más bajo que en la ficha, y sin mapa muscular: aquí el maniquí recuerda el gesto y justo debajo
+ * se anota. Con 36svh, en un móvil de 844 px de alto caben el maniquí, sus controles y el principio
+ * del formulario sin desplazarse.
+ */
+.activo { scroll-margin-top: var(--e4); }
+.activo .figura { margin-bottom: var(--e6); }
+.activo .figura .musculos { display: none; }
 /* El hueco reservado y el lienzo, con el MISMO tope: si difieren, vuelve el salto al cargar. */
 .activo .figura:empty::before,
-.activo .figura .lienzo { max-height: min(44svh, 440px); }
+.activo .figura .lienzo { max-height: min(36svh, 360px); }
 .hoy .atajos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e2); }
 
 /* ------------------------------------------------------------------- rutinas -- */

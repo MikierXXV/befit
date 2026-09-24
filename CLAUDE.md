@@ -62,6 +62,7 @@ npm run carteles              # carteles del catálogo → public/carteles/
 npm run auditar               # presupuestos de rendimiento, sobre el build servido
 npm run capturar              # recorre el sitio en 2 temas × 2 anchos y caza errores mudos
 npm run alineacion            # centrados, alturas, carril izquierdo y desbordes. Bloquea.
+npm run simular               # un entreno en móvil: el maniquí se ve al abrir cada ejercicio. Bloquea.
 npm run metricas              # métricas de la tipografía de respaldo, al cambiar de fuente
 npm run iconos                # PNG del icono de la app a partir de public/icono.svg
 ```
@@ -75,7 +76,7 @@ blanco sin conexión.
 `alineacion` siembra un registro de ejemplo (`scripts/lib/datos-ejemplo.mjs`) en el tema oscuro y
 deja el claro vacío: así mira la ficha en sus dos estados.
 
-`hoja`, `carteles`, `auditar`, `capturar` y `alineacion` necesitan el sitio compilado y servido:
+`hoja`, `carteles`, `auditar`, `capturar`, `alineacion` y `simular` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.
 
 Y `carteles` escribe en `public/`, que solo entra en `dist/` al compilar: **después de generar

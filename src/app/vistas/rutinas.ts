@@ -126,7 +126,8 @@ export function montarRutina(el: HTMLElement, id: string): { titulo: string; ent
     const d = boton.dataset;
     if (d.empezar !== undefined) {
       empezarDia(rutina.id, Number(d.empezar));
-      irA({ vista: 'hoy', filtros: {} });
+      // Directo al primer ejercicio del día, con su maniquí: empezar el día ES abrir ese ejercicio.
+      irA({ vista: 'hoy', id: rutina.dias[Number(d.empezar)]?.ejercicios[0]?.ejercicio, filtros: {} });
     }
     if ('copiar' in d) {
       const copia = copiar(rutina, t('rutinas.nombre_copia').replace('{nombre}', rutina.nombre));

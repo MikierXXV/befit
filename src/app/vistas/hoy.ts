@@ -142,13 +142,13 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
         <h2 id="activo-titulo"><a href="${enlace({ vista: 'ficha', id: activo.id, filtros: {} })}">${escapar(activo.nombre)}</a></h2>
         ${objetivoDe(activo.id) ? `<p class="objetivo">${t('hoy.objetivo').replace('{objetivo}', textoObjetivo(objetivoDe(activo.id)!))}</p>` : ''}
         <!--
-          El registro ANTES que el maniquí, al revés que en la ficha. Aquí se viene a anotar: con el
-          maniquí y su mapa muscular delante, el formulario quedaba a casi dos pantallas de
-          desplazamiento en el móvil, entre serie y serie. El maniquí queda debajo, para quien
-          quiera repasar el gesto.
+          El maniquí primero, como en la ficha: abrir un ejercicio es verlo. Pero COMPACTO y sin el
+          mapa muscular, que aquí se queda solo en la ficha. Estuvo debajo del registro porque con
+          el maniquí entero y su mapa delante el formulario quedaba a dos pantallas; y debajo, al
+          abrir un ejercicio no se veía el maniquí. Compacto caben los dos en una pantalla de móvil.
         -->
-        <div class="registro"></div>
         <div class="figura" ${proporcion(activo) ? `style="--proporcion-lienzo: ${proporcion(activo)}"` : ''}></div>
+        <div class="registro"></div>
       </section>` : `
       <div class="vacio">
         <p>${t('hoy.vacio')}</p>

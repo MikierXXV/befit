@@ -532,11 +532,53 @@ function ponerPortada(titulo: string, entradilla: string): void {
   p.hidden = entradilla === '';
 }
 
+/*
+ * DÓNDE QUEDA LA PANTALLA AL CAMBIAR DE RUTA.
+ *
+ * La app repinta en el mismo documento, así que el desplazamiento de la página anterior se quedaba
+ * puesto: tocar una tarjeta a media lista del catálogo abría la ficha 2 400 px más abajo de su
+ * maniquí, y pasar de una ficha a otra abría la segunda con el maniquí cortado. Lo destapó una
+ * simulación de un entreno en móvil: el maniquí se pintaba bien las veinte veces, pero solo se VEÍA
+ * en la primera.
+ *
+ * Tres reglas:
+ *  - un EJERCICIO (una ficha, o uno de «Hoy») se abre con el maniquí a la vista: arriba del todo, o
+ *    en «Hoy» con el ejercicio activo al principio de la pantalla;
+ *  - una LISTA recuerda dónde se dejó: volver de una ficha al catálogo deja en la tarjeta que se
+ *    tocó, no al principio de cincuenta;
+ *  - repintar la MISMA página —un filtro, una estrella— no mueve nada.
+ */
+const posiciones = new Map<string, number>();
+let claveAnterior = '';
+const LISTAS = new Set(['catalogo', 'favoritos', 'rutinas', 'progreso', 'datos']);
+const claveDe = (r: Ruta): string => (LISTAS.has(r.vista) ? r.vista : `${r.vista}/${r.id ?? ''}${r.editar ? '/editar' : ''}${r.compartida ?? ''}`);
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+function colocar(ruta: Ruta): void {
+  const clave = claveDe(ruta);
+  if (clave === claveAnterior) return;
+  claveAnterior = clave;
+  if (ruta.vista === 'hoy' && ruta.id) {
+    sitio.querySelector('.activo')?.scrollIntoView({ block: 'start' });
+  } else if (LISTAS.has(ruta.vista) && posiciones.has(clave)) {
+    scrollTo(0, posiciones.get(clave)!);
+  } else {
+    scrollTo(0, 0);
+  }
+}
+
 function pintar(): void {
   const ruta = rutaActual();
+  // Se guarda dónde estaba la página que se deja, antes de repintar encima.
+  if (claveAnterior && claveDe(ruta) !== claveAnterior) posiciones.set(claveAnterior, scrollY);
   cabeceraEl.innerHTML = cabecera(ruta);
   vivo?.destruir();
   vivo = null;
+  pintarVista(ruta);
+  colocar(ruta);
+}
+
+function pintarVista(ruta: Ruta): void {
 
   if (ruta.vista === 'ficha') {
     void pintarFicha(ruta);
