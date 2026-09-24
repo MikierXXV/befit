@@ -19,6 +19,7 @@ import { suscribir } from './app/almacen';
 import { alternar, enlaceCompartir, esFavorito, favoritos, recibirDeEnlace } from './app/favoritos';
 import { alCambiarRuta, enlace, irA, rutaActual, type Ruta } from './app/rutas';
 import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
+import { ICONOS } from './app/iconos';
 import { t } from './app/textos';
 import { montarDatos } from './app/vistas/datos';
 import { fechaDeHoy, montarHoy } from './app/vistas/hoy';
@@ -475,47 +476,96 @@ const aviso = (): string => `
       <a href="${enlace({ vista: 'datos', filtros: {} })}">${t('datos.titulo')}</a>
       <span class="creditos">${t('pie.creditos')}</span>
     </p>
-    <!--
-      Idioma y tema, aquí abajo SOLO EN EL MÓVIL. Arriba, con «Hoy», «Rutinas» y favoritos, no cabían:
-      en inglés la cabecera medía 394 px en una pantalla de 390 y los botones se montaban unos
-      encima de otros —el de idioma tapaba al de tema, y en CI no se podía pulsar—. Son ajustes que
-      se tocan una vez; entrenando se usan los otros tres.
-    -->
-    <p class="ajustes-pie">
-      <button type="button" class="boton" data-accion="idioma">${t('ui.otro_idioma')}</button>
-      <button type="button" class="boton" data-accion="tema">${t(temaActual() === 'oscuro' ? 'sitio.tema_claro' : 'sitio.tema_oscuro')}</button>
-    </p>
   </footer>`;
 
+/*
+ * LA BARRA. Lo de entrenar —Hoy, Rutinas, favoritos— va siempre a la vista y con su palabra. Lo
+ * demás —progreso, tus datos, idioma y tema— son iconos en la barra cuando caben, y en el móvil van
+ * en un menú que se despliega desde el botón de tres rayas.
+ *
+ * Idioma y tema estuvieron un tiempo en el pie, en el móvil, porque en la barra no cabían: con
+ * «Rutinas», en inglés medía 394 px en una pantalla de 390. Ahí abajo no los encontraba nadie. El
+ * menú los devuelve arriba sin volver a desbordarla.
+ *
+ * Los iconos solos llevan su nombre en `aria-label` y en `title`: el lector de pantalla lo dice y
+ * el ratón lo enseña al pasar por encima.
+ */
 function cabecera(ruta: Ruta): string {
+  const oscuro = temaActual() === 'oscuro';
+  const tema = t(oscuro ? 'sitio.tema_claro' : 'sitio.tema_oscuro');
+  const idioma = t('ui.cambiar_idioma');
+  const codigo = document.documentElement.lang === 'es' ? 'EN' : 'ES';
+  const actual = (si: boolean): string => (si ? 'aria-current="page"' : '');
   return `
     <header class="barra">
       <div>
-      <a class="marca" href="${enlace({ vista: 'catalogo', filtros: {} })}">befit</a>
-      <nav>
-        <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${ruta.vista === 'hoy' ? 'aria-current="page"' : ''}>${t('hoy.titulo')}</a>
-        <a href="${enlace({ vista: 'rutinas', filtros: {} })}" ${ruta.vista === 'rutinas' || ruta.vista === 'rutina' ? 'aria-current="page"' : ''}>${t('rutinas.titulo')}</a>
-        <!-- Progreso, en la cabecera solo cuando cabe; en el móvil se llega desde «Hoy» y desde el pie. -->
-        <a class="solo-amplio" href="${enlace({ vista: 'progreso', filtros: {} })}" ${ruta.vista === 'progreso' ? 'aria-current="page"' : ''}>${t('progreso.titulo')}</a>
+      <a class="marca" href="${enlace({ vista: 'catalogo', filtros: {} })}" aria-label="befit"><span class="marca-texto">befit</span></a>
+      <nav aria-label="${t('ui.navegacion')}">
+        <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${actual(ruta.vista === 'hoy')}>${t('hoy.titulo')}</a>
+        <a href="${enlace({ vista: 'rutinas', filtros: {} })}" ${actual(ruta.vista === 'rutinas' || ruta.vista === 'rutina')}>${t('rutinas.titulo')}</a>
+        <a class="solo-amplio" href="${enlace({ vista: 'progreso', filtros: {} })}" ${actual(ruta.vista === 'progreso')}>${t('progreso.titulo')}</a>
         <!--
-          En el móvil, favoritos se queda en la estrella: con «Hoy» y «Rutinas» ya no cabían las cinco
-          piezas en 390 px. El nombre va en aria-label, con la cuenta, y la palabra se quita del todo
-          en vez de esconderla recortada: recortada seguía ocupando su sitio a la derecha de la
-          estrella y la dejaba 27 px descentrada en su botón.
+          En el móvil, favoritos se queda en la estrella. El nombre va en aria-label, con la cuenta, y
+          la palabra se quita del todo en vez de esconderla recortada: recortada seguía ocupando su
+          sitio y dejaba la estrella 27 px descentrada en su botón.
         -->
-        <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${ruta.vista === 'favoritos' ? 'aria-current="page"' : ''}
+        <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${actual(ruta.vista === 'favoritos')}
            aria-label="${t('favoritos.titulo')}${favoritos().length ? ` (${favoritos().length})` : ''}">
           <span class="icono" aria-hidden="true">★</span><span class="texto-nav">${t('favoritos.titulo')}</span>
           ${favoritos().length ? `<span class="insignia">${favoritos().length}</span>` : ''}
         </a>
-        <button type="button" class="solo-ancho" data-accion="idioma">${document.documentElement.lang === 'es' ? 'EN' : 'ES'}</button>
-        <button type="button" class="solo-ancho" data-accion="tema" aria-label="${t('ui.tema')}">
-          <span class="icono" aria-hidden="true">${temaActual() === 'oscuro' ? '☀' : '☾'}</span>
+        <a class="solo-amplio solo-icono" href="${enlace({ vista: 'datos', filtros: {} })}" ${actual(ruta.vista === 'datos')}
+           aria-label="${t('datos.titulo')}" title="${t('datos.titulo')}">${ICONOS.documento}</a>
+        <button type="button" class="solo-amplio solo-icono con-codigo" data-accion="idioma" aria-label="${idioma}" title="${idioma}">
+          ${ICONOS.idioma}<span class="codigo" aria-hidden="true">${codigo}</span>
         </button>
+        <button type="button" class="solo-amplio solo-icono" data-accion="tema" aria-label="${tema}" title="${tema}">
+          ${oscuro ? ICONOS.sol : ICONOS.luna}
+        </button>
+        <button type="button" class="solo-estrecho solo-icono" data-accion="menu" aria-expanded="false"
+                aria-controls="menu-app" aria-label="${t('ui.menu')}" title="${t('ui.menu')}">${ICONOS.menu}</button>
       </nav>
+      </div>
+      <div class="menu-app" id="menu-app" hidden>
+        <ul>
+          <li><a href="${enlace({ vista: 'progreso', filtros: {} })}" ${actual(ruta.vista === 'progreso')}>${ICONOS.progreso}<span>${t('progreso.titulo')}</span></a></li>
+          <li><a href="${enlace({ vista: 'datos', filtros: {} })}" ${actual(ruta.vista === 'datos')}>${ICONOS.documento}<span>${t('datos.titulo')}</span></a></li>
+          <li><button type="button" data-accion="idioma">${ICONOS.idioma}<span>${t('ui.otro_idioma')}</span></button></li>
+          <li><button type="button" data-accion="tema">${oscuro ? ICONOS.sol : ICONOS.luna}<span>${tema}</span></button></li>
+        </ul>
       </div>
     </header>`;
 }
+
+/**
+ * Abre o cierra el menú del móvil. Al abrirlo el foco va a su primera opción, y al cerrarlo con
+ * Escape vuelve al botón: sin eso, quien navega con teclado o lector de pantalla abría el menú y se
+ * quedaba en el botón sin saber que debajo había algo.
+ */
+function menu(abrir: boolean, devolverFoco = false): void {
+  const boton = cabeceraEl.querySelector<HTMLButtonElement>('[data-accion="menu"]');
+  const panel = cabeceraEl.querySelector<HTMLElement>('#menu-app');
+  if (!boton || !panel) return;
+  panel.hidden = !abrir;
+  boton.setAttribute('aria-expanded', String(abrir));
+  boton.innerHTML = abrir ? ICONOS.cerrar : ICONOS.menu;
+  if (abrir) panel.querySelector<HTMLElement>('a, button')?.focus();
+  else if (devolverFoco) boton.focus();
+}
+
+// Escape o un toque fuera de la barra cierran el menú, como cualquier menú desplegable.
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !cabeceraEl.querySelector('#menu-app')?.hasAttribute('hidden')) menu(false, true);
+});
+/*
+ * «Fuera» se mira en la RUTA del evento y no con `contains(e.target)`: al abrir el menú, el icono
+ * del botón se cambia por el aspa, el elemento tocado deja de estar en la página, y `contains`
+ * respondía que el toque había sido fuera, así que el menú se cerraba en el mismo toque que lo abría.
+ * La ruta se fija al empezar el evento y no cambia aunque el elemento desaparezca.
+ */
+document.addEventListener('click', (e) => {
+  if (!e.composedPath().includes(cabeceraEl)) menu(false);
+});
 
 /*
  * Cambia el texto de la portada sin reemplazar el elemento, que es lo que arruinaba el LCP.
@@ -641,6 +691,7 @@ async function alPulsar(e: MouseEvent): Promise<void> {
     const ruta = rutaActual();
     irA({ ...ruta, filtros: { ...ruta.filtros, [campo]: (ruta.filtros[campo] ?? []).filter((v) => v !== valor) } });
   }
+  if (boton.dataset.accion === 'menu') menu(boton.getAttribute('aria-expanded') !== 'true');
   if (boton.dataset.accion === 'tema') cambiarTema();
   if (boton.dataset.accion === 'idioma') {
     // Recarga a propósito: las cadenas se resuelven una vez al arrancar, y repintar con el idioma

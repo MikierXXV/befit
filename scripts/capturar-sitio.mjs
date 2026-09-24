@@ -386,13 +386,16 @@ for (const vista of VISTAS) {
         location.href,
         guardado,
         String(document.querySelector('#sitio')?.textContent?.length ?? 0),
+        // Un menú que se despliega sí hace algo, aunque no cambie de ruta ni guarde nada.
+        String(document.querySelectorAll('[aria-expanded="true"]').length),
       ].join('|');
     });
     /*
-     * Los mandos que SE VEN, en la cabecera y en el pie. En el móvil, idioma y tema bajan al pie y se
-     * esconden arriba: pulsar uno escondido esperaba 30 s a que fuera visible y reventaba el recorrido.
+     * Los mandos que SE VEN. En el móvil, idioma y tema viven dentro del menú, escondidos hasta
+     * abrirlo: pulsar uno escondido esperaba 30 s a que fuera visible y reventaba el recorrido. El
+     * botón del menú sí se pulsa, y cuenta como que hace algo si despliega el menú.
      */
-    const SELECTOR_MANDOS = '#cabecera [data-accion]:visible, #cabecera button:visible, .pie [data-accion]:visible';
+    const SELECTOR_MANDOS = '#cabecera [data-accion]:visible, #cabecera button:visible';
     const cuantos = (await pagina.$$(SELECTOR_MANDOS)).length;
     for (let i = 0; i < cuantos; i += 1) {
       /* Se vuelve a buscar por posición en cada vuelta: la cabecera se repinta entera y el idioma

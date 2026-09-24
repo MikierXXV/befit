@@ -46,6 +46,7 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `src/app/pantalla.ts` · `avisos.ts` | Pantalla encendida (wake lock, por razones) y pitido/vibración. |
 | `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |
 | `public/sw.js` · `manifest.webmanifest` | La PWA: se instala y abre sin conexión. |
+| `src/app/iconos.ts` | Los iconos de la barra, en SVG propio con `currentColor`. Sin librería ni emojis. |
 | `src/figura/` | El maniquí: cinemática, visor, mapa muscular y hoja de revisión. |
 | `design/tokens.json` · `tokens.css` | Sistema de diseño. Los valores no se escriben sueltos en CSS. |
 

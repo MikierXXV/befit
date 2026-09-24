@@ -13,7 +13,10 @@
   },
   "ui": {
     "tema": "Cambiar tema",
-    "otro_idioma": "English"
+    "otro_idioma": "English",
+    "navegacion": "Principal",
+    "menu": "Más opciones",
+    "cambiar_idioma": "Ver la página en inglés"
   },
   "catalogo": {
     "buscar": "Buscar",

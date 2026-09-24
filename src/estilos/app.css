@@ -39,17 +39,26 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
  * El desenfoque va con `@supports`: donde no existe, el fondo queda opaco y se ve igual de bien;
  * sin la guarda, el navegador que no lo soporta se come una barra translúcida ilegible.
  */
+/*
+ * La barra, fija arriba al desplazarse. Lo pegajoso es el CONTENEDOR (#cabecera), no la barra:
+ * estuvo `position: sticky` en la barra, pero un elemento pegajoso solo se pega dentro de su
+ * padre, y su padre medía exactamente lo que ella. Nunca llegó a quedarse fija; se vio simulando un
+ * entreno, al bajar por una ficha y perder «Hoy» de vista.
+ */
+#cabecera { position: sticky; top: 0; z-index: 20; }
+/* Y lo que se lleva a la vista con un ancla o un scrollIntoView queda debajo de la barra, no tapado. */
+html { scroll-padding-top: calc(var(--alto-barra) + var(--e3)); }
 .barra {
-  position: sticky;
-  top: 0;
-  z-index: 20;
+  position: relative;
   background: color-mix(in oklab, var(--fondo) 86%, transparent);
   border-bottom: 1px solid var(--separador);
 }
 @supports (backdrop-filter: blur(1px)) {
   .barra { backdrop-filter: blur(12px) saturate(140%); }
 }
-.barra > div {
+/* La fila de la barra, y no el panel del menú, que también es un div hijo: con `.barra > div` a
+   secas el panel heredaba `display: flex`, que pisa al atributo `hidden`, y no se cerraba nunca. */
+.barra > div:not(.menu-app) {
   display: flex;
   align-items: center;
   gap: var(--e4);
@@ -1030,7 +1039,6 @@ body.con-descanso { padding-bottom: 7.5rem; }
  * se anota. Con 36svh, en un móvil de 844 px de alto caben el maniquí, sus controles y el principio
  * del formulario sin desplazarse.
  */
-.activo { scroll-margin-top: var(--e4); }
 .activo .figura { margin-bottom: var(--e6); }
 .activo .figura .musculos { display: none; }
 /* El hueco reservado y el lienzo, con el MISMO tope: si difieren, vuelve el salto al cargar. */
@@ -1189,21 +1197,68 @@ body.con-descanso { padding-bottom: 7.5rem; }
 .enlace-progreso { margin: calc(var(--e4) * -1) 0 var(--e8); font-size: var(--t-pequeno); }
 
 /*
- * En el móvil la cabecera se queda con lo que se usa entrenando —Hoy, Rutinas y la estrella— e
- * idioma y tema bajan al pie. Ver cabecera() y aviso() en main.ts.
+ * Qué va en la barra y qué en el menú. Desde 48 rem, todo en la barra; por debajo, Progreso, tus
+ * datos, idioma y tema pasan al menú. El corte se midió en inglés, el idioma de textos más largos:
+ * con todo en la barra mide 652 px, y 768 deja margen a una traducción más larga.
  */
-.ajustes-pie { display: none; }
-/* Progreso, en la cabecera solo desde 600 px. Medido en inglés, el idioma de textos más largos: con
-   él visible, a 544 px la barra medía 570 y a 600 cabía justa. Por debajo se llega desde «Hoy» y
-   desde el pie. */
-@media (max-width: 37.49rem) {
+.barra .solo-estrecho { display: none; }
+@media (max-width: 47.99rem) {
   .barra .solo-amplio { display: none; }
+  .barra .solo-estrecho { display: inline-flex; }
 }
 @media (max-width: 33.99rem) {
-  .texto-nav,
-  .barra .solo-ancho { display: none; }
-  .ajustes-pie { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0; }
+  .texto-nav { display: none; }
 }
+
+/* Los botones de solo icono: cuadrados, como la estrella. El idioma lleva además su código. */
+.barra nav .solo-icono { min-width: 40px; padding: 0 var(--e2); }
+.barra nav .con-codigo { gap: var(--e1); }
+/* Por debajo de 360 px la marca se queda en su punto: en inglés, con «befit» escrito, la barra medía
+   341 px en 320. El nombre sigue en aria-label para quien no la ve. */
+@media (max-width: 22.49rem) {
+  .marca .marca-texto { display: none; }
+}
+.barra .codigo { font-size: var(--t-micro); font-weight: var(--peso-semibold); letter-spacing: 0.04em; }
+.icono-svg { display: block; flex: none; }
+
+/*
+ * El menú del móvil: un panel bajo la barra, pegado a la derecha, con icono y nombre en cada fila.
+ * Aquí sí llevan palabra: en una lista, un icono solo obliga a adivinar, y hay sitio de sobra.
+ */
+.menu-app {
+  position: absolute;
+  top: calc(100% + var(--e1));
+  right: var(--e4);
+  min-width: 14rem;
+  padding: var(--e2);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-grande);
+  background: var(--fondo-elevado);
+  box-shadow: var(--sombra);
+}
+.menu-app ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e1); }
+.menu-app a,
+.menu-app button {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  width: 100%;
+  min-height: 44px;
+  padding: 0 var(--e3);
+  border: 0;
+  border-radius: var(--radio-medio);
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  font-size: var(--t-base);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.menu-app a:hover,
+.menu-app button:hover,
+.menu-app [aria-current] { background: var(--fondo-hundido); }
+.menu-app .icono-svg { color: var(--texto-secundario); }
 
 /*
  * Con el dedo, 44 px. Por debajo se falla el toque, y es la medida de las pautas táctiles; con
