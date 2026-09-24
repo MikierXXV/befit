@@ -16,8 +16,11 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
    corrección en español dejaría la versión inglesa con la rodilla vieja.
 4. **Un solo contexto WebGL vivo a la vez.** El catálogo usa carteles (imágenes); el maniquí solo se
    monta en la ficha abierta, y `destruir()` libera el contexto al salir. Lo comprueba `auditar.mjs`.
-5. **Los favoritos son del navegador.** Sin cuentas ni servidor: `localStorage` y un enlace para
-   llevárselos a otro dispositivo. Todo acceso, en `try/catch`: en navegación privada lanza.
+5. **Los datos del usuario son de su navegador.** Favoritos y, más adelante, series y rutinas. Sin
+   cuentas ni servidor: una sola clave de `localStorage`, versionada y con migraciones, y un fichero
+   para llevárselos a otro dispositivo, que al importarse **suma** y nunca sustituye. Todo acceso,
+   en `try/catch`: en navegación privada lanza. Lo que decide qué se guarda y qué se pierde va en
+   funciones puras con test.
 6. **Las comprobaciones bloquean el despliegue.** Un aviso que no bloquea acaba ignorándose.
 
 ## Mapa
@@ -31,7 +34,11 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `content/reglas.json` | Qué valida `validar-contenido.mjs`. **Se edita esto, no el guion.** |
 | `public/carteles/*.png` | Imagen fija de cada ficha para el catálogo. Generadas, pero **se versionan**. |
 | `src/app/rutas.ts` | Rutas en el fragmento (`#/f/<id>`), con la búsqueda y los filtros dentro. |
-| `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla. |
+| `src/app/datos.js` | Los datos del visitante como valores: migrar, limpiar, fusionar. Puro, con test. |
+| `src/app/almacen.ts` | Esos datos en `localStorage`: leer, guardar, avisar, exportar e importar. |
+| `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla, encima de `almacen`. |
+| `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |
+| `public/sw.js` · `manifest.webmanifest` | La PWA: se instala y abre sin conexión. |
 | `src/figura/` | El maniquí: cinemática, visor, mapa muscular y hoja de revisión. |
 | `design/tokens.json` · `tokens.css` | Sistema de diseño. Los valores no se escriben sueltos en CSS. |
 
@@ -39,7 +46,8 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 
 ```bash
 npm run dev                   # desarrollo
-npm run validar               # contenido + contraste + idiomas + movimiento. Es lo que corre CI.
+npm test                      # tests de la lógica pura (node --test)
+npm run validar               # tests + contenido + contraste + idiomas + movimiento. Lo que corre CI.
 npm run build                 # validar + tsc --noEmit + vite build
 npm run hoja                  # hoja de revisión de cada movimiento → capturas/<id>.png
 npm run agarre                # fija la mano a la barra, a partir del primer fotograma
@@ -48,7 +56,14 @@ npm run auditar               # presupuestos de rendimiento, sobre el build serv
 npm run capturar              # recorre el sitio en 2 temas × 2 anchos y caza errores mudos
 npm run alineacion            # centrados, alturas, carril izquierdo y desbordes. Bloquea.
 npm run metricas              # métricas de la tipografía de respaldo, al cambiar de fuente
+npm run iconos                # PNG del icono de la app a partir de public/icono.svg
 ```
+
+El service worker solo se registra en el build (`import.meta.env.PROD`): en `npm run dev` serviría
+módulos viejos de caché. **Al cambiar `public/sw.js`, sube su `VERSION`**, o los que ya lo tienen
+instalado no lo renuevan. Y usa `ignoreVary`: GitHub Pages responde con `Vary: Accept-Encoding` y
+los módulos se piden con cabecera `Origin`, así que sin él la caché no casaba y la app abría en
+blanco sin conexión.
 
 `hoja`, `carteles`, `auditar`, `capturar` y `alineacion` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.

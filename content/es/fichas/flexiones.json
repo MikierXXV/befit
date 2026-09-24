@@ -11,7 +11,9 @@
     "Baja doblando los codos a unos 45 grados del cuerpo, hasta que el pecho quede cerca del suelo.",
     "Empuja el suelo hasta estirar los brazos, manteniendo la línea del cuerpo."
   ],
-  "material": [],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

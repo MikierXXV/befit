@@ -11,7 +11,9 @@
     "Aprieta glúteos y abdomen y mete un poco la cadera: es lo que evita que la espalda se hunda.",
     "Aguanta respirando con normalidad, y para cuando la cadera empiece a caerse."
   ],
-  "material": [],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

@@ -12,6 +12,9 @@
     "No subas más: lo que sobra sale de arquear la espalda, no del glúteo.",
     "Baja despacio hasta rozar el suelo y vuelve a empezar sin descansar abajo."
   ],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

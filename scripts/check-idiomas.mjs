@@ -186,11 +186,41 @@ const faltantes = [];
   }
 }
 
+/*
+ * LOS VALORES DEL CATÁLOGO, TRADUCIDOS: material, nivel y músculos.
+ *
+ * Las fichas guardan valores cortos (`mancuerna`, `ninguno`) y la pantalla los nombra con
+ * `catalogo.<campo>.<valor>` de ui.json. Si falta la clave, `etiqueta()` enseña el valor en crudo:
+ * pasó con `ninguno`, que ocho ejercicios nuevos usaban sin traducción, y en el filtro y en la
+ * ficha salía «ninguno» en minúscula, también en la versión inglesa. Ninguna comprobación lo vio,
+ * porque solo quedaba un `console.warn`.
+ */
+{
+  const idiomas = JSON.parse(await readFile(join(RAIZ, 'content/reglas.json'), 'utf8')).idiomas ?? ['es'];
+  for (const idioma of idiomas) {
+    const ui = JSON.parse(await readFile(join(RAIZ, `content/${idioma}/ui.json`), 'utf8'));
+    const dirFichas = join(RAIZ, `content/${idioma}/fichas`);
+    const usados = { material: new Set(), nivel: new Set(), musculos: new Set() };
+    for (const f of await readdir(dirFichas)) {
+      if (!f.endsWith('.json')) continue;
+      const ficha = JSON.parse(await readFile(join(dirFichas, f), 'utf8'));
+      (ficha.material ?? []).forEach((v) => usados.material.add(v));
+      if (ficha.nivel) usados.nivel.add(ficha.nivel);
+      Object.values(ficha.musculos ?? {}).flat().forEach((v) => usados.musculos.add(v));
+    }
+    for (const [campo, valores] of Object.entries(usados)) {
+      for (const valor of valores) {
+        if (typeof ui.catalogo?.[campo]?.[valor] !== 'string') faltantes.push(`[${idioma}] catalogo.${campo}.${valor}`);
+      }
+    }
+  }
+}
+
 if (faltantes.length) {
-  console.error(`\n${faltantes.length} etapa(s) de movimiento sin traducir:\n`);
+  console.error(`\n${faltantes.length} texto(s) de interfaz sin traducir:\n`);
   for (const f of faltantes) console.error(`  ✗ ${f}`);
-  console.error('\nSe pintan en la línea de tiempo de la ficha. Sin traducción sale la clave en crudo.');
-  console.error('Añádelas en content/<idioma>/ui.json, en figura.etapas, y cortas: el rótulo va sobre la línea.\n');
+  console.error('\nSin traducción, la pantalla enseña la clave o el valor en crudo.');
+  console.error('Añádelas en content/<idioma>/ui.json con la ruta indicada. Las etapas, cortas: el rótulo va sobre la línea.\n');
   process.exit(1);
 }
 

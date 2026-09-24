@@ -569,3 +569,35 @@ if (revisar && cargarHoja) {
   alCambiarTema(pintar);
   pintar();
 }
+
+/*
+ * APP INSTALABLE Y SIN CONEXIÓN. En el gimnasio no siempre hay cobertura, y una app que se queda en
+ * blanco en el sótano no sirve para lo que se abre allí. El service worker (public/sw.js) guarda lo
+ * que se va pidiendo.
+ *
+ * Se registra DESPUÉS de cargar la página y solo en producción: registrarlo antes compite con la
+ * primera pintura por la red —y eso es el LCP que vigila auditar.mjs—, y en desarrollo cachearía
+ * los módulos de Vite y taparía cada cambio con la versión anterior.
+ */
+if (import.meta.env.PROD && 'serviceWorker' in navigator && !revisar) {
+  addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {
+      // Sin service worker la app funciona igual, solo que no sin conexión.
+    });
+
+    /*
+     * Instalada, se trae YA lo que hace falta para abrir cualquier ficha: el visor, Three.js y el
+     * modelo. Si no, una ficha nunca abierta con red no abriría sin ella, y eso es justo lo que se
+     * descubre en el sótano. En una pestaña normal NO se hace: serían 150 kB de Three.js para
+     * alguien que quizá solo mira el catálogo.
+     */
+    if (matchMedia('(display-mode: standalone)').matches) {
+      const precargar = (): void => {
+        void cargarFigura?.();
+        void fetch(`${import.meta.env.BASE_URL}modelos/maniqui.glb`).catch(() => undefined);
+      };
+      if ('requestIdleCallback' in window) requestIdleCallback(precargar);
+      else setTimeout(precargar, 2000);
+    }
+  });
+}

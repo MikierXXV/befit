@@ -11,7 +11,9 @@
     "Squeeze glutes and abs and tuck the hips slightly: that is what keeps the back from sagging.",
     "Hold while breathing normally, and stop when the hips start to drop."
   ],
-  "material": [],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

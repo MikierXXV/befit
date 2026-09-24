@@ -12,6 +12,9 @@
     "Do not go higher: anything beyond that comes from arching your back, not from the glutes.",
     "Lower slowly until you brush the floor and start again without resting at the bottom."
   ],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

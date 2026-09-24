@@ -81,12 +81,33 @@ No «que se mueva»: que un entrenador no señale nada raro.
 Y una cosa que solo se sabe publicando: **los presupuestos de rendimiento pasan en el runner de
 CI**, LCP del móvil de gama baja incluido. El 2.904 ms de la máquina local era carga del equipo.
 
-## Fase 5 — Crecer ⬜
+## Fase 5 — Crecer: de catálogo a registro de entreno 🟡
 
-- ⬜ Cerrar los huecos de catálogo de la fase 2.
-- ⬜ Más ejercicios por patrón, con la máquina ya montada: ficha en dos idiomas, movimiento, validar,
-  mirar la hoja, cartel.
-- ⬜ Lo que salga de usarlo.
+El catálogo llegó a 50 ejercicios validados. El siguiente paso sale de estudiar OpenGym
+(`DuarteSantos8/openGym`; el fork `alexpcosta/opengym` está parado): **ideas, no código**. De su
+catálogo de 1.324 GIFs no se toma nada —licencia de terceros sin resolver— y nada que pida cuentas
+o servidor: la regla 5 se mantiene y el cambio de dispositivo va por fichero.
+
+- ✅ **5.0 Cimientos.** Una sola clave de `localStorage` versionada (`befit.datos.v1`) con migración
+  de los favoritos viejos; exportar e importar que **suman**, nunca sustituyen; PWA con manifiesto y
+  service worker que abre sin conexión; y `node --test` sobre la lógica de datos, dentro de
+  `npm run validar`.
+- ⬜ **5.1 Anotar desde la ficha.** Peso, repeticiones y RIR —o tiempo en los isométricos, con un
+  campo `medida` en la ficha—, historial del ejercicio, 1RM estimado (Epley y Brzycki, con aviso
+  por encima de 10 repeticiones) y gráfica en SVG hecho a mano. Vista `#/datos` para exportar e
+  importar.
+- ⬜ **5.2 Sesión en el gimnasio.** `#/hoy`, temporizador de descanso, cronómetro para los
+  isométricos y wake lock. Un solo maniquí vivo: el del ejercicio activo.
+- ⬜ **5.3 Rutinas.** Las del usuario, en local y por enlace; las de inicio, como contenido en
+  `content/<idioma>/rutinas/`; y cambiar un ejercicio por otro de su mismo patrón.
+- ⬜ **5.4 Progreso.** Mapa muscular acumulado ponderado por rol (1 · 0,5 · 0,25), volumen semanal
+  por patrón y heatmap de actividad.
+
+Fuera, a propósito: cuentas y sincronización, AI Coach, progresión automática (a OpenGym le ha
+dado fallos reales), social, notificaciones, APK y fotos. Importar de Strong/Hevy, quizá más tarde.
+
+Pendientes del catálogo: el cable del press Pallof se ve rígido, y el curl inverso no distingue la
+pronación porque la cinemática aún no gira el antebrazo.
 
 ---
 

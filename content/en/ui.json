@@ -63,7 +63,8 @@
       "mancuerna": "Dumbbell",
       "banco": "Bench",
       "rack": "Rack",
-      "polea": "Cable machine"
+      "polea": "Cable machine",
+      "ninguno": "No equipment"
     },
     "saltar": "Skip to results",
     "filtros": "Filters",

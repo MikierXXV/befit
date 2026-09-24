@@ -11,7 +11,9 @@
     "Lower by bending the elbows, keeping them about 45 degrees away from your torso, until the chest is close to the floor.",
     "Push the floor away until the arms are straight, keeping the body line."
   ],
-  "material": [],
+  "material": [
+    "ninguno"
+  ],
   "nivel": "inicial",
   "musculos": {
     "principal": [

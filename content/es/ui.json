@@ -66,7 +66,8 @@
       "mancuerna": "Mancuerna",
       "banco": "Banco",
       "rack": "Soporte",
-      "polea": "Polea"
+      "polea": "Polea",
+      "ninguno": "Sin material"
     },
     "saltar": "Saltar a los resultados",
     "filtros": "Filtros",

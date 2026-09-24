@@ -7,6 +7,15 @@
     <meta name="description" content="Ejercicios de gimnasio explicados con un maniquí 3D." />
 
     <!--
+      Instalable: el manifiesto y los iconos. iOS no lee los iconos del manifiesto, de ahí el
+      apple-touch-icon en PNG; y theme-color tiñe la barra del navegador con el fondo de la app.
+    -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icono.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icono-180.png" />
+    <meta name="theme-color" content="#0B0B0F" />
+
+    <!--
       Se precarga solo la tipografía de interfaz. La de los titulares llega un instante después y el
       texto ya se está leyendo con la de respaldo: precargarlo todo compite con lo que de verdad
       bloquea la primera pantalla.

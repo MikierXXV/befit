@@ -60,6 +60,9 @@ for (const vista of VISTAS) {
 
     pagina.on('console', (msg) => {
       if (msg.type() === 'error') fallos.push(`[${etiqueta}] error de consola: ${msg.text()}`);
+      // t() no lanza si falta una clave: la enseña en crudo y avisa. Ese aviso ES el fallo —así se
+      // coló «ninguno» sin traducir en ocho fichas—, así que aquí cuenta como error.
+      if (msg.type() === 'warning' && msg.text().startsWith('[textos]')) fallos.push(`[${etiqueta}] ${msg.text()}`);
     });
     pagina.on('pageerror', (e) => fallos.push(`[${etiqueta}] excepción sin capturar: ${e.message}`));
     pagina.on('requestfailed', (p) => {
@@ -532,7 +535,7 @@ for (const vista of VISTAS) {
 
   for (const id of fichas) {
     const errores = [];
-    const enConsola = (m) => m.type() === 'error' && errores.push(m.text());
+    const enConsola = (m) => (m.type() === 'error' || (m.type() === 'warning' && m.text().startsWith('[textos]'))) && errores.push(m.text());
     const enPagina = (e) => errores.push(e.message);
     pagina.on('console', enConsola);
     pagina.on('pageerror', enPagina);
