@@ -102,7 +102,8 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    Para llegar lejos con los brazos —una barra en el suelo—, el hombro se baja y adelanta con
    `brazos.<lado>.escapula: { elevacion, protraccion }` en grados (rangos en `RANGOS`). Y un
    ejercicio que apoya la ESPALDA en el banco (hip thrust) lo declara en su apoyo con
-   `"con": "espalda"`, o el validador lo toma por sentado fuera del banco.
+   `"con": "espalda"` (o `"manos"`, `"pies"` si es eso lo que apoya), o el validador lo toma por
+   sentado fuera del banco.
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.

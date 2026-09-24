@@ -142,12 +142,14 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     for (const [nombre, imp] of Object.entries(r.implementos)) {
       if (imp.tipo !== 'banco') continue;
       /*
-       * Salvo que lo que se apoya en el banco sea la ESPALDA. En el hip thrust las escápulas van en
-       * el borde y la cadera sube y baja por delante de él, pasando justo por la altura del
+       * Salvo que lo que se apoya en el banco NO sea el asiento. En el hip thrust las escápulas van
+       * en el borde y la cadera sube y baja por delante de él, pasando justo por la altura del
        * acolchado: esta regla lo daba por «sentado fuera del banco» en 33 de 48 fotogramas, y no
-       * hay pose correcta que lo evite. El movimiento lo declara en su apoyo (`"con": "espalda"`).
+       * hay pose correcta que lo evite. Lo mismo con las manos (fondos, flexiones inclinadas) o los
+       * pies (flexiones declinadas) en el banco. El movimiento lo declara en su apoyo:
+       * `"con": "espalda" | "manos" | "pies"`. Sin `con`, es el asiento y la regla se aplica.
        */
-      if ((mov.apoyos ?? []).some((a) => a.implemento === nombre && a.con === 'espalda')) continue;
+      if ((mov.apoyos ?? []).some((a) => a.implemento === nombre && a.con && a.con !== 'asiento')) continue;
       const cadera = maniqui.esq.huesos.pelvis.getWorldPosition(new Vector3());
       if (Math.abs(cadera.y - (imp.posicion.y + imp.alto)) > 0.16) continue;
       const margen = imp.posicion.z + imp.largo / 2 - cadera.z;
