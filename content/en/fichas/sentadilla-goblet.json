@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Goblet squat",
   "resumen": "A dumbbell held upright against the chest and a deep squat. The load in front helps keep the torso upright, which is why it is often used to learn to squat well.",
+  "movimiento_id": "sentadilla-goblet",
   "ejecucion": [
     "Hold a dumbbell upright by one end, with both hands, against your chest.",
     "Feet a little wider than your shoulders, toes slightly turned out.",

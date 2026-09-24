@@ -25,6 +25,26 @@ import { Vector3 } from 'three';
 import { aplicarPose, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados } from './lib/maniqui-node.mjs';
 
+/**
+ * El rango de una articulación, que en la cadera depende de la postura.
+ *
+ * La abducción de 50° de RANGOS es la de la cadera ESTIRADA. Con la cadera flexionada llega más
+ * lejos: los ligamentos que la frenan —iliofemoral y pubofemoral— se tensan en extensión y se
+ * destensan al flexionar, que es por lo que se puede abrir mucho más en cuclillas que de pie. Con
+ * un único 50° el peso muerto sumo no cabía: sin poder abrir más los muslos, las rodillas iban
+ * hacia delante, la cadera se pasaba de flexión y la inclinación que faltaba acababa en la
+ * espalda, redondeada, que es justo lo que un peso muerto no debe enseñar.
+ *
+ * Se abre de forma gradual, hasta 15° más con la cadera a 90° de flexión.
+ */
+function rango(clave, angulos) {
+  const base = clave.replace(/_[id]$/, '');
+  const [min, max] = RANGOS[base] ?? [-Infinity, Infinity];
+  if (base !== 'cadera.abduccion') return [min, max];
+  const flexion = angulos[clave.replace('abduccion', 'flexion')] ?? 0;
+  return [min, max + 15 * Math.min(1, Math.max(0, flexion / 90))];
+}
+
 /*
  * Los números salen de content/reglas.json, como en el resto de validadores de la plantilla: el
  * guion es genérico y no sabe nada del proyecto. Las tolerancias de piel están en metros; la malla
@@ -76,7 +96,7 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     r.avisos.forEach((a) => fallo(redactar(a), etiqueta));
 
     for (const [clave, valor] of Object.entries(r.angulos)) {
-      const [min, max] = RANGOS[clave.replace(/_[id]$/, '')] ?? [-Infinity, Infinity];
+      const [min, max] = rango(clave, r.angulos);
       if (valor < min - 0.5 || valor > max + 0.5) {
         fallo(`${clave} fuera de rango [${min}, ${max}]`, `${etiqueta} (${valor.toFixed(0)}°)`);
       }
@@ -121,6 +141,13 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
      */
     for (const [nombre, imp] of Object.entries(r.implementos)) {
       if (imp.tipo !== 'banco') continue;
+      /*
+       * Salvo que lo que se apoya en el banco sea la ESPALDA. En el hip thrust las escápulas van en
+       * el borde y la cadera sube y baja por delante de él, pasando justo por la altura del
+       * acolchado: esta regla lo daba por «sentado fuera del banco» en 33 de 48 fotogramas, y no
+       * hay pose correcta que lo evite. El movimiento lo declara en su apoyo (`"con": "espalda"`).
+       */
+      if ((mov.apoyos ?? []).some((a) => a.implemento === nombre && a.con === 'espalda')) continue;
       const cadera = maniqui.esq.huesos.pelvis.getWorldPosition(new Vector3());
       if (Math.abs(cadera.y - (imp.posicion.y + imp.alto)) > 0.16) continue;
       const margen = imp.posicion.z + imp.largo / 2 - cadera.z;

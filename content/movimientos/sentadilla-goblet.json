@@ -1,0 +1,74 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "sentadilla-goblet",
+  "duracion": 3.2,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_i"
+  },
+  "implementos": {
+    "barra": {
+      "tipo": "mancuerna",
+      "relativo_a": "torax",
+      "desplazamiento": [0, 0.03, 0.15],
+      "agarre": 0,
+      "solido": true,
+      "giro": 90
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": { "posicion": [0, 0.9, -0.03] },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
+      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 0.25,
+      "curva": "controlada",
+      "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": -6 },
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
+      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": { "posicion": [0, 0.36, -0.19], "orientacion": { "inclinacion": 22 } },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": -12 },
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
+      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 0.75,
+      "curva": "esfuerzo",
+      "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": -6 },
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
+      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 1,
+      "pelvis": { "posicion": [0, 0.9, -0.03] },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
+      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+    }
+  ],
+  "$comment_agarre": "La mancuerna se declara como `barra` (de tipo mancuerna) para que las dos manos vayan a ella con `objetivo: \"barra\"`, y va `relativo_a: \"torax\"` para que no se separe del pecho en ningún fotograma. Con `agarre: 0` las dos manos cogen el mango a la MISMA altura, cada una por su lado y justo bajo el disco de arriba: es la copa. El intento anterior (agarre 0,055, una mano encima de otra) dejaba la mano de abajo sin agarrar, porque el mango mide 14 cm y dos puños de 9 no caben apilados.",
+  "$comment_fondo": "Abajo la pelvis se inclina 22° y va atrás: con el tronco a 12° de la vertical y la cadera encima de los pies, los codos se quedaban muy por encima de las rodillas y la cadera flexionaba solo 65°. Así la rodilla llega a 141° con el talón en el suelo, y los codos bajan hasta la cara interna de las rodillas."
+}

@@ -16,3 +16,7 @@ assets-originales/*
 # Ajustes personales del asistente: llevan rutas absolutas de cada máquina. El fichero compartido
 # sería `.claude/settings.json`; este, por convenio, es el de uno.
 .claude/settings.local.json
+
+# Copias de trabajo de los agentes que animan en paralelo. Cada una es el proyecto entero con su
+# node_modules enlazado: versionarlas sería meter el repositorio dentro de sí mismo.
+.claude/worktrees/

@@ -3,10 +3,11 @@
   "grupo_id": "bisagra-cadera",
   "orden": 9,
   "nombre": "Peso muerto rumano con mancuernas",
-  "resumen": "El mismo gesto que el rumano con barra, con una mancuerna en cada mano: la cadera va atrás, las rodillas apenas se doblan y las mancuernas bajan por delante de las piernas.",
+  "resumen": "El mismo gesto que el rumano con barra, con una mancuerna en cada mano: la cadera va atrás, las rodillas apenas se doblan y las mancuernas bajan junto a las piernas.",
+  "movimiento_id": "peso-muerto-rumano-mancuernas",
   "ejecucion": [
-    "De pie, con una mancuerna en cada mano delante de los muslos y los pies a la anchura de la cadera.",
-    "Lleva la cadera hacia atrás con las rodillas casi fijas y deja que las mancuernas bajen cerca de las piernas.",
+    "De pie, con una mancuerna en cada mano a los lados de los muslos, las palmas hacia dentro y los pies a la anchura de la cadera.",
+    "Lleva la cadera hacia atrás con las rodillas casi fijas y deja que las mancuernas bajen junto a las piernas.",
     "Baja mientras mantengas la espalda plana; cuando empiece a redondearse, ese es tu recorrido.",
     "Vuelve empujando la cadera hacia delante hasta estar de pie, sin echar los hombros atrás."
   ],

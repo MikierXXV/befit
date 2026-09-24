@@ -1,0 +1,77 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. El gesto es el de peso-muerto-rumano.json; lo que cambia son las manos, que llevan una mancuerna cada una.",
+  "id": "peso-muerto-rumano-mancuernas",
+  "duracion": 3.6,
+  "asimetria": 0.45,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "$comment_manos": "Las muñecas van relativas al hombro (`relativo_a: articulacion`), no en coordenadas de mundo. Con puntos de mundo, el hombro recorre un arco mientras la muñeca se interpola en línea recta, y a media bajada la mano quedaba hasta 9 cm fuera de alcance. Relativas, el vector hombro-muñeca apenas cambia de largo (0,54 m, codo a unos 15°) y solo gira un poco hacia atrás al bajar: las mancuernas se acercan a las piernas en vez de colgar a plomo delante de ellas.",
+  "$comment_agarre": "Agarre neutro, con las mancuernas a los lados y algo por delante de los muslos. El motor solo sabe poner la palma hacia la línea media (neutro) o hacia delante (prono, que colgando es un agarre de curl); la palma hacia los muslos no existe todavía. Con el mango de lado y 30 cm de mancuerna, pegarlas delante de los muslos las metería en la pierna.",
+  "$comment_recorrido": "Abajo la pelvis va a z=-0.30 casi sin bajar e inclinada 84°: la mancuerna llega a y≈0.36, media espinilla, con la rodilla a unos 24°. Con 90° el tronco pasaba de la horizontal y la espalda se leía redonda en la vista lateral.",
+  "implementos": {
+    "mancuerna_i": {
+      "tipo": "mancuerna",
+      "en_mano": "i",
+      "solido": true
+    },
+    "mancuerna_d": {
+      "tipo": "mancuerna",
+      "en_mano": "d",
+      "solido": true
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": { "posicion": [0, 0.905, -0.02] },
+      "columna": { "flexion": 3 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": [0.06, -0.54, 0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
+    },
+    {
+      "t": 0.28,
+      "curva": "suave",
+      "pelvis": { "posicion": [0, 0.94, -0.17], "orientacion": { "inclinacion": 42 } },
+      "columna": { "flexion": 3 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": [0.05, -0.538, -0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": { "posicion": [0, 0.945, -0.3], "orientacion": { "inclinacion": 84 } },
+      "columna": { "flexion": 3 },
+      "cuello": { "flexion": 5 },
+      "brazos": { "ambos": { "objetivo": [0.05, -0.525, -0.12], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
+    },
+    {
+      "t": 0.75,
+      "curva": "suave",
+      "pelvis": { "posicion": [0, 0.94, -0.17], "orientacion": { "inclinacion": 42 } },
+      "columna": { "flexion": 3 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": [0.05, -0.538, -0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
+    },
+    {
+      "t": 1,
+      "pelvis": { "posicion": [0, 0.905, -0.02] },
+      "columna": { "flexion": 3 },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": [0.06, -0.54, 0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
+    }
+  ]
+}

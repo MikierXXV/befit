@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Sentadilla goblet",
   "resumen": "Una mancuerna sujeta en vertical contra el pecho y una sentadilla profunda. La carga delante ayuda a mantener el tronco erguido, y por eso se usa mucho para aprender a bajar bien.",
+  "movimiento_id": "sentadilla-goblet",
   "ejecucion": [
     "Sujeta una mancuerna en vertical por un extremo, con las dos manos, pegada al pecho.",
     "Pies algo más abiertos que los hombros, con las puntas un poco hacia fuera.",

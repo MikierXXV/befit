@@ -1,0 +1,58 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "sentadilla-sumo-mancuerna",
+  "duracion": 3.2,
+  "asimetria": 0.3,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_d"
+  },
+  "implementos": {
+    "mancuerna": {
+      "tipo": "mancuerna",
+      "relativo_a": "mundo",
+      "desplazamiento": [0, -0.13, 0.22],
+      "solido": true,
+      "giro": 90
+    }
+  },
+  "$comment_agarre": "La mancuerna cuelga en vertical y las dos manos rodean el disco de arriba, a la misma altura, con el mango hacia el suelo. No va como `barra` con `agarre`: así las manos quedan una encima de otra sobre el mango y, con los brazos estirados, la de abajo no llega (faltaban 24 cm). Por eso las manos llevan objetivo propio y la mancuerna, `relativo_a: mundo` —pegada a la pelvis pero sin girar con ella, para que cuelgue recta—, y en cada pose se escriben las dos juntas: la muñeca a brazo estirado y el centro de la mancuerna 17 cm por debajo. Va adelantada respecto a la pelvis porque, en la vertical de las caderas, el disco de arriba se metía 2 cm en la ingle.",
+  "$comment_piernas": "La cadera del maniquí no pasa de 50° de abducción, y eso limita la postura: con los pies a 0,30 y las rodillas en la línea de una apertura de 35°, abajo pedía 61°. Queda en pies a 0,27, puntas a 25° y el polo de la rodilla más abierto arriba que abajo: con el mismo polo en todo el ciclo, a media bajada la rodilla iba 10° por dentro de la línea del pie.",
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": { "posicion": [0, 0.9, -0.03] },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": 0 },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": { "posicion": [0, 0.45, -0.07] },
+      "columna": { "flexion": 12 },
+      "cuello": { "flexion": -8 },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.141, 0.215] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.479, 0.145], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.7, 0, 0.71], "pie_plano": true, "apertura": 25 } }
+    },
+    {
+      "t": 1,
+      "pelvis": { "posicion": [0, 0.9, -0.03] },
+      "columna": { "flexion": 4 },
+      "cuello": { "flexion": 0 },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
+    }
+  ]
+}

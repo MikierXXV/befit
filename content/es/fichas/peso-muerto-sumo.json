@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Peso muerto sumo",
   "resumen": "Un peso muerto con los pies muy abiertos y las manos por dentro de las piernas. El tronco va más erguido y las rodillas trabajan más que en el convencional.",
+  "movimiento_id": "peso-muerto-sumo",
   "ejecucion": [
     "Abre los pies bastante más que los hombros, con las puntas hacia fuera y la barra sobre la mitad del pie.",
     "Baja la cadera y agarra la barra por dentro de las piernas, con los brazos estirados y cayendo en vertical.",

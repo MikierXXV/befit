@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Hip thrust con barra",
   "resumen": "La espalda apoyada en un banco y la barra sobre la cadera: se sube la pelvis hasta dejar el tronco en línea con los muslos. Es de los ejercicios que más activan el glúteo mayor.",
+  "movimiento_id": "hip-thrust",
   "ejecucion": [
     "Siéntate en el suelo con la espalda apoyada en el borde de un banco justo por debajo de los omóplatos, y la barra sobre el pliegue de la cadera, mejor con una almohadilla.",
     "Sujeta la barra con las dos manos, por fuera de la cadera, para que no ruede. Con mucho peso, hazla rodar sobre las piernas estando sentado.",

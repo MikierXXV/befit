@@ -1,0 +1,238 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "hip-thrust",
+  "duracion": 3.4,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.36
+      ],
+      "largo": 0.3,
+      "ancho": 1.2,
+      "alto": 0.42,
+      "solido": true
+    },
+    "barra": {
+      "tipo": "barra",
+      "posicion": [
+        0,
+        0.4,
+        0.165
+      ],
+      "agarre": 0.3,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          0.319187,
+          -0.630967,
+          0.319187,
+          -0.630967
+        ],
+        "d": [
+          0.316498,
+          0.63232,
+          -0.316498,
+          -0.63232
+        ]
+      }
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "espalda"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0.14
+        ],
+        "orientacion": {
+          "inclinacion": -37
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 5
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.4,
+            0.165
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.2,
+            0.6
+          ],
+          "cierre": 0.85
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.104,
+            0.51
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.515,
+          0.25
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": 18
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.68,
+            0.31
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.2,
+            0.6
+          ],
+          "cierre": 0.85
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.104,
+            0.51
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0.14
+        ],
+        "orientacion": {
+          "inclinacion": -37
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 5
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.4,
+            0.165
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.2,
+            0.6
+          ],
+          "cierre": 0.85
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.104,
+            0.51
+          ],
+          "rodilla_hacia": [
+            0.15,
+            1,
+            0.3
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    }
+  ],
+  "$comment_banco": "El banco va ATRAVESADO: `ancho` es X y `largo` es Z, así que 1,2 m de ancho y 30 cm de largo lo ponen perpendicular al cuerpo, con el borde delantero en z=-0.21. Las escápulas apoyan en ese borde; la cadera queda fuera del banco durante todo el ciclo, que es lo que es un hip thrust.",
+  "$comment_giro": "EL HIP THRUST ES UN GIRO ALREDEDOR DE LAS ESCÁPULAS. Las dos poses salen de girar la pelvis alrededor del punto donde la espalda toca el borde: arriba, tronco horizontal (inclinación -90) con la pelvis a la altura del hombro; abajo, 53° menos y la pelvis 38 cm más baja. Escrita sin ese giro —bajando la cadera y poco más—, la espalda y los codos se metían hasta 11 cm en el acolchado.",
+  "$comment_codos": "Los codos hacia fuera y hacia delante ([1, -0.2, 0.6]) y no hacia abajo: con el polo hacia el suelo, abajo el codo se clavaba en el banco, que ocupa 60 cm a cada lado.",
+  "$comment_pies": "Los pies a 51 cm y no a 66: más lejos, abajo la espinilla se tumbaba hacia atrás y el tobillo pedía 60° de flexión plantar, diez más de lo que da. A 51 cm arriba la espinilla queda un poco adelantada respecto al tobillo, casi vertical, y abajo el tobillo va a 48°.",
+  "$comment_barra": "La barra va en el pliegue de la cadera, a 1-2 cm de la piel: medido sobre el maniquí posado, no a ojo. Abajo el eje queda a 40 cm y los discos no llegan al suelo por 17 cm: bajar más la cadera tumba la espinilla y saca el tobillo de rango."
+}

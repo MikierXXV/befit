@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Dumbbell sumo squat",
   "resumen": "Feet very wide, toes out and a dumbbell hanging between the legs. The wider stance tends to give the glutes a little more work; for the adductors, the effect is doubtful.",
+  "movimiento_id": "sentadilla-sumo-mancuerna",
   "ejecucion": [
     "Set your feet well wider than your shoulders, toes turned out.",
     "Pick the dumbbell up from the floor or a bench with a straight back and hold it with both hands by one end, hanging between your legs with straight arms.",

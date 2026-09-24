@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Barbell hip thrust",
   "resumen": "Upper back on a bench and the bar over the hips: the pelvis rises until the torso lines up with the thighs. It is one of the exercises that activate the gluteus maximus the most.",
+  "movimiento_id": "hip-thrust",
   "ejecucion": [
     "Sit on the floor with your back against the edge of a bench just below your shoulder blades, and the bar over the crease of your hips, ideally with a pad.",
     "Hold the bar with both hands, outside your hips, so it does not roll. With heavy loads, roll it over your legs while seated.",

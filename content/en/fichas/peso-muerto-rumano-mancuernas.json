@@ -3,10 +3,11 @@
   "grupo_id": "bisagra-cadera",
   "orden": 9,
   "nombre": "Dumbbell Romanian deadlift",
-  "resumen": "The same movement as the barbell Romanian deadlift, with a dumbbell in each hand: the hips go back, the knees barely bend and the dumbbells travel down in front of the legs.",
+  "resumen": "The same movement as the barbell Romanian deadlift, with a dumbbell in each hand: the hips go back, the knees barely bend and the dumbbells travel down beside the legs.",
+  "movimiento_id": "peso-muerto-rumano-mancuernas",
   "ejecucion": [
-    "Stand with a dumbbell in each hand in front of your thighs and your feet hip-width apart.",
-    "Push your hips back with your knees almost fixed and let the dumbbells travel down close to your legs.",
+    "Stand with a dumbbell in each hand at the sides of your thighs, palms facing in, and your feet hip-width apart.",
+    "Push your hips back with your knees almost fixed and let the dumbbells travel down beside your legs.",
     "Go down while your back stays flat; when it starts to round, that is the end of your range.",
     "Come back up by driving your hips forward until you are standing, without leaning back."
   ],

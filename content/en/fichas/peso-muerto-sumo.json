@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Sumo deadlift",
   "resumen": "A deadlift with the feet very wide and the hands inside the legs. The torso stays more upright and the knees do more work than in the conventional style.",
+  "movimiento_id": "peso-muerto-sumo",
   "ejecucion": [
     "Set your feet well wider than your shoulders, toes turned out, with the bar over the middle of your foot.",
     "Lower your hips and grip the bar inside your legs, with straight arms hanging vertically.",

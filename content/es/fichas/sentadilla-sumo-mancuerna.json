@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Sentadilla sumo con mancuerna",
   "resumen": "Los pies muy abiertos, las puntas hacia fuera y una mancuerna colgando entre las piernas. Abrir la postura suele dar algo más de trabajo al glúteo; en los aductores, el efecto es dudoso.",
+  "movimiento_id": "sentadilla-sumo-mancuerna",
   "ejecucion": [
     "Abre los pies bastante más que los hombros, con las puntas hacia fuera.",
     "Coge la mancuerna del suelo o de un banco con la espalda recta y sujétala con las dos manos por un extremo, colgando entre las piernas con los brazos estirados.",
