@@ -3,12 +3,14 @@
   "grupo_id": "empuje-horizontal",
   "orden": 8,
   "nombre": "Close-grip bench press",
-  "resumen": "The bench press with the hands shoulder-width apart or slightly closer. A closer grip shifts part of the work from the chest to the triceps.",
+  "resumen": "The bench press with the hands shoulder-width apart or slightly closer. A closer grip shifts some of the work towards the triceps, especially compared with a wide grip.",
   "ejecucion": [
-    "Lie on the bench with your eyes under the bar and grip it with your hands shoulder-width apart.",
+    "Set the safety pins at chest height, or have someone spot you: getting stuck under the bar is the serious accident in this lift.",
+    "Lie on the bench with your eyes under the bar and grip it with your hands shoulder-width apart and your wrists straight.",
     "Unrack the bar and hold it over your shoulders, arms straight.",
     "Lower the bar towards your lower chest, with your elbows tucked in rather than flared.",
-    "Press the bar up until your arms are straight, without lifting your back off the bench."
+    "Press the bar up until your arms are straight, without lifting your back off the bench.",
+    "When the set is done, bring the bar back to the rack and make sure it is resting before you let go."
   ],
   "material": [
     "barra",
@@ -25,10 +27,10 @@
     "sinergista": [],
     "estabilizador": [
       "serrato",
-      "antebrazo"
+      "biceps"
     ]
   },
-  "matices": "In the studies, a closer grip raises triceps activity and slightly lowers that of the sternal part of the chest, and less weight is lifted. The differences between grips are small; one of the studies concludes that the choice should depend more on the goal than on trying to isolate a muscle.",
+  "matices": "A study with static holds found more triceps and slightly less sternal chest activity with a closer grip; another, lifting 6-RM loads, found less triceps only with a wide grip and no difference in the chest. In both, less weight was lifted with a close grip. The first concludes that grip should depend on the positions of your own sport rather than on trying to isolate a muscle.",
   "fuentes": [
     {
       "titulo": "The influence of grip width and forearm pronation/supination on upper-body myoelectric activity during the flat bench press",

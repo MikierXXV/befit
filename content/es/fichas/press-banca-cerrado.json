@@ -3,12 +3,14 @@
   "grupo_id": "empuje-horizontal",
   "orden": 8,
   "nombre": "Press de banca con agarre cerrado",
-  "resumen": "El press de banca con las manos a la anchura de los hombros o algo menos. Cerrar el agarre pasa parte del trabajo del pectoral al tríceps.",
+  "resumen": "El press de banca con las manos a la anchura de los hombros o algo menos. Cerrar el agarre desplaza algo de trabajo hacia el tríceps, sobre todo si se compara con un agarre ancho.",
   "ejecucion": [
-    "Túmbate en el banco con los ojos bajo la barra y agárrala con las manos a la anchura de los hombros.",
+    "Ajusta los topes de seguridad a la altura del pecho, o pide a alguien que te vigile: quedarse debajo de la barra es el accidente grave de este ejercicio.",
+    "Túmbate en el banco con los ojos bajo la barra y agárrala con las manos a la anchura de los hombros y las muñecas rectas.",
     "Saca la barra del soporte y colócala sobre los hombros, con los brazos estirados.",
     "Baja la barra hacia la parte baja del pecho, con los codos pegados al cuerpo en vez de abiertos.",
-    "Empuja la barra hacia arriba hasta estirar los brazos, sin despegar la espalda del banco."
+    "Empuja la barra hacia arriba hasta estirar los brazos, sin despegar la espalda del banco.",
+    "Al terminar la serie, lleva la barra hasta el soporte y asegúrate de que apoya antes de soltarla."
   ],
   "material": [
     "barra",
@@ -25,10 +27,10 @@
     "sinergista": [],
     "estabilizador": [
       "serrato",
-      "antebrazo"
+      "biceps"
     ]
   },
-  "matices": "En los estudios, cerrar el agarre sube la actividad del tríceps y baja algo la de la porción esternal del pectoral, y con él se levanta menos peso. Las diferencias entre agarres son pequeñas; uno de los estudios concluye que la elección debería depender más de lo que se busque que de intentar aislar un músculo.",
+  "matices": "Un estudio con contracciones estáticas vio más tríceps y algo menos pectoral esternal al cerrar el agarre; otro, levantando cargas de 6 RM, solo vio menos tríceps con el agarre ancho y ninguna diferencia en el pectoral. Con agarre cerrado se levanta menos peso en ambos. El primero concluye que el agarre debería depender de las posiciones del propio deporte más que de intentar aislar un músculo.",
   "fuentes": [
     {
       "titulo": "The influence of grip width and forearm pronation/supination on upper-body myoelectric activity during the flat bench press",

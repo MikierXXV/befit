@@ -30,8 +30,13 @@
       "erectores"
     ]
   },
-  "matices": "A push-up is not a fixed load: at the top you hold around 64 % of body weight, dropping to 49 % from the knees or 41 % with the hands elevated. That is why \"push-up\" says nothing about how heavy it is until you say how.",
+  "matices": "A push-up is not a fixed load: in the study that measured several, peak force was around 64 % of body weight in the regular one, dropping to 49 % from the knees or 41 % with the hands elevated. That is why “push-up” says nothing about how heavy it is until you say how.",
   "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
     {
       "titulo": "The Effect of Position on the Percentage of Body Mass Supported During Traditional and Modified Push-up Variants",
       "autor": "Suprak, Dawes and Stephenson, J Strength Cond Res, 2011",

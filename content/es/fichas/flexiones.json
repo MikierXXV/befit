@@ -30,8 +30,13 @@
       "erectores"
     ]
   },
-  "matices": "Una flexión no es una carga fija: en la posición alta se sostiene en torno al 64 % del peso corporal, y baja al 49 % apoyando las rodillas o al 41 % con las manos elevadas. Por eso \"flexiones\" no dice cuánto pesa hasta que se dice cómo.",
+  "matices": "Una flexión no es una carga fija: en el estudio que midió varias, el pico de fuerza rondó el 64 % del peso corporal en la normal, y bajó al 49 % apoyando las rodillas o al 41 % con las manos elevadas. Por eso «flexiones» no dice cuánto pesa hasta que se dice cómo.",
   "fuentes": [
+    {
+      "titulo": "Kinetic analysis of several variations of push-ups",
+      "autor": "Ebben et al., J Strength Cond Res, 2011",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
+    },
     {
       "titulo": "The Effect of Position on the Percentage of Body Mass Supported During Traditional and Modified Push-up Variants",
       "autor": "Suprak, Dawes y Stephenson, J Strength Cond Res, 2011",

@@ -3,7 +3,7 @@
   "grupo_id": "extension-codo",
   "orden": 5,
   "nombre": "Bench dips",
-  "resumen": "Hands on the edge of a bench behind the hips, and the body goes down and up by bending the elbows. A bodyweight triceps exercise that needs only a bench.",
+  "resumen": "Hands on the edge of a bench beside the hips, and the body goes down and up by bending the elbows. A bodyweight triceps exercise that needs only a bench.",
   "ejecucion": [
     "Sit on the edge of a bench and put your hands beside your hips, fingers pointing forward.",
     "Move your hips forward off the bench, with your legs straight, or knees bent to make it easier.",
@@ -24,11 +24,16 @@
     ],
     "estabilizador": [
       "abdomen",
-      "trapecio_medio"
+      "serrato"
     ]
   },
-  "matices": "Few studies have measured bench dips. Going very deep takes the shoulder into wide extension under load, which is why the usual advice is not to go past upper arms parallel to the floor, and to choose another triceps exercise if the shoulder hurts; this is advice from practice, not a measured result.",
+  "matices": "A study comparing bench, bar and ring dips found that on the bench the work falls mainly on the triceps, but the shoulder reaches its maximum extension, more than in the other variations. That is why the advice is not to go past upper arms parallel to the floor, and to choose another triceps exercise if the shoulder hurts.",
   "fuentes": [
+    {
+      "titulo": "Bench, Bar, and Ring Dips: Do Kinematics and Muscle Activity Differ?",
+      "autor": "McKenzie et al., Int J Environ Res Public Health, 2022",
+      "url": "https://doi.org/10.3390/ijerph192013211"
+    },
     {
       "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"

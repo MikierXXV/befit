@@ -29,17 +29,12 @@
       "erectores"
     ]
   },
-  "matices": "El estudio que midió las fuerzas en varias flexiones encontró que subir los pies a una caja carga más los brazos que la flexión normal, y que cuanto más alta la caja, más carga. Se midió con cajas de 30 y 60 cm; un banco queda entre las dos.",
+  "matices": "El estudio que midió las fuerzas en varias flexiones encontró que subir los pies a una caja carga más los brazos que la flexión normal. Se midió con cajas de 30 y 60 cm; un banco queda entre las dos.",
   "fuentes": [
     {
       "titulo": "Kinetic analysis of several variations of push-ups",
       "autor": "Ebben et al., J Strength Cond Res, 2011",
       "url": "https://pubmed.ncbi.nlm.nih.gov/21873902/"
-    },
-    {
-      "titulo": "The effect of position on the percentage of body mass supported during traditional and modified push-up variants",
-      "autor": "Suprak et al., J Strength Cond Res, 2011",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/20179649/"
     }
   ]
 }

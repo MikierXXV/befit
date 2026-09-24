@@ -3,7 +3,7 @@
   "grupo_id": "extension-codo",
   "orden": 5,
   "nombre": "Fondos en banco",
-  "resumen": "Las manos apoyadas en el borde de un banco, detrás de la cadera, y el cuerpo sube y baja doblando los codos. Un ejercicio de tríceps con el propio peso y solo un banco.",
+  "resumen": "Las manos apoyadas en el borde de un banco, a los lados de la cadera, y el cuerpo sube y baja doblando los codos. Un ejercicio de tríceps con el propio peso y solo un banco.",
   "ejecucion": [
     "Siéntate en el borde de un banco y apoya las manos a los lados de la cadera, con los dedos hacia delante.",
     "Adelanta la cadera hasta sacarla del banco, con las piernas estiradas o las rodillas dobladas si te cuesta más.",
@@ -24,11 +24,16 @@
     ],
     "estabilizador": [
       "abdomen",
-      "trapecio_medio"
+      "serrato"
     ]
   },
-  "matices": "Hay pocos estudios que midan los fondos en banco. Bajar mucho lleva el hombro a una extensión amplia con carga, y por eso se suele recomendar no pasar de los brazos paralelos al suelo y elegir otro ejercicio de tríceps si molesta el hombro; es una recomendación de la práctica, no un resultado medido.",
+  "matices": "Un estudio que comparó fondos en banco, en paralelas y en anillas vio que en el banco el trabajo recae sobre todo en el tríceps, pero que el hombro llega a su extensión máxima, más que en las otras variantes. Por eso se recomienda no pasar de los brazos paralelos al suelo, y elegir otro ejercicio de tríceps si molesta el hombro.",
   "fuentes": [
+    {
+      "titulo": "Bench, Bar, and Ring Dips: Do Kinematics and Muscle Activity Differ?",
+      "autor": "McKenzie et al., Int J Environ Res Public Health, 2022",
+      "url": "https://doi.org/10.3390/ijerph192013211"
+    },
     {
       "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
       "autor": "National Strength and Conditioning Association"
