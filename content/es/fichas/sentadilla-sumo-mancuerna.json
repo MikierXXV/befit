@@ -3,10 +3,10 @@
   "grupo_id": "sentadilla",
   "orden": 6,
   "nombre": "Sentadilla sumo con mancuerna",
-  "resumen": "Los pies muy abiertos, las puntas hacia fuera y una mancuerna colgando entre las piernas. Abrir la postura hace trabajar más a los aductores y al glúteo.",
+  "resumen": "Los pies muy abiertos, las puntas hacia fuera y una mancuerna colgando entre las piernas. Abrir la postura suele dar algo más de trabajo al glúteo; en los aductores, el efecto es dudoso.",
   "ejecucion": [
     "Abre los pies bastante más que los hombros, con las puntas hacia fuera.",
-    "Sujeta una mancuerna con las dos manos por un extremo, colgando entre las piernas con los brazos estirados.",
+    "Coge la mancuerna del suelo o de un banco con la espalda recta y sujétala con las dos manos por un extremo, colgando entre las piernas con los brazos estirados.",
     "Baja con el tronco erguido, empujando las rodillas hacia fuera en la línea de los pies.",
     "Baja hasta donde mantengas la espalda recta, sin que la mancuerna toque el suelo.",
     "Sube empujando el suelo hasta quedar de pie."
@@ -15,7 +15,7 @@
     "mancuerna"
   ],
   "nivel": "inicial",
-  "descanso": 90,
+  "descanso": 120,
   "musculos": {
     "principal": [
       "cuadriceps",
@@ -32,7 +32,7 @@
       "antebrazo"
     ]
   },
-  "matices": "El estudio que comparó anchuras de postura en la sentadilla encontró más actividad de glúteo mayor y aductor largo con los pies más abiertos, y cuádriceps parecidos. Se hizo con barra y carga moderada; con una mancuerna el principio es el mismo, pero no se ha medido igual.",
+  "matices": "En un estudio con nueve levantadores, la postura ancha subió la actividad del glúteo mayor según la carga, y la del aductor largo solo en la subida. Una revisión posterior no ve un efecto global de la anchura sobre los aductores. Se midió con barra; con una mancuerna el principio es el mismo, pero no se ha medido igual.",
   "fuentes": [
     {
       "titulo": "Stance width and bar load effects on leg muscle activity during the parallel squat",

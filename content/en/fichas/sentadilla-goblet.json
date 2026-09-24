@@ -15,7 +15,7 @@
     "mancuerna"
   ],
   "nivel": "inicial",
-  "descanso": 90,
+  "descanso": 120,
   "musculos": {
     "principal": [
       "cuadriceps",
@@ -23,6 +23,7 @@
     ],
     "sinergista": [
       "aductores",
+      "isquiotibiales",
       "soleo"
     ],
     "estabilizador": [
@@ -32,7 +33,7 @@
       "deltoides_anterior"
     ]
   },
-  "matices": "That the load in front helps keep the torso more upright is the usual reason for teaching it, but few studies have measured it directly against other variations. With heavy loads, holding the dumbbell is usually the limit, not the legs.",
+  "matices": "That the load in front helps keep the torso more upright is the usual reason for teaching it, and the cited review supports it, but few studies have measured it against other variations. In practice, with heavy loads the limit is often holding the dumbbell, not the legs.",
   "fuentes": [
     {
       "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",

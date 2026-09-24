@@ -7,7 +7,7 @@
   "ejecucion": [
     "Stand with a dumbbell in each hand in front of your thighs and your feet hip-width apart.",
     "Push your hips back with your knees almost fixed and let the dumbbells travel down close to your legs.",
-    "Go down while your back stays flat; when it starts to round, that is your range.",
+    "Go down while your back stays flat; when it starts to round, that is the end of your range.",
     "Come back up by driving your hips forward until you are standing, without leaning back."
   ],
   "material": [
@@ -24,12 +24,13 @@
       "erectores"
     ],
     "estabilizador": [
+      "dorsal",
       "trapecio_medio",
       "antebrazo",
       "abdomen"
     ]
   },
-  "matices": "With dumbbells the load is usually lighter than with a barbell and each hand works on its own, which makes the movement easier to learn. Activation studies have mostly used a barbell, so the muscle roles here come from the movement, not from a dumbbell measurement.",
+  "matices": "With dumbbells the load is usually lighter than with a barbell, which makes the movement easier to learn; on the other hand, each hand moves on its own and they have to be coordinated. Activation studies have mostly used a barbell: in the barbell Romanian deadlift, the cited review finds more hamstring than erector activity.",
   "fuentes": [
     {
       "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",

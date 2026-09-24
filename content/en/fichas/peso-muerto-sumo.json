@@ -8,7 +8,7 @@
     "Set your feet well wider than your shoulders, toes turned out, with the bar over the middle of your foot.",
     "Lower your hips and grip the bar inside your legs, with straight arms hanging vertically.",
     "Push your knees out in line with your feet and brace your back before pulling.",
-    "Stand up by pushing the floor apart and bringing your hips to the bar, chest high.",
+    "Stand up by spreading the floor with your feet and bringing your hips to the bar, chest high.",
     "At the top, stand with your hips extended. Lower it under control along the same path."
   ],
   "material": [
@@ -18,12 +18,12 @@
   "musculos": {
     "principal": [
       "gluteo_mayor",
-      "cuadriceps",
-      "aductores"
+      "isquiotibiales",
+      "erectores",
+      "cuadriceps"
     ],
     "sinergista": [
-      "isquiotibiales",
-      "erectores"
+      "aductores"
     ],
     "estabilizador": [
       "trapecio_medio",
@@ -32,12 +32,17 @@
       "abdomen"
     ]
   },
-  "matices": "The study comparing both styles in lifters found more vastus and tibialis activity in the sumo, and more calf activity in the conventional, with similar hamstrings and erectors. Which one lets you lift more depends on each body’s proportions and hip mobility; there is no single best choice.",
+  "matices": "The study comparing both styles, in 13 college American football players using 12-RM loads, found more vastus medialis, vastus lateralis and tibialis activity in the sumo, and more calf activity in the conventional; it found no differences in glutes, adductors, hamstrings or erectors. The roles here describe the movement. Which style suits each person is usually put down to body proportions and hip mobility, with little direct evidence.",
   "fuentes": [
     {
       "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
       "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
       "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "A three-dimensional biomechanical analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2000",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10912892/"
     },
     {
       "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",

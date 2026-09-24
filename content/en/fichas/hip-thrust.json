@@ -5,7 +5,8 @@
   "nombre": "Barbell hip thrust",
   "resumen": "Upper back on a bench and the bar over the hips: the pelvis rises until the torso lines up with the thighs. It is one of the exercises that activate the gluteus maximus the most.",
   "ejecucion": [
-    "Sit on the floor with your upper back against the edge of a bench and the bar over your hips, ideally with a pad.",
+    "Sit on the floor with your back against the edge of a bench just below your shoulder blades, and the bar over the crease of your hips, ideally with a pad.",
+    "Hold the bar with both hands, outside your hips, so it does not roll. With heavy loads, roll it over your legs while seated.",
     "Put your feet on the floor hip-width apart, with your knees bent.",
     "Drive through your heels and raise your hips until torso and thighs are in line, with your shins almost vertical at the top.",
     "Squeeze your glutes at the top without arching your lower back: tucking your chin slightly helps.",
@@ -23,15 +24,16 @@
     ],
     "sinergista": [
       "isquiotibiales",
+      "erectores",
       "cuadriceps"
     ],
     "estabilizador": [
       "gluteo_medio",
-      "abdomen",
-      "erectores"
+      "aductores",
+      "abdomen"
     ]
   },
-  "matices": "The review finds more gluteus maximus activity in the hip thrust than in the squat in several studies. But more activation does not necessarily mean more growth, and studies comparing exercises over weeks are few and show no clear advantage.",
+  "matices": "The review finds more gluteus maximus activity in the hip thrust than in the squat in several studies. But more activation is not more growth: in a nine-week trial, training with the hip thrust or the squat gave similar glute hypertrophy, and the squat also grew the adductors and quadriceps.",
   "fuentes": [
     {
       "titulo": "Barbell Hip Thrust, Muscular Activation and Performance: A Systematic Review",
@@ -42,6 +44,11 @@
       "titulo": "A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis Electromyographic Activity in the Back Squat and Barbell Hip Thrust Exercises",
       "autor": "Contreras et al., J Appl Biomech, 2015",
       "url": "https://pubmed.ncbi.nlm.nih.gov/26214739/"
+    },
+    {
+      "titulo": "Hip thrust and back squat training elicit similar gluteus muscle hypertrophy and transfer similarly to the deadlift",
+      "autor": "Plotkin et al., Front Physiol, 2023",
+      "url": "https://doi.org/10.3389/fphys.2023.1279170"
     }
   ]
 }

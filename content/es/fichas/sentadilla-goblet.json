@@ -15,7 +15,7 @@
     "mancuerna"
   ],
   "nivel": "inicial",
-  "descanso": 90,
+  "descanso": 120,
   "musculos": {
     "principal": [
       "cuadriceps",
@@ -23,6 +23,7 @@
     ],
     "sinergista": [
       "aductores",
+      "isquiotibiales",
       "soleo"
     ],
     "estabilizador": [
@@ -32,7 +33,7 @@
       "deltoides_anterior"
     ]
   },
-  "matices": "Que la carga delante ayude a mantener el tronco más vertical es la razón habitual para enseñarla, pero hay pocos estudios que la midan directamente frente a otras variantes. Con cargas altas, lo que limita suele ser sujetar la mancuerna, no las piernas.",
+  "matices": "Que la carga delante ayude a mantener el tronco más vertical es la razón habitual para enseñarla, y la revisión citada lo recoge, pero hay pocos estudios que la midan frente a otras variantes. En la práctica, con cargas altas lo que limita a menudo es sujetar la mancuerna, no las piernas.",
   "fuentes": [
     {
       "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",

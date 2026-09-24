@@ -18,12 +18,12 @@
   "musculos": {
     "principal": [
       "gluteo_mayor",
-      "cuadriceps",
-      "aductores"
+      "isquiotibiales",
+      "erectores",
+      "cuadriceps"
     ],
     "sinergista": [
-      "isquiotibiales",
-      "erectores"
+      "aductores"
     ],
     "estabilizador": [
       "trapecio_medio",
@@ -32,12 +32,17 @@
       "abdomen"
     ]
   },
-  "matices": "El estudio que comparó las dos variantes en levantadores encontró en el sumo más actividad de vasto y tibial, y en el convencional más de gemelo, con isquiotibiales y erectores parecidos. Cuál permite levantar más depende de las proporciones de cada cuerpo y de la movilidad de cadera, no hay una mejor para todos.",
+  "matices": "El estudio que comparó las dos variantes, en 13 jugadores de fútbol americano universitario con cargas de 12 RM, encontró en el sumo más actividad de vasto medial, vasto lateral y tibial, y en el convencional más de gemelo; no halló diferencias en glúteo, aductores, isquiotibiales ni erectores. Los roles de aquí describen el gesto. Que a cada persona le convenga más una u otra se suele atribuir a sus proporciones y a la movilidad de cadera, con poca evidencia directa.",
   "fuentes": [
     {
       "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
       "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
       "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "A three-dimensional biomechanical analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2000",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10912892/"
     },
     {
       "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",

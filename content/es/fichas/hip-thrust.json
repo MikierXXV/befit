@@ -5,7 +5,8 @@
   "nombre": "Hip thrust con barra",
   "resumen": "La espalda apoyada en un banco y la barra sobre la cadera: se sube la pelvis hasta dejar el tronco en línea con los muslos. Es de los ejercicios que más activan el glúteo mayor.",
   "ejecucion": [
-    "Siéntate en el suelo con la parte alta de la espalda contra el borde de un banco y la barra sobre la cadera, mejor con una almohadilla.",
+    "Siéntate en el suelo con la espalda apoyada en el borde de un banco justo por debajo de los omóplatos, y la barra sobre el pliegue de la cadera, mejor con una almohadilla.",
+    "Sujeta la barra con las dos manos, por fuera de la cadera, para que no ruede. Con mucho peso, hazla rodar sobre las piernas estando sentado.",
     "Apoya los pies en el suelo a la anchura de la cadera, con las rodillas dobladas.",
     "Empuja con los talones y sube la cadera hasta que tronco y muslos queden en línea, con las espinillas casi verticales arriba.",
     "Aprieta el glúteo arriba sin arquear la zona lumbar: la barbilla un poco recogida ayuda a no hacerlo.",
@@ -23,15 +24,16 @@
     ],
     "sinergista": [
       "isquiotibiales",
+      "erectores",
       "cuadriceps"
     ],
     "estabilizador": [
       "gluteo_medio",
-      "abdomen",
-      "erectores"
+      "aductores",
+      "abdomen"
     ]
   },
-  "matices": "La revisión encuentra en el hip thrust más actividad del glúteo mayor que en la sentadilla en varios estudios. Pero más activación no significa necesariamente más crecimiento, y los estudios que comparan ejercicios durante semanas son pocos y no dan una ventaja clara.",
+  "matices": "La revisión encuentra en el hip thrust más actividad del glúteo mayor que en la sentadilla en varios estudios. Pero más activación no es más crecimiento: en un ensayo de nueve semanas, entrenar con hip thrust o con sentadilla dio una hipertrofia del glúteo parecida, y la sentadilla hizo crecer además aductores y cuádriceps.",
   "fuentes": [
     {
       "titulo": "Barbell Hip Thrust, Muscular Activation and Performance: A Systematic Review",
@@ -42,6 +44,11 @@
       "titulo": "A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis Electromyographic Activity in the Back Squat and Barbell Hip Thrust Exercises",
       "autor": "Contreras et al., J Appl Biomech, 2015",
       "url": "https://pubmed.ncbi.nlm.nih.gov/26214739/"
+    },
+    {
+      "titulo": "Hip thrust and back squat training elicit similar gluteus muscle hypertrophy and transfer similarly to the deadlift",
+      "autor": "Plotkin et al., Front Physiol, 2023",
+      "url": "https://doi.org/10.3389/fphys.2023.1279170"
     }
   ]
 }

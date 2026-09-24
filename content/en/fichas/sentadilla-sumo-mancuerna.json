@@ -3,10 +3,10 @@
   "grupo_id": "sentadilla",
   "orden": 6,
   "nombre": "Dumbbell sumo squat",
-  "resumen": "Feet very wide, toes out and a dumbbell hanging between the legs. The wider stance gets the adductors and glutes working harder.",
+  "resumen": "Feet very wide, toes out and a dumbbell hanging between the legs. The wider stance tends to give the glutes a little more work; for the adductors, the effect is doubtful.",
   "ejecucion": [
     "Set your feet well wider than your shoulders, toes turned out.",
-    "Hold a dumbbell with both hands by one end, hanging between your legs with straight arms.",
+    "Pick the dumbbell up from the floor or a bench with a straight back and hold it with both hands by one end, hanging between your legs with straight arms.",
     "Squat down with an upright torso, pushing your knees out in line with your feet.",
     "Go down as far as you can keep your back straight, without the dumbbell touching the floor.",
     "Stand up by pushing the floor away."
@@ -15,7 +15,7 @@
     "mancuerna"
   ],
   "nivel": "inicial",
-  "descanso": 90,
+  "descanso": 120,
   "musculos": {
     "principal": [
       "cuadriceps",
@@ -32,7 +32,7 @@
       "antebrazo"
     ]
   },
-  "matices": "The study comparing stance widths in the squat found more gluteus maximus and adductor longus activity with a wider stance, and similar quadriceps. It used a barbell and moderate loads; with a dumbbell the principle is the same, but it has not been measured in the same way.",
+  "matices": "In a study of nine lifters, the wide stance raised gluteus maximus activity depending on the load, and adductor longus activity only on the way up. A later review sees no overall effect of stance width on the adductors. It was measured with a barbell; with a dumbbell the principle is the same, but it has not been measured in the same way.",
   "fuentes": [
     {
       "titulo": "Stance width and bar load effects on leg muscle activity during the parallel squat",
