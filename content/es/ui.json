@@ -193,7 +193,7 @@
     "importar_titulo": "Recuperar una copia",
     "importar_texto": "Elige un fichero de copia de befit. Se suma a lo que ya tienes aquí: no se borra nada.",
     "importar": "Elegir fichero",
-    "importado": "Copia recuperada. Favoritos nuevos: {favoritos}. Series nuevas: {series}.",
+    "importado": "Copia recuperada. Favoritos nuevos: {favoritos}. Series nuevas: {series}. Rutinas nuevas: {rutinas}.",
     "error_formato": "Ese fichero no es una copia de befit.",
     "error_version": "Esa copia es de una versión más nueva de befit. Actualiza la app y vuelve a probar.",
     "borrar_titulo": "Empezar de cero",
@@ -201,7 +201,8 @@
     "borrar": "Borrar mis datos",
     "borrar_si": "Sí, borrarlo todo",
     "cancelar": "Cancelar",
-    "borrado": "Datos borrados."
+    "borrado": "Datos borrados.",
+    "rutinas": "Rutinas"
   },
   "crono": {
     "empezar": "Cronometrar",
@@ -219,6 +220,63 @@
     "menos_largo": "Quitar 15 segundos al descanso",
     "mas_largo": "Añadir 15 segundos al descanso"
   },
+  "rutinas": {
+    "titulo": "Rutinas",
+    "entradilla": "Para seguir un plan en vez de improvisar. Las de inicio llevan fuentes; las tuyas las montas desde cero o copiando una.",
+    "tuyas": "Tus rutinas",
+    "sin_propias": "Aún no tienes rutinas. Copia una de las de abajo para adaptarla, o empieza una desde cero.",
+    "nueva": "Nueva rutina",
+    "de_inicio": "Para empezar",
+    "dias": {
+      "una": "{n} día",
+      "varias": "{n} días"
+    },
+    "ejercicios": {
+      "una": "{n} ejercicio",
+      "varias": "{n} ejercicios"
+    },
+    "por_semana": {
+      "una": "{n} día por semana",
+      "varias": "{n} días por semana"
+    },
+    "nombre_nueva": "Mi rutina",
+    "dia_n": "Día {n}",
+    "empezar": "Empezar hoy",
+    "dia_vacio": "Este día aún no tiene ejercicios.",
+    "frecuencia": "Frecuencia",
+    "sesiones": "Sesiones",
+    "copiar": "Copiar y adaptar",
+    "editar": "Editar",
+    "compartir": "Compartir",
+    "borrar": "Borrar",
+    "borrar_si": "Sí, borrar la rutina",
+    "todas": "Todas las rutinas",
+    "copiado": "Enlace copiado.",
+    "no_copiado": "No se ha podido copiar el enlace.",
+    "nombre_copia": "{nombre} (mía)",
+    "compartida_entradilla": "Una rutina que han compartido contigo.",
+    "compartida_texto": "Guárdala para empezarla o adaptarla. Se queda solo en este dispositivo.",
+    "guardar_compartida": "Guardar en mis rutinas",
+    "editando": "Editar: {nombre}",
+    "nombre": "Nombre de la rutina",
+    "nombre_dia": "Nombre del día",
+    "quitar_dia": "Quitar este día",
+    "subir": "Subir {nombre}",
+    "bajar": "Bajar {nombre}",
+    "quitar": "Quitar {nombre}",
+    "series": "Series",
+    "minimo": "Mín. {unidad}",
+    "maximo": "Máx. {unidad}",
+    "unidad_reps": "rep.",
+    "unidad_tiempo": "s",
+    "cambiar": "Cambiar por otro del mismo patrón",
+    "cambiar_elige": "Elige una alternativa",
+    "anadir_dia": "Añadir día",
+    "listo": "Listo",
+    "objetivo": "{series} × {rango}",
+    "rango_reps": "{rango} rep.",
+    "rango_tiempo": "{rango} s"
+  },
   "hoy": {
     "titulo": "Hoy",
     "anadir": "Añadir ejercicio",
@@ -232,7 +290,11 @@
       "varias": "{n} series"
     },
     "vacio": "Aún no has anotado nada hoy. Elige un ejercicio para empezar: cada serie que anotes pone en marcha el descanso.",
-    "desde_favoritos": "O empieza por uno de tus favoritos:"
+    "desde_favoritos": "O empieza por uno de tus favoritos:",
+    "hechas": "{hechas}/{total} series",
+    "dejar_plan": "Dejar el plan",
+    "objetivo": "Objetivo: {objetivo}",
+    "seguir_rutina": "Seguir una rutina"
   },
   "pie": {
     "derechos": "© {anio} befit",

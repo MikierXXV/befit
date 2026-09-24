@@ -1,0 +1,103 @@
+{
+  "id": "cuerpo-completo",
+  "nombre": "Two-day full body",
+  "resumen": "Two workouts, A and B, alternated three days a week. Every session trains legs, pushing and pulling, so each muscle group is worked about twice a week.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Day A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-barra",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "press-banca",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "remo-barra",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "puente-gluteo",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "plancha-frontal",
+          "series": 3,
+          "min": 30,
+          "max": 45
+        }
+      ]
+    },
+    {
+      "nombre": "Day B",
+      "ejercicios": [
+        {
+          "ejercicio": "peso-muerto-rumano",
+          "series": 3,
+          "min": 8,
+          "max": 10
+        },
+        {
+          "ejercicio": "press-militar",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "jalon-pecho",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "zancada-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-mancuernas",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "jalon-triceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "Three days a week alternating A and B gives an A-B-A week followed by a B-A-B week. It is the simplest way to train each muscle twice a week, which reviews link to more growth than once a week; between two and three times, the difference is no longer clear. The rep ranges are a guide: muscle growth happens across a wide range of loads as long as sets are taken close to failure.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every and Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}

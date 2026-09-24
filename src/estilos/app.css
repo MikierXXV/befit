@@ -1002,7 +1002,17 @@ body.con-descanso { padding-bottom: 7.5rem; }
 .ejercicios-hoy a:hover { border-color: var(--borde-interactivo); }
 /* El activo, marcado por borde y peso y no solo por color, que en el sol de una terraza no se ve. */
 .ejercicios-hoy a[aria-current] { border: 2px solid var(--accion); font-weight: var(--peso-semibold); }
-.ejercicios-hoy .cuantas { color: var(--texto-secundario); font-size: var(--t-pequeno); font-weight: var(--peso-regular); font-variant-numeric: tabular-nums; }
+.ejercicios-hoy .cuantas {
+  /* Entero o a la línea de abajo, nunca partido: con el plan, «0/3 series · 8–12 rep.» se partía
+     en tres renglones estrechos al lado de un nombre largo, y no se leía ninguno de los dos. */
+  margin-left: auto;
+  white-space: nowrap;
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+  font-weight: var(--peso-regular);
+  font-variant-numeric: tabular-nums;
+}
+.ejercicios-hoy a { flex-wrap: wrap; row-gap: 0; padding-block: var(--e2); }
 .anadir { display: grid; gap: var(--e1); margin-bottom: var(--e8); font-size: var(--t-pequeno); color: var(--texto-secundario); }
 .anadir select {
   min-height: 44px;
@@ -1021,6 +1031,90 @@ body.con-descanso { padding-bottom: 7.5rem; }
 .activo .figura:empty::before,
 .activo .figura .lienzo { max-height: min(44svh, 440px); }
 .hoy .atajos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e2); }
+
+/* ------------------------------------------------------------------- rutinas -- */
+
+.rutinas { max-width: var(--medida-texto); padding-block: var(--e6) 0; }
+.rutinas > section { margin-bottom: var(--e8); }
+.rutinas h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
+.rutinas .ayuda { color: var(--texto-secundario); }
+.rutinas .fila { display: flex; flex-wrap: wrap; gap: var(--e3); }
+
+.tarjetas-rutina { list-style: none; margin: 0 0 var(--e4); padding: 0; display: grid; gap: var(--e3); }
+.tarjetas-rutina a {
+  display: grid;
+  gap: var(--e1);
+  padding: var(--e4);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-grande);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  text-decoration: none;
+}
+.tarjetas-rutina a:hover { border-color: var(--borde-interactivo); }
+.tarjetas-rutina .nombre { font-weight: var(--peso-semibold); font-size: var(--t-base); }
+.tarjetas-rutina .resumen { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.tarjetas-rutina .detalle { color: var(--texto-secundario); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.06em; }
+
+.acciones-rutina { margin-bottom: var(--e2); }
+.dia { margin-top: var(--e6); }
+.dia-cabeza { display: flex; align-items: end; justify-content: space-between; gap: var(--e3); flex-wrap: wrap; margin-bottom: var(--e3); }
+.dia-cabeza h2 { margin: 0; }
+.objetivos { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--e2); }
+.objetivos li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--e3);
+  padding-bottom: var(--e2);
+  border-bottom: 1px solid var(--separador);
+}
+.objetivos .objetivo { color: var(--texto-secundario); font-size: var(--t-pequeno); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/*
+ * El editor: una tarjeta por ejercicio con sus números debajo del nombre, no al lado. En fila no
+ * cabían en el móvil los tres campos, las flechas y el nombre, y los campos quedaban de 3 cm.
+ */
+.editor { display: grid; gap: var(--e6); }
+.dia-editor { margin: 0; padding: var(--e4); border: 1px solid var(--separador); border-radius: var(--radio-grande); }
+.dia-editor .dia-cabeza .campo { flex: 1 1 14rem; }
+.filas { list-style: none; margin: 0 0 var(--e4); padding: 0; display: grid; gap: var(--e3); }
+.filas > li {
+  display: grid;
+  gap: var(--e3);
+  padding: var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+}
+.fila-cabeza { display: flex; justify-content: space-between; align-items: center; gap: var(--e2); }
+.fila-cabeza .nombre { font-weight: var(--peso-medio); }
+.fila-cabeza .orden { display: flex; gap: var(--e1); }
+.boton:disabled { opacity: 0.35; cursor: default; }
+.numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e3); }
+.campo.cambiar select,
+.dia-editor .anadir select { width: 100%; }
+.dia-editor .anadir { margin-bottom: 0; }
+
+/* El plan de hoy, encima de la lista: qué rutina y qué día se está haciendo. */
+.plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--e3);
+  flex-wrap: wrap;
+  margin-bottom: var(--e4);
+}
+.plan p { margin: 0; }
+.plan .rutina { color: var(--texto-secundario); }
+.ejercicios-hoy a[data-completo] .nombre { color: var(--texto-secundario); }
+.ejercicios-hoy .hecho { margin-right: var(--e2); color: var(--accion); }
+.activo .objetivo { margin: 0 0 var(--e4); color: var(--texto-secundario); }
+
+/* En el móvil, favoritos se queda en la estrella: ver cabecera() en main.ts. */
+@media (max-width: 33.99rem) {
+  .texto-nav { display: none; }
+}
 
 /*
  * Con el dedo, 44 px. Por debajo se falla el toque, y es la medida de las pautas táctiles; con

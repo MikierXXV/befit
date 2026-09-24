@@ -13,6 +13,10 @@
     "fichas": {
       "directorio": "fichas",
       "schema": "ficha.schema.json"
+    },
+    "rutinas": {
+      "directorio": "rutinas",
+      "schema": "rutina.schema.json"
     }
   },
   "$comment_referencias": "Integridad referencial en los dos sentidos: ninguna pieza apunta a una familia que no existe, y ninguna familia se queda sin piezas. Lo segundo también es un error: una familia vacía sale en el recorrido como una parada en blanco.",
@@ -22,6 +26,11 @@
       "campo": "grupo_id",
       "a": "grupos",
       "exigir_uso": true
+    },
+    {
+      "de": "rutinas",
+      "campo": "dias[].ejercicios[].ejercicio",
+      "a": "fichas"
     }
   ],
   "$comment_orden": "El orden dentro de cada familia debe ser 1..n sin huecos ni repetidos. Un hueco no rompe nada visible, y por eso se cuela: el recorrido simplemente salta un número y nadie lo nota hasta que hay que insertar algo en medio.",
@@ -38,6 +47,16 @@
       "nombre": [
         3,
         80
+      ],
+      "resumen": [
+        40,
+        300
+      ]
+    },
+    "rutinas": {
+      "nombre": [
+        3,
+        60
       ],
       "resumen": [
         40,
@@ -65,8 +84,22 @@
       "musculos",
       "medida",
       "descanso"
+    ],
+    "rutinas": [
+      "nivel",
+      "frecuencia",
+      "dias[].ejercicios"
     ]
   },
+  "$comment_rangos": "Rangos que tienen que ir de menor a mayor. El schema comprueba cada número por separado, y un «12-8» pasa campo a campo aunque no signifique nada.",
+  "rangos": [
+    {
+      "coleccion": "rutinas",
+      "ruta": "dias[].ejercicios[]",
+      "min": "min",
+      "max": "max"
+    }
+  ],
   "$comment_colecciones": "Una ficha por ejercicio y por idioma, con el TEXTO. El movimiento no vive aquí: ver `movimiento`.",
   "$comment_movimiento": "Lo que valida scripts/validar-movimiento.mjs. Tolerancias en metros. Los rangos articulares NO están aquí: viven en src/figura/cinematica.js porque son anatomía, no criterio del proyecto.",
   "movimiento": {

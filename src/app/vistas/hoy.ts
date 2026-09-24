@@ -14,10 +14,13 @@ import { datos } from '../almacen';
 import { ejerciciosDelDia, hoy, volumen } from '../calculos.js';
 import { FICHAS, GRUPOS, MOVIMIENTOS, fichaPorId, type Ficha } from '../contenido';
 import { favoritos } from '../favoritos';
+import { dejarPlan, planDeHoy } from '../mis-rutinas';
 import { mantenerEncendida } from '../pantalla';
+import { progreso } from '../rutinas.js';
 import { enlace, irA } from '../rutas';
 import { t } from '../textos';
 import { montarRegistro } from './registro';
+import { textoObjetivo, textoRango } from './rutinas';
 
 export interface OpcionesHoy {
   /** El ejercicio que se abre: el de la ruta, o si no el último que se tocó hoy. */
@@ -49,7 +52,16 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
   const delDia = (): ReturnType<typeof ejerciciosDelDia> => ejerciciosDelDia(datos().series, hoy());
   const ultimoTocado = (): string | undefined =>
     datos().series.filter((s) => s.fecha === hoy()).sort((a, b) => b.creada - a.creada)[0]?.ejercicio;
-  const activo = fichaPorId(opciones.activo ?? '') ?? fichaPorId(ultimoTocado() ?? '');
+  const plan = planDeHoy();
+  const avance = (): ReturnType<typeof progreso> =>
+    plan ? progreso({ nombre: plan.nombreDia, ejercicios: plan.ejercicios }, datos().series.filter((s) => s.fecha === hoy())) : [];
+  /*
+   * El activo: el que pida la ruta; si no, con plan, el primero que aún no está completo —abrir
+   * «Hoy» en mitad de la sesión deja justo en lo que toca—; y si no, el último que se tocó.
+   */
+  const activo = fichaPorId(opciones.activo ?? '')
+    ?? fichaPorId(avance().find((o) => !o.completo)?.ejercicio ?? '')
+    ?? fichaPorId(ultimoTocado() ?? '');
 
   /*
    * Añadir un ejercicio es un <select> agrupado por patrón, no un buscador: con cincuenta ejercicios
@@ -67,11 +79,32 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
 
   function cabeza(): string {
     const dia = delDia();
-    // El activo sale en la lista aunque aún no tenga series: acaba de elegirse y es donde se está.
-    const lista = activo && !dia.some((e) => e.ejercicio === activo.id) ? [...dia, { ejercicio: activo.id, series: [] }] : dia;
+    const planeado = avance();
+    const enPlan = new Set(planeado.map((o) => o.ejercicio));
+    /*
+     * Con plan, la lista es el plan en su orden, y detrás lo hecho fuera de él. Sin plan, lo hecho
+     * en el orden en que se empezó. El activo sale aunque no tenga series: acaba de elegirse y es
+     * donde se está.
+     */
+    const hechos = dia.filter((e) => !enPlan.has(e.ejercicio));
+    const filas: Array<{ ejercicio: string; texto: string; completo?: boolean }> = [
+      ...planeado.map((o) => ({
+        ejercicio: o.ejercicio,
+        texto: `${t('hoy.hechas').replace('{hechas}', numero(o.hechas)).replace('{total}', numero(o.series))} · ${textoRango(o)}`,
+        completo: o.completo,
+      })),
+      ...hechos.map((e) => ({ ejercicio: e.ejercicio, texto: plural('hoy.series', e.series.length) })),
+    ];
+    if (activo && !filas.some((f) => f.ejercicio === activo.id)) filas.push({ ejercicio: activo.id, texto: plural('hoy.series', 0) });
+    const lista = filas;
     const series = dia.flatMap((e) => e.series);
     const kilos = volumen(series);
     return `
+      ${plan ? `
+        <div class="plan">
+          <p><span class="rutina">${escapar(plan.rutina.nombre)}</span> · <strong>${escapar(plan.nombreDia)}</strong></p>
+          <button type="button" class="boton plano" data-dejar-plan>${t('hoy.dejar_plan')}</button>
+        </div>` : ''}
       ${series.length ? `
         <dl class="datos">
           <div class="dato"><dt>${t('hoy.ejercicios')}</dt><dd>${numero(dia.length)}</dd></div>
@@ -80,11 +113,11 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
         </dl>` : ''}
       ${lista.length ? `
         <nav aria-label="${t('hoy.lista')}">
-          <ol class="ejercicios-hoy">${lista.map(({ ejercicio, series: suyas }) => {
+          <ol class="ejercicios-hoy">${lista.map(({ ejercicio, texto, completo }) => {
             const f = fichaPorId(ejercicio);
-            return `<li><a href="${enlace({ vista: 'hoy', id: ejercicio, filtros: {} })}" ${ejercicio === activo?.id ? 'aria-current="true"' : ''}>
-              <span class="nombre">${escapar(f?.nombre ?? ejercicio)}</span>
-              <span class="cuantas">${plural('hoy.series', suyas.length)}</span></a></li>`;
+            return `<li><a href="${enlace({ vista: 'hoy', id: ejercicio, filtros: {} })}" ${ejercicio === activo?.id ? 'aria-current="true"' : ''} ${completo ? 'data-completo' : ''}>
+              <span class="nombre">${completo ? `<span class="icono hecho" aria-hidden="true">✓</span>` : ''}${escapar(f?.nombre ?? ejercicio)}</span>
+              <span class="cuantas">${texto}</span></a></li>`;
           }).join('')}
           </ol>
         </nav>` : ''}
@@ -96,6 +129,8 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
     if (sitioCabeza) sitioCabeza.innerHTML = cabeza();
   }
 
+  const objetivoDe = (id: string): ReturnType<typeof avance>[number] | undefined => avance().find((o) => o.ejercicio === id);
+
   const proporcion = (f: Ficha): string | undefined =>
     (MOVIMIENTOS[f.movimiento_id ?? ''] as { camara?: { proporcion?: string } } | undefined)?.camara?.proporcion;
 
@@ -104,6 +139,7 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
     ${activo ? `
       <section class="activo" aria-labelledby="activo-titulo">
         <h2 id="activo-titulo"><a href="${enlace({ vista: 'ficha', id: activo.id, filtros: {} })}">${escapar(activo.nombre)}</a></h2>
+        ${objetivoDe(activo.id) ? `<p class="objetivo">${t('hoy.objetivo').replace('{objetivo}', textoObjetivo(objetivoDe(activo.id)!))}</p>` : ''}
         <!--
           El registro ANTES que el maniquí, al revés que en la ficha. Aquí se viene a anotar: con el
           maniquí y su mapa muscular delante, el formulario quedaba a casi dos pantallas de
@@ -115,11 +151,19 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
       </section>` : `
       <div class="vacio">
         <p>${t('hoy.vacio')}</p>
+        <a class="boton" href="${enlace({ vista: 'rutinas', filtros: {} })}">${t('hoy.seguir_rutina')}</a>
         ${favoritos().length ? `
           <p>${t('hoy.desde_favoritos')}</p>
           <ul class="atajos">${favoritos().map((id) => fichaPorId(id)).filter((f): f is Ficha => !!f)
             .map((f) => `<li><a class="boton" href="${enlace({ vista: 'hoy', id: f.id, filtros: {} })}">${escapar(f.nombre)}</a></li>`).join('')}</ul>` : ''}
       </div>`}`;
+
+  el.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('[data-dejar-plan]')) {
+      dejarPlan();
+      irA({ vista: 'hoy', id: activo?.id, filtros: {} });
+    }
+  });
 
   el.addEventListener('change', (e) => {
     const campo = e.target as HTMLSelectElement;

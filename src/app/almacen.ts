@@ -84,11 +84,11 @@ export const exportar = (): string => paraExportar(actuales);
  * Suma a lo que hay lo de un fichero exportado. Lanza con una clave de `ui.json` si no lo es.
  * Devuelve cuánto era nuevo, para decírselo a quien importa.
  */
-export function importar(texto: string): { nuevosFavoritos: number; nuevasSeries: number } {
-  const { datos: juntos, nuevosFavoritos, nuevasSeries } = fusionar(actuales, leerExportado(texto));
+export function importar(texto: string): { nuevosFavoritos: number; nuevasSeries: number; nuevasRutinas: number } {
+  const { datos: juntos, nuevosFavoritos, nuevasSeries, nuevasRutinas } = fusionar(actuales, leerExportado(texto));
   actuales = limpiar(juntos, idsCatalogo);
   guardar();
-  return { nuevosFavoritos, nuevasSeries };
+  return { nuevosFavoritos, nuevasSeries, nuevasRutinas };
 }
 
 /** Borra todo lo del visitante en este dispositivo. La vista pide confirmación antes. */

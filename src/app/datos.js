@@ -12,6 +12,8 @@
  * cual, y el compilador lo lee igual gracias a `allowJs` y a `@ts-check`.
  */
 
+import { normalizarPlan, normalizarRutina } from './rutinas.js';
+
 /** Sube cuando cambie la forma de los datos, y con ella una migración en `migrar()`. */
 export const VERSION = 1;
 
@@ -34,11 +36,13 @@ export const VERSION = 1;
  * @property {Serie[]} series
  * @property {Record<string, number>} descansos  Segundos de descanso ajustados por el visitante, por
  *   ejercicio. Solo los que ha cambiado: el resto sale del contenido.
+ * @property {import('./rutinas.js').Rutina[]} rutinas  Las del visitante. Las de inicio son contenido.
+ * @property {import('./rutinas.js').Plan | null} plan  El día de rutina elegido para hoy, si hay.
  */
 
 /** @returns {Datos} */
 export function vacio() {
-  return { version: VERSION, favoritos: [], series: [], descansos: {} };
+  return { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null };
 }
 
 const esTexto = (/** @type {unknown} */ x) => typeof x === 'string' && x.length > 0;
@@ -86,6 +90,8 @@ export function migrar(crudo, favoritosViejos) {
     if (Array.isArray(origen.favoritos)) datos.favoritos = unicos(origen.favoritos.filter(esTexto));
     if (Array.isArray(origen.series)) datos.series = unicasPorId(origen.series.map(normalizarSerie).filter(esSerie));
     datos.descansos = normalizarDescansos(origen.descansos);
+    if (Array.isArray(origen.rutinas)) datos.rutinas = unicasPorId(origen.rutinas.map(normalizarRutina).filter(esRutina));
+    datos.plan = normalizarPlan(origen.plan);
   } else if (Array.isArray(favoritosViejos)) {
     datos.favoritos = unicos(favoritosViejos.filter(esTexto));
   }
@@ -133,17 +139,29 @@ export function limpiar(datos, idsCatalogo) {
  *
  * @param {Datos} actuales
  * @param {Datos} importados
- * @returns {{ datos: Datos, nuevosFavoritos: number, nuevasSeries: number }}
+ * @returns {{ datos: Datos, nuevosFavoritos: number, nuevasSeries: number, nuevasRutinas: number }}
  */
 export function fusionar(actuales, importados) {
   const favoritos = unicos([...actuales.favoritos, ...importados.favoritos]);
   const conocidas = new Set(actuales.series.map((s) => s.id));
   const nuevas = importados.series.filter((s) => !conocidas.has(s.id));
+  const rutinasConocidas = new Set(actuales.rutinas.map((r) => r.id));
+  const rutinasNuevas = importados.rutinas.filter((r) => !rutinasConocidas.has(r.id));
   return {
     // Los descansos de este dispositivo mandan: son los que alguien ajustó aquí la última vez.
-    datos: { version: VERSION, favoritos, series: [...actuales.series, ...nuevas], descansos: { ...importados.descansos, ...actuales.descansos } },
+    datos: {
+      version: VERSION,
+      favoritos,
+      series: [...actuales.series, ...nuevas],
+      descansos: { ...importados.descansos, ...actuales.descansos },
+      // Las rutinas, como las series: una con el mismo id se queda con la de este dispositivo.
+      rutinas: [...actuales.rutinas, ...rutinasNuevas],
+      // El plan no viaja: es lo que se eligió hacer hoy EN ESTE móvil.
+      plan: actuales.plan,
+    },
     nuevosFavoritos: favoritos.length - actuales.favoritos.length,
     nuevasSeries: nuevas.length,
+    nuevasRutinas: rutinasNuevas.length,
   };
 }
 
@@ -182,7 +200,11 @@ function unicos(lista) {
   return [...new Set(lista)];
 }
 
-/** @param {Serie[]} lista */
+/**
+ * @template {{ id: string }} T
+ * @param {T[]} lista
+ * @returns {T[]}
+ */
 function unicasPorId(lista) {
   const vistas = new Set();
   return lista.filter((s) => (vistas.has(s.id) ? false : (vistas.add(s.id), true)));
@@ -191,4 +213,9 @@ function unicasPorId(lista) {
 /** @param {Serie | null} s @returns {s is Serie} */
 function esSerie(s) {
   return s !== null;
+}
+
+/** @param {import('./rutinas.js').Rutina | null} r @returns {r is import('./rutinas.js').Rutina} */
+function esRutina(r) {
+  return r !== null;
 }

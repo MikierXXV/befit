@@ -30,5 +30,21 @@ export function datosDeEjemplo(ahora = new Date()) {
       ]),
       ...[[9, 30], [5, 40], [0, 45]].map(([atras, segundos]) => serie('plancha-frontal', atras, { segundos })),
     ],
+    descansos: {},
+    // Una rutina propia con el plan de hoy puesto: así «Hoy» se mira con plan y el editor tiene qué
+    // editar. Con un nombre de ejercicio largo a propósito, que es donde la lista se descuadraba.
+    rutinas: [{
+      id: 'mia-ejemplo',
+      nombre: 'Rutina de ejemplo',
+      dias: [
+        { nombre: 'Día 1', ejercicios: [
+          { ejercicio: 'sentadilla-barra', series: 3, min: 6, max: 10 },
+          { ejercicio: 'plancha-frontal', series: 3, min: 30, max: 45 },
+          { ejercicio: 'elevaciones-laterales', series: 3, min: 12, max: 20 },
+        ] },
+        { nombre: 'Día 2', ejercicios: [] },
+      ],
+    }],
+    plan: { fecha: dia(0), rutina: 'mia-ejemplo', dia: 0 },
   };
 }

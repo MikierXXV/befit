@@ -99,8 +99,9 @@ o servidor: la regla 5 se mantiene y el cambio de dispositivo va por fichero.
 - ✅ **5.2 Sesión en el gimnasio.** `#/hoy`, temporizador de descanso, cronómetro para los
   isométricos y wake lock. Un solo maniquí vivo: el del ejercicio activo. El descanso por defecto
   sale del contenido (grupo, o ficha si no encaja) y los ±15 s se recuerdan por ejercicio.
-- ⬜ **5.3 Rutinas.** Las del usuario, en local y por enlace; las de inicio, como contenido en
-  `content/<idioma>/rutinas/`; y cambiar un ejercicio por otro de su mismo patrón.
+- ✅ **5.3 Rutinas.** Las del usuario, en local y por enlace; las de inicio, como contenido en
+  `content/<idioma>/rutinas/`; y cambiar un ejercicio por otro de su mismo patrón. Un día de rutina
+  se empieza como plan de hoy, y «Hoy» enseña cuántas series lleva cada ejercicio de su objetivo.
 - ⬜ **5.4 Progreso.** Mapa muscular acumulado ponderado por rol (1 · 0,5 · 0,25), volumen semanal
   por patrón y heatmap de actividad.
 

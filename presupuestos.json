@@ -34,7 +34,10 @@
     "#/f/plancha-frontal",
     "#/favoritos",
     "#/datos",
-    "#/hoy"
+    "#/hoy",
+    "#/rutinas",
+    "#/rutina/torso-pierna",
+    "#/rutina/mia-ejemplo/editar"
   ],
   "rutas_3d": [
     "#/f/sentadilla-barra"

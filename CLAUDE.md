@@ -31,6 +31,7 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `content/<idioma>/grupos.json` | Los grupos y sus **dos** acentos (claro y oscuro). |
 | `content/<idioma>/ui.json` | Todo el texto de interfaz, en los dos idiomas. |
 | `content/movimientos/*.json` | Los movimientos del maniquí. Sin idioma. |
+| `content/<idioma>/rutinas/*.json` | Rutinas de inicio: contenido con fuentes. Solo se leen y se copian. |
 | `content/reglas.json` | Qué valida `validar-contenido.mjs`. **Se edita esto, no el guion.** |
 | `public/carteles/*.png` | Imagen fija de cada ficha para el catálogo. Generadas, pero **se versionan**. |
 | `src/app/rutas.ts` | Rutas en el fragmento (`#/f/<id>`), con la búsqueda y los filtros dentro. |
@@ -39,6 +40,7 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla, encima de `almacen`. |
 | `src/app/registro.ts` · `calculos.js` | Anotar y borrar series; 1RM, sesiones, mejor serie y evolución (puro, con test). |
 | `src/app/vistas/` | Bloques que se repintan solos: el registro de la ficha, «Hoy» y «Tus datos». |
+| `src/app/rutinas.js` · `mis-rutinas.ts` | Rutinas: normalizar, copiar, progreso y enlace (puro, con test); las del visitante y el plan de hoy. |
 | `src/app/descanso.ts` | El temporizador de descanso: barra propia fuera de `#app`, cuenta con la hora de fin. |
 | `src/app/pantalla.ts` · `avisos.ts` | Pantalla encendida (wake lock, por razones) y pitido/vibración. |
 | `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |
@@ -97,6 +99,12 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
+
+## Al añadir una rutina de inicio
+
+`content/es/rutinas/<id>.json` **y** su gemela en inglés, con los mismos días y ejercicios: solo se
+traducen los nombres y el texto (lo vigila `campos_comunes`). `min` y `max` son repeticiones o
+segundos según la `medida` de cada ficha. Con fuentes comprobadas y `matices`, como una ficha.
 
 ## Al añadir un grupo
 

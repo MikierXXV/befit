@@ -11,6 +11,7 @@
  * la rodilla vieja. Nadie lo ve, porque nadie revisa el idioma que no habla.
  */
 
+import type { Rutina } from './rutinas.js';
 import { t } from './textos';
 
 export interface Grupo {
@@ -22,6 +23,16 @@ export interface Grupo {
   descanso?: number;
   /** Un color por tema. El modo oscuro no es invertir; lo exige AA en los dos, ver check-contraste.mjs. */
   color_acento?: { claro: string; oscuro: string };
+}
+
+/** Una rutina de inicio: contenido, con fuentes, como una ficha. Ver content/schema/rutina.schema.json. */
+export interface RutinaDeInicio extends Rutina {
+  resumen: string;
+  nivel: 'inicial' | 'intermedio' | 'avanzado';
+  /** Días de entrenamiento por semana. */
+  frecuencia: number;
+  matices?: string;
+  fuentes?: Array<{ titulo: string; url?: string; autor?: string }>;
 }
 
 export type Rol = 'principal' | 'sinergista' | 'estabilizador';
@@ -49,6 +60,7 @@ export interface Ficha {
 
 const ficherosGrupos = import.meta.glob<{ default: { grupos: Grupo[] } }>('../../content/*/grupos.json', { eager: true });
 const ficherosFichas = import.meta.glob<{ default: Ficha }>('../../content/*/fichas/*.json', { eager: true });
+const ficherosRutinas = import.meta.glob<{ default: RutinaDeInicio }>('../../content/*/rutinas/*.json', { eager: true });
 const ficherosMovimientos = import.meta.glob<{ default: unknown }>('../../content/movimientos/*.json', { eager: true });
 
 const idioma = () => document.documentElement.lang || 'es';
@@ -105,3 +117,8 @@ export function etiqueta(campo: string, valor: string): string {
  * publica sin el campo; el esquema no lo exige para no romper los proyectos que salen de la plantilla.
  */
 export const descansoDe = (f: Ficha): number => f.descanso ?? grupoPorId(f.grupo_id)?.descanso ?? 90;
+
+/** Las rutinas de inicio del idioma, en el orden de su nivel: primero la de quien empieza. */
+export const RUTINAS: RutinaDeInicio[] = delIdioma(ficherosRutinas)
+  .slice()
+  .sort((a, b) => ['inicial', 'intermedio', 'avanzado'].indexOf(a.nivel) - ['inicial', 'intermedio', 'avanzado'].indexOf(b.nivel) || a.frecuencia - b.frecuencia);

@@ -22,6 +22,7 @@ import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { t } from './app/textos';
 import { montarDatos } from './app/vistas/datos';
 import { fechaDeHoy, montarHoy } from './app/vistas/hoy';
+import { montarCompartida, montarEditor, montarListaRutinas, montarRutina } from './app/vistas/rutinas';
 import { montarRegistro } from './app/vistas/registro';
 
 const cargarFigura = Object.values(
@@ -481,8 +482,16 @@ function cabecera(ruta: Ruta): string {
       <a class="marca" href="${enlace({ vista: 'catalogo', filtros: {} })}">befit</a>
       <nav>
         <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${ruta.vista === 'hoy' ? 'aria-current="page"' : ''}>${t('hoy.titulo')}</a>
-        <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${ruta.vista === 'favoritos' ? 'aria-current="page"' : ''}>
-          <span class="icono" aria-hidden="true">★</span>${t('favoritos.titulo')}
+        <a href="${enlace({ vista: 'rutinas', filtros: {} })}" ${ruta.vista === 'rutinas' || ruta.vista === 'rutina' ? 'aria-current="page"' : ''}>${t('rutinas.titulo')}</a>
+        <!--
+          En el móvil, favoritos se queda en la estrella: con «Hoy» y «Rutinas» ya no cabían las cinco
+          piezas en 390 px. El nombre va en aria-label, con la cuenta, y la palabra se quita del todo
+          en vez de esconderla recortada: recortada seguía ocupando su sitio a la derecha de la
+          estrella y la dejaba 27 px descentrada en su botón.
+        -->
+        <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${ruta.vista === 'favoritos' ? 'aria-current="page"' : ''}
+           aria-label="${t('favoritos.titulo')}${favoritos().length ? ` (${favoritos().length})` : ''}">
+          <span class="icono" aria-hidden="true">★</span><span class="texto-nav">${t('favoritos.titulo')}</span>
           ${favoritos().length ? `<span class="insignia">${favoritos().length}</span>` : ''}
         </a>
         <button type="button" data-accion="idioma">${document.documentElement.lang === 'es' ? 'EN' : 'ES'}</button>
@@ -521,6 +530,23 @@ function pintar(): void {
     ponerPortada(t('hoy.titulo'), fechaDeHoy());
     sitio.innerHTML = `<div class="hoy"></div>${aviso()}`;
     vivo = montarHoy(sitio.querySelector<HTMLElement>('.hoy')!, { activo: ruta.id, montarManiqui });
+  } else if (ruta.vista === 'rutinas') {
+    ponerPortada(t('rutinas.titulo'), t('rutinas.entradilla'));
+    sitio.innerHTML = `<div class="rutinas"></div>${aviso()}`;
+    montarListaRutinas(sitio.querySelector<HTMLElement>('.rutinas')!);
+  } else if (ruta.vista === 'rutina') {
+    sitio.innerHTML = `<div class="rutinas"></div>${aviso()}`;
+    const el = sitio.querySelector<HTMLElement>('.rutinas')!;
+    const montada = ruta.compartida !== undefined ? montarCompartida(el, ruta.compartida)
+      : ruta.editar ? montarEditor(el, ruta.id ?? '')
+      : montarRutina(el, ruta.id ?? '');
+    // Una rutina que no existe —borrada, o un enlace roto— lleva a la lista, no a una página vacía.
+    if (!montada) { irA({ vista: 'rutinas', filtros: {} }); return; }
+    ponerPortada(
+      ruta.editar ? t('rutinas.editando').replace('{nombre}', montada.titulo) : montada.titulo,
+      'entradilla' in montada && typeof montada.entradilla === 'string' ? montada.entradilla
+        : ruta.compartida !== undefined ? t('rutinas.compartida_entradilla') : '',
+    );
   } else if (ruta.vista === 'datos') {
     ponerPortada(t('datos.titulo'), t('datos.entradilla'));
     sitio.innerHTML = `<div class="tus-datos"></div>${aviso()}`;

@@ -1,0 +1,144 @@
+{
+  "id": "empuje-tiron-pierna",
+  "nombre": "Push, pull and legs",
+  "resumen": "Three sessions organised by movement pattern: pushes together, pulls together and legs on their own. Done once a week over three days, or twice over six.",
+  "nivel": "intermedio",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Push",
+      "ejercicios": [
+        {
+          "ejercicio": "press-banca",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "press-militar",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "aperturas-mancuernas",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "elevaciones-laterales",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "jalon-triceps",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "extension-triceps-arriba",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Pull",
+      "ejercicios": [
+        {
+          "ejercicio": "dominadas",
+          "series": 3,
+          "min": 5,
+          "max": 10
+        },
+        {
+          "ejercicio": "remo-barra",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "remo-mancuerna",
+          "series": 2,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "pajaros-mancuernas",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "curl-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-martillo",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Legs",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-barra",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "peso-muerto-rumano",
+          "series": 3,
+          "min": 8,
+          "max": 10
+        },
+        {
+          "ejercicio": "zancada-inversa",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "elevacion-talones",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "elevacion-rodillas",
+          "series": 3,
+          "min": 8,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "Done over three days, each muscle is trained once a week: it works, but reviews find slightly more growth when it is trained twice, which is what repeating it over six days gives. Six days require good recovery between sessions; to start, three days and building up later is the prudent choice.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Dose-response relationship between weekly resistance training volume and increases in muscle mass",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27433992/"
+    }
+  ]
+}

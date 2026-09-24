@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Rutina",
+  "description": "Una rutina de inicio. Es contenido, como una ficha: se publica con fuentes y se valida. Quien la quiera cambiar la copia a sus rutinas.",
+  "type": "object",
+  "required": [
+    "id",
+    "nombre",
+    "resumen",
+    "nivel",
+    "frecuencia",
+    "dias",
+    "fuentes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "resumen": {
+      "type": "string"
+    },
+    "nivel": {
+      "type": "string",
+      "enum": [
+        "inicial",
+        "intermedio",
+        "avanzado"
+      ]
+    },
+    "frecuencia": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7,
+      "description": "Días de entrenamiento por semana."
+    },
+    "dias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "nombre",
+          "ejercicios"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "ejercicios": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "ejercicio",
+                "series",
+                "min",
+                "max"
+              ],
+              "additionalProperties": false,
+              "description": "Un ejercicio del día con su objetivo. `min` y `max` son repeticiones o segundos según la `medida` de la ficha: una sola forma para los dos, y la unidad la pone el ejercicio, que es quien la sabe.",
+              "properties": {
+                "ejercicio": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+                },
+                "series": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 10
+                },
+                "min": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 600
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "matices": {
+      "type": "string",
+      "minLength": 40
+    },
+    "fuentes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "titulo"
+        ],
+        "properties": {
+          "titulo": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "autor": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

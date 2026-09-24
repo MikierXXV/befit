@@ -1,0 +1,103 @@
+{
+  "id": "cuerpo-completo",
+  "nombre": "Cuerpo completo en dos días",
+  "resumen": "Dos entrenamientos, A y B, que se alternan tres días por semana. Cada sesión trabaja piernas, empuje y tirón, así que cada grupo muscular se entrena unas dos veces por semana.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Día A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-barra",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "press-banca",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "remo-barra",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "puente-gluteo",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "plancha-frontal",
+          "series": 3,
+          "min": 30,
+          "max": 45
+        }
+      ]
+    },
+    {
+      "nombre": "Día B",
+      "ejercicios": [
+        {
+          "ejercicio": "peso-muerto-rumano",
+          "series": 3,
+          "min": 8,
+          "max": 10
+        },
+        {
+          "ejercicio": "press-militar",
+          "series": 3,
+          "min": 6,
+          "max": 10
+        },
+        {
+          "ejercicio": "jalon-pecho",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "zancada-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-mancuernas",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "jalon-triceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "Tres días por semana alternando A y B da una semana A-B-A y la siguiente B-A-B. Es la forma más sencilla de entrenar cada músculo dos veces por semana, que es lo que las revisiones asocian con más ganancia que una sola vez; entre dos y tres veces, la diferencia ya no está clara. Los rangos de repeticiones son orientativos: la ganancia muscular se consigue con un abanico amplio de cargas si las series se acercan al fallo.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn y Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every y Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}

@@ -17,13 +17,14 @@ export function montarDatos(el: HTMLElement): void {
   let confirmando = false;
 
   function pintar(): void {
-    const { favoritos, series } = datos();
+    const { favoritos, series, rutinas } = datos();
     const dias = new Set(series.map((s) => s.fecha)).size;
     el.innerHTML = `
       <dl class="datos">
         <div class="dato"><dt>${t('datos.favoritos')}</dt><dd>${numero(favoritos.length)}</dd></div>
         <div class="dato"><dt>${t('datos.series')}</dt><dd>${numero(series.length)}</dd></div>
         <div class="dato"><dt>${t('datos.dias')}</dt><dd>${numero(dias)}</dd></div>
+        <div class="dato"><dt>${t('datos.rutinas')}</dt><dd>${numero(rutinas.length)}</dd></div>
       </dl>
       <p class="estado" role="status">${estado}</p>
 
@@ -96,8 +97,9 @@ export function montarDatos(el: HTMLElement): void {
     const fichero = campo.files?.[0];
     if (!fichero) return;
     try {
-      const { nuevosFavoritos, nuevasSeries } = importar(await fichero.text());
-      estado = t('datos.importado').replace('{favoritos}', numero(nuevosFavoritos)).replace('{series}', numero(nuevasSeries));
+      const { nuevosFavoritos, nuevasSeries, nuevasRutinas } = importar(await fichero.text());
+      estado = t('datos.importado').replace('{favoritos}', numero(nuevosFavoritos)).replace('{series}', numero(nuevasSeries))
+        .replace('{rutinas}', numero(nuevasRutinas));
     } catch (error) {
       // `leerExportado` lanza con una clave de ui.json; cualquier otra cosa es un fichero ilegible.
       const clave = error instanceof Error && error.message.startsWith('datos.') ? error.message : 'datos.error_formato';

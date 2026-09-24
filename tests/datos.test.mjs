@@ -13,7 +13,7 @@ import { VERSION, fusionar, leerExportado, limpiar, migrar, normalizarDescansos,
 const serie = (id, extra = {}) => ({ id, ejercicio: 'sentadilla-barra', fecha: '2026-09-24', creada: 1, reps: 8, peso: 60, ...extra });
 
 test('sin nada guardado, empieza vacío y en la versión actual', () => {
-  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [], descansos: {} });
+  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null });
 });
 
 test('los favoritos de la versión vieja no se pierden al cambiar de clave', () => {
@@ -94,4 +94,19 @@ test('al importar, el descanso ajustado en este dispositivo manda', () => {
   const aqui = { ...vacio(), descansos: { a: 90 } };
   const fuera = { ...vacio(), descansos: { a: 30, b: 120 } };
   assert.deepEqual(fusionar(aqui, fuera).datos.descansos, { a: 90, b: 120 });
+});
+
+test('al importar, las rutinas se suman y el plan de hoy no viaja', () => {
+  const rutina = (id, nombre) => ({ id, nombre, dias: [{ nombre: 'A', ejercicios: [] }] });
+  const aqui = { ...vacio(), rutinas: [rutina('r1', 'Mía')], plan: null };
+  const fuera = { ...vacio(), rutinas: [rutina('r1', 'Otra'), rutina('r2', 'Nueva')], plan: { fecha: '2026-09-24', rutina: 'r2', dia: 0 } };
+  const { datos, nuevasRutinas } = fusionar(aqui, fuera);
+  assert.deepEqual(datos.rutinas.map((r) => r.nombre), ['Mía', 'Nueva']);
+  assert.equal(nuevasRutinas, 1);
+  assert.equal(datos.plan, null);
+});
+
+test('una rutina estropeada no entra, y las demás sí', () => {
+  const datos = migrar({ rutinas: [{ id: 'r1', nombre: 'Buena', dias: [{ nombre: 'A', ejercicios: [] }] }, { id: 'r2', nombre: 'Sin días', dias: [] }, 'basura'] });
+  assert.deepEqual(datos.rutinas.map((r) => r.id), ['r1']);
 });

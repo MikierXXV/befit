@@ -189,7 +189,7 @@
     "importar_titulo": "Restore a backup",
     "importar_texto": "Choose a befit backup file. It’s added to what you already have here: nothing is deleted.",
     "importar": "Choose file",
-    "importado": "Backup restored. New favourites: {favoritos}. New sets: {series}.",
+    "importado": "Backup restored. New favourites: {favoritos}. New sets: {series}. New routines: {rutinas}.",
     "error_formato": "That file isn’t a befit backup.",
     "error_version": "That backup comes from a newer version of befit. Update the app and try again.",
     "borrar_titulo": "Start over",
@@ -197,7 +197,8 @@
     "borrar": "Delete my data",
     "borrar_si": "Yes, delete everything",
     "cancelar": "Cancel",
-    "borrado": "Data deleted."
+    "borrado": "Data deleted.",
+    "rutinas": "Routines"
   },
   "crono": {
     "empezar": "Start timer",
@@ -215,6 +216,63 @@
     "menos_largo": "Take 15 seconds off the rest",
     "mas_largo": "Add 15 seconds to the rest"
   },
+  "rutinas": {
+    "titulo": "Routines",
+    "entradilla": "For following a plan instead of improvising. The starter ones come with sources; yours you build from scratch or by copying one.",
+    "tuyas": "Your routines",
+    "sin_propias": "You don’t have any routines yet. Copy one of those below to adapt it, or start one from scratch.",
+    "nueva": "New routine",
+    "de_inicio": "Starter routines",
+    "dias": {
+      "una": "{n} day",
+      "varias": "{n} days"
+    },
+    "ejercicios": {
+      "una": "{n} exercise",
+      "varias": "{n} exercises"
+    },
+    "por_semana": {
+      "una": "{n} day a week",
+      "varias": "{n} days a week"
+    },
+    "nombre_nueva": "My routine",
+    "dia_n": "Day {n}",
+    "empezar": "Start today",
+    "dia_vacio": "This day has no exercises yet.",
+    "frecuencia": "Frequency",
+    "sesiones": "Sessions",
+    "copiar": "Copy and adapt",
+    "editar": "Edit",
+    "compartir": "Share",
+    "borrar": "Delete",
+    "borrar_si": "Yes, delete the routine",
+    "todas": "All routines",
+    "copiado": "Link copied.",
+    "no_copiado": "The link couldn’t be copied.",
+    "nombre_copia": "{nombre} (mine)",
+    "compartida_entradilla": "A routine someone shared with you.",
+    "compartida_texto": "Save it to start it or adapt it. It stays on this device only.",
+    "guardar_compartida": "Save to my routines",
+    "editando": "Edit: {nombre}",
+    "nombre": "Routine name",
+    "nombre_dia": "Day name",
+    "quitar_dia": "Remove this day",
+    "subir": "Move {nombre} up",
+    "bajar": "Move {nombre} down",
+    "quitar": "Remove {nombre}",
+    "series": "Sets",
+    "minimo": "Min. {unidad}",
+    "maximo": "Max. {unidad}",
+    "unidad_reps": "reps",
+    "unidad_tiempo": "s",
+    "cambiar": "Swap for another of the same pattern",
+    "cambiar_elige": "Pick an alternative",
+    "anadir_dia": "Add day",
+    "listo": "Done",
+    "objetivo": "{series} × {rango}",
+    "rango_reps": "{rango} reps",
+    "rango_tiempo": "{rango} s"
+  },
   "hoy": {
     "titulo": "Today",
     "anadir": "Add exercise",
@@ -228,7 +286,11 @@
       "varias": "{n} sets"
     },
     "vacio": "You haven’t logged anything today. Pick an exercise to start: every set you log starts the rest timer.",
-    "desde_favoritos": "Or start with one of your favourites:"
+    "desde_favoritos": "Or start with one of your favourites:",
+    "hechas": "{hechas}/{total} sets",
+    "dejar_plan": "Drop the plan",
+    "objetivo": "Target: {objetivo}",
+    "seguir_rutina": "Follow a routine"
   },
   "pie": {
     "derechos": "© {anio} befit",

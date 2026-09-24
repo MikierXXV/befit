@@ -209,6 +209,28 @@ for (const [nombre, def] of Object.entries(reglas.colecciones)) {
   }
 }
 
+/**
+ * Los valores de un campo, siguiendo una ruta con listas: `dias[].ejercicios[].ejercicio` recorre
+ * cada día y cada ejercicio y devuelve todos los ids.
+ *
+ * Existe por las rutinas. Hasta ellas, toda referencia era un campo suelto de primer nivel
+ * (`grupo_id`), y una rutina apunta a sus fichas tres niveles más abajo: sin rutas, un ejercicio
+ * mal escrito dentro de un día no lo habría visto nadie hasta abrir la rutina y encontrar un hueco.
+ */
+function valoresEn(dato, ruta) {
+  let actuales = [dato];
+  for (const tramo of ruta.split('.')) {
+    const lista = tramo.endsWith('[]');
+    const campo = lista ? tramo.slice(0, -2) : tramo;
+    actuales = actuales.flatMap((v) => {
+      const siguiente = campo === '' ? v : v?.[campo];
+      if (siguiente === undefined) return [];
+      return lista ? (Array.isArray(siguiente) ? siguiente : []) : [siguiente];
+    });
+  }
+  return actuales;
+}
+
 const idsDe = (idioma, coleccion) => new Set(fichasDe(idioma, coleccion, 'referencias').map((e) => e.datos.id));
 
 /* ---------------------------------------------- 2. integridad referencial (x2) -- */
@@ -219,12 +241,12 @@ for (const ref of reglas.referencias ?? []) {
     const usados = new Set();
 
     for (const { datos: d, origen } of fichasDe(idioma, ref.de, 'referencias')) {
-      const valor = d[ref.campo];
-      if (valor === undefined) continue;
-      if (!destino.has(valor)) {
-        error(`[${idioma}] ${origen} → ${ref.campo}: "${valor}" no existe en ${ref.a}`);
+      for (const valor of valoresEn(d, ref.campo)) {
+        if (!destino.has(valor)) {
+          error(`[${idioma}] ${origen} → ${ref.campo}: "${valor}" no existe en ${ref.a}`);
+        }
+        usados.add(valor);
       }
-      usados.add(valor);
     }
 
     // El otro sentido. Una familia sin piezas no rompe nada visible, y por eso pasa: sale en el
@@ -273,6 +295,20 @@ for (const [coleccion, campos] of Object.entries(reglas.longitudes ?? {})) {
         const n = texto.length;
         if (n < min || n > max) {
           error(`[${idioma}] ${origen} → ${campo}: ${n} caracteres, se esperaban entre ${min} y ${max}`);
+        }
+      }
+    }
+  }
+}
+
+/* ---------------------------------------------------------- 4b. rangos en orden -- */
+
+for (const { coleccion, ruta, min, max } of reglas.rangos ?? []) {
+  for (const idioma of IDIOMAS) {
+    for (const { datos: d, origen } of fichasDe(idioma, coleccion, 'rangos')) {
+      for (const tramo of valoresEn(d, ruta)) {
+        if (tramo?.[min] !== undefined && tramo?.[max] !== undefined && tramo[min] > tramo[max]) {
+          error(`[${idioma}] ${origen} → ${ruta}: ${min} ${tramo[min]} es mayor que ${max} ${tramo[max]}`);
         }
       }
     }
@@ -516,7 +552,7 @@ if (reglas.paridad_idiomas && IDIOMAS.length > 1) {
         const suya = enBase.get(id);
         if (!suya) continue;
         for (const campo of campos) {
-          if (JSON.stringify(suya[campo]) !== JSON.stringify(otra[campo])) {
+          if (JSON.stringify(valoresEn(suya, campo)) !== JSON.stringify(valoresEn(otra, campo))) {
             error(`${nombre}/"${id}": "${campo}" no vale lo mismo en ${base} y en ${idioma}. No es texto: no se traduce.`);
           }
         }
