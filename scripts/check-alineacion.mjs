@@ -251,11 +251,14 @@ for (const vista of VISTAS) {
       colorScheme: tema === 'oscuro' ? 'dark' : 'light',
     });
     /*
-     * Un tema con registro de ejemplo y el otro sin nada: así se miran los dos estados de la ficha
-     * —recién estrenada y con series, marcas y gráfica— sin doblar el tiempo de la comprobación.
+     * Un tema con registro de ejemplo y EN INGLÉS, y el otro vacío y en español: así se miran los dos
+     * estados de la ficha y los dos idiomas sin doblar el tiempo de la comprobación. El inglés hace
+     * falta: sus textos son más largos, y la cabecera del móvil cabía en español y en inglés no.
      */
     if (tema === 'oscuro') {
-      await ctx.addInitScript((d) => { try { localStorage.setItem('befit.datos.v1', d); } catch {} }, JSON.stringify(datosDeEjemplo()));
+      await ctx.addInitScript((d) => {
+        try { localStorage.setItem('befit.datos.v1', d); localStorage.setItem('idioma', 'en'); } catch {}
+      }, JSON.stringify(datosDeEjemplo()));
     }
     const pagina = await ctx.newPage();
     for (const ruta of RUTAS) {

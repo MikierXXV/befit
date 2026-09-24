@@ -473,6 +473,16 @@ const aviso = (): string => `
       <a href="${enlace({ vista: 'datos', filtros: {} })}">${t('datos.titulo')}</a>
       <span class="creditos">${t('pie.creditos')}</span>
     </p>
+    <!--
+      Idioma y tema, aquí abajo SOLO EN EL MÓVIL. Arriba, con «Hoy», «Rutinas» y favoritos, no cabían:
+      en inglés la cabecera medía 394 px en una pantalla de 390 y los botones se montaban unos
+      encima de otros —el de idioma tapaba al de tema, y en CI no se podía pulsar—. Son ajustes que
+      se tocan una vez; entrenando se usan los otros tres.
+    -->
+    <p class="ajustes-pie">
+      <button type="button" class="boton" data-accion="idioma">${t('ui.otro_idioma')}</button>
+      <button type="button" class="boton" data-accion="tema">${t(temaActual() === 'oscuro' ? 'sitio.tema_claro' : 'sitio.tema_oscuro')}</button>
+    </p>
   </footer>`;
 
 function cabecera(ruta: Ruta): string {
@@ -494,8 +504,8 @@ function cabecera(ruta: Ruta): string {
           <span class="icono" aria-hidden="true">★</span><span class="texto-nav">${t('favoritos.titulo')}</span>
           ${favoritos().length ? `<span class="insignia">${favoritos().length}</span>` : ''}
         </a>
-        <button type="button" data-accion="idioma">${document.documentElement.lang === 'es' ? 'EN' : 'ES'}</button>
-        <button type="button" data-accion="tema" aria-label="${t('ui.tema')}">
+        <button type="button" class="solo-ancho" data-accion="idioma">${document.documentElement.lang === 'es' ? 'EN' : 'ES'}</button>
+        <button type="button" class="solo-ancho" data-accion="tema" aria-label="${t('ui.tema')}">
           <span class="icono" aria-hidden="true">${temaActual() === 'oscuro' ? '☀' : '☾'}</span>
         </button>
       </nav>

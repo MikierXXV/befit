@@ -1111,9 +1111,15 @@ body.con-descanso { padding-bottom: 7.5rem; }
 .ejercicios-hoy .hecho { margin-right: var(--e2); color: var(--accion); }
 .activo .objetivo { margin: 0 0 var(--e4); color: var(--texto-secundario); }
 
-/* En el móvil, favoritos se queda en la estrella: ver cabecera() en main.ts. */
+/*
+ * En el móvil la cabecera se queda con lo que se usa entrenando —Hoy, Rutinas y la estrella— e
+ * idioma y tema bajan al pie. Ver cabecera() y aviso() en main.ts.
+ */
+.ajustes-pie { display: none; }
 @media (max-width: 33.99rem) {
-  .texto-nav { display: none; }
+  .texto-nav,
+  .barra .solo-ancho { display: none; }
+  .ajustes-pie { display: flex; flex-wrap: wrap; gap: var(--e2); margin: 0; }
 }
 
 /*

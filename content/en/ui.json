@@ -12,7 +12,8 @@
     "cargando": "Loading…"
   },
   "ui": {
-    "tema": "Switch theme"
+    "tema": "Switch theme",
+    "otro_idioma": "Español"
   },
   "catalogo": {
     "buscar": "Search",
