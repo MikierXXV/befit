@@ -152,3 +152,44 @@ export function hoy(ahora = new Date()) {
   const dos = (/** @type {number} */ n) => String(n).padStart(2, '0');
   return `${ahora.getFullYear()}-${dos(ahora.getMonth() + 1)}-${dos(ahora.getDate())}`;
 }
+
+/**
+ * Los ejercicios de un día, en el orden en que se EMPEZARON, con sus series.
+ *
+ * Por la primera serie y no por la última: si al orden lo mandara la última, anotar una serie en el
+ * primer ejercicio del día lo mandaba al final de la lista y todo saltaba de sitio bajo el dedo.
+ *
+ * @param {Serie[]} series
+ * @param {string} fecha
+ * @returns {Array<{ ejercicio: string, series: Serie[] }>}
+ */
+export function ejerciciosDelDia(series, fecha) {
+  /** @type {Map<string, Serie[]>} */
+  const porEjercicio = new Map();
+  for (const s of series.filter((x) => x.fecha === fecha).sort((a, b) => a.creada - b.creada)) {
+    const lista = porEjercicio.get(s.ejercicio) ?? [];
+    lista.push(s);
+    porEjercicio.set(s.ejercicio, lista);
+  }
+  return [...porEjercicio.entries()].map(([ejercicio, lista]) => ({ ejercicio, series: lista }));
+}
+
+/**
+ * Kilos movidos: peso × repeticiones, sumado. Las series sin peso o por tiempo no suman, en vez de
+ * sumar cero y hacer creer que cuentan.
+ *
+ * @param {Serie[]} series
+ */
+export const volumen = (series) => series.reduce((total, s) => total + (s.peso && s.reps ? s.peso * s.reps : 0), 0);
+
+/**
+ * Segundos en formato de reloj: 90 → «1:30», 5 → «0:05». Redondea HACIA ARRIBA, como cualquier
+ * cuenta atrás: con 0,4 s por delante enseña «0:01» y llega a «0:00» justo cuando suena. Hacia
+ * abajo marcaría «0:00» casi un segundo antes de sonar, y eso parece un temporizador roto.
+ *
+ * @param {number} segundos
+ */
+export function reloj(segundos) {
+  const s = Math.max(0, Math.ceil(segundos - 1e-9));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+}

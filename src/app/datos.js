@@ -32,11 +32,13 @@ export const VERSION = 1;
  * @property {number} version
  * @property {string[]} favoritos
  * @property {Serie[]} series
+ * @property {Record<string, number>} descansos  Segundos de descanso ajustados por el visitante, por
+ *   ejercicio. Solo los que ha cambiado: el resto sale del contenido.
  */
 
 /** @returns {Datos} */
 export function vacio() {
-  return { version: VERSION, favoritos: [], series: [] };
+  return { version: VERSION, favoritos: [], series: [], descansos: {} };
 }
 
 const esTexto = (/** @type {unknown} */ x) => typeof x === 'string' && x.length > 0;
@@ -83,10 +85,31 @@ export function migrar(crudo, favoritosViejos) {
   if (origen && typeof origen === 'object') {
     if (Array.isArray(origen.favoritos)) datos.favoritos = unicos(origen.favoritos.filter(esTexto));
     if (Array.isArray(origen.series)) datos.series = unicasPorId(origen.series.map(normalizarSerie).filter(esSerie));
+    datos.descansos = normalizarDescansos(origen.descansos);
   } else if (Array.isArray(favoritosViejos)) {
     datos.favoritos = unicos(favoritosViejos.filter(esTexto));
   }
   return datos;
+}
+
+/**
+ * Los descansos también se reconstruyen: un objeto que llega de un fichero puede traer cualquier
+ * cosa, y un descanso de 0 o de 40 000 segundos dejaría el temporizador inservible.
+ *
+ * Añadirlos NO subió la versión: es un campo nuevo que, si falta, vale `{}`. Los datos y las copias
+ * de antes se leen igual, que es lo que importa de una versión.
+ *
+ * @param {unknown} crudo
+ * @returns {Record<string, number>}
+ */
+export function normalizarDescansos(crudo) {
+  /** @type {Record<string, number>} */
+  const limpios = {};
+  if (!crudo || typeof crudo !== 'object' || Array.isArray(crudo)) return limpios;
+  for (const [id, v] of Object.entries(crudo)) {
+    if (esTexto(id) && Number.isInteger(v) && v >= 15 && v <= 600) limpios[id] = v;
+  }
+  return limpios;
 }
 
 /**
@@ -117,7 +140,8 @@ export function fusionar(actuales, importados) {
   const conocidas = new Set(actuales.series.map((s) => s.id));
   const nuevas = importados.series.filter((s) => !conocidas.has(s.id));
   return {
-    datos: { version: VERSION, favoritos, series: [...actuales.series, ...nuevas] },
+    // Los descansos de este dispositivo mandan: son los que alguien ajustó aquí la última vez.
+    datos: { version: VERSION, favoritos, series: [...actuales.series, ...nuevas], descansos: { ...importados.descansos, ...actuales.descansos } },
     nuevosFavoritos: favoritos.length - actuales.favoritos.length,
     nuevasSeries: nuevas.length,
   };

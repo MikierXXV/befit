@@ -5,6 +5,7 @@
       "nombre": "Squat",
       "descripcion": "Bending hips and knees together with a fairly upright torso, then standing back up.",
       "orden": 1,
+      "descanso": 150,
       "color_acento": {
         "claro": "#8a4a22",
         "oscuro": "#e8a271"
@@ -15,6 +16,7 @@
       "nombre": "Hip hinge",
       "descripcion": "Sending the hips back with the knees nearly fixed: the movement happens at the hip, not in the back.",
       "orden": 2,
+      "descanso": 150,
       "color_acento": {
         "claro": "#816311",
         "oscuro": "#e0bd54"
@@ -25,6 +27,7 @@
       "nombre": "Lunge",
       "descripcion": "One foot forward, one back: the same hip and knee bend, one leg at a time.",
       "orden": 3,
+      "descanso": 90,
       "color_acento": {
         "claro": "#4f7011",
         "oscuro": "#a9cd63"
@@ -35,6 +38,7 @@
       "nombre": "Horizontal push",
       "descripcion": "Pushing a load away from the chest, with the body or the load horizontal.",
       "orden": 4,
+      "descanso": 120,
       "color_acento": {
         "claro": "#1c5f96",
         "oscuro": "#84c0ec"
@@ -45,6 +49,7 @@
       "nombre": "Vertical push",
       "descripcion": "Pressing a load overhead.",
       "orden": 5,
+      "descanso": 120,
       "color_acento": {
         "claro": "#4a5bc4",
         "oscuro": "#a8b4f5"
@@ -55,6 +60,7 @@
       "nombre": "Horizontal pull",
       "descripcion": "Pulling a load towards the torso, with the body or the load horizontal.",
       "orden": 6,
+      "descanso": 120,
       "color_acento": {
         "claro": "#1c7a55",
         "oscuro": "#72d3a8"
@@ -65,6 +71,7 @@
       "nombre": "Vertical pull",
       "descripcion": "Pulling a load down to the torso, or pulling the body up to it.",
       "orden": 7,
+      "descanso": 120,
       "color_acento": {
         "claro": "#17727f",
         "oscuro": "#72cdda"
@@ -75,6 +82,7 @@
       "nombre": "Core",
       "descripcion": "Resisting the trunk bending or twisting, rather than bending it on purpose.",
       "orden": 8,
+      "descanso": 60,
       "color_acento": {
         "claro": "#9c3b73",
         "oscuro": "#ee9bc8"
@@ -85,6 +93,7 @@
       "nombre": "Elbow flexion",
       "descripcion": "Bending the elbow to bring the hand towards the shoulder against a load.",
       "orden": 9,
+      "descanso": 60,
       "color_acento": {
         "claro": "#187515",
         "oscuro": "#85e981"
@@ -95,6 +104,7 @@
       "nombre": "Elbow extension",
       "descripcion": "Straightening the elbow against a load, with the upper arm fixed.",
       "orden": 10,
+      "descanso": 60,
       "color_acento": {
         "claro": "#4e1575",
         "oscuro": "#bf81e9"
@@ -105,6 +115,7 @@
       "nombre": "Plantar flexion",
       "descripcion": "Pushing through the ball of the foot, lifting the heel.",
       "orden": 11,
+      "descanso": 60,
       "color_acento": {
         "claro": "#751915",
         "oscuro": "#e98681"

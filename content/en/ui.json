@@ -80,7 +80,9 @@
     "material": "Equipment",
     "nivel": "Level",
     "fuentes": "Sources",
-    "matices": "What is less settled"
+    "matices": "What is less settled",
+    "descanso": "Rest",
+    "descanso_valor": "{v} min"
   },
   "favoritos": {
     "titulo": "Favourites",
@@ -171,7 +173,8 @@
       "peso_reps": "{peso} kg × {reps}",
       "rir": "RIR {v}"
     },
-    "tus_datos": "Back up and restore your data"
+    "tus_datos": "Back up and restore your data",
+    "ultima_vez": "Last time"
   },
   "datos": {
     "titulo": "Your data",
@@ -195,6 +198,37 @@
     "borrar_si": "Yes, delete everything",
     "cancelar": "Cancel",
     "borrado": "Data deleted."
+  },
+  "crono": {
+    "empezar": "Start timer",
+    "parar": "Stop and fill in",
+    "preparando": "Get in position",
+    "corriendo": "Hold"
+  },
+  "descanso": {
+    "titulo": "Rest",
+    "terminado": "Rest over: time for the next set.",
+    "cerrar": "Close",
+    "saltar": "Skip",
+    "menos": "−15 s",
+    "mas": "+15 s",
+    "menos_largo": "Take 15 seconds off the rest",
+    "mas_largo": "Add 15 seconds to the rest"
+  },
+  "hoy": {
+    "titulo": "Today",
+    "anadir": "Add exercise",
+    "elegir": "Pick one from the catalogue",
+    "lista": "Today’s exercises",
+    "ejercicios": "Exercises",
+    "series_total": "Sets",
+    "volumen": "Total kilos",
+    "series": {
+      "una": "{n} set",
+      "varias": "{n} sets"
+    },
+    "vacio": "You haven’t logged anything today. Pick an exercise to start: every set you log starts the rest timer.",
+    "desde_favoritos": "Or start with one of your favourites:"
   },
   "pie": {
     "derechos": "© {anio} befit",

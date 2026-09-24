@@ -11,7 +11,7 @@
  */
 
 export interface Ruta {
-  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos';
+  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos' | 'hoy';
   id?: string;
   busqueda?: string;
   filtros: Record<string, string[]>;
@@ -33,6 +33,7 @@ export function rutaActual(): Ruta {
   const partes = (camino ?? '').split('/').filter(Boolean);
   if (partes[0] === 'f' && partes[1]) return { vista: 'ficha', id: partes[1], filtros };
   if (partes[0] === 'datos') return { vista: 'datos', filtros };
+  if (partes[0] === 'hoy') return { vista: 'hoy', id: partes[1], filtros };
   if (partes[0] === 'favoritos') {
     return { vista: 'favoritos', filtros, ids: parametros.get('ids')?.split(',').filter(Boolean) };
   }
@@ -46,7 +47,9 @@ export function enlace(ruta: Partial<Ruta> & { vista: Ruta['vista'] }): string {
     if (valores.length) parametros.set(campo, valores.join(','));
   }
   const consulta = parametros.toString();
-  const camino = ruta.vista === 'ficha' ? `f/${ruta.id}` : ruta.vista === 'catalogo' ? '' : ruta.vista;
+  const camino = ruta.vista === 'ficha' ? `f/${ruta.id}`
+    : ruta.vista === 'hoy' && ruta.id ? `hoy/${ruta.id}`
+    : ruta.vista === 'catalogo' ? '' : ruta.vista;
   return `#/${camino}${consulta ? `?${consulta}` : ''}`;
 }
 

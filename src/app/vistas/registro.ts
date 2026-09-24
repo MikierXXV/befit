@@ -7,9 +7,12 @@
  * Three.js y el modelo— a cada toque, con la pantalla parpadeando en mitad del gimnasio.
  */
 
-import { evolucion, hoy, mejorMarca, queSeSigue, REPS_FIABLES, sesiones, unoRM } from '../calculos.js';
-import type { Ficha } from '../contenido';
+import { pitar, prepararAudio } from '../avisos';
+import { evolucion, hoy, mejorMarca, queSeSigue, reloj, REPS_FIABLES, sesiones, unoRM } from '../calculos.js';
+import { descansoDe, type Ficha } from '../contenido';
 import type { Serie } from '../datos.js';
+import { descansoPara, iniciarDescanso } from '../descanso';
+import { mantenerEncendida } from '../pantalla';
 import { anotar, borrar, restaurar, seriesDe } from '../registro';
 import { enlace } from '../rutas';
 import { t } from '../textos';
@@ -96,18 +99,94 @@ function grafica(puntos: Array<{ fecha: string; valor: number }>, tipo: string):
     </figure>`;
 }
 
-/** Monta el bloque en `el`. No hay nada que desmontar: vive y muere con el HTML de la ficha. */
-export function montarRegistro(el: HTMLElement, f: Ficha): void {
+export interface OpcionesRegistro {
+  /**
+   * En la pantalla «Hoy»: sin título propio —ya lleva el del ejercicio—, sin gráfica y, de las
+   * sesiones anteriores, solo la última. Entre dos series lo que se consulta es «qué hice la otra
+   * vez», no la evolución de dos meses.
+   */
+  compacto?: boolean;
+  /** Avisa de que cambió alguna serie, para que quien lo contiene actualice lo suyo. */
+  alCambiar?: () => void;
+}
+
+/** Segundos de preparación antes de que arranque el cronómetro: lo que se tarda en ponerse en plancha. */
+const PREPARACION = 5;
+
+/**
+ * Monta el bloque en `el`. No hay nada que desmontar: vive y muere con el HTML que lo contiene, y
+ * el cronómetro se para solo en cuanto ve que su bloque ya no está en la página.
+ */
+export function montarRegistro(el: HTMLElement, f: Ficha, opciones: OpcionesRegistro = {}): void {
+  const { compacto = false, alCambiar } = opciones;
   const medida = f.medida ?? 'reps';
   const sinMaterial = f.material?.includes('ninguno') ?? false;
   let deshacer: Serie | null = null;
   let estado = '';
 
+  /*
+   * El cronómetro de los isométricos: unos segundos para colocarse, un pitido, y a contar. Al
+   * pararlo, el tiempo pasa al campo de segundos y el foco al botón de anotar: se revisa y se anota,
+   * en vez de tener que mirar un reloj durante la plancha y acordarse del número al acabar.
+   */
+  let crono: { fase: 'preparando' | 'corriendo'; desde: number; intervalo: number } | null = null;
+
+  function textoCrono(): string {
+    if (!crono) return reloj(0);
+    const pasados = (Date.now() - crono.desde) / 1000;
+    return crono.fase === 'preparando' ? reloj(PREPARACION - pasados) : reloj(Math.floor(pasados));
+  }
+
+  const htmlCrono = (): string => `
+      <div class="crono" data-fase="${crono?.fase ?? 'parado'}">
+        <span class="tiempo" role="timer">${textoCrono()}</span>
+        <span class="fase">${crono ? t(`crono.${crono.fase}`) : ''}</span>
+        <button type="button" class="boton" data-crono>${t(crono ? 'crono.parar' : 'crono.empezar')}</button>
+      </div>`;
+
+  /*
+   * Al cambiar de fase se repinta SOLO el cronómetro, no el bloque: repintarlo entero devolvía el
+   * formulario a los valores de la última serie y se perdía el lastre recién escrito.
+   */
+  function pintarCrono(): void {
+    const actual = el.querySelector('.crono');
+    if (!actual) return;
+    actual.outerHTML = htmlCrono();
+    el.querySelector<HTMLButtonElement>('[data-crono]')?.focus();
+  }
+
+  function ticCrono(): void {
+    if (!crono) return;
+    // Si el bloque ya no está en la página —se cambió de ruta—, el cronómetro se para solo.
+    if (!el.isConnected) { pararCrono(false); return; }
+    if (crono.fase === 'preparando' && Date.now() - crono.desde >= PREPARACION * 1000) {
+      crono = { ...crono, fase: 'corriendo', desde: Date.now() };
+      pitar([1320]);
+      pintarCrono();
+      return;
+    }
+    const cifra = el.querySelector('.crono .tiempo');
+    if (cifra) cifra.textContent = textoCrono();
+  }
+
+  function pararCrono(apuntar: boolean): void {
+    if (!crono) return;
+    clearInterval(crono.intervalo);
+    const segundos = crono.fase === 'corriendo' ? Math.floor((Date.now() - crono.desde) / 1000) : 0;
+    crono = null;
+    mantenerEncendida('crono', false);
+    if (!apuntar) return;
+    pintarCrono();
+    const campo = el.querySelector<HTMLInputElement>('input[name=segundos]');
+    if (campo && segundos > 0) campo.value = String(segundos);
+    el.querySelector<HTMLButtonElement>('.anotar button[type=submit]')?.focus();
+  }
+
   function pintar(): void {
     const todas = seriesDe(f.id);
     const porDia = sesiones(todas);
     const deHoy = porDia[0]?.fecha === hoy() ? porDia[0].series : [];
-    const anteriores = porDia.filter((s) => s.fecha !== hoy()).slice(0, 5);
+    const anteriores = porDia.filter((s) => s.fecha !== hoy()).slice(0, compacto ? 1 : 5);
     // La última serie rellena el formulario: la siguiente suele ser igual, y en el gimnasio se
     // anota con una mano y el móvil sudado. Cambiar un número es más rápido que escribir dos.
     const ultima = todas.slice().sort((a, b) => b.creada - a.creada)[0];
@@ -136,9 +215,12 @@ export function montarRegistro(el: HTMLElement, f: Ficha): void {
         </select>
       </label>`;
 
+    const bloqueCrono = medida === 'tiempo' ? htmlCrono() : '';
+
     el.innerHTML = `
-      <h2 id="registro-titulo">${t('registro.titulo')}</h2>
-      <form class="anotar" aria-labelledby="registro-titulo">
+      ${compacto ? '' : `<h2>${t('registro.titulo')}</h2>`}
+      ${bloqueCrono}
+      <form class="anotar" aria-label="${t('registro.titulo')}">
         <div class="campos">${campoPeso}${campoCantidad}${campoRir}</div>
         <button type="submit" class="boton principal">${t('registro.anotar')}</button>
       </form>
@@ -146,7 +228,7 @@ export function montarRegistro(el: HTMLElement, f: Ficha): void {
       <p class="estado" role="status">${estado}${deshacer ? ` <button type="button" class="boton plano" data-deshacer>${t('registro.deshacer')}</button>` : ''}</p>
 
       ${deHoy.length ? `
-        <h3>${t('registro.hoy')}</h3>
+        ${compacto ? '' : `<h3>${t('registro.hoy')}</h3>`}
         <ol class="series">${deHoy.map((s, n) => `
           <li>
             <span class="n">${n + 1}</span>
@@ -164,17 +246,17 @@ export function montarRegistro(el: HTMLElement, f: Ficha): void {
           ${rm ? `<div class="dato"><dt>${t('registro.unorm')}</dt><dd>${con('registro.formato.kg', { v: rm.kilos })}${rm.fiable ? '' : ' *'}</dd></div>` : ''}
         </dl>
         ${rm ? `<p class="ayuda">${t('registro.unorm_nota')}${rm.fiable ? '' : ` * ${con('registro.unorm_aviso', { n: String(REPS_FIABLES) })}`}</p>` : ''}
-        ${puntos.length >= 2 ? grafica(puntos, tipo) : ''}
+        ${puntos.length >= 2 && !compacto ? grafica(puntos, tipo) : ''}
       ` : `<p class="ayuda">${t('registro.vacio')}</p>`}
 
       ${anteriores.length ? `
-        <h3>${t('registro.anteriores')}</h3>
+        <h3>${t(compacto ? 'registro.ultima_vez' : 'registro.anteriores')}</h3>
         <ul class="sesiones">${anteriores.map((s) => `
           <li><span class="dia">${fecha(s.fecha, true)}</span>
               <span class="lista">${s.series.map(textoSerie).join(', ')}</span></li>`).join('')}
         </ul>` : ''}
 
-      <p class="enlace-datos"><a href="${enlace({ vista: 'datos', filtros: {} })}">${t('registro.tus_datos')}</a></p>`;
+      ${compacto ? '' : `<p class="enlace-datos"><a href="${enlace({ vista: 'datos', filtros: {} })}">${t('registro.tus_datos')}</a></p>`}`;
   }
 
   el.addEventListener('submit', (e) => {
@@ -189,7 +271,10 @@ export function montarRegistro(el: HTMLElement, f: Ficha): void {
     const serie = anotar({ ejercicio: f.id, peso: leer('peso') || undefined, reps: leer('reps'), segundos: leer('segundos'), rir: leer('rir') });
     deshacer = null;
     estado = serie ? t('registro.anotada') : t('registro.error');
+    // Anotar arranca el descanso: es el momento exacto en que empieza, y es un toque que ya se hace.
+    if (serie) iniciarDescanso(f.id, f.nombre, descansoPara(f.id, descansoDe(f)));
     pintar();
+    if (serie) alCambiar?.();
     // El foco vuelve al botón, no se pierde en el <body>: la siguiente serie es otro toque en el
     // mismo sitio, y con lector de pantalla perder el foco es perder el sitio en la página.
     el.querySelector<HTMLButtonElement>('.anotar button')?.focus();
@@ -198,16 +283,24 @@ export function montarRegistro(el: HTMLElement, f: Ficha): void {
   el.addEventListener('click', (e) => {
     const boton = (e.target as HTMLElement).closest<HTMLButtonElement>('button');
     if (!boton) return;
-    if (boton.dataset.borrar) {
+    if ('crono' in boton.dataset) {
+      if (crono) { pararCrono(true); return; }
+      prepararAudio();
+      crono = { fase: 'preparando', desde: Date.now(), intervalo: window.setInterval(ticCrono, 200) };
+      mantenerEncendida('crono', true);
+      pintarCrono();
+    } else if (boton.dataset.borrar) {
       deshacer = borrar(boton.dataset.borrar);
       estado = t('registro.borrada');
       pintar();
+      alCambiar?.();
       el.querySelector<HTMLButtonElement>('[data-deshacer]')?.focus();
     } else if ('deshacer' in boton.dataset && deshacer) {
       restaurar(deshacer);
       deshacer = null;
       estado = '';
       pintar();
+      alCambiar?.();
       el.querySelector<HTMLButtonElement>('.anotar button')?.focus();
     }
   });

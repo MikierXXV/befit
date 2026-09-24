@@ -17,6 +17,7 @@
     "banco"
   ],
   "nivel": "intermedio",
+  "descanso": 60,
   "musculos": {
     "principal": [
       "pectoral"

@@ -24,6 +24,12 @@
       "type": "integer",
       "minimum": 1
     },
+    "descanso": {
+      "type": "integer",
+      "minimum": 15,
+      "maximum": 600,
+      "description": "Descanso por defecto entre series, en segundos, para los ejercicios del grupo. Una ficha puede cambiarlo con su propio `descanso`. Criterio: 2-3 min en los multiarticulares pesados y 1-2 min en los de aislamiento (ACSM 2009, Progression Models in Resistance Training); descansos largos rinden más en fuerza e hipertrofia que los de un minuto (Schoenfeld et al., 2016)."
+    },
     "color_acento": {
       "type": "object",
       "description": "Un acento por tema. El modo oscuro no es invertir: son dos colores decididos aparte, y scripts/check-contraste.mjs exige AA a los dos.",

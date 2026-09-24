@@ -51,6 +51,11 @@
   "paridad_idiomas": true,
   "$comment_campos_comunes": "Campos de la ficha que no son texto y por tanto valen lo mismo en todos los idiomas. Van dentro de cada ficha traducida, pero una corrección hecha en un solo idioma es la misma rodilla vieja de la regla 3 con otro nombre.",
   "campos_comunes": {
+    "grupos": [
+      "orden",
+      "color_acento",
+      "descanso"
+    ],
     "fichas": [
       "grupo_id",
       "orden",
@@ -58,7 +63,8 @@
       "material",
       "nivel",
       "musculos",
-      "medida"
+      "medida",
+      "descanso"
     ]
   },
   "$comment_colecciones": "Una ficha por ejercicio y por idioma, con el TEXTO. El movimiento no vive aquí: ver `movimiento`.",

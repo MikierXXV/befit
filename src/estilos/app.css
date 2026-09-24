@@ -892,7 +892,9 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 
 /* --------------------------------------------------------------- tus datos -- */
 
-.tus-datos { max-width: var(--medida-texto); margin-inline: auto; padding-block: var(--e6) 0; }
+/* Al carril izquierdo, como la ficha: centrada, en escritorio quedaba 176 px más adentro que la
+   cabecera y el resto de páginas. */
+.tus-datos { max-width: var(--medida-texto); padding-block: var(--e6) 0; }
 .tus-datos section { margin-top: var(--e6); }
 .tus-datos h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
 .tus-datos section p { color: var(--texto-secundario); max-width: var(--medida-texto); }
@@ -900,6 +902,125 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
 .tus-datos .fila { display: flex; flex-wrap: wrap; gap: var(--e3); }
 /* Lo que no se puede deshacer no va en el color de la acción principal, que invita a pulsar. */
 .boton.peligro { border-color: currentColor; color: var(--texto); font-weight: var(--peso-semibold); }
+
+/* ------------------------------------------------------------------ descanso -- */
+
+/*
+ * La barra del descanso, fija abajo: es donde está el pulgar y lo que se mira de reojo desde el
+ * banco. Abajo y no arriba también porque arriba tapaba la cabecera, y con ella la vuelta a «Hoy».
+ *
+ * La página se alarga lo que mide la barra mientras está (`con-descanso`): sin eso tapaba el pie y,
+ * en una ficha, el botón de anotar cuando se bajaba hasta el final.
+ */
+body.con-descanso { padding-bottom: 7.5rem; }
+.descanso {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 20;
+  padding: 0 var(--e4) calc(var(--e3) + env(safe-area-inset-bottom, 0px));
+  pointer-events: none;
+}
+.descanso .dentro {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "que tiempo" "mandos mandos";
+  align-items: center;
+  gap: var(--e2) var(--e4);
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--e4) var(--e4) var(--e3);
+  overflow: hidden;
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-grande);
+  background: var(--fondo-elevado);
+  box-shadow: var(--sombra);
+  pointer-events: auto;
+}
+.descanso .progreso { position: absolute; inset: 0 0 auto; height: 3px; background: var(--fondo-hundido); }
+.descanso .progreso span {
+  display: block;
+  height: 100%;
+  background: var(--accion);
+  /* Nombre propio y no `--avance`: esa ya existe en los tokens (0,5, para las entradas al
+     desplazarse), se heredaba, y el descanso terminado enseñaba la barra a medio llenar. */
+  transform: scaleX(var(--avance-descanso, 0));
+  transform-origin: left;
+}
+.descanso.listo .progreso span { transform: none; }
+.descanso .que { grid-area: que; display: grid; margin: 0; min-width: 0; }
+.descanso .titulo { color: var(--texto-secundario); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.08em; }
+.descanso .nombre { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: var(--peso-medio); }
+.descanso .tiempo {
+  grid-area: tiempo;
+  font-size: var(--t-grande);
+  font-weight: var(--peso-semibold);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.descanso .mandos { grid-area: mandos; display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e2); }
+.descanso.listo .dentro { border-color: var(--accion); }
+.descanso.listo .titulo { color: var(--texto); font-size: var(--t-pequeno); text-transform: none; letter-spacing: 0; }
+.descanso.listo .mandos { grid-template-columns: 1fr; }
+
+/* ------------------------------------------------------------------ cronómetro -- */
+
+.crono {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--e3);
+  margin-bottom: var(--e4);
+  padding: var(--e3) var(--e4);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+}
+.crono .tiempo { font-size: var(--t-grande); font-weight: var(--peso-semibold); line-height: 1; font-variant-numeric: tabular-nums; }
+.crono .fase { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.crono[data-fase="corriendo"] { border-color: var(--acento, var(--accion)); }
+.crono[data-fase="corriendo"] .fase { color: var(--texto); font-weight: var(--peso-medio); }
+
+/* ----------------------------------------------------------------------- hoy -- */
+
+.hoy { max-width: var(--medida-texto); padding-block: var(--e6) 0; }
+.hoy .datos { margin-bottom: var(--e4); }
+.ejercicios-hoy { list-style: none; margin: 0 0 var(--e4); padding: 0; display: grid; gap: var(--e2); }
+.ejercicios-hoy a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e3);
+  min-height: 44px;
+  padding: 0 var(--e4);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  text-decoration: none;
+}
+.ejercicios-hoy a:hover { border-color: var(--borde-interactivo); }
+/* El activo, marcado por borde y peso y no solo por color, que en el sol de una terraza no se ve. */
+.ejercicios-hoy a[aria-current] { border: 2px solid var(--accion); font-weight: var(--peso-semibold); }
+.ejercicios-hoy .cuantas { color: var(--texto-secundario); font-size: var(--t-pequeno); font-weight: var(--peso-regular); font-variant-numeric: tabular-nums; }
+.anadir { display: grid; gap: var(--e1); margin-bottom: var(--e8); font-size: var(--t-pequeno); color: var(--texto-secundario); }
+.anadir select {
+  min-height: 44px;
+  padding: 0 var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  font: inherit;
+}
+.activo h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
+.activo h2 a { color: inherit; text-decoration-color: var(--separador); text-underline-offset: 0.2em; }
+/* Más bajo que en la ficha: aquí el maniquí recuerda el gesto; lo que se viene a hacer es anotar. */
+.activo .figura { margin-top: var(--e8); }
+/* El hueco reservado y el lienzo, con el MISMO tope: si difieren, vuelve el salto al cargar. */
+.activo .figura:empty::before,
+.activo .figura .lienzo { max-height: min(44svh, 440px); }
+.hoy .atajos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--e2); }
 
 /*
  * Con el dedo, 44 px. Por debajo se falla el toque, y es la medida de las pautas táctiles; con

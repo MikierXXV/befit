@@ -17,6 +17,7 @@
   ],
   "nivel": "inicial",
   "medida": "tiempo",
+  "descanso": 60,
   "musculos": {
     "principal": [
       "cuadriceps"

@@ -16,6 +16,7 @@
     "ninguno"
   ],
   "nivel": "inicial",
+  "descanso": 60,
   "musculos": {
     "principal": [
       "gluteo_mayor"

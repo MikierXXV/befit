@@ -83,7 +83,9 @@
     "material": "Material",
     "nivel": "Nivel",
     "fuentes": "Fuentes",
-    "matices": "Lo que no está tan claro"
+    "matices": "Lo que no está tan claro",
+    "descanso": "Descanso",
+    "descanso_valor": "{v} min"
   },
   "favoritos": {
     "titulo": "Favoritos",
@@ -175,7 +177,8 @@
       "peso_reps": "{peso} kg × {reps}",
       "rir": "RIR {v}"
     },
-    "tus_datos": "Copia y restauración de tus datos"
+    "tus_datos": "Copia y restauración de tus datos",
+    "ultima_vez": "La última vez"
   },
   "datos": {
     "titulo": "Tus datos",
@@ -199,6 +202,37 @@
     "borrar_si": "Sí, borrarlo todo",
     "cancelar": "Cancelar",
     "borrado": "Datos borrados."
+  },
+  "crono": {
+    "empezar": "Cronometrar",
+    "parar": "Parar y apuntar",
+    "preparando": "Colócate",
+    "corriendo": "Aguanta"
+  },
+  "descanso": {
+    "titulo": "Descanso",
+    "terminado": "Descanso terminado: a por la siguiente serie.",
+    "cerrar": "Cerrar",
+    "saltar": "Saltar",
+    "menos": "−15 s",
+    "mas": "+15 s",
+    "menos_largo": "Quitar 15 segundos al descanso",
+    "mas_largo": "Añadir 15 segundos al descanso"
+  },
+  "hoy": {
+    "titulo": "Hoy",
+    "anadir": "Añadir ejercicio",
+    "elegir": "Elige uno del catálogo",
+    "lista": "Ejercicios de hoy",
+    "ejercicios": "Ejercicios",
+    "series_total": "Series",
+    "volumen": "Kilos movidos",
+    "series": {
+      "una": "{n} serie",
+      "varias": "{n} series"
+    },
+    "vacio": "Aún no has anotado nada hoy. Elige un ejercicio para empezar: cada serie que anotes pone en marcha el descanso.",
+    "desde_favoritos": "O empieza por uno de tus favoritos:"
   },
   "pie": {
     "derechos": "© {anio} befit",

@@ -96,8 +96,9 @@ o servidor: la regla 5 se mantiene y el cambio de dispositivo va por fichero.
   campo `medida` en la ficha—, historial del ejercicio, 1RM estimado (Epley y Brzycki, con aviso
   por encima de 10 repeticiones) y gráfica en SVG hecho a mano. Vista `#/datos` para exportar,
   importar y borrar. Los campos que no son texto se validan iguales en los dos idiomas.
-- ⬜ **5.2 Sesión en el gimnasio.** `#/hoy`, temporizador de descanso, cronómetro para los
-  isométricos y wake lock. Un solo maniquí vivo: el del ejercicio activo.
+- ✅ **5.2 Sesión en el gimnasio.** `#/hoy`, temporizador de descanso, cronómetro para los
+  isométricos y wake lock. Un solo maniquí vivo: el del ejercicio activo. El descanso por defecto
+  sale del contenido (grupo, o ficha si no encaja) y los ±15 s se recuerdan por ejercicio.
 - ⬜ **5.3 Rutinas.** Las del usuario, en local y por enlace; las de inicio, como contenido en
   `content/<idioma>/rutinas/`; y cambiar un ejercicio por otro de su mismo patrón.
 - ⬜ **5.4 Progreso.** Mapa muscular acumulado ponderado por rol (1 · 0,5 · 0,25), volumen semanal

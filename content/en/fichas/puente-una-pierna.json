@@ -16,6 +16,7 @@
     "ninguno"
   ],
   "nivel": "intermedio",
+  "descanso": 60,
   "musculos": {
     "principal": [
       "gluteo_mayor"

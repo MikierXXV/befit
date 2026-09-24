@@ -13,13 +13,15 @@
 
 import './estilos/sitio.css';
 import './estilos/app.css';
-import { FICHAS, GRUPOS, MOVIMIENTOS, etiqueta, fichaPorId, grupoPorId, valoresDe, type Ficha } from './app/contenido';
+import { reloj } from './app/calculos.js';
+import { FICHAS, GRUPOS, MOVIMIENTOS, descansoDe, etiqueta, fichaPorId, grupoPorId, valoresDe, type Ficha } from './app/contenido';
 import { suscribir } from './app/almacen';
 import { alternar, enlaceCompartir, esFavorito, favoritos, recibirDeEnlace } from './app/favoritos';
 import { alCambiarRuta, enlace, irA, rutaActual, type Ruta } from './app/rutas';
 import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { t } from './app/textos';
 import { montarDatos } from './app/vistas/datos';
+import { fechaDeHoy, montarHoy } from './app/vistas/hoy';
 import { montarRegistro } from './app/vistas/registro';
 
 const cargarFigura = Object.values(
@@ -397,6 +399,7 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
       <dl class="datos">
         ${f.material?.length ? `<div class="dato"><dt>${t('ficha.material')}</dt><dd>${f.material.map((m) => escapar(etiqueta('material', m))).join(', ')}</dd></div>` : ''}
         ${f.nivel ? `<div class="dato"><dt>${t('ficha.nivel')}</dt><dd>${escapar(etiqueta('nivel', f.nivel))}</dd></div>` : ''}
+        <div class="dato"><dt>${t('ficha.descanso')}</dt><dd>${t('ficha.descanso_valor').replace('{v}', reloj(descansoDe(f)))}</dd></div>
       </dl>
       <!--
         El registro, después de material y nivel y antes de los pasos: en el gimnasio es a lo que se
@@ -428,12 +431,24 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
 
   montarRegistro(sitio.querySelector<HTMLElement>('.registro')!, f);
 
-  if (movimiento && cargarFigura) {
-    const { montarFigura } = await cargarFigura();
-    vivo = await montarFigura(sitio.querySelector<HTMLElement>('.figura')!, movimiento, f);
-  } else {
-    sitio.querySelector('.figura')!.remove();
-  }
+  vivo = await montarManiqui(sitio.querySelector<HTMLElement>('.figura')!, f);
+}
+
+/**
+ * Monta el maniquí de una ficha en su hueco, o quita el hueco si no hay maniquí que poner.
+ *
+ * Si al terminar de cargar el hueco ya no está en la página —se cambió de ruta mientras llegaban
+ * Three.js y el modelo—, se desmonta en el acto: ese maniquí se quedaba con su contexto WebGL vivo
+ * y sin nadie que lo liberara, porque `pintar()` ya había pasado por `vivo?.destruir()`.
+ */
+async function montarManiqui(hueco: HTMLElement, f: Ficha): Promise<{ destruir(): void } | null> {
+  const movimiento = f.movimiento_id ? MOVIMIENTOS[f.movimiento_id] : undefined;
+  if (!movimiento || !cargarFigura) { hueco.remove(); return null; }
+  const { montarFigura } = await cargarFigura();
+  if (!hueco.isConnected) return null;
+  const montado = await montarFigura(hueco, movimiento, f);
+  if (!hueco.isConnected) { montado.destruir(); return null; }
+  return montado;
 }
 
 /* ----------------------------------------------------------------- común -- */
@@ -465,6 +480,7 @@ function cabecera(ruta: Ruta): string {
       <div>
       <a class="marca" href="${enlace({ vista: 'catalogo', filtros: {} })}">befit</a>
       <nav>
+        <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${ruta.vista === 'hoy' ? 'aria-current="page"' : ''}>${t('hoy.titulo')}</a>
         <a href="${enlace({ vista: 'favoritos', filtros: {} })}" ${ruta.vista === 'favoritos' ? 'aria-current="page"' : ''}>
           <span class="icono" aria-hidden="true">★</span>${t('favoritos.titulo')}
           ${favoritos().length ? `<span class="insignia">${favoritos().length}</span>` : ''}
@@ -501,6 +517,10 @@ function pintar(): void {
 
   if (ruta.vista === 'ficha') {
     void pintarFicha(ruta);
+  } else if (ruta.vista === 'hoy') {
+    ponerPortada(t('hoy.titulo'), fechaDeHoy());
+    sitio.innerHTML = `<div class="hoy"></div>${aviso()}`;
+    vivo = montarHoy(sitio.querySelector<HTMLElement>('.hoy')!, { activo: ruta.id, montarManiqui });
   } else if (ruta.vista === 'datos') {
     ponerPortada(t('datos.titulo'), t('datos.entradilla'));
     sitio.innerHTML = `<div class="tus-datos"></div>${aviso()}`;

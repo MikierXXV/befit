@@ -38,7 +38,9 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `src/app/almacen.ts` | Esos datos en `localStorage`: leer, guardar, avisar, exportar e importar. |
 | `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla, encima de `almacen`. |
 | `src/app/registro.ts` · `calculos.js` | Anotar y borrar series; 1RM, sesiones, mejor serie y evolución (puro, con test). |
-| `src/app/vistas/` | Bloques que se repintan solos: el registro de la ficha y la pantalla «Tus datos». |
+| `src/app/vistas/` | Bloques que se repintan solos: el registro de la ficha, «Hoy» y «Tus datos». |
+| `src/app/descanso.ts` | El temporizador de descanso: barra propia fuera de `#app`, cuenta con la hora de fin. |
+| `src/app/pantalla.ts` · `avisos.ts` | Pantalla encendida (wake lock, por razones) y pitido/vibración. |
 | `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |
 | `public/sw.js` · `manifest.webmanifest` | La PWA: se instala y abre sin conexión. |
 | `src/figura/` | El maniquí: cinemática, visor, mapa muscular y hoja de revisión. |
@@ -97,6 +99,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    bastar por sí solos.
 
 ## Al añadir un grupo
+
+Con su `descanso` por defecto en segundos, el mismo en los dos idiomas (lo vigila
+`campos_comunes` de `reglas.json`); una ficha que no encaje lo cambia con su propio `descanso`.
 
 Dos acentos, uno por tema —el modo oscuro no es invertir—, con al menos 15° de separación de tono
 respecto a los demás. `npm run validar:contraste -- --sugerir` da valores que pasan AA sin cambiar

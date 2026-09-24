@@ -8,12 +8,12 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { VERSION, fusionar, leerExportado, limpiar, migrar, normalizarSerie, paraExportar, vacio } from '../src/app/datos.js';
+import { VERSION, fusionar, leerExportado, limpiar, migrar, normalizarDescansos, normalizarSerie, paraExportar, vacio } from '../src/app/datos.js';
 
 const serie = (id, extra = {}) => ({ id, ejercicio: 'sentadilla-barra', fecha: '2026-09-24', creada: 1, reps: 8, peso: 60, ...extra });
 
 test('sin nada guardado, empieza vacío y en la versión actual', () => {
-  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [] });
+  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [], descansos: {} });
 });
 
 test('los favoritos de la versión vieja no se pierden al cambiar de clave', () => {
@@ -78,4 +78,20 @@ test('un fichero que no es de befit se rechaza con un mensaje traducible', () =>
   assert.throws(() => leerExportado('no es json'), /datos.error_formato/);
   assert.throws(() => leerExportado('{"favoritos":[]}'), /datos.error_formato/);
   assert.throws(() => leerExportado(JSON.stringify({ app: 'befit', version: VERSION + 1 })), /datos.error_version/);
+});
+
+test('los descansos absurdos se descartan, uno a uno', () => {
+  assert.deepEqual(normalizarDescansos({ a: 90, b: 0, c: 40000, d: 12.5, e: '60', '': 60 }), { a: 90 });
+  assert.deepEqual(normalizarDescansos([60]), {});
+});
+
+test('una copia de antes de los descansos se sigue leyendo', () => {
+  const vieja = JSON.stringify({ app: 'befit', version: 1, favoritos: ['a'], series: [] });
+  assert.deepEqual(leerExportado(vieja).descansos, {});
+});
+
+test('al importar, el descanso ajustado en este dispositivo manda', () => {
+  const aqui = { ...vacio(), descansos: { a: 90 } };
+  const fuera = { ...vacio(), descansos: { a: 30, b: 120 } };
+  assert.deepEqual(fusionar(aqui, fuera).datos.descansos, { a: 90, b: 120 });
 });

@@ -63,6 +63,12 @@
       ],
       "description": "Qué se anota en el registro. Sin el campo, repeticiones. `tiempo` en los que se sostienen —plancha, sentadilla en pared—: contarle repeticiones a una plancha no significa nada."
     },
+    "descanso": {
+      "type": "integer",
+      "minimum": 15,
+      "maximum": 600,
+      "description": "Descanso entre series, en segundos, si no es el de su grupo: un aislamiento dentro de un grupo de multiarticulares, o un puente con el propio cuerpo en el de la bisagra de cadera."
+    },
     "musculos": {
       "type": "object",
       "description": "Por rol, no por porcentaje. Un porcentaje de activación sugiere una precisión que la electromiografía no da.",

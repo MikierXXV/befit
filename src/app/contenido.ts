@@ -18,6 +18,8 @@ export interface Grupo {
   nombre: string;
   descripcion?: string;
   orden: number;
+  /** Descanso por defecto entre series de sus ejercicios, en segundos. */
+  descanso?: number;
   /** Un color por tema. El modo oscuro no es invertir; lo exige AA en los dos, ver check-contraste.mjs. */
   color_acento?: { claro: string; oscuro: string };
 }
@@ -35,6 +37,8 @@ export interface Ficha {
   nivel?: 'inicial' | 'intermedio' | 'avanzado';
   /** Qué se anota en el registro. Sin el campo, repeticiones; `tiempo` en los que se sostienen. */
   medida?: 'reps' | 'tiempo';
+  /** Descanso entre series si no es el del grupo, en segundos. */
+  descanso?: number;
   musculos?: Partial<Record<Rol, string[]>>;
   /** Lo que las fuentes no cierran. Se pinta aparte, no mezclado con lo que sí se sostiene. */
   matices?: string;
@@ -93,3 +97,11 @@ export function valoresDe(campo: 'material' | 'nivel' | 'musculos'): string[] {
 export function etiqueta(campo: string, valor: string): string {
   return t(`catalogo.${campo}.${valor}`) === `catalogo.${campo}.${valor}` ? valor : t(`catalogo.${campo}.${valor}`);
 }
+
+/**
+ * El descanso que propone el contenido para una ficha: el suyo, o el de su grupo, o 90 s.
+ *
+ * El último recurso existe para que el temporizador no se quede sin valor si un grupo nuevo se
+ * publica sin el campo; el esquema no lo exige para no romper los proyectos que salen de la plantilla.
+ */
+export const descansoDe = (f: Ficha): number => f.descanso ?? grupoPorId(f.grupo_id)?.descanso ?? 90;

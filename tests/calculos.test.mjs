@@ -6,7 +6,7 @@
  */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { brzycki, epley, evolucion, hoy, mejorMarca, queSeSigue, sesiones, unoRM } from '../src/app/calculos.js';
+import { brzycki, ejerciciosDelDia, epley, evolucion, hoy, mejorMarca, queSeSigue, reloj, sesiones, unoRM, volumen } from '../src/app/calculos.js';
 
 let n = 0;
 const serie = (fecha, extra) => ({ id: `s${(n += 1)}`, ejercicio: 'x', fecha, creada: n, ...extra });
@@ -73,4 +73,28 @@ test('la evolución toma lo mejor de cada día y en orden de calendario', () => 
 test('hoy es la fecha del dispositivo, no la de UTC', () => {
   assert.equal(hoy(new Date(2026, 8, 25, 0, 30)), '2026-09-25');
   assert.equal(hoy(new Date(2026, 0, 5)), '2026-01-05');
+});
+
+test('los ejercicios del día van en el orden en que se empezaron', () => {
+  const lista = [
+    serie('2026-09-24', { ejercicio: 'b', reps: 5, creada: 2 }),
+    serie('2026-09-24', { ejercicio: 'a', reps: 5, creada: 1 }),
+    serie('2026-09-24', { ejercicio: 'a', reps: 5, creada: 3 }),
+    serie('2026-09-23', { ejercicio: 'c', reps: 5, creada: 0 }),
+  ];
+  const dia = ejerciciosDelDia(lista, '2026-09-24');
+  assert.deepEqual(dia.map((e) => e.ejercicio), ['a', 'b']);
+  assert.equal(dia[0].series.length, 2);
+});
+
+test('el volumen solo suma las series con peso y repeticiones', () => {
+  assert.equal(volumen([serie('d', { peso: 60, reps: 8 }), serie('d', { reps: 20 }), serie('d', { peso: 10, segundos: 30 })]), 480);
+});
+
+test('el reloj redondea hacia arriba, como una cuenta atrás', () => {
+  assert.equal(reloj(90), '1:30');
+  assert.equal(reloj(5), '0:05');
+  assert.equal(reloj(0.4), '0:01');
+  assert.equal(reloj(0), '0:00');
+  assert.equal(reloj(-3), '0:00');
 });
