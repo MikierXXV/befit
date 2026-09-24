@@ -37,7 +37,8 @@
     "#/hoy",
     "#/rutinas",
     "#/rutina/torso-pierna",
-    "#/rutina/mia-ejemplo/editar"
+    "#/rutina/mia-ejemplo/editar",
+    "#/progreso"
   ],
   "rutas_3d": [
     "#/f/sentadilla-barra"

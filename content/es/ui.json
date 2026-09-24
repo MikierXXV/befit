@@ -181,6 +181,37 @@
     "tus_datos": "Copia y restauración de tus datos",
     "ultima_vez": "La última vez"
   },
+  "progreso": {
+    "titulo": "Progreso",
+    "entradilla": "Qué has trabajado, cuánto y qué días. Contado en series, que es lo que se puede sumar entre ejercicios.",
+    "vacio": "Aún no hay nada que contar. Anota tus series en «Hoy» o en cualquier ficha y aquí verás qué músculos trabajas.",
+    "series_semana": "Series esta semana",
+    "dias_semana": "Días esta semana",
+    "dias_medio_ano": "Días en 26 semanas",
+    "periodo": "Periodo",
+    "esta_semana": "Esta semana",
+    "media": "Media de 4 semanas",
+    "rango": "Del {desde} al {hasta}.",
+    "musculos": "Músculos trabajados",
+    "grado_1": "{a}–{b} series por semana",
+    "grado_2": "{a}–{b} series por semana",
+    "grado_3": "{a} o más series por semana",
+    "explicacion": "Cada serie cuenta entera para el músculo principal del ejercicio, media para el que ayuda y un cuarto para el que sostiene la postura. Las revisiones asocian unas 10 series semanales por músculo con más crecimiento que menos de 5: es una referencia para leer el mapa, no un objetivo.",
+    "fuente": "Schoenfeld, Ogborn y Krieger, 2017",
+    "col_semana": "Series esta semana",
+    "col_media": "Series por semana",
+    "sin_trabajar": "Sin series en este periodo, de los que sueles trabajar:",
+    "patrones": "Series por patrón",
+    "patrones_nota_semana": "Series anotadas esta semana en cada patrón de movimiento, sin ponderar.",
+    "patrones_nota_media": "Media semanal de las cuatro semanas anteriores, sin ponderar.",
+    "actividad": "Actividad",
+    "actividad_resumen": "{dias} días con entreno en las últimas {semanas} semanas.",
+    "series_dia": "{n} series",
+    "cal_0": "Descanso",
+    "cal_1": "1–9 series",
+    "cal_2": "10–19 series",
+    "cal_3": "20 o más"
+  },
   "datos": {
     "titulo": "Tus datos",
     "entradilla": "Lo que guardas en befit vive solo en este dispositivo. Desde aquí te lo llevas a otro.",
@@ -295,7 +326,8 @@
     "hechas": "{hechas}/{total} series",
     "dejar_plan": "Dejar el plan",
     "objetivo": "Objetivo: {objetivo}",
-    "seguir_rutina": "Seguir una rutina"
+    "seguir_rutina": "Seguir una rutina",
+    "ver_progreso": "Ver tu progreso"
   },
   "pie": {
     "derechos": "© {anio} befit",

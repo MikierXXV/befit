@@ -1111,11 +1111,88 @@ body.con-descanso { padding-bottom: 7.5rem; }
 .ejercicios-hoy .hecho { margin-right: var(--e2); color: var(--accion); }
 .activo .objetivo { margin: 0 0 var(--e4); color: var(--texto-secundario); }
 
+/* ------------------------------------------------------------------ progreso -- */
+
+.progreso { max-width: var(--medida-texto); padding-block: var(--e6) 0; }
+.progreso > section { margin-top: var(--e8); }
+.progreso h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
+.progreso .ayuda { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.progreso .rango { margin: var(--e2) 0 0; }
+.segmentado-periodo { display: flex; flex-wrap: wrap; gap: var(--e2); margin-top: var(--e4); }
+.segmentado-periodo [aria-pressed="true"] { border-color: var(--accion); color: var(--texto); font-weight: var(--peso-semibold); }
+
+/*
+ * El mapa acumulado. Mismos trazados que el de la ficha, pero en el color de la acción y no en el
+ * de un grupo: aquí se suman ejercicios de todos los patrones. Los tres grados se leen por
+ * intensidad, como los tres papeles de la ficha.
+ */
+.progreso-mapa .mapas { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); max-width: 17rem; }
+.progreso-mapa .mapa { width: 100%; height: auto; }
+.progreso-mapa .zona { fill: color-mix(in oklab, var(--texto) 24%, var(--fondo)); stroke: var(--fondo); stroke-width: 0.15; }
+.progreso-mapa .zona.g1, .muestra.g1 { fill: color-mix(in oklab, var(--accion) 45%, var(--fondo)); background: color-mix(in oklab, var(--accion) 45%, var(--fondo)); }
+.progreso-mapa .zona.g2, .muestra.g2 { fill: color-mix(in oklab, var(--accion) 72%, var(--fondo)); background: color-mix(in oklab, var(--accion) 72%, var(--fondo)); }
+.progreso-mapa .zona.g3, .muestra.g3 { fill: var(--accion); background: var(--accion); }
+/* El hueco del mapa se reserva: los trazados llegan en otro paquete y sin esto empujaban la página. */
+.progreso-mapa .mapas:empty { aspect-ratio: 70 / 93; background: var(--fondo-hundido); border-radius: var(--radio-medio); }
+
+.leyenda-grados { list-style: none; margin: var(--e3) 0; padding: 0; display: grid; gap: var(--e1); font-size: var(--t-pequeno); }
+.leyenda-grados.en-linea { display: flex; flex-wrap: wrap; gap: var(--e2) var(--e4); }
+.leyenda-grados .muestra {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: var(--e2);
+  border-radius: 3px;
+  vertical-align: -1px;
+}
+
+.tabla-desplazable { overflow-x: auto; }
+.tabla-musculos { width: 100%; max-width: 28rem; border-collapse: collapse; font-size: var(--t-pequeno); }
+.tabla-musculos th, .tabla-musculos td { padding: var(--e2) 0; border-bottom: 1px solid var(--separador); text-align: left; }
+.tabla-musculos td { text-align: right; font-variant-numeric: tabular-nums; }
+.tabla-musculos thead th { color: var(--texto-secundario); font-weight: var(--peso-medio); }
+.tabla-musculos thead th:last-child { text-align: right; }
+.tabla-musculos tbody th { font-weight: var(--peso-regular); }
+
+.barras { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e2); font-size: var(--t-pequeno); }
+.barras li { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr 2.5rem; align-items: center; gap: var(--e3); }
+.barras .barra-fondo { height: 10px; border-radius: var(--radio-pildora); background: var(--fondo-hundido); overflow: hidden; }
+.barras .barra-valor { display: block; height: 100%; border-radius: inherit; background: var(--accion); }
+.barras .valor { text-align: right; font-variant-numeric: tabular-nums; }
+
+/*
+ * El calendario: 26 columnas de 12 px caben en 360 px de móvil junto a la columna de los días. Si
+ * no caben, el bloque se desplaza de lado dentro de su caja, nunca la página entera.
+ */
+.calendario {
+  display: grid;
+  grid-template-columns: 1rem repeat(var(--semanas), 12px);
+  grid-auto-rows: 12px;
+  gap: 2px;
+  width: max-content;
+  font-size: 10px;
+  line-height: 12px;
+  color: var(--texto-secundario);
+}
+.calendario .mes { white-space: nowrap; overflow: visible; }
+.celda, .muestra.t0, .muestra.t1, .muestra.t2, .muestra.t3 { border-radius: 3px; }
+.celda.t0, .muestra.t0 { background: var(--fondo-hundido); box-shadow: inset 0 0 0 1px var(--separador); }
+.celda.t1, .muestra.t1 { background: color-mix(in oklab, var(--accion) 40%, var(--fondo)); }
+.celda.t2, .muestra.t2 { background: color-mix(in oklab, var(--accion) 70%, var(--fondo)); }
+.celda.t3, .muestra.t3 { background: var(--accion); }
+.enlace-progreso { margin: calc(var(--e4) * -1) 0 var(--e8); font-size: var(--t-pequeno); }
+
 /*
  * En el móvil la cabecera se queda con lo que se usa entrenando —Hoy, Rutinas y la estrella— e
  * idioma y tema bajan al pie. Ver cabecera() y aviso() en main.ts.
  */
 .ajustes-pie { display: none; }
+/* Progreso, en la cabecera solo desde 600 px. Medido en inglés, el idioma de textos más largos: con
+   él visible, a 544 px la barra medía 570 y a 600 cabía justa. Por debajo se llega desde «Hoy» y
+   desde el pie. */
+@media (max-width: 37.49rem) {
+  .barra .solo-amplio { display: none; }
+}
 @media (max-width: 33.99rem) {
   .texto-nav,
   .barra .solo-ancho { display: none; }

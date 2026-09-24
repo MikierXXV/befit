@@ -177,6 +177,37 @@
     "tus_datos": "Back up and restore your data",
     "ultima_vez": "Last time"
   },
+  "progreso": {
+    "titulo": "Progress",
+    "entradilla": "What you have trained, how much and on which days. Counted in sets, which is what can be added up across exercises.",
+    "vacio": "Nothing to count yet. Log your sets in “Today” or on any exercise and you will see here which muscles you train.",
+    "series_semana": "Sets this week",
+    "dias_semana": "Days this week",
+    "dias_medio_ano": "Days in 26 weeks",
+    "periodo": "Period",
+    "esta_semana": "This week",
+    "media": "4-week average",
+    "rango": "From {desde} to {hasta}.",
+    "musculos": "Muscles trained",
+    "grado_1": "{a}–{b} sets a week",
+    "grado_2": "{a}–{b} sets a week",
+    "grado_3": "{a} or more sets a week",
+    "explicacion": "Each set counts in full for the exercise’s main muscle, half for the one that assists and a quarter for the one that holds the posture. Reviews link around 10 weekly sets per muscle to more growth than fewer than 5: it is a reference for reading the map, not a target.",
+    "fuente": "Schoenfeld, Ogborn and Krieger, 2017",
+    "col_semana": "Sets this week",
+    "col_media": "Sets per week",
+    "sin_trabajar": "No sets in this period, among the ones you usually train:",
+    "patrones": "Sets by pattern",
+    "patrones_nota_semana": "Sets logged this week in each movement pattern, unweighted.",
+    "patrones_nota_media": "Weekly average over the four previous weeks, unweighted.",
+    "actividad": "Activity",
+    "actividad_resumen": "{dias} training days in the last {semanas} weeks.",
+    "series_dia": "{n} sets",
+    "cal_0": "Rest",
+    "cal_1": "1–9 sets",
+    "cal_2": "10–19 sets",
+    "cal_3": "20 or more"
+  },
   "datos": {
     "titulo": "Your data",
     "entradilla": "What you save in befit lives on this device only. From here you can take it to another one.",
@@ -291,7 +322,8 @@
     "hechas": "{hechas}/{total} sets",
     "dejar_plan": "Drop the plan",
     "objetivo": "Target: {objetivo}",
-    "seguir_rutina": "Follow a routine"
+    "seguir_rutina": "Follow a routine",
+    "ver_progreso": "See your progress"
   },
   "pie": {
     "derechos": "© {anio} befit",

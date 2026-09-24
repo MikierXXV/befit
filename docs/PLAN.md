@@ -102,8 +102,9 @@ o servidor: la regla 5 se mantiene y el cambio de dispositivo va por fichero.
 - ✅ **5.3 Rutinas.** Las del usuario, en local y por enlace; las de inicio, como contenido en
   `content/<idioma>/rutinas/`; y cambiar un ejercicio por otro de su mismo patrón. Un día de rutina
   se empieza como plan de hoy, y «Hoy» enseña cuántas series lleva cada ejercicio de su objetivo.
-- ⬜ **5.4 Progreso.** Mapa muscular acumulado ponderado por rol (1 · 0,5 · 0,25), volumen semanal
-  por patrón y heatmap de actividad.
+- ✅ **5.4 Progreso.** Mapa muscular acumulado ponderado por rol (1 · 0,5 · 0,25), volumen semanal
+  por patrón y heatmap de actividad. En tres grados (1-4, 5-9 y 10 o más series por semana), no en
+  degradado; esta semana o la media de las cuatro anteriores completas.
 
 Fuera, a propósito: cuentas y sincronización, AI Coach, progresión automática (a OpenGym le ha
 dado fallos reales), social, notificaciones, APK y fotos. Importar de Strong/Hevy, quizá más tarde.

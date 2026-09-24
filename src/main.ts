@@ -22,6 +22,7 @@ import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { t } from './app/textos';
 import { montarDatos } from './app/vistas/datos';
 import { fechaDeHoy, montarHoy } from './app/vistas/hoy';
+import { montarProgreso } from './app/vistas/progreso';
 import { montarCompartida, montarEditor, montarListaRutinas, montarRutina } from './app/vistas/rutinas';
 import { montarRegistro } from './app/vistas/registro';
 
@@ -470,6 +471,7 @@ const aviso = (): string => `
     <p class="salud">${t('aviso.salud')}</p>
     <p class="legal">
       <span>${t('pie.derechos').replace('{anio}', String(new Date().getFullYear()))}</span>
+      <a href="${enlace({ vista: 'progreso', filtros: {} })}">${t('progreso.titulo')}</a>
       <a href="${enlace({ vista: 'datos', filtros: {} })}">${t('datos.titulo')}</a>
       <span class="creditos">${t('pie.creditos')}</span>
     </p>
@@ -493,6 +495,8 @@ function cabecera(ruta: Ruta): string {
       <nav>
         <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${ruta.vista === 'hoy' ? 'aria-current="page"' : ''}>${t('hoy.titulo')}</a>
         <a href="${enlace({ vista: 'rutinas', filtros: {} })}" ${ruta.vista === 'rutinas' || ruta.vista === 'rutina' ? 'aria-current="page"' : ''}>${t('rutinas.titulo')}</a>
+        <!-- Progreso, en la cabecera solo cuando cabe; en el móvil se llega desde «Hoy» y desde el pie. -->
+        <a class="solo-amplio" href="${enlace({ vista: 'progreso', filtros: {} })}" ${ruta.vista === 'progreso' ? 'aria-current="page"' : ''}>${t('progreso.titulo')}</a>
         <!--
           En el móvil, favoritos se queda en la estrella: con «Hoy» y «Rutinas» ya no cabían las cinco
           piezas en 390 px. El nombre va en aria-label, con la cuenta, y la palabra se quita del todo
@@ -540,6 +544,10 @@ function pintar(): void {
     ponerPortada(t('hoy.titulo'), fechaDeHoy());
     sitio.innerHTML = `<div class="hoy"></div>${aviso()}`;
     vivo = montarHoy(sitio.querySelector<HTMLElement>('.hoy')!, { activo: ruta.id, montarManiqui });
+  } else if (ruta.vista === 'progreso') {
+    ponerPortada(t('progreso.titulo'), t('progreso.entradilla'));
+    sitio.innerHTML = `<div class="progreso"></div>${aviso()}`;
+    montarProgreso(sitio.querySelector<HTMLElement>('.progreso')!);
   } else if (ruta.vista === 'rutinas') {
     ponerPortada(t('rutinas.titulo'), t('rutinas.entradilla'));
     sitio.innerHTML = `<div class="rutinas"></div>${aviso()}`;

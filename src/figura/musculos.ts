@@ -54,7 +54,28 @@ export function pintarMapa(contenedor: HTMLElement, musculos: Partial<Record<Rol
       zonas.forEach((z) => rolDe.set(z, rol));
     }
   }
+  dibujar(contenedor, rolDe);
+}
 
+/**
+ * El mismo mapa, pintado por GRADOS en vez de por papeles: 1, 2 o 3 por músculo. Es el de la
+ * pantalla de progreso, donde lo que se cuenta es cuánto se ha trabajado cada músculo, no qué papel
+ * tiene en un ejercicio.
+ *
+ * Tres grados y no una escala continua, por lo mismo que los papeles: las series por semana se
+ * leen por tramos —pocas, algunas, bastantes—, y un degradado de cuarenta tonos invitaría a
+ * comparar 6,25 con 6,5 series como si esa diferencia significara algo.
+ */
+export function pintarMapaGrados(contenedor: HTMLElement, grados: Record<string, number>) {
+  const claseDe = new Map<string, string>();
+  for (const [m, g] of Object.entries(grados)) {
+    if (g < 1) continue;
+    (ZONAS[m] ?? []).forEach((z) => claseDe.set(z, `g${Math.min(3, g)}`));
+  }
+  dibujar(contenedor, claseDe);
+}
+
+function dibujar(contenedor: HTMLElement, rolDe: Map<string, string>) {
   contenedor.replaceChildren();
   for (const [lado, trazados, viewBox] of [
     ['frente', FRONT_MUSCLES, '0 0 35 93'],

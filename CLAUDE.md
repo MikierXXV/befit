@@ -39,8 +39,9 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `src/app/almacen.ts` | Esos datos en `localStorage`: leer, guardar, avisar, exportar e importar. |
 | `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla, encima de `almacen`. |
 | `src/app/registro.ts` · `calculos.js` | Anotar y borrar series; 1RM, sesiones, mejor serie y evolución (puro, con test). |
-| `src/app/vistas/` | Bloques que se repintan solos: el registro de la ficha, «Hoy» y «Tus datos». |
+| `src/app/vistas/` | Bloques que se repintan solos: registro, «Hoy», rutinas, «Progreso» y «Tus datos». |
 | `src/app/rutinas.js` · `mis-rutinas.ts` | Rutinas: normalizar, copiar, progreso y enlace (puro, con test); las del visitante y el plan de hoy. |
+| `src/app/progreso.js` | Series por músculo (ponderadas por papel), por patrón y por día. Puro, con test. |
 | `src/app/descanso.ts` | El temporizador de descanso: barra propia fuera de `#app`, cuenta con la hora de fin. |
 | `src/app/pantalla.ts` · `avisos.ts` | Pantalla encendida (wake lock, por razones) y pitido/vibración. |
 | `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |

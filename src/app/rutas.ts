@@ -11,7 +11,7 @@
  */
 
 export interface Ruta {
-  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos' | 'hoy' | 'rutinas' | 'rutina';
+  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos' | 'hoy' | 'rutinas' | 'rutina' | 'progreso';
   id?: string;
   /** En una rutina del visitante: su pantalla de edición. */
   editar?: boolean;
@@ -39,6 +39,7 @@ export function rutaActual(): Ruta {
   if (partes[0] === 'datos') return { vista: 'datos', filtros };
   if (partes[0] === 'hoy') return { vista: 'hoy', id: partes[1], filtros };
   if (partes[0] === 'rutinas') return { vista: 'rutinas', filtros };
+  if (partes[0] === 'progreso') return { vista: 'progreso', filtros };
   if (partes[0] === 'rutina' && partes[1] === 'compartida') return { vista: 'rutina', compartida: parametros.get('r') ?? '', filtros };
   if (partes[0] === 'rutina' && partes[1]) return { vista: 'rutina', id: partes[1], editar: partes[2] === 'editar', filtros };
   if (partes[0] === 'favoritos') {

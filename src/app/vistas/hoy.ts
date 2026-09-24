@@ -121,7 +121,8 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
           }).join('')}
           </ol>
         </nav>` : ''}
-      ${selector()}`;
+      ${selector()}
+      ${dia.length ? `<p class="enlace-progreso"><a href="${enlace({ vista: 'progreso', filtros: {} })}">${t('hoy.ver_progreso')}</a></p>` : ''}`;
   }
 
   function pintarCabeza(): void {
