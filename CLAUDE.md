@@ -99,9 +99,25 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    Si el agarre es supino —palmas hacia la cara, o hacia arriba en la sentadilla frontal—, el
    implemento lleva `"agarre_supino": true` y el calibrador gira la mano media vuelta alrededor de
    la barra. La cinemática siempre deduce pronación, porque saca el marco de la mano del antebrazo.
+   Para llegar lejos con los brazos —una barra en el suelo—, el hombro se baja y adelanta con
+   `brazos.<lado>.escapula: { elevacion, protraccion }` en grados (rangos en `RANGOS`). Y un
+   ejercicio que apoya la ESPALDA en el banco (hip thrust) lo declara en su apoyo con
+   `"con": "espalda"`, o el validador lo toma por sentado fuera del banco.
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
+
+## Animar varios ejercicios a la vez
+
+Un agente `animador-de-movimiento` por ejercicio, cada uno en su worktree (`.claude/worktrees/`,
+ignorado por git), con `node_modules` enlazado y su propio puerto (`npx vite --port 51xx` y
+`BASE=http://localhost:51xx/ npm run hoja <id>`). Solo tocan su movimiento; fichas, `orden`,
+carteles y lo compartido se hacen en el árbol principal al juntar. Las fichas, en un commit ANTES
+de lanzarlos, o sus worktrees no las tienen.
+
+**Al recogerlos, quita PRIMERO el enlace `node_modules` de cada worktree** (`rm <worktree>/node_modules`,
+sin `-r`) y solo después `git worktree remove`. `git worktree remove --force` sigue el enlace y
+vacía el `node_modules` del proyecto principal: pasó, y hubo que reinstalar con `npm ci`.
 
 ## Al añadir una rutina de inicio
 

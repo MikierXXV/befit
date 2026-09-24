@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Peso muerto con barra",
   "resumen": "La barra sale del suelo pegada a las piernas hasta quedar de pie, con la espalda firme. Mueve más carga que casi cualquier otro ejercicio y reparte el trabajo entre cadera, espalda y piernas.",
+  "movimiento_id": "peso-muerto",
   "ejecucion": [
     "Ponte con los pies a la anchura de la cadera y la barra sobre la mitad del pie, casi tocando las espinillas.",
     "Agárrala por fuera de las piernas, con los brazos estirados, y dobla las rodillas hasta que las espinillas toquen la barra, con la cadera por encima de las rodillas.",

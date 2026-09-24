@@ -112,6 +112,23 @@ dado fallos reales), social, notificaciones, APK y fotos. Importar de Strong/Hev
 Pendientes del catálogo: el cable del press Pallof se ve rígido, y el curl inverso no distingue la
 pronación porque la cinemática aún no gira el antebrazo.
 
+## Fase 6 — De 50 a unos 100 ejercicios 🟡
+
+Plan en dos etapas: primero lo que el maniquí ya dibuja (tandas J a N), después implementos nuevos
+—banco inclinado, paralelas, kettlebell, máquinas y multipower— (tandas O a S). Rutinas de inicio
+nuevas al cerrar cada etapa y revisión de las tres actuales. Cada tanda se anima con un agente por
+ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de publicar.
+
+- ✅ **J · Bisagra y sentadilla:** peso muerto, peso muerto sumo, hip thrust, rumano con mancuernas,
+  goblet y sentadilla sumo con mancuerna. Trajo tres cambios al motor y al validador: la
+  **escápula** (el hombro baja y se adelanta: sin ella los pesos muertos no llegaban a la barra en
+  el suelo con la espalda recta), la abducción de cadera que crece con la flexión, y el apoyo de
+  **espalda** en el banco (hip thrust).
+- ⬜ K · Empujes · L · Tirones y polea · M · Core · N · Grupos nuevos.
+- ⬜ **Pendiente técnico:** los movimientos van en el JS inicial (de 92,8 a 104,6 kB con seis
+  ejercicios). Cargarlos al abrir la ficha antes de seguir creciendo, o el presupuesto de 200 kB
+  no llega a los 100.
+
 ---
 
 ## Lo que este proyecto deja para los siguientes

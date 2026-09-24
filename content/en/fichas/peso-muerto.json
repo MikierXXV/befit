@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Barbell deadlift",
   "resumen": "The bar leaves the floor close to the legs until you are standing, with a firm back. It moves more load than almost any other exercise and spreads the work across hips, back and legs.",
+  "movimiento_id": "peso-muerto",
   "ejecucion": [
     "Stand with your feet hip-width apart and the bar over the middle of your foot, almost touching your shins.",
     "Grip it outside your legs with straight arms, and bend your knees until your shins touch the bar, with your hips above your knees.",
