@@ -26,6 +26,7 @@ import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { datosDeEjemplo } from './lib/datos-ejemplo.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = process.env.URL_BASE ?? 'http://localhost:4173/';
@@ -249,6 +250,13 @@ for (const vista of VISTAS) {
       hasTouch: vista.hasTouch ?? false,
       colorScheme: tema === 'oscuro' ? 'dark' : 'light',
     });
+    /*
+     * Un tema con registro de ejemplo y el otro sin nada: así se miran los dos estados de la ficha
+     * —recién estrenada y con series, marcas y gráfica— sin doblar el tiempo de la comprobación.
+     */
+    if (tema === 'oscuro') {
+      await ctx.addInitScript((d) => { try { localStorage.setItem('befit.datos.v1', d); } catch {} }, JSON.stringify(datosDeEjemplo()));
+    }
     const pagina = await ctx.newPage();
     for (const ruta of RUTAS) {
       await pagina.goto(BASE + ruta, { waitUntil: 'networkidle', timeout: 60000 });

@@ -37,6 +37,8 @@ GitHub Pages. Sale de la plantilla con `--tipo app`, y con `--con figura` si lle
 | `src/app/datos.js` | Los datos del visitante como valores: migrar, limpiar, fusionar. Puro, con test. |
 | `src/app/almacen.ts` | Esos datos en `localStorage`: leer, guardar, avisar, exportar e importar. |
 | `src/app/favoritos.ts` | La lista del visitante y el enlace para compartirla, encima de `almacen`. |
+| `src/app/registro.ts` · `calculos.js` | Anotar y borrar series; 1RM, sesiones, mejor serie y evolución (puro, con test). |
+| `src/app/vistas/` | Bloques que se repintan solos: el registro de la ficha y la pantalla «Tus datos». |
 | `tests/*.test.mjs` | Tests de la lógica pura, con `node --test`. Sin dependencias. |
 | `public/sw.js` · `manifest.webmanifest` | La PWA: se instala y abre sin conexión. |
 | `src/figura/` | El maniquí: cinemática, visor, mapa muscular y hoja de revisión. |
@@ -64,6 +66,9 @@ módulos viejos de caché. **Al cambiar `public/sw.js`, sube su `VERSION`**, o l
 instalado no lo renuevan. Y usa `ignoreVary`: GitHub Pages responde con `Vary: Accept-Encoding` y
 los módulos se piden con cabecera `Origin`, así que sin él la caché no casaba y la app abría en
 blanco sin conexión.
+
+`alineacion` siembra un registro de ejemplo (`scripts/lib/datos-ejemplo.mjs`) en el tema oscuro y
+deja el claro vacío: así mira la ficha en sus dos estados.
 
 `hoja`, `carteles`, `auditar`, `capturar` y `alineacion` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.

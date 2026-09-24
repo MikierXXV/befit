@@ -32,7 +32,8 @@
     "",
     "#/f/sentadilla-barra",
     "#/f/plancha-frontal",
-    "#/favoritos"
+    "#/favoritos",
+    "#/datos"
   ],
   "rutas_3d": [
     "#/f/sentadilla-barra"

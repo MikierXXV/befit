@@ -136,6 +136,66 @@
   "aviso": {
     "salud": "This explains how an exercise is done, not whether it suits you. If you have an injury, pain or any medical condition, check with a professional first."
   },
+  "registro": {
+    "titulo": "Your log",
+    "peso": "Weight (kg)",
+    "lastre": "Added weight (kg)",
+    "reps": "Reps",
+    "segundos": "Seconds",
+    "rir": "RIR",
+    "rir_sin": "—",
+    "rir_ayuda": "RIR: reps you had left in reserve when you finished the set. Optional.",
+    "anotar": "Log set",
+    "anotada": "Set logged.",
+    "borrada": "Set deleted.",
+    "deshacer": "Undo",
+    "error": "Check the numbers: that set can’t be saved.",
+    "borrar": "Delete set {n}",
+    "hoy": "Today",
+    "anteriores": "Previous sessions",
+    "vacio": "You haven’t logged any sets of this exercise yet. What you log is saved on this device only.",
+    "mejor": "Best set",
+    "unorm": "Estimated 1RM",
+    "unorm_nota": "1RM is an estimate from the Epley and Brzycki formulas, not a lift: there’s no need to test it.",
+    "unorm_aviso": "It comes from a set of more than {n} reps, where the formulas lose accuracy.",
+    "grafica_resumen": "From {desde} to {hasta} over {sesiones} sessions.",
+    "evolucion": {
+      "1rm": "Estimated 1RM over time",
+      "reps": "Reps in the best set",
+      "segundos": "Time in the best set"
+    },
+    "formato": {
+      "kg": "{v} kg",
+      "reps": "{v} reps",
+      "segundos": "{v} s",
+      "peso_reps": "{peso} kg × {reps}",
+      "rir": "RIR {v}"
+    },
+    "tus_datos": "Back up and restore your data"
+  },
+  "datos": {
+    "titulo": "Your data",
+    "entradilla": "What you save in befit lives on this device only. From here you can take it to another one.",
+    "favoritos": "Favourites",
+    "series": "Sets logged",
+    "dias": "Days trained",
+    "exportar_titulo": "Make a backup",
+    "exportar_texto": "Download a file with your favourites and your log. Keep it wherever you like: befit doesn’t send it anywhere.",
+    "exportar": "Download backup",
+    "exportado": "Backup downloaded.",
+    "importar_titulo": "Restore a backup",
+    "importar_texto": "Choose a befit backup file. It’s added to what you already have here: nothing is deleted.",
+    "importar": "Choose file",
+    "importado": "Backup restored. New favourites: {favoritos}. New sets: {series}.",
+    "error_formato": "That file isn’t a befit backup.",
+    "error_version": "That backup comes from a newer version of befit. Update the app and try again.",
+    "borrar_titulo": "Start over",
+    "borrar_texto": "Deletes your favourites and your whole log from this device. It can’t be undone, so make a backup first.",
+    "borrar": "Delete my data",
+    "borrar_si": "Yes, delete everything",
+    "cancelar": "Cancel",
+    "borrado": "Data deleted."
+  },
   "pie": {
     "derechos": "© {anio} befit",
     "creditos": "3D figure by Quaternius (CC0) · Muscle map from body-muscles (Apache 2.0) · Inter and Newsreader typefaces (SIL OFL)"

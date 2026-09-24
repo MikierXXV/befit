@@ -33,6 +33,8 @@ export interface Ficha {
   ejecucion?: string[];
   material?: string[];
   nivel?: 'inicial' | 'intermedio' | 'avanzado';
+  /** Qué se anota en el registro. Sin el campo, repeticiones; `tiempo` en los que se sostienen. */
+  medida?: 'reps' | 'tiempo';
   musculos?: Partial<Record<Rol, string[]>>;
   /** Lo que las fuentes no cierran. Se pinta aparte, no mezclado con lo que sí se sostiene. */
   matices?: string;

@@ -502,6 +502,28 @@ if (reglas.paridad_idiomas && IDIOMAS.length > 1) {
     }
   }
 
+  /*
+   * Los campos que NO son texto tienen que valer lo mismo en todos los idiomas. Viven dentro de cada
+   * ficha traducida por comodidad, pero no se traducen: una `medida: "tiempo"` puesta solo en la
+   * versión española dejaría la plancha anotando repeticiones en inglés, y un historial exportado en
+   * un idioma no cuadraría al importarlo en el otro.
+   */
+  for (const [nombre, campos] of Object.entries(reglas.campos_comunes ?? {})) {
+    const porId = (idioma) => new Map((datos[idioma]?.[nombre] ?? []).map(({ datos: d }) => [d.id, d]));
+    const enBase = porId(base);
+    for (const idioma of resto) {
+      for (const [id, otra] of porId(idioma)) {
+        const suya = enBase.get(id);
+        if (!suya) continue;
+        for (const campo of campos) {
+          if (JSON.stringify(suya[campo]) !== JSON.stringify(otra[campo])) {
+            error(`${nombre}/"${id}": "${campo}" no vale lo mismo en ${base} y en ${idioma}. No es texto: no se traduce.`);
+          }
+        }
+      }
+    }
+  }
+
   // Y las claves de interfaz, que es donde una traducción incompleta se nota en pantalla.
   const clavesDe = (obj, prefijo = '') =>
     Object.entries(obj).flatMap(([k, v]) =>

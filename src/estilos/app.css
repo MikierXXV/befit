@@ -787,6 +787,120 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   white-space: nowrap;
 }
 
+/* ------------------------------------------------------------------ registro -- */
+
+/*
+ * EL REGISTRO SE USA CON UNA MANO, de pie y entre dos series. Por eso los campos son grandes, van
+ * en fila cuando caben y el botón de anotar ocupa el ancho entero en el móvil: es el único control
+ * que se busca sin mirar.
+ */
+.registro h3 { margin: var(--e6) 0 var(--e3); font-size: var(--t-base); }
+.anotar { display: grid; gap: var(--e3); }
+.anotar .campos { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: var(--e3); }
+.campo { display: grid; gap: var(--e1); font-size: var(--t-pequeno); color: var(--texto-secundario); }
+.campo input,
+.campo select {
+  width: 100%;
+  min-height: 40px;
+  padding: 0 var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  font: inherit;
+  font-size: var(--t-base);
+  /* Cifras tabulares: al cambiar 8 por 10 el campo no baila. */
+  font-variant-numeric: tabular-nums;
+}
+.campo input:focus-visible,
+.campo select:focus-visible { border-color: var(--borde-interactivo); }
+@media (min-width: 34rem) { .anotar { grid-template-columns: 1fr auto; align-items: end; } }
+
+.registro .ayuda { margin: var(--e2) 0 0; color: var(--texto-secundario); font-size: var(--t-pequeno); }
+/*
+ * El aviso de «anotada» o «borrada» reserva su línea aunque esté vacío: si apareciera de la nada,
+ * cada serie anotada empujaría hacia abajo la lista que hay debajo, justo donde va el dedo.
+ */
+.estado {
+  display: flex;
+  align-items: center;
+  gap: var(--e2);
+  min-height: 40px;
+  margin: var(--e1) 0 0;
+  font-size: var(--t-pequeno);
+  color: var(--texto-secundario);
+}
+/* La línea reservada ya separa: sumarle el margen normal de lo que viene debajo dejaba un hueco de
+   casi 80 px entre el formulario y las series, que parecía el final del bloque. */
+.registro .estado + h3,
+.registro .estado + .marcas,
+.registro .estado + .ayuda { margin-top: var(--e2); }
+
+.series { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e1); }
+.series li {
+  display: grid;
+  grid-template-columns: 2rem 1fr auto auto;
+  align-items: center;
+  gap: var(--e3);
+  padding-left: var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  font-variant-numeric: tabular-nums;
+}
+.series .n { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.series .valor { font-weight: var(--peso-medio); }
+.series .rir { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+
+.marcas { margin: var(--e6) 0 0; }
+.marcas dd { font-variant-numeric: tabular-nums; }
+
+/*
+ * La gráfica. La línea va en el acento del grupo —el mismo del mapa muscular— y las guías en el
+ * separador: se leen como referencia sin competir con el dato.
+ */
+.evolucion { margin: var(--e6) 0 0; }
+.evolucion figcaption { margin-bottom: var(--e3); font-size: var(--t-pequeno); font-weight: var(--peso-medio); }
+.evolucion .lienzo { display: grid; grid-template-columns: auto 1fr; gap: var(--e3); }
+.evolucion svg { display: block; width: 100%; height: 8rem; overflow: visible; }
+.evolucion .guia { stroke: var(--separador); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.evolucion .linea {
+  fill: none;
+  stroke: var(--acento, var(--accion));
+  stroke-width: var(--trazo-base);
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+.evolucion .punto { stroke: var(--acento, var(--accion)); stroke-width: 7; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.eje-y,
+.eje-x {
+  display: flex;
+  justify-content: space-between;
+  color: var(--texto-secundario);
+  font-size: var(--t-micro);
+  font-variant-numeric: tabular-nums;
+}
+.eje-y { flex-direction: column; text-align: right; }
+/* Las fechas van en la misma rejilla, bajo el lienzo: con un margen fijo a la izquierda quedaban
+   descuadradas en cuanto el rótulo vertical pasaba de «60 kg» a «102,5 kg». */
+.evolucion .lienzo { row-gap: var(--e2); }
+
+.sesiones { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e2); font-size: var(--t-pequeno); }
+.sesiones li { display: grid; grid-template-columns: 7rem 1fr; gap: var(--e3); font-variant-numeric: tabular-nums; }
+.sesiones .dia { color: var(--texto-secundario); }
+.enlace-datos { margin: var(--e6) 0 0; font-size: var(--t-pequeno); }
+
+/* --------------------------------------------------------------- tus datos -- */
+
+.tus-datos { max-width: var(--medida-texto); margin-inline: auto; padding-block: var(--e6) 0; }
+.tus-datos section { margin-top: var(--e6); }
+.tus-datos h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
+.tus-datos section p { color: var(--texto-secundario); max-width: var(--medida-texto); }
+.tus-datos .datos { margin-bottom: 0; }
+.tus-datos .fila { display: flex; flex-wrap: wrap; gap: var(--e3); }
+/* Lo que no se puede deshacer no va en el color de la acción principal, que invita a pulsar. */
+.boton.peligro { border-color: currentColor; color: var(--texto); font-weight: var(--peso-semibold); }
+
 /*
  * Con el dedo, 44 px. Por debajo se falla el toque, y es la medida de las pautas táctiles; con
  * ratón 40 basta y conviene, porque una interfaz densa con todo a 44 se ve inflada. Se decide por
@@ -803,7 +917,10 @@ h1, h2, h3 { letter-spacing: -0.02em; font-weight: var(--peso-semibold); }
   .vecinos a,
   .vacio a,
   .faceta > summary,
-  .opciones label { min-height: 44px; }
+  .opciones label,
+  .campo input,
+  .campo select,
+  .estado { min-height: 44px; }
   .favorito { width: 48px; min-height: 48px; }
   .quitar { min-height: 36px; }
 }

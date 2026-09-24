@@ -140,6 +140,66 @@
   "aviso": {
     "salud": "Esto explica cómo se hace un ejercicio, no si te conviene a ti. Si tienes una lesión, dolor o cualquier condición médica, consúltalo antes con un profesional."
   },
+  "registro": {
+    "titulo": "Tu registro",
+    "peso": "Peso (kg)",
+    "lastre": "Lastre (kg)",
+    "reps": "Repeticiones",
+    "segundos": "Segundos",
+    "rir": "RIR",
+    "rir_sin": "—",
+    "rir_ayuda": "RIR: repeticiones que te quedaban en reserva al acabar la serie. Es opcional.",
+    "anotar": "Anotar serie",
+    "anotada": "Serie anotada.",
+    "borrada": "Serie borrada.",
+    "deshacer": "Deshacer",
+    "error": "Revisa los números: esa serie no se puede guardar.",
+    "borrar": "Borrar la serie {n}",
+    "hoy": "Hoy",
+    "anteriores": "Sesiones anteriores",
+    "vacio": "Aún no has anotado ninguna serie de este ejercicio. Lo que anotes se guarda solo en este dispositivo.",
+    "mejor": "Mejor serie",
+    "unorm": "1RM estimado",
+    "unorm_nota": "El 1RM es una estimación con las fórmulas de Epley y Brzycki, no una marca: no hace falta probarlo.",
+    "unorm_aviso": "Sale de una serie de más de {n} repeticiones, donde las fórmulas pierden precisión.",
+    "grafica_resumen": "De {desde} a {hasta} en {sesiones} sesiones.",
+    "evolucion": {
+      "1rm": "Evolución del 1RM estimado",
+      "reps": "Repeticiones en la mejor serie",
+      "segundos": "Tiempo en la mejor serie"
+    },
+    "formato": {
+      "kg": "{v} kg",
+      "reps": "{v} rep.",
+      "segundos": "{v} s",
+      "peso_reps": "{peso} kg × {reps}",
+      "rir": "RIR {v}"
+    },
+    "tus_datos": "Copia y restauración de tus datos"
+  },
+  "datos": {
+    "titulo": "Tus datos",
+    "entradilla": "Lo que guardas en befit vive solo en este dispositivo. Desde aquí te lo llevas a otro.",
+    "favoritos": "Favoritos",
+    "series": "Series anotadas",
+    "dias": "Días entrenados",
+    "exportar_titulo": "Hacer una copia",
+    "exportar_texto": "Descarga un fichero con tus favoritos y tu registro. Guárdalo donde quieras: befit no lo envía a ningún sitio.",
+    "exportar": "Descargar copia",
+    "exportado": "Copia descargada.",
+    "importar_titulo": "Recuperar una copia",
+    "importar_texto": "Elige un fichero de copia de befit. Se suma a lo que ya tienes aquí: no se borra nada.",
+    "importar": "Elegir fichero",
+    "importado": "Copia recuperada. Favoritos nuevos: {favoritos}. Series nuevas: {series}.",
+    "error_formato": "Ese fichero no es una copia de befit.",
+    "error_version": "Esa copia es de una versión más nueva de befit. Actualiza la app y vuelve a probar.",
+    "borrar_titulo": "Empezar de cero",
+    "borrar_texto": "Borra tus favoritos y todo tu registro de este dispositivo. No se puede deshacer, así que haz antes una copia.",
+    "borrar": "Borrar mis datos",
+    "borrar_si": "Sí, borrarlo todo",
+    "cancelar": "Cancelar",
+    "borrado": "Datos borrados."
+  },
   "pie": {
     "derechos": "© {anio} befit",
     "creditos": "Maniquí 3D de Quaternius (CC0) · Mapa muscular de body-muscles (Apache 2.0) · Tipografías Inter y Newsreader (SIL OFL)"

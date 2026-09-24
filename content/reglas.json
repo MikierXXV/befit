@@ -49,6 +49,18 @@
   "$comment_escenografia": "Los efectos que el contenido puede pedir. Mismo trato que las mecánicas: la lista de válidos vive en el registro y se lee de ahí, nunca se copia aquí.",
   "$comment_paridad": "Con más de un idioma, todos deben tener los mismos ids y las mismas claves de ui.json. Sin esta comprobación, una traducción incompleta se descubre en producción.",
   "paridad_idiomas": true,
+  "$comment_campos_comunes": "Campos de la ficha que no son texto y por tanto valen lo mismo en todos los idiomas. Van dentro de cada ficha traducida, pero una corrección hecha en un solo idioma es la misma rodilla vieja de la regla 3 con otro nombre.",
+  "campos_comunes": {
+    "fichas": [
+      "grupo_id",
+      "orden",
+      "movimiento_id",
+      "material",
+      "nivel",
+      "musculos",
+      "medida"
+    ]
+  },
   "$comment_colecciones": "Una ficha por ejercicio y por idioma, con el TEXTO. El movimiento no vive aquí: ver `movimiento`.",
   "$comment_movimiento": "Lo que valida scripts/validar-movimiento.mjs. Tolerancias en metros. Los rangos articulares NO están aquí: viven en src/figura/cinematica.js porque son anatomía, no criterio del proyecto.",
   "movimiento": {

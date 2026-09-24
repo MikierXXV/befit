@@ -14,10 +14,13 @@
 import './estilos/sitio.css';
 import './estilos/app.css';
 import { FICHAS, GRUPOS, MOVIMIENTOS, etiqueta, fichaPorId, grupoPorId, valoresDe, type Ficha } from './app/contenido';
+import { suscribir } from './app/almacen';
 import { alternar, enlaceCompartir, esFavorito, favoritos, recibirDeEnlace } from './app/favoritos';
 import { alCambiarRuta, enlace, irA, rutaActual, type Ruta } from './app/rutas';
 import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { t } from './app/textos';
+import { montarDatos } from './app/vistas/datos';
+import { montarRegistro } from './app/vistas/registro';
 
 const cargarFigura = Object.values(
   import.meta.glob<{ montarFigura: (c: HTMLElement, m: unknown, f: Ficha) => Promise<{ destruir(): void }> }>('./figura/ficha.ts'),
@@ -395,6 +398,13 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
         ${f.material?.length ? `<div class="dato"><dt>${t('ficha.material')}</dt><dd>${f.material.map((m) => escapar(etiqueta('material', m))).join(', ')}</dd></div>` : ''}
         ${f.nivel ? `<div class="dato"><dt>${t('ficha.nivel')}</dt><dd>${escapar(etiqueta('nivel', f.nivel))}</dd></div>` : ''}
       </dl>
+      <!--
+        El registro, después de material y nivel y antes de los pasos: en el gimnasio es a lo que se
+        viene entre serie y serie, y tener que bajar por siete pasos y las fuentes para anotar cada
+        una lo convertía en algo que nadie usaría dos veces. Quien viene a aprender el ejercicio lo
+        pasa de largo en un gesto.
+      -->
+      <section class="registro"></section>
       ${f.ejecucion?.length ? `<section><h2>${t('ficha.ejecucion')}</h2>
         <ol class="pasos">${f.ejecucion.map((p) => `<li>${escapar(p)}</li>`).join('')}</ol></section>` : ''}
       ${f.matices ? `<section class="matices"><h2>${t('ficha.matices')}</h2><p>${escapar(f.matices)}</p></section>` : ''}
@@ -415,6 +425,8 @@ async function pintarFicha(ruta: Ruta): Promise<void> {
    */
   const acento = grupo?.color_acento?.[temaActual()];
   if (acento) sitio.querySelector<HTMLElement>('.ficha')!.style.setProperty('--acento', acento);
+
+  montarRegistro(sitio.querySelector<HTMLElement>('.registro')!, f);
 
   if (movimiento && cargarFigura) {
     const { montarFigura } = await cargarFigura();
@@ -442,6 +454,7 @@ const aviso = (): string => `
     <p class="salud">${t('aviso.salud')}</p>
     <p class="legal">
       <span>${t('pie.derechos').replace('{anio}', String(new Date().getFullYear()))}</span>
+      <a href="${enlace({ vista: 'datos', filtros: {} })}">${t('datos.titulo')}</a>
       <span class="creditos">${t('pie.creditos')}</span>
     </p>
   </footer>`;
@@ -488,6 +501,10 @@ function pintar(): void {
 
   if (ruta.vista === 'ficha') {
     void pintarFicha(ruta);
+  } else if (ruta.vista === 'datos') {
+    ponerPortada(t('datos.titulo'), t('datos.entradilla'));
+    sitio.innerHTML = `<div class="tus-datos"></div>${aviso()}`;
+    montarDatos(sitio.querySelector<HTMLElement>('.tus-datos')!);
   } else if (ruta.vista === 'favoritos') {
     if (ruta.ids?.length) recibirDeEnlace(ruta.ids, ids);
     const lista = FICHAS.filter((f) => esFavorito(f.id));
@@ -567,6 +584,12 @@ if (revisar && cargarHoja) {
   // Repintar al cambiar de tema: el acento del grupo se resuelve en JavaScript, así que un cambio de
   // tema sin repintado dejaría el mapa muscular con el color del tema anterior.
   alCambiarTema(pintar);
+  /*
+   * La cabecera se refresca cuando cambian los datos, sin repintar la página: la insignia de
+   * favoritos seguía diciendo 3 después de borrarlo todo en «Tus datos», porque esa pantalla no
+   * repinta la cabecera y hasta cambiar de ruta nadie lo hacía.
+   */
+  suscribir(() => { cabeceraEl.innerHTML = cabecera(rutaActual()); });
   pintar();
 }
 

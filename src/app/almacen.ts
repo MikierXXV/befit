@@ -18,7 +18,7 @@
  */
 
 import { FICHAS } from './contenido';
-import { fusionar, leerExportado, limpiar, migrar, paraExportar, type Datos } from './datos.js';
+import { fusionar, leerExportado, limpiar, migrar, paraExportar, vacio, type Datos } from './datos.js';
 
 const CLAVE = 'befit.datos.v1';
 const CLAVE_VIEJA = 'favoritos';
@@ -89,4 +89,10 @@ export function importar(texto: string): { nuevosFavoritos: number; nuevasSeries
   actuales = limpiar(juntos, idsCatalogo);
   guardar();
   return { nuevosFavoritos, nuevasSeries };
+}
+
+/** Borra todo lo del visitante en este dispositivo. La vista pide confirmación antes. */
+export function vaciar(): void {
+  actuales = vacio();
+  guardar();
 }
