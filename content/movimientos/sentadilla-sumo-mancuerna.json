@@ -31,7 +31,7 @@
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
       "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -42,7 +42,7 @@
       "columna": { "flexion": 12 },
       "cuello": { "flexion": -8 },
       "implementos": { "mancuerna": { "desplazamiento": [0, -0.141, 0.215] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.479, 0.145], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.479, 0.145], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.7, 0, 0.71], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -51,7 +51,7 @@
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
       "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 0.5 } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
     }
   ]
