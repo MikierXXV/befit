@@ -1,0 +1,47 @@
+{
+  "id": "hip-thrust",
+  "grupo_id": "bisagra-cadera",
+  "orden": 8,
+  "nombre": "Hip thrust con barra",
+  "resumen": "La espalda apoyada en un banco y la barra sobre la cadera: se sube la pelvis hasta dejar el tronco en línea con los muslos. Es de los ejercicios que más activan el glúteo mayor.",
+  "ejecucion": [
+    "Siéntate en el suelo con la parte alta de la espalda contra el borde de un banco y la barra sobre la cadera, mejor con una almohadilla.",
+    "Apoya los pies en el suelo a la anchura de la cadera, con las rodillas dobladas.",
+    "Empuja con los talones y sube la cadera hasta que tronco y muslos queden en línea, con las espinillas casi verticales arriba.",
+    "Aprieta el glúteo arriba sin arquear la zona lumbar: la barbilla un poco recogida ayuda a no hacerlo.",
+    "Baja la cadera con control hasta casi rozar el suelo y repite."
+  ],
+  "material": [
+    "barra",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "La revisión encuentra en el hip thrust más actividad del glúteo mayor que en la sentadilla en varios estudios. Pero más activación no significa necesariamente más crecimiento, y los estudios que comparan ejercicios durante semanas son pocos y no dan una ventaja clara.",
+  "fuentes": [
+    {
+      "titulo": "Barbell Hip Thrust, Muscular Activation and Performance: A Systematic Review",
+      "autor": "Neto, Vieira y Gama, J Sports Sci Med, 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31191088/"
+    },
+    {
+      "titulo": "A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis Electromyographic Activity in the Back Squat and Barbell Hip Thrust Exercises",
+      "autor": "Contreras et al., J Appl Biomech, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26214739/"
+    }
+  ]
+}

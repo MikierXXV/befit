@@ -1,0 +1,48 @@
+{
+  "id": "sentadilla-sumo-mancuerna",
+  "grupo_id": "sentadilla",
+  "orden": 6,
+  "nombre": "Sentadilla sumo con mancuerna",
+  "resumen": "Los pies muy abiertos, las puntas hacia fuera y una mancuerna colgando entre las piernas. Abrir la postura hace trabajar más a los aductores y al glúteo.",
+  "ejecucion": [
+    "Abre los pies bastante más que los hombros, con las puntas hacia fuera.",
+    "Sujeta una mancuerna con las dos manos por un extremo, colgando entre las piernas con los brazos estirados.",
+    "Baja con el tronco erguido, empujando las rodillas hacia fuera en la línea de los pies.",
+    "Baja hasta donde mantengas la espalda recta, sin que la mancuerna toque el suelo.",
+    "Sube empujando el suelo hasta quedar de pie."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor",
+      "aductores"
+    ],
+    "sinergista": [
+      "soleo",
+      "isquiotibiales"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "antebrazo"
+    ]
+  },
+  "matices": "El estudio que comparó anchuras de postura en la sentadilla encontró más actividad de glúteo mayor y aductor largo con los pies más abiertos, y cuádriceps parecidos. Se hizo con barra y carga moderada; con una mancuerna el principio es el mismo, pero no se ha medido igual.",
+  "fuentes": [
+    {
+      "titulo": "Stance width and bar load effects on leg muscle activity during the parallel squat",
+      "autor": "McCaw y Melrose, Med Sci Sports Exerc, 1999",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10188748/"
+    },
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    }
+  ]
+}

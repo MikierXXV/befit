@@ -1,0 +1,52 @@
+{
+  "id": "peso-muerto-sumo",
+  "grupo_id": "bisagra-cadera",
+  "orden": 7,
+  "nombre": "Peso muerto sumo",
+  "resumen": "Un peso muerto con los pies muy abiertos y las manos por dentro de las piernas. El tronco va más erguido y las rodillas trabajan más que en el convencional.",
+  "ejecucion": [
+    "Abre los pies bastante más que los hombros, con las puntas hacia fuera y la barra sobre la mitad del pie.",
+    "Baja la cadera y agarra la barra por dentro de las piernas, con los brazos estirados y cayendo en vertical.",
+    "Empuja las rodillas hacia fuera, en la línea de los pies, y tensa la espalda antes de tirar.",
+    "Sube empujando el suelo hacia los lados y llevando la cadera hacia la barra, con el pecho alto.",
+    "Arriba, de pie con la cadera extendida. Baja con control por el mismo camino."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "aductores"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "trapecio_medio",
+      "dorsal",
+      "antebrazo",
+      "abdomen"
+    ]
+  },
+  "matices": "El estudio que comparó las dos variantes en levantadores encontró en el sumo más actividad de vasto y tibial, y en el convencional más de gemelo, con isquiotibiales y erectores parecidos. Cuál permite levantar más depende de las proporciones de cada cuerpo y de la movilidad de cadera, no hay una mejor para todos.",
+  "fuentes": [
+    {
+      "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

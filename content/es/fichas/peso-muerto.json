@@ -1,0 +1,52 @@
+{
+  "id": "peso-muerto",
+  "grupo_id": "bisagra-cadera",
+  "orden": 6,
+  "nombre": "Peso muerto con barra",
+  "resumen": "La barra sale del suelo pegada a las piernas hasta quedar de pie, con la espalda firme. Mueve más carga que casi cualquier otro ejercicio y reparte el trabajo entre cadera, espalda y piernas.",
+  "ejecucion": [
+    "Ponte con los pies a la anchura de la cadera y la barra sobre la mitad del pie, casi tocando las espinillas.",
+    "Agárrala por fuera de las piernas, con los brazos estirados, y baja la cadera hasta que las espinillas toquen la barra.",
+    "Saca el pecho y tensa la espalda antes de tirar: la espalda no debe redondearse en ningún momento.",
+    "Empuja el suelo con las piernas y lleva la cadera hacia delante, con la barra subiendo pegada a las piernas.",
+    "Arriba, de pie y sin echar los hombros atrás. Baja deshaciendo el camino: primero la cadera atrás, luego las rodillas."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales",
+      "erectores"
+    ],
+    "sinergista": [
+      "cuadriceps",
+      "aductores"
+    ],
+    "estabilizador": [
+      "trapecio_medio",
+      "dorsal",
+      "antebrazo",
+      "abdomen"
+    ]
+  },
+  "matices": "Las revisiones de electromiografía encuentran mucha actividad de erectores y cuádriceps, además de glúteo e isquiotibiales, y el reparto cambia con la técnica, la carga y cómo se mide. Qué espalda es «demasiado» redondeada con carga sigue en discusión; mantenerla neutra es la recomendación prudente.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

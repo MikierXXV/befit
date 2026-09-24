@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-goblet",
+  "grupo_id": "sentadilla",
+  "orden": 5,
+  "nombre": "Goblet squat",
+  "resumen": "A dumbbell held upright against the chest and a deep squat. The load in front helps keep the torso upright, which is why it is often used to learn to squat well.",
+  "ejecucion": [
+    "Hold a dumbbell upright by one end, with both hands, against your chest.",
+    "Feet a little wider than your shoulders, toes slightly turned out.",
+    "Squat down between your legs, with your elbows inside your knees and your chest up.",
+    "Go down as far as you can keep your back straight and your heels on the floor.",
+    "Stand up by pushing the floor away, keeping the dumbbell against your chest."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "trapecio_medio",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "That the load in front helps keep the torso more upright is the usual reason for teaching it, but few studies have measured it directly against other variations. With heavy loads, holding the dumbbell is usually the limit, not the legs.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub and Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

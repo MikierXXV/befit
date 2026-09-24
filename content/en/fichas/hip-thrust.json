@@ -1,0 +1,47 @@
+{
+  "id": "hip-thrust",
+  "grupo_id": "bisagra-cadera",
+  "orden": 8,
+  "nombre": "Barbell hip thrust",
+  "resumen": "Upper back on a bench and the bar over the hips: the pelvis rises until the torso lines up with the thighs. It is one of the exercises that activate the gluteus maximus the most.",
+  "ejecucion": [
+    "Sit on the floor with your upper back against the edge of a bench and the bar over your hips, ideally with a pad.",
+    "Put your feet on the floor hip-width apart, with your knees bent.",
+    "Drive through your heels and raise your hips until torso and thighs are in line, with your shins almost vertical at the top.",
+    "Squeeze your glutes at the top without arching your lower back: tucking your chin slightly helps.",
+    "Lower your hips under control until they almost touch the floor, and repeat."
+  ],
+  "material": [
+    "barra",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "The review finds more gluteus maximus activity in the hip thrust than in the squat in several studies. But more activation does not necessarily mean more growth, and studies comparing exercises over weeks are few and show no clear advantage.",
+  "fuentes": [
+    {
+      "titulo": "Barbell Hip Thrust, Muscular Activation and Performance: A Systematic Review",
+      "autor": "Neto, Vieira and Gama, J Sports Sci Med, 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31191088/"
+    },
+    {
+      "titulo": "A Comparison of Gluteus Maximus, Biceps Femoris, and Vastus Lateralis Electromyographic Activity in the Back Squat and Barbell Hip Thrust Exercises",
+      "autor": "Contreras et al., J Appl Biomech, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26214739/"
+    }
+  ]
+}

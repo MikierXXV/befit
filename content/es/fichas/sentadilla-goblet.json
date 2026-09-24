@@ -1,0 +1,47 @@
+{
+  "id": "sentadilla-goblet",
+  "grupo_id": "sentadilla",
+  "orden": 5,
+  "nombre": "Sentadilla goblet",
+  "resumen": "Una mancuerna sujeta en vertical contra el pecho y una sentadilla profunda. La carga delante ayuda a mantener el tronco erguido, y por eso se usa mucho para aprender a bajar bien.",
+  "ejecucion": [
+    "Sujeta una mancuerna en vertical por un extremo, con las dos manos, pegada al pecho.",
+    "Pies algo más abiertos que los hombros, con las puntas un poco hacia fuera.",
+    "Baja entre las piernas, con los codos por dentro de las rodillas y el pecho alto.",
+    "Baja hasta donde mantengas la espalda recta y los talones en el suelo.",
+    "Sube empujando el suelo, sin que la mancuerna se separe del pecho."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "trapecio_medio",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "Que la carga delante ayude a mantener el tronco más vertical es la razón habitual para enseñarla, pero hay pocos estudios que la midan directamente frente a otras variantes. Con cargas altas, lo que limita suele ser sujetar la mancuerna, no las piernas.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "peso-muerto",
+  "grupo_id": "bisagra-cadera",
+  "orden": 6,
+  "nombre": "Barbell deadlift",
+  "resumen": "The bar leaves the floor close to the legs until you are standing, with a firm back. It moves more load than almost any other exercise and spreads the work across hips, back and legs.",
+  "ejecucion": [
+    "Stand with your feet hip-width apart and the bar over the middle of your foot, almost touching your shins.",
+    "Grip it outside your legs with straight arms, and lower your hips until your shins touch the bar.",
+    "Lift your chest and brace your back before pulling: your back should not round at any point.",
+    "Push the floor away with your legs and drive your hips forward, with the bar rising close to your legs.",
+    "At the top, stand tall without leaning back. Lower it by reversing the path: hips back first, then knees."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales",
+      "erectores"
+    ],
+    "sinergista": [
+      "cuadriceps",
+      "aductores"
+    ],
+    "estabilizador": [
+      "trapecio_medio",
+      "dorsal",
+      "antebrazo",
+      "abdomen"
+    ]
+  },
+  "matices": "Electromyography reviews find a lot of erector and quadriceps activity, as well as glutes and hamstrings, and the distribution changes with technique, load and how it is measured. How much back rounding is “too much” under load is still debated; keeping it neutral is the prudent advice.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano and Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "peso-muerto-rumano-mancuernas",
+  "grupo_id": "bisagra-cadera",
+  "orden": 9,
+  "nombre": "Peso muerto rumano con mancuernas",
+  "resumen": "El mismo gesto que el rumano con barra, con una mancuerna en cada mano: la cadera va atrás, las rodillas apenas se doblan y las mancuernas bajan por delante de las piernas.",
+  "ejecucion": [
+    "De pie, con una mancuerna en cada mano delante de los muslos y los pies a la anchura de la cadera.",
+    "Lleva la cadera hacia atrás con las rodillas casi fijas y deja que las mancuernas bajen cerca de las piernas.",
+    "Baja mientras mantengas la espalda plana; cuando empiece a redondearse, ese es tu recorrido.",
+    "Vuelve empujando la cadera hacia delante hasta estar de pie, sin echar los hombros atrás."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "isquiotibiales",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "erectores"
+    ],
+    "estabilizador": [
+      "trapecio_medio",
+      "antebrazo",
+      "abdomen"
+    ]
+  },
+  "matices": "Con mancuernas la carga suele ser menor que con barra y cada mano va por su cuenta, lo que facilita aprender el gesto. Los estudios de activación se han hecho sobre todo con barra, así que el reparto muscular de aquí sale del gesto, no de una medición con mancuernas.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
