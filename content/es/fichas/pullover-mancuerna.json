@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Pullover con mancuerna",
   "resumen": "Tumbado en un banco, una mancuerna sujeta con las dos manos baja por detrás de la cabeza con los brazos casi estirados y vuelve sobre el pecho. Aunque se clasifica como tirón, el pectoral trabaja al menos tanto como el dorsal.",
+  "movimiento_id": "pullover-mancuerna",
   "ejecucion": [
     "Túmbate en un banco con la cabeza apoyada y sujeta una mancuerna con las dos manos por el disco, sobre el pecho.",
     "Con los codos un poco doblados y fijos, baja la mancuerna en arco por detrás de la cabeza.",

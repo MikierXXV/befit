@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Dumbbell pullover",
   "resumen": "Lying on a bench, a dumbbell held with both hands travels behind the head with the arms almost straight and comes back over the chest. Although it is classed as a pull, the chest works at least as much as the lats.",
+  "movimiento_id": "pullover-mancuerna",
   "ejecucion": [
     "Lie on a bench with your head supported and cup the top end of a dumbbell with both hands, over your chest.",
     "With your elbows slightly bent and fixed, lower the dumbbell in an arc behind your head.",
