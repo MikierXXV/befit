@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Jalón con brazos rectos en polea",
   "resumen": "De pie frente a una polea alta, se baja una barra hasta los muslos con los brazos casi estirados, moviendo solo los hombros. Trabaja el dorsal y el bíceps apenas participa.",
+  "movimiento_id": "jalon-brazos-rectos",
   "ejecucion": [
     "Coge la barra de la polea alta en pronación, a la anchura de los hombros, y da un paso atrás.",
     "Inclina un poco el tronco hacia delante con la espalda recta, y los brazos casi estirados por delante.",

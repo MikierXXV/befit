@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Straight-arm cable pulldown",
   "resumen": "Standing facing a high pulley, you bring a bar down to your thighs with the arms almost straight, moving only at the shoulders. It works the lats and the biceps barely takes part.",
+  "movimiento_id": "jalon-brazos-rectos",
   "ejecucion": [
     "Grip the high pulley bar overhand, shoulder-width apart, and step back.",
     "Lean your torso slightly forward with a straight back, arms almost straight in front of you.",
