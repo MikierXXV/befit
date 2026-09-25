@@ -1,0 +1,38 @@
+{
+  "id": "jalon-brazos-rectos",
+  "grupo_id": "tiron-vertical",
+  "orden": 6,
+  "nombre": "Jalón con brazos rectos en polea",
+  "resumen": "De pie frente a una polea alta, se baja una barra hasta los muslos con los brazos casi estirados, moviendo solo los hombros. Trabaja el dorsal sin que el bíceps ayude.",
+  "ejecucion": [
+    "Coge la barra de la polea alta en pronación, a la anchura de los hombros, y da un paso atrás.",
+    "Inclina un poco el tronco hacia delante con la espalda recta, y los brazos casi estirados por delante.",
+    "Baja la barra en arco hasta los muslos, con los codos fijos y ligeramente doblados.",
+    "Vuelve con control hasta que los brazos queden a la altura de la cabeza, sin doblar los codos."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "intermedio",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "dorsal"
+    ],
+    "sinergista": [
+      "triceps",
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan este ejercicio en sí. Que el bíceps no participe sale del gesto: con los codos fijos, el movimiento es solo del hombro, y lo hacen sobre todo el dorsal y la cabeza larga del tríceps.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

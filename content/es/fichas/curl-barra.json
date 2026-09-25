@@ -1,0 +1,43 @@
+{
+  "id": "curl-barra",
+  "grupo_id": "flexion-codo",
+  "orden": 6,
+  "nombre": "Curl de bíceps con barra",
+  "resumen": "De pie, con una barra cogida con las palmas hacia arriba, se sube doblando los codos. El curl de siempre, con las dos manos juntas en la misma barra.",
+  "ejecucion": [
+    "De pie, coge la barra con las palmas hacia arriba, a la anchura de los hombros, y déjala colgar con los brazos estirados.",
+    "Con los codos pegados a los costados, sube la barra doblando los codos.",
+    "Arriba, sin adelantar los codos ni echar el tronco atrás para ayudarte.",
+    "Baja con control hasta estirar los brazos."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "Un estudio con culturistas encontró algo más de actividad del bíceps con barra recta que con barra EZ, y diferencias según se adelanten o no los codos. Otro vio que el braquiorradial, en el antebrazo, trabaja más que el bíceps en la bajada. Son diferencias pequeñas medidas en pocas personas.",
+  "fuentes": [
+    {
+      "titulo": "Bilateral Biceps Curl Shows Distinct Biceps Brachii and Anterior Deltoid Excitation Comparing Straight vs. EZ Barbell Coupled with Arms Flexion/No-Flexion",
+      "autor": "Coratella et al., J Funct Morphol Kinesiol, 2023",
+      "url": "https://doi.org/10.3390/jfmk8010013"
+    },
+    {
+      "titulo": "Effects of grip variation on biceps brachii and brachioradialis electromyographic activity during concentric and eccentric phases of the barbell curl exercise",
+      "autor": "Uysal et al., BMC Sports Sci Med Rehabil, 2026",
+      "url": "https://doi.org/10.1186/s13102-026-01867-7"
+    }
+  ]
+}

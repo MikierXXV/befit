@@ -1,0 +1,45 @@
+{
+  "id": "remo-pendlay",
+  "grupo_id": "tiron-horizontal",
+  "orden": 8,
+  "nombre": "Remo Pendlay",
+  "resumen": "Un remo con barra con el tronco casi paralelo al suelo, en el que la barra vuelve a apoyarse en el suelo en cada repetición. Cada tirón empieza desde parado.",
+  "ejecucion": [
+    "Con la barra en el suelo, sobre la mitad del pie, cógela en pronación algo más abierto que los hombros.",
+    "Lleva la cadera atrás y dobla un poco las rodillas hasta que el tronco quede casi paralelo al suelo, con la espalda recta.",
+    "Tira de la barra con fuerza hacia la parte baja del pecho, llevando los codos atrás, sin que el tronco suba.",
+    "Baja la barra hasta apoyarla en el suelo, recoloca la espalda y repite desde parado."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "El estudio que comparó varios remos encontró que el remo con barra inclinado activa mucho y de forma simétrica la espalda, pero también es el que más carga la zona lumbar. En el Pendlay el tronco va aún más horizontal que en el remo con barra habitual; no hemos encontrado estudios que lo midan por separado.",
+  "fuentes": [
+    {
+      "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",
+      "autor": "Fenwick, Brown y McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

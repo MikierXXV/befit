@@ -1,0 +1,43 @@
+{
+  "id": "curl-barra",
+  "grupo_id": "flexion-codo",
+  "orden": 6,
+  "nombre": "Barbell biceps curl",
+  "resumen": "Standing, holding a bar with the palms up, you raise it by bending the elbows. The classic curl, with both hands on the same bar.",
+  "ejecucion": [
+    "Stand and grip the bar with your palms up, shoulder-width apart, letting it hang with straight arms.",
+    "With your elbows by your sides, curl the bar up by bending your elbows.",
+    "At the top, without bringing your elbows forward or leaning back to help.",
+    "Lower under control until your arms are straight."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "A study of bodybuilders found slightly more biceps activity with a straight bar than with an EZ bar, and differences depending on whether the elbows move forward. Another found that the brachioradialis, in the forearm, works more than the biceps on the way down. These are small differences measured in few people.",
+  "fuentes": [
+    {
+      "titulo": "Bilateral Biceps Curl Shows Distinct Biceps Brachii and Anterior Deltoid Excitation Comparing Straight vs. EZ Barbell Coupled with Arms Flexion/No-Flexion",
+      "autor": "Coratella et al., J Funct Morphol Kinesiol, 2023",
+      "url": "https://doi.org/10.3390/jfmk8010013"
+    },
+    {
+      "titulo": "Effects of grip variation on biceps brachii and brachioradialis electromyographic activity during concentric and eccentric phases of the barbell curl exercise",
+      "autor": "Uysal et al., BMC Sports Sci Med Rehabil, 2026",
+      "url": "https://doi.org/10.1186/s13102-026-01867-7"
+    }
+  ]
+}

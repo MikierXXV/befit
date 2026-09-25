@@ -1,0 +1,46 @@
+{
+  "id": "remo-polea-sentado",
+  "grupo_id": "tiron-horizontal",
+  "orden": 6,
+  "nombre": "Remo en polea sentado",
+  "resumen": "Sentado frente a una polea baja, con los pies apoyados, se tira de un agarre hacia el abdomen llevando los codos atrás. Un remo con el tronco quieto, sin tener que sostenerlo inclinado.",
+  "ejecucion": [
+    "Siéntate frente a la polea baja con los pies apoyados y las rodillas algo dobladas, y coge el agarre con los brazos estirados.",
+    "Con la espalda recta y el pecho alto, tira del agarre hacia el abdomen llevando los codos atrás y pegados al cuerpo.",
+    "Al final, junta los omóplatos sin echar el tronco hacia atrás.",
+    "Vuelve estirando los brazos con control, dejando que los hombros se adelanten un poco sin redondear la espalda."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "El estudio que comparó varios ejercicios de dorsal encontró en el remo sentado una de las mejores relaciones entre dorsal y bíceps, y la mayor actividad del trapecio medio y los romboides. Juntar a propósito los omóplatos no cambió esa actividad. Las diferencias entre ejercicios fueron pequeñas.",
+  "fuentes": [
+    {
+      "titulo": "Variations in muscle activation levels during traditional latissimus dorsi weight training exercises: An experimental study",
+      "autor": "Lehman et al., Dyn Med, 2004",
+      "url": "https://doi.org/10.1186/1476-5918-3-4"
+    },
+    {
+      "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",
+      "autor": "Fenwick, Brown y McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "remo-polea-sentado",
+  "grupo_id": "tiron-horizontal",
+  "orden": 6,
+  "nombre": "Seated cable row",
+  "resumen": "Seated facing a low pulley with the feet braced, you pull a handle towards your abdomen by driving the elbows back. A row with a still torso, without having to hold it bent over.",
+  "ejecucion": [
+    "Sit facing the low pulley with your feet braced and knees slightly bent, and take the handle with your arms straight.",
+    "With your back straight and chest up, pull the handle towards your abdomen, driving your elbows back and close to your body.",
+    "At the end, squeeze your shoulder blades together without leaning back.",
+    "Return by straightening your arms under control, letting your shoulders come forward a little without rounding your back."
+  ],
+  "material": [
+    "polea",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "The study comparing several lat exercises found one of the best lat-to-biceps ratios in the seated row, and the highest middle trapezius and rhomboid activity. Deliberately squeezing the shoulder blades did not change that activity. Differences between exercises were small.",
+  "fuentes": [
+    {
+      "titulo": "Variations in muscle activation levels during traditional latissimus dorsi weight training exercises: An experimental study",
+      "autor": "Lehman et al., Dyn Med, 2004",
+      "url": "https://doi.org/10.1186/1476-5918-3-4"
+    },
+    {
+      "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",
+      "autor": "Fenwick, Brown and McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "jalon-brazos-rectos",
+  "grupo_id": "tiron-vertical",
+  "orden": 6,
+  "nombre": "Straight-arm cable pulldown",
+  "resumen": "Standing facing a high pulley, you bring a bar down to your thighs with the arms almost straight, moving only at the shoulders. It works the lats without help from the biceps.",
+  "ejecucion": [
+    "Grip the high pulley bar overhand, shoulder-width apart, and step back.",
+    "Lean your torso slightly forward with a straight back, arms almost straight in front of you.",
+    "Bring the bar down in an arc to your thighs, with your elbows fixed and slightly bent.",
+    "Return under control until your arms are at head height, without bending your elbows."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "intermedio",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "dorsal"
+    ],
+    "sinergista": [
+      "triceps",
+      "deltoides_posterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo"
+    ]
+  },
+  "matices": "We have found no study measuring this exercise itself. That the biceps does not take part comes from the movement: with the elbows fixed, the motion is only at the shoulder, mainly done by the lats and the long head of the triceps.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

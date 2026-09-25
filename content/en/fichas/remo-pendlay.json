@@ -1,0 +1,45 @@
+{
+  "id": "remo-pendlay",
+  "grupo_id": "tiron-horizontal",
+  "orden": 8,
+  "nombre": "Pendlay row",
+  "resumen": "A barbell row with the torso almost parallel to the floor, where the bar returns to the floor on every rep. Each pull starts from a dead stop.",
+  "ejecucion": [
+    "With the bar on the floor over the middle of your foot, grip it overhand slightly wider than your shoulders.",
+    "Push your hips back and bend your knees slightly until your torso is almost parallel to the floor, with a straight back.",
+    "Pull the bar hard towards your lower chest, driving your elbows back, without your torso rising.",
+    "Lower the bar until it rests on the floor, reset your back and repeat from a dead stop."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "isquiotibiales",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "The study comparing several rows found that the bent-over barbell row activates the back strongly and symmetrically, but also loads the lower back the most. In the Pendlay the torso is even more horizontal than in the usual barbell row; we have found no study measuring it separately.",
+  "fuentes": [
+    {
+      "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",
+      "autor": "Fenwick, Brown and McGill, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

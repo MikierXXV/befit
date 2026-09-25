@@ -1,0 +1,37 @@
+{
+  "id": "curl-polea",
+  "grupo_id": "flexion-codo",
+  "orden": 5,
+  "nombre": "Cable biceps curl",
+  "resumen": "Standing facing a low pulley, you raise a short bar by bending the elbows. Like a barbell curl, but the resistance pulls in the direction of the cable.",
+  "ejecucion": [
+    "Grip the low pulley bar with your palms up, shoulder-width apart, and step back.",
+    "Stand with your elbows by your sides and your arms straight.",
+    "Curl the bar up by bending your elbows, without your elbows moving forward or your torso leaning back.",
+    "Lower under control until your arms are straight."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "Few studies compare the cable curl with the dumbbell or barbell curl. What changes is the direction of the resistance: it pulls towards the pulley and not towards the floor, so the hardest part of the range shifts. Whether that gives better or worse results has not been measured.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
