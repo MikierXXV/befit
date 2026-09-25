@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { defineConfig, type Plugin } from 'vite';
 
 /*
@@ -13,7 +14,9 @@ import { defineConfig, type Plugin } from 'vite';
  */
 function proporcionesDeMovimientos(): Plugin {
   const id = 'virtual:proporciones';
-  const dir = 'content/movimientos';
+  // Ruta ABSOLUTA: con la relativa, `addWatchFile` la tomaba en desarrollo por un import que no
+  // resolvía y `vite` a secas no arrancaba (el build sí, y por eso no se vio al principio).
+  const dir = resolve('content/movimientos');
   return {
     name: 'proporciones-de-movimientos',
     resolveId: (fuente) => (fuente === id ? `\0${id}` : undefined),
@@ -21,8 +24,9 @@ function proporcionesDeMovimientos(): Plugin {
       if (modulo !== `\0${id}`) return undefined;
       const proporciones: Record<string, string> = {};
       for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
-        this.addWatchFile(`${dir}/${fichero}`);
-        const mov = JSON.parse(readFileSync(`${dir}/${fichero}`, 'utf8')) as { camara?: { proporcion?: string } };
+        const ruta = resolve(dir, fichero);
+        this.addWatchFile(ruta);
+        const mov = JSON.parse(readFileSync(ruta, 'utf8')) as { camara?: { proporcion?: string } };
         if (mov.camara?.proporcion) proporciones[fichero.replace(/\.json$/, '')] = mov.camara.proporcion;
       }
       return `export default ${JSON.stringify(proporciones)};`;
