@@ -3,11 +3,12 @@
   "grupo_id": "tiron-horizontal",
   "orden": 7,
   "nombre": "Face pull en polea",
-  "resumen": "De pie frente a una polea alta, se tira de una cuerda hacia la cara separando las manos y con los codos altos. Trabaja la parte de atrás del hombro y la zona entre los omóplatos.",
+  "resumen": "De pie frente a una polea alta, se tira de un agarre corto o una cuerda hacia la cara, con los codos altos. Trabaja la parte de atrás del hombro y la zona entre los omóplatos.",
+  "movimiento_id": "face-pull",
   "ejecucion": [
-    "Pon la polea a la altura de la cara o algo más arriba y coge la cuerda con las dos manos, con las palmas hacia dentro.",
+    "Pon la polea a la altura de la cara o algo más arriba y coge el agarre corto con las dos manos por encima, o la cuerda con las palmas hacia dentro.",
     "Da un paso atrás hasta tener los brazos estirados y el cable tenso.",
-    "Tira de la cuerda hacia la cara con los codos altos, a la altura de los hombros, separando las manos al final.",
+    "Tira hacia la cara con los codos altos, a la altura de los hombros, abriéndolos a los lados. Con cuerda, separa además las manos al final.",
     "Vuelve estirando los brazos con control, sin dejar que el cable tire de ti hacia delante.",
     "Si al tirar se te bajan los codos por debajo de los hombros, baja el peso."
   ],

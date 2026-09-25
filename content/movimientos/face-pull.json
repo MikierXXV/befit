@@ -1,0 +1,234 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "face-pull",
+  "duracion": 3.2,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "barra": {
+      "tipo": "polea",
+      "mango": "puno",
+      "ancho": 0.32,
+      "ancla": [
+        0,
+        1.75,
+        2.2
+      ],
+      "posicion": [
+        0,
+        1.52,
+        0.62
+      ],
+      "agarre": 0.12,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          -0.562862,
+          -0.428002,
+          0.562862,
+          0.428002
+        ],
+        "d": [
+          -0.564151,
+          0.426303,
+          -0.564151,
+          0.426303
+        ]
+      }
+    }
+  },
+  "$comment_mango": "La ficha pide una cuerda, y el motor no tiene cuerda: la polea solo lleva un mango rígido que corre a lo largo de X. Por eso el agarre es prono (palmas abajo) y no neutro, y las manos no se separan al final: van a 24 cm desde el principio, lo justo para quedar a los lados de la cara. Variar `agarre` por pose las haría resbalar por una barra rígida, que es peor que no separarlas.",
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "extendido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -2
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.52,
+            0.62
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.3,
+            -0.4
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 12,
+            "elevacion": 4
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "recogido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -2
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.6,
+            0.2
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.3,
+            -0.4
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": -15,
+            "elevacion": 2
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -2
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.52,
+            0.62
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -0.3,
+            -0.4
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 12,
+            "elevacion": 4
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    }
+  ]
+}

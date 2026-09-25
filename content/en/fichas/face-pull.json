@@ -3,11 +3,12 @@
   "grupo_id": "tiron-horizontal",
   "orden": 7,
   "nombre": "Cable face pull",
-  "resumen": "Standing facing a high pulley, you pull a rope towards your face, spreading the hands apart with the elbows high. It works the back of the shoulder and the area between the shoulder blades.",
+  "resumen": "Standing facing a high pulley, you pull a short handle or a rope towards your face with the elbows high. It works the back of the shoulder and the area between the shoulder blades.",
+  "movimiento_id": "face-pull",
   "ejecucion": [
-    "Set the pulley at face height or slightly higher and take the rope with both hands, palms facing in.",
+    "Set the pulley at face height or slightly higher and grip the short handle overhand with both hands, or the rope with your palms facing in.",
     "Step back until your arms are straight and the cable is taut.",
-    "Pull the rope towards your face with your elbows high, at shoulder height, spreading your hands apart at the end.",
+    "Pull towards your face with your elbows high, at shoulder height, opening them out to the sides. With a rope, also spread your hands apart at the end.",
     "Return by straightening your arms under control, without letting the cable pull you forward.",
     "If your elbows drop below your shoulders as you pull, lower the weight."
   ],
