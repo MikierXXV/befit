@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Remo en polea sentado",
   "resumen": "Sentado frente a una polea baja, con los pies apoyados, se tira de un agarre hacia el abdomen llevando los codos atrás. Un remo con el tronco quieto, sin tener que sostenerlo inclinado.",
+  "movimiento_id": "remo-polea-sentado",
   "ejecucion": [
     "Siéntate frente a la polea baja con los pies apoyados y las rodillas algo dobladas, y coge el agarre con los brazos estirados.",
     "Con la espalda recta y el pecho alto, tira del agarre hacia el abdomen llevando los codos atrás y pegados al cuerpo.",

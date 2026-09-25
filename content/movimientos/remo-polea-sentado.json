@@ -1,0 +1,247 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "remo-polea-sentado",
+  "duracion": 3.4,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.1
+      ],
+      "largo": 0.5,
+      "ancho": 0.34,
+      "alto": 0.4,
+      "solido": true
+    },
+    "barra": {
+      "tipo": "polea",
+      "mango": "puno",
+      "ancho": 0.14,
+      "ancla": [
+        0,
+        0.66,
+        1.7
+      ],
+      "relativo_a": "mundo",
+      "giro": 90,
+      "desplazamiento": [
+        0,
+        0.44,
+        0.625
+      ],
+      "agarre": 0.03,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          -0.599282,
+          -0.375314,
+          0.599282,
+          0.375314
+        ],
+        "d": [
+          0.380145,
+          0.59623,
+          -0.380145,
+          -0.59623
+        ]
+      }
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.03
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "estirado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.48,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "desplazamiento": [
+            0,
+            0.44,
+            0.625
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.4,
+            -1,
+            -0.2
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 15
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.17,
+            0.104,
+            0.55
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0.8,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "contraido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.48,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "desplazamiento": [
+            0,
+            0.26,
+            0.2
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.25,
+            -0.2,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": -15
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.17,
+            0.104,
+            0.55
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0.8,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.48,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "desplazamiento": [
+            0,
+            0.44,
+            0.625
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.4,
+            -1,
+            -0.2
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 15
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.17,
+            0.104,
+            0.55
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0.8,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    }
+  ],
+  "$comment_mango": "El agarre de palmas enfrentadas (el triángulo) no existe como implemento: el motor solo sabe de un cilindro, y una mano que lo rodea tiene la palma perpendicular a su eje. Con el mango en X, como el del jalón, las palmas mirarían abajo o atrás, nunca una a la otra. Por eso el mango va VERTICAL —`relativo_a: mundo` con `giro: 90`, el mismo recurso que la sentadilla goblet— y cada mano lo coge por su lado: las palmas quedan enfrentadas, con las manos una sobre otra en vez de lado a lado. `desplazamiento` se mide desde la pelvis, que no se mueve.",
+  "$comment_altura": "Con `agarre: 0.045` las manos quedaban a 9 cm de altura una de otra y, con el mango por debajo de los hombros, la de arriba llegaba 3 cm antes: 44° de codo en una mano y 24° en la otra con los brazos «estirados». Con 6 cm de separación y el mango al principio a 0,92 m, casi a la altura del hombro, los dos codos quedan en 24° y 15°.",
+  "$comment_piernas": "Pies en el suelo y no en una plataforma, que no hay: más adelante que 0,55 el tobillo pasa de 50° de flexión plantar con el pie plano. Por eso las rodillas van más dobladas que en la máquina de verdad."
+}

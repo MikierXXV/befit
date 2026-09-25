@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Seated cable row",
   "resumen": "Seated facing a low pulley with the feet braced, you pull a handle towards your abdomen by driving the elbows back. A row with a still torso, without having to hold it bent over.",
+  "movimiento_id": "remo-polea-sentado",
   "ejecucion": [
     "Sit facing the low pulley with your feet braced and knees slightly bent, and take the handle with your arms straight.",
     "With your back straight and chest up, pull the handle towards your abdomen, driving your elbows back and close to your body.",
