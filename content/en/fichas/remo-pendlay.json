@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Pendlay row",
   "resumen": "A barbell row with the torso almost parallel to the floor, where the bar returns to the floor on every rep. Each pull starts from a dead stop.",
+  "movimiento_id": "remo-pendlay",
   "ejecucion": [
     "Standing with the bar on the floor over the middle of your foot, push your hips back with a straight back and knees slightly bent until your torso is almost parallel to the floor, and then grip the bar overhand, slightly wider than your shoulders.",
     "Brace your abs before each pull.",

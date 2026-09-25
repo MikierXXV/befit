@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Remo Pendlay",
   "resumen": "Un remo con barra con el tronco casi paralelo al suelo, en el que la barra vuelve a apoyarse en el suelo en cada repetición. Cada tirón empieza desde parado.",
+  "movimiento_id": "remo-pendlay",
   "ejecucion": [
     "De pie con la barra en el suelo sobre la mitad del pie, lleva la cadera atrás con la espalda recta y las rodillas algo dobladas hasta tener el tronco casi paralelo al suelo, y entonces coge la barra en pronación, algo más abierto que los hombros.",
     "Aprieta el abdomen antes de cada tirón.",
