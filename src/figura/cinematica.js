@@ -967,6 +967,13 @@ function colocarImplementos(esq, pose, definicion, marcos) {
        */
       if (estado.giro) orientacion.multiply(eje(new Vector3(0, 0, 1), estado.giro));
     }
+    /*
+     * `rodar`: cuánto gira la barra sobre su PROPIO eje, en grados, por pose. Con el agarre fijado
+     * a la barra (`agarre_marco`), la mano gira con ella. Sin esto una barra suelta no rodaba nunca,
+     * y en el curl con barra la mano conservaba arriba la orientación que tenía colgando abajo: la
+     * muñeca acababa doblada 90° y el recorrido había que cortarlo antes de llegar al pecho.
+     */
+    if (typeof estado.rodar === 'number') orientacion.multiply(eje(new Vector3(1, 0, 0), estado.rodar));
     salida[nombre] = { ...estado, posicion: pos, orientacion };
   }
   return salida;
