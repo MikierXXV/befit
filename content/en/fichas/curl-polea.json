@@ -8,7 +8,8 @@
     "Grip the low pulley bar with your palms up, shoulder-width apart, and step back.",
     "Stand with your elbows by your sides and your arms straight.",
     "Curl the bar up by bending your elbows, without your elbows moving forward or your torso leaning back.",
-    "Lower under control until your arms are straight."
+    "Lower under control until your arms are straight.",
+    "If your elbow moves forward or your torso swings to lift, the weight is too heavy."
   ],
   "material": [
     "polea"
@@ -27,8 +28,13 @@
       "trapecio_superior"
     ]
   },
-  "matices": "Few studies compare the cable curl with the dumbbell or barbell curl. What changes is the direction of the resistance: it pulls towards the pulley and not towards the floor, so the hardest part of the range shifts. Whether that gives better or worse results has not been measured.",
+  "matices": "There are no studies of the standing cable curl as such. In the preacher curl, ten weeks with a cable or a barbell gave similar biceps growth, although the cable loads the end of the range more and the barbell the start.",
   "fuentes": [
+    {
+      "titulo": "Placing Greater Torque at Shorter or Longer Muscle Lengths? Effects of Cable vs. Barbell Preacher Curl Training on Muscular Strength and Hypertrophy in Young Adults",
+      "autor": "Nunes et al., Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17165859"
+    },
     {
       "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"

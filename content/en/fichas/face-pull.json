@@ -3,12 +3,13 @@
   "grupo_id": "tiron-horizontal",
   "orden": 7,
   "nombre": "Cable face pull",
-  "resumen": "Standing facing a high pulley, you pull a rope towards your face, separating the hands with the elbows high. It works the back of the shoulder and the area between the shoulder blades.",
+  "resumen": "Standing facing a high pulley, you pull a rope towards your face, spreading the hands apart with the elbows high. It works the back of the shoulder and the area between the shoulder blades.",
   "ejecucion": [
     "Set the pulley at face height or slightly higher and take the rope with both hands, palms facing in.",
     "Step back until your arms are straight and the cable is taut.",
-    "Pull the rope towards your face with your elbows high, at shoulder height, separating your hands at the end.",
-    "Return by straightening your arms under control, without letting the cable pull you forward."
+    "Pull the rope towards your face with your elbows high, at shoulder height, spreading your hands apart at the end.",
+    "Return by straightening your arms under control, without letting the cable pull you forward.",
+    "If your elbows drop below your shoulders as you pull, lower the weight."
   ],
   "material": [
     "polea"
@@ -29,8 +30,13 @@
       "antebrazo"
     ]
   },
-  "matices": "We have found no study measuring the face pull itself. That it works the rear deltoid and the muscles between the shoulder blades comes from the movement —pulling with high elbows and separating the hands—, not from a measurement. It is also often used for the shoulder external rotators, which this muscle map does not draw.",
+  "matices": "There is a single study, in ten men and using a computer model rather than measuring the muscle: it estimated a rear deltoid force similar to reverse flyes and higher than in the dumbbell row. It is also often used for the shoulder external rotators, which this muscle map does not draw.",
   "fuentes": [
+    {
+      "titulo": "Biomechanical evaluation of posterior deltoid exercises and kinematic trajectory modeling",
+      "autor": "Zhu, Chen and Feng, Acta Bioeng Biomech, 2025",
+      "url": "https://doi.org/10.37190/abb/217836"
+    },
     {
       "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"

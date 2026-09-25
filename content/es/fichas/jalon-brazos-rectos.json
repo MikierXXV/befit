@@ -3,17 +3,18 @@
   "grupo_id": "tiron-vertical",
   "orden": 6,
   "nombre": "Jalón con brazos rectos en polea",
-  "resumen": "De pie frente a una polea alta, se baja una barra hasta los muslos con los brazos casi estirados, moviendo solo los hombros. Trabaja el dorsal sin que el bíceps ayude.",
+  "resumen": "De pie frente a una polea alta, se baja una barra hasta los muslos con los brazos casi estirados, moviendo solo los hombros. Trabaja el dorsal y el bíceps apenas participa.",
   "ejecucion": [
     "Coge la barra de la polea alta en pronación, a la anchura de los hombros, y da un paso atrás.",
     "Inclina un poco el tronco hacia delante con la espalda recta, y los brazos casi estirados por delante.",
     "Baja la barra en arco hasta los muslos, con los codos fijos y ligeramente doblados.",
-    "Vuelve con control hasta que los brazos queden a la altura de la cabeza, sin doblar los codos."
+    "Vuelve con control hasta que los brazos queden a la altura de la cabeza, sin doblar los codos.",
+    "Si los codos se doblan para bajar la barra, estás haciendo un jalón: baja el peso."
   ],
   "material": [
     "polea"
   ],
-  "nivel": "intermedio",
+  "nivel": "inicial",
   "descanso": 60,
   "musculos": {
     "principal": [
@@ -21,6 +22,7 @@
     ],
     "sinergista": [
       "triceps",
+      "pectoral",
       "deltoides_posterior"
     ],
     "estabilizador": [
@@ -28,11 +30,16 @@
       "antebrazo"
     ]
   },
-  "matices": "No hemos encontrado estudios que midan este ejercicio en sí. Que el bíceps no participe sale del gesto: con los codos fijos, el movimiento es solo del hombro, y lo hacen sobre todo el dorsal y la cabeza larga del tríceps.",
+  "matices": "Con los codos fijos el movimiento es solo del hombro, así que el bíceps apenas participa. Cuánto lo hace el dorsal frente al pectoral no está medido en este ejercicio; en el pullover, un gesto parecido, salió más el pectoral.",
   "fuentes": [
     {
       "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
       "autor": "National Strength and Conditioning Association"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
     }
   ]
 }

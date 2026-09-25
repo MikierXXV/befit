@@ -8,7 +8,8 @@
     "Sit facing the low pulley with your feet braced and knees slightly bent, and take the handle with your arms straight.",
     "With your back straight and chest up, pull the handle towards your abdomen, driving your elbows back and close to your body.",
     "At the end, squeeze your shoulder blades together without leaning back.",
-    "Return by straightening your arms under control, letting your shoulders come forward a little without rounding your back."
+    "Return by straightening your arms under control, letting your shoulders come forward a little without rounding your back.",
+    "If you have to lean back to move the weight, it is too heavy."
   ],
   "material": [
     "polea",
@@ -30,7 +31,7 @@
       "abdomen"
     ]
   },
-  "matices": "The study comparing several lat exercises found one of the best lat-to-biceps ratios in the seated row, and the highest middle trapezius and rhomboid activity. Deliberately squeezing the shoulder blades did not change that activity. Differences between exercises were small.",
+  "matices": "The study comparing several lat exercises, measuring 10-second isometric holds in four exercises, found one of the best lat-to-biceps ratios in the seated row, and the highest middle trapezius and rhomboid activity. Deliberately squeezing the shoulder blades did not change that activity. A 2026 review links a narrower grip and elbows kept closer to more lat activity in this row.",
   "fuentes": [
     {
       "titulo": "Variations in muscle activation levels during traditional latissimus dorsi weight training exercises: An experimental study",
@@ -38,9 +39,9 @@
       "url": "https://doi.org/10.1186/1476-5918-3-4"
     },
     {
-      "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",
-      "autor": "Fenwick, Brown and McGill, J Strength Cond Res, 2009",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/19620925/"
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
     }
   ]
 }

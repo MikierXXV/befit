@@ -5,10 +5,11 @@
   "nombre": "Pendlay row",
   "resumen": "A barbell row with the torso almost parallel to the floor, where the bar returns to the floor on every rep. Each pull starts from a dead stop.",
   "ejecucion": [
-    "With the bar on the floor over the middle of your foot, grip it overhand slightly wider than your shoulders.",
-    "Push your hips back and bend your knees slightly until your torso is almost parallel to the floor, with a straight back.",
+    "Standing with the bar on the floor over the middle of your foot, push your hips back with a straight back and knees slightly bent until your torso is almost parallel to the floor, and then grip the bar overhand, slightly wider than your shoulders.",
+    "Brace your abs before each pull.",
     "Pull the bar hard towards your lower chest, driving your elbows back, without your torso rising.",
-    "Lower the bar until it rests on the floor, reset your back and repeat from a dead stop."
+    "Lower the bar until it rests on the floor, reset your back and repeat from a dead stop.",
+    "If you have to round your back to reach the bar, or your torso rises as you pull, use the regular barbell row or less weight."
   ],
   "material": [
     "barra"
@@ -30,7 +31,7 @@
       "gluteo_mayor"
     ]
   },
-  "matices": "The study comparing several rows found that the bent-over barbell row activates the back strongly and symmetrically, but also loads the lower back the most. In the Pendlay the torso is even more horizontal than in the usual barbell row; we have found no study measuring it separately.",
+  "matices": "The study comparing three rows, in seven men, found that the bent-over barbell row activates the back strongly and symmetrically, but loads the lower back the most. In the Pendlay the torso is even more horizontal than in the usual barbell row; we have found no study measuring it separately.",
   "fuentes": [
     {
       "titulo": "Comparison of different rowing exercises: trunk muscle activation and lumbar spine motion, load, and stiffness",

@@ -3,17 +3,18 @@
   "grupo_id": "tiron-vertical",
   "orden": 6,
   "nombre": "Straight-arm cable pulldown",
-  "resumen": "Standing facing a high pulley, you bring a bar down to your thighs with the arms almost straight, moving only at the shoulders. It works the lats without help from the biceps.",
+  "resumen": "Standing facing a high pulley, you bring a bar down to your thighs with the arms almost straight, moving only at the shoulders. It works the lats and the biceps barely takes part.",
   "ejecucion": [
     "Grip the high pulley bar overhand, shoulder-width apart, and step back.",
     "Lean your torso slightly forward with a straight back, arms almost straight in front of you.",
     "Bring the bar down in an arc to your thighs, with your elbows fixed and slightly bent.",
-    "Return under control until your arms are at head height, without bending your elbows."
+    "Return under control until your arms are at head height, without bending your elbows.",
+    "If your elbows bend to bring the bar down, you are doing a pulldown: lower the weight."
   ],
   "material": [
     "polea"
   ],
-  "nivel": "intermedio",
+  "nivel": "inicial",
   "descanso": 60,
   "musculos": {
     "principal": [
@@ -21,6 +22,7 @@
     ],
     "sinergista": [
       "triceps",
+      "pectoral",
       "deltoides_posterior"
     ],
     "estabilizador": [
@@ -28,11 +30,16 @@
       "antebrazo"
     ]
   },
-  "matices": "We have found no study measuring this exercise itself. That the biceps does not take part comes from the movement: with the elbows fixed, the motion is only at the shoulder, mainly done by the lats and the long head of the triceps.",
+  "matices": "With the elbows fixed, the motion is only at the shoulder, so the biceps barely takes part. How much the lats work compared with the chest has not been measured in this exercise; in the pullover, a similar movement, the chest came out ahead.",
   "fuentes": [
     {
       "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
       "autor": "National Strength and Conditioning Association"
+    },
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
     }
   ]
 }

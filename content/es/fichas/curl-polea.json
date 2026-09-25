@@ -6,9 +6,10 @@
   "resumen": "De pie frente a una polea baja, se sube una barra corta doblando los codos. Como un curl con barra, pero la resistencia tira en la dirección del cable.",
   "ejecucion": [
     "Coge la barra de la polea baja con las palmas hacia arriba, a la anchura de los hombros, y da un paso atrás.",
-    "De pie, con los codos pegados a los costados y los brazos estirados.",
+    "Ponte de pie con los codos pegados a los costados y los brazos estirados.",
     "Sube la barra doblando los codos, sin que los codos se adelanten ni el tronco se eche atrás.",
-    "Baja con control hasta estirar los brazos."
+    "Baja con control hasta estirar los brazos.",
+    "Si el codo se va hacia delante o el tronco se balancea para subir, es demasiado peso."
   ],
   "material": [
     "polea"
@@ -27,8 +28,13 @@
       "trapecio_superior"
     ]
   },
-  "matices": "Hay pocos estudios que comparen el curl en polea con el de mancuernas o barra. Lo que cambia es la dirección de la resistencia: tira hacia la polea y no hacia el suelo, así que la parte del recorrido que más cuesta se desplaza. Que eso dé más o menos resultado no está medido.",
+  "matices": "No hay estudios del curl de pie en polea tal cual. En el curl predicador, diez semanas con polea o con barra dieron un crecimiento del bíceps parecido, aunque la polea carga más el final del recorrido y la barra el principio.",
   "fuentes": [
+    {
+      "titulo": "Placing Greater Torque at Shorter or Longer Muscle Lengths? Effects of Cable vs. Barbell Preacher Curl Training on Muscular Strength and Hypertrophy in Young Adults",
+      "autor": "Nunes et al., Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17165859"
+    },
     {
       "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
       "autor": "National Strength and Conditioning Association"

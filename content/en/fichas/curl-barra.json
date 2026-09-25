@@ -6,9 +6,9 @@
   "resumen": "Standing, holding a bar with the palms up, you raise it by bending the elbows. The classic curl, with both hands on the same bar.",
   "ejecucion": [
     "Stand and grip the bar with your palms up, shoulder-width apart, letting it hang with straight arms.",
-    "With your elbows by your sides, curl the bar up by bending your elbows.",
-    "At the top, without bringing your elbows forward or leaning back to help.",
-    "Lower under control until your arms are straight."
+    "With your elbows by your sides, curl the bar up by bending your elbows, without bringing them forward or leaning back.",
+    "Lower under control until your arms are straight.",
+    "If you have to swing your torso to lift the bar, the weight is too heavy."
   ],
   "material": [
     "barra"
@@ -27,7 +27,7 @@
       "trapecio_superior"
     ]
   },
-  "matices": "A study of bodybuilders found slightly more biceps activity with a straight bar than with an EZ bar, and differences depending on whether the elbows move forward. Another found that the brachioradialis, in the forearm, works more than the biceps on the way down. These are small differences measured in few people.",
+  "matices": "In a study of ten bodybuilders, the straight bar gave slightly more biceps activity than the EZ bar, by a small margin. Bringing the elbows forward on the way up raised it much more, around 18-20 %, although on the way down it was the reverse; here the advice is to keep them still, which is the usual way it is taught. Another study found that the brachioradialis, in the forearm, works more than the biceps on the way down.",
   "fuentes": [
     {
       "titulo": "Bilateral Biceps Curl Shows Distinct Biceps Brachii and Anterior Deltoid Excitation Comparing Straight vs. EZ Barbell Coupled with Arms Flexion/No-Flexion",
