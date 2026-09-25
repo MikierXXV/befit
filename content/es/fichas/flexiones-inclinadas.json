@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Flexiones inclinadas",
   "resumen": "Flexiones con las manos apoyadas en un banco. Con las manos más altas que los pies, los brazos sostienen menos peso: es la forma de empezar cuando la flexión en el suelo aún cuesta.",
+  "movimiento_id": "flexiones-inclinadas",
   "ejecucion": [
     "Apoya las manos en el borde de un banco, algo más abiertas que los hombros, y lleva los pies atrás.",
     "Pon el cuerpo en línea de la cabeza a los talones, con el abdomen apretado.",

@@ -1,0 +1,194 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "flexiones-declinadas",
+  "duracion": 3,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 10"
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.75
+      ],
+      "largo": 0.3,
+      "ancho": 1.2,
+      "alto": 0.43,
+      "solido": true
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "pies"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.6,
+          0.004
+        ],
+        "orientacion": {
+          "inclinacion": 93
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -30
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.28,
+            0.046,
+            0.52
+          ],
+          "codo_hacia": [
+            0.5,
+            0.3,
+            -1
+          ],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.61,
+            -0.808
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.43,
+          -0.014
+        ],
+        "orientacion": {
+          "inclinacion": 104.5
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -30
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.28,
+            0.046,
+            0.52
+          ],
+          "codo_hacia": [
+            0.5,
+            0.3,
+            -1
+          ],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.61,
+            -0.808
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.6,
+          0.004
+        ],
+        "orientacion": {
+          "inclinacion": 93
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -30
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.28,
+            0.046,
+            0.52
+          ],
+          "codo_hacia": [
+            0.5,
+            0.3,
+            -1
+          ],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.61,
+            -0.808
+          ],
+          "rodilla_hacia": [
+            0,
+            -1,
+            0.15
+          ],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    }
+  ]
+}

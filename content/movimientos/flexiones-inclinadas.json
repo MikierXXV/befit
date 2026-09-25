@@ -1,0 +1,120 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "flexiones-inclinadas",
+  "duracion": 3,
+  "$comment_ritmo": "Naturalidad: la cadera manda y el tronco y la cabeza la siguen con unas centésimas de retraso (por defecto, ver cinematica.js); `asimetria` rompe la simetría exacta de los dos lados y `respiracion` mueve el tronco un poco, con un número entero de ciclos para que el bucle siga cerrando.",
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "$comment_cuerpo": "Como en la flexión del suelo, el cuerpo es una tabla que pivota sobre las puntas de los pies: manos y tobillos clavados en el mundo, y solo se mueven la pelvis y su inclinación. Con las manos 43 cm más altas la tabla va mucho más empinada: 53 de inclinación arriba (37° sobre la horizontal) y 68,5 abajo, con el pecho a la altura del borde del banco.",
+  "$comment_banco": "El banco va CRUZADO delante del maniquí —largo en X, fondo en Z—, que es como se hace: las manos, más abiertas que los hombros, no caben en los 30 cm de ancho de un banco puesto a lo largo. Las muñecas quedan justo tras el borde cercano y la palma y los dedos sobre el acolchado.",
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 10"
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        0.53
+      ],
+      "largo": 0.3,
+      "ancho": 1.1,
+      "alto": 0.43,
+      "solido": true
+    }
+  },
+  "$comment_apoyos": "Lo que descansa en el banco son las MANOS, no la cadera: sin `con` la regla de «sentado en el banco» miraría dónde cae la cadera.",
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "manos"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [0, 0.672, -0.154],
+        "orientacion": { "inclinacion": 53 }
+      },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": -20 },
+      "brazos": {
+        "ambos": {
+          "objetivo": [0.28, 0.476, 0.40],
+          "codo_hacia": [0.5, 0.3, -1],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [0.11, 0.19, -0.815],
+          "rodilla_hacia": [0, -1, 0.15],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [0, 0.49, -0.052],
+        "orientacion": { "inclinacion": 68.5 }
+      },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": -20 },
+      "brazos": {
+        "ambos": {
+          "objetivo": [0.28, 0.476, 0.40],
+          "codo_hacia": [0.5, 0.3, -1],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [0.11, 0.19, -0.815],
+          "rodilla_hacia": [0, -1, 0.15],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [0, 0.672, -0.154],
+        "orientacion": { "inclinacion": 53 }
+      },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": -20 },
+      "brazos": {
+        "ambos": {
+          "objetivo": [0.28, 0.476, 0.40],
+          "codo_hacia": [0.5, 0.3, -1],
+          "cierre": 0,
+          "mano_plana": true
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [0.11, 0.19, -0.815],
+          "rodilla_hacia": [0, -1, 0.15],
+          "apoyo": "metatarso",
+          "apertura": 6
+        }
+      }
+    }
+  ]
+}

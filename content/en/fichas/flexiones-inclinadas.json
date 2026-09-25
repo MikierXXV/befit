@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Incline push-ups",
   "resumen": "Push-ups with the hands on a bench. With the hands higher than the feet, the arms support less weight: the way to start when push-ups on the floor are still hard.",
+  "movimiento_id": "flexiones-inclinadas",
   "ejecucion": [
     "Put your hands on the edge of a bench, a little wider than your shoulders, and walk your feet back.",
     "Make a straight line from head to heels, with your abs tight.",

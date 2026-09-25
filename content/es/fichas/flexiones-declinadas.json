@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Flexiones declinadas",
   "resumen": "Flexiones con los pies subidos a un banco. Con los pies más altos que las manos, los brazos sostienen más peso del cuerpo que en una flexión normal.",
+  "movimiento_id": "flexiones-declinadas",
   "ejecucion": [
     "Apoya las manos en el suelo, algo más abiertas que los hombros, y sube los pies a un banco.",
     "Pon el cuerpo en línea de la cabeza a los talones, con el abdomen y el glúteo apretados.",
