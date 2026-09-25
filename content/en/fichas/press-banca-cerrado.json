@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Close-grip bench press",
   "resumen": "The bench press with the hands shoulder-width apart or slightly closer. A closer grip shifts some of the work towards the triceps, especially compared with a wide grip.",
+  "movimiento_id": "press-banca-cerrado",
   "ejecucion": [
     "Set the safety pins at chest height, or have someone spot you: getting stuck under the bar is the serious accident in this lift.",
     "Lie on the bench with your eyes under the bar and grip it with your hands shoulder-width apart and your wrists straight.",

@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Press de banca con agarre cerrado",
   "resumen": "El press de banca con las manos a la anchura de los hombros o algo menos. Cerrar el agarre desplaza algo de trabajo hacia el tríceps, sobre todo si se compara con un agarre ancho.",
+  "movimiento_id": "press-banca-cerrado",
   "ejecucion": [
     "Ajusta los topes de seguridad a la altura del pecho, o pide a alguien que te vigile: quedarse debajo de la barra es el accidente grave de este ejercicio.",
     "Túmbate en el banco con los ojos bajo la barra y agárrala con las manos a la anchura de los hombros y las muñecas rectas.",
