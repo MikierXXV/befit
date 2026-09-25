@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Fondos en banco",
   "resumen": "Las manos apoyadas en el borde de un banco, a los lados de la cadera, y el cuerpo sube y baja doblando los codos. Un ejercicio de tríceps con el propio peso y solo un banco.",
+  "movimiento_id": "fondos-banco",
   "ejecucion": [
     "Siéntate en el borde de un banco y apoya las manos a los lados de la cadera, con los dedos hacia delante.",
     "Adelanta la cadera hasta sacarla del banco, con las piernas estiradas o las rodillas dobladas si te cuesta más.",

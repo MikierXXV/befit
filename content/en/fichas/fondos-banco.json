@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Bench dips",
   "resumen": "Hands on the edge of a bench beside the hips, and the body goes down and up by bending the elbows. A bodyweight triceps exercise that needs only a bench.",
+  "movimiento_id": "fondos-banco",
   "ejecucion": [
     "Sit on the edge of a bench and put your hands beside your hips, fingers pointing forward.",
     "Move your hips forward off the bench, with your legs straight, or knees bent to make it easier.",

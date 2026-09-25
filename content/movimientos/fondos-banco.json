@@ -1,0 +1,215 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "fondos-banco",
+  "duracion": 3,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "$comment_manos": "Manos en el borde del banco con `mano_plana` y `cierre` 0.5: la palma apoya en el canto y los dedos bajan por delante, como se agarra de verdad. Con la muñeca más atrás (a 13 cm del borde en vez de 3) los hombros quedaban por delante de las manos y la muñeca se extendía hasta 117°, fuera de rango: la mano plana obliga a que arriba el hombro quede casi encima de la muñeca.",
+  "$comment_tronco": "Arriba el tronco va 10° hacia atrás por lo mismo: con la cadera fuera del banco y el hombro sobre la mano no cabe erguido del todo. Abajo se inclina 17° hacia delante (pelvis + columna) y la escápula sube y se adelanta: sin eso, el brazo casi paralelo al suelo pedía más de 60° de extensión de hombro. Con 20° de elevación y 22° de inclinación el maniquí salía encorvado con la cabeza hundida entre los hombros.",
+  "$comment_piernas": "Piernas casi estiradas arriba, con el talón en el suelo y la punta arriba (tobillo escrito en ángulo, no `pie_plano`). Al bajar la cadera sin mover los pies, las rodillas se doblan unos 40°: la ficha lo admite, y con las piernas rectas la cadera tendría que meterse bajo el banco.",
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 10"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.25
+      ],
+      "largo": 0.3,
+      "ancho": 1.2,
+      "alto": 0.45,
+      "solido": true
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "manos"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.528,
+          0.03
+        ],
+        "orientacion": {
+          "inclinacion": -12
+        }
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 5
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.22,
+            0.496,
+            -0.13
+          ],
+          "codo_hacia": [
+            0,
+            0,
+            -1
+          ],
+          "cierre": 0.5,
+          "mano_plana": true,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.1,
+            0.77
+          ],
+          "rodilla_hacia": [
+            0.1,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -10
+          }
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.29,
+          -0.035
+        ],
+        "orientacion": {
+          "inclinacion": 13
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -5
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.22,
+            0.496,
+            -0.13
+          ],
+          "codo_hacia": [
+            0,
+            0,
+            -1
+          ],
+          "cierre": 0.5,
+          "mano_plana": true,
+          "escapula": {
+            "elevacion": 12,
+            "protraccion": 10
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.1,
+            0.77
+          ],
+          "rodilla_hacia": [
+            0.1,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -5
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.528,
+          0.03
+        ],
+        "orientacion": {
+          "inclinacion": -12
+        }
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 5
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": [
+            0.22,
+            0.496,
+            -0.13
+          ],
+          "codo_hacia": [
+            0,
+            0,
+            -1
+          ],
+          "cierre": 0.5,
+          "mano_plana": true,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.14,
+            0.1,
+            0.77
+          ],
+          "rodilla_hacia": [
+            0.1,
+            1,
+            0.2
+          ],
+          "tobillo": {
+            "dorsiflexion": -10
+          }
+        }
+      }
+    }
+  ]
+}
