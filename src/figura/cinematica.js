@@ -84,6 +84,13 @@ export const RANGOS = {
    */
   'escapula.elevacion': [-10, 35],
   'escapula.protraccion': [-20, 20],
+  /*
+   * Pronosupinación del antebrazo, para las manos que llevan una mancuerna: 0 es la palma hacia la
+   * línea media, +90 hacia delante (prona) y -90 hacia atrás (supina). Antes solo había dos agarres
+   * fijos, neutro y prono, y el press Arnold —cuyo gesto ES girar la palma de la cara hacia
+   * delante— cambiaba de uno a otro de golpe en un fotograma, y a medias.
+   */
+  'antebrazo.pronacion': [-90, 90],
   'codo.flexion': [0, 150],
   'muneca.extension': [-80, 95],
   'cadera.flexion': [-30, 130],
@@ -103,6 +110,9 @@ export const RANGOS = {
 
 const v3 = (a) => new Vector3(a[0], a[1], a[2]);
 /** Sentido de giro de la clavícula en cada lado, medido: positivo eleva y adelanta el hombro. */
+/** Sentido del giro del antebrazo en cada lado, medido: positivo lleva la palma hacia delante. */
+const SIGNO_PRONACION = { i: 1, d: -1 };
+
 const SIGNO_ESCAPULA = { elevacion: { i: 1, d: -1 }, protraccion: { i: -1, d: 1 } };
 
 const eje = (k, grados) => new Quaternion().setFromAxisAngle(k, grados * GRAD);
@@ -647,10 +657,20 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
       ? DELANTE.clone()
       : new Vector3(-SIGNO[l], 0, 0)).applyQuaternion(rumboCuerpo);
 
-    const palma = perpendicular(deseada, largo)
+    let palma = perpendicular(deseada, largo)
       /* Con el antebrazo apuntando justo adonde mira la palma no queda nada que enderezar —pasa con
          el brazo estirado del todo hacia delante—: ahí sirve cualquier perpendicular. */
       ?? (perpendicular(new Vector3(0, 1, 0), largo) ?? new Vector3(1, 0, 0));
+    /*
+     * Con `pronacion` en grados, la palma parte de la neutra y GIRA alrededor del antebrazo, que es
+     * lo que hace el cúbito con el radio. Es un número y se interpola entre poses: el giro del press
+     * Arnold sale gradual en vez de saltar de un agarre a otro.
+     */
+    if (typeof m.pronacion === 'number') {
+      const neutra = new Vector3(-SIGNO[l], 0, 0).applyQuaternion(rumboCuerpo);
+      palma = (perpendicular(neutra, largo) ?? palma).applyAxisAngle(largo, SIGNO_PRONACION[l] * m.pronacion * GRAD);
+      anotar(l, 'antebrazo.pronacion', m.pronacion);
+    }
     const ejeMango = new Vector3().crossVectors(largo, palma).multiplyScalar(-SIGNO[l]).normalize();
 
     const Fmano = mapearBase(ABAJO, new Vector3(-SIGNO[l], 0, 0), largo, palma);

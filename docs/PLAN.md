@@ -124,7 +124,11 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   **escápula** (el hombro baja y se adelanta: sin ella los pesos muertos no llegaban a la barra en
   el suelo con la espalda recta), la abducción de cadera que crece con la flexión, y el apoyo de
   **espalda** en el banco (hip thrust).
-- ⬜ K · Empujes · L · Tirones y polea · M · Core · N · Grupos nuevos.
+- ✅ **K · Empujes:** press Arnold, fondos en banco, flexiones declinadas e inclinadas, press de banca
+  con agarre cerrado y pullover con mancuerna. Trajo la **pronosupinación** del antebrazo al motor
+  (el giro del press Arnold), y el apoyo en banco con manos o pies.
+- ⬜ L · Tirones y polea · M · Core · N · Grupos nuevos.
+- ⬜ Pendiente: el curl inverso puede usar ya `pronacion` para distinguirse del curl normal.
 - ✅ **Movimientos fuera del JS inicial:** se cargan al abrir la ficha, y la proporción del lienzo
   sale de un índice generado al compilar. El JS crítico bajó de 104,6 a 87,5 kB y cada ejercicio
   nuevo le suma bytes, no kilobytes. La app instalada los precarga todos para ir sin conexión.

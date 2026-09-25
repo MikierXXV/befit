@@ -1,0 +1,280 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "$comment_giro": "El giro que define el press Arnold va en `brazos.ambos.pronacion`: -90 abajo, con las palmas hacia la cara; 0 cuando los codos se abren a los lados, con las palmas enfrentadas; +90 arriba, con las palmas hacia delante. Es un número y se interpola entre poses, así que la muñeca gira a lo largo de la subida. Antes el motor solo tenía dos agarres fijos, neutro y prono, y el giro saltaba de uno a otro en un fotograma y se quedaba en medio giro.",
+  "id": "press-arnold",
+  "duracion": 3.6,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "frontal",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        -0.26
+      ],
+      "largo": 0.7,
+      "ancho": 0.34,
+      "alto": 0.45,
+      "solido": true
+    },
+    "mancuerna_i": {
+      "tipo": "mancuerna",
+      "en_mano": "i",
+      "solido": true
+    },
+    "mancuerna_d": {
+      "tipo": "mancuerna",
+      "en_mano": "d",
+      "solido": true
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.53,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 32,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 145
+          },
+          "cierre": 0.9,
+          "pronacion": -90
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.104,
+            0.42
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.6
+          ],
+          "pie_plano": true,
+          "apertura": 18
+        }
+      }
+    },
+    {
+      "t": 0.2,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.53,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 45,
+            "abduccion": 50,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 100
+          },
+          "cierre": 0.9,
+          "pronacion": 0
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.104,
+            0.42
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.6
+          ],
+          "pie_plano": true,
+          "apertura": 18
+        }
+      }
+    },
+    {
+      "t": 0.45,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.53,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 166,
+            "abduccion": 14,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.9,
+          "pronacion": 90
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.104,
+            0.42
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.6
+          ],
+          "pie_plano": true,
+          "apertura": 18
+        }
+      }
+    },
+    {
+      "t": 0.7,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.53,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 45,
+            "abduccion": 50,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 100
+          },
+          "cierre": 0.9,
+          "pronacion": 0
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.104,
+            0.42
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.6
+          ],
+          "pie_plano": true,
+          "apertura": 18
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.53,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": -4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 32,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 145
+          },
+          "cierre": 0.9,
+          "pronacion": -90
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.104,
+            0.42
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.6
+          ],
+          "pie_plano": true,
+          "apertura": 18
+        }
+      }
+    }
+  ]
+}

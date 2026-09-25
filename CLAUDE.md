@@ -104,6 +104,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    ejercicio que apoya la ESPALDA en el banco (hip thrust) lo declara en su apoyo con
    `"con": "espalda"` (o `"manos"`, `"pies"` si es eso lo que apoya), o el validador lo toma por
    sentado fuera del banco.
+   Una mano con mancuerna gira la palma con `brazos.<lado>.pronacion` en grados: 0 hacia la línea
+   media, +90 hacia delante, -90 hacia atrás. Es un número y se interpola: sirve para giros como el
+   del press Arnold, que con los agarres fijos (`agarre_mango`) saltaban de golpe.
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.

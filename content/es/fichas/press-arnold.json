@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Press Arnold con mancuernas",
   "resumen": "Un press de hombro sentado en el que las mancuernas empiezan delante de la cara, con las palmas hacia ti, y giran mientras suben hasta acabar con las palmas hacia delante.",
+  "movimiento_id": "press-arnold",
   "ejecucion": [
     "Siéntate en un banco con respaldo, con una mancuerna en cada mano a la altura de los hombros, por delante de la cara y con las palmas hacia ti.",
     "Empuja hacia arriba y, a la vez, abre los codos hacia los lados y gira las muñecas.",
