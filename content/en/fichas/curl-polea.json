@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Cable biceps curl",
   "resumen": "Standing facing a low pulley, you raise a short bar by bending the elbows. Like a barbell curl, but the resistance pulls in the direction of the cable.",
+  "movimiento_id": "curl-polea",
   "ejecucion": [
     "Grip the low pulley bar with your palms up, shoulder-width apart, and step back.",
     "Stand with your elbows by your sides and your arms straight.",

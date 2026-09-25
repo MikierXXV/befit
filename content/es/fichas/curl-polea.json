@@ -4,6 +4,7 @@
   "orden": 5,
   "nombre": "Curl de bíceps en polea",
   "resumen": "De pie frente a una polea baja, se sube una barra corta doblando los codos. Como un curl con barra, pero la resistencia tira en la dirección del cable.",
+  "movimiento_id": "curl-polea",
   "ejecucion": [
     "Coge la barra de la polea baja con las palmas hacia arriba, a la anchura de los hombros, y da un paso atrás.",
     "Ponte de pie con los codos pegados a los costados y los brazos estirados.",

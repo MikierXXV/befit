@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Curl de bíceps con barra",
   "resumen": "De pie, con una barra cogida con las palmas hacia arriba, se sube doblando los codos. El curl de siempre, con las dos manos juntas en la misma barra.",
+  "movimiento_id": "curl-barra",
   "ejecucion": [
     "De pie, coge la barra con las palmas hacia arriba, a la anchura de los hombros, y déjala colgar con los brazos estirados.",
     "Con los codos pegados a los costados, sube la barra doblando los codos, sin adelantarlos ni echar el tronco atrás.",

@@ -127,7 +127,13 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
 - ✅ **K · Empujes:** press Arnold, fondos en banco, flexiones declinadas e inclinadas, press de banca
   con agarre cerrado y pullover con mancuerna. Trajo la **pronosupinación** del antebrazo al motor
   (el giro del press Arnold), y el apoyo en banco con manos o pies.
-- ⬜ L · Tirones y polea · M · Core · N · Grupos nuevos.
+- ✅ **L · Tirones y polea:** remo en polea sentado, face pull, remo Pendlay, jalón con brazos rectos,
+  curl en polea y curl con barra. Trajo al motor el **rodar** de la barra sobre su eje (los curls,
+  sin la muñeca doblada arriba).
+- ⬜ M · Core · N · Grupos nuevos.
+- ⬜ **Para la revisión final con Migue:** el face pull va con agarre corto porque la polea no tiene
+  cuerda; el remo en polea sentado apila las manos en un mango vertical en vez del triángulo; y en
+  el remo Pendlay hay que confirmar girando la cámara si la espalda alta se ve abombada.
 - ⬜ Pendiente: el curl inverso puede usar ya `pronacion` para distinguirse del curl normal.
 - ✅ **Movimientos fuera del JS inicial:** se cargan al abrir la ficha, y la proporción del lienzo
   sale de un índice generado al compilar. El JS crítico bajó de 104,6 a 87,5 kB y cada ejercicio

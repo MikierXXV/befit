@@ -1,0 +1,535 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "curl-barra",
+  "duracion": 3.2,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "$comment_trayectoria": "La barra y la mano giran como un bloque con el antebrazo alrededor de un codo quieto (y=1,158, z=-0,008): cada pose gira la barra de abajo un ángulo D sobre el codo y la hace rodar -D sobre su eje. Así la muñeca guarda el ángulo del primer fotograma en todo el recorrido (medido: 24-25°) y el codo no se mueve. Codo hacia abajo y un poco atrás: con el polo hacia atrás el codo se abría 13 cm arriba.",
+  "implementos": {
+    "barra": {
+      "tipo": "barra",
+      "posicion": [
+        0,
+        0.82,
+        0.15
+      ],
+      "agarre": 0.22,
+      "solido": true,
+      "agarre_supino": true,
+      "agarre_marco": {
+        "i": [
+          -0.207974,
+          0.67583,
+          -0.207974,
+          0.67583
+        ],
+        "d": [
+          -0.209545,
+          -0.675345,
+          0.209545,
+          0.675345
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.82,
+            0.15
+          ],
+          "rodar": 0
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.125,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.944,
+            0.298
+          ],
+          "rodar": -30
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.25,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.126,
+            0.364
+          ],
+          "rodar": -60
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.375,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.316,
+            0.33
+          ],
+          "rodar": -90
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.444,
+            0.232
+          ],
+          "rodar": -115
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.625,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.316,
+            0.33
+          ],
+          "rodar": -90
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.75,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.126,
+            0.364
+          ],
+          "rodar": -60
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.875,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.944,
+            0.298
+          ],
+          "rodar": -30
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          0
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.82,
+            0.15
+          ],
+          "rodar": 0
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.05,
+            -1,
+            -0.4
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    }
+  ],
+  "$comment_agarre": "Agarre supino calibrado en el primer fotograma, con rodar 0. Si cambia la pose de abajo, se recalibra. Sin rodar, la mano se quedaba colgando y arriba la muñeca se doblaba 90°."
+}

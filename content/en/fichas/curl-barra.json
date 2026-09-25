@@ -4,6 +4,7 @@
   "orden": 6,
   "nombre": "Barbell biceps curl",
   "resumen": "Standing, holding a bar with the palms up, you raise it by bending the elbows. The classic curl, with both hands on the same bar.",
+  "movimiento_id": "curl-barra",
   "ejecucion": [
     "Stand and grip the bar with your palms up, shoulder-width apart, letting it hang with straight arms.",
     "With your elbows by your sides, curl the bar up by bending your elbows, without bringing them forward or leaning back.",
