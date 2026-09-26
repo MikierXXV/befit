@@ -1,0 +1,44 @@
+{
+  "id": "bicho-muerto",
+  "grupo_id": "core",
+  "orden": 7,
+  "nombre": "Dead bug",
+  "resumen": "Lying face up with arms and legs in the air, you extend one arm and the opposite leg at the same time without the lower back lifting off the floor. It is the bird dog on your back.",
+  "ejecucion": [
+    "Lie on your back with your arms reaching towards the ceiling and your legs in the air, hips and knees bent at 90 degrees.",
+    "Press your lower back into the floor by bracing your abs, and keep it there throughout.",
+    "Extend one arm behind your head and the opposite leg forward at the same time, without touching the floor.",
+    "Return to the start and repeat with the other arm and leg.",
+    "If your lower back lifts off the floor as you extend, shorten the range."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "cuadriceps"
+    ]
+  },
+  "matices": "The study that graded five difficulty levels in several lumbar stabilisation exercises, in ten healthy men, found that trunk muscle activity rises with each level. A systematic review found that stability exercises like this one give the highest internal oblique activity, but also little consistency between the studies’ methods.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Changes in Trunk Muscles During Graded Lumbar Stabilization Exercises",
+      "autor": "Kim et al., PM R, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27317910/"
+    },
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    }
+  ]
+}

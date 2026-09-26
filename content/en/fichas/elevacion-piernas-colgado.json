@@ -1,0 +1,46 @@
+{
+  "id": "elevacion-piernas-colgado",
+  "grupo_id": "core",
+  "orden": 10,
+  "nombre": "Hanging leg raise",
+  "resumen": "Hanging from a pull-up bar, you raise the straight legs to horizontal or higher, without swinging. One of the most demanding abdominal exercises.",
+  "ejecucion": [
+    "Hang from a pull-up bar with your hands shoulder-width apart and your arms straight.",
+    "Brace your abs and glutes so your body does not swing.",
+    "Raise your straight legs to horizontal, or higher if you can, tilting your pelvis up.",
+    "Lower them under control, without letting your body swing at the bottom.",
+    "If you cannot raise them without swinging, start with your knees bent."
+  ],
+  "material": [
+    "barra-fija"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "In a study of fourteen men, the straight-leg hanging leg raise was the most demanding for the abdominal wall: over 130 % of maximal contraction in the rectus abdominis and 88 % in the external oblique. It also loaded the spine with about 3000 N of compression, more than the other exercises measured, which is worth bearing in mind with low back discomfort.",
+  "fuentes": [
+    {
+      "titulo": "Muscle activity and spine load during anterior chain whole body linkage exercises: the body saw, hanging leg raise and walkout from a push-up",
+      "autor": "McGill, Andersen and Cannon, J Sports Sci, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25111163/"
+    },
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    }
+  ]
+}

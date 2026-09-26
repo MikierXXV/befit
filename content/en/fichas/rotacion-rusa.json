@@ -1,0 +1,43 @@
+{
+  "id": "rotacion-rusa",
+  "grupo_id": "core",
+  "orden": 9,
+  "nombre": "Russian twist",
+  "resumen": "Sitting with the torso leaned back and the feet in the air or on the floor, you rotate the torso from side to side. It works the obliques, with or without a weight in the hands.",
+  "ejecucion": [
+    "Sit with your knees bent and lean your torso back to about 45 degrees, keeping your back straight.",
+    "Clasp your hands in front of your chest, or hold a light weight.",
+    "Rotate your torso to one side, bringing your hands next to your hip, and then to the other side.",
+    "To make it harder, lift your feet off the floor.",
+    "If you feel your lower back or cannot keep your back straight, do it without weight and with your feet down."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "erectores",
+      "cuadriceps"
+    ]
+  },
+  "matices": "We have found no study measuring the Russian twist itself. It combines trunk flexion and rotation, and there is debate about how much load that combination should take; with low back discomfort, do it without weight or choose another oblique exercise. A systematic review of core exercises notes little consistency between the studies’ methods.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

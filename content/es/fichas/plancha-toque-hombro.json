@@ -1,0 +1,45 @@
+{
+  "id": "plancha-toque-hombro",
+  "grupo_id": "core",
+  "orden": 11,
+  "nombre": "Plancha con toque de hombro",
+  "resumen": "En plancha alta, con los brazos estirados, se toca un hombro con la mano contraria y luego el otro, sin que la cadera gire. Añade al trabajo de la plancha el de resistir la rotación.",
+  "ejecucion": [
+    "Colócate en plancha alta, con las manos bajo los hombros, los brazos estirados y los pies algo abiertos.",
+    "Aprieta el abdomen y los glúteos para que el cuerpo quede recto de la cabeza a los talones.",
+    "Levanta una mano y toca el hombro contrario, y vuelve a apoyarla.",
+    "Repite con la otra mano, sin que la cadera se balancee de lado a lado.",
+    "Si la cadera gira al levantar la mano, abre más los pies."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "oblicuos"
+    ],
+    "sinergista": [
+      "serrato",
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el toque de hombro en sí. Al levantar una mano el apoyo pasa a tres puntos y el tronco tiene que resistir el giro; esa es la razón habitual para usarlo, sacada del gesto y no de una medición. Una revisión sistemática sobre ejercicios de core señala poca coherencia entre los métodos de los estudios.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

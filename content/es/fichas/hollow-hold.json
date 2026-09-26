@@ -1,0 +1,44 @@
+{
+  "id": "hollow-hold",
+  "grupo_id": "core",
+  "orden": 8,
+  "nombre": "Hollow hold",
+  "resumen": "Tumbado boca arriba, se despegan del suelo hombros y piernas estiradas y se aguanta la posición con la zona lumbar pegada al suelo. El cuerpo forma una curva, como un plátano.",
+  "ejecucion": [
+    "Túmbate boca arriba con los brazos estirados por detrás de la cabeza y las piernas juntas y estiradas.",
+    "Pega la zona lumbar al suelo apretando el abdomen.",
+    "Despega a la vez los hombros y las piernas del suelo, con los brazos junto a las orejas, y aguanta.",
+    "Respira sin soltar el abdomen durante todo el tiempo.",
+    "Si la zona lumbar se levanta, dobla las rodillas o lleva los brazos junto al cuerpo para hacerlo más fácil."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "medida": "tiempo",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "cuadriceps",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el hollow hold en sí; viene de la preparación de la gimnasia. Una revisión sistemática sobre ejercicios de core encontró que los de estabilidad dan la mayor actividad del oblicuo interno, y señala poca coherencia entre los métodos de los estudios.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

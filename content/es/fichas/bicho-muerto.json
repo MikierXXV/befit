@@ -1,0 +1,44 @@
+{
+  "id": "bicho-muerto",
+  "grupo_id": "core",
+  "orden": 7,
+  "nombre": "Bicho muerto",
+  "resumen": "Tumbado boca arriba con brazos y piernas en el aire, se estiran a la vez un brazo y la pierna contraria sin que la zona lumbar se separe del suelo. Es el perro-pájaro boca arriba.",
+  "ejecucion": [
+    "Túmbate boca arriba con los brazos estirados hacia el techo y las piernas en el aire, con cadera y rodillas dobladas a 90 grados.",
+    "Pega la zona lumbar al suelo apretando el abdomen, y mantenla así todo el ejercicio.",
+    "Estira a la vez un brazo por detrás de la cabeza y la pierna contraria hacia delante, sin llegar a tocar el suelo.",
+    "Vuelve a la posición de partida y repite con el otro brazo y la otra pierna.",
+    "Si la zona lumbar se levanta del suelo al estirar, acorta el recorrido."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "cuadriceps"
+    ]
+  },
+  "matices": "El estudio que graduó cinco niveles de dificultad en varios ejercicios de estabilidad lumbar, en diez hombres sanos, vio que la actividad de los músculos del tronco sube con cada nivel. Una revisión sistemática encontró que los ejercicios de estabilidad como este dan la mayor actividad del oblicuo interno, pero también poca coherencia entre los métodos de los estudios.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Changes in Trunk Muscles During Graded Lumbar Stabilization Exercises",
+      "autor": "Kim et al., PM R, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27317910/"
+    },
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    }
+  ]
+}

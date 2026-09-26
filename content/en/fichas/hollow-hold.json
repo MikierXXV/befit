@@ -1,0 +1,44 @@
+{
+  "id": "hollow-hold",
+  "grupo_id": "core",
+  "orden": 8,
+  "nombre": "Hollow hold",
+  "resumen": "Lying face up, you lift the shoulders and straight legs off the floor and hold the position with the lower back pressed down. The body forms a curve, like a banana.",
+  "ejecucion": [
+    "Lie on your back with your arms stretched behind your head and your legs together and straight.",
+    "Press your lower back into the floor by bracing your abs.",
+    "Lift your shoulders and legs off the floor at the same time, arms by your ears, and hold.",
+    "Keep breathing without letting your abs go the whole time.",
+    "If your lower back lifts, bend your knees or bring your arms by your sides to make it easier."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "medida": "tiempo",
+  "musculos": {
+    "principal": [
+      "abdomen"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "cuadriceps",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "We have found no study measuring the hollow hold itself; it comes from gymnastics conditioning. A systematic review of core exercises found that stability exercises give the highest internal oblique activity, and notes little consistency between the studies’ methods.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

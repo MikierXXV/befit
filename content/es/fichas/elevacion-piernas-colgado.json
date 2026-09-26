@@ -1,0 +1,46 @@
+{
+  "id": "elevacion-piernas-colgado",
+  "grupo_id": "core",
+  "orden": 10,
+  "nombre": "Elevación de piernas colgado",
+  "resumen": "Colgado de una barra fija, se suben las piernas estiradas hasta la horizontal o más, sin balancearse. Uno de los ejercicios de abdomen más exigentes.",
+  "ejecucion": [
+    "Cuélgate de una barra fija con las manos a la anchura de los hombros y los brazos estirados.",
+    "Aprieta el abdomen y los glúteos para que el cuerpo no se balancee.",
+    "Sube las piernas estiradas hasta la horizontal, o más si puedes, llevando la pelvis hacia arriba.",
+    "Bájalas con control, sin dejar que el cuerpo se balancee al llegar abajo.",
+    "Si no puedes subirlas sin balanceo, empieza con las rodillas dobladas."
+  ],
+  "material": [
+    "barra-fija"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "En un estudio con catorce hombres, la elevación de piernas colgado con las piernas estiradas fue la que más exigió a la pared abdominal: más del 130 % de la contracción máxima en el recto abdominal y un 88 % en el oblicuo externo. También cargó la columna con unos 3000 N de compresión, más que otros ejercicios medidos, algo a tener en cuenta si hay molestias lumbares.",
+  "fuentes": [
+    {
+      "titulo": "Muscle activity and spine load during anterior chain whole body linkage exercises: the body saw, hanging leg raise and walkout from a push-up",
+      "autor": "McGill, Andersen y Cannon, J Sports Sci, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25111163/"
+    },
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "superman",
+  "grupo_id": "core",
+  "orden": 12,
+  "nombre": "Superman",
+  "resumen": "Tumbado boca abajo, se despegan del suelo a la vez los brazos estirados y las piernas, y se aguanta arriba. Trabaja la musculatura de la espalda sin material.",
+  "ejecucion": [
+    "Túmbate boca abajo con los brazos estirados por delante y las piernas estiradas.",
+    "Mira al suelo para que el cuello siga la línea de la espalda.",
+    "Despega a la vez los brazos, el pecho y las piernas unos centímetros del suelo, y aguanta.",
+    "Baja con control y descansa antes de repetir.",
+    "Si notas la zona lumbar, sube menos: basta con despegar un poco brazos y piernas."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "medida": "tiempo",
+  "musculos": {
+    "principal": [
+      "erectores"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "estabilizador": [
+      "deltoides_posterior",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "En el estudio que graduó varios ejercicios de estabilidad lumbar, en diez hombres sanos, mantener más tiempo el superman aumentó la actividad del multífido, los erectores y el recto abdominal. Es una extensión de la espalda con el cuerpo como carga, así que se gradúa con el tiempo y la altura más que con peso.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Changes in Trunk Muscles During Graded Lumbar Stabilization Exercises",
+      "autor": "Kim et al., PM R, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27317910/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

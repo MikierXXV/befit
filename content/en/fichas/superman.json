@@ -1,0 +1,44 @@
+{
+  "id": "superman",
+  "grupo_id": "core",
+  "orden": 12,
+  "nombre": "Superman",
+  "resumen": "Lying face down, you lift the straight arms and the legs off the floor at the same time, and hold at the top. It works the back muscles without equipment.",
+  "ejecucion": [
+    "Lie face down with your arms stretched out in front and your legs straight.",
+    "Look at the floor so your neck stays in line with your back.",
+    "Lift your arms, chest and legs a few centimetres off the floor at the same time, and hold.",
+    "Lower under control and rest before repeating.",
+    "If you feel your lower back, lift less: raising your arms and legs a little is enough."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "medida": "tiempo",
+  "musculos": {
+    "principal": [
+      "erectores"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "estabilizador": [
+      "deltoides_posterior",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "In the study that graded several lumbar stabilisation exercises, in ten healthy men, holding the superman longer increased activity in the multifidus, erectors and rectus abdominis. It is a back extension with the body as the load, so it is progressed with time and height rather than weight.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Changes in Trunk Muscles During Graded Lumbar Stabilization Exercises",
+      "autor": "Kim et al., PM R, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27317910/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

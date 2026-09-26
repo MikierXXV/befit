@@ -1,0 +1,45 @@
+{
+  "id": "plancha-toque-hombro",
+  "grupo_id": "core",
+  "orden": 11,
+  "nombre": "Plank shoulder tap",
+  "resumen": "In a high plank with straight arms, you touch one shoulder with the opposite hand and then the other, without the hips rotating. It adds resisting rotation to the work of the plank.",
+  "ejecucion": [
+    "Get into a high plank, hands under your shoulders, arms straight and feet slightly apart.",
+    "Brace your abs and glutes so your body is straight from head to heels.",
+    "Lift one hand and touch the opposite shoulder, then put it back down.",
+    "Repeat with the other hand, without your hips rocking from side to side.",
+    "If your hips rotate as you lift your hand, widen your feet."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "oblicuos"
+    ],
+    "sinergista": [
+      "serrato",
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "We have found no study measuring the shoulder tap itself. Lifting one hand leaves three points of support and the trunk has to resist rotating; that is the usual reason for using it, taken from the movement rather than a measurement. A systematic review of core exercises notes little consistency between the studies’ methods.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

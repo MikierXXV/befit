@@ -1,0 +1,43 @@
+{
+  "id": "rotacion-rusa",
+  "grupo_id": "core",
+  "orden": 9,
+  "nombre": "Rotación rusa",
+  "resumen": "Sentado con el tronco echado atrás y los pies en el aire o apoyados, se gira el tronco de un lado a otro. Trabaja los oblicuos, con o sin peso en las manos.",
+  "ejecucion": [
+    "Siéntate con las rodillas dobladas y echa el tronco atrás hasta unos 45 grados, con la espalda recta.",
+    "Junta las manos delante del pecho, o sujeta un peso ligero.",
+    "Gira el tronco hacia un lado llevando las manos junto a la cadera, y después hacia el otro.",
+    "Para hacerlo más difícil, despega los pies del suelo.",
+    "Si notas la zona lumbar o no puedes mantener la espalda recta, hazlo sin peso y con los pies apoyados."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "flexores_cadera"
+    ],
+    "estabilizador": [
+      "erectores",
+      "cuadriceps"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan la rotación rusa en sí. Combina flexión y giro del tronco, y hay debate sobre cuánto conviene cargar esa combinación; con molestias lumbares, mejor sin peso o con otro ejercicio de oblicuos. Una revisión sistemática sobre ejercicios de core señala poca coherencia entre los métodos de los estudios.",
+  "fuentes": [
+    {
+      "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
+      "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://doi.org/10.3390/ijerph17124306"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
