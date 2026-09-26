@@ -38,16 +38,16 @@
       "solido": true,
       "agarre_marco": {
         "i": [
-          0.319187,
-          -0.630967,
-          0.319187,
-          -0.630967
+          0.492111,
+          0.507766,
+          -0.492111,
+          -0.507766
         ],
         "d": [
-          0.316498,
-          0.63232,
-          -0.316498,
-          -0.63232
+          -0.491304,
+          0.508548,
+          -0.491304,
+          0.508548
         ]
       }
     }
@@ -94,7 +94,7 @@
           "objetivo": "barra",
           "codo_hacia": [
             1,
-            -0.2,
+            -0.5,
             0.6
           ],
           "cierre": 0.85
@@ -151,8 +151,8 @@
           "objetivo": "barra",
           "codo_hacia": [
             1,
-            -0.2,
-            0.6
+            -1,
+            0.3
           ],
           "cierre": 0.85
         }
@@ -206,7 +206,7 @@
           "objetivo": "barra",
           "codo_hacia": [
             1,
-            -0.2,
+            -0.5,
             0.6
           ],
           "cierre": 0.85
@@ -232,7 +232,7 @@
   ],
   "$comment_banco": "El banco va ATRAVESADO: `ancho` es X y `largo` es Z, así que 1,2 m de ancho y 30 cm de largo lo ponen perpendicular al cuerpo, con el borde delantero en z=-0.21. Las escápulas apoyan en ese borde; la cadera queda fuera del banco durante todo el ciclo, que es lo que es un hip thrust.",
   "$comment_giro": "EL HIP THRUST ES UN GIRO ALREDEDOR DE LAS ESCÁPULAS. Las dos poses salen de girar la pelvis alrededor del punto donde la espalda toca el borde: arriba, tronco horizontal (inclinación -90) con la pelvis a la altura del hombro; abajo, 53° menos y la pelvis 38 cm más baja. Escrita sin ese giro —bajando la cadera y poco más—, la espalda y los codos se metían hasta 11 cm en el acolchado.",
-  "$comment_codos": "Los codos hacia fuera y hacia delante ([1, -0.2, 0.6]) y no hacia abajo: con el polo hacia el suelo, abajo el codo se clavaba en el banco, que ocupa 60 cm a cada lado.",
+  "$comment_codos": "Agarre PRONO, manos encima de la barra y codos hacia fuera y abajo: abajo [1, -0.5, 0.6], arriba [1, -1, 0.3]. El codo tiene que quedar a la altura de la barra o por debajo en el primer fotograma, que es el que congela npm run agarre: con [1, -0.2, 0.6] el codo quedaba 15 cm por encima, el antebrazo bajaba en picado sobre la barra y la mano salía por DEBAJO, con la palma hacia arriba (lo cazó Migue en la hoja). Tampoco más abajo en ese punto: con [1, -1, 0.3] también abajo, el codo se clavaba en el banco. No lleva agarre_supino: el agarre es prono.",
   "$comment_pies": "Los pies a 51 cm y no a 66: más lejos, abajo la espinilla se tumbaba hacia atrás y el tobillo pedía 60° de flexión plantar, diez más de lo que da. A 51 cm arriba la espinilla queda un poco adelantada respecto al tobillo, casi vertical, y abajo el tobillo va a 48°.",
   "$comment_barra": "La barra va en el pliegue de la cadera, a 1-2 cm de la piel: medido sobre el maniquí posado, no a ojo. Abajo el eje queda a 40 cm y los discos no llegan al suelo por 17 cm: bajar más la cadera tumba la espinilla y saca el tobillo de rango."
 }

@@ -17,21 +17,21 @@
       "posicion": [
         0,
         0.225,
-        0.07
+        0.045
       ],
       "agarre": 0.23,
       "agarre_marco": {
         "i": [
-          0.04029,
-          0.705958,
-          -0.04029,
-          -0.705958
+          0.016631,
+          0.706911,
+          -0.016631,
+          -0.706911
         ],
         "d": [
-          -0.050075,
-          0.705332,
-          -0.050075,
-          0.705332
+          -0.029596,
+          0.706487,
+          -0.029596,
+          0.706487
         ]
       }
     }
@@ -69,7 +69,7 @@
           "posicion": [
             0,
             0.225,
-            0.07
+            0.045
           ]
         }
       },
@@ -93,7 +93,7 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
             0.88,
@@ -129,7 +129,7 @@
           "posicion": [
             0,
             0.53,
-            0.06
+            0.065
           ]
         }
       },
@@ -153,12 +153,12 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
-            0.8,
+            0.88,
             0,
-            0.6
+            0.45
           ],
           "pie_plano": true,
           "apertura": 38
@@ -172,7 +172,7 @@
         "posicion": [
           0,
           0.8,
-          -0.12
+          -0.16
         ],
         "orientacion": {
           "inclinacion": 24
@@ -189,7 +189,7 @@
           "posicion": [
             0,
             0.63,
-            0.07
+            0.086
           ]
         }
       },
@@ -209,10 +209,70 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
+            0.85,
+            0,
+            0.5
+          ],
+          "pie_plano": true,
+          "apertura": 38
+        }
+      }
+    },
+    {
+      "t": 0.42,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.84,
+          -0.13
+        ],
+        "orientacion": {
+          "inclinacion": 12
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -3
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
             0.7,
+            0.093
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.3,
+            0,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -8,
+            "protraccion": 15
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.4,
+            0.104,
+            -0.02
+          ],
+          "rodilla_hacia": [
+            0.72,
             0,
             0.7
           ],
@@ -228,8 +288,8 @@
       "pelvis": {
         "posicion": [
           0,
-          0.855,
-          -0.02
+          0.86,
+          -0.09
         ]
       },
       "columna": {
@@ -242,8 +302,8 @@
         "barra": {
           "posicion": [
             0,
-            0.745,
-            0.075
+            0.74,
+            0.088
           ]
         }
       },
@@ -255,7 +315,11 @@
             0,
             -1
           ],
-          "cierre": 0.9
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -8,
+            "protraccion": 15
+          }
         }
       },
       "piernas": {
@@ -263,12 +327,72 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
             0.6,
             0,
             0.8
+          ],
+          "pie_plano": true,
+          "apertura": 38
+        }
+      }
+    },
+    {
+      "t": 0.58,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.84,
+          -0.13
+        ],
+        "orientacion": {
+          "inclinacion": 12
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -3
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.7,
+            0.093
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.3,
+            0,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -8,
+            "protraccion": 15
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.4,
+            0.104,
+            -0.02
+          ],
+          "rodilla_hacia": [
+            0.72,
+            0,
+            0.7
           ],
           "pie_plano": true,
           "apertura": 38
@@ -282,7 +406,7 @@
         "posicion": [
           0,
           0.8,
-          -0.12
+          -0.16
         ],
         "orientacion": {
           "inclinacion": 24
@@ -299,7 +423,7 @@
           "posicion": [
             0,
             0.63,
-            0.07
+            0.086
           ]
         }
       },
@@ -319,12 +443,12 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
-            0.7,
+            0.85,
             0,
-            0.7
+            0.5
           ],
           "pie_plano": true,
           "apertura": 38
@@ -355,7 +479,7 @@
           "posicion": [
             0,
             0.53,
-            0.06
+            0.065
           ]
         }
       },
@@ -379,12 +503,12 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
-            0.8,
+            0.88,
             0,
-            0.6
+            0.45
           ],
           "pie_plano": true,
           "apertura": 38
@@ -414,7 +538,7 @@
           "posicion": [
             0,
             0.225,
-            0.07
+            0.045
           ]
         }
       },
@@ -438,7 +562,7 @@
           "objetivo": [
             0.4,
             0.104,
-            -0.05
+            -0.02
           ],
           "rodilla_hacia": [
             0.88,

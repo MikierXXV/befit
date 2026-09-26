@@ -138,19 +138,24 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y
   ahora va como el de barra (72°, cuello neutro).
-- ⬜ **Para la revisión final con Migue:** el face pull va con agarre corto porque la polea no tiene
-  cuerda; el remo en polea sentado apila las manos en un mango vertical en vez del triángulo, y va
-  en banco con los pies en el suelo y las rodillas a 90°, no en máquina con las piernas casi
-  estiradas como dice la ficha; en el Pendlay, de perfil el disco tapa las rodillas por
-  perspectiva y las espinillas van 9° hacia atrás. De la M:
-  la curva del hollow hold es discreta (la columna no se flexiona solo por arriba); en el toque de
-  hombro la palma mira a la cara, porque `pronacion` solo vale con mancuerna, y la mano pasa de
-  plana a alineada de golpe; el superman despega las manos unos 31 cm y deja las rodillas algo
-  dobladas abajo (el tobillo no se estira más de 50°); y la elevación de rodillas cuelga con los
-  codos a 90°, cuando la de piernas ya va con los brazos casi estirados.
+- ✅ **Revisión con Migue (1.ª tanda):** línea de tiempo con rótulos que se pisaban en 14 fichas
+  (ahora en dos filas, y `check-etapas` lo vigila en todas); hip thrust con agarre prono; subida al
+  cajón con el pie entero en la tapa; curl supino, inverso prono y martillo neutro, con
+  `pronacion`; jalón de tríceps prono con barra corta; remo en polea sentado con las manos lado a
+  lado en neutro y codos atrás; goblet con una mano a cada lado del mango; sumo sin la barra en los
+  muslos; rotación rusa con brazos largos que barren y la cabeza que sigue el giro. El validador
+  aprendió a ver una barra que ATRAVIESA un miembro, y con eso salieron y se arreglaron seis más:
+  peso muerto, sentadilla con barra, buenos días, press cerrado, jalón de tríceps y curl en polea.
+- ⬜ **Pendiente de decidir con Migue:** la goblet no puede ahuecar las palmas bajo el disco (el
+  motor no extiende la muñeca ni desplaza el agarre del eje del mango); el face pull va sin cuerda;
+  el remo en polea sentado va en banco con los pies en el suelo, sin plataforma; en la rotación
+  rusa las manos no llegan al suelo (la columna no gira más de 45°); en el Pendlay, de perfil el
+  disco tapa las rodillas; la curva del hollow hold es discreta; en el toque de hombro la palma
+  mira a la cara (`pronacion` solo vale con mancuerna); el superman despega mucho las manos; la
+  elevación de rodillas cuelga con los codos a 90°; y en las dominadas supinas la barra podría
+  rozar la cabeza hacia t=0,1 (la comprobación no mira la cabeza).
 - ⬜ Motor: `asimetria` solo actúa sobre brazos y piernas escritos con `ambos`, así que no hace nada
   en los movimientos alternos (bicho muerto, toque de hombro).
-- ⬜ Pendiente: el curl inverso puede usar ya `pronacion` para distinguirse del curl normal.
 - ✅ **Movimientos fuera del JS inicial:** se cargan al abrir la ficha, y la proporción del lienzo
   sale de un índice generado al compilar. El JS crítico bajó de 104,6 a 87,5 kB y cada ejercicio
   nuevo le suma bytes, no kilobytes. La app instalada los precarga todos para ir sin conexión.

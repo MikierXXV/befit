@@ -8,7 +8,8 @@
     "ciclos": 1
   },
   "camara": {
-    "vista": "lateral"
+    "vista": "lateral",
+    "detalle": "mano_i"
   },
   "cartel": {
     "fase": 0.5
@@ -48,12 +49,13 @@
           "hombro": {
             "flexion": 2,
             "abduccion": 7,
-            "rotacion": -38
+            "rotacion": 0
           },
           "codo": {
             "flexion": 12
           },
-          "cierre": 0.9
+          "cierre": 0.9,
+          "pronacion": 90
         }
       },
       "piernas": {
@@ -95,12 +97,13 @@
           "hombro": {
             "flexion": 2,
             "abduccion": 7,
-            "rotacion": -38
+            "rotacion": 0
           },
           "codo": {
             "flexion": 126
           },
-          "cierre": 0.9
+          "cierre": 0.9,
+          "pronacion": 90
         }
       },
       "piernas": {
@@ -140,12 +143,13 @@
           "hombro": {
             "flexion": 2,
             "abduccion": 7,
-            "rotacion": -38
+            "rotacion": 0
           },
           "codo": {
             "flexion": 12
           },
-          "cierre": 0.9
+          "cierre": 0.9,
+          "pronacion": 90
         }
       },
       "piernas": {

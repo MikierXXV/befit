@@ -14,6 +14,7 @@
   },
   "$comment_trayectoria": "La barra sale del suelo (centro a 0,225 m, discos apoyados) sobre el medio pie y sube casi vertical (z 0,04 a 0,047) pegada a espinillas y muslos; lo comprueba el equilibrio con 6 cm. Las poses intermedias salen de buscar, para cada altura de barra, la pelvis que deja la mano en la barra con algo de holgura, la cadera por debajo de 130° y la espinilla o el muslo DETRÁS de la barra; con los brazos al límite la mano se quedaba medio centímetro corta entre poses, por el retraso del tronco y la asimetría. Hasta la rodilla, las rodillas se estiran y se retiran con el tronco casi al mismo ángulo (56° a 50°); luego la cadera va adelante. La bajada deshace el mismo camino.",
   "$comment_escapula": "Abajo la escápula va deprimida y adelantada (elevación -10, protracción 20): es como se llega a la barra en el suelo con la cadera por encima de las rodillas y las espinillas casi verticales. Sin ella, con los brazos de este maniquí, la salida solo cabía con la cadera a la altura de la rodilla y parecía una sentadilla. Vuelve a 0 arriba.",
+  "$comment_barra": "La barra iba metida hasta 4,2 cm en los dos muslos entre t≈0,38 y t≈0,60, con el validador en verde porque solo miraba la piel que roza la barra. Dos causas. Arriba la cadera quedaba 6 cm por DELANTE del tobillo (pelvis en z -0,07): el eje del muslo pasaba a 5,5 cm del de la barra y el muslo mide unos 9,7 cm de grosor hacia delante. Ahora la pelvis va en z -0,12, con la cadera sobre el tobillo, y la barra queda contra la parte alta de los muslos (0,812 m, un centímetro más alta que antes: más abajo, con la cadera atrás, los brazos no llegan). No se podía adelantar la barra: ya iba a 5,7 cm del medio pie con 6 de tolerancia. Y al interpolar, la cadera iba adelante antes de que la barra pasara el muslo: la pose de 0,37 lleva la pelvis algo más atrás (-0,175) y las de 0,405 y 0,577 son de paso, para que la barra suba rozando el muslo (medido con todos los vértices, a lo sumo 0,5 cm dentro del grosor) y no se meta. En ellas la escápula va un poco adelantada (protracción 4) porque la mano se quedaba corta por milímetros.",
   "implementos": {
     "barra": {
       "tipo": "barra",
@@ -475,7 +476,7 @@
         "posicion": [
           0,
           0.89,
-          -0.16
+          -0.175
         ],
         "orientacion": {
           "inclinacion": 18
@@ -529,6 +530,66 @@
       }
     },
     {
+      "t": 0.405,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          -0.14
+        ],
+        "orientacion": {
+          "inclinacion": 8
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -1
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.775,
+            0.046
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.3,
+            0,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -2,
+            "protraccion": 4
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
       "t": 0.44,
       "curva": "suave",
       "etiqueta": "arriba",
@@ -536,7 +597,7 @@
         "posicion": [
           0,
           0.905,
-          -0.07
+          -0.12
         ]
       },
       "columna": {
@@ -549,7 +610,7 @@
         "barra": {
           "posicion": [
             0,
-            0.802,
+            0.812,
             0.047
           ]
         }
@@ -593,7 +654,7 @@
         "posicion": [
           0,
           0.905,
-          -0.07
+          -0.12
         ]
       },
       "columna": {
@@ -606,7 +667,7 @@
         "barra": {
           "posicion": [
             0,
-            0.802,
+            0.812,
             0.047
           ]
         }
@@ -644,13 +705,73 @@
       }
     },
     {
+      "t": 0.577,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          -0.14
+        ],
+        "orientacion": {
+          "inclinacion": 8
+        }
+      },
+      "columna": {
+        "flexion": 3
+      },
+      "cuello": {
+        "flexion": -1
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.775,
+            0.046
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.3,
+            0,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -2,
+            "protraccion": 4
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 10
+        }
+      }
+    },
+    {
       "t": 0.613,
       "curva": "suave",
       "pelvis": {
         "posicion": [
           0,
           0.89,
-          -0.16
+          -0.175
         ],
         "orientacion": {
           "inclinacion": 18

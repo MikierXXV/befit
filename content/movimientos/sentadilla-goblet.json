@@ -15,10 +15,14 @@
     "barra": {
       "tipo": "mancuerna",
       "relativo_a": "torax",
-      "desplazamiento": [0, 0.03, 0.15],
+      "desplazamiento": [0, 0.1, 0.19],
       "agarre": 0,
       "solido": true,
-      "giro": 90
+      "giro": 90,
+      "agarre_marco": {
+        "i": [-0.688965, 0.695938, -0.016276, 0.201824],
+        "d": [0.695938, -0.688965, 0.201824, -0.016276]
+      }
     }
   },
   "poses": [
@@ -29,8 +33,8 @@
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
-      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [-0.4, -1, 0.4], "cierre": 0.65 } },
+      "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
       "t": 0.25,
@@ -38,8 +42,8 @@
       "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -6 },
-      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
-      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [-0.35, -1, 0.2], "cierre": 0.65 } },
+      "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
       "t": 0.5,
@@ -48,8 +52,8 @@
       "pelvis": { "posicion": [0, 0.36, -0.19], "orientacion": { "inclinacion": 22 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -12 },
-      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
-      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [-0.3, -1, 0], "cierre": 0.65 } },
+      "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.65, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
       "t": 0.75,
@@ -57,18 +61,19 @@
       "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -6 },
-      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
-      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [-0.35, -1, 0.2], "cierre": 0.65 } },
+      "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
       "t": 1,
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [0.12, -1, 0.2], "cierre": 0.85 } },
-      "piernas": { "ambos": { "objetivo": [0.2, 0.104, -0.08], "rodilla_hacia": [0.45, 0, 1], "pie_plano": true, "apertura": 25 } }
+      "brazos": { "ambos": { "objetivo": "barra", "codo_hacia": [-0.4, -1, 0.4], "cierre": 0.65 } },
+      "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     }
   ],
-  "$comment_agarre": "La mancuerna se declara como `barra` (de tipo mancuerna) para que las dos manos vayan a ella con `objetivo: \"barra\"`, y va `relativo_a: \"torax\"` para que no se separe del pecho en ningún fotograma. Con `agarre: 0` las dos manos cogen el mango a la MISMA altura, cada una por su lado y justo bajo el disco de arriba: es la copa. El intento anterior (agarre 0,055, una mano encima de otra) dejaba la mano de abajo sin agarrar, porque el mango mide 14 cm y dos puños de 9 no caben apilados.",
-  "$comment_fondo": "Abajo la pelvis se inclina 22° y va atrás: con el tronco a 12° de la vertical y la cadera encima de los pies, los codos se quedaban muy por encima de las rodillas y la cadera flexionaba solo 65°. Así la rodilla llega a 141° con el talón en el suelo, y los codos bajan hasta la cara interna de las rodillas."
+  "$comment_agarre": "La copa de verdad (palmas bajo el disco de arriba) no cabe en el motor: con `objetivo: \"barra\"` el hueco del puño de las dos manos cae en el CENTRO de la mancuerna (agarre 0), 7 cm bajo el disco, y una mano de 18 cm es más larga que el mango de 14. Con el agarre que deduce la cinemática, los dedos rodeaban el mango vertical y en el primer plano se veía una columna de ocho dedos apilados. Por eso `agarre_marco` va ESCRITO A MANO, no calibrado con `npm run agarre` (que lo sobrescribiría): dedos hacia arriba a lo largo del mango (un pelo hacia delante y hacia fuera), palma hacia dentro, algo arriba y algo adelante. Así cada mano queda a su lado del mango, los dedos se curvan bajo el disco de arriba y los pulgares se cruzan por delante del mango. Girar la palma hacia atrás ponía las manos delante del mango, tapándolo, y los pulgares hacia fuera. `cierre` 0,65: con 0,85 las manos se pegaban al eje y volvían a entrelazarse; con 0,3 los dedos subían rectos por los lados del disco.",
+  "$comment_codos": "Antebrazos verticales no caben con este maniquí: el brazo mide 27 cm, así que el codo no baja de 1,16 m y un antebrazo vertical pondría las manos a la altura del hombro y el disco de arriba en la barbilla. La mancuerna sube 7 cm respecto a la versión anterior (0,10 sobre el tórax) y el polo del codo va hacia abajo y hacia dentro: de frente, los codos quedan debajo de las manos y pegados al tronco, no abiertos en horizontal como antes. Abajo el codo solo puede ir hacia dentro yendo hacia atrás (lo manda el círculo del codo con el brazo tan plegado), así que va junto al costado, y las rodillas se abren más (pies a 0,24 y polo 0,65) para que, vistas de frente, los codos queden por dentro. No llegan a tocar la cara interna de las rodillas: quedan unos 18 cm por encima.",
+  "$comment_fondo": "Abajo la pelvis se inclina 22° y va atrás: con el tronco a 12° de la vertical y la cadera encima de los pies, la cadera flexionaba solo 65°. Así la rodilla llega a 141° con el talón en el suelo."
 }

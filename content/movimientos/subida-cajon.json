@@ -19,7 +19,7 @@
       "posicion": [
         0,
         0,
-        -0.3
+        0.27
       ],
       "largo": 0.5,
       "ancho": 0.6,
@@ -40,12 +40,75 @@
   "poses": [
     {
       "t": 0,
-      "curva": "controlada",
+      "curva": "esfuerzo",
       "etiqueta": "abajo",
       "pelvis": {
         "posicion": [
           0,
-          0.92,
+          0.91,
+          -0.07
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 4,
+            "abduccion": 9,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.13,
+            0.464,
+            0.14
+          ],
+          "rodilla_hacia": [
+            0.3,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        },
+        "d": {
+          "objetivo": [
+            -0.13,
+            0.104,
+            -0.21
+          ],
+          "rodilla_hacia": [
+            -0.3,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.35,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          1.2,
           0.06
         ],
         "orientacion": {
@@ -76,7 +139,7 @@
           "objetivo": [
             0.13,
             0.464,
-            -0.04
+            0.14
           ],
           "rodilla_hacia": [
             0.3,
@@ -89,8 +152,8 @@
         "d": {
           "objetivo": [
             -0.13,
-            0.104,
-            0.22
+            0.56,
+            -0.17
           ],
           "rodilla_hacia": [
             -0.3,
@@ -104,13 +167,13 @@
     },
     {
       "t": 0.5,
-      "curva": "esfuerzo",
+      "curva": "controlada",
       "etiqueta": "arriba",
       "pelvis": {
         "posicion": [
           0,
           1.27,
-          0.0
+          0.1
         ],
         "orientacion": {
           "inclinacion": 14
@@ -140,7 +203,7 @@
           "objetivo": [
             0.13,
             0.464,
-            -0.04
+            0.14
           ],
           "rodilla_hacia": [
             0.3,
@@ -154,7 +217,70 @@
           "objetivo": [
             -0.13,
             0.48,
-            0.18
+            0.12
+          ],
+          "rodilla_hacia": [
+            -0.3,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.65,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          1.2,
+          0.06
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 4,
+            "abduccion": 9,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 8
+          },
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.13,
+            0.464,
+            0.14
+          ],
+          "rodilla_hacia": [
+            0.3,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        },
+        "d": {
+          "objetivo": [
+            -0.13,
+            0.56,
+            -0.17
           ],
           "rodilla_hacia": [
             -0.3,
@@ -171,8 +297,8 @@
       "pelvis": {
         "posicion": [
           0,
-          0.92,
-          0.06
+          0.91,
+          -0.07
         ],
         "orientacion": {
           "inclinacion": 14
@@ -202,7 +328,7 @@
           "objetivo": [
             0.13,
             0.464,
-            -0.04
+            0.14
           ],
           "rodilla_hacia": [
             0.3,
@@ -216,7 +342,7 @@
           "objetivo": [
             -0.13,
             0.104,
-            0.22
+            -0.21
           ],
           "rodilla_hacia": [
             -0.3,

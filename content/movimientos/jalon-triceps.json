@@ -17,8 +17,8 @@
   "implementos": {
     "barra": {
       "tipo": "polea",
-      "mango": "barra",
-      "ancho": 0.6,
+      "mango": "puno",
+      "ancho": 0.44,
       "ancla": [
         0,
         2.4,
@@ -26,23 +26,23 @@
       ],
       "posicion": [
         0,
-        1.18,
-        0.24
+        1.167,
+        0.489
       ],
       "agarre": 0.16,
       "solido": true,
       "agarre_marco": {
         "i": [
-          0.415599,
-          -0.572082,
-          0.415599,
-          -0.572082
+          -0.535602,
+          -0.461661,
+          0.535602,
+          0.461661
         ],
         "d": [
-          0.414024,
-          0.573222,
-          -0.414024,
-          -0.573222
+          -0.53674,
+          0.460337,
+          -0.53674,
+          0.460337
         ]
       }
     }
@@ -59,11 +59,11 @@
           0
         ],
         "orientacion": {
-          "inclinacion": 8
+          "inclinacion": 14
         }
       },
       "columna": {
-        "flexion": 4
+        "flexion": 5
       },
       "cuello": {
         "flexion": -6
@@ -72,18 +72,133 @@
         "barra": {
           "posicion": [
             0,
-            1.18,
-            0.24
-          ]
+            1.167,
+            0.489
+          ],
+          "rodar": 0
         }
       },
       "brazos": {
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.5,
+            0.1,
             -1,
-            -0.5
+            -0.2
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.15,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.984,
+            0.459
+          ],
+          "rodar": 28
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.1,
+            -1,
+            -0.2
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.32,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.829,
+            0.337
+          ],
+          "rodar": 58
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.1,
+            -1,
+            -0.2
           ],
           "cierre": 0.9
         }
@@ -116,11 +231,11 @@
           0
         ],
         "orientacion": {
-          "inclinacion": 8
+          "inclinacion": 14
         }
       },
       "columna": {
-        "flexion": 4
+        "flexion": 5
       },
       "cuello": {
         "flexion": -6
@@ -129,18 +244,133 @@
         "barra": {
           "posicion": [
             0,
-            0.92,
-            0.24
-          ]
+            0.766,
+            0.206
+          ],
+          "rodar": 80
         }
       },
       "brazos": {
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.5,
+            0.1,
             -1,
-            -0.5
+            -0.2
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.68,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.829,
+            0.337
+          ],
+          "rodar": 58
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.1,
+            -1,
+            -0.2
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.12,
+            0.104,
+            0
+          ],
+          "rodilla_hacia": [
+            0.25,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.85,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 14
+        }
+      },
+      "columna": {
+        "flexion": 5
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.984,
+            0.459
+          ],
+          "rodar": 28
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.1,
+            -1,
+            -0.2
           ],
           "cierre": 0.9
         }
@@ -171,11 +401,11 @@
           0
         ],
         "orientacion": {
-          "inclinacion": 8
+          "inclinacion": 14
         }
       },
       "columna": {
-        "flexion": 4
+        "flexion": 5
       },
       "cuello": {
         "flexion": -6
@@ -184,18 +414,19 @@
         "barra": {
           "posicion": [
             0,
-            1.18,
-            0.24
-          ]
+            1.167,
+            0.489
+          ],
+          "rodar": 0
         }
       },
       "brazos": {
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.5,
+            0.1,
             -1,
-            -0.5
+            -0.2
           ],
           "cierre": 0.9
         }
@@ -217,5 +448,7 @@
         }
       }
     }
-  ]
+  ],
+  "$comment_agarre": "Agarre PRONO: palmas abajo, encima de la barra, nudillos adelante. Con la barra de jalón ancha (puntas dobladas) y la barra a 1,18 m y z 0,24, la barra quedaba por encima de la línea del antebrazo y la cinemática deducía la palma hacia ARRIBA en el primer fotograma: el calibrador congeló un agarre supino, con la mano por delante y debajo de la barra. Ahora la barra es recta y corta (mango puno, 44 cm), las manos a 32 cm, y en la pose inicial el antebrazo pasa algo de la horizontal (100° desde abajo) con la barra por debajo de su eje: así sale prono y se congela prono (npm run agarre).",
+  "$comment_barra": "La barra recorre un arco alrededor del codo pegado al costado (codo en 0,21 · 1,14 · 0,11; radio 0,38 más 3,6 cm hacia la palma), de 100° a 20° desde la vertical, y rueda con el antebrazo (rodar = 100 - ángulo) para que la muñeca no se doble abajo. El tronco va inclinado 14° (más 5 de columna): con 8° y el arco hasta 12°, la barra acababa en z 0,09 con el frente del muslo en 0,18, metida 8,1 cm en los dos muslos entre t=0,46 y 0,58. Ahora abajo queda en z 0,21, rozando el muslo por delante (codo a ~25° de flexión, casi estirado)."
 }

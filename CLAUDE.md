@@ -90,7 +90,11 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
 1. JSON en `content/es/fichas/` **y** en `content/en/fichas/`, con `orden` contiguo dentro del grupo.
 2. Si lleva maniquí: el movimiento en `content/movimientos/<id>.json` y `movimiento_id` en la ficha.
 3. `npm run validar`. El movimiento se valida posando el maniquí en 48 fotogramas del ciclo: rangos
-   articulares, objetivos que no se alcanzan, piel bajo el suelo o dentro de un implemento.
+   articulares, objetivos que no se alcanzan, piel bajo el suelo o dentro de un implemento, y una
+   barra que atraviesa un miembro por dentro. Esa última faltaba: la piel solo se buscaba cerca del
+   eje de la barra, y el sumo, el convencional, la sentadilla, el press cerrado y dos jalones la
+   llevaban metida 3-8 cm en muslos o tronco sin que saltara nada. Un movimiento que aún no se
+   haya corregido puede ir en `BARRA_DENTRO_PENDIENTES`, que avisa sin bloquear; esa lista se vacía.
 4. `npm run hoja` y **mirar la hoja**. El validador sabe si una rodilla pasa de 155°; no sabe si el
    ejercicio parece lo que dice ser.
 5. Si las manos van a una barra, `npm run agarre` DESPUÉS de mirar la hoja: congela la orientación
@@ -105,9 +109,13 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    ejercicio que apoya la ESPALDA en el banco (hip thrust) lo declara en su apoyo con
    `"con": "espalda"` (o `"manos"`, `"pies"` si es eso lo que apoya), o el validador lo toma por
    sentado fuera del banco.
-   Una mano con mancuerna gira la palma con `brazos.<lado>.pronacion` en grados: 0 hacia la línea
-   media, +90 hacia delante, -90 hacia atrás. Es un número y se interpola: sirve para giros como el
-   del press Arnold, que con los agarres fijos (`agarre_mango`) saltaban de golpe.
+   Una mano con mancuerna gira la palma con `brazos.<lado>.pronacion` en grados, en sentido
+   anatómico: 0 neutro (palma hacia la línea media), +90 prono, -90 supino. Con el brazo colgando,
+   prono es la palma hacia ATRÁS, no hacia delante: esta nota decía «+90 hacia delante», que solo
+   vale con el antebrazo hacia arriba (el final del press Arnold), y el curl salió con los agarres
+   cambiados. Supino todo el recorrido es el curl; prono, el curl inverso; 0, el martillo. Es un
+   número y se interpola: sirve para giros como el del press Arnold, que con los agarres fijos
+   (`agarre_mango`) saltaban de golpe.
    Y una barra puede rodar sobre su propio eje con `implementos.<barra>.rodar` en grados por pose:
    con el agarre fijado, la mano rueda con ella (curl con barra, sin la muñeca doblada arriba).
    Las `etiqueta` de las poses son los rótulos de la línea de tiempo: solo en los hitos, no en las

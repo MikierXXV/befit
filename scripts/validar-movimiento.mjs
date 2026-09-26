@@ -14,6 +14,7 @@
  *  - que manos y pies alcancen su objetivo;
  *  - rangos articulares (RANGOS en cinematica.js);
  *  - piel: ningún vértice bajo el suelo ni dentro de un implemento sólido;
+ *  - barras: ninguna barra ni agarre de polea atravesando un miembro por dentro;
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
  *  - equilibrio: la barra sobre el medio pie, cuando la ficha lo pide.
  *
@@ -23,7 +24,7 @@
 import { readdirSync, readFileSync } from 'node:fs';
 import { Vector3 } from 'three';
 import { aplicarPose, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
-import { cargarManiqui, verticesPosados } from './lib/maniqui-node.mjs';
+import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
  * El rango de una articulación, que en la cadera depende de la postura.
@@ -57,6 +58,66 @@ const HOLGURA_SOLIDO = REGLAS.holgura_solido ?? 0.02;
 const DIRECTORIO = REGLAS.directorio ?? 'content/movimientos';
 const DETALLE = process.argv.includes('--detalle');
 
+/*
+ * LA BARRA QUE ATRAVIESA UN MIEMBRO POR DENTRO.
+ *
+ * La comprobación de piel de más abajo busca vértices a menos de 1,4 cm del eje de la barra, y eso
+ * solo ve la barra que ROZA la piel. Cuando la barra cruza un muslo por el medio, la piel queda a
+ * 6 u 8 cm del eje, por fuera, y no salta nada: en el peso muerto sumo la barra iba metida hasta
+ * 6,8 cm en los muslos, y en el convencional hasta 5,3 cm entre t≈0,33 y t≈0,58, las dos con el
+ * validador en verde. Además la del peso muerto no se declaraba `solido`, así que ni se miraba.
+ *
+ * Aquí se mira el hueso, no la piel: la distancia mínima entre el eje de la barra y el segmento
+ * óseo de cada miembro, contra el grosor de la piel de ESE miembro en ESA dirección, medido en los
+ * vértices posados que mueve ese hueso y que caen a la altura del cruce. Si el eje queda más
+ * adentro que el grosor menos la tolerancia, la barra está metida. Una barra APOYADA —en la
+ * espalda en la sentadilla, en la cadera en el hip thrust, en el pecho en el press— tiene el eje a
+ * un radio de barra por fuera de la piel y no cuenta; lo que se busca es la que se hunde.
+ *
+ * Las manos no son segmentos: agarran la barra a propósito. Del antebrazo solo se mira la parte del
+ * codo: el tramo junto a la muñeca queda, con la mano cerrada, a un par de centímetros de la barra.
+ *
+ * Tolerancia de 1 cm. El grosor medio (ver CÓMO SE MIDE EL GROSOR) queda entre 0,5 y 1 cm por
+ * debajo de la piel que encuentra un rayo lanzado desde el hueso hacia la barra, así que 1 cm aquí
+ * son 1,5–2 cm de barra hundida de verdad. Las barras bien apoyadas —la del rumano y la del curl
+ * con barra resbalando por los muslos— dan entre −0,2 y 0 cm (0,8 cm con rayos).
+ * (La primera versión, con el vértice que más salía, pedía 1,5 cm porque sobrestimaba; esta no.)
+ */
+const TOLERANCIA_BARRA = REGLAS.tolerancia_barra_dentro ?? 0.01;
+/*
+ * CÓMO SE MIDE EL GROSOR, y por qué no con el vértice que más sale.
+ *
+ * La primera versión tomaba el máximo de los vértices de `verticesPosados(…, 2)` a ±4 cm del cruce:
+ * quedaban 2–4, y con 2 mm de cambio en la pose el grosor del muslo saltaba entre 3,1 y 9,7 cm,
+ * según cuál entrase en la franja. El bloqueo del peso muerto daba 0 con la barra 3,4 cm dentro.
+ * Ahora se usan TODOS los vértices del hueso y una media ponderada de su distancia al eje: pesan
+ * más los que están a la altura del cruce (campana de 3,5 cm, hasta 7 cm) y los que miran hacia la
+ * barra (campana de 25°, hasta 70°). Un vértice que entra o sale de la franja pesa casi nada, así
+ * que el grosor cambia poco a poco cuando la pose cambia poco a poco.
+ */
+const GROSOR_SIGMA_EJE = 0.035;
+const GROSOR_FRANJA = 0.07;
+const GROSOR_SIGMA_ANGULO = (25 * Math.PI) / 180;
+const GROSOR_ANGULO_MAX = (70 * Math.PI) / 180;
+const SEGMENTOS = [
+  ...LADOS.flatMap((l) => {
+    const s = { i: 'L', d: 'R' }[l];
+    const lado = { i: 'izquierdo', d: 'derecho' }[l];
+    return [
+      { nombre: `muslo ${lado}`, desde: `muslo_${l}`, hasta: `pierna_${l}`, huesos: [`DEF-thigh${s}`] },
+      { nombre: `pierna ${lado}`, desde: `pierna_${l}`, hasta: `pie_${l}`, huesos: [`DEF-shin${s}`] },
+      { nombre: `brazo ${lado}`, desde: `brazo_${l}`, hasta: `antebrazo_${l}`, huesos: [`DEF-upper_arm${s}`] },
+      { nombre: `antebrazo ${lado}`, desde: `antebrazo_${l}`, hasta: `mano_${l}`, huesos: [`DEF-forearm${s}`], hastaFraccion: 0.7 },
+    ];
+  }),
+  { nombre: 'tronco', desde: 'pelvis', hasta: 'cuello', huesos: ['DEF-hips', 'DEF-spine001', 'DEF-spine002', 'DEF-spine003'] },
+];
+/*
+ * TEMPORAL. Movimientos que hoy tienen la barra metida en un miembro y aún no se han corregido: se
+ * informa, pero no bloquea. Al arreglar uno, se quita de aquí; la lista tiene que acabar vacía.
+ */
+const BARRA_DENTRO_PENDIENTES = new Set([]);
+
 const maniqui = await cargarManiqui();
 const dir = DIRECTORIO;
 let errores = 0;
@@ -83,6 +144,7 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
   }
 
   const resumen = [];
+  const avisos = []; // de la lista temporal de barras metidas: se enseñan, no bloquean
   for (let s = 0; s <= MUESTRAS; s += 1) {
     const fase = s / MUESTRAS;
     const etiqueta = fase.toFixed(2);
@@ -103,6 +165,12 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     }
 
     const vertices = verticesPosados(maniqui, 2);
+    // Piel completa de un miembro, posada solo si alguna barra pasa cerca, y una vez por fotograma.
+    const pielPorMiembro = new Map();
+    const pielDe = (seg) => {
+      if (!pielPorMiembro.has(seg)) pielPorMiembro.set(seg, verticesDeHuesos(maniqui, seg.huesos));
+      return pielPorMiembro.get(seg);
+    };
 
     const suelo = Math.min(...vertices.map((v) => v.y));
     if (suelo < -HOLGURA_SUELO) fallo('el cuerpo atraviesa el suelo', `${etiqueta} (${(suelo * 100).toFixed(1)} cm)`);
@@ -117,6 +185,15 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       // Sin manos: su contacto con un implemento es el agarre o el apoyo, y se revisa en la hoja.
       const dentro = vertices.filter((v) => !v.mano && profundidad(imp, v) > holgura).length;
       if (dentro > 0) fallo(`el cuerpo atraviesa ${nombre}`, `${etiqueta} (${dentro} vértices)`);
+    }
+
+    for (const [nombre, imp] of Object.entries(r.implementos)) {
+      for (const dentro of barraDentro(imp, pielDe)) {
+        const msg = `${nombre} metida en ${dentro.miembro}`;
+        const donde = `${etiqueta} (${(dentro.metida * 100).toFixed(1)} cm)`;
+        if (BARRA_DENTRO_PENDIENTES.has(id)) avisos.push([msg, donde, dentro.metida, etiqueta]);
+        else fallo(msg, donde);
+      }
     }
 
     for (const apoyo of mov.apoyos ?? []) {
@@ -183,7 +260,96 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       console.log(`    ${msg} — en ${fases.slice(0, 3).join(', ')}${fases.length > 3 ? ` y ${fases.length - 3} más` : ''}`);
     }
   }
+  if (avisos.length) {
+    // El peor fotograma de cada miembro, que es el que hay que mirar al arreglarlo.
+    const peor = new Map();
+    for (const [msg, donde, metida, etiqueta] of avisos) {
+      const previo = peor.get(msg);
+      if (!previo) peor.set(msg, { metida, donde, n: 1, desde: etiqueta, hasta: etiqueta });
+      else Object.assign(previo, { n: previo.n + 1, hasta: etiqueta }, metida > previo.metida ? { metida, donde } : {});
+    }
+    for (const [msg, { donde, n, desde, hasta }] of peor) {
+      console.log(`    ! ${msg} — peor en ${donde}; ${n} fotograma(s) entre ${desde} y ${hasta} [pendiente, no bloquea]`);
+    }
+  }
   resumen.forEach((l) => console.log(l));
+}
+
+/**
+ * Los miembros que una barra —o el agarre de una polea— atraviesa por dentro, y cuánto (en metros,
+ * del eje de la barra a la piel). Ver LA BARRA QUE ATRAVIESA UN MIEMBRO POR DENTRO, arriba.
+ */
+function barraDentro(imp, pielDe) {
+  const salida = [];
+  if (!(imp.tipo.startsWith('barra') || imp.tipo === 'polea')) return salida;
+  const medio = imp.tipo === 'polea' ? ((imp.ancho ?? 1.1) / 2) : 1.1;
+  const eje = new Vector3(1, 0, 0).applyQuaternion(imp.orientacion ?? { x: 0, y: 0, z: 0, w: 1 });
+  const b0 = imp.posicion.clone().addScaledVector(eje, -medio);
+  const b1 = imp.posicion.clone().addScaledVector(eje, medio);
+  for (const seg of SEGMENTOS) {
+    const a0 = maniqui.esq.huesos[seg.desde].getWorldPosition(new Vector3());
+    const a1 = maniqui.esq.huesos[seg.hasta].getWorldPosition(new Vector3());
+    if (seg.hastaFraccion) a1.lerp(a0, 1 - seg.hastaFraccion);
+    const { p, q } = masCercanos(a0, a1, b0, b1);
+    // Lejos de cualquier grosor posible: ni se mide.
+    if (p.distanceTo(q) > 0.25) continue;
+    const L = a1.distanceTo(a0);
+    const dir = a1.clone().sub(a0).divideScalar(L);
+    /*
+     * El grosor se mide a la altura del punto de la BARRA, y la distancia en perpendicular al hueso.
+     * Medirlo en el punto más cercano del hueso fallaba cuando ese punto era un extremo: en lo alto
+     * de las dominadas la barra queda por encima del cuello, el punto más cercano del tronco era la
+     * base del cuello, y se comparaba con el grosor del pecho de debajo, que sale mucho más: daba
+     * la barra 2,7 cm «dentro» del tronco con el trazado de rayos diciendo que estaba fuera.
+     */
+    const tq = q.clone().sub(a0).dot(dir);
+    const hacia = q.clone().sub(a0).addScaledVector(dir, -tq);
+    const d = hacia.length();
+    // Si la barra pasa por el propio hueso no hay dirección: vale el grosor medio en todas.
+    const centrada = d < 1e-4;
+    if (!centrada) hacia.normalize();
+    // Ver CÓMO SE MIDE EL GROSOR, arriba.
+    let suma = 0;
+    let pesos = 0;
+    const w = new Vector3();
+    for (const v of pielDe(seg)) {
+      w.subVectors(v, a0);
+      const t = w.dot(dir);
+      if (Math.abs(t - tq) > GROSOR_FRANJA) continue;
+      w.addScaledVector(dir, -t);
+      const radio = w.length();
+      if (radio < 1e-4) continue;
+      let peso = Math.exp(-0.5 * ((t - tq) / GROSOR_SIGMA_EJE) ** 2);
+      if (!centrada) {
+        const angulo = Math.acos(Math.min(1, w.dot(hacia) / radio));
+        if (angulo > GROSOR_ANGULO_MAX) continue;
+        peso *= Math.exp(-0.5 * (angulo / GROSOR_SIGMA_ANGULO) ** 2);
+      }
+      suma += peso * radio;
+      pesos += peso;
+    }
+    // Menos de un vértice «entero» no es una medida: pasa fuera del miembro, por encima o por debajo.
+    if (pesos < 1) continue;
+    const dentro = suma / pesos - d;
+    if (dentro > TOLERANCIA_BARRA) salida.push({ miembro: seg.nombre, metida: dentro });
+  }
+  return salida;
+}
+
+/** Puntos más cercanos entre los segmentos a0-a1 y b0-b1; `s` es la fracción del primero. */
+function masCercanos(a0, a1, b0, b1) {
+  const u = a1.clone().sub(a0);
+  const v = b1.clone().sub(b0);
+  const w = a0.clone().sub(b0);
+  const a = u.dot(u), b = u.dot(v), c = v.dot(v), d = u.dot(w), e = v.dot(w);
+  const den = a * c - b * b;
+  let s = den > 1e-9 ? Math.min(1, Math.max(0, (b * e - c * d) / den)) : 0;
+  let t = (b * s + e) / c;
+  if (t < 0 || t > 1) {
+    t = Math.min(1, Math.max(0, t));
+    s = Math.min(1, Math.max(0, (t * b - d) / a));
+  }
+  return { p: a0.clone().addScaledVector(u, s), q: b0.clone().addScaledVector(v, t), s };
 }
 
 /** Pone palabras a un aviso de la cinemática, que informa con datos. */
