@@ -13,7 +13,7 @@
   "cartel": {
     "fase": 0.75
   },
-  "$comment_lectura": "El giro sale de la caja torácica: columna 44° (el motor admite 45 y la asimetría mueve unos grados), pelvis solo 8° y sin inclinación lateral marcada (4°, la justa para que el hombro de delante baje). Las manos van por objetivo en el mundo: juntas delante del ombligo con los brazos casi estirados (codo a unos 30°) y, en el giro, bajas junto a la cadera, a unos 20 cm del suelo. Más abajo no llega el brazo de fuera: con 45° de columna y la pelvis casi quieta, el hombro que cruza no se adelanta lo bastante, y por eso ese brazo lleva la escápula adelantada 20° y algo bajada. El cuello gira 25° hacia el mismo lado para mirar a las manos. Los pies descansan en los talones (sin pie_plano): con las espinillas inclinadas hacia delante, el pie plano pedía 58° de flexión plantar. El cartel sale del giro a la derecha porque la vista de tres cuartos mira desde ese lado.",
+  "$comment_lectura": "El giro no sale solo de la columna, como en una persona: columna 45° (el tope de RANGOS, sin tocarlo), pelvis girada 16° y rodada 14° sobre el glúteo del lado del giro (ladeo), y la escápula del brazo que cruza adelantada 20°. Con la columna sola y la pelvis casi quieta (44° + 8°), las manos se quedaban a 8-10 cm del suelo. La columna lleva además 14° de inclinación lateral hacia fuera y 8° de flexión: el tronco, echado atrás 45°, gira sobre un eje inclinado, y eso sube el hombro que va delante hasta la oreja (8 cm por encima de la base del cuello); el ladeo de la pelvis ya carga el tronco hacia el lado del giro, y la lateral de la columna lo compensa para dejar ese hombro a 3 cm, con la escápula además bajada al tope (-10°). Así las dos manos tocan el suelo junto a la cadera (a 0-1,5 cm), el brazo de dentro con el codo a unos 25° y el de fuera a unos 30°. En el centro, las manos juntas delante del ombligo con los codos a 15-30° y las palmas enfrentadas: en una mano libre la pronación 0 deja el dorso hacia delante (puños cruzados vistos de frente) y 90 junta las palmas. El cuello gira 25° hacia el mismo lado para mirar a las manos. Los pies descansan en los talones (sin pie_plano): con las espinillas inclinadas hacia delante, el pie plano pedía 58° de flexión plantar. El cartel sale del giro a la derecha porque la vista de tres cuartos mira desde ese lado.",
   "poses": [
     {
       "t": 0,
@@ -43,35 +43,37 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.034,
-            0.354,
-            0.074
+            0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         },
         "d": {
           "objetivo": [
-            -0.036,
-            0.354,
-            0.074
+            -0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             -1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         }
@@ -106,13 +108,14 @@
         ],
         "orientacion": {
           "inclinacion": -45,
-          "giro": 8
+          "giro": 16,
+          "ladeo": -14
         }
       },
       "columna": {
-        "flexion": 3,
-        "lateral": -4,
-        "rotacion": 44
+        "flexion": 8,
+        "lateral": 14,
+        "rotacion": 45
       },
       "cuello": {
         "flexion": 26,
@@ -122,16 +125,17 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.199,
-            0.208,
-            -0.099
+            0.25,
+            0.14,
+            -0.09
           ],
           "codo_hacia": [
             0.6,
             0,
             -1
           ],
-          "cierre": 1,
+          "cierre": 0.25,
+          "pronacion": 0,
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
@@ -139,19 +143,20 @@
         },
         "d": {
           "objetivo": [
-            0.147,
-            0.22,
-            -0.054
+            0.19,
+            0.165,
+            -0.04
           ],
           "codo_hacia": [
             -0.4,
             -1,
             0.3
           ],
-          "cierre": 1,
+          "cierre": 0.25,
+          "pronacion": 0,
           "escapula": {
             "protraccion": 20,
-            "elevacion": -8
+            "elevacion": -10
           }
         }
       },
@@ -201,35 +206,37 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.034,
-            0.354,
-            0.074
+            0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         },
         "d": {
           "objetivo": [
-            -0.036,
-            0.354,
-            0.074
+            -0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             -1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         }
@@ -264,13 +271,14 @@
         ],
         "orientacion": {
           "inclinacion": -45,
-          "giro": -8
+          "giro": -16,
+          "ladeo": 14
         }
       },
       "columna": {
-        "flexion": 3,
-        "lateral": 4,
-        "rotacion": -44
+        "flexion": 8,
+        "lateral": -14,
+        "rotacion": -45
       },
       "cuello": {
         "flexion": 26,
@@ -280,33 +288,35 @@
       "brazos": {
         "i": {
           "objetivo": [
-            -0.147,
-            0.22,
-            -0.054
+            -0.19,
+            0.165,
+            -0.04
           ],
           "codo_hacia": [
             0.4,
             -1,
             0.3
           ],
-          "cierre": 1,
+          "cierre": 0.25,
+          "pronacion": 0,
           "escapula": {
             "protraccion": 20,
-            "elevacion": -8
+            "elevacion": -10
           }
         },
         "d": {
           "objetivo": [
-            -0.199,
-            0.208,
-            -0.099
+            -0.25,
+            0.14,
+            -0.09
           ],
           "codo_hacia": [
             -0.6,
             0,
             -1
           ],
-          "cierre": 1,
+          "cierre": 0.25,
+          "pronacion": 0,
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
@@ -333,6 +343,8 @@
     },
     {
       "t": 1,
+      "curva": "suave",
+      "etiqueta": "recogido",
       "pelvis": {
         "posicion": [
           0,
@@ -357,35 +369,37 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.034,
-            0.354,
-            0.074
+            0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         },
         "d": {
           "objetivo": [
-            -0.036,
-            0.354,
-            0.074
+            -0.035,
+            0.365,
+            0.088
           ],
           "codo_hacia": [
             -1,
             -0.6,
             -0.2
           ],
-          "cierre": 1,
+          "cierre": 0.15,
+          "pronacion": 90,
           "escapula": {
-            "protraccion": 0,
+            "protraccion": 5,
             "elevacion": 0
           }
         }

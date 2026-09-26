@@ -149,12 +149,18 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
 - ✅ **Muñeca en el motor:** la mano libre gira (`pronacion`) y se dobla (`muneca.extension`). La
   goblet sostiene ya la mancuerna con las palmas hacia arriba bajo el disco, y en el toque de hombro
   la palma se apoya en el hombro; el paso de mano plana a libre queda en unos 8°, no 114°.
-- ⬜ **Pendiente de decidir con Migue:** el face pull va sin cuerda;
-  el remo en polea sentado va en banco con los pies en el suelo, sin plataforma; en la rotación
-  rusa las manos no llegan al suelo (la columna no gira más de 45°); en el Pendlay, de perfil el
-  disco tapa las rodillas; la curva del hollow hold es discreta; el superman despega mucho las manos; la
-  elevación de rodillas cuelga con los codos a 90°; y en las dominadas supinas la barra podría
-  rozar la cabeza hacia t=0,1 (la comprobación no mira la cabeza).
+- ✅ **Revisión con Migue (2.ª tanda):** face pull con cuerda (dos asas con el cable al mismo
+  anclaje); remo en polea sentado en máquina, con asiento bajo, pies en plataforma y recorrido
+  completo; jalón con brazos rectos inclinado adelante y con barra recta; jalón de tríceps de pie
+  (no en media sentadilla) y con el cable por delante de la cara; goblet pegada al pecho; toque de
+  hombro con la mano subiendo por debajo del pecho; rotación rusa con las manos al suelo; elevación
+  de rodillas con los brazos estirados; superman más bajo; hollow con curva clara gracias a
+  `columna.flexion_alta`. El validador mira ya la cabeza y el cuello: la dominada supina y el
+  press militar metían la barra en la barbilla y se corrigieron.
+- ⬜ **Quedan, menores:** en la goblet el pulgar apunta arriba (el motor cierra pulgar y dedos a
+  la vez) y los codos no tocan la cara interna de las rodillas; el validador no comprueba el
+  cuerpo contra una mancuerna (`profundidad()` da 0 para ellas); y en el Pendlay, de perfil, el
+  disco tapa las rodillas.
 - ⬜ Motor: `asimetria` solo actúa sobre brazos y piernas escritos con `ambos`, así que no hace nada
   en los movimientos alternos (bicho muerto, toque de hombro).
 - ✅ **Movimientos fuera del JS inicial:** se cargan al abrir la ficha, y la proporción del lienzo

@@ -14,6 +14,7 @@
   "cartel": {
     "fase": 0.5
   },
+  "$comment_cabeza": "La cabeza pasa POR DETRÁS de la barra: el cuerpo se echa atrás (-20° a media subida) y el cuello se extiende (-18 colgado, -22 a media subida) para que la cara libre la barra y la barbilla la supere. Con el tronco casi vertical (-8°) y el cuello a -10, la cabeza subía justo debajo de la barra y la atravesaba hasta 6-7 cm entre t≈0,08 y t≈0,40.",
   "implementos": {
     "barra": {
       "$comment": "Barra fija. `agarre_supino` le dice al calibrador que gire la mano media vuelta alrededor de la barra: palmas hacia la cara.",
@@ -61,7 +62,7 @@
         "flexion": 2
       },
       "cuello": {
-        "flexion": -10
+        "flexion": -18
       },
       "brazos": {
         "ambos": {
@@ -99,17 +100,17 @@
         "posicion": [
           0,
           1.52,
-          0.115
+          0.105
         ],
         "orientacion": {
-          "inclinacion": -8
+          "inclinacion": -20
         }
       },
       "columna": {
         "flexion": 2
       },
       "cuello": {
-        "flexion": -10
+        "flexion": -22
       },
       "brazos": {
         "ambos": {
@@ -148,17 +149,17 @@
         "posicion": [
           0,
           1.66,
-          0.09
+          0.12
         ],
         "orientacion": {
-          "inclinacion": -10
+          "inclinacion": -20
         }
       },
       "columna": {
         "flexion": 2
       },
       "cuello": {
-        "flexion": -10
+        "flexion": -15
       },
       "brazos": {
         "ambos": {
@@ -196,17 +197,17 @@
         "posicion": [
           0,
           1.52,
-          0.115
+          0.105
         ],
         "orientacion": {
-          "inclinacion": -8
+          "inclinacion": -20
         }
       },
       "columna": {
         "flexion": 2
       },
       "cuello": {
-        "flexion": -10
+        "flexion": -22
       },
       "brazos": {
         "ambos": {
@@ -253,7 +254,7 @@
         "flexion": 2
       },
       "cuello": {
-        "flexion": -10
+        "flexion": -18
       },
       "brazos": {
         "ambos": {

@@ -7,40 +7,41 @@
   "camara": { "vista": "lateral", "detalle": "mano_i" },
   "cartel": { "fase": 0.5 },
   "implementos": {
-    "banco": { "tipo": "banco", "posicion": [0, 0, -0.1], "largo": 0.5, "ancho": 0.34, "alto": 0.4, "solido": true },
-    "asa_i": { "tipo": "polea", "mango": "puno", "ancho": 0.12, "en_mano": "i", "ancla": [0, 0.62, 1.75] },
-    "asa_d": { "tipo": "polea", "mango": "puno", "ancho": 0.12, "en_mano": "d", "ancla": [0, 0.62, 1.75] }
+    "banco": { "tipo": "banco", "posicion": [0, 0, -0.12], "largo": 0.5, "ancho": 0.34, "alto": 0.42, "solido": true },
+    "plataforma": { "tipo": "pared", "posicion": [0, 0, 0.99], "ancho": 0.5, "alto": 0.64, "grosor": 0.06, "solido": true },
+    "asa_i": { "tipo": "polea", "mango": "puno", "ancho": 0.12, "en_mano": "i", "ancla": [0, 0.45, 0.96] },
+    "asa_d": { "tipo": "polea", "mango": "puno", "ancho": 0.12, "en_mano": "d", "ancla": [0, 0.45, 0.96] }
   },
   "apoyos": [{ "implemento": "banco", "tolerancia": 0.03 }],
   "poses": [
     {
       "t": 0, "curva": "esfuerzo", "etiqueta": "estirado",
-      "pelvis": { "posicion": [0, 0.48, 0], "orientacion": { "inclinacion": 12 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 13 } },
       "columna": { "flexion": 0 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.1, 0.72, 0.575], "codo_hacia": [0.4, -1, 0], "cierre": 0.9, "pronacion": 0,
-        "escapula": { "elevacion": 0, "protraccion": 15 } } },
-      "piernas": { "ambos": { "objetivo": [0.17, 0.104, 0.55], "rodilla_hacia": [0.25, 0.8, 1], "pie_plano": true, "apertura": 10 } }
+      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.64], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
+        "escapula": { "elevacion": 0, "protraccion": 20 } } },
+      "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     },
     {
       "t": 0.5, "curva": "controlada", "etiqueta": "contraido",
-      "pelvis": { "posicion": [0, 0.48, 0], "orientacion": { "inclinacion": 3 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 0 } },
       "columna": { "flexion": -2 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.1, 0.7, 0.12], "codo_hacia": [0.1, -0.3, -1], "cierre": 0.9, "pronacion": 0,
-        "escapula": { "elevacion": 0, "protraccion": -15 } } },
-      "piernas": { "ambos": { "objetivo": [0.17, 0.104, 0.55], "rodilla_hacia": [0.25, 0.8, 1], "pie_plano": true, "apertura": 10 } }
+      "brazos": { "ambos": { "objetivo": [0.08, 0.68, 0.12], "codo_hacia": [0.1, -0.3, -1], "cierre": 0.9, "pronacion": 0,
+        "escapula": { "elevacion": 0, "protraccion": -20 } } },
+      "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     },
     {
       "t": 1,
-      "pelvis": { "posicion": [0, 0.48, 0], "orientacion": { "inclinacion": 12 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 13 } },
       "columna": { "flexion": 0 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.1, 0.72, 0.575], "codo_hacia": [0.4, -1, 0], "cierre": 0.9, "pronacion": 0,
-        "escapula": { "elevacion": 0, "protraccion": 15 } } },
-      "piernas": { "ambos": { "objetivo": [0.17, 0.104, 0.55], "rodilla_hacia": [0.25, 0.8, 1], "pie_plano": true, "apertura": 10 } }
+      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.64], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
+        "escapula": { "elevacion": 0, "protraccion": 20 } } },
+      "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     }
   ],
   "$comment_mango": "El triángulo (maneral en V) son dos asas cortas casi verticales, lado a lado, con las palmas enfrentadas. El motor solo agarra un cilindro, y dos manos sobre UN cilindro horizontal quedan con las palmas abajo o atrás; con el cilindro vertical (la versión anterior, recurso de la goblet), una mano encima de la otra. Por eso cada mano lleva su propia asa (`en_mano`, como una mancuerna en agarre neutro, `pronacion: 0`) y cada asa su cable al mismo anclaje: los dos cables convergen en la polea y dibujan la V del triángulo.",
-  "$comment_piernas": "Pies en el suelo y no en una plataforma, que no hay: más adelante que 0,55 el tobillo pasa de 50° de flexión plantar con el pie plano. Por eso las rodillas van más dobladas que en la máquina de verdad."
+  "$comment_maquina": "La máquina de remo y no un banco con los pies en el suelo: así lo revisó Migue en la versión anterior (asiento a 40 cm, rodillas a 90°, manos que recorrían 20 cm), que no se parecía al ejercicio. Asiento bajo (banco de 42 cm) y los pies contra una PLATAFORMA vertical, que es el tipo `pared` con 64 cm de alto y 6 de grueso: una caja de pie que el validador ya trata como sólido. Con las piernas casi estiradas la espinilla va casi horizontal, así que el pie no va `pie_plano` (lo pondría en el suelo) sino siguiendo a la pierna con 18° de dorsiflexión: con eso la planta queda vertical contra la plataforma. Es sensible: 3 cm de tobillo hacia la cadera llevan la rodilla de 14° a 34°. El cable sale de la plataforma, entre los pies. Recorrido de las asas: 51 cm; al tirar, el tronco vuelve a vertical y los codos pasan 4 cm por detrás de la espalda."
 }

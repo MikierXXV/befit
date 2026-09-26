@@ -1,6 +1,6 @@
 {
   "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
-  "$comment_isometrico": "Isométrico: sube de tumbado a la posición hollow, la sostiene la mitad del ciclo y vuelve al suelo. Las poses del sostén difieren en un grado de columna y cadera, el temblor de aguantar; más diferencia contaría un balanceo que la ficha no pide. La pelvis gira 4° hacia atrás (lumbar pegada): con 8°, al arrancar la subida los hombros atravesaban el suelo antes de que llegara la flexión de la columna.",
+  "$comment_isometrico": "Isométrico: sube de tumbado a la posición hollow, la sostiene la mitad del ciclo y vuelve al suelo. Las poses del sostén difieren en un grado de columna y cadera, el temblor de aguantar; más diferencia contaría un balanceo que la ficha no pide. La curva en «plátano» la pone columna.flexion_alta (40°, solo vértebras torácicas) sobre poca flexion (16°): con flexion sola, la cuarta parte cae en la lumbar y la curva quedaba discreta. La pelvis gira 7° hacia atrás y baja a 9,5 cm para que sacro y lumbar apoyen. La pose de t=0,07 flexiona la columna ANTES de girar y bajar la pelvis: la columna va 0,02 por detrás de la cadera, y sin esa pose los brazos atravesaban el suelo 1,5 cm al arrancar.",
   "id": "hollow-hold",
   "duracion": 6,
   "asimetria": 0.2,
@@ -18,7 +18,7 @@
   "poses": [
     {
       "t": 0,
-      "curva": "esfuerzo",
+      "curva": "lineal",
       "etiqueta": "abajo",
       "pelvis": {
         "posicion": [
@@ -66,9 +66,8 @@
       }
     },
     {
-      "t": 0.2,
+      "t": 0.07,
       "curva": "lineal",
-      "etiqueta": "arriba",
       "pelvis": {
         "posicion": [
           0,
@@ -76,11 +75,62 @@
           0
         ],
         "orientacion": {
-          "inclinacion": -94
+          "inclinacion": -90
         }
       },
       "columna": {
-        "flexion": 30
+        "flexion": 6,
+        "flexion_alta": 14
+      },
+      "cuello": {
+        "flexion": 4
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 182,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 3,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 1
+          },
+          "tobillo": {
+            "dorsiflexion": -29
+          }
+        }
+      }
+    },
+    {
+      "t": 0.2,
+      "curva": "lineal",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.095,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -97
+        }
+      },
+      "columna": {
+        "flexion": 16,
+        "flexion_alta": 40
       },
       "cuello": {
         "flexion": 10
@@ -101,7 +151,7 @@
       "piernas": {
         "ambos": {
           "cadera": {
-            "flexion": 7,
+            "flexion": 10,
             "abduccion": -2,
             "rotacion": 0
           },
@@ -121,15 +171,16 @@
       "pelvis": {
         "posicion": [
           0,
-          0.13,
+          0.095,
           0
         ],
         "orientacion": {
-          "inclinacion": -94
+          "inclinacion": -97
         }
       },
       "columna": {
-        "flexion": 29
+        "flexion": 15,
+        "flexion_alta": 40
       },
       "cuello": {
         "flexion": 10
@@ -150,7 +201,7 @@
       "piernas": {
         "ambos": {
           "cadera": {
-            "flexion": 6,
+            "flexion": 9,
             "abduccion": -2,
             "rotacion": 0
           },
@@ -169,15 +220,16 @@
       "pelvis": {
         "posicion": [
           0,
-          0.13,
+          0.095,
           0
         ],
         "orientacion": {
-          "inclinacion": -94
+          "inclinacion": -97
         }
       },
       "columna": {
-        "flexion": 30
+        "flexion": 16,
+        "flexion_alta": 40
       },
       "cuello": {
         "flexion": 10
@@ -198,7 +250,7 @@
       "piernas": {
         "ambos": {
           "cadera": {
-            "flexion": 7,
+            "flexion": 10,
             "abduccion": -2,
             "rotacion": 0
           },

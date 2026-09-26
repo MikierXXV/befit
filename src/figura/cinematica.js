@@ -101,6 +101,11 @@ export const RANGOS = {
   /* Los dedos del pie doblan hasta unos 80° al apoyar sobre el metatarso; más es una lesión. */
   'dedos.flexion': [0, 85],
   'columna.flexion': [-30, 80],
+  /*
+   * Flexión SOLO de la columna torácica (ver REPARTO_ALTA en aplicarPose). La cifra de la AAOS para
+   * el tramo dorsal ronda los 30-40°; algo de extensión por si una pose la pide.
+   */
+  'columna.flexion_alta': [-15, 45],
   'columna.lateral': [-35, 35],
   'columna.rotacion': [-45, 45],
   'cuello.flexion': [-60, 50],
@@ -296,11 +301,21 @@ export function aplicarPose(esq, pose, definicion = {}) {
   /* Columna: el giro se reparte entre las tres vértebras, más en las de arriba, como en un cuerpo. */
   let F = Fpelvis;
   const REPARTO = [0.25, 0.35, 0.4];
+  /*
+   * `columna.flexion_alta`: flexión que va SOLO a las dos vértebras torácicas (spine002 y spine003;
+   * la spine001 es la lumbar). El hollow hold pide la curva en «plátano» con la lumbar pegada al
+   * suelo, y con `flexion` no se podía: el 25 % de cada grado caía en la lumbar, y al flexionar lo
+   * bastante para despegar bien los hombros la lumbar se despegaba también, que es justo el fallo
+   * que la ficha advierte. Se suma a `flexion`, no la sustituye.
+   */
+  const REPARTO_ALTA = [0, 0.45, 0.55];
   huesos.columna.forEach((h, n) => {
     F = F.clone().multiply(rotacionTronco(pose.columna, REPARTO[n]));
+    const alta = (pose.columna?.flexion_alta ?? 0) * REPARTO_ALTA[n];
+    if (alta) F.multiply(eje(EJE.flexionTronco, alta));
     orientar(esq, h, F);
   });
-  for (const k of ['flexion', 'lateral', 'rotacion']) anotar(null, `columna.${k}`, pose.columna?.[k] ?? 0);
+  for (const k of ['flexion', 'flexion_alta', 'lateral', 'rotacion']) anotar(null, `columna.${k}`, pose.columna?.[k] ?? 0);
   const Ftorax = F;
 
   /*

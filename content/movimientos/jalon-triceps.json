@@ -4,7 +4,7 @@
   "duracion": 3.2,
   "asimetria": 0.5,
   "respiracion": {
-    "amplitud": 0.004,
+    "amplitud": 0.002,
     "ciclos": 1
   },
   "camara": {
@@ -22,27 +22,27 @@
       "ancla": [
         0,
         2.4,
-        0.46
+        0.65
       ],
       "posicion": [
         0,
-        1.167,
-        0.489
+        1.195,
+        0.467
       ],
       "agarre": 0.16,
       "solido": true,
       "agarre_marco": {
         "i": [
-          -0.535602,
-          -0.461661,
-          0.535602,
-          0.461661
+          -0.535528,
+          -0.461746,
+          0.535528,
+          0.461746
         ],
         "d": [
-          -0.53674,
-          0.460337,
-          -0.53674,
-          0.460337
+          -0.53659,
+          0.460511,
+          -0.53659,
+          0.460511
         ]
       }
     }
@@ -55,15 +55,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -72,8 +72,8 @@
         "barra": {
           "posicion": [
             0,
-            1.167,
-            0.489
+            1.195,
+            0.467
           ],
           "rodar": 0
         }
@@ -94,7 +94,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -112,15 +112,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -129,8 +129,8 @@
         "barra": {
           "posicion": [
             0,
-            0.984,
-            0.459
+            1.012,
+            0.437
           ],
           "rodar": 28
         }
@@ -151,7 +151,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -169,15 +169,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -186,8 +186,8 @@
         "barra": {
           "posicion": [
             0,
-            0.829,
-            0.337
+            0.857,
+            0.315
           ],
           "rodar": 58
         }
@@ -208,7 +208,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -227,15 +227,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -244,8 +244,8 @@
         "barra": {
           "posicion": [
             0,
-            0.766,
-            0.206
+            0.794,
+            0.184
           ],
           "rodar": 80
         }
@@ -266,7 +266,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -284,15 +284,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -301,8 +301,8 @@
         "barra": {
           "posicion": [
             0,
-            0.829,
-            0.337
+            0.857,
+            0.315
           ],
           "rodar": 58
         }
@@ -323,7 +323,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -341,15 +341,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -358,8 +358,8 @@
         "barra": {
           "posicion": [
             0,
-            0.984,
-            0.459
+            1.012,
+            0.437
           ],
           "rodar": 28
         }
@@ -380,7 +380,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -397,15 +397,15 @@
       "pelvis": {
         "posicion": [
           0,
-          0.9,
+          0.9255,
           0
         ],
         "orientacion": {
-          "inclinacion": 14
+          "inclinacion": 13
         }
       },
       "columna": {
-        "flexion": 5
+        "flexion": 2
       },
       "cuello": {
         "flexion": -6
@@ -414,8 +414,8 @@
         "barra": {
           "posicion": [
             0,
-            1.167,
-            0.489
+            1.195,
+            0.467
           ],
           "rodar": 0
         }
@@ -436,7 +436,7 @@
           "objetivo": [
             0.12,
             0.104,
-            0
+            0.01
           ],
           "rodilla_hacia": [
             0.25,
@@ -450,5 +450,7 @@
     }
   ],
   "$comment_agarre": "Agarre PRONO: palmas abajo, encima de la barra, nudillos adelante. Con la barra de jalón ancha (puntas dobladas) y la barra a 1,18 m y z 0,24, la barra quedaba por encima de la línea del antebrazo y la cinemática deducía la palma hacia ARRIBA en el primer fotograma: el calibrador congeló un agarre supino, con la mano por delante y debajo de la barra. Ahora la barra es recta y corta (mango puno, 44 cm), las manos a 32 cm, y en la pose inicial el antebrazo pasa algo de la horizontal (100° desde abajo) con la barra por debajo de su eje: así sale prono y se congela prono (npm run agarre).",
-  "$comment_barra": "La barra recorre un arco alrededor del codo pegado al costado (codo en 0,21 · 1,14 · 0,11; radio 0,38 más 3,6 cm hacia la palma), de 100° a 20° desde la vertical, y rueda con el antebrazo (rodar = 100 - ángulo) para que la muñeca no se doble abajo. El tronco va inclinado 14° (más 5 de columna): con 8° y el arco hasta 12°, la barra acababa en z 0,09 con el frente del muslo en 0,18, metida 8,1 cm en los dos muslos entre t=0,46 y 0,58. Ahora abajo queda en z 0,21, rozando el muslo por delante (codo a ~25° de flexión, casi estirado)."
+  "$comment_barra": "La barra recorre un arco alrededor del codo pegado al costado (codo en 0,21 · 1,17 · 0,09; radio 0,38 más 3,6 cm hacia la palma), de 100° a 20° desde la vertical, y rueda con el antebrazo (rodar = 100 - ángulo) para que la muñeca no se doble abajo. Con el tronco a 8° y el arco hasta 12°, la barra acababa en z 0,09 metida 8,1 cm en los muslos; el arreglo fue inclinar más, y abajo la barra queda rozando el muslo por delante (codo a ~25° de flexión).",
+  "$comment_postura": "De pie, no en media sentadilla. Iba con la pelvis a 0,90 y los pies 5 cm por detrás de la cadera: rodillas a 30° y cadera a 25°, y con el cuello a -6 sobre un tronco de 19° la cabeza caía al suelo. Ahora pelvis a 0,9255 con los pies bajo la cadera (z 0,01): rodillas a 8-12°, cadera a 12-16°, tronco a unos 13° desde la cadera con la columna casi recta (2°). La rodilla casi estirada es muy sensible a la altura: 3 mm de pelvis son 4° de rodilla. Por eso la respiración va a 0,002: con 0,004 la pelvis subía y bajaba 4 mm y la rodilla oscilaba entre 4 y 16°. El cuello a -6 (en este motor, negativo levanta la cabeza) deja la cabeza unos 6° más baja que de pie erguido: mirando al frente y algo abajo. La barra se subió 2,8 cm y se retrasó 2,2 cm, lo que se movió el hombro, para que el arco siga alrededor del codo.",
+  "$comment_cable": "El ancla va en z 0,65, delante del cuerpo, y el cable baja algo inclinado hacia la barra. Con el ancla en 0,44, justo encima de la barra arriba, el cable atravesaba la cara entre t≈0,35 y 0,6, con la barra abajo y pegada al cuerpo. Medido fotograma a fotograma: ahora pasa a 8,9 cm o más de la cabeza y a 5,5 cm o más de clavículas y pecho."
 }

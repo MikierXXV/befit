@@ -2,7 +2,7 @@
   "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
   "id": "superman",
   "duracion": 5,
-  "$comment_tumbado": "Boca abajo es la pelvis a 90° de inclinación y a 17,5 cm: el pecho y el pubis rozan el suelo. En reposo las rodillas van dobladas 8°: con la pierna recta, el tope de flexión plantar (-50°) deja las puntas 5 cm bajo el suelo. Arriba, la espalda se extiende 16° y la cadera 10° sin mover la pelvis, que sigue apoyada; el cuello a 0 deja la mirada al suelo, en línea con la espalda.",
+  "$comment_tumbado": "Boca abajo es la pelvis a 90° de inclinación y a 17,5 cm: el pecho y el pubis rozan el suelo. En reposo las rodillas van dobladas 8°: con la pierna recta, el tope de flexión plantar (-50°) deja las puntas 5 cm bajo el suelo. Arriba, la espalda se extiende 7° y la cadera 5° sin mover la pelvis, que sigue apoyada: manos y pies a unos 13 cm del suelo y el pecho apenas despegado, que es lo que pide la ficha («unos centímetros»). Con 16° y 10° las manos subían 31 cm. El cuello a 0 deja la mirada al suelo, en línea con la espalda.",
   "asimetria": 0.2,
   "respiracion": {
     "amplitud": 0.003,
@@ -80,7 +80,7 @@
         }
       },
       "columna": {
-        "flexion": -16
+        "flexion": -7
       },
       "cuello": {
         "flexion": 0
@@ -88,7 +88,7 @@
       "brazos": {
         "ambos": {
           "hombro": {
-            "flexion": 172,
+            "flexion": 169,
             "abduccion": 5,
             "rotacion": 0
           },
@@ -101,7 +101,7 @@
       "piernas": {
         "ambos": {
           "cadera": {
-            "flexion": -10,
+            "flexion": -5,
             "abduccion": 4,
             "rotacion": 0
           },
@@ -129,7 +129,7 @@
         }
       },
       "columna": {
-        "flexion": -16
+        "flexion": -7
       },
       "cuello": {
         "flexion": 0
@@ -137,7 +137,7 @@
       "brazos": {
         "ambos": {
           "hombro": {
-            "flexion": 172,
+            "flexion": 169,
             "abduccion": 5,
             "rotacion": 0
           },
@@ -150,7 +150,7 @@
       "piernas": {
         "ambos": {
           "cadera": {
-            "flexion": -10,
+            "flexion": -5,
             "abduccion": 4,
             "rotacion": 0
           },

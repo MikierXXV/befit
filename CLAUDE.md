@@ -100,7 +100,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
 5. Si las manos van a una barra, `npm run agarre` DESPUÉS de mirar la hoja: congela la orientación
    de la mano respecto a la barra tomándola del primer fotograma, y con eso deja de girar durante el
    recorrido. Lo que se congele es lo que se verá todo el rato, así que primero se revisa y luego se
-   fija. Y se vuelve a fijar si se cambia la postura inicial.
+   fija. Y se vuelve a fijar si se cambia la postura inicial. Siempre con el id (`npm run agarre
+   <id>`): sin él recalibra TODOS los movimientos con barra, y pasó que un remo invertido ganó un
+   agarre congelado que nadie había mirado.
    Si el agarre es supino —palmas hacia la cara, o hacia arriba en la sentadilla frontal—, el
    implemento lleva `"agarre_supino": true` y el calibrador gira la mano media vuelta alrededor de
    la barra. La cinemática siempre deduce pronación, porque saca el marco de la mano del antebrazo.
@@ -122,6 +124,14 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    mancuerna, apoyada en las palmas y no cogida del mango.
    Y una barra puede rodar sobre su propio eje con `implementos.<barra>.rodar` en grados por pose:
    con el agarre fijado, la mano rueda con ella (curl con barra, sin la muñeca doblada arriba).
+   Una superficie vertical contra la que se empuja con los pies —la plataforma del remo en polea
+   sentado— es un implemento `pared` (caja de pie, sólida para el validador), no un `banco`: el
+   remo iba con los pies en el suelo y las rodillas a 90° «porque no había plataforma», y no se
+   parecía a la máquina. El pie sobre ella NO lleva `pie_plano` (lo pone plano en el suelo): sigue a
+   la espinilla con `tobillo.dorsiflexion` hasta que la planta queda vertical.
+   `columna.flexion` se reparte 25/35/40 % entre lumbar y las dos torácicas; para doblar SOLO la
+   parte alta hay `columna.flexion_alta` (se suma, rango en `RANGOS`). El hollow hold la necesita:
+   con `flexion` sola, al curvar lo bastante para despegar los hombros la lumbar se iba con ellos.
    Las `etiqueta` de las poses son los rótulos de la línea de tiempo: solo en los hitos, no en las
    poses de paso, y sin repetir la misma dos veces seguidas. Si dos caen cerca, la ficha las reparte
    en dos filas; `npm run etapas` avisa si ni así caben.

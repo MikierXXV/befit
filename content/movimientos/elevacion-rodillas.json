@@ -19,23 +19,23 @@
       "tipo": "barra_fija",
       "posicion": [
         0,
-        2.3,
+        2.45,
         0.12
       ],
       "ancho": 1.2,
       "agarre": 0.3,
       "agarre_marco": {
         "i": [
-          -0.702982,
-          0.076261,
-          0.702982,
-          -0.076261
+          -0.707019,
+          -0.011137,
+          0.707019,
+          0.011137
         ],
         "d": [
-          -0.703074,
-          -0.075416,
-          -0.703074,
-          -0.075416
+          -0.706965,
+          0.014172,
+          -0.706965,
+          0.014172
         ]
       }
     }
@@ -48,7 +48,7 @@
       "pelvis": {
         "posicion": [
           0,
-          1.29,
+          1.28,
           0.1
         ],
         "orientacion": {
@@ -99,17 +99,17 @@
         "posicion": [
           0,
           1.29,
-          0.1
+          0.14
         ],
         "orientacion": {
-          "inclinacion": -6
+          "inclinacion": -15
         }
       },
       "columna": {
-        "flexion": 4
+        "flexion": 10
       },
       "cuello": {
-        "flexion": -6
+        "flexion": -4
       },
       "brazos": {
         "ambos": {
@@ -146,7 +146,7 @@
       "pelvis": {
         "posicion": [
           0,
-          1.29,
+          1.28,
           0.1
         ],
         "orientacion": {

@@ -111,6 +111,14 @@ const SEGMENTOS = [
     ];
   }),
   { nombre: 'tronco', desde: 'pelvis', hasta: 'cuello', huesos: ['DEF-hips', 'DEF-spine001', 'DEF-spine002', 'DEF-spine003'] },
+  /*
+   * El cuello y la cabeza tampoco estaban, y la barra pasa por ahí en cuanto sube por delante de la
+   * cara. En las dominadas supinas la cabeza subía justo debajo de la barra y la atravesaba hasta
+   * 7 cm, y en el press militar la barra subía recta y cruzaba la barbilla hasta 4,7 cm (con rayos),
+   * las dos en verde. El cuello es un cilindro como los demás; la cabeza no (ver `bolaDentro`).
+   */
+  { nombre: 'cuello', desde: 'cuello', hasta: 'cabeza', huesos: ['DEF-neck'] },
+  { nombre: 'cabeza', bola: true, huesos: ['DEF-head'] },
 ];
 /*
  * TEMPORAL. Movimientos que hoy tienen la barra metida en un miembro y aún no se han corregido: se
@@ -287,6 +295,11 @@ function barraDentro(imp, pielDe) {
   const b0 = imp.posicion.clone().addScaledVector(eje, -medio);
   const b1 = imp.posicion.clone().addScaledVector(eje, medio);
   for (const seg of SEGMENTOS) {
+    if (seg.bola) {
+      const dentro = bolaDentro(pielDe(seg), b0, b1);
+      if (dentro > TOLERANCIA_BARRA) salida.push({ miembro: seg.nombre, metida: dentro });
+      continue;
+    }
     const a0 = maniqui.esq.huesos[seg.desde].getWorldPosition(new Vector3());
     const a1 = maniqui.esq.huesos[seg.hasta].getWorldPosition(new Vector3());
     if (seg.hastaFraccion) a1.lerp(a0, 1 - seg.hastaFraccion);
@@ -321,7 +334,10 @@ function barraDentro(imp, pielDe) {
       if (radio < 1e-4) continue;
       let peso = Math.exp(-0.5 * ((t - tq) / GROSOR_SIGMA_EJE) ** 2);
       if (!centrada) {
-        const angulo = Math.acos(Math.min(1, w.dot(hacia) / radio));
+        // Acotado por los dos lados: un vértice justo a la espalda del eje daba un coseno de -1,0000001,
+        // `acos` devolvía NaN, la media salía NaN y NaN > tolerancia es falso, así que el miembro
+        // entero dejaba de comprobarse en ese fotograma (pasaba con el cuello en la sentadilla).
+        const angulo = Math.acos(Math.max(-1, Math.min(1, w.dot(hacia) / radio)));
         if (angulo > GROSOR_ANGULO_MAX) continue;
         peso *= Math.exp(-0.5 * (angulo / GROSOR_SIGMA_ANGULO) ** 2);
       }
@@ -334,6 +350,46 @@ function barraDentro(imp, pielDe) {
     if (dentro > TOLERANCIA_BARRA) salida.push({ miembro: seg.nombre, metida: dentro });
   }
   return salida;
+}
+
+/**
+ * Cuánto se mete la barra en la cabeza, en metros (negativo: cuánto le falta); `null` si ni se acerca.
+ *
+ * La cabeza se mide como una bola, no como un cilindro sobre su hueso. `DEF-head` no tiene hijo, así
+ * que el segmento había que inventárselo hasta la coronilla, y con la barra ENCIMA de la cabeza —
+ * colgado en la dominada— el eje del segmento apuntaba a la barra, la distancia en perpendicular
+ * salía casi 0 y daba la barra 4,4 cm «dentro» con 3,6 cm de aire según los rayos. Aquí se mira
+ * desde el centro de la cabeza (la media de sus vértices) hacia el punto más cercano de la barra, y
+ * el radio de la piel en esa dirección es la media ponderada de sus vértices, con la misma campana
+ * de ángulo que los miembros. Se queda entre 0,5 y 2 cm por debajo de los rayos (más junto a la
+ * barbilla, que sobresale), y ve igual la barra por encima, por delante de la cara o bajo la
+ * barbilla. Una barra que pasa por delante de la cara, como en el
+ * jalón, queda a más de 25 cm del centro y ni se mide; la de la sentadilla, en el trapecio, se
+ * queda a 12 cm de la piel de la cabeza.
+ */
+function bolaDentro(piel, b0, b1) {
+  const c = new Vector3();
+  for (const v of piel) c.add(v);
+  c.divideScalar(piel.length);
+  const eje = b1.clone().sub(b0);
+  const q = b0.clone().addScaledVector(eje, Math.min(1, Math.max(0, c.clone().sub(b0).dot(eje) / eje.lengthSq())));
+  const d = q.distanceTo(c);
+  if (d > 0.25) return null;
+  const hacia = q.clone().sub(c).divideScalar(d);
+  let suma = 0;
+  let pesos = 0;
+  const w = new Vector3();
+  for (const v of piel) {
+    w.subVectors(v, c);
+    const radio = w.length();
+    const angulo = Math.acos(Math.max(-1, Math.min(1, w.dot(hacia) / radio)));
+    if (angulo > GROSOR_ANGULO_MAX) continue;
+    const peso = Math.exp(-0.5 * (angulo / GROSOR_SIGMA_ANGULO) ** 2);
+    suma += peso * radio;
+    pesos += peso;
+  }
+  if (pesos < 1) return null;
+  return suma / pesos - d;
 }
 
 /** Puntos más cercanos entre los segmentos a0-a1 y b0-b1; `s` es la fracción del primero. */
