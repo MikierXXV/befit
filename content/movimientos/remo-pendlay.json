@@ -11,9 +11,9 @@
     "vista": "lateral",
     "detalle": "mano_i"
   },
-  "$comment_postura": "La cadera y el tronco no se mueven en todo el ciclo: el Pendlay es remo estricto, y si el tronco sube ya es otro ejercicio. Tronco a 78° (casi paralelo) con la columna recta; la cadera a 0,83 m es lo más alta que deja llegar a la barra en el suelo con los brazos de este maniquí: a 0,87 la mano se quedaba 3,5 cm corta. Más baja, la flexión de cadera pasaba de 130° y las rodillas se doblaban de más.",
-  "$comment_escapula": "Abajo la escápula va deprimida y adelantada al tope (elevación -10, protracción 20), como en el peso muerto: con 12° de protracción la mano se quedaba 2,7 cm corta de la barra. Arriba se retrae (protracción -15): los codos atrás es juntar las escápulas.",
-  "$comment_trayectoria": "La barra sale del suelo (centro a 0,225 m, discos apoyados) sobre el medio pie, sube casi vertical por delante de las rodillas y solo al pasarlas va atrás hacia la parte baja del pecho. En línea recta de arriba abajo atravesaba las rodillas al bajar; lo arregla la pose intermedia con la barra a 0,5 m y z 0,05. La subida es explosiva y la bajada controlada; de 0,8 a 1 la barra descansa en el suelo, que es lo que hace que cada tirón empiece desde parado.",
+  "$comment_postura": "La cadera y el tronco no se mueven en todo el ciclo: el Pendlay es remo estricto, y si el tronco sube ya es otro ejercicio. Tronco a 85° (casi paralelo) con la columna recta (2°). Antes la cadera iba a 0,83 m y z -0,39: con 55° de rodilla los muslos quedaban casi horizontales, la barra subía tapada por ellos y parecía quedarse a la altura de las rodillas, y el conjunto se leía como una joroba. Con la cadera a 0,87 m y más atrás (z -0,44) la rodilla se queda en 33° y el muslo baja empinado: la barra sube por delante de las rodillas. Es lo más alta que deja llegar a la barra en el suelo; la cadera ya va a 127° de flexión (tope 130), así que más tronco o más cadera atrás no caben.",
+  "$comment_escapula": "Abajo la escápula va deprimida y adelantada (elevación -10, protracción 13): con menos, la mano se quedaba 1,4 cm corta de la barra. No más de eso: con 20 el hombro se adelantaba tanto que la espalda alta parecía redondeada. Arriba se retrae (protracción -15): los codos atrás es juntar las escápulas.",
+  "$comment_trayectoria": "La barra sale del suelo (centro a 0,225 m, discos apoyados) sobre el medio pie, sube vertical (z 0,04) por delante de las rodillas y arriba toca la parte baja del pecho (0,71 m, z -0,02): a 0,72 el pecho ya atraviesa la barra. La subida es explosiva y la bajada controlada; de 0,8 a 1 la barra descansa en el suelo, que es lo que hace que cada tirón empiece desde parado.",
   "implementos": {
     "barra": {
       "tipo": "barra",
@@ -26,16 +26,16 @@
       "solido": true,
       "agarre_marco": {
         "i": [
-          0.029917,
-          0.706474,
-          -0.029917,
-          -0.706474
+          0.051786,
+          0.705208,
+          -0.051786,
+          -0.705208
         ],
         "d": [
-          -0.039946,
-          0.705978,
-          -0.039946,
-          0.705978
+          -0.061857,
+          0.704396,
+          -0.061857,
+          0.704396
         ]
       }
     }
@@ -55,11 +55,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -88,7 +88,7 @@
           "cierre": 0.9,
           "escapula": {
             "elevacion": -10,
-            "protraccion": 20
+            "protraccion": 13
           }
         }
       },
@@ -115,11 +115,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -133,7 +133,7 @@
           "posicion": [
             0,
             0.5,
-            0.05
+            0.04
           ]
         }
       },
@@ -147,8 +147,8 @@
           ],
           "cierre": 0.9,
           "escapula": {
-            "elevacion": -7,
-            "protraccion": 8
+            "elevacion": -6,
+            "protraccion": 0
           }
         }
       },
@@ -176,11 +176,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -193,7 +193,7 @@
         "barra": {
           "posicion": [
             0,
-            0.72,
+            0.71,
             -0.02
           ]
         }
@@ -236,11 +236,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -253,7 +253,7 @@
         "barra": {
           "posicion": [
             0,
-            0.72,
+            0.71,
             -0.02
           ]
         }
@@ -296,11 +296,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -314,7 +314,7 @@
           "posicion": [
             0,
             0.5,
-            0.05
+            0.04
           ]
         }
       },
@@ -328,8 +328,8 @@
           ],
           "cierre": 0.9,
           "escapula": {
-            "elevacion": -7,
-            "protraccion": 8
+            "elevacion": -6,
+            "protraccion": 0
           }
         }
       },
@@ -356,11 +356,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -389,7 +389,7 @@
           "cierre": 0.9,
           "escapula": {
             "elevacion": -10,
-            "protraccion": 20
+            "protraccion": 13
           }
         }
       },
@@ -415,11 +415,11 @@
       "pelvis": {
         "posicion": [
           0,
-          0.83,
-          -0.39
+          0.87,
+          -0.44
         ],
         "orientacion": {
-          "inclinacion": 78
+          "inclinacion": 85
         }
       },
       "columna": {
@@ -448,7 +448,7 @@
           "cierre": 0.9,
           "escapula": {
             "elevacion": -10,
-            "protraccion": 20
+            "protraccion": 13
           }
         }
       },

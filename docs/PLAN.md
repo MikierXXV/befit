@@ -134,9 +134,15 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   piernas colgado y plancha con toque de hombro. Sin cambios al motor. La elevación de rodillas
   pasa a material «barra fija», como las dominadas: con «barra» el filtro las separaba.
 - ⬜ N · Grupos nuevos.
+- ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
+  quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
+  cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y
+  ahora va como el de barra (72°, cuello neutro).
 - ⬜ **Para la revisión final con Migue:** el face pull va con agarre corto porque la polea no tiene
-  cuerda; el remo en polea sentado apila las manos en un mango vertical en vez del triángulo; y en
-  el remo Pendlay hay que confirmar girando la cámara si la espalda alta se ve abombada. De la M:
+  cuerda; el remo en polea sentado apila las manos en un mango vertical en vez del triángulo, y va
+  en banco con los pies en el suelo y las rodillas a 90°, no en máquina con las piernas casi
+  estiradas como dice la ficha; en el Pendlay, de perfil el disco tapa las rodillas por
+  perspectiva y las espinillas van 9° hacia atrás. De la M:
   la curva del hollow hold es discreta (la columna no se flexiona solo por arriba); en el toque de
   hombro la palma mira a la cara, porque `pronacion` solo vale con mancuerna, y la mano pasa de
   plana a alineada de golpe; el superman despega las manos unos 31 cm y deja las rodillas algo

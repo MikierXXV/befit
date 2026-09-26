@@ -13,7 +13,7 @@
   },
   "$comment_manos": "Las muñecas van relativas al hombro (`relativo_a: articulacion`), no en coordenadas de mundo. Con puntos de mundo, el hombro recorre un arco mientras la muñeca se interpola en línea recta, y a media bajada la mano quedaba hasta 9 cm fuera de alcance. Relativas, el vector hombro-muñeca apenas cambia de largo (0,54 m, codo a unos 15°) y solo gira un poco hacia atrás al bajar: las mancuernas se acercan a las piernas en vez de colgar a plomo delante de ellas.",
   "$comment_agarre": "Agarre neutro, con las mancuernas a los lados y algo por delante de los muslos. El motor solo sabe poner la palma hacia la línea media (neutro) o hacia delante (prono, que colgando es un agarre de curl); la palma hacia los muslos no existe todavía. Con el mango de lado y 30 cm de mancuerna, pegarlas delante de los muslos las metería en la pierna.",
-  "$comment_recorrido": "Abajo la pelvis va a z=-0.30 casi sin bajar e inclinada 84°: la mancuerna llega a y≈0.36, media espinilla, con la rodilla a unos 24°. Con 90° el tronco pasaba de la horizontal y la espalda se leía redonda en la vista lateral.",
+  "$comment_recorrido": "Abajo, la pelvis y su inclinación son las del rumano con barra (z=-0.28, 72°) y el cuello va a 0°. Con 84° el tronco quedaba casi horizontal, más de lo que da un rumano con las rodillas casi rectas, y con el cuello a 5° la espalda alta y la cabeza se leían redondas, colgando entre los brazos. La muñeca va 16 cm por detrás del hombro para que la mancuerna quede pegada a la pierna, bajo la rodilla; a 17 cm ya no llega.",
   "implementos": {
     "mancuerna_i": {
       "tipo": "mancuerna",
@@ -40,7 +40,7 @@
     {
       "t": 0.28,
       "curva": "suave",
-      "pelvis": { "posicion": [0, 0.94, -0.17], "orientacion": { "inclinacion": 42 } },
+      "pelvis": { "posicion": [0, 0.932, -0.16], "orientacion": { "inclinacion": 40 } },
       "columna": { "flexion": 3 },
       "cuello": { "flexion": 0 },
       "brazos": { "ambos": { "objetivo": [0.05, -0.538, -0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
@@ -50,16 +50,16 @@
       "t": 0.5,
       "curva": "esfuerzo",
       "etiqueta": "abajo",
-      "pelvis": { "posicion": [0, 0.945, -0.3], "orientacion": { "inclinacion": 84 } },
+      "pelvis": { "posicion": [0, 0.951, -0.28], "orientacion": { "inclinacion": 72 } },
       "columna": { "flexion": 3 },
-      "cuello": { "flexion": 5 },
-      "brazos": { "ambos": { "objetivo": [0.05, -0.525, -0.12], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
+      "cuello": { "flexion": 0 },
+      "brazos": { "ambos": { "objetivo": [0.05, -0.52, -0.16], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
       "piernas": { "ambos": { "objetivo": [0.11, 0.104, -0.1], "rodilla_hacia": [0.2, 0, 1], "pie_plano": true, "apertura": 8 } }
     },
     {
       "t": 0.75,
       "curva": "suave",
-      "pelvis": { "posicion": [0, 0.94, -0.17], "orientacion": { "inclinacion": 42 } },
+      "pelvis": { "posicion": [0, 0.932, -0.16], "orientacion": { "inclinacion": 40 } },
       "columna": { "flexion": 3 },
       "cuello": { "flexion": 0 },
       "brazos": { "ambos": { "objetivo": [0.05, -0.538, -0.03], "relativo_a": "articulacion", "codo_hacia": [0.3, 0, -1], "cierre": 0.9 } },
