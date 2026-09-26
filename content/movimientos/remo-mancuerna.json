@@ -181,7 +181,6 @@
     {
       "t": 0.55,
       "curva": "controlada",
-      "etiqueta": "arriba",
       "pelvis": {
         "posicion": [
           0.02,

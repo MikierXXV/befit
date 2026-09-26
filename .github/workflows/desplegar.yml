@@ -116,6 +116,7 @@ jobs:
           URL_BASE=http://localhost:4173/ node scripts/check-alineacion.mjs || fallos=1
           URL_BASE=http://localhost:4173/ node scripts/auditar.mjs || fallos=1
           URL_BASE=http://localhost:4173/ node scripts/simular-entreno.mjs || fallos=1
+          URL_BASE=http://localhost:4173/ node scripts/check-etapas.mjs || fallos=1
 
           kill $servidor 2>/dev/null || true
           exit $fallos

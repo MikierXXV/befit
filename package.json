@@ -19,6 +19,7 @@
     "modelo": "node scripts/optimizar-modelo.mjs",
     "preview": "vite preview",
     "simular": "node scripts/simular-entreno.mjs",
+    "etapas": "node scripts/check-etapas.mjs",
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "validar": "npm test && node scripts/validar-contenido.mjs --completo && node scripts/check-contraste.mjs && node scripts/check-idiomas.mjs && node scripts/validar-movimiento.mjs",

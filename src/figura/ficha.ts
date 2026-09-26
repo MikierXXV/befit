@@ -104,7 +104,10 @@ export async function montarFigura(
    */
   const hitos = (mov.poses as Array<{ t: number; etiqueta?: string }>).filter((x) => x.etiqueta);
   contenedor.querySelector('.etapas')!.innerHTML = hitos
-    .map((x) => `<span style="--t: ${x.t}" data-clave="${x.etiqueta}" aria-live="polite">${t(`figura.etapas.${x.etiqueta}`)}</span>`)
+    // Solo se alinean por dentro las que caen de verdad en un extremo del ciclo. Con `:last-child`,
+    // «CONTRAÍDO» en t=0,5 —la última etiqueta del remo con barra— se iba entera a la izquierda de
+    // su marca y chocaba con «ESTIRADO».
+    .map((x) => `<span style="--t: ${x.t}" class="${x.t <= 0.1 ? 'inicio' : x.t >= 0.9 ? 'final' : ''}" data-clave="${x.etiqueta}" aria-live="polite">${t(`figura.etapas.${x.etiqueta}`)}</span>`)
     .join('');
 
   const lienzo = contenedor.querySelector<HTMLCanvasElement>('.lienzo')!;
@@ -144,6 +147,31 @@ export async function montarFigura(
   let animacion = 0;
   const marcas = [...contenedor.querySelectorAll<HTMLElement>('.etapas span')];
   const cursor = contenedor.querySelector<HTMLInputElement>('.cursor')!;
+
+  /*
+   * Dos filas de rótulos cuando no caben en una. Cada rótulo va en el punto del ciclo de su pose, y
+   * en el móvil dos poses cercanas dejaban las palabras encima unas de otras: «RECOGIDO» y
+   * «EXTENDIDO» en el bicho muerto, «ABAJO» y «ARRIBA» en el hollow hold, y en inglés hasta las
+   * dominadas. Se reparten en orden: cada uno va a la primera fila donde no pisa al anterior. Se mide
+   * en el navegador porque depende del ancho y del idioma, y se repite si cambia el ancho.
+   */
+  const filaEtapas = contenedor.querySelector<HTMLElement>('.etapas')!;
+  const HUECO = 8;
+  function colocarEtapas(): void {
+    for (const m of marcas) m.classList.remove('segunda');
+    let finPrimera = -Infinity;
+    for (const m of [...marcas].sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left)) {
+      const r = m.getBoundingClientRect();
+      if (r.left >= finPrimera + HUECO) finPrimera = r.right;
+      else m.classList.add('segunda');
+    }
+    filaEtapas.classList.toggle('dos-filas', marcas.some((m) => m.classList.contains('segunda')));
+  }
+  const observador = new ResizeObserver(colocarEtapas);
+  observador.observe(filaEtapas);
+  // Y otra vez con la fuente ya cargada: medidos con la de respaldo, más estrecha, «SOSTENER» y
+  // «TOQUE» cabían en una fila y con la buena se pisaban, sin que cambiara ningún ancho.
+  void document.fonts.ready.then(colocarEtapas);
 
   cursor.addEventListener('input', () => {
     fase = Number(cursor.value) / 1000;
@@ -206,6 +234,7 @@ export async function montarFigura(
   return {
     destruir() {
       cancelAnimationFrame(animacion);
+      observador.disconnect();
       visor.destruir();
       contenedor.replaceChildren();
     },

@@ -277,15 +277,20 @@
    no marcaría ninguna. */
 .figura .etapas span.activa { color: var(--texto); font-weight: var(--peso-semibold); }
 
-/* La primera y la última no se centran sobre su marca: centradas, «ARRIBA» en t=0 se salía media
-   palabra por la izquierda del lienzo. Se alinean por dentro y la marca se va a su extremo. */
-.figura .etapas span:first-child { translate: 0 0; }
-.figura .etapas span:first-child::before { left: 0; }
-/* `:not(:first-child)`, porque un movimiento puede tener UNA sola etapa —la plancha, que solo
-   sostiene—: ahí el mismo span es el primero y el último, ganaba la regla del último y la palabra
-   se salía 63 px por la izquierda de la pantalla. Lo cazó la comprobación de alineaciones. */
-.figura .etapas span:last-child:not(:first-child) { translate: -100% 0; }
-.figura .etapas span:last-child:not(:first-child)::before { left: auto; right: 0; }
+/* Las de los extremos no se centran sobre su marca: centradas, «ARRIBA» en t=0 se salía media
+   palabra por la izquierda del lienzo. Se alinean por dentro y la marca se va a su extremo. Van por
+   clase y no por `:first-child`/`:last-child`: la última etiqueta no siempre cae al final del ciclo
+   (en el remo con barra está en t=0,5), y alineada a la derecha chocaba con la anterior. */
+.figura .etapas span.inicio { translate: 0 0; }
+.figura .etapas span.inicio::before { left: 0; }
+.figura .etapas span.final { translate: -100% 0; }
+.figura .etapas span.final::before { left: auto; right: 0; }
+
+/* La segunda fila, para los rótulos que en una sola se pisaban (lo reparte `colocarEtapas`). Su
+   marca se alarga hasta la línea: sin ella, la palabra de abajo no se sabía a qué punto iba. */
+.figura .etapas.dos-filas { height: 2.5rem; }
+.figura .etapas span.segunda { top: 1.25rem; }
+.figura .etapas span.segunda::before { top: -1.7rem; height: 1.55rem; }
 
 /* La marca sobre la línea, para que la palabra no quede flotando sin referencia. */
 .figura .etapas span::before {

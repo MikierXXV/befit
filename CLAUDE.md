@@ -64,6 +64,7 @@ npm run auditar               # presupuestos de rendimiento, sobre el build serv
 npm run capturar              # recorre el sitio en 2 temas × 2 anchos y caza errores mudos
 npm run alineacion            # centrados, alturas, carril izquierdo y desbordes. Bloquea.
 npm run simular               # un entreno en móvil: el maniquí se ve al abrir cada ejercicio. Bloquea.
+npm run etapas                # rótulos de la línea de tiempo: ninguno se pisa, en todas las fichas. Bloquea.
 npm run metricas              # métricas de la tipografía de respaldo, al cambiar de fuente
 npm run iconos                # PNG del icono de la app a partir de public/icono.svg
 ```
@@ -77,7 +78,7 @@ blanco sin conexión.
 `alineacion` siembra un registro de ejemplo (`scripts/lib/datos-ejemplo.mjs`) en el tema oscuro y
 deja el claro vacío: así mira la ficha en sus dos estados.
 
-`hoja`, `carteles`, `auditar`, `capturar`, `alineacion` y `simular` necesitan el sitio compilado y servido:
+`hoja`, `carteles`, `auditar`, `capturar`, `alineacion`, `simular` y `etapas` necesitan el sitio compilado y servido:
 `npm run build && npx vite preview --port 4173`.
 
 Y `carteles` escribe en `public/`, que solo entra en `dist/` al compilar: **después de generar
@@ -109,6 +110,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    del press Arnold, que con los agarres fijos (`agarre_mango`) saltaban de golpe.
    Y una barra puede rodar sobre su propio eje con `implementos.<barra>.rodar` en grados por pose:
    con el agarre fijado, la mano rueda con ella (curl con barra, sin la muñeca doblada arriba).
+   Las `etiqueta` de las poses son los rótulos de la línea de tiempo: solo en los hitos, no en las
+   poses de paso, y sin repetir la misma dos veces seguidas. Si dos caen cerca, la ficha las reparte
+   en dos filas; `npm run etapas` avisa si ni así caben.
 6. `npm run carteles` para el cartel del catálogo.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
