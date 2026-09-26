@@ -24,20 +24,15 @@
       "flexores_cadera"
     ],
     "estabilizador": [
-      "erectores",
-      "cuadriceps"
+      "erectores"
     ]
   },
-  "matices": "We have found no study measuring the Russian twist itself. It combines trunk flexion and rotation, and there is debate about how much load that combination should take; with low back discomfort, do it without weight or choose another oblique exercise. A systematic review of core exercises notes little consistency between the studies’ methods.",
+  "matices": "We have found no study measuring the Russian twist itself. The torso holds a lean back while it rotates, and some authors advise against loading that combination of flexion and rotation; there is no consensus. With low back discomfort, do it without weight or choose another oblique exercise, such as the Pallof press.",
   "fuentes": [
     {
       "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
       "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
       "url": "https://doi.org/10.3390/ijerph17124306"
-    },
-    {
-      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
-      "autor": "National Strength and Conditioning Association"
     }
   ]
 }

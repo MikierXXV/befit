@@ -21,25 +21,21 @@
       "oblicuos"
     ],
     "sinergista": [
-      "serrato",
-      "deltoides_anterior"
+      "serrato"
     ],
     "estabilizador": [
+      "deltoides_anterior",
       "gluteo_mayor",
       "cuadriceps",
       "gluteo_medio"
     ]
   },
-  "matices": "We have found no study measuring the shoulder tap itself. Lifting one hand leaves three points of support and the trunk has to resist rotating; that is the usual reason for using it, taken from the movement rather than a measurement. A systematic review of core exercises notes little consistency between the studies’ methods.",
+  "matices": "We have found no study measuring the shoulder tap itself. Lifting one hand leaves three points of support and the trunk has to resist rotating; that is the usual reason for using it, taken from the movement rather than a measurement.",
   "fuentes": [
     {
       "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
       "autor": "Oliva-Lozano and Muyor, Int J Environ Res Public Health, 2020",
       "url": "https://doi.org/10.3390/ijerph17124306"
-    },
-    {
-      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
-      "autor": "National Strength and Conditioning Association"
     }
   ]
 }

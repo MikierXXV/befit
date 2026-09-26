@@ -21,25 +21,21 @@
       "oblicuos"
     ],
     "sinergista": [
-      "serrato",
-      "deltoides_anterior"
+      "serrato"
     ],
     "estabilizador": [
+      "deltoides_anterior",
       "gluteo_mayor",
       "cuadriceps",
       "gluteo_medio"
     ]
   },
-  "matices": "No hemos encontrado estudios que midan el toque de hombro en sí. Al levantar una mano el apoyo pasa a tres puntos y el tronco tiene que resistir el giro; esa es la razón habitual para usarlo, sacada del gesto y no de una medición. Una revisión sistemática sobre ejercicios de core señala poca coherencia entre los métodos de los estudios.",
+  "matices": "No hemos encontrado estudios que midan el toque de hombro en sí. Al levantar una mano el apoyo pasa a tres puntos y el tronco tiene que resistir el giro; esa es la razón habitual para usarlo, sacada del gesto y no de una medición.",
   "fuentes": [
     {
       "titulo": "Core Muscle Activity During Physical Fitness Exercises: A Systematic Review",
       "autor": "Oliva-Lozano y Muyor, Int J Environ Res Public Health, 2020",
       "url": "https://doi.org/10.3390/ijerph17124306"
-    },
-    {
-      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
-      "autor": "National Strength and Conditioning Association"
     }
   ]
 }

@@ -3,11 +3,11 @@
   "grupo_id": "core",
   "orden": 7,
   "nombre": "Dead bug",
-  "resumen": "Lying face up with arms and legs in the air, you extend one arm and the opposite leg at the same time without the lower back lifting off the floor. It is the bird dog on your back.",
+  "resumen": "Lying face up with arms and legs in the air, you extend one arm and the opposite leg at the same time without the lower back lifting off the floor. It resembles the bird dog, but face up: here the work falls on the abs.",
   "ejecucion": [
     "Lie on your back with your arms reaching towards the ceiling and your legs in the air, hips and knees bent at 90 degrees.",
     "Press your lower back into the floor by bracing your abs, and keep it there throughout.",
-    "Extend one arm behind your head and the opposite leg forward at the same time, without touching the floor.",
+    "At the same time, reach one arm back overhead and push the opposite leg away from you until both hover a few centimetres above the floor, without touching it.",
     "Return to the start and repeat with the other arm and leg.",
     "If your lower back lifts off the floor as you extend, shorten the range."
   ],
@@ -28,7 +28,7 @@
       "cuadriceps"
     ]
   },
-  "matices": "The study that graded five difficulty levels in several lumbar stabilisation exercises, in ten healthy men, found that trunk muscle activity rises with each level. A systematic review found that stability exercises like this one give the highest internal oblique activity, but also little consistency between the studies’ methods.",
+  "matices": "In a study that graded five difficulty levels in several lumbar stabilisation exercises, this one included, in ten healthy men, trunk muscle activity increased with difficulty. A systematic review found the highest internal oblique activity in the exercises it classed as stability exercises, but also little consistency between the studies’ methods.",
   "fuentes": [
     {
       "titulo": "Electromyographic Changes in Trunk Muscles During Graded Lumbar Stabilization Exercises",

@@ -119,7 +119,9 @@ Un agente `animador-de-movimiento` por ejercicio, cada uno en su worktree (`.cla
 ignorado por git), con `node_modules` enlazado y su propio puerto (`npx vite --port 51xx` y
 `BASE=http://localhost:51xx/ npm run hoja <id>`). Solo tocan su movimiento; fichas, `orden`,
 carteles y lo compartido se hacen en el árbol principal al juntar. Las fichas, en un commit ANTES
-de lanzarlos, o sus worktrees no las tienen.
+de lanzarlos, o sus worktrees no las tienen. Y ojo: el worktree sale de `origin/main`, no del
+`main` local, así que si ese commit no está subido cada agente empieza con
+`git merge --ff-only <commit>`. Pasó en la tanda M: cinco agentes arrancaron sin sus fichas.
 
 **Al recogerlos, quita PRIMERO el enlace `node_modules` de cada worktree** (`rm <worktree>/node_modules`,
 sin `-r`) y solo después `git worktree remove`. `git worktree remove --force` sigue el enlace y
