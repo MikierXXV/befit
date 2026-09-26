@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Bicho muerto",
   "resumen": "Tumbado boca arriba con brazos y piernas en el aire, se estiran a la vez un brazo y la pierna contraria sin que la zona lumbar se separe del suelo. Se parece al perro-pájaro, pero boca arriba: aquí el trabajo es del abdomen.",
+  "movimiento_id": "bicho-muerto",
   "ejecucion": [
     "Túmbate boca arriba con los brazos estirados hacia el techo y las piernas en el aire, con cadera y rodillas dobladas a 90 grados.",
     "Pega la zona lumbar al suelo apretando el abdomen, y mantenla así todo el ejercicio.",

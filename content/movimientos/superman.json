@@ -1,0 +1,214 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "superman",
+  "duracion": 5,
+  "$comment_tumbado": "Boca abajo es la pelvis a 90° de inclinación y a 17,5 cm: el pecho y el pubis rozan el suelo. En reposo las rodillas van dobladas 8°: con la pierna recta, el tope de flexión plantar (-50°) deja las puntas 5 cm bajo el suelo. Arriba, la espalda se extiende 16° y la cadera 10° sin mover la pelvis, que sigue apoyada; el cuello a 0 deja la mirada al suelo, en línea con la espalda.",
+  "asimetria": 0.2,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 9"
+  },
+  "cartel": {
+    "fase": 0.45
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "tumbado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.175,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 90
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 167,
+            "abduccion": 5,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 4,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 8
+          },
+          "tobillo": {
+            "dorsiflexion": -50
+          }
+        }
+      }
+    },
+    {
+      "t": 0.3,
+      "curva": "lineal",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.175,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 90
+        }
+      },
+      "columna": {
+        "flexion": -16
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 172,
+            "abduccion": 5,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 3
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": -10,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 3
+          },
+          "tobillo": {
+            "dorsiflexion": -45
+          }
+        }
+      }
+    },
+    {
+      "t": 0.7,
+      "curva": "controlada",
+      "etiqueta": "sostener",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.175,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 90
+        }
+      },
+      "columna": {
+        "flexion": -16
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 172,
+            "abduccion": 5,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 3
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": -10,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 3
+          },
+          "tobillo": {
+            "dorsiflexion": -45
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.175,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": 90
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 167,
+            "abduccion": 5,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.2
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 4,
+            "abduccion": 4,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 8
+          },
+          "tobillo": {
+            "dorsiflexion": -50
+          }
+        }
+      }
+    }
+  ]
+}

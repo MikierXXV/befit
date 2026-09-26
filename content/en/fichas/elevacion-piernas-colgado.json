@@ -4,6 +4,7 @@
   "orden": 10,
   "nombre": "Hanging leg raise",
   "resumen": "Hanging from a pull-up bar, you raise the straight legs to horizontal or higher, without swinging. One of the most demanding abdominal exercises.",
+  "movimiento_id": "elevacion-piernas-colgado",
   "ejecucion": [
     "Hang from a pull-up bar with your hands shoulder-width apart and your arms straight.",
     "Brace your abs and glutes so your body does not swing.",

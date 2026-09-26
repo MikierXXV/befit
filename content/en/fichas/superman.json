@@ -4,6 +4,7 @@
   "orden": 12,
   "nombre": "Superman",
   "resumen": "Lying face down, you lift the straight arms and the legs off the floor at the same time, and hold at the top. It works the back muscles without equipment.",
+  "movimiento_id": "superman",
   "ejecucion": [
     "Lie face down with your arms stretched out in front and your legs straight.",
     "Look at the floor so your neck stays in line with your back.",

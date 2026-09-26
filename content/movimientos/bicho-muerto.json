@@ -1,0 +1,81 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Brazos y piernas con i/d en TODAS las poses: mezclar `ambos` en unas con `i`/`d` en otras interpola cada clave por su lado y el maniquí pasaba por el inicio tumbado del todo, brazos y piernas en el suelo.",
+  "id": "bicho-muerto",
+  "duracion": 6,
+  "asimetria": 0.2,
+  "respiracion": { "amplitud": 0.004, "ciclos": 2 },
+  "camara": { "vista": "lateral", "proporcion": "16 / 9" },
+  "cartel": { "fase": 0.25 },
+  "poses": [
+    {
+      "t": 0, "curva": "controlada", "etiqueta": "recogido",
+      "pelvis": { "posicion": [0, 0.13, 0], "orientacion": { "inclinacion": -90 } },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": 4 },
+      "brazos": {
+        "i": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 },
+        "d": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 }
+      },
+      "piernas": {
+        "i": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } },
+        "d": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } }
+      }
+    },
+    {
+      "t": 0.25, "curva": "esfuerzo", "etiqueta": "extendido",
+      "pelvis": { "posicion": [0, 0.13, 0], "orientacion": { "inclinacion": -90 } },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": 4 },
+      "brazos": {
+        "i": { "hombro": { "flexion": 162, "abduccion": 10, "rotacion": 0 }, "codo": { "flexion": 8 }, "cierre": 0.3 },
+        "d": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 }
+      },
+      "piernas": {
+        "i": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } },
+        "d": { "cadera": { "flexion": 18, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 6 }, "tobillo": { "dorsiflexion": -10 } }
+      }
+    },
+    {
+      "t": 0.5, "curva": "controlada", "etiqueta": "recogido",
+      "pelvis": { "posicion": [0, 0.13, 0], "orientacion": { "inclinacion": -90 } },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": 4 },
+      "brazos": {
+        "i": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 },
+        "d": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 }
+      },
+      "piernas": {
+        "i": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } },
+        "d": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } }
+      }
+    },
+    {
+      "t": 0.75, "curva": "esfuerzo", "etiqueta": "extendido",
+      "pelvis": { "posicion": [0, 0.13, 0], "orientacion": { "inclinacion": -90 } },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": 4 },
+      "brazos": {
+        "i": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 },
+        "d": { "hombro": { "flexion": 162, "abduccion": 10, "rotacion": 0 }, "codo": { "flexion": 8 }, "cierre": 0.3 }
+      },
+      "piernas": {
+        "i": { "cadera": { "flexion": 18, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 6 }, "tobillo": { "dorsiflexion": -10 } },
+        "d": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": { "posicion": [0, 0.13, 0], "orientacion": { "inclinacion": -90 } },
+      "columna": { "flexion": 0 },
+      "cuello": { "flexion": 4 },
+      "brazos": {
+        "i": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 },
+        "d": { "hombro": { "flexion": 90, "abduccion": 8, "rotacion": 0 }, "codo": { "flexion": 5 }, "cierre": 0.3 }
+      },
+      "piernas": {
+        "i": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } },
+        "d": { "cadera": { "flexion": 90, "abduccion": 4, "rotacion": 0 }, "rodilla": { "flexion": 90 }, "tobillo": { "dorsiflexion": 0 } }
+      }
+    }
+  ]
+}

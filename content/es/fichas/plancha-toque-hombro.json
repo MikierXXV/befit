@@ -4,6 +4,7 @@
   "orden": 11,
   "nombre": "Plancha con toque de hombro",
   "resumen": "En plancha alta, con los brazos estirados, se toca un hombro con la mano contraria y luego el otro, sin que la cadera gire. Añade al trabajo de la plancha el de resistir la rotación.",
+  "movimiento_id": "plancha-toque-hombro",
   "ejecucion": [
     "Colócate en plancha alta, con las manos bajo los hombros, los brazos estirados y los pies algo abiertos.",
     "Aprieta el abdomen y los glúteos para que el cuerpo quede recto de la cabeza a los talones.",

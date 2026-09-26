@@ -4,6 +4,7 @@
   "orden": 12,
   "nombre": "Superman",
   "resumen": "Tumbado boca abajo, se despegan del suelo a la vez los brazos estirados y las piernas, y se aguanta arriba. Trabaja la musculatura de la espalda sin material.",
+  "movimiento_id": "superman",
   "ejecucion": [
     "Túmbate boca abajo con los brazos estirados por delante y las piernas estiradas.",
     "Mira al suelo para que el cuello siga la línea de la espalda.",

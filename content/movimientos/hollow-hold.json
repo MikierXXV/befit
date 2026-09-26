@@ -1,0 +1,312 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "$comment_isometrico": "Isométrico: sube de tumbado a la posición hollow, la sostiene la mitad del ciclo y vuelve al suelo. Las poses del sostén difieren en un grado de columna y cadera, el temblor de aguantar; más diferencia contaría un balanceo que la ficha no pide. La pelvis gira 4° hacia atrás (lumbar pegada): con 8°, al arrancar la subida los hombros atravesaban el suelo antes de que llegara la flexión de la columna.",
+  "id": "hollow-hold",
+  "duracion": 6,
+  "asimetria": 0.2,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 2
+  },
+  "camara": {
+    "vista": "lateral",
+    "proporcion": "16 / 9"
+  },
+  "cartel": {
+    "fase": 0.45
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 180,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 0,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 0
+          },
+          "tobillo": {
+            "dorsiflexion": -25
+          }
+        }
+      }
+    },
+    {
+      "t": 0.2,
+      "curva": "lineal",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -94
+        }
+      },
+      "columna": {
+        "flexion": 30
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 184,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 7,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 2
+          },
+          "tobillo": {
+            "dorsiflexion": -35
+          }
+        }
+      }
+    },
+    {
+      "t": 0.45,
+      "curva": "lineal",
+      "etiqueta": "sostener",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -94
+        }
+      },
+      "columna": {
+        "flexion": 29
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 184,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 6,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 2
+          },
+          "tobillo": {
+            "dorsiflexion": -35
+          }
+        }
+      }
+    },
+    {
+      "t": 0.7,
+      "curva": "controlada",
+      "etiqueta": "sostener",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -94
+        }
+      },
+      "columna": {
+        "flexion": 30
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 184,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 7,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 2
+          },
+          "tobillo": {
+            "dorsiflexion": -35
+          }
+        }
+      }
+    },
+    {
+      "t": 0.88,
+      "curva": "lineal",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 180,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 0,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 0
+          },
+          "tobillo": {
+            "dorsiflexion": -25
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.13,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": -90
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 180,
+            "abduccion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "cierre": 0.25
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 0,
+            "abduccion": -2,
+            "rotacion": 0
+          },
+          "rodilla": {
+            "flexion": 0
+          },
+          "tobillo": {
+            "dorsiflexion": -25
+          }
+        }
+      }
+    }
+  ]
+}

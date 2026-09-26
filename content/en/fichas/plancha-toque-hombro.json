@@ -4,6 +4,7 @@
   "orden": 11,
   "nombre": "Plank shoulder tap",
   "resumen": "In a high plank with straight arms, you touch one shoulder with the opposite hand and then the other, without the hips rotating. It adds resisting rotation to the work of the plank.",
+  "movimiento_id": "plancha-toque-hombro",
   "ejecucion": [
     "Get into a high plank, hands under your shoulders, arms straight and feet slightly apart.",
     "Brace your abs and glutes so your body is straight from head to heels.",

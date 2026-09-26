@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Rotación rusa",
   "resumen": "Sentado con el tronco echado atrás y los pies en el aire o apoyados, se gira el tronco de un lado a otro. Trabaja los oblicuos, con o sin peso en las manos.",
+  "movimiento_id": "rotacion-rusa",
   "ejecucion": [
     "Siéntate con las rodillas dobladas y echa el tronco atrás hasta unos 45 grados, con la espalda recta.",
     "Junta las manos delante del pecho, o sujeta un peso ligero.",

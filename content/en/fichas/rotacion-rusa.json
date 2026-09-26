@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Russian twist",
   "resumen": "Sitting with the torso leaned back and the feet in the air or on the floor, you rotate the torso from side to side. It works the obliques, with or without a weight in the hands.",
+  "movimiento_id": "rotacion-rusa",
   "ejecucion": [
     "Sit with your knees bent and lean your torso back to about 45 degrees, keeping your back straight.",
     "Clasp your hands in front of your chest, or hold a light weight.",

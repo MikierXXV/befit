@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Hollow hold",
   "resumen": "Lying face up, you lift the shoulders and straight legs off the floor and hold the position with the lower back pressed down. The body forms a curve, like a banana.",
+  "movimiento_id": "hollow-hold",
   "ejecucion": [
     "Lie on your back with your arms stretched behind your head and your legs together and straight.",
     "Press your lower back into the floor by bracing your abs.",

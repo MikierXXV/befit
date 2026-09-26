@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Hollow hold",
   "resumen": "Tumbado boca arriba, se despegan del suelo hombros y piernas estiradas y se aguanta la posición con la zona lumbar pegada al suelo. El cuerpo forma una curva, como un plátano.",
+  "movimiento_id": "hollow-hold",
   "ejecucion": [
     "Túmbate boca arriba con los brazos estirados por detrás de la cabeza y las piernas juntas y estiradas.",
     "Pega la zona lumbar al suelo apretando el abdomen.",

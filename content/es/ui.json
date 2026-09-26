@@ -132,7 +132,11 @@
       "recogido": "Recogido",
       "abierto": "Abierto",
       "rodillas arriba": "Rodillas",
-      "doblado": "Doblado"
+      "doblado": "Doblado",
+      "piernas arriba": "piernas arriba",
+      "tumbado": "tumbado",
+      "giro": "giro",
+      "toque": "toque"
     },
     "sin_3d": "Tu navegador no puede mostrar el maniquí. Los pasos de ejecución están debajo.",
     "lado": {

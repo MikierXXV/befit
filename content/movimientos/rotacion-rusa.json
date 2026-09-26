@@ -1,0 +1,367 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "rotacion-rusa",
+  "duracion": 3.2,
+  "asimetria": 0.2,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 2
+  },
+  "camara": {
+    "vista": "tres_cuartos"
+  },
+  "cartel": {
+    "fase": 0.75
+  },
+  "$comment_lectura": "Las manos van por objetivo en el mundo y no por ángulos: con ángulos seguían al tronco pero se quedaban a la altura del hombro al girar, y la ficha pide llevarlas junto a la cadera. Los pies descansan en los talones (sin pie_plano): con las espinillas inclinadas hacia delante, el pie plano pedía 58° de flexión plantar. El cartel sale del giro a la derecha porque la vista de tres cuartos mira desde ese lado; el giro a la izquierda queda tapado por el muslo.",
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "recogido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 0
+        }
+      },
+      "columna": {
+        "flexion": 8,
+        "lateral": 0,
+        "rotacion": 0
+      },
+      "cuello": {
+        "flexion": 20,
+        "lateral": 0
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        },
+        "d": {
+          "objetivo": [
+            -0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            -1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.1,
+            0.44
+          ],
+          "rodilla_hacia": [
+            0.2,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.25,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 10
+        }
+      },
+      "columna": {
+        "flexion": 8,
+        "lateral": -10,
+        "rotacion": 42
+      },
+      "cuello": {
+        "flexion": 20,
+        "lateral": 8
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.25,
+            0.22,
+            -0.12
+          ],
+          "codo_hacia": [
+            0.6,
+            0.2,
+            -1
+          ],
+          "cierre": 1.5
+        },
+        "d": {
+          "objetivo": [
+            0.16,
+            0.3,
+            -0.06
+          ],
+          "codo_hacia": [
+            -0.3,
+            -1,
+            0.3
+          ],
+          "cierre": 1.5
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.1,
+            0.44
+          ],
+          "rodilla_hacia": [
+            0.2,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      },
+      "etiqueta": "giro"
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "recogido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 0
+        }
+      },
+      "columna": {
+        "flexion": 8,
+        "lateral": 0,
+        "rotacion": 0
+      },
+      "cuello": {
+        "flexion": 20,
+        "lateral": 0
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        },
+        "d": {
+          "objetivo": [
+            -0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            -1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.1,
+            0.44
+          ],
+          "rodilla_hacia": [
+            0.2,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.75,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": -10
+        }
+      },
+      "columna": {
+        "flexion": 8,
+        "lateral": 10,
+        "rotacion": -42
+      },
+      "cuello": {
+        "flexion": 20,
+        "lateral": -8
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            -0.16,
+            0.3,
+            -0.06
+          ],
+          "codo_hacia": [
+            0.3,
+            -1,
+            0.3
+          ],
+          "cierre": 1.5
+        },
+        "d": {
+          "objetivo": [
+            -0.25,
+            0.22,
+            -0.12
+          ],
+          "codo_hacia": [
+            -0.6,
+            0.2,
+            -1
+          ],
+          "cierre": 1.5
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.1,
+            0.44
+          ],
+          "rodilla_hacia": [
+            0.2,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      },
+      "etiqueta": "giro"
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 0
+        }
+      },
+      "columna": {
+        "flexion": 8,
+        "lateral": 0,
+        "rotacion": 0
+      },
+      "cuello": {
+        "flexion": 20,
+        "lateral": 0
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        },
+        "d": {
+          "objetivo": [
+            -0.07,
+            0.46,
+            -0.02
+          ],
+          "codo_hacia": [
+            -1,
+            -1,
+            -0.3
+          ],
+          "cierre": 1.5
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.1,
+            0.44
+          ],
+          "rodilla_hacia": [
+            0.2,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    }
+  ]
+}

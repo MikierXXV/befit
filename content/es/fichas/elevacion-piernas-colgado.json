@@ -4,6 +4,7 @@
   "orden": 10,
   "nombre": "Elevación de piernas colgado",
   "resumen": "Colgado de una barra fija, se suben las piernas estiradas hasta la horizontal o más, sin balancearse. Uno de los ejercicios de abdomen más exigentes.",
+  "movimiento_id": "elevacion-piernas-colgado",
   "ejecucion": [
     "Cuélgate de una barra fija con las manos a la anchura de los hombros y los brazos estirados.",
     "Aprieta el abdomen y los glúteos para que el cuerpo no se balancee.",
