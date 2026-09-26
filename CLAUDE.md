@@ -116,6 +116,10 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    cambiados. Supino todo el recorrido es el curl; prono, el curl inverso; 0, el martillo. Es un
    número y se interpola: sirve para giros como el del press Arnold, que con los agarres fijos
    (`agarre_mango`) saltaban de golpe.
+   Una mano LIBRE (sin agarrar nada) también gira: `pronacion`, contada desde el antebrazo, y
+   `brazos.<lado>.muneca.extension` en grados (positiva, dedos hacia el dorso). Con el antebrazo
+   vertical, supino y la muñeca a 80-90°, la palma queda hacia arriba: así sostiene la goblet la
+   mancuerna, apoyada en las palmas y no cogida del mango.
    Y una barra puede rodar sobre su propio eje con `implementos.<barra>.rodar` en grados por pose:
    con el agarre fijado, la mano rueda con ella (curl con barra, sin la muñeca doblada arriba).
    Las `etiqueta` de las poses son los rótulos de la línea de tiempo: solo en los hitos, no en las

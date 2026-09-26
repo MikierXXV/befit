@@ -682,7 +682,32 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
       .addScaledVector(largo, AVANCE_AGARRE)
       .addScaledVector(palma, hondoAgarre(m.cierre ?? 0.8));
   } else {
-    orientar(esq, huesos[`mano_${l}`], Fantebrazo);
+    /*
+     * LA MANO LIBRE: GIRA CON EL ANTEBRAZO Y SE DOBLA POR LA MUÑECA.
+     *
+     * Seguía al antebrazo y punto, así que una mano sin nada no podía mirar a ningún sitio más. La
+     * goblet no podía sostener la mancuerna con las palmas ahuecadas bajo el disco, que es como se
+     * lleva: las manos acababan cerradas sobre el mango con los dedos apilados. Y en el toque de
+     * hombro la palma miraba a la cara en vez de al hombro.
+     *
+     * Ahora hay dos giros, en este orden y en los ejes de la mano:
+     *  - `pronacion`, alrededor del eje largo, con el mismo sentido anatómico que la de la mano con
+     *    mancuerna (+90 prono, −90 supino), pero contada desde el antebrazo, porque aquí no hay un
+     *    mango que diga dónde está el neutro;
+     *  - `muneca.extension`: positiva, los dedos hacia el dorso; negativa, hacia la palma. Con el
+     *    antebrazo vertical y supino, 80-90° dejan la palma hacia arriba: la copa de la goblet.
+     */
+    const Fmano = Fantebrazo.clone();
+    if (typeof m.pronacion === 'number') {
+      Fmano.multiply(eje(ABAJO, SIGNO_PRONACION[l] * m.pronacion));
+      anotar(l, 'antebrazo.pronacion', m.pronacion);
+    }
+    const extension = m.muneca?.extension;
+    if (typeof extension === 'number') {
+      Fmano.multiply(eje(new Vector3(0, 0, 1), SIGNO[l] * extension));
+      anotar(l, 'muneca.extension', extension);
+    }
+    orientar(esq, huesos[`mano_${l}`], Fmano);
   }
 }
 

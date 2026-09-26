@@ -146,12 +146,13 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   muslos; rotación rusa con brazos largos que barren y la cabeza que sigue el giro. El validador
   aprendió a ver una barra que ATRAVIESA un miembro, y con eso salieron y se arreglaron seis más:
   peso muerto, sentadilla con barra, buenos días, press cerrado, jalón de tríceps y curl en polea.
-- ⬜ **Pendiente de decidir con Migue:** la goblet no puede ahuecar las palmas bajo el disco (el
-  motor no extiende la muñeca ni desplaza el agarre del eje del mango); el face pull va sin cuerda;
+- ✅ **Muñeca en el motor:** la mano libre gira (`pronacion`) y se dobla (`muneca.extension`). La
+  goblet sostiene ya la mancuerna con las palmas hacia arriba bajo el disco, y en el toque de hombro
+  la palma se apoya en el hombro; el paso de mano plana a libre queda en unos 8°, no 114°.
+- ⬜ **Pendiente de decidir con Migue:** el face pull va sin cuerda;
   el remo en polea sentado va en banco con los pies en el suelo, sin plataforma; en la rotación
   rusa las manos no llegan al suelo (la columna no gira más de 45°); en el Pendlay, de perfil el
-  disco tapa las rodillas; la curva del hollow hold es discreta; en el toque de hombro la palma
-  mira a la cara (`pronacion` solo vale con mancuerna); el superman despega mucho las manos; la
+  disco tapa las rodillas; la curva del hollow hold es discreta; el superman despega mucho las manos; la
   elevación de rodillas cuelga con los codos a 90°; y en las dominadas supinas la barra podría
   rozar la cabeza hacia t=0,1 (la comprobación no mira la cabeza).
 - ⬜ Motor: `asimetria` solo actúa sobre brazos y piernas escritos con `ambos`, así que no hace nada
