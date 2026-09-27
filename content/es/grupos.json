@@ -120,6 +120,28 @@
         "claro": "#751915",
         "oscuro": "#e98681"
       }
+    },
+    {
+      "id": "elevacion-escapular",
+      "nombre": "Elevación escapular",
+      "descripcion": "Subir los hombros hacia las orejas con los brazos colgando: se mueven los omóplatos, no los codos.",
+      "orden": 12,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#4a30a6",
+        "oscuro": "#ad9af4"
+      }
+    },
+    {
+      "id": "abduccion-cadera",
+      "nombre": "Abducción de cadera",
+      "descripcion": "Separar la pierna del cuerpo hacia un lado, con la pelvis quieta.",
+      "orden": 13,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#853285",
+        "oscuro": "#e9a5e9"
+      }
     }
   ]
 }

@@ -1,0 +1,44 @@
+{
+  "id": "patada-gluteo-polea",
+  "grupo_id": "bisagra-cadera",
+  "orden": 10,
+  "nombre": "Patada de glúteo en polea",
+  "resumen": "De pie frente a una polea baja, con el tobillo enganchado, se lleva la pierna estirada hacia atrás y se vuelve despacio. Trabaja el glúteo mayor.",
+  "ejecucion": [
+    "Engancha una tobillera al cable de una polea baja, póntela en un tobillo y ponte de frente a la máquina, agarrado a ella.",
+    "Inclina un poco el tronco hacia delante, con la espalda recta y la rodilla de apoyo algo flexionada.",
+    "Lleva la pierna enganchada hacia atrás, casi estirada, apretando el glúteo, sin arquear la zona lumbar.",
+    "Vuelve despacio hasta que el pie quede a la altura del otro.",
+    "Si la espalda se arquea para llevar la pierna más atrás, acorta el recorrido o baja el peso."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "inicial",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan la patada en polea de pie. Lo más parecido que se ha medido es la extensión de cadera a cuatro patas, con electrodos dentro del músculo, que activó los glúteos claramente más que el tensor de la fascia lata. La polea hace ese gesto de pie y con carga regulable, y el riesgo habitual es suplir con la zona lumbar lo que no llega la cadera.",
+  "fuentes": [
+    {
+      "titulo": "Which exercises target the gluteal muscles while minimizing activation of the tensor fascia lata? Electromyographic assessment using fine-wire electrodes",
+      "autor": "Selkowitz, Beneck y Powers, J Orthop Sports Phys Ther, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23160432/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

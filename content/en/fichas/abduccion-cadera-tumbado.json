@@ -1,0 +1,42 @@
+{
+  "id": "abduccion-cadera-tumbado",
+  "grupo_id": "abduccion-cadera",
+  "orden": 1,
+  "nombre": "Side-lying hip abduction",
+  "resumen": "Lying on your side, you raise the top leg straight, without rotating it, and lower it slowly. It works the gluteus medius with no equipment.",
+  "ejecucion": [
+    "Lie on your side with your legs straight, one on top of the other, and rest your head on your lower arm.",
+    "Roll your top hip slightly forward so it does not drift back as you lift.",
+    "Raise your top leg straight to about 30-40 cm, toes pointing forward, without rotating it towards the ceiling.",
+    "Lower slowly until it almost touches the other leg and repeat.",
+    "If you feel your hip rolling back or your leg drifting forward, lift less."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gluteo_medio"
+    ],
+    "sinergista": [
+      "gluteo_mayor"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen"
+    ]
+  },
+  "matices": "In a study of twenty-one active people, side-lying hip abduction was the exercise that most activated the gluteus medius of the twelve compared, ahead of clams, lunges and hops. If the leg rotates towards the ceiling, the work shifts to other hip muscles; that is why the toes should point forward.",
+  "fuentes": [
+    {
+      "titulo": "Gluteal muscle activation during common therapeutic exercises",
+      "autor": "Distefano et al., J Orthop Sports Phys Ther, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19574661/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

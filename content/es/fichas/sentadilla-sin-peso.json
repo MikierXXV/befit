@@ -1,0 +1,46 @@
+{
+  "id": "sentadilla-sin-peso",
+  "grupo_id": "sentadilla",
+  "orden": 7,
+  "nombre": "Sentadilla sin peso",
+  "resumen": "La sentadilla con el propio cuerpo: se baja doblando cadera y rodillas, con el tronco erguido, y se vuelve a subir. Es la base para aprender el gesto antes de añadir carga.",
+  "ejecucion": [
+    "Ponte de pie con los pies a la anchura de los hombros o algo más, con las puntas un poco hacia fuera.",
+    "Estira los brazos por delante o cruza las manos delante del pecho para equilibrarte.",
+    "Baja llevando la cadera atrás y abajo a la vez que doblas las rodillas, que siguen la dirección de los pies, con el pecho alto.",
+    "Baja hasta donde mantengas la espalda recta y los talones apoyados, idealmente con los muslos paralelos al suelo o algo más.",
+    "Sube empujando el suelo con todo el pie hasta quedar de pie. Si los talones se levantan o las rodillas se van hacia dentro, baja menos."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "Una revisión sobre la biomecánica de la sentadilla recomienda dejar que las rodillas avancen por delante de los pies si hace falta para bajar con el tronco más erguido: limitarlo pasa la carga a la cadera y a la zona lumbar. Sin peso, es sobre todo un ejercicio para aprender el gesto y para empezar; para seguir progresando, se añade carga o se pasa a variantes a una pierna.",
+  "fuentes": [
+    {
+      "titulo": "Squatting kinematics and kinetics and their application to exercise performance",
+      "autor": "Schoenfeld, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20182386/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

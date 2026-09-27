@@ -1,0 +1,48 @@
+{
+  "id": "encogimientos-barra",
+  "grupo_id": "elevacion-escapular",
+  "orden": 2,
+  "nombre": "Encogimientos con barra",
+  "resumen": "De pie con una barra cogida por delante de los muslos, se suben los hombros hacia las orejas y se bajan despacio. La barra permite cargar más que las mancuernas.",
+  "ejecucion": [
+    "Ponte de pie y coge la barra por delante de los muslos, con las palmas hacia ti y las manos algo más abiertas que la cadera.",
+    "Con los brazos estirados, sube los hombros en vertical hacia las orejas, sin doblar los codos.",
+    "Aguanta un instante arriba y baja despacio hasta dejar los hombros relajados.",
+    "Mantén el tronco recto, sin echarte atrás para ayudarte, y el cuello en línea con la espalda.",
+    "Si tienes que balancear el cuerpo o doblar los codos para subir la barra, baja el peso."
+  ],
+  "material": [
+    "barra"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "trapecio_superior"
+    ],
+    "sinergista": [
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "antebrazo",
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "El estudio que comparó varias posiciones del encogimiento con peso encontró una activación alta de la parte alta del trapecio en todas, y otro, con treinta personas, vio que el encogimiento está entre los ejercicios que más la activan. No hemos encontrado estudios que comparen la barra con las mancuernas; la barra permite cargar más, y las mancuernas dejan los brazos a los lados, en una posición más cómoda para muchos.",
+  "fuentes": [
+    {
+      "titulo": "Modifying the shoulder joint position during shrugging and retraction exercises alters the activation of the medial scapular muscles",
+      "autor": "Castelein et al., Man Ther, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26409441/"
+    },
+    {
+      "titulo": "Surface electromyographic analysis of exercises for the trapezius and serratus anterior muscles",
+      "autor": "Ekstrom, Donatelli y Soderberg, J Orthop Sports Phys Ther, 2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12774999/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

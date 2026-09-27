@@ -1,0 +1,43 @@
+{
+  "id": "abduccion-cadera-polea",
+  "grupo_id": "abduccion-cadera",
+  "orden": 2,
+  "nombre": "Cable hip abduction",
+  "resumen": "Standing side-on to a low pulley with the ankle attached, you move the leg out away from the body and return slowly. It works the gluteus medius with adjustable load.",
+  "ejecucion": [
+    "Attach an ankle strap to the cable of a low pulley and put it on the ankle further from the pulley.",
+    "Stand side-on to the pulley and hold the machine with one hand, torso upright.",
+    "Move the leg out to the side, straight and with the toes forward, without leaning your torso the other way.",
+    "Return slowly until your foot is next to the other, without letting the weight snap back.",
+    "If you have to lean or rotate the leg to lift it, lower the weight."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "gluteo_medio"
+    ],
+    "sinergista": [
+      "gluteo_mayor"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "aductores"
+    ]
+  },
+  "matices": "We have found no study measuring standing cable abduction itself. The measured version is the side-lying one, which in a study of twenty-one people activated the gluteus medius most of twelve exercises. The cable follows the same movement standing up and lets you increase the load.",
+  "fuentes": [
+    {
+      "titulo": "Gluteal muscle activation during common therapeutic exercises",
+      "autor": "Distefano et al., J Orthop Sports Phys Ther, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19574661/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

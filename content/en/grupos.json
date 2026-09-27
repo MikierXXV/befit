@@ -120,6 +120,28 @@
         "claro": "#751915",
         "oscuro": "#e98681"
       }
+    },
+    {
+      "id": "elevacion-escapular",
+      "nombre": "Scapular elevation",
+      "descripcion": "Raising the shoulders towards the ears with the arms hanging: the shoulder blades move, not the elbows.",
+      "orden": 12,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#4a30a6",
+        "oscuro": "#ad9af4"
+      }
+    },
+    {
+      "id": "abduccion-cadera",
+      "nombre": "Hip abduction",
+      "descripcion": "Moving the leg out to the side, away from the body, with the pelvis still.",
+      "orden": 13,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#853285",
+        "oscuro": "#e9a5e9"
+      }
     }
   ]
 }

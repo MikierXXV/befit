@@ -1,0 +1,49 @@
+{
+  "id": "encogimientos-mancuernas",
+  "grupo_id": "elevacion-escapular",
+  "orden": 1,
+  "nombre": "Dumbbell shrugs",
+  "resumen": "Standing with a dumbbell in each hand, you raise the shoulders towards the ears and lower them slowly. It works the upper trapezius.",
+  "ejecucion": [
+    "Stand with a dumbbell in each hand, arms straight at your sides and palms facing your body.",
+    "Raise your shoulders straight up towards your ears, without bending your elbows or rolling your shoulders forward or back.",
+    "Hold for a moment at the top and lower slowly until your shoulders are relaxed.",
+    "Keep your neck straight and your eyes forward throughout.",
+    "If your neck feels strained or you have to swing your body to lift, lower the weight."
+  ],
+  "material": [
+    "mancuerna"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "trapecio_superior"
+    ],
+    "sinergista": [
+      "trapecio_medio"
+    ],
+    "estabilizador": [
+      "antebrazo",
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "In a study of thirty people, the one-arm shrug was the exercise that most activated the upper trapezius of the ten compared. Another found high upper trapezius activation in the weighted shrug with the arms at the sides, and a third found more activity when doing it with the arms slightly away from the body, at about 30°. Rolling the shoulders in circles adds nothing and is the usual way to do it wrong.",
+  "fuentes": [
+    {
+      "titulo": "Surface electromyographic analysis of exercises for the trapezius and serratus anterior muscles",
+      "autor": "Ekstrom, Donatelli and Soderberg, J Orthop Sports Phys Ther, 2003",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12774999/"
+    },
+    {
+      "titulo": "Modifying the shoulder joint position during shrugging and retraction exercises alters the activation of the medial scapular muscles",
+      "autor": "Castelein et al., Man Ther, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26409441/"
+    },
+    {
+      "titulo": "Modifying a shrug exercise can facilitate the upward rotator muscles of the scapula",
+      "autor": "Pizzari et al., Clin Biomech, 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24342452/"
+    }
+  ]
+}

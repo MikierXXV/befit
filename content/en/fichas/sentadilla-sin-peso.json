@@ -1,0 +1,46 @@
+{
+  "id": "sentadilla-sin-peso",
+  "grupo_id": "sentadilla",
+  "orden": 7,
+  "nombre": "Bodyweight squat",
+  "resumen": "The squat with your own body: you go down bending hips and knees with the torso upright, and stand back up. It is the base for learning the movement before adding load.",
+  "ejecucion": [
+    "Stand with your feet shoulder-width apart or slightly wider, toes turned slightly out.",
+    "Reach your arms out in front or cross your hands in front of your chest for balance.",
+    "Go down by pushing your hips back and down while bending your knees, which follow the direction of your feet, with your chest up.",
+    "Go as low as you can keep your back straight and your heels down, ideally with your thighs parallel to the floor or a little lower.",
+    "Stand up by pushing the floor with your whole foot. If your heels lift or your knees cave in, go less deep."
+  ],
+  "material": [
+    "ninguno"
+  ],
+  "nivel": "inicial",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen"
+    ]
+  },
+  "matices": "A review of squat biomechanics recommends letting the knees travel past the toes if needed to go down with a more upright torso: restricting it shifts the load to the hips and lower back. Without weight, it is mainly an exercise for learning the movement and for beginners; to keep progressing, add load or move on to single-leg variations.",
+  "fuentes": [
+    {
+      "titulo": "Squatting kinematics and kinetics and their application to exercise performance",
+      "autor": "Schoenfeld, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20182386/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

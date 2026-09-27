@@ -1,0 +1,44 @@
+{
+  "id": "patada-gluteo-polea",
+  "grupo_id": "bisagra-cadera",
+  "orden": 10,
+  "nombre": "Cable glute kickback",
+  "resumen": "Standing facing a low pulley with the ankle attached, you take the straight leg back and return slowly. It works the gluteus maximus.",
+  "ejecucion": [
+    "Attach an ankle strap to the cable of a low pulley, put it on one ankle and stand facing the machine, holding on to it.",
+    "Lean your torso slightly forward, with a straight back and the standing knee slightly bent.",
+    "Take the attached leg back, almost straight, squeezing the glute, without arching your lower back.",
+    "Return slowly until your foot is level with the other.",
+    "If your back arches to take the leg further back, shorten the range or lower the weight."
+  ],
+  "material": [
+    "polea"
+  ],
+  "nivel": "inicial",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "isquiotibiales"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "gluteo_medio"
+    ]
+  },
+  "matices": "We have found no study measuring the standing cable kickback. The closest measured movement is the quadruped hip extension, with fine-wire electrodes, which activated the glutes clearly more than the tensor fasciae latae. The cable does that movement standing up with adjustable load, and the usual risk is making up with the lower back what the hip cannot reach.",
+  "fuentes": [
+    {
+      "titulo": "Which exercises target the gluteal muscles while minimizing activation of the tensor fascia lata? Electromyographic assessment using fine-wire electrodes",
+      "autor": "Selkowitz, Beneck and Powers, J Orthop Sports Phys Ther, 2013",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23160432/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
