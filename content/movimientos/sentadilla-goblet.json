@@ -15,7 +15,7 @@
     "barra": {
       "tipo": "mancuerna",
       "relativo_a": "torax",
-      "desplazamiento": [0, 0.06, 0.19],
+      "desplazamiento": [0, 0.06, 0.21],
       "solido": true,
       "giro": 90
     }
@@ -28,7 +28,7 @@
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [-0.152, -0.031, 0.077], "relativo_a": "articulacion", "codo_hacia": [-1, -1, 0.5], "pronacion": -24, "muneca": { "extension": 93 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
+      "brazos": { "ambos": { "objetivo": [-0.127, -0.031, 0.119], "relativo_a": "articulacion", "codo_hacia": [0.3, -1, 0], "pronacion": -56, "muneca": { "extension": 89 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -37,7 +37,7 @@
       "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -6 },
-      "brazos": { "ambos": { "objetivo": [-0.152, -0.046, 0.069], "relativo_a": "articulacion", "codo_hacia": [-1, -1.082, 0.281], "pronacion": -24, "muneca": { "extension": 93 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
+      "brazos": { "ambos": { "objetivo": [-0.127, -0.055, 0.11], "relativo_a": "articulacion", "codo_hacia": [0.3, -0.978, -0.208], "pronacion": -56, "muneca": { "extension": 89 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -47,7 +47,7 @@
       "pelvis": { "posicion": [0, 0.36, -0.19], "orientacion": { "inclinacion": 22 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -12 },
-      "brazos": { "ambos": { "objetivo": [-0.152, -0.058, 0.06], "relativo_a": "articulacion", "codo_hacia": [-1, -1.114, 0.089], "pronacion": -24, "muneca": { "extension": 93 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
+      "brazos": { "ambos": { "objetivo": [-0.127, -0.074, 0.099], "relativo_a": "articulacion", "codo_hacia": [0.3, -0.927, -0.375], "pronacion": -56, "muneca": { "extension": 89 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.65, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -56,7 +56,7 @@
       "pelvis": { "posicion": [0, 0.68, -0.13], "orientacion": { "inclinacion": 12 } },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": -6 },
-      "brazos": { "ambos": { "objetivo": [-0.152, -0.046, 0.069], "relativo_a": "articulacion", "codo_hacia": [-1, -1.082, 0.281], "pronacion": -24, "muneca": { "extension": 93 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
+      "brazos": { "ambos": { "objetivo": [-0.127, -0.055, 0.11], "relativo_a": "articulacion", "codo_hacia": [0.3, -0.978, -0.208], "pronacion": -56, "muneca": { "extension": 89 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -64,11 +64,12 @@
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [-0.152, -0.031, 0.077], "relativo_a": "articulacion", "codo_hacia": [-1, -1, 0.5], "pronacion": -24, "muneca": { "extension": 93 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
+      "brazos": { "ambos": { "objetivo": [-0.127, -0.031, 0.119], "relativo_a": "articulacion", "codo_hacia": [0.3, -1, 0], "pronacion": -56, "muneca": { "extension": 89 }, "cierre": 0.88, "escapula": { "protraccion": 20, "elevacion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.24, 0.104, -0.08], "rodilla_hacia": [0.5, 0, 1], "pie_plano": true, "apertura": 25 } }
     }
   ],
-  "$comment_agarre": "La goblet no se coge del mango: la mancuerna va vertical contra el esternón y descansa en las dos manos, ahuecadas bajo el disco de arriba. Las manos van LIBRES (sin `agarre` ni `npm run agarre`), con la muñeca como objetivo relativo al hombro y la mano girada con `pronacion` y `muneca.extension`. Con el antebrazo casi vertical (ver $comment_codos), la palma queda hacia arriba con la muñeca a 93°; a 45°, que valía con el antebrazo tumbado, los dedos apuntaban al techo. `pronacion` −24: con −65 los dedos apuntaban a la línea media y los de las dos manos atravesaban el mango; con −40 o más, el meñique. EL PULGAR: este esqueleto lo tiene perpendicular a la palma, así que con la palma arriba apunta al techo, y con `cierre` ≤ 1 el motor no lo recoge (el eje con que lo dobla sale casi nulo); con `cierre` > 1 sí lo lleva al índice, pero cierra los dedos en puño y las manos dejaban de sostener el disco. Lo que se hace es que ese pulgar vertical quede PEGADO al canto del disco (a 1 cm): la muñeca a 1,5 cm del centro por fuera y la pronación de −24 lo ponen ahí. `cierre` 0,88 curva los dedos hacia arriba contra la cara inferior del disco, a 2-6 mm, sin entrar: medido vértice a vértice en todo el ciclo, porque el validador no mira las manos. Subiendo la muñeca 3 mm, los anulares ya se meten en el disco al subir, por la asimetría.",
-  "$comment_codos": "Antes el codo iba al costado y por detrás del hombro, con el antebrazo inclinado 45° hacia delante: de perfil la mancuerna parecía ir un palmo por delante del pecho. Con los brazos de 27 cm del maniquí, un antebrazo vertical solo cabe si el hombro baja y se adelanta: `escapula` con protracción 20 y depresión 10 (los topes de RANGOS) y el polo del codo abajo, hacia dentro y adelante ([-1, -1, 0,5]). Así el codo queda bajo la mancuerna, delante del tronco y junto a él, y el antebrazo a unos 15° del eje de la mancuerna. La mancuerna sube a 0,06 sobre el tórax para que las manos, ahora más altas respecto al codo, la cojan: el disco de arriba queda a la altura de la clavícula, bajo la barbilla sin tocarla, y el de abajo toca el pecho (1 mm de holgura). EN LAS OTRAS POSES EL BRAZO VA RÍGIDO CON EL TRONCO: objetivo y polo son los de arriba girados 12° y 22° alrededor de X, lo que la pelvis se inclina de más. Como el objetivo es relativo al hombro pero en ejes de MUNDO, sin ese giro la mano cambiaba de ángulo respecto al disco en cada pose y abajo los dedos lo atravesaban 2-4 cm. Abajo los codos quedan a 19 cm de la línea media y las rodillas a 29: por dentro, vistos de frente.",
+  "$comment_agarre": "La goblet no se coge del mango: la mancuerna va vertical contra el esternón y descansa en las dos manos, ahuecadas bajo el disco de arriba. Las manos van LIBRES (sin `agarre` ni `npm run agarre`), con la muñeca como objetivo relativo al hombro y la mano girada con `pronacion` y `muneca.extension`. Con el antebrazo casi vertical (ver $comment_codos), la palma queda hacia arriba con la muñeca a 93°; a 45°, que valía con el antebrazo tumbado, los dedos apuntaban al techo. `pronacion` −24: con −65 los dedos apuntaban a la línea media y los de las dos manos atravesaban el mango; con −40 o más, el meñique. EL PULGAR: este esqueleto lo tiene perpendicular a la palma, así que con la palma arriba apunta al techo, y con `cierre` ≤ 1 el motor no lo recoge (el eje con que lo dobla sale casi nulo); con `cierre` > 1 sí lo lleva al índice, pero cierra los dedos en puño y las manos dejaban de sostener el disco. Lo que se hace es que ese pulgar vertical quede PEGADO al canto del disco (a 1 cm): la muñeca a 1,5 cm del centro por fuera y la pronación de −24 lo ponen ahí. `cierre` 0,88 curva los dedos hacia arriba contra la cara inferior del disco, a 2-6 mm, sin entrar: medido vértice a vértice en todo el ciclo, porque el validador no mira las manos. Subiendo la muñeca 3 mm, los anulares ya se meten en el disco al subir, por la asimetría. (Los números de este párrafo —pronación −24, muñeca a 93°— son de antes de separar los antebrazos del pecho; ver $comment_pecho para los de ahora.)",
+  "$comment_pecho": "Con el codo pegado al costado, los dos antebrazos iban metidos 4,6-4,8 cm en el pecho en TODO el ciclo (lo cazó la comprobación de autocolisión; la mancuerna lo tapaba en pantalla). Solo adelantar mancuerna y manos no basta: con el polo del codo hacia dentro ([-1, -1, 0,5]), el codo se iba aún más hacia la línea media y se metía 6,7 cm. Lo que funciona es adelantar la mancuerna 2 cm (0,19 → 0,21) y girar el conjunto mano-muñeca 15° alrededor del eje de la mancuerna, hacia delante y afuera: como el disco es un cilindro, el agarre respecto a él es el mismo, pero el antebrazo llega desde delante y no cruza el pecho. El polo del codo pasa a [0,3, -1, 0] (abajo), y la mano se reorienta con pronación −56 y muñeca a 89° para que su giro respecto al disco sea el de antes (a 1,4° del agarre aprobado). Medido en todo el ciclo: antebrazo contra el pecho 1 mm como mucho, dedos a ≤1 mm del disco sin entrar, y las palmas siguen bajo el disco de arriba. Con 3 cm y los números viejos de la mano, los dedos quedaban delante del disco en vez de debajo.",
+  "$comment_codos": "Antes el codo iba al costado y por detrás del hombro, con el antebrazo inclinado 45° hacia delante: de perfil la mancuerna parecía ir un palmo por delante del pecho. Con los brazos de 27 cm del maniquí, un antebrazo vertical solo cabe si el hombro baja y se adelanta: `escapula` con protracción 20 y depresión 10 (los topes de RANGOS) y el polo del codo abajo, hacia dentro y adelante ([-1, -1, 0,5]). Así el codo queda bajo la mancuerna, delante del tronco y junto a él, y el antebrazo a unos 15° del eje de la mancuerna. La mancuerna sube a 0,06 sobre el tórax para que las manos, ahora más altas respecto al codo, la cojan: el disco de arriba queda a la altura de la clavícula, bajo la barbilla sin tocarla, y el de abajo tocaba el pecho (1 mm de holgura; ahora queda a 2 cm, ver $comment_pecho). EN LAS OTRAS POSES EL BRAZO VA RÍGIDO CON EL TRONCO: objetivo y polo son los de arriba girados 12° y 22° alrededor de X, lo que la pelvis se inclina de más. Como el objetivo es relativo al hombro pero en ejes de MUNDO, sin ese giro la mano cambiaba de ángulo respecto al disco en cada pose y abajo los dedos lo atravesaban 2-4 cm. Abajo los codos quedan a 19 cm de la línea media y las rodillas a 29: por dentro, vistos de frente.",
   "$comment_fondo": "Abajo la pelvis se inclina 22° y va atrás: con el tronco a 12° de la vertical y la cadera encima de los pies, la cadera flexionaba solo 65°. Así la rodilla llega a 141° con el talón en el suelo."
 }

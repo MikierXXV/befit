@@ -15,13 +15,14 @@
     "mancuerna": {
       "tipo": "mancuerna",
       "relativo_a": "mundo",
-      "desplazamiento": [0, -0.13, 0.22],
+      "desplazamiento": [0, -0.136, 0.25],
       "solido": true,
       "giro": 90
     }
   },
   "$comment_agarre": "La mancuerna cuelga en vertical y las dos manos rodean el disco de arriba, a la misma altura, con el mango hacia el suelo. No va como `barra` con `agarre`: así las manos quedan una encima de otra sobre el mango y, con los brazos estirados, la de abajo no llega (faltaban 24 cm). Por eso las manos llevan objetivo propio y la mancuerna, `relativo_a: mundo` —pegada a la pelvis pero sin girar con ella, para que cuelgue recta—, y en cada pose se escriben las dos juntas: la muñeca a brazo estirado y el centro de la mancuerna 17 cm por debajo. Va adelantada respecto a la pelvis porque, en la vertical de las caderas, el disco de arriba se metía 2 cm en la ingle.",
-  "$comment_piernas": "La cadera del maniquí no pasa de 50° de abducción, y eso limita la postura: con los pies a 0,30 y las rodillas en la línea de una apertura de 35°, abajo pedía 61°. Queda en pies a 0,27, puntas a 25° y el polo de la rodilla más abierto arriba que abajo: con el mismo polo en todo el ciclo, a media bajada la rodilla iba 10° por dentro de la línea del pie.",
+  "$comment_brazos": "Con los hombros en su sitio y los brazos estirados hacia las manos juntas, el brazo cruzaba el costado del pecho: brazo y antebrazo metidos en el tronco hasta 5,3 cm en todo el ciclo (lo cazó la comprobación de autocolisión). Se arregla con tres cosas a la vez: `escapula.protraccion` 20, que adelanta el hombro 7 cm y el brazo arranca por delante del pecho; mancuerna y manos 3 cm más adelante (0,22 → 0,25 la mancuerna); y el polo del codo hacia fuera ([1, 0, 0]). Con el hombro adelantado el brazo llega sobrado y el codo se doblaba 21-27°, que de frente se veía como brazos arqueados: por eso mancuerna y manos bajan 6 mm arriba y 12 mm abajo, y el codo queda a 13-14° (2° a media bajada). Queda el brazo rozando el pecho, 7 mm como mucho. Bajándolas 3 cm los brazos quedan rectos pero la mano no llega a la mancuerna (faltan 2 cm), y rectos del todo vuelven a meterse 2 cm.",
+  "$comment_piernas":"La cadera del maniquí no pasa de 50° de abducción, y eso limita la postura: con los pies a 0,30 y las rodillas en la línea de una apertura de 35°, abajo pedía 61°. Queda en pies a 0,27, puntas a 25° y el polo de la rodilla más abierto arriba que abajo: con el mismo polo en todo el ciclo, a media bajada la rodilla iba 10° por dentro de la línea del pie.",
   "poses": [
     {
       "t": 0,
@@ -30,8 +31,8 @@
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.136, 0.25] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.934, 0.22], "codo_hacia": [1, 0, 0], "cierre": 1.2, "escapula": { "protraccion": 20, "elevacion": 0 } } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -41,8 +42,8 @@
       "pelvis": { "posicion": [0, 0.45, -0.07] },
       "columna": { "flexion": 12 },
       "cuello": { "flexion": -8 },
-      "implementos": { "mancuerna": { "desplazamiento": [0, -0.141, 0.215] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.479, 0.145], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.153, 0.245] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.467, 0.175], "codo_hacia": [1, 0, 0], "cierre": 1.2, "escapula": { "protraccion": 20, "elevacion": 0 } } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.7, 0, 0.71], "pie_plano": true, "apertura": 25 } }
     },
     {
@@ -50,8 +51,8 @@
       "pelvis": { "posicion": [0, 0.9, -0.03] },
       "columna": { "flexion": 4 },
       "cuello": { "flexion": 0 },
-      "implementos": { "mancuerna": { "desplazamiento": [0, -0.13, 0.22] } },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.94, 0.19], "codo_hacia": [0.3, 0, -1], "cierre": 1.2 } },
+      "implementos": { "mancuerna": { "desplazamiento": [0, -0.136, 0.25] } },
+      "brazos": { "ambos": { "objetivo": [0.08, 0.934, 0.22], "codo_hacia": [1, 0, 0], "cierre": 1.2, "escapula": { "protraccion": 20, "elevacion": 0 } } },
       "piernas": { "ambos": { "objetivo": [0.27, 0.104, -0.05], "rodilla_hacia": [0.85, 0, 0.53], "pie_plano": true, "apertura": 25 } }
     }
   ]

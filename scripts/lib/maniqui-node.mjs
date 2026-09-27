@@ -5,7 +5,7 @@
  * cargase el modelo por otro camino podría dar por buena una pose que en pantalla se ve distinta.
  */
 import { readFileSync } from 'node:fs';
-import { Vector3 } from 'three';
+import { Matrix4, Vector3 } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 import { prepararEsqueleto } from '../../src/figura/cinematica.js';
@@ -37,8 +37,9 @@ export function verticesPosados({ mallas, escena }, paso = 1) {
   for (const m of mallas) {
     const pos = m.geometry.getAttribute('position');
     const huesos = huesoDominante(m);
+    prepararPosado(m);
     for (let n = 0; n < pos.count; n += paso) {
-      const v = m.getVertexPosition(n, new Vector3()).applyMatrix4(m.matrixWorld);
+      const v = posarVertice(m, n);
       v.hueso = huesos[n];
       v.mano = /DEF-(hand|f_|thumb)/.test(v.hueso);
       salida.push(v);
@@ -63,12 +64,61 @@ export function verticesDeHuesos({ mallas }, nombres) {
   for (const m of mallas) {
     const porHueso = indicesPorHueso(m);
     for (const nombre of nombres) {
-      for (const n of porHueso.get(nombre) ?? []) {
-        salida.push(m.getVertexPosition(n, new Vector3()).applyMatrix4(m.matrixWorld));
-      }
+      for (const n of porHueso.get(nombre) ?? []) salida.push(posarVertice(m, n));
     }
   }
   return salida;
+}
+
+/*
+ * POSAR UN VÉRTICE SIN `getVertexPosition`.
+ *
+ * Three.js, en cada vértice y en cada una de sus cuatro influencias, multiplica la matriz de mundo
+ * del hueso por su inversa de reposo y desnormaliza la posición y los pesos, que en este modelo van
+ * cuantizados. Con la comprobación de autocolisión, que posa todos los vértices de tronco, muslos y
+ * piernas en cada fotograma, eso era más de la mitad del tiempo del validador: pasaba de 6 a 9 s.
+ * Aquí las matrices se calculan una vez por malla y fotograma (en `verticesPosados`, que es quien
+ * actualiza el mundo) y los atributos se desnormalizan una vez al cargar. Mismo cálculo, mismos
+ * números que `getVertexPosition` + `matrixWorld`.
+ */
+const cachePosado = new WeakMap();
+function prepararPosado(m) {
+  let c = cachePosado.get(m);
+  if (!c) {
+    const g = m.geometry;
+    const pos = g.getAttribute('position');
+    const ind = g.getAttribute('skinIndex');
+    const pes = g.getAttribute('skinWeight');
+    c = { pos: new Float32Array(pos.count * 3), ind: new Uint16Array(pos.count * 4), pes: new Float32Array(pos.count * 4), huesos: [], salida: new Matrix4() };
+    for (let n = 0; n < pos.count; n += 1) {
+      c.pos[n * 3] = pos.getX(n); c.pos[n * 3 + 1] = pos.getY(n); c.pos[n * 3 + 2] = pos.getZ(n);
+      for (let k = 0; k < 4; k += 1) {
+        c.ind[n * 4 + k] = ind.getComponent(n, k);
+        c.pes[n * 4 + k] = pes.getComponent(n, k);
+      }
+    }
+    cachePosado.set(m, c);
+  }
+  // hueso_k = matrixWorld(hueso) · inversa de reposo · bindMatrix; y al final, bindMatrixInverse y el mundo de la malla.
+  const { bones, boneInverses } = m.skeleton;
+  c.huesos = bones.map((b, k) => new Matrix4().multiplyMatrices(b.matrixWorld, boneInverses[k]).multiply(m.bindMatrix).elements);
+  c.salida.multiplyMatrices(m.matrixWorld, m.bindMatrixInverse);
+  return c;
+}
+
+function posarVertice(m, n) {
+  const c = cachePosado.get(m) ?? prepararPosado(m);
+  const px = c.pos[n * 3], py = c.pos[n * 3 + 1], pz = c.pos[n * 3 + 2];
+  let x = 0, y = 0, z = 0;
+  for (let k = 0; k < 4; k += 1) {
+    const w = c.pes[n * 4 + k];
+    if (w === 0) continue;
+    const e = c.huesos[c.ind[n * 4 + k]];
+    x += w * (e[0] * px + e[4] * py + e[8] * pz + e[12]);
+    y += w * (e[1] * px + e[5] * py + e[9] * pz + e[13]);
+    z += w * (e[2] * px + e[6] * py + e[10] * pz + e[14]);
+  }
+  return new Vector3(x, y, z).applyMatrix4(c.salida);
 }
 
 const cachePorHueso = new WeakMap();

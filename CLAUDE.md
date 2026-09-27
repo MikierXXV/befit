@@ -95,6 +95,7 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    eje de la barra, y el sumo, el convencional, la sentadilla, el press cerrado y dos jalones la
    llevaban metida 3-8 cm en muslos o tronco sin que saltara nada. Un movimiento que aún no se
    haya corregido puede ir en `BARRA_DENTRO_PENDIENTES`, que avisa sin bloquear; esa lista se vacía.
+   Y el cuerpo que se atraviesa a sí mismo (antebrazo en la barriga, mano en el muslo; >2,5 cm, lo cazó Migue en el remo en polea y la rotación rusa); pendientes en `AUTOCOLISION_PENDIENTES`.
 4. `npm run hoja` y **mirar la hoja**. El validador sabe si una rodilla pasa de 155°; no sabe si el
    ejercicio parece lo que dice ser.
 5. Si las manos van a una barra, `npm run agarre` DESPUÉS de mirar la hoja: congela la orientación

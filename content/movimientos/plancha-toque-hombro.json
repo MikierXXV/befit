@@ -3,7 +3,7 @@
   "id": "plancha-toque-hombro",
   "duracion": 4,
   "$comment_cuerpo": "La plancha alta de las flexiones, con las manos justo bajo los hombros y los pies más abiertos. Un ciclo son los dos toques: la mano derecha sube por delante del pecho, bajo la barbilla, hasta el hombro izquierdo, vuelve a apoyarse, y luego la otra. La pelvis NO gira: solo se desplaza un centímetro hacia la mano que queda apoyada, que es lo que hace el peso al pasar a tres apoyos.",
-  "$comment_mano": "La mano apoyada va con mano_plana y la que sube, LIBRE: pronacion y muneca.extension se interpolan. En el toque, pronacion -30 y extension 50 dejan la palma contra la cara anterosuperior del hombro contrario y los dedos por encima del deltoides, hacia fuera y hacia la cabeza (antes seguia al antebrazo y la palma miraba a la cara). mano_plana es una bandera y cambia a mitad de tramo, asi que ese cambio se hace entre el suelo y las poses de despegue y posado (mano recta arriba, a 12 cm), con valores que imitan la mano plana: el giro que queda en ese fotograma baja de 114 a unos 8-9 grados. No llega a cero porque la mano libre no tiene desviacion radial/cubital, y con la mano libre en el suelo el pulgar se hunde 4 cm (solo mano_plana lo tumba).",
+  "$comment_mano": "La mano apoyada va con mano_plana y la que sube, LIBRE: pronacion y muneca.extension se interpolan. En el toque, pronacion -30 y extension 50 dejan la palma contra la cara anterosuperior del hombro contrario y los dedos por encima del deltoides, hacia fuera y hacia la cabeza (antes seguia al antebrazo y la palma miraba a la cara). mano_plana es una bandera y cambia a mitad de tramo, asi que ese cambio se hace entre el suelo y las poses de despegue y posado (mano recta arriba, a 12 cm), con valores que imitan la mano plana: el giro que queda en ese fotograma baja de 114 a unos 8-9 grados. No llega a cero porque la mano libre no tiene desviacion radial/cubital, y con la mano libre en el suelo el pulgar se hunde 4 cm (solo mano_plana lo tumba). El codo del brazo que toca va hacia abajo y algo adelante (codo_hacia con z positiva en el toque, protraccion 10) y la muneca 3-4 cm mas baja y adelantada que el hombro: con el codo hacia fuera y la muneca a la altura del hombro, antebrazo y mano se metian 5,5-5,9 cm en el pecho al llegar y al volver del toque.",
   "asimetria": 0.2,
   "respiracion": {
     "amplitud": 0.003,
@@ -286,9 +286,9 @@
             0.5
           ],
           "codo_hacia": [
-            0,
+            -0.1,
             -1,
-            -0.7
+            -0.3
           ],
           "cierre": 0.1,
           "pronacion": 5,
@@ -296,7 +296,7 @@
             "extension": 35
           },
           "escapula": {
-            "protraccion": 3
+            "protraccion": 6
           }
         }
       },
@@ -357,14 +357,14 @@
         },
         "d": {
           "objetivo": [
-            0.105,
-            0.52,
-            0.51
+            0.12,
+            0.48,
+            0.53
           ],
           "codo_hacia": [
-            -0.55,
+            -0.3,
             -1,
-            -0.1
+            0.2
           ],
           "cierre": 0.15,
           "pronacion": -30,
@@ -372,7 +372,7 @@
             "extension": 50
           },
           "escapula": {
-            "protraccion": 4
+            "protraccion": 10
           }
         }
       },
@@ -439,9 +439,9 @@
             0.5
           ],
           "codo_hacia": [
-            0,
+            -0.1,
             -1,
-            -0.7
+            -0.3
           ],
           "cierre": 0.1,
           "pronacion": 5,
@@ -449,7 +449,7 @@
             "extension": 35
           },
           "escapula": {
-            "protraccion": 3
+            "protraccion": 6
           }
         }
       },
@@ -943,9 +943,9 @@
             0.5
           ],
           "codo_hacia": [
-            0,
+            0.1,
             -1,
-            -0.7
+            -0.3
           ],
           "cierre": 0.1,
           "pronacion": 5,
@@ -953,7 +953,7 @@
             "extension": 35
           },
           "escapula": {
-            "protraccion": 3
+            "protraccion": 6
           }
         },
         "d": {
@@ -1014,14 +1014,14 @@
       "brazos": {
         "i": {
           "objetivo": [
-            -0.105,
-            0.52,
-            0.51
+            -0.12,
+            0.48,
+            0.53
           ],
           "codo_hacia": [
-            0.55,
+            0.3,
             -1,
-            -0.1
+            0.2
           ],
           "cierre": 0.15,
           "pronacion": -30,
@@ -1029,7 +1029,7 @@
             "extension": 50
           },
           "escapula": {
-            "protraccion": 4
+            "protraccion": 10
           }
         },
         "d": {
@@ -1096,9 +1096,9 @@
             0.5
           ],
           "codo_hacia": [
-            0,
+            0.1,
             -1,
-            -0.7
+            -0.3
           ],
           "cierre": 0.1,
           "pronacion": 5,
@@ -1106,7 +1106,7 @@
             "extension": 35
           },
           "escapula": {
-            "protraccion": 3
+            "protraccion": 6
           }
         },
         "d": {

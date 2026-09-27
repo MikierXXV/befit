@@ -157,6 +157,12 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   de rodillas con los brazos estirados; superman más bajo; hollow con curva clara gracias a
   `columna.flexion_alta`. El validador mira ya la cabeza y el cuello: la dominada supina y el
   press militar metían la barra en la barbilla y se corrigieron.
+- ✅ **Autocolisión en el validador:** el cuerpo que se atraviesa a sí mismo (antebrazos en la
+  barriga del remo sentado, manos en los muslos de la rotación rusa) no lo veía nadie. Ahora se mide
+  con cápsulas medidas de la piel posada (tronco en cuatro), tolerancia 2,5 cm, y se arreglaron los
+  once que fallaban: remo sentado, rotación rusa, toque de hombro, goblet, sentadilla sumo, zancada
+  lateral, búlgara, fondos en banco, press militar, jalón de tríceps y Pallof. De paso, el validador
+  pasó de 6,4 a unos 4 s al posar los vértices con las matrices de hueso una vez por fotograma.
 - ⬜ **Quedan, menores:** en la goblet el pulgar apunta arriba (el motor cierra pulgar y dedos a
   la vez) y los codos no tocan la cara interna de las rodillas; el validador no comprueba el
   cuerpo contra una mancuerna (`profundidad()` da 0 para ellas); y en el Pendlay, de perfil, el

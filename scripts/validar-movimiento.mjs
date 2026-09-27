@@ -15,6 +15,8 @@
  *  - rangos articulares (RANGOS en cinematica.js);
  *  - piel: ningún vértice bajo el suelo ni dentro de un implemento sólido;
  *  - barras: ninguna barra ni agarre de polea atravesando un miembro por dentro;
+ *  - autocolisión: ningún miembro metido más de 2,5 cm en otro que no es su vecino (antebrazo en
+ *    la barriga, mano en el muslo); ver EL CUERPO QUE SE ATRAVIESA A SÍ MISMO;
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
  *  - equilibrio: la barra sobre el medio pie, cuando la ficha lo pide.
  *
@@ -126,6 +128,93 @@ const SEGMENTOS = [
  */
 const BARRA_DENTRO_PENDIENTES = new Set([]);
 
+/*
+ * EL CUERPO QUE SE ATRAVIESA A SÍ MISMO.
+ *
+ * Nada miraba la piel contra la piel: en el remo en polea sentado los antebrazos se metían en la
+ * barriga al tirar, y en la rotación rusa brazos y manos cruzaban muslos y tronco, los dos
+ * publicados con el validador en verde. Lo vio Migue en la web.
+ *
+ * Cada VOLUMEN (tronco, muslos, piernas) se trata como una cápsula sobre su hueso, con el grosor
+ * medido en SUS vértices posados, sin saltarse ninguno: un perfil de radio por franjas de 3 cm a lo
+ * largo del hueso y sectores de 30° alrededor. El tronco son cuatro cápsulas, una por vértebra de
+ * la malla, porque en un encogimiento o en la rotación rusa se curva, y un eje recto de la pelvis
+ * al cuello salía por delante de la barriga. Luego se miran los vértices de cada MIEMBRO que puede
+ * chocar con él: cuánto queda cada uno por dentro del radio del volumen en su franja y su sector.
+ * La cabeza es una bola, como en la barra (ver `bolaDentro`).
+ *
+ * Lo que cuenta es el TERCER vértice más hundido, no el primero: el perfil es una media y en un
+ * sector donde la piel cambia deprisa —la axila, la ingle— un vértice suelto sale 1-2 cm dentro sin
+ * que haya nada que ver. Cuando un miembro entra de verdad, entran muchos.
+ *
+ * Qué choca con qué. Solo parejas que no son vecinas: antebrazo, brazo y mano contra tronco y
+ * muslos; antebrazo y brazo contra la cabeza; muslo contra el tronco y el otro muslo; pierna contra
+ * la otra pierna y el otro muslo. El antebrazo contra su brazo (el curl) no se mira: es el codo.
+ * Las parejas que comparten articulación sí se miran, pero lejos de ella: del brazo contra el
+ * tronco, solo desde el 35 % del brazo (el hombro hunde el deltoides en el pecho en cualquier
+ * elevación); del muslo contra el tronco, desde el 40 % (la ingle se pliega en cuanto la cadera
+ * flexiona); de un muslo contra el otro, desde el 30 % (la entrepierna).
+ *
+ * Tolerancia de 2,5 cm. Rozar no es un fallo: dos pieles que se tocan dan 0, pero la malla no se
+ * aplasta como la carne, y un brazo colgando pegado al costado ya se mete 1,5-2,2 cm (sentadilla con
+ * barra, peso muerto, rumano con mancuernas, buenos días) y una mano apoyada en el muslo, lo mismo.
+ * Con 2 cm saltaban esos. Lo que se busca entra 4-8 cm: los antebrazos del remo en polea en la
+ * barriga, hasta 6,3 cm; las manos de la rotación rusa en los muslos, hasta 7,8. El muslo contra
+ * el tronco va con la misma: se temía que en una sentadilla profunda se tocasen de verdad, pero en
+ * la sentadilla con barra, la goblet y el encogimiento abdominal quedan 4-5 cm de aire.
+ * Un trazado de rayos contra la malla da lo mismo o más hondo (la goblet, 5-7 cm): los fallos
+ * son de la pose, no del método, que se queda corto antes que pasarse.
+ */
+const TOLERANCIA_AUTOCOLISION = REGLAS.tolerancia_autocolision ?? 0.025;
+const PERFIL_FRANJA = 0.03;
+const PERFIL_SECTORES = 12;
+const PERFIL_SIGMA_EJE = 0.02;
+const PERFIL_SIGMA_ANGULO = (20 * Math.PI) / 180;
+const VOLUMENES = {
+  tronco: [
+    { desde: (h) => h.pelvis, hasta: (h) => h.columna[0], huesos: ['DEF-hips'] },
+    { desde: (h) => h.columna[0], hasta: (h) => h.columna[1], huesos: ['DEF-spine001'] },
+    { desde: (h) => h.columna[1], hasta: (h) => h.columna[2], huesos: ['DEF-spine002'] },
+    { desde: (h) => h.columna[2], hasta: (h) => h.cuello, huesos: ['DEF-spine003'] },
+  ],
+  ...Object.fromEntries(LADOS.flatMap((l) => {
+    const s = { i: 'L', d: 'R' }[l];
+    const lado = { i: 'izquierdo', d: 'derecho' }[l];
+    return [
+      [`muslo ${lado}`, [{ desde: (h) => h[`muslo_${l}`], hasta: (h) => h[`pierna_${l}`], huesos: [`DEF-thigh${s}`] }]],
+      [`pierna ${{ i: 'izquierda', d: 'derecha' }[l]}`, [{ desde: (h) => h[`pierna_${l}`], hasta: (h) => h[`pie_${l}`], huesos: [`DEF-shin${s}`] }]],
+    ];
+  })),
+  cabeza: 'bola',
+};
+/*
+ * Los miembros que se prueban contra los volúmenes; `contra` da, por volumen, desde qué fracción del
+ * miembro (medida desde su articulación de arriba) se miran sus vértices. Las parejas simétricas —
+ * muslo con muslo, pierna con pierna— solo desde el izquierdo, o saldrían dos veces.
+ */
+const MIEMBROS_CHOQUE = LADOS.flatMap((l) => {
+  const s = { i: 'L', d: 'R' }[l];
+  const lado = { i: 'izquierdo', d: 'derecho' }[l];
+  const otro = { i: 'derecho', d: 'izquierdo' }[l];
+  const ladoF = { i: 'izquierda', d: 'derecha' }[l];
+  const otraF = { i: 'derecha', d: 'izquierda' }[l];
+  const muslos = { 'muslo izquierdo': 0, 'muslo derecho': 0 };
+  return [
+    { nombre: `antebrazo ${lado}`, desde: `antebrazo_${l}`, hasta: `mano_${l}`, huesos: [`DEF-forearm${s}`], contra: { tronco: 0, ...muslos, cabeza: 0 } },
+    { nombre: `brazo ${lado}`, desde: `brazo_${l}`, hasta: `antebrazo_${l}`, huesos: [`DEF-upper_arm${s}`], contra: { tronco: 0.35, ...muslos, cabeza: 0 } },
+    // La mano tiene más vértices que el resto del brazo junto (los dedos): basta uno de cada tres.
+    { nombre: `mano ${ladoF}`, femenino: true, mano: s, paso: 3, contra: { tronco: 0, ...muslos } },
+    { nombre: `muslo ${lado}`, desde: `muslo_${l}`, hasta: `pierna_${l}`, huesos: [`DEF-thigh${s}`], contra: { tronco: 0.4, ...(l === 'i' ? { [`muslo ${otro}`]: 0.3 } : {}) } },
+    { nombre: `pierna ${ladoF}`, femenino: true, desde: `pierna_${l}`, hasta: `pie_${l}`, huesos: [`DEF-shin${s}`], contra: { [`muslo ${otro}`]: 0, ...(l === 'i' ? { [`pierna ${otraF}`]: 0 } : {}) } },
+  ];
+});
+/*
+ * TEMPORAL, como BARRA_DENTRO_PENDIENTES: movimientos con el cuerpo metido en sí mismo que aún no
+ * se han corregido. Avisan sin bloquear; al arreglar uno se quita de aquí, y la lista se vacía.
+ */
+const AUTOCOLISION_PENDIENTES = new Set([
+]);
+
 const maniqui = await cargarManiqui();
 const dir = DIRECTORIO;
 let errores = 0;
@@ -202,6 +291,14 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
         if (BARRA_DENTRO_PENDIENTES.has(id)) avisos.push([msg, donde, dentro.metida, etiqueta]);
         else fallo(msg, donde);
       }
+    }
+
+    for (const choque of autocolision(vertices)) {
+      const msg = `${choque.miembro} ${choque.femenino ? 'metida' : 'metido'} en ${choque.volumen}`;
+      const donde = `${etiqueta} (${(choque.metida * 100).toFixed(1)} cm)`;
+      if (choque.metida <= TOLERANCIA_AUTOCOLISION) continue;
+      if (AUTOCOLISION_PENDIENTES.has(id)) avisos.push([msg, donde, choque.metida, etiqueta]);
+      else fallo(msg, donde);
     }
 
     for (const apoyo of mov.apoyos ?? []) {
@@ -390,6 +487,189 @@ function bolaDentro(piel, b0, b1) {
   }
   if (pesos < 1) return null;
   return suma / pesos - d;
+}
+
+/**
+ * Cuánto se mete cada miembro en cada volumen del propio cuerpo, en metros, en el fotograma posado.
+ * Ver EL CUERPO QUE SE ATRAVIESA A SÍ MISMO, arriba. Devuelve solo las parejas que se tocan.
+ *
+ * `vertices` es la piel de `verticesPosados(…, 2)`, que ya está posada: de ella salen los vértices
+ * que se prueban y las cajas para descartar parejas lejanas. Los volúmenes se miden con TODOS sus
+ * vértices (`verticesDeHuesos`), y solo los que alguna pareja necesita: con la mitad, una franja de
+ * 3 cm y 30° del muslo se quedaba con uno o ningún vértice y el radio saltaba.
+ */
+function autocolision(vertices) {
+  const h = maniqui.esq.huesos;
+  const porHueso = new Map();
+  for (const v of vertices) {
+    if (!porHueso.has(v.hueso)) porHueso.set(v.hueso, []);
+    porHueso.get(v.hueso).push(v);
+  }
+  const perfiles = new Map(); // nombre del volumen → sus cápsulas medidas, o la bola de la cabeza
+  const perfilDe = (nombre) => {
+    if (!perfiles.has(nombre)) {
+      const def = VOLUMENES[nombre];
+      perfiles.set(nombre, def === 'bola'
+        ? { bola: verticesDeHuesos(maniqui, ['DEF-head']) }
+        : def.map((p) => perfilCapsula(p.desde(h).getWorldPosition(new Vector3()), p.hasta(h).getWorldPosition(new Vector3()), verticesDeHuesos(maniqui, p.huesos))));
+    }
+    return perfiles.get(nombre);
+  };
+  const cajaVolumen = new Map();
+  const cajaDe = (nombre) => {
+    if (!cajaVolumen.has(nombre)) {
+      const def = VOLUMENES[nombre];
+      const huesos = def === 'bola' ? ['DEF-head'] : def.flatMap((p) => p.huesos);
+      cajaVolumen.set(nombre, caja(huesos.flatMap((n) => porHueso.get(n) ?? []), 0.03));
+    }
+    return cajaVolumen.get(nombre);
+  };
+
+  const salida = [];
+  for (const m of MIEMBROS_CHOQUE) {
+    let piel;
+    let a0;
+    let dir;
+    let L;
+    if (m.mano) {
+      piel = [...porHueso].filter(([hueso, vs]) => vs[0].mano && hueso.endsWith(m.mano))
+        .flatMap(([, vs]) => vs.filter((_, n) => n % m.paso === 0));
+    } else {
+      piel = m.huesos.flatMap((n) => porHueso.get(n) ?? []);
+      a0 = h[m.desde].getWorldPosition(new Vector3());
+      dir = h[m.hasta].getWorldPosition(new Vector3()).sub(a0);
+      L = dir.length();
+      dir.divideScalar(L);
+    }
+    for (const [volumen, desdeFraccion] of Object.entries(m.contra)) {
+      const cv = cajaDe(volumen);
+      // Solo los vértices de la parte del miembro que se mira, y dentro de la caja del volumen.
+      const candidatos = piel.filter((v) => dentroDeCaja(cv, v)
+        && (!desdeFraccion || ((v.x - a0.x) * dir.x + (v.y - a0.y) * dir.y + (v.z - a0.z) * dir.z) / L >= desdeFraccion));
+      if (candidatos.length < 3) continue;
+      const perfil = perfilDe(volumen);
+      const hundidos = [];
+      for (const v of candidatos) {
+        let metida = -Infinity;
+        if (perfil.bola) metida = hundidoEnBola(perfil.bola, v);
+        else for (const c of perfil) metida = Math.max(metida, hundidoEnCapsula(c, v));
+        if (metida > 0) hundidos.push(metida);
+      }
+      if (hundidos.length < 3) continue;
+      hundidos.sort((a, b) => b - a);
+      salida.push({ miembro: m.nombre, femenino: m.femenino, volumen, metida: hundidos[2] });
+    }
+  }
+  return salida;
+}
+
+/**
+ * El perfil de una cápsula: radio medio de la piel por franja a lo largo del eje a0→a1 y por sector
+ * alrededor de él. Los sectores se cuentan desde un perpendicular cualquiera: el perfil y las
+ * consultas son del mismo fotograma, así que basta con que sea el mismo.
+ */
+function perfilCapsula(a0, a1, piel) {
+  const L = a1.distanceTo(a0);
+  const dir = a1.clone().sub(a0).divideScalar(L);
+  const ref = Math.abs(dir.x) < 0.9 ? new Vector3(1, 0, 0) : new Vector3(0, 1, 0);
+  const u = ref.clone().cross(dir).normalize();
+  const w = dir.clone().cross(u);
+  const c = { a0, dir, u, w, tmin: Infinity, franjas: 0, bins: null };
+  const locales = piel.map((v) => local(c, v));
+  for (const [t] of locales) c.tmin = Math.min(c.tmin, t);
+  const tmax = Math.max(...locales.map(([t]) => t));
+  c.franjas = Math.floor((tmax - c.tmin) / PERFIL_FRANJA) + 1;
+  c.bins = Array.from({ length: c.franjas * PERFIL_SECTORES }, () => ({ n: 0, t: 0, r: 0 }));
+  for (const [t, ang, r] of locales) {
+    const b = c.bins[Math.floor((t - c.tmin) / PERFIL_FRANJA) * PERFIL_SECTORES + sector(ang)];
+    b.n += 1;
+    b.t += t;
+    b.r += r;
+  }
+  for (const b of c.bins) if (b.n) { b.t /= b.n; b.r /= b.n; }
+  return c;
+}
+
+/** Un punto en coordenadas de la cápsula: [a lo largo del eje, ángulo alrededor, distancia al eje]. */
+function local(c, v) {
+  // Sin vectores intermedios: se llama miles de veces por fotograma.
+  const dx = v.x - c.a0.x, dy = v.y - c.a0.y, dz = v.z - c.a0.z;
+  const t = dx * c.dir.x + dy * c.dir.y + dz * c.dir.z;
+  const x = dx * c.u.x + dy * c.u.y + dz * c.u.z;
+  const y = dx * c.w.x + dy * c.w.y + dz * c.w.z;
+  return [t, Math.atan2(y, x), Math.hypot(x, y)];
+}
+
+function sector(ang) {
+  return ((Math.floor((ang + Math.PI) / (2 * Math.PI) * PERFIL_SECTORES) % PERFIL_SECTORES) + PERFIL_SECTORES) % PERFIL_SECTORES;
+}
+
+/**
+ * Cuánto queda el punto `v` por dentro de la piel de la cápsula (negativo: por fuera; -Infinity si
+ * cae fuera de su largo). El radio es la media de las franjas y sectores vecinos, con campanas de
+ * 2 cm y 20°: con la franja sola, el radio cambiaba a saltos al pasar de una a otra.
+ */
+function hundidoEnCapsula(c, v) {
+  const [t, ang, r] = local(c, v);
+  const f = Math.floor((t - c.tmin) / PERFIL_FRANJA);
+  if (f < -1 || f > c.franjas) return -Infinity;
+  const s = sector(ang);
+  let suma = 0;
+  let pesos = 0;
+  for (let df = -1; df <= 1; df += 1) {
+    const ff = f + df;
+    if (ff < 0 || ff >= c.franjas) continue;
+    for (let ds = -1; ds <= 1; ds += 1) {
+      const b = c.bins[ff * PERFIL_SECTORES + ((s + ds + PERFIL_SECTORES) % PERFIL_SECTORES)];
+      if (!b.n) continue;
+      // El centro del sector frente al ángulo del punto, con la vuelta: -179° y 179° están a 2°.
+      const centro = ((s + ds + 0.5) / PERFIL_SECTORES) * 2 * Math.PI - Math.PI;
+      const da = Math.atan2(Math.sin(ang - centro), Math.cos(ang - centro));
+      const peso = b.n * Math.exp(-0.5 * ((t - b.t) / PERFIL_SIGMA_EJE) ** 2 - 0.5 * (da / PERFIL_SIGMA_ANGULO) ** 2);
+      suma += peso * b.r;
+      pesos += peso;
+    }
+  }
+  // Menos de un vértice «entero» no es una medida: el punto queda más allá del final de la piel.
+  if (pesos < 1) return -Infinity;
+  return suma / pesos - r;
+}
+
+/** Lo mismo con la cabeza, que es una bola: radio de su piel en la dirección del punto. */
+function hundidoEnBola(piel, v) {
+  if (!piel.centro) {
+    piel.centro = new Vector3();
+    for (const p of piel) piel.centro.add(p);
+    piel.centro.divideScalar(piel.length);
+  }
+  const d = v.distanceTo(piel.centro);
+  if (d > 0.2 || d < 1e-4) return -Infinity;
+  const hacia = v.clone().sub(piel.centro).divideScalar(d);
+  let suma = 0;
+  let pesos = 0;
+  const w = new Vector3();
+  for (const p of piel) {
+    w.subVectors(p, piel.centro);
+    const radio = w.length();
+    const angulo = Math.acos(Math.max(-1, Math.min(1, w.dot(hacia) / radio)));
+    if (angulo > GROSOR_ANGULO_MAX) continue;
+    const peso = Math.exp(-0.5 * (angulo / GROSOR_SIGMA_ANGULO) ** 2);
+    suma += peso * radio;
+    pesos += peso;
+  }
+  if (pesos < 1) return -Infinity;
+  return suma / pesos - d;
+}
+
+function caja(puntos, margen) {
+  const min = new Vector3(Infinity, Infinity, Infinity);
+  const max = new Vector3(-Infinity, -Infinity, -Infinity);
+  for (const p of puntos) { min.min(p); max.max(p); }
+  return { min: min.subScalar(margen), max: max.addScalar(margen) };
+}
+
+function dentroDeCaja({ min, max }, v) {
+  return v.x >= min.x && v.x <= max.x && v.y >= min.y && v.y <= max.y && v.z >= min.z && v.z <= max.z;
 }
 
 /** Puntos más cercanos entre los segmentos a0-a1 y b0-b1; `s` es la fracción del primero. */

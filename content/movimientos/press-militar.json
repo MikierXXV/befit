@@ -26,16 +26,16 @@
       "agarre": 0.36,
       "agarre_marco": {
         "i": [
-          0.683123,
-          -0.182599,
-          0.683123,
-          -0.182599
+          0.676668,
+          -0.205232,
+          0.676668,
+          -0.205232
         ],
         "d": [
-          0.684498,
-          0.177377,
-          -0.684498,
-          -0.177377
+          0.6783,
+          0.199771,
+          -0.6783,
+          -0.199771
         ]
       }
     }
@@ -71,7 +71,7 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.35,
+            0.5,
             -1,
             0.45
           ],
@@ -442,7 +442,7 @@
         "ambos": {
           "objetivo": "barra",
           "codo_hacia": [
-            0.35,
+            0.5,
             -1,
             0.45
           ],
@@ -466,5 +466,6 @@
         }
       }
     }
-  ]
+  ],
+  "$comment_autocolision": "El codo abajo va algo más abierto (codo_hacia x 0,5 en vez de 0,35, solo en t=0 y t=1): con 0,35 el brazo derecho se metía 3,5 cm en el tronco con la barra en la clavícula, y lo cazó la comprobación de autocolisión."
 }

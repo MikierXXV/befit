@@ -24,22 +24,22 @@
       "posicion": [
         0,
         1.28,
-        0.24
+        0.27
       ],
       "agarre": 0.1,
       "solido": true,
       "agarre_marco": {
         "i": [
-          0.54564,
-          -0.449753,
-          0.545639,
-          -0.449753
+          0.553268,
+          -0.440335,
+          0.553268,
+          -0.440335
         ],
         "d": [
-          0.528615,
-          0.469645,
-          -0.528615,
-          -0.469645
+          0.538549,
+          0.458219,
+          -0.538549,
+          -0.458219
         ]
       }
     }
@@ -65,7 +65,7 @@
           "posicion": [
             0,
             1.28,
-            0.24
+            0.27
           ]
         }
       },
@@ -167,7 +167,7 @@
           "posicion": [
             0,
             1.28,
-            0.24
+            0.27
           ]
         }
       },
@@ -204,5 +204,6 @@
   "cartel": {
     "fase": 0.5
   },
-  "$comment_lectura": "El press Pallof es difícil de enseñar en una imagen: el cuerpo casi no se mueve, que es justo de lo que va. Tres decisiones para que se entienda: el anclaje al lado contrario de la cámara —así el cable cruza el fondo en vez de venirse encima—, el recorrido de los brazos lo más largo que permite el hombro, y el cartel sacado del punto extendido, porque el primer fotograma —manos pegadas al pecho— es indistinguible de estar de pie."
+  "$comment_lectura": "El press Pallof es difícil de enseñar en una imagen: el cuerpo casi no se mueve, que es justo de lo que va. Tres decisiones para que se entienda: el anclaje al lado contrario de la cámara —así el cable cruza el fondo en vez de venirse encima—, el recorrido de los brazos lo más largo que permite el hombro, y el cartel sacado del punto extendido, porque el primer fotograma —manos pegadas al pecho— es indistinguible de estar de pie.",
+  "$comment_autocolision": "Las manos en el pecho van a z 0,27 (antes 0,24): a 0,24 el antebrazo izquierdo se metía 2,7 cm en el tronco. El recorrido hasta 0,57 no cambia."
 }

@@ -16,32 +16,33 @@
   "poses": [
     {
       "t": 0, "curva": "esfuerzo", "etiqueta": "estirado",
-      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 13 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 16 } },
       "columna": { "flexion": 0 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.64], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
+      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.67], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
         "escapula": { "elevacion": 0, "protraccion": 20 } } },
       "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     },
     {
       "t": 0.5, "curva": "controlada", "etiqueta": "contraido",
-      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 0 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": -5 } },
       "columna": { "flexion": -2 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.68, 0.12], "codo_hacia": [0.1, -0.3, -1], "cierre": 0.9, "pronacion": 0,
-        "escapula": { "elevacion": 0, "protraccion": -20 } } },
+      "brazos": { "ambos": { "objetivo": [0.11, 0.68, 0.185], "codo_hacia": [0.9, -0.1, -1], "cierre": 0.9, "pronacion": 0,
+        "escapula": { "elevacion": 0, "protraccion": -10 } } },
       "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     },
     {
       "t": 1,
-      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 13 } },
+      "pelvis": { "posicion": [0, 0.495, 0], "orientacion": { "inclinacion": 16 } },
       "columna": { "flexion": 0 },
       "cuello": { "flexion": 0 },
-      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.64], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
+      "brazos": { "ambos": { "objetivo": [0.08, 0.77, 0.67], "codo_hacia": [0.3, -1, 0], "cierre": 0.9, "pronacion": 0,
         "escapula": { "elevacion": 0, "protraccion": 20 } } },
       "piernas": { "ambos": { "objetivo": [0.15, 0.37, 0.85], "rodilla_hacia": [0.2, 1, 0.2], "tobillo": { "dorsiflexion": 18 } } }
     }
   ],
   "$comment_mango": "El triángulo (maneral en V) son dos asas cortas casi verticales, lado a lado, con las palmas enfrentadas. El motor solo agarra un cilindro, y dos manos sobre UN cilindro horizontal quedan con las palmas abajo o atrás; con el cilindro vertical (la versión anterior, recurso de la goblet), una mano encima de la otra. Por eso cada mano lleva su propia asa (`en_mano`, como una mancuerna en agarre neutro, `pronacion: 0`) y cada asa su cable al mismo anclaje: los dos cables convergen en la polea y dibujan la V del triángulo.",
-  "$comment_maquina": "La máquina de remo y no un banco con los pies en el suelo: así lo revisó Migue en la versión anterior (asiento a 40 cm, rodillas a 90°, manos que recorrían 20 cm), que no se parecía al ejercicio. Asiento bajo (banco de 42 cm) y los pies contra una PLATAFORMA vertical, que es el tipo `pared` con 64 cm de alto y 6 de grueso: una caja de pie que el validador ya trata como sólido. Con las piernas casi estiradas la espinilla va casi horizontal, así que el pie no va `pie_plano` (lo pondría en el suelo) sino siguiendo a la pierna con 18° de dorsiflexión: con eso la planta queda vertical contra la plataforma. Es sensible: 3 cm de tobillo hacia la cadera llevan la rodilla de 14° a 34°. El cable sale de la plataforma, entre los pies. Recorrido de las asas: 51 cm; al tirar, el tronco vuelve a vertical y los codos pasan 4 cm por detrás de la espalda."
+  "$comment_maquina": "La máquina de remo y no un banco con los pies en el suelo: así lo revisó Migue en la versión anterior (asiento a 40 cm, rodillas a 90°, manos que recorrían 20 cm), que no se parecía al ejercicio. Asiento bajo (banco de 42 cm) y los pies contra una PLATAFORMA vertical, que es el tipo `pared` con 64 cm de alto y 6 de grueso: una caja de pie que el validador ya trata como sólido. Con las piernas casi estiradas la espinilla va casi horizontal, así que el pie no va `pie_plano` (lo pondría en el suelo) sino siguiendo a la pierna con 18° de dorsiflexión: con eso la planta queda vertical contra la plataforma. Es sensible: 3 cm de tobillo hacia la cadera llevan la rodilla de 14° a 34°. El cable sale de la plataforma, entre los pies. Recorrido de las asas: 49 cm; al tirar, el tronco pasa de 16° adelante a 5° atrás.",
+  "$comment_contraido": "Al final del tirón los antebrazos se metían 8,6 cm en la barriga (lo vio Migue): las muñecas iban a z 0,12, por DENTRO del abdomen (su piel está a z 0,15-0,17), y los codos a 12 cm del centro, así que el antebrazo cruzaba el costado. Ahora las muñecas quedan 3-4 cm por delante de la piel (z 0,185) y a 11 cm del centro, y los codos se abren (`codo_hacia` 0,9 hacia fuera): el antebrazo va casi horizontal junto al costado. Es un límite del maniquí: el antebrazo mide 27 cm y el tronco 21 de fondo, así que con la mano delante de la barriga el codo no puede ir mucho más atrás sin cruzar el costado; queda con la punta a la altura de la espalda, no claramente por detrás. La retracción de escápula se quedó en -10 y no -20: con -20 el hombro se va hacia dentro y el brazo se hunde 3,5 cm en el pecho."
 }
