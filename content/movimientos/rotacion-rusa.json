@@ -13,7 +13,7 @@
   "cartel": {
     "fase": 0.75
   },
-  "$comment_lectura": "Nada del cuerpo puede atravesar otra parte en ningún fotograma: la versión anterior metía hasta 7 cm el antebrazo que cruza en la barriga y las manos en los muslos al pasar de un lado a otro. Por eso: rodillas abiertas (pies a 20 cm del centro, rótulas hacia fuera) para dejar hueco entre los muslos; manos juntas delante del pecho (no del ombligo) con los codos abiertos y la escápula algo adelantada (12°), porque con los codos pegados el brazo se hundía 2-3 cm en el costado. El giro lleva más pelvis (30° de giro y 20° de ladeo) y la columna al tope de rotación (45°). El brazo que cruza lleva el codo alto y hacia delante (codo_hacia [0, 1, 0.6]): con el codo abajo el antebrazo iba por dentro de la barriga y de la raíz del muslo. El de dentro va abierto y algo atrás, junto al glúteo: pegado al cuerpo el brazo se metía en el costado. Las poses de paso (t 0,125, 0,375…) llevan las manos altas y apartadas por encima del muslo: interpolando en línea recta de delante del pecho al suelo, los dedos atravesaban el muslo cerca de la rodilla. Las manos llegan al suelo junto a la cadera (la más baja, a ras). El cuello gira 25° hacia el mismo lado. Los pies descansan en los talones (sin pie_plano): con las espinillas inclinadas hacia delante, el pie plano pedía 58° de flexión plantar. El cartel sale del giro a la derecha porque la vista de tres cuartos mira desde ese lado.",
+  "$comment_lectura": "Nada del cuerpo puede atravesar otra parte en ningún fotograma: la versión anterior metía hasta 7 cm el antebrazo que cruza en la barriga y las manos en los muslos al pasar de un lado a otro. Por eso: rodillas abiertas (pies a 20 cm del centro, rótulas hacia fuera) para dejar hueco entre los muslos; manos juntas delante del pecho (no del ombligo) con los codos abiertos y la escápula algo adelantada (12°), porque con los codos pegados el brazo se hundía 2-3 cm en el costado. El giro lleva más pelvis (30° de giro y 20° de ladeo) y la columna al tope de rotación (45°). El brazo que cruza lleva el codo alto y hacia delante (codo_hacia [0, 1, 0.6]): con el codo abajo el antebrazo iba por dentro de la barriga y de la raíz del muslo. El de dentro va abierto y algo atrás, junto al glúteo: pegado al cuerpo el brazo se metía en el costado. Las poses de paso (t 0,125, 0,375…) llevan las manos altas y apartadas por encima del muslo: interpolando en línea recta de delante del pecho al suelo, los dedos atravesaban el muslo cerca de la rodilla. Las manos llegan al suelo junto a la cadera (la más baja, a ras). El cuello gira 25° hacia el mismo lado. Los pies descansan en los talones (sin pie_plano): con las espinillas inclinadas hacia delante, el pie plano pedía 58° de flexión plantar. El cartel sale del giro a la derecha porque la vista de tres cuartos mira desde ese lado. Las manos, palma con palma: pronación -70 y muñeca extendida 50° para que los dedos miren al frente con los codos abiertos; muñecas a 7,4 cm y la izquierda 4 cm adelantada, porque a la misma altura los pulgares se cruzaban uno dentro del otro (la versión anterior, con pronación 90, metía una mano 1,7-2,9 cm en la otra). Al salir del centro las manos se separan primero (poses de 0,04 y 0,46, y sus espejos): la que cruza sube por encima y la otra baja; sin ellas, al pasar de palma con palma a la pose de paso, los dedos de una barrían la otra. En la pose de paso la mano de fuera va con la muñeca flexionada (-70°, dedos hacia el suelo) y la que cruza pasa 8 cm más alta: a la misma altura se cruzaban en aspa. En el giro la que cruza queda 5 cm más adelante y hacia dentro, y 1 cm más alta: donde estaba, las dos se tocaban por los índices, y al adelantarla su índice se hundía 1,5 cm en el suelo.",
   "poses": [
     {
       "t": 0,
@@ -43,38 +43,131 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.045,
+            0.037,
             0.46,
-            0.06
+            0.08
           ],
           "codo_hacia": [
-            1.0,
+            1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         },
         "d": {
           "objetivo": [
-            -0.045,
+            -0.037,
             0.46,
-            0.06
+            0.04
           ],
           "codo_hacia": [
-            -1.0,
+            -1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.1,
+            0.52
+          ],
+          "rodilla_hacia": [
+            0.5,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.04,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 4.8,
+          "ladeo": -3.2
+        }
+      },
+      "columna": {
+        "flexion": 3.551,
+        "lateral": 2.24,
+        "rotacion": 10.122
+      },
+      "cuello": {
+        "flexion": 18.688,
+        "lateral": 0,
+        "rotacion": 3.805
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.07,
+            0.42,
+            0.08
+          ],
+          "codo_hacia": [
+            0.969,
+            -0.307,
+            -0.617
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 9.1,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.04,
+            0.51,
+            0.04
+          ],
+          "codo_hacia": [
+            -0.841,
+            -0.431,
+            0.162
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 11.517,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         }
       },
@@ -138,13 +231,16 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": -70
           }
         },
         "d": {
           "objetivo": [
             0.17,
-            0.4,
-            -0.06
+            0.46,
+            -0.04
           ],
           "codo_hacia": [
             -0.2,
@@ -156,6 +252,9 @@
           "escapula": {
             "protraccion": 10,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
           }
         }
       },
@@ -220,13 +319,16 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
           }
         },
         "d": {
           "objetivo": [
-            0.28,
-            0.2,
-            -0.1
+            0.25,
+            0.209,
+            -0.055
           ],
           "codo_hacia": [
             0,
@@ -238,6 +340,9 @@
           "escapula": {
             "protraccion": 20,
             "elevacion": -10
+          },
+          "muneca": {
+            "extension": 0
           }
         }
       },
@@ -301,13 +406,16 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": -70
           }
         },
         "d": {
           "objetivo": [
             0.17,
-            0.4,
-            -0.06
+            0.46,
+            -0.04
           ],
           "codo_hacia": [
             -0.2,
@@ -319,6 +427,96 @@
           "escapula": {
             "protraccion": 10,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.1,
+            0.52
+          ],
+          "rodilla_hacia": [
+            0.5,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.46,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": 4.8,
+          "ladeo": -3.2
+        }
+      },
+      "columna": {
+        "flexion": 3.551,
+        "lateral": 2.24,
+        "rotacion": 10.122
+      },
+      "cuello": {
+        "flexion": 18.688,
+        "lateral": 0,
+        "rotacion": 3.805
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.1,
+            0.4,
+            0.06
+          ],
+          "codo_hacia": [
+            0.969,
+            -0.307,
+            -0.617
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 9.1,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.04,
+            0.51,
+            0.04
+          ],
+          "codo_hacia": [
+            -0.841,
+            -0.431,
+            0.162
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 11.517,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         }
       },
@@ -368,38 +566,131 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.045,
+            0.037,
             0.46,
-            0.06
+            0.08
           ],
           "codo_hacia": [
-            1.0,
+            1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         },
         "d": {
           "objetivo": [
-            -0.045,
+            -0.037,
             0.46,
-            0.06
+            0.04
           ],
           "codo_hacia": [
-            -1.0,
+            -1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.1,
+            0.52
+          ],
+          "rodilla_hacia": [
+            0.5,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.54,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": -4.8,
+          "ladeo": 3.2
+        }
+      },
+      "columna": {
+        "flexion": 3.551,
+        "lateral": -2.24,
+        "rotacion": -10.122
+      },
+      "cuello": {
+        "flexion": 18.688,
+        "lateral": 0,
+        "rotacion": -3.805
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.04,
+            0.51,
+            0.04
+          ],
+          "codo_hacia": [
+            0.841,
+            -0.431,
+            0.162
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 11.517,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.07,
+            0.42,
+            0.08
+          ],
+          "codo_hacia": [
+            -0.969,
+            -0.307,
+            -0.617
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 9.1,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         }
       },
@@ -450,8 +741,8 @@
         "i": {
           "objetivo": [
             -0.17,
-            0.4,
-            -0.06
+            0.46,
+            -0.04
           ],
           "codo_hacia": [
             0.2,
@@ -463,6 +754,9 @@
           "escapula": {
             "protraccion": 10,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
           }
         },
         "d": {
@@ -481,6 +775,9 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": -70
           }
         }
       },
@@ -531,9 +828,9 @@
       "brazos": {
         "i": {
           "objetivo": [
-            -0.28,
-            0.2,
-            -0.1
+            -0.25,
+            0.209,
+            -0.055
           ],
           "codo_hacia": [
             0,
@@ -545,6 +842,9 @@
           "escapula": {
             "protraccion": 20,
             "elevacion": -10
+          },
+          "muneca": {
+            "extension": 0
           }
         },
         "d": {
@@ -563,6 +863,9 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
           }
         }
       },
@@ -613,8 +916,8 @@
         "i": {
           "objetivo": [
             -0.17,
-            0.4,
-            -0.06
+            0.46,
+            -0.04
           ],
           "codo_hacia": [
             0.2,
@@ -626,6 +929,9 @@
           "escapula": {
             "protraccion": 10,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 0
           }
         },
         "d": {
@@ -644,6 +950,96 @@
           "escapula": {
             "protraccion": 0,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": -70
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.2,
+            0.1,
+            0.52
+          ],
+          "rodilla_hacia": [
+            0.5,
+            1,
+            0.3
+          ],
+          "tobillo": {
+            "dorsiflexion": -15
+          }
+        }
+      }
+    },
+    {
+      "t": 0.96,
+      "curva": "suave",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.055,
+          -0.05
+        ],
+        "orientacion": {
+          "inclinacion": -45,
+          "giro": -4.8,
+          "ladeo": 3.2
+        }
+      },
+      "columna": {
+        "flexion": 3.551,
+        "lateral": -2.24,
+        "rotacion": -10.122
+      },
+      "cuello": {
+        "flexion": 18.688,
+        "lateral": 0,
+        "rotacion": -3.805
+      },
+      "brazos": {
+        "i": {
+          "objetivo": [
+            0.04,
+            0.51,
+            0.04
+          ],
+          "codo_hacia": [
+            0.841,
+            -0.431,
+            0.162
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 11.517,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
+          }
+        },
+        "d": {
+          "objetivo": [
+            -0.1,
+            0.4,
+            0.06
+          ],
+          "codo_hacia": [
+            -0.969,
+            -0.307,
+            -0.617
+          ],
+          "cierre": 0.124,
+          "pronacion": -70,
+          "escapula": {
+            "protraccion": 9.1,
+            "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         }
       },
@@ -693,38 +1089,44 @@
       "brazos": {
         "i": {
           "objetivo": [
-            0.045,
+            0.037,
             0.46,
-            0.06
+            0.08
           ],
           "codo_hacia": [
-            1.0,
+            1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         },
         "d": {
           "objetivo": [
-            -0.045,
+            -0.037,
             0.46,
-            0.06
+            0.04
           ],
           "codo_hacia": [
-            -1.0,
+            -1,
             -0.5,
             -0.3
           ],
-          "cierre": 0.3,
-          "pronacion": 90,
+          "cierre": 0.1,
+          "pronacion": -70,
           "escapula": {
             "protraccion": 12,
             "elevacion": 0
+          },
+          "muneca": {
+            "extension": 50
           }
         }
       },

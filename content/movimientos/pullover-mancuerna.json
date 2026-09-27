@@ -32,11 +32,11 @@
       "relativo_a": "mundo",
       "desplazamiento": [
         -0.522,
-        0.509,
+        0.469,
         0
       ],
       "giro": 90,
-      "agarre": 0,
+      "agarre": 0.04,
       "solido": true,
       "agarre_marco": {
         "i": [
@@ -46,10 +46,10 @@
           0.433202
         ],
         "d": [
-          0.558801,
-          -0.433291,
-          -0.558801,
-          0.433291
+          0.560867,
+          -0.430613,
+          -0.560867,
+          0.430613
         ]
       }
     }
@@ -86,7 +86,7 @@
         "barra": {
           "desplazamiento": [
             -0.522,
-            0.509,
+            0.469,
             0
           ],
           "giro": 90
@@ -166,8 +166,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -0.73,
-            0.47,
+            -0.715,
+            0.433,
             0
           ],
           "giro": 112
@@ -253,8 +253,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -0.917,
-            0.352,
+            -0.889,
+            0.324,
             0
           ],
           "giro": 135
@@ -340,8 +340,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -1.036,
-            0.192,
+            -0.999,
+            0.176,
             0
           ],
           "giro": 156
@@ -428,8 +428,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -1.089,
-            0.021,
+            -1.049,
+            0.018,
             0
           ],
           "giro": 175
@@ -515,8 +515,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -1.036,
-            0.192,
+            -0.999,
+            0.176,
             0
           ],
           "giro": 156
@@ -602,8 +602,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -0.917,
-            0.352,
+            -0.889,
+            0.324,
             0
           ],
           "giro": 135
@@ -689,8 +689,8 @@
       "implementos": {
         "barra": {
           "desplazamiento": [
-            -0.73,
-            0.47,
+            -0.715,
+            0.433,
             0
           ],
           "giro": 112
@@ -776,7 +776,7 @@
         "barra": {
           "desplazamiento": [
             -0.522,
-            0.509,
+            0.469,
             0
           ],
           "giro": 90
@@ -836,6 +836,6 @@
   ],
   "$comment_eje": "El maniquí va tumbado a lo largo de X (pelvis con giro 90, cabeza hacia -X) y el banco a lo largo de X (ancho 1,2 y largo 0,3), no a lo largo de Z como en el press francés. Es por la mancuerna: el motor solo sabe girar un implemento alrededor del eje Z de su marco (`giro`). Con el cuerpo a lo largo de Z, ese giro deja el mango o de lado a lado o a lo largo del cuerpo, pero nunca en el plano del arco, y la mancuerna no podía empezar en vertical (la copa) y acabar en la línea de los brazos. Con el cuerpo a lo largo de X y la mancuerna `relativo_a: mundo`, el giro alrededor de Z barre justo el plano del arco: 90° es vertical sobre el pecho y 175° es casi horizontal por detrás de la cabeza. Por lo mismo, la cámara es la vista frontal: con el cuerpo en X, es la que lo ve de perfil. Y las piernas y los brazos van con i y d, porque `ambos` refleja en X y aquí el lado es Z.",
   "$comment_arco": "La mancuerna recorre un arco de radio fijo alrededor del hombro, en nueve poses. Con solo arriba, 45° y abajo, el spline cortaba por la cuerda y el codo se doblaba de 20 a 30° a media bajada: los codos de la ficha van «algo doblados y FIJOS». Con las poses cada 22° el codo queda entre 18 y 25° en todo el ciclo. Abajo el brazo queda a 85° de la vertical, más o menos en la línea del tronco, con la escápula elevada 12° como al subir los brazos por encima de la cabeza.",
-  "$comment_agarre": "Las dos manos cogen el mango a la misma altura (agarre 0), cada una por su lado y bajo el disco de arriba, como en la sentadilla goblet.",
+  "$comment_agarre": "Las dos manos rodean el mango una junto a la otra, sin meterse una en otra. Con `agarre` 0 cogían el mango a la misma altura desde lados opuestos y los dedos de cada mano se cerraban dentro de la palma de la otra: 3,2 cm, que el validador de mano contra mano cazó. Ahora `agarre` 0,04 separa las manos 8 cm a lo largo del mango (lo que mide el ancho de una mano del maniquí: el índice de una toca el meñique de la otra, <1 cm medido) y la mancuerna va 4 cm más cerca del hombro a lo largo de su eje en todas las poses, para que la mano de arriba quede donde estaba y el brazo llegue: con el mango en el sitio de antes, a la mano izquierda le faltaban 1,2 cm. El arco de los brazos es el mismo; la mano de abajo queda 8 cm más cerca del hombro y ese codo se dobla algo más, como en un agarre apilado de verdad. Con 0,03 volvían a meterse 2 cm; con más de 0,045 la mano de arriba se sube al disco. Agarre recalibrado con `npm run agarre pullover-mancuerna`.",
   "$comment_espalda": "Columna a -2° y no a -8° como el press francés: la ficha pide no arquear la zona lumbar, y con -8 el tronco se veía en arco sobre el banco."
 }

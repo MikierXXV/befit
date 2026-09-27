@@ -24,7 +24,7 @@
  */
 
 import { readdirSync, readFileSync } from 'node:fs';
-import { Vector3 } from 'three';
+import { Quaternion, Vector3 } from 'three';
 import { aplicarPose, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
@@ -164,12 +164,34 @@ const BARRA_DENTRO_PENDIENTES = new Set([]);
  * la sentadilla con barra, la goblet y el encogimiento abdominal quedan 4-5 cm de aire.
  * Un trazado de rayos contra la malla da lo mismo o más hondo (la goblet, 5-7 cm): los fallos
  * son de la pose, no del método, que se queda corto antes que pasarse.
+ *
+ * MANO CONTRA MANO. Las parejas de arriba no comparaban una mano con la otra, ni una mano con el
+ * antebrazo contrario, y en la rotación rusa las manos iban metidas una dentro de la otra delante
+ * del pecho (1,7 cm en el centro, hasta 2,9 al salir hacia los lados) con todo en verde. Lo vio
+ * Migue. Ahora la mano izquierda se mide contra la derecha (una vez, como los muslos) y cada mano
+ * contra el antebrazo del otro lado, con el mismo método. La mano es un volumen de dieciséis
+ * cápsulas, una por hueso (palma, pulgar y cada falange), sobre el eje Y del hueso y RECORTADAS a
+ * su largo: sin recortar, la franja que el perfil deja más allá de la punta de un dedo daba
+ * «dentro» a lo que solo tocaba la yema.
+ *
+ * Tolerancia de 1,5 cm, no 2,5: una falange tiene 1,6-2 cm de grueso y la palma unos 3, así que ni
+ * un dedo que atraviesa otro de lado a lado llegaría a 2,5. Contrastado con el número de giro de la
+ * malla de la otra mano (cuántos vértices quedan dentro de verdad, y a qué distancia de su piel):
+ * la rotación rusa daba aquí 1,9 en el centro y hasta 4,1 al girar (de verdad, 1,7 y 2,9); el
+ * pullover, 3,2 (1,7 de verdad, las dos manos una dentro de la otra en la mancuerna); el remo en
+ * polea, 1,7 (1,2: los dedos de una mano entre los de la otra junto al agarre en V). Por debajo
+ * quedan la sentadilla sumo con mancuerna, 1,5 (0,7 de verdad: dedos que se montan bajo el disco),
+ * y el face-pull, 0,9 (0,8); la goblet, el press Pallof, las dominadas y los jalones, nada. Mide
+ * algo más hondo que el número de giro, pero en el mismo orden. El antebrazo contrario va con la
+ * misma tolerancia, porque lo que se mete en él es la mano.
  */
 const TOLERANCIA_AUTOCOLISION = REGLAS.tolerancia_autocolision ?? 0.025;
+const TOLERANCIA_AUTOCOLISION_MANO = REGLAS.tolerancia_autocolision_mano ?? 0.015;
 const PERFIL_FRANJA = 0.03;
 const PERFIL_SECTORES = 12;
 const PERFIL_SIGMA_EJE = 0.02;
 const PERFIL_SIGMA_ANGULO = (20 * Math.PI) / 180;
+const HUESOS_MANO = ['hand', ...['thumb', 'f_index', 'f_middle', 'f_ring', 'f_pinky'].flatMap((d) => ['01', '02', '03'].map((n) => d + n))];
 const VOLUMENES = {
   tronco: [
     { desde: (h) => h.pelvis, hasta: (h) => h.columna[0], huesos: ['DEF-hips'] },
@@ -183,6 +205,10 @@ const VOLUMENES = {
     return [
       [`muslo ${lado}`, [{ desde: (h) => h[`muslo_${l}`], hasta: (h) => h[`pierna_${l}`], huesos: [`DEF-thigh${s}`] }]],
       [`pierna ${{ i: 'izquierda', d: 'derecha' }[l]}`, [{ desde: (h) => h[`pierna_${l}`], hasta: (h) => h[`pie_${l}`], huesos: [`DEF-shin${s}`] }]],
+      [`antebrazo ${lado}`, [{ desde: (h) => h[`antebrazo_${l}`], hasta: (h) => h[`mano_${l}`], huesos: [`DEF-forearm${s}`] }]],
+      // La mano, una cápsula por hueso (palma y cada falange) a lo largo de su eje, recortada a su
+      // largo: ver MANO CONTRA MANO.
+      [`mano ${{ i: 'izquierda', d: 'derecha' }[l]}`, HUESOS_MANO.map((n) => ({ hueso: `DEF-${n}${s}`, huesos: [`DEF-${n}${s}`], recortar: true }))],
     ];
   })),
   cabeza: 'bola',
@@ -203,7 +229,7 @@ const MIEMBROS_CHOQUE = LADOS.flatMap((l) => {
     { nombre: `antebrazo ${lado}`, desde: `antebrazo_${l}`, hasta: `mano_${l}`, huesos: [`DEF-forearm${s}`], contra: { tronco: 0, ...muslos, cabeza: 0 } },
     { nombre: `brazo ${lado}`, desde: `brazo_${l}`, hasta: `antebrazo_${l}`, huesos: [`DEF-upper_arm${s}`], contra: { tronco: 0.35, ...muslos, cabeza: 0 } },
     // La mano tiene más vértices que el resto del brazo junto (los dedos): basta uno de cada tres.
-    { nombre: `mano ${ladoF}`, femenino: true, mano: s, paso: 3, contra: { tronco: 0, ...muslos } },
+    { nombre: `mano ${ladoF}`, femenino: true, mano: s, paso: 3, contra: { tronco: 0, ...muslos, [`antebrazo ${otro}`]: 0, ...(l === 'i' ? { [`mano ${otraF}`]: 0 } : {}) } },
     { nombre: `muslo ${lado}`, desde: `muslo_${l}`, hasta: `pierna_${l}`, huesos: [`DEF-thigh${s}`], contra: { tronco: 0.4, ...(l === 'i' ? { [`muslo ${otro}`]: 0.3 } : {}) } },
     { nombre: `pierna ${ladoF}`, femenino: true, desde: `pierna_${l}`, hasta: `pie_${l}`, huesos: [`DEF-shin${s}`], contra: { [`muslo ${otro}`]: 0, ...(l === 'i' ? { [`pierna ${otraF}`]: 0 } : {}) } },
   ];
@@ -213,6 +239,7 @@ const MIEMBROS_CHOQUE = LADOS.flatMap((l) => {
  * se han corregido. Avisan sin bloquear; al arreglar uno se quita de aquí, y la lista se vacía.
  */
 const AUTOCOLISION_PENDIENTES = new Set([
+  // Mano contra mano, desde que se miran (ver MANO CONTRA MANO): las dos manos una dentro de otra.
 ]);
 
 const maniqui = await cargarManiqui();
@@ -296,7 +323,8 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     for (const choque of autocolision(vertices)) {
       const msg = `${choque.miembro} ${choque.femenino ? 'metida' : 'metido'} en ${choque.volumen}`;
       const donde = `${etiqueta} (${(choque.metida * 100).toFixed(1)} cm)`;
-      if (choque.metida <= TOLERANCIA_AUTOCOLISION) continue;
+      const tolerancia = /^(mano|antebrazo)/.test(choque.volumen) ? TOLERANCIA_AUTOCOLISION_MANO : TOLERANCIA_AUTOCOLISION;
+      if (choque.metida <= tolerancia) continue;
       if (AUTOCOLISION_PENDIENTES.has(id)) avisos.push([msg, donde, choque.metida, etiqueta]);
       else fallo(msg, donde);
     }
@@ -511,7 +539,14 @@ function autocolision(vertices) {
       const def = VOLUMENES[nombre];
       perfiles.set(nombre, def === 'bola'
         ? { bola: verticesDeHuesos(maniqui, ['DEF-head']) }
-        : def.map((p) => perfilCapsula(p.desde(h).getWorldPosition(new Vector3()), p.hasta(h).getWorldPosition(new Vector3()), verticesDeHuesos(maniqui, p.huesos))));
+        : def.map((p) => {
+          if (!p.hueso) return perfilCapsula(p.desde(h).getWorldPosition(new Vector3()), p.hasta(h).getWorldPosition(new Vector3()), verticesDeHuesos(maniqui, p.huesos));
+          // Un hueso suelto de la mano: su eje es su Y, como en todos los huesos que salen de Blender.
+          const hueso = maniqui.escena.getObjectByName(p.hueso);
+          const a0 = hueso.getWorldPosition(new Vector3());
+          const a1 = new Vector3(0, 1, 0).applyQuaternion(hueso.getWorldQuaternion(new Quaternion())).add(a0);
+          return perfilCapsula(a0, a1, verticesDeHuesos(maniqui, p.huesos), p.recortar);
+        }));
     }
     return perfiles.get(nombre);
   };
@@ -568,16 +603,17 @@ function autocolision(vertices) {
  * alrededor de él. Los sectores se cuentan desde un perpendicular cualquiera: el perfil y las
  * consultas son del mismo fotograma, así que basta con que sea el mismo.
  */
-function perfilCapsula(a0, a1, piel) {
+function perfilCapsula(a0, a1, piel, recortar = false) {
   const L = a1.distanceTo(a0);
   const dir = a1.clone().sub(a0).divideScalar(L);
   const ref = Math.abs(dir.x) < 0.9 ? new Vector3(1, 0, 0) : new Vector3(0, 1, 0);
   const u = ref.clone().cross(dir).normalize();
   const w = dir.clone().cross(u);
-  const c = { a0, dir, u, w, tmin: Infinity, franjas: 0, bins: null };
+  const c = { a0, dir, u, w, tmin: Infinity, tmax: -Infinity, recortar, franjas: 0, bins: null };
   const locales = piel.map((v) => local(c, v));
   for (const [t] of locales) c.tmin = Math.min(c.tmin, t);
   const tmax = Math.max(...locales.map(([t]) => t));
+  c.tmax = tmax;
   c.franjas = Math.floor((tmax - c.tmin) / PERFIL_FRANJA) + 1;
   c.bins = Array.from({ length: c.franjas * PERFIL_SECTORES }, () => ({ n: 0, t: 0, r: 0 }));
   for (const [t, ang, r] of locales) {
@@ -611,6 +647,9 @@ function sector(ang) {
  */
 function hundidoEnCapsula(c, v) {
   const [t, ang, r] = local(c, v);
+  // Una falange mide 2-4 cm: sin recortar, la franja de más allá de la punta daba «dentro» a lo
+  // que solo toca la yema.
+  if (c.recortar && (t < c.tmin || t > c.tmax)) return -Infinity;
   const f = Math.floor((t - c.tmin) / PERFIL_FRANJA);
   if (f < -1 || f > c.franjas) return -Infinity;
   const s = sector(ang);
