@@ -1,0 +1,326 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "patada-gluteo-polea",
+  "duracion": 3,
+  "asimetria": 0.3,
+  "respiracion": {
+    "amplitud": 0.003,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "pie_d"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "poste_i": {
+      "tipo": "pared",
+      "posicion": [
+        0.3,
+        0,
+        0.73
+      ],
+      "ancho": 0.06,
+      "alto": 2.1,
+      "grosor": 0.06,
+      "solido": true
+    },
+    "poste_d": {
+      "tipo": "pared",
+      "posicion": [
+        -0.3,
+        0,
+        0.73
+      ],
+      "ancho": 0.06,
+      "alto": 2.1,
+      "grosor": 0.06,
+      "solido": true
+    },
+    "travesano": {
+      "tipo": "pared",
+      "posicion": [
+        0,
+        2.02,
+        0.73
+      ],
+      "ancho": 0.66,
+      "alto": 0.08,
+      "grosor": 0.06,
+      "solido": true
+    },
+    "roldana": {
+      "tipo": "pared",
+      "posicion": [
+        -0.1,
+        0,
+        0.73
+      ],
+      "ancho": 0.1,
+      "alto": 0.16,
+      "grosor": 0.08,
+      "solido": true
+    },
+    "barra": {
+      "tipo": "barra_fija",
+      "posicion": [
+        0,
+        0.98,
+        0.715
+      ],
+      "ancho": 0.6,
+      "agarre": 0.2,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          0.363666,
+          0.606422,
+          -0.363666,
+          -0.606422
+        ],
+        "d": [
+          -0.366758,
+          0.604557,
+          -0.366758,
+          0.604557
+        ]
+      }
+    },
+    "tobillera": {
+      "tipo": "polea",
+      "mango": "puno",
+      "ancho": 0.07,
+      "ancla": [
+        -0.1,
+        0.1,
+        0.69
+      ],
+      "posicion": [
+        -0.1,
+        0.142,
+        0.024
+      ]
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "recogido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.94,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 28
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -12
+      },
+      "implementos": {
+        "tobillera": {
+          "posicion": [
+            -0.1,
+            0.142,
+            0.024
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.6,
+            -1,
+            -0.3
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.1,
+            0.104,
+            0.03
+          ],
+          "rodilla_hacia": [
+            0.1,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        },
+        "d": {
+          "objetivo": [
+            -0.1,
+            0.12,
+            -0.04
+          ],
+          "rodilla_hacia": [
+            -0.1,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 20
+          }
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "extendido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.94,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 28
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -12
+      },
+      "implementos": {
+        "tobillera": {
+          "posicion": [
+            -0.099,
+            0.438,
+            -0.57
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.6,
+            -1,
+            -0.3
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.1,
+            0.104,
+            0.03
+          ],
+          "rodilla_hacia": [
+            0.1,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        },
+        "d": {
+          "objetivo": [
+            -0.1,
+            0.467,
+            -0.632
+          ],
+          "rodilla_hacia": [
+            0,
+            -0.8,
+            0.6
+          ],
+          "tobillo": {
+            "dorsiflexion": 15
+          }
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.94,
+          0
+        ],
+        "orientacion": {
+          "inclinacion": 28
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -12
+      },
+      "implementos": {
+        "tobillera": {
+          "posicion": [
+            -0.1,
+            0.142,
+            0.024
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            0.6,
+            -1,
+            -0.3
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "i": {
+          "objetivo": [
+            0.1,
+            0.104,
+            0.03
+          ],
+          "rodilla_hacia": [
+            0.1,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        },
+        "d": {
+          "objetivo": [
+            -0.1,
+            0.12,
+            -0.04
+          ],
+          "rodilla_hacia": [
+            -0.1,
+            0,
+            1
+          ],
+          "tobillo": {
+            "dorsiflexion": 20
+          }
+        }
+      }
+    }
+  ],
+  "$comment_maquina": "La máquina es un marco abierto —dos postes, travesaño y la roldana abajo— y no una columna maciza: con una pared de 60 cm delante, las vistas frontal, de tres cuartos y el primer plano salían tapadas enteras. La barra de agarre es una `barra_fija` de 60 cm cuyos soportes quedan dentro de los postes.",
+  "$comment_tobillera": "El motor no engancha un implemento al pie (solo `en_mano`), así que la tobillera es un agarre corto de polea (`tobillera`, 7 cm) colocado A MANO en cada pose, 4 cm por encima del tobillo y 5,5 cm por delante de la espinilla, medidos sobre el tobillo ya posado. En una versión anterior se quedó donde estaba cuando cambió la pierna y acabó a 25-28 cm del tobillo: en el primer plano desaparecía. Medido en los 48 fotogramas, se separa como mucho 2,1 cm de ese punto (hacia t 0,81). Si cambia el objetivo del pie, la inclinación o la altura de la pelvis, hay que volver a medirla y recolocarla.",
+  "$comment_recorrido": "Con el tronco a 20° y la pierna 27° por detrás de la vertical, el pie solo subía 12 cm y de perfil parecía un paso atrás. Ahora el tronco va a 32° desde la cadera (pelvis a 28°, columna recta; las manos sostienen en la barra, bajada a 98 cm y más lejos) y el muslo llega a 50° por detrás de la vertical, 18° más allá de la línea del tronco, con la rodilla a 10° y el tobillo a 47 cm del suelo. La extensión de cadera respecto a la pelvis se queda en -23° (rango hasta -30), sin arquear la zona lumbar. El objetivo del tobillo es muy sensible cerca de la extensión: 1 cm cambia la rodilla de 2° a 17°. Rodilla de apoyo a 11°. El pie que trabaja va en dorsiflexión (15-20°): con el tobillo neutro la punta se metía 3-4 cm en el suelo."
+}

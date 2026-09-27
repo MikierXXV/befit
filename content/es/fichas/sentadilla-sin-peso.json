@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Sentadilla sin peso",
   "resumen": "La sentadilla con el propio cuerpo: se baja doblando cadera y rodillas, con el tronco erguido, y se vuelve a subir. Es la base para aprender el gesto antes de añadir carga.",
+  "movimiento_id": "sentadilla-sin-peso",
   "ejecucion": [
     "Ponte de pie con los pies a la anchura de los hombros o algo más, con las puntas un poco hacia fuera.",
     "Estira los brazos por delante o cruza las manos delante del pecho para equilibrarte.",
@@ -31,7 +32,7 @@
       "abdomen"
     ]
   },
-  "matices": "Una revisión sobre la biomecánica de la sentadilla recomienda dejar que las rodillas avancen por delante de los pies si hace falta para bajar con el tronco más erguido: limitarlo pasa la carga a la cadera y a la zona lumbar. Sin peso, es sobre todo un ejercicio para aprender el gesto y para empezar; para seguir progresando, se añade carga o se pasa a variantes a una pierna.",
+  "matices": "Una revisión sobre la biomecánica de la sentadilla recoge que impedir que las rodillas avancen por delante de los pies obliga a inclinar más el tronco y aumenta el esfuerzo en la cadera; por eso no hace falta evitarlo si los talones siguen apoyados. Sin peso, es sobre todo un ejercicio para aprender el gesto y para empezar; para seguir progresando, se añade carga o se pasa a variantes a una pierna.",
   "fuentes": [
     {
       "titulo": "Squatting kinematics and kinetics and their application to exercise performance",

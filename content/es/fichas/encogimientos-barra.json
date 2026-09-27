@@ -4,31 +4,33 @@
   "orden": 2,
   "nombre": "Encogimientos con barra",
   "resumen": "De pie con una barra cogida por delante de los muslos, se suben los hombros hacia las orejas y se bajan despacio. La barra permite cargar más que las mancuernas.",
+  "movimiento_id": "encogimientos-barra",
   "ejecucion": [
-    "Ponte de pie y coge la barra por delante de los muslos, con las palmas hacia ti y las manos algo más abiertas que la cadera.",
+    "Coge la barra de un soporte colocado a media altura del muslo (o levántala del suelo con la espalda recta), con las palmas hacia ti y las manos algo más abiertas que los hombros, y quédate de pie con ella por delante de los muslos.",
     "Con los brazos estirados, sube los hombros en vertical hacia las orejas, sin doblar los codos.",
     "Aguanta un instante arriba y baja despacio hasta dejar los hombros relajados.",
     "Mantén el tronco recto, sin echarte atrás para ayudarte, y el cuello en línea con la espalda.",
-    "Si tienes que balancear el cuerpo o doblar los codos para subir la barra, baja el peso."
+    "Si tienes que balancear el cuerpo o doblar los codos para subir la barra, baja el peso.",
+    "Al terminar, devuélvela al soporte."
   ],
   "material": [
     "barra"
   ],
   "nivel": "inicial",
+  "descanso": 90,
   "musculos": {
     "principal": [
       "trapecio_superior"
     ],
-    "sinergista": [
-      "trapecio_medio"
-    ],
+    "sinergista": [],
     "estabilizador": [
+      "trapecio_medio",
       "antebrazo",
       "erectores",
       "abdomen"
     ]
   },
-  "matices": "El estudio que comparó varias posiciones del encogimiento con peso encontró una activación alta de la parte alta del trapecio en todas, y otro, con treinta personas, vio que el encogimiento está entre los ejercicios que más la activan. No hemos encontrado estudios que comparen la barra con las mancuernas; la barra permite cargar más, y las mancuernas dejan los brazos a los lados, en una posición más cómoda para muchos.",
+  "matices": "El estudio que comparó varias posiciones del encogimiento con peso encontró una activación alta de la parte alta del trapecio en todas, y otro, con treinta personas, vio que el encogimiento a una mano fue el que más la activó de diez ejercicios; ninguno de los dos usó barra. No hemos encontrado estudios que comparen la barra con las mancuernas; las mancuernas dejan los brazos a los lados, en una posición más cómoda para muchos.",
   "fuentes": [
     {
       "titulo": "Modifying the shoulder joint position during shrugging and retraction exercises alters the activation of the medial scapular muscles",

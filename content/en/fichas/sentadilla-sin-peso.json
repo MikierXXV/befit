@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Bodyweight squat",
   "resumen": "The squat with your own body: you go down bending hips and knees with the torso upright, and stand back up. It is the base for learning the movement before adding load.",
+  "movimiento_id": "sentadilla-sin-peso",
   "ejecucion": [
     "Stand with your feet shoulder-width apart or slightly wider, toes turned slightly out.",
     "Reach your arms out in front or cross your hands in front of your chest for balance.",
@@ -31,7 +32,7 @@
       "abdomen"
     ]
   },
-  "matices": "A review of squat biomechanics recommends letting the knees travel past the toes if needed to go down with a more upright torso: restricting it shifts the load to the hips and lower back. Without weight, it is mainly an exercise for learning the movement and for beginners; to keep progressing, add load or move on to single-leg variations.",
+  "matices": "A review of squat biomechanics reports that stopping the knees from travelling past the toes forces more forward lean and increases the demand on the hips; so there is no need to avoid it as long as the heels stay down. Without weight, it is mainly an exercise for learning the movement and for beginners; to keep progressing, add load or move on to single-leg variations.",
   "fuentes": [
     {
       "titulo": "Squatting kinematics and kinetics and their application to exercise performance",

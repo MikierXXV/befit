@@ -133,7 +133,13 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
 - ✅ **M · Core:** bicho muerto, hollow hold y superman (por tiempo), rotación rusa, elevación de
   piernas colgado y plancha con toque de hombro. Sin cambios al motor. La elevación de rodillas
   pasa a material «barra fija», como las dominadas: con «barra» el filtro las separaba.
-- ⬜ N · Grupos nuevos.
+- ✅ **N · Grupos nuevos:** elevación escapular (encogimientos con mancuernas y con barra) y
+  abducción de cadera (tumbado y en polea), más la patada de glúteo en polea y la sentadilla sin
+  peso. El motor no engancha nada al tobillo, así que la tobillera es un agarre de polea posado en
+  cada pose junto al tobillo; si cambia la pierna, hay que moverla a mano (se midió: 6-7 cm fijos).
+  Queda para la revisión: la tobillera se ve como una anilla con cable, sin la correa.
+- ⬜ Cierre de la etapa A: rutinas «En casa sin material» y «Solo mancuernas», y repaso de las tres
+  que hay.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

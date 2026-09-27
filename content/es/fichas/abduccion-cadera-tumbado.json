@@ -4,10 +4,11 @@
   "orden": 1,
   "nombre": "Abducción de cadera tumbado",
   "resumen": "Tumbado de lado, se sube la pierna de arriba estirada, sin girarla, y se baja despacio. Trabaja el glúteo medio sin material.",
+  "movimiento_id": "abduccion-cadera-tumbado",
   "ejecucion": [
     "Túmbate de lado con las piernas estiradas, una encima de la otra, y apoya la cabeza en el brazo de abajo.",
     "Coloca la cadera de arriba un poco hacia delante, para que no se vaya hacia atrás al subir.",
-    "Sube la pierna de arriba estirada hasta unos 30-40 cm, con la punta del pie mirando al frente, sin girarla hacia el techo.",
+    "Sube la pierna de arriba estirada, un poco por detrás de la línea del cuerpo y con la punta del pie al frente, hasta donde la cadera no se mueva; no suele pasar de un palmo o dos.",
     "Baja despacio hasta casi tocar la otra pierna y repite.",
     "Si notas que la cadera rueda hacia atrás o que la pierna se adelanta, sube menos."
   ],
@@ -27,7 +28,7 @@
       "abdomen"
     ]
   },
-  "matices": "En un estudio con veintiuna personas activas, la abducción de cadera tumbado de lado fue el ejercicio que más activó el glúteo medio de los doce comparados, por encima de la almeja, las zancadas y los saltos. Si la pierna se gira hacia el techo, el trabajo pasa a otros músculos de la cadera; por eso se insiste en llevar la punta del pie al frente.",
+  "matices": "En un estudio con veintiuna personas activas, la abducción de cadera tumbado de lado fue el ejercicio que más activó el glúteo medio de los doce comparados, por encima de la almeja, las zancadas y los saltos. Se suele insistir en llevar la punta del pie al frente porque, si la pierna gira hacia el techo, entran más los flexores de la cadera.",
   "fuentes": [
     {
       "titulo": "Gluteal muscle activation during common therapeutic exercises",

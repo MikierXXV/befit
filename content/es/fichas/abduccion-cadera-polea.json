@@ -4,10 +4,11 @@
   "orden": 2,
   "nombre": "Abducción de cadera en polea",
   "resumen": "De pie de lado a una polea baja, con el tobillo enganchado, se separa la pierna del cuerpo hacia fuera y se vuelve despacio. Trabaja el glúteo medio con carga regulable.",
+  "movimiento_id": "abduccion-cadera-polea",
   "ejecucion": [
     "Engancha una tobillera al cable de una polea baja y póntela en el tobillo más alejado de la polea.",
     "Ponte de pie de lado a la polea y apóyate con la mano en la máquina, con el tronco recto.",
-    "Separa la pierna hacia fuera, estirada y con la punta del pie al frente, sin inclinar el tronco hacia el otro lado.",
+    "Separa la pierna hacia fuera, estirada y con la punta del pie al frente, solo hasta donde la pelvis no se incline (un palmo o dos), sin inclinar el tronco hacia el otro lado.",
     "Vuelve despacio hasta que el pie quede junto al otro, sin dejar que el peso tire de golpe.",
     "Si tienes que inclinar el tronco o girar la pierna para subirla, baja el peso."
   ],
@@ -24,11 +25,10 @@
     ],
     "estabilizador": [
       "oblicuos",
-      "abdomen",
-      "aductores"
+      "abdomen"
     ]
   },
-  "matices": "No hemos encontrado estudios que midan la abducción de pie en polea en sí. La versión medida es la de tumbado de lado, que en un estudio con veintiuna personas fue la que más activó el glúteo medio de doce ejercicios. La polea sigue el mismo gesto de pie y permite ir subiendo el peso.",
+  "matices": "No hemos encontrado estudios que midan la abducción de pie en polea en sí. La versión medida es la de tumbado de lado, que en un estudio con veintiuna personas fue la que más activó el glúteo medio de doce ejercicios. La polea hace un gesto parecido de pie y permite ir subiendo el peso, pero no sabemos si activa el glúteo medio igual.",
   "fuentes": [
     {
       "titulo": "Gluteal muscle activation during common therapeutic exercises",

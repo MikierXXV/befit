@@ -4,6 +4,7 @@
   "orden": 1,
   "nombre": "Encogimientos con mancuernas",
   "resumen": "De pie con una mancuerna en cada mano, se suben los hombros hacia las orejas y se bajan despacio. Trabaja la parte alta del trapecio.",
+  "movimiento_id": "encogimientos-mancuernas",
   "ejecucion": [
     "Ponte de pie con una mancuerna en cada mano, los brazos estirados a los lados y las palmas hacia el cuerpo.",
     "Sube los hombros en vertical hacia las orejas, sin doblar los codos y sin echar los hombros hacia delante ni hacia atrás.",
@@ -19,16 +20,15 @@
     "principal": [
       "trapecio_superior"
     ],
-    "sinergista": [
-      "trapecio_medio"
-    ],
+    "sinergista": [],
     "estabilizador": [
+      "trapecio_medio",
       "antebrazo",
       "erectores",
       "abdomen"
     ]
   },
-  "matices": "En un estudio con treinta personas, el encogimiento a una mano fue el ejercicio que más activó la parte alta del trapecio de los diez que compararon. Otro vio una activación alta del trapecio superior en el encogimiento con peso, con los brazos a los lados, y un tercero encontró más actividad al hacerlo con los brazos algo separados del cuerpo, a unos 30°. Girar los hombros en círculo no añade nada y es la forma habitual de hacerlo mal.",
+  "matices": "En un estudio con treinta personas, el encogimiento a una mano fue el ejercicio que más activó la parte alta del trapecio de los diez que compararon. Otro vio una activación alta del trapecio superior en el encogimiento con peso, con los brazos a los lados, y un tercero encontró más actividad al hacerlo con los brazos algo separados del cuerpo, a unos 30°, una variante que se puede probar. Girar los hombros en círculo no aporta nada: el trapecio superior sube el hombro en vertical.",
   "fuentes": [
     {
       "titulo": "Surface electromyographic analysis of exercises for the trapezius and serratus anterior muscles",

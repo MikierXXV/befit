@@ -4,31 +4,33 @@
   "orden": 2,
   "nombre": "Barbell shrugs",
   "resumen": "Standing with a barbell held in front of the thighs, you raise the shoulders towards the ears and lower them slowly. The bar lets you load more than dumbbells.",
+  "movimiento_id": "encogimientos-barra",
   "ejecucion": [
-    "Stand and hold the bar in front of your thighs, palms facing you and hands slightly wider than your hips.",
+    "Take the bar from a rack set at mid-thigh height (or lift it from the floor with a straight back), palms facing you, hands slightly wider than your shoulders, and stand holding it in front of your thighs.",
     "With straight arms, raise your shoulders straight up towards your ears, without bending your elbows.",
     "Hold for a moment at the top and lower slowly until your shoulders are relaxed.",
     "Keep your torso upright, without leaning back to help, and your neck in line with your back.",
-    "If you have to swing your body or bend your elbows to lift the bar, lower the weight."
+    "If you have to swing your body or bend your elbows to lift the bar, lower the weight.",
+    "Rack it when you finish."
   ],
   "material": [
     "barra"
   ],
   "nivel": "inicial",
+  "descanso": 90,
   "musculos": {
     "principal": [
       "trapecio_superior"
     ],
-    "sinergista": [
-      "trapecio_medio"
-    ],
+    "sinergista": [],
     "estabilizador": [
+      "trapecio_medio",
       "antebrazo",
       "erectores",
       "abdomen"
     ]
   },
-  "matices": "The study comparing several weighted shrug positions found high upper trapezius activation in all of them, and another, in thirty people, found the shrug among the exercises that activate it most. We have found no study comparing the barbell with dumbbells; the bar lets you load more, and dumbbells keep the arms at the sides, a more comfortable position for many.",
+  "matices": "The study comparing several weighted shrug positions found high upper trapezius activation in all of them, and another, in thirty people, found the one-arm shrug activated it most of ten exercises; neither used a barbell. We have found no study comparing the barbell with dumbbells; dumbbells keep the arms at the sides, a more comfortable position for many.",
   "fuentes": [
     {
       "titulo": "Modifying the shoulder joint position during shrugging and retraction exercises alters the activation of the medial scapular muscles",

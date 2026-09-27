@@ -4,6 +4,7 @@
   "orden": 10,
   "nombre": "Cable glute kickback",
   "resumen": "Standing facing a low pulley with the ankle attached, you take the straight leg back and return slowly. It works the gluteus maximus.",
+  "movimiento_id": "patada-gluteo-polea",
   "ejecucion": [
     "Attach an ankle strap to the cable of a low pulley, put it on one ankle and stand facing the machine, holding on to it.",
     "Lean your torso slightly forward, with a straight back and the standing knee slightly bent.",
@@ -29,7 +30,7 @@
       "gluteo_medio"
     ]
   },
-  "matices": "We have found no study measuring the standing cable kickback. The closest measured movement is the quadruped hip extension, with fine-wire electrodes, which activated the glutes clearly more than the tensor fasciae latae. The cable does that movement standing up with adjustable load, and the usual risk is making up with the lower back what the hip cannot reach.",
+  "matices": "We have found no study measuring the standing cable kickback. The closest measured movement is the quadruped hip extension, with the knee bent and extending, using fine-wire electrodes: it activated the glutes more than the tensor fasciae latae. The cable does that movement standing up with adjustable load, and the usual risk is making up with the lower back what the hip cannot reach.",
   "fuentes": [
     {
       "titulo": "Which exercises target the gluteal muscles while minimizing activation of the tensor fascia lata? Electromyographic assessment using fine-wire electrodes",
