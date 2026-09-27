@@ -1,0 +1,47 @@
+{
+  "id": "aperturas-inclinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 11,
+  "nombre": "Incline dumbbell fly",
+  "resumen": "On a bench inclined to about 30°, the dumbbells open in an arc to the sides with the elbows slightly bent and come back together over the upper chest. An isolation exercise for the chest.",
+  "ejecucion": [
+    "Sit with a dumbbell on each thigh and lie back, bringing them to your chest before straightening your arms.",
+    "Set the back rest to about 30° and lie back with a dumbbell in each hand, arms straight over your upper chest and palms facing each other.",
+    "Bend your elbows slightly and keep them that way throughout.",
+    "Open your arms in an arc to the sides until your elbows reach shoulder level, and no further.",
+    "Come back along the same arc until the dumbbells meet over your chest.",
+    "If you feel a pull at the front of your shoulder, open less or lower the weight."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "We have found no study measuring incline flyes themselves. In the press, an inclination of about 30° was the one that most activated the upper chest in a study of thirty people; it is reasonable to think flyes behave similarly, but it has not been measured. At the bottom, with the arms open, the shoulder is in a demanding position; that is why it is usually advised not to go below shoulder level, which on an incline bench is a clearer limit than the bench itself.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

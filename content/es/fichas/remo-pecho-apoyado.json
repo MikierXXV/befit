@@ -1,0 +1,46 @@
+{
+  "id": "remo-pecho-apoyado",
+  "grupo_id": "tiron-horizontal",
+  "orden": 9,
+  "nombre": "Remo con pecho apoyado",
+  "resumen": "Tumbado boca abajo sobre un banco inclinado, se tiran dos mancuernas hacia la cadera con los codos atrás. El pecho apoyado quita la carga de la zona lumbar.",
+  "ejecucion": [
+    "Ajusta el respaldo a unos 30-45° y túmbate boca abajo con el pecho apoyado arriba y los pies en el suelo, con una mancuerna a cada lado del banco, en el suelo, para cogerlas ya tumbado.",
+    "Deja colgar una mancuerna en cada mano con los brazos estirados y las palmas enfrentadas.",
+    "Tira de las mancuernas llevando los codos hacia atrás, pegados al cuerpo, hasta que queden a la altura del tronco.",
+    "Junta los omóplatos al final y baja con control hasta estirar los brazos.",
+    "Mantén el pecho apoyado: si tienes que despegarlo para subir las mancuernas, es demasiado peso.",
+    "Al terminar, deja las mancuernas en el suelo antes de levantarte."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "abdomen"
+    ]
+  },
+  "matices": "Un estudio sobre el dorsal ancho encontró que el remo con pecho apoyado, en isometría, fue la contracción que mejor servía para medir la máxima activación del dorsal. No hemos encontrado estudios que lo comparen con otros remos en movimiento; la razón habitual para usarlo es que el banco sostiene el tronco y la zona lumbar no tiene que aguantar la inclinación.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic assessment of isometric and dynamic activation characteristics of the latissimus dorsi muscle",
+      "autor": "Beaudette, Unni y Brown, J Electromyogr Kinesiol, 2014",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24735642/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

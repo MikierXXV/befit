@@ -1,0 +1,51 @@
+{
+  "id": "press-inclinado-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 10,
+  "nombre": "Press inclinado con mancuernas",
+  "resumen": "Sentado en un banco con el respaldo a unos 30°, se empujan dos mancuernas desde el pecho alto hasta estirar los brazos. Como el press inclinado con barra, pero cada brazo por su lado.",
+  "ejecucion": [
+    "Ajusta el respaldo a unos 30° y siéntate con una mancuerna en cada mano apoyada en los muslos.",
+    "Túmbate sobre el respaldo llevando las mancuernas a los lados del pecho alto, con los pies en el suelo.",
+    "Empuja las mancuernas hacia arriba hasta estirar los brazos, juntándolas un poco sobre el pecho alto.",
+    "Baja con control hasta que las mancuernas queden a la altura del pecho, con los codos algo por debajo de los hombros.",
+    "Al terminar, lleva las mancuernas a los muslos antes de incorporarte, en vez de dejarlas caer a los lados."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "deltoides_anterior",
+      "triceps"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "antebrazo"
+    ]
+  },
+  "matices": "Los estudios sobre la inclinación del banco se hicieron con barra: en uno con treinta personas entrenadas, la parte alta del pectoral se activó más a 30°, y por encima de 45° ganaba el deltoides anterior. No hemos encontrado estudios que midan la inclinación con mancuernas; se da por hecho que el efecto es parecido, y las mancuernas dejan a cada brazo seguir su propio recorrido.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "An electromyography analysis of 3 muscles surrounding the shoulder joint during the performance of a chest press exercise at several angles",
+      "autor": "Trebs, Brandenburg y Pitney, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20512064/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

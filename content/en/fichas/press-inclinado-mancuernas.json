@@ -1,0 +1,51 @@
+{
+  "id": "press-inclinado-mancuernas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 10,
+  "nombre": "Incline dumbbell press",
+  "resumen": "Sitting on a bench with the back rest at about 30°, you press two dumbbells from the upper chest until the arms are straight. Like the incline barbell press, but each arm on its own.",
+  "ejecucion": [
+    "Set the back rest to about 30° and sit with a dumbbell in each hand resting on your thighs.",
+    "Lie back on the back rest, bringing the dumbbells to the sides of your upper chest, feet on the floor.",
+    "Press the dumbbells up until your arms are straight, bringing them slightly together over your upper chest.",
+    "Lower under control until the dumbbells are at chest level, elbows slightly below your shoulders.",
+    "When you finish, bring the dumbbells to your thighs before sitting up, instead of dropping them to the sides."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "deltoides_anterior",
+      "triceps"
+    ],
+    "sinergista": [
+      "serrato"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "trapecio_medio",
+      "antebrazo"
+    ]
+  },
+  "matices": "The studies on bench inclination used a barbell: in one with thirty trained people, the upper chest was most active at 30°, and above 45° the anterior deltoid took over. We have found no study measuring inclination with dumbbells; the effect is assumed to be similar, and dumbbells let each arm follow its own path.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "An electromyography analysis of 3 muscles surrounding the shoulder joint during the performance of a chest press exercise at several angles",
+      "autor": "Trebs, Brandenburg and Pitney, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20512064/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

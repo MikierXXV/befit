@@ -1,0 +1,51 @@
+{
+  "id": "press-inclinado-barra",
+  "grupo_id": "empuje-horizontal",
+  "orden": 9,
+  "nombre": "Incline barbell press",
+  "resumen": "The bench press with the back rest inclined to about 30°: the bar comes down to the upper chest. It shifts some of the work towards the upper chest and the shoulder.",
+  "ejecucion": [
+    "Set the back rest to about 30° and the safety pins just below where the bar touches your chest, or have someone spot you: getting stuck under the bar is the serious accident in this lift.",
+    "Sit with your back against the back rest, shoulder blades squeezed together against it and feet on the floor, and grip the bar slightly wider than your shoulders, wrists straight.",
+    "Unrack the bar and hold it over your shoulders, arms straight.",
+    "Lower the bar under control to your upper chest, below the collarbones, with your elbows at about 45-60° from your torso, not flared out to shoulder height.",
+    "Press up until your arms are straight, without lifting your back or glutes off the bench.",
+    "When the set is done, bring the bar back to the rack and make sure it is resting before you let go."
+  ],
+  "material": [
+    "barra",
+    "banco",
+    "rack"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "deltoides_anterior",
+      "triceps"
+    ],
+    "sinergista": [],
+    "estabilizador": [
+      "serrato",
+      "biceps"
+    ]
+  },
+  "matices": "In a study of thirty trained people and five inclinations, the upper chest was most active at 30°, and above 45° the anterior deltoid took over. Another, in fifteen men, found the clavicular portion more active at 44° than at 28° or flat, and the sternal portion more active flat. They disagree on the exact angle; what they share is that inclining favours the upper chest and the shoulder at the expense of the lower chest. A third study, with eight people and high-density electrodes, saw the centre of pectoral activity shift towards the clavicular portion at 45°. The authors of the second recommend doing both flat and incline pressing.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes and Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "An electromyography analysis of 3 muscles surrounding the shoulder joint during the performance of a chest press exercise at several angles",
+      "autor": "Trebs, Brandenburg and Pitney, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20512064/"
+    },
+    {
+      "titulo": "Non-uniform excitation of the pectoralis major muscle during flat and inclined bench press exercises",
+      "autor": "Cabral et al., Scand J Med Sci Sports, 2022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34644424/"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "id": "aperturas-inclinadas",
+  "grupo_id": "empuje-horizontal",
+  "orden": 11,
+  "nombre": "Aperturas inclinadas con mancuernas",
+  "resumen": "En un banco inclinado unos 30°, las mancuernas se abren en arco hacia los lados con los codos algo doblados y vuelven a juntarse sobre el pecho alto. Un ejercicio de aislamiento del pectoral.",
+  "ejecucion": [
+    "Siéntate con una mancuerna en cada mano apoyada en los muslos y túmbate llevándolas al pecho antes de estirar los brazos.",
+    "Ajusta el respaldo a unos 30° y túmbate con una mancuerna en cada mano, con los brazos estirados sobre el pecho alto y las palmas enfrentadas.",
+    "Dobla un poco los codos y déjalos así durante todo el movimiento.",
+    "Abre los brazos en arco hacia los lados hasta que los codos lleguen a la altura de los hombros, sin pasar de ahí.",
+    "Vuelve por el mismo arco hasta juntar las mancuernas sobre el pecho.",
+    "Si notas tirón en la parte delantera del hombro, abre menos o baja el peso."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "descanso": 60,
+  "musculos": {
+    "principal": [
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan las aperturas inclinadas en sí. En el press, la inclinación de unos 30° fue la que más activó la parte alta del pectoral en un estudio con treinta personas; es razonable pensar que en las aperturas pasa algo parecido, pero no está medido. Abajo, con los brazos abiertos, el hombro queda en una posición exigente; por eso se aconseja no pasar de la línea de los hombros, que en el banco inclinado es un límite más claro que el del propio banco.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

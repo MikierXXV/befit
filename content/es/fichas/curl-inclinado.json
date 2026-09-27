@@ -1,0 +1,43 @@
+{
+  "id": "curl-inclinado",
+  "grupo_id": "flexion-codo",
+  "orden": 7,
+  "nombre": "Curl inclinado con mancuernas",
+  "resumen": "Sentado en un banco inclinado hacia atrás, con los brazos colgando por detrás del tronco, se suben las mancuernas doblando los codos. El hombro queda atrás y el bíceps trabaja estirado.",
+  "ejecucion": [
+    "Ajusta el respaldo a unos 45-60° y siéntate con la espalda apoyada y una mancuerna en cada mano.",
+    "Deja colgar los brazos estirados hacia el suelo, por detrás de la línea del tronco, con las palmas hacia delante.",
+    "Sube las mancuernas doblando los codos, sin que los codos se adelanten.",
+    "Baja despacio hasta estirar los brazos del todo.",
+    "Si notas tirón en la parte delantera del hombro, sube el respaldo para que el brazo quede menos atrás."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen"
+    ]
+  },
+  "matices": "En un estudio con veintidós personas que comparó el curl de pie, el inclinado y el predicador, el inclinado y el de pie activaron el bíceps de forma parecida en todo el recorrido, mientras que el predicador lo hizo solo en un tramo corto. Lo que cambia es la posición, no la activación medida: con el hombro por detrás del tronco, el bíceps trabaja más estirado. Si eso aporta algo más no lo midió este estudio.",
+  "fuentes": [
+    {
+      "titulo": "Effect of the shoulder position on the biceps brachii EMG in different dumbbell curls",
+      "autor": "Oliveira et al., J Sports Sci Med, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24150552/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

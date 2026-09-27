@@ -1,0 +1,43 @@
+{
+  "id": "curl-inclinado",
+  "grupo_id": "flexion-codo",
+  "orden": 7,
+  "nombre": "Incline dumbbell curl",
+  "resumen": "Sitting on a bench reclined backwards, with the arms hanging behind the torso, you curl the dumbbells up. The shoulder stays back and the biceps works in a stretched position.",
+  "ejecucion": [
+    "Set the back rest to about 45-60° and sit with your back supported and a dumbbell in each hand.",
+    "Let your straight arms hang towards the floor, behind the line of your torso, palms facing forward.",
+    "Curl the dumbbells up by bending your elbows, without letting the elbows move forward.",
+    "Lower slowly until your arms are fully straight.",
+    "If you feel a pull at the front of your shoulder, raise the back rest so the arm sits less far back."
+  ],
+  "material": [
+    "mancuerna",
+    "banco"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "biceps"
+    ],
+    "sinergista": [
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "abdomen"
+    ]
+  },
+  "matices": "In a study of twenty-two people comparing the standing, incline and preacher curls, the incline and standing curls activated the biceps similarly throughout the range, while the preacher curl did so only over a short stretch. What changes is the position, not the measured activation: with the shoulder behind the torso, the biceps works in a more stretched position. Whether that adds anything was not measured in this study.",
+  "fuentes": [
+    {
+      "titulo": "Effect of the shoulder position on the biceps brachii EMG in different dumbbell curls",
+      "autor": "Oliveira et al., J Sports Sci Med, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24150552/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

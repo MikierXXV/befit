@@ -1,0 +1,51 @@
+{
+  "id": "press-inclinado-barra",
+  "grupo_id": "empuje-horizontal",
+  "orden": 9,
+  "nombre": "Press inclinado con barra",
+  "resumen": "El press de banca con el respaldo inclinado unos 30°: la barra baja a la parte alta del pecho. Desplaza parte del trabajo hacia la zona alta del pectoral y el hombro.",
+  "ejecucion": [
+    "Ajusta el respaldo a unos 30° y los topes de seguridad justo por debajo del punto donde la barra toca el pecho, o pide a alguien que te vigile: quedarse debajo de la barra es el accidente grave de este ejercicio.",
+    "Siéntate con la espalda apoyada, los omóplatos juntos contra el respaldo y los pies en el suelo, y coge la barra algo más abierta que los hombros, con las muñecas rectas.",
+    "Saca la barra del soporte y colócala sobre los hombros, con los brazos estirados.",
+    "Baja la barra de forma controlada hasta la parte alta del pecho, bajo las clavículas, con los codos a unos 45-60° del tronco, sin abrirlos a la altura de los hombros.",
+    "Empuja hacia arriba hasta estirar los brazos, sin despegar la espalda ni los glúteos del banco.",
+    "Al terminar la serie, lleva la barra hasta el soporte y asegúrate de que apoya antes de soltarla."
+  ],
+  "material": [
+    "barra",
+    "banco",
+    "rack"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "deltoides_anterior",
+      "triceps"
+    ],
+    "sinergista": [],
+    "estabilizador": [
+      "serrato",
+      "biceps"
+    ]
+  },
+  "matices": "En un estudio con treinta personas entrenadas y cinco inclinaciones, la parte alta del pectoral se activó más a 30°, y por encima de 45° ganaba el deltoides anterior. Otro, con quince hombres, encontró la porción clavicular más activa a 44° que a 28° o en plano, y la esternal más activa en plano. No coinciden en el ángulo exacto; lo que comparten es que al inclinar gana la parte alta del pectoral y el hombro, y pierde la baja. Un tercer estudio, con ocho personas y electrodos de alta densidad, vio que a 45° el centro de la actividad del pectoral se desplazaba hacia la porción clavicular. Los autores del segundo recomiendan hacer tanto el press plano como el inclinado.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Five Bench Inclinations on the Electromyographic Activity of the Pectoralis Major, Anterior Deltoid, and Triceps Brachii during the Bench Press Exercise",
+      "autor": "Rodríguez-Ridao, Antequera-Vique, Martín-Fuentes y Muyor, Int J Environ Res Public Health, 2020",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7579505/"
+    },
+    {
+      "titulo": "An electromyography analysis of 3 muscles surrounding the shoulder joint during the performance of a chest press exercise at several angles",
+      "autor": "Trebs, Brandenburg y Pitney, J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20512064/"
+    },
+    {
+      "titulo": "Non-uniform excitation of the pectoralis major muscle during flat and inclined bench press exercises",
+      "autor": "Cabral et al., Scand J Med Sci Sports, 2022",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34644424/"
+    }
+  ]
+}
