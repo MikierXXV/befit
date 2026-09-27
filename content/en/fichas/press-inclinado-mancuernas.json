@@ -4,6 +4,7 @@
   "orden": 10,
   "nombre": "Incline dumbbell press",
   "resumen": "Sitting on a bench with the back rest at about 30°, you press two dumbbells from the upper chest until the arms are straight. Like the incline barbell press, but each arm on its own.",
+  "movimiento_id": "press-inclinado-mancuernas",
   "ejecucion": [
     "Set the back rest to about 30° and sit with a dumbbell in each hand resting on your thighs.",
     "Lie back on the back rest, bringing the dumbbells to the sides of your upper chest, feet on the floor.",

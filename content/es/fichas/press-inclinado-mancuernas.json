@@ -4,6 +4,7 @@
   "orden": 10,
   "nombre": "Press inclinado con mancuernas",
   "resumen": "Sentado en un banco con el respaldo a unos 30°, se empujan dos mancuernas desde el pecho alto hasta estirar los brazos. Como el press inclinado con barra, pero cada brazo por su lado.",
+  "movimiento_id": "press-inclinado-mancuernas",
   "ejecucion": [
     "Ajusta el respaldo a unos 30° y siéntate con una mancuerna en cada mano apoyada en los muslos.",
     "Túmbate sobre el respaldo llevando las mancuernas a los lados del pecho alto, con los pies en el suelo.",

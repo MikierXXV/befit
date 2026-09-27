@@ -25,7 +25,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { Quaternion, Vector3 } from 'three';
-import { aplicarPose, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, geometriaBanco, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
@@ -331,9 +331,13 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
 
     for (const apoyo of mov.apoyos ?? []) {
       const imp = r.implementos[apoyo.implemento];
-      const hueco = Math.min(...vertices.filter((v) => dentroDeHuella(imp, v)).map((v) => v.y - (imp.posicion.y + imp.alto)));
+      // El hueco es lo que queda entre la piel más baja y la superficie: el asiento, el respaldo o
+      // las dos, según `con` (ver `zonaDeApoyo`).
+      const zona = zonaDeApoyo(imp, apoyo.con);
+      const hueco = Math.min(...vertices.map((v) => sobreBanco(imp, v, zona)).filter((h) => h !== null));
+      const donde = zona === 'todo' ? apoyo.implemento : `el ${zona} de ${apoyo.implemento}`;
       if (!(Math.abs(hueco) <= apoyo.tolerancia)) {
-        fallo(`el cuerpo no descansa en ${apoyo.implemento}`, `${etiqueta} (hueco ${(hueco * 100).toFixed(1)} cm)`);
+        fallo(`el cuerpo no descansa en ${donde}`, `${etiqueta} (hueco ${(hueco * 100).toFixed(1)} cm)`);
       }
     }
 
@@ -359,10 +363,18 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
        * pies (flexiones declinadas) en el banco. El movimiento lo declara en su apoyo:
        * `"con": "espalda" | "manos" | "pies"`. Sin `con`, es el asiento y la regla se aplica.
        */
-      if ((mov.apoyos ?? []).some((a) => a.implemento === nombre && a.con && a.con !== 'asiento')) continue;
+      /*
+       * Con respaldo, un mismo movimiento declara DOS apoyos en el banco —la espalda en el respaldo y
+       * el asiento— y basta con que uno sea el asiento para que la regla valga: antes se saltaba en
+       * cuanto un apoyo decía `con`, y el press inclinado con `con: "espalda"` dejaba de mirar si
+       * estaba sentado dentro del asiento o en el aire delante de él.
+       */
+      const suyos = (mov.apoyos ?? []).filter((a) => a.implemento === nombre);
+      if (suyos.length && suyos.every((a) => a.con && a.con !== 'asiento')) continue;
       const cadera = maniqui.esq.huesos.pelvis.getWorldPosition(new Vector3());
       if (Math.abs(cadera.y - (imp.posicion.y + imp.alto)) > 0.16) continue;
-      const margen = imp.posicion.z + imp.largo / 2 - cadera.z;
+      // El borde de delante es el del ASIENTO: en el banco inclinado, el respaldo queda detrás.
+      const margen = imp.posicion.z + geometriaBanco(imp).asiento.z1 - cadera.z;
       if (margen < 0.05) {
         fallo(`sentado fuera de ${nombre}`, `${etiqueta} (la cadera queda a ${(margen * 100).toFixed(0)} cm del borde)`);
       }
@@ -741,10 +753,20 @@ function redactar(aviso) {
 /** Cuánto se mete un punto dentro de un implemento sólido (0 si está fuera). */
 function profundidad(imp, v) {
   if (imp.tipo === 'banco') {
-    const dx = imp.ancho / 2 - Math.abs(v.x - imp.posicion.x);
-    const dz = imp.largo / 2 - Math.abs(v.z - imp.posicion.z);
-    const dy = imp.posicion.y + imp.alto - v.y;
-    return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
+    /*
+     * El banco inclinado es la UNIÓN de dos cajas: el asiento, de pie en el suelo como el banco
+     * plano, y el respaldo girado. Dentro de una unión, lo hundido es lo más hundido en cualquiera
+     * de las dos. Ver `geometriaBanco` en la cinemática, que es de donde sale la forma.
+     */
+    const g = geometriaBanco(imp);
+    const dx = g.ancho / 2 - Math.abs(v.x - imp.posicion.x);
+    const z = v.z - imp.posicion.z;
+    const dy = imp.posicion.y + g.alto - v.y;
+    const asiento = Math.max(0, Math.min(dx, dy, z - g.asiento.z0, g.asiento.z1 - z, v.y - imp.posicion.y));
+    if (!g.respaldo) return asiento;
+    const { u, h } = enRespaldo(g.respaldo, z, v.y - imp.posicion.y);
+    const respaldo = Math.max(0, Math.min(dx, u, g.respaldo.largo - u, -h, h + g.respaldo.macizo, v.y - imp.posicion.y));
+    return Math.max(asiento, respaldo);
   }
   if (imp.tipo === 'pared') {
     // Caja de pie apoyada en el suelo: crece hacia arriba desde `posicion`, como la dibuja el visor.
@@ -764,9 +786,49 @@ function profundidad(imp, v) {
   return 0;
 }
 
-function dentroDeHuella(imp, v) {
-  return Math.abs(v.x - imp.posicion.x) < imp.ancho / 2 && Math.abs(v.z - imp.posicion.z) < imp.largo / 2
-    && v.y < imp.posicion.y + imp.alto + 0.15;
+/**
+ * Un punto en coordenadas del respaldo: `u`, lo que ha subido por él desde el pivote, y `h`, su
+ * altura sobre la superficie (negativa: por dentro). `z` e `y` van relativos a `posicion`.
+ */
+function enRespaldo(respaldo, z, y) {
+  const pz = z - respaldo.pivote.z;
+  const py = y - respaldo.pivote.y;
+  return { u: pz * respaldo.d.z + py * respaldo.d.y, h: pz * respaldo.n.z + py * respaldo.n.y };
+}
+
+/**
+ * Qué superficie del banco mide un apoyo. En el plano solo hay una, así que `con` no cambia nada
+ * y los movimientos que ya existían se miden igual que siempre. En el inclinado, `con: "espalda"`
+ * o `"pecho"` (el remo con pecho apoyado) es el respaldo; sin `con`, o con `"asiento"`, el asiento;
+ * cualquier otra cosa (`"manos"`, `"pies"`), el que quede más cerca.
+ *
+ * Sin esto el apoyo miraba la altura sobre el asiento de todo lo que caía encima, y en un respaldo
+ * a 45° la espalda está a 30-60 cm por encima del asiento aunque esté pegada al acolchado.
+ */
+function zonaDeApoyo(imp, con) {
+  if (!geometriaBanco(imp).respaldo) return 'todo';
+  if (con === 'espalda' || con === 'pecho') return 'respaldo';
+  if (!con || con === 'asiento') return 'asiento';
+  return 'todo';
+}
+
+/**
+ * Altura de un punto sobre la superficie de apoyo del banco (negativa: hundido), o `null` si no cae
+ * encima de ella. «Encima» es dentro de la huella y a menos de 15 cm, contados en vertical sobre el
+ * asiento y en la normal sobre el respaldo.
+ */
+function sobreBanco(imp, v, zona) {
+  const g = geometriaBanco(imp);
+  if (Math.abs(v.x - imp.posicion.x) >= g.ancho / 2) return null;
+  const z = v.z - imp.posicion.z;
+  const y = v.y - imp.posicion.y;
+  let mejor = null;
+  if (zona !== 'respaldo' && z > g.asiento.z0 && z < g.asiento.z1 && y < g.alto + 0.15) mejor = y - g.alto;
+  if (zona !== 'asiento' && g.respaldo) {
+    const { u, h } = enRespaldo(g.respaldo, z, y);
+    if (u > 0 && u < g.respaldo.largo && h < 0.15 && h > -g.respaldo.macizo) mejor = mejor === null ? h : Math.min(mejor, h);
+  }
+  return mejor;
 }
 
 if (errores) {

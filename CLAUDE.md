@@ -115,6 +115,16 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    ejercicio que apoya la ESPALDA en el banco (hip thrust) lo declara en su apoyo con
    `"con": "espalda"` (o `"manos"`, `"pies"` si es eso lo que apoya), o el validador lo toma por
    sentado fuera del banco.
+   Un banco con respaldo es el mismo `banco` con `"inclinacion"` en grados (0-90; sin ella, o a 0,
+   es el plano de siempre, y `largo` solo cuenta en el plano). Entonces `posicion` es el centro del
+   ASIENTO en el suelo (`largo_asiento`, 0,38 m por defecto) y el respaldo (`largo_respaldo`, 0,85 m)
+   arranca de su borde trasero y sube hacia −Z: el maniquí, mirando a +Z, se sienta con la espalda en
+   él. La forma sale de `geometriaBanco` (`cinematica.js`), la misma para el visor y el validador,
+   que lo trata como la unión de dos cajas. El apoyo se declara por superficie, uno por cada una:
+   `{ "con": "asiento" }` para los glúteos y `{ "con": "espalda" }` para el respaldo (o `"pecho"` en
+   el remo con pecho apoyado); cada uno mide su hueco contra la suya, en la normal en el respaldo,
+   porque medido en vertical una espalda pegada a un respaldo a 45° salía a 40 cm «del banco». Basta con
+   que uno de los apoyos sea el asiento para que se siga mirando que la cadera caiga dentro de él.
    Una mano con mancuerna gira la palma con `brazos.<lado>.pronacion` en grados, en sentido
    anatómico: 0 neutro (palma hacia la línea media), +90 prono, -90 supino. Con el brazo colgando,
    prono es la palma hacia ATRÁS, no hacia delante: esta nota decía «+90 hacia delante», que solo

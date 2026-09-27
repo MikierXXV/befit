@@ -9,7 +9,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { aplicarPose, poseEn, prepararEsqueleto } from './cinematica.js';
+import { aplicarPose, geometriaBanco, poseEn, prepararEsqueleto } from './cinematica.js';
 
 export type Vista = 'frontal' | 'lateral' | 'tres_cuartos' | 'detalle';
 export const VISTAS: Vista[] = ['frontal', 'lateral', 'tres_cuartos'];
@@ -368,12 +368,41 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
     g.add(cilindroX(0.016, 0.14, metal));
     for (const s of [-1, 1]) g.add(cilindroX(0.06, 0.08, material(COLOR.disco, 0.8, 0), s * 0.11));
   } else if (def.tipo === 'banco') {
-    const { largo, ancho, alto } = def as unknown as { largo: number; ancho: number; alto: number };
-    const acolchado = new THREE.Mesh(new THREE.BoxGeometry(ancho, 0.08, largo), material(COLOR.banco, 0.9, 0));
-    acolchado.position.y = alto - 0.04;
+    // La forma sale de `geometriaBanco`, la misma que usa el validador: ver allí qué es cada medida.
+    const { ancho, alto, asiento, respaldo } = geometriaBanco(def);
+    const largo = asiento.z1 - asiento.z0;
+    const cojin = material(COLOR.banco, 0.9, 0);
+    const piezas: THREE.Mesh[] = [];
+    const acolchado = new THREE.Mesh(new THREE.BoxGeometry(ancho, 0.08, largo), cojin);
+    acolchado.position.set(0, alto - 0.04, (asiento.z0 + asiento.z1) / 2);
     const pata = new THREE.Mesh(new THREE.BoxGeometry(0.08, alto - 0.08, largo * 0.8), metal);
-    pata.position.y = (alto - 0.08) / 2;
-    for (const m of [acolchado, pata]) { m.castShadow = true; m.receiveShadow = true; g.add(m); }
+    pata.position.set(0, (alto - 0.08) / 2, (asiento.z0 + asiento.z1) / 2);
+    piezas.push(acolchado, pata);
+    if (respaldo) {
+      /*
+       * El respaldo: una caja girada alrededor de X. Girar `inclinacion` lleva su largo (el Z de la
+       * caja) a la dirección en que sube y su cara de arriba (el Y) a la normal, hacia la espalda.
+       * Se centra medio largo más allá del pivote y medio grosor por debajo de la superficie.
+       */
+      const { largo: lr, pivote, d, n, inclinacion } = respaldo;
+      const tabla = new THREE.Mesh(new THREE.BoxGeometry(ancho, 0.08, lr), cojin);
+      tabla.rotation.x = inclinacion * (Math.PI / 180);
+      tabla.position.set(0, pivote.y + d.y * lr / 2 - n.y * 0.04, pivote.z + d.z * lr / 2 - n.z * 0.04);
+      /*
+       * Y lo que lo sostiene: un poste del suelo a la cara de abajo del respaldo, a poco más de la
+       * mitad de su largo, y un larguero por el suelo desde la pata del asiento hasta el poste. Sin
+       * él, un respaldo a 30° parecía flotar detrás del maniquí.
+       */
+      const u = lr * 0.55;
+      const apoyoY = pivote.y + d.y * u - n.y * 0.08;
+      const apoyoZ = pivote.z + d.z * u - n.z * 0.08;
+      const poste = new THREE.Mesh(new THREE.BoxGeometry(0.06, apoyoY, 0.06), metal);
+      poste.position.set(0, apoyoY / 2, apoyoZ);
+      const larguero = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.05, asiento.z0 - apoyoZ + 0.06), metal);
+      larguero.position.set(0, 0.025, (asiento.z0 + apoyoZ) / 2);
+      piezas.push(tabla, poste, larguero);
+    }
+    for (const m of piezas) { m.castShadow = true; m.receiveShadow = true; g.add(m); }
   } else if (def.tipo === 'pared') {
     /*
      * Una pared es una caja de pie, y hace falta como tipo propio: usar un banco puesto vertical

@@ -987,6 +987,47 @@ function abduccionDe(dir, lado) {
 
 /* ------------------------------------------------------------------------ implementos -- */
 
+/**
+ * LA FORMA DE UN BANCO, en metros y en coordenadas del propio banco (origen en `posicion`, en el
+ * suelo, bajo el centro del asiento). La usan el visor para dibujarlo y el validador para saber
+ * dónde es sólido y dónde se apoya el cuerpo: si cada uno se la calculase por su lado, el validador
+ * podría dar por buena una espalda apoyada en un respaldo que en pantalla está diez centímetros
+ * más allá.
+ *
+ * Sin `inclinacion` (o con 0) es el banco plano de siempre: una caja de `largo` × `ancho` × `alto`,
+ * y ningún movimiento que ya existía cambia. Con `inclinacion` en grados (0-90) es un banco con
+ * respaldo: un ASIENTO plano y corto (`largo_asiento`, 38 cm por defecto) centrado en `posicion`, y
+ * un RESPALDO (`largo_respaldo`, 85 cm) que arranca del borde trasero del asiento —el de −Z— y sube
+ * hacia atrás con esa inclinación sobre la horizontal. El maniquí mira a +Z: sentado en el asiento,
+ * la espalda le queda en el respaldo. `largo` no cuenta en el inclinado.
+ *
+ * El respaldo se describe por su superficie: `pivote` (el borde de arriba del asiento, detrás),
+ * `d` (hacia dónde sube, en el plano ZY) y `n` (la normal de la superficie, hacia quien se apoya).
+ * `macizo` es el grosor que el validador toma por sólido bajo esa superficie: el acolchado mide 8 cm,
+ * pero con 8 cm una espalda metida diez ya habría salido por detrás y no contaría.
+ */
+export function geometriaBanco(def) {
+  const inclinacion = Math.min(90, Math.max(0, def.inclinacion ?? 0));
+  if (!inclinacion) {
+    return { ancho: def.ancho, alto: def.alto, asiento: { z0: -def.largo / 2, z1: def.largo / 2 }, respaldo: null };
+  }
+  const a = inclinacion * GRAD;
+  const largoAsiento = def.largo_asiento ?? 0.38;
+  return {
+    ancho: def.ancho,
+    alto: def.alto,
+    asiento: { z0: -largoAsiento / 2, z1: largoAsiento / 2 },
+    respaldo: {
+      inclinacion,
+      largo: def.largo_respaldo ?? 0.85,
+      pivote: { z: -largoAsiento / 2, y: def.alto },
+      d: { z: -Math.cos(a), y: Math.sin(a) },
+      n: { z: Math.sin(a), y: Math.cos(a) },
+      macizo: 0.25,
+    },
+  };
+}
+
 function colocarImplementos(esq, pose, definicion, marcos) {
   const salida = {};
   for (const [nombre, def] of Object.entries(definicion.implementos ?? {})) {

@@ -1,0 +1,44 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Banco con respaldo a 35°: el asiento centrado en posicion y el respaldo subiendo hacia −Z desde su borde trasero.",
+  "id": "press-inclinado-mancuernas",
+  "duracion": 3.2,
+  "asimetria": 0.6,
+  "respiracion": { "amplitud": 0.004, "ciclos": 1 },
+  "camara": { "vista": "tres_cuartos" },
+  "cartel": { "fase": 0.5 },
+  "implementos": {
+    "banco": { "tipo": "banco", "posicion": [0, 0, 0], "inclinacion": 35, "largo_asiento": 0.38, "largo_respaldo": 0.85, "ancho": 0.3, "alto": 0.45, "solido": true },
+    "mancuerna_i": { "tipo": "mancuerna", "en_mano": "i", "agarre_mango": "prono", "solido": true },
+    "mancuerna_d": { "tipo": "mancuerna", "en_mano": "d", "agarre_mango": "prono", "solido": true }
+  },
+  "apoyos": [
+    { "implemento": "banco", "tolerancia": 0.02, "con": "asiento" },
+    { "implemento": "banco", "tolerancia": 0.02, "con": "espalda" }
+  ],
+  "poses": [
+    {
+      "t": 0, "curva": "controlada", "etiqueta": "arriba",
+      "pelvis": { "posicion": [0, 0.505, -0.1], "orientacion": { "inclinacion": -52 } },
+      "columna": { "flexion": -3 },
+      "cuello": { "flexion": -8 },
+      "brazos": { "ambos": { "objetivo": [0.17, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
+      "piernas": { "ambos": { "objetivo": [0.25, 0.104, 0.32], "rodilla_hacia": [0.3, 1, 0.4], "pie_plano": true, "apertura": 15 } }
+    },
+    {
+      "t": 0.5, "curva": "esfuerzo", "etiqueta": "abajo",
+      "pelvis": { "posicion": [0, 0.505, -0.1], "orientacion": { "inclinacion": -52 } },
+      "columna": { "flexion": -3 },
+      "cuello": { "flexion": -8 },
+      "brazos": { "ambos": { "objetivo": [0.37, 1.02, -0.43], "codo_hacia": [1, -1, 0.7], "cierre": 1 } },
+      "piernas": { "ambos": { "objetivo": [0.25, 0.104, 0.32], "rodilla_hacia": [0.3, 1, 0.4], "pie_plano": true, "apertura": 15 } }
+    },
+    {
+      "t": 1,
+      "pelvis": { "posicion": [0, 0.505, -0.1], "orientacion": { "inclinacion": -52 } },
+      "columna": { "flexion": -3 },
+      "cuello": { "flexion": -8 },
+      "brazos": { "ambos": { "objetivo": [0.17, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
+      "piernas": { "ambos": { "objetivo": [0.25, 0.104, 0.32], "rodilla_hacia": [0.3, 1, 0.4], "pie_plano": true, "apertura": 15 } }
+    }
+  ]
+}
