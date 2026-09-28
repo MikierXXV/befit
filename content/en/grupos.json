@@ -142,6 +142,28 @@
         "claro": "#853285",
         "oscuro": "#e9a5e9"
       }
+    },
+    {
+      "id": "extension-rodilla",
+      "nombre": "Knee extension",
+      "descripcion": "Straightening the knee against resistance with the thigh still: it isolates the quadriceps.",
+      "orden": 14,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#6a6d0f",
+        "oscuro": "#d4d864"
+      }
+    },
+    {
+      "id": "flexion-rodilla",
+      "nombre": "Knee flexion",
+      "descripcion": "Bending the knee against resistance with the thigh still: it isolates the hamstrings.",
+      "orden": 15,
+      "descanso": 60,
+      "color_acento": {
+        "claro": "#9b2744",
+        "oscuro": "#f19db2"
+      }
     }
   ]
 }

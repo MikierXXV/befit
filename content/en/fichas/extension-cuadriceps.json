@@ -1,0 +1,48 @@
+{
+  "id": "extension-cuadriceps",
+  "grupo_id": "extension-rodilla",
+  "orden": 1,
+  "nombre": "Machine leg extension",
+  "resumen": "Seated in the machine with the pad on your lower shins, you straighten your knees against the resistance and lower them under control. It isolates the quadriceps.",
+  "movimiento_id": "extension-cuadriceps",
+  "ejecucion": [
+    "Adjust the back pad so your knees line up with the machine’s pivot, and the pad sits on your lower shins, just above your ankles.",
+    "Sit with your back supported and hold the side handles.",
+    "Straighten your knees until they are almost fully extended, without lifting your thighs off the seat.",
+    "Lower under control until your knees are roughly at 90°.",
+    "If your knee hurts, shorten the range or lower the weight."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps"
+    ],
+    "sinergista": [],
+    "estabilizador": []
+  },
+  "matices": "In a study of ten men, the knee extension activated the rectus femoris more and the vasti less than the squat or leg press, and quadriceps activity peaked near full extension. It was the only one of the three exercises with anterior cruciate ligament tension; another study placed it between 40° and full extension, peaking around 14°, which is why the last part of the range is sometimes limited in rehab of that ligament. A third, in twenty-two untrained men, found more rectus femoris growth with the hip flexed at 40° (back pad well reclined) than at 90° (sitting upright), with no difference in the vastus lateralis.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanics of the knee during closed kinetic chain and open kinetic chain exercises",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 1998",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9565938/"
+    },
+    {
+      "titulo": "A comparison of tibiofemoral joint forces and electromyographic activity during open and closed kinetic chain exercises",
+      "autor": "Wilk et al., Am J Sports Med, 1996",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8827313/"
+    },
+    {
+      "titulo": "The effects of hip flexion angle on quadriceps femoris muscle hypertrophy in the leg extension exercise",
+      "autor": "Larsen et al., J Sports Sci, 2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39699974/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

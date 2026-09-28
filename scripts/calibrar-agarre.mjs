@@ -46,9 +46,11 @@ for (const id of ids) {
    * (`"cuernos"`): el marco se guarda en la kettlebell, relativo al asa o al cuerno de cada mano.
    * Un movimiento, una forma de cogerla: el marco es uno.
    */
-  const objetivo = ['barra', 'paralelas', 'kettlebell', 'cuernos']
-    .find((o) => mov.implementos?.[o === 'cuernos' ? 'kettlebell' : o] && va(o));
-  const nombre = objetivo === 'cuernos' ? 'kettlebell' : objetivo;
+  /* Y las asas de una máquina (`objetivo: "asas"`): el marco se guarda en `maquina`, por mano. */
+  const implementoDe = (o) => ({ cuernos: 'kettlebell', asas: 'maquina' })[o] ?? o;
+  const objetivo = ['barra', 'paralelas', 'kettlebell', 'cuernos', 'asas']
+    .find((o) => mov.implementos?.[implementoDe(o)] && va(o));
+  const nombre = objetivo && implementoDe(objetivo);
   // Solo los que tienen una barra a la que van las manos: lo que se lleva EN la mano ya va con ella.
   if (!nombre) continue;
   const barra = mov.implementos[nombre];

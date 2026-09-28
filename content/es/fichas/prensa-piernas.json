@@ -1,0 +1,47 @@
+{
+  "id": "prensa-piernas",
+  "grupo_id": "sentadilla",
+  "orden": 9,
+  "nombre": "Prensa de piernas",
+  "resumen": "Sentado en la máquina con la espalda apoyada, se empuja con los pies una plataforma hasta casi estirar las piernas y se baja con control. Trabaja cuádriceps y glúteo sin cargar la espalda con una barra.",
+  "ejecucion": [
+    "Ajusta el respaldo para que, con los pies en la plataforma, las rodillas queden dobladas a unos 90° o algo más.",
+    "Siéntate con la espalda y la cadera bien apoyadas en el respaldo y pon los pies en la plataforma a la anchura de la cadera, con las puntas un poco hacia fuera.",
+    "Empuja la plataforma para soltar los seguros y coge las asas laterales.",
+    "Baja la plataforma doblando las rodillas, que siguen la dirección de los pies, hasta donde la cadera no se despegue del asiento, más o menos con las rodillas a 90°.",
+    "Empuja con todo el pie hasta casi estirar las piernas, sin llegar a bloquear las rodillas.",
+    "Al terminar, vuelve a poner los seguros antes de quitar los pies.",
+    "Si la parte baja de la espalda se despega del respaldo al bajar, acorta el recorrido."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "isquiotibiales",
+      "abdomen"
+    ]
+  },
+  "matices": "En un estudio con diez hombres que comparó la sentadilla, la prensa y la extensión de rodilla, la prensa generó más o menos la mitad de actividad de los isquiotibiales que la sentadilla, y la actividad del cuádriceps fue máxima cerca de la flexión completa, donde también fue máxima la compresión entre fémur y tibia. No se midió tensión en el ligamento cruzado anterior; en cambio, la del cruzado posterior fue más o menos el doble que en la extensión de rodilla.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanics of the knee during closed kinetic chain and open kinetic chain exercises",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 1998",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9565938/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

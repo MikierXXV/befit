@@ -1,0 +1,42 @@
+{
+  "id": "curl-femoral-tumbado",
+  "grupo_id": "flexion-rodilla",
+  "orden": 1,
+  "nombre": "Curl femoral tumbado",
+  "resumen": "Tumbado boca abajo en la máquina, con el rodillo por encima de los talones, se doblan las rodillas llevando los talones hacia los glúteos y se bajan con control. Aísla los isquiotibiales.",
+  "ejecucion": [
+    "Túmbate boca abajo con las rodillas justo por fuera del borde del banco, alineadas con el eje de la máquina, y el rodillo sobre la parte baja de las pantorrillas, por encima de los talones.",
+    "Coge las asas y apoya la cadera en el banco.",
+    "Dobla las rodillas llevando los talones hacia los glúteos, sin despegar la cadera del banco.",
+    "Baja con control hasta casi estirar las piernas.",
+    "Si la cadera se levanta o la espalda se arquea para subir el peso, usa menos carga."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "gemelos"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "abdomen"
+    ]
+  },
+  "matices": "En un estudio con veinte adultos que entrenaron doce semanas una pierna con el curl sentado y la otra con el tumbado, el curl sentado hizo crecer más los isquiotibiales en conjunto (un 14 % frente a un 9 %), sobre todo los que cruzan la cadera, y los autores lo atribuyen a trabajar el músculo más estirado. Los dos protegieron por igual frente al daño muscular. Tumbado sigue siendo útil si no hay máquina sentada.",
+  "fuentes": [
+    {
+      "titulo": "Greater Hamstrings Muscle Hypertrophy but Similar Damage Protection after Training at Long versus Short Muscle Lengths",
+      "autor": "Maeo et al., Med Sci Sports Exerc, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33009197/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

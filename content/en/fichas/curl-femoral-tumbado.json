@@ -1,0 +1,42 @@
+{
+  "id": "curl-femoral-tumbado",
+  "grupo_id": "flexion-rodilla",
+  "orden": 1,
+  "nombre": "Lying leg curl",
+  "resumen": "Lying face down in the machine with the pad above your heels, you bend your knees bringing your heels towards your glutes and lower them under control. It isolates the hamstrings.",
+  "ejecucion": [
+    "Lie face down with your knees just off the edge of the bench, lined up with the machine’s pivot, and the pad on your lower calves, above your heels.",
+    "Hold the handles and keep your hips on the bench.",
+    "Bend your knees bringing your heels towards your glutes, without lifting your hips off the bench.",
+    "Lower under control until your legs are almost straight.",
+    "If your hips lift or your back arches to raise the weight, use a lighter load."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "gemelos"
+    ],
+    "estabilizador": [
+      "gluteo_mayor",
+      "abdomen"
+    ]
+  },
+  "matices": "In a study of twenty adults who trained one leg with the seated leg curl and the other lying down for twelve weeks, the seated curl grew the hamstrings more overall (14 % vs 9 %), especially those crossing the hip, and the authors attribute it to working the muscle in a more stretched position. Both protected equally against muscle damage. Lying down is still useful if there is no seated machine.",
+  "fuentes": [
+    {
+      "titulo": "Greater Hamstrings Muscle Hypertrophy but Similar Damage Protection after Training at Long versus Short Muscle Lengths",
+      "autor": "Maeo et al., Med Sci Sports Exerc, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33009197/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

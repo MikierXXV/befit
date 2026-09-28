@@ -181,6 +181,41 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    implemento y kettlebell bajo el suelo. Con las manos juntas delante de la ingle, los brazos se
    meten en el tronco: `escapula.protraccion` 20 y el codo hacia fuera (`codo_hacia: [1, 0, 0]`),
    como la sentadilla sumo con mancuerna.
+   Las máquinas guiadas son UN tipo, `maquina`, con `modelo`: `"extension"` (extensión de
+   cuádriceps, sentado), `"curl_tumbado"` (curl femoral, boca abajo) y `"prensa"` (prensa a 45°).
+   Un tipo y no tres porque las tres son lo mismo —parte fija acolchada sobre un bastidor, parte
+   móvil que empuja, asas a los lados—, y reducidas a una lista de cajas y cilindros
+   (`geometriaMaquina`, en `cinematica.js`) visor, cinemática y validador las tratan con el mismo
+   código; con tres tipos cada comprobación se habría escrito tres veces. El implemento se llama
+   `maquina`, `posicion` va en el suelo y es sólida siempre, sin `solido` (acolchado con 2 cm de
+   holgura, metal con 5 mm). Qué es `posicion` y qué se mueve, por modelo:
+    - **extension**: el suelo bajo el EJE de la palanca, que va a `alto` + 0,09 (0,57 m con el
+      asiento de 0,48) y es donde tienen que caer las rodillas. `angulo` por pose es la flexión de
+      rodilla con el muslo horizontal (90 abajo, ~10 arriba): se escribe el MISMO número que en
+      `rodilla.flexion` de esa pose, y con el muslo quieto los dos recorren el mismo spline y el
+      rodillo va pegado al empeine todo el ciclo. Piernas por ángulos (`cadera`, `rodilla`), no con
+      `objetivo`, y `asimetria: 0`: con asimetría la pierna derecha va un poco retrasada y un solo
+      rodillo no puede seguir a las dos.
+    - **curl_tumbado**: el suelo bajo el eje (a `alto` + 0,10); el banco empieza 6 cm por delante y
+      la cabeza va hacia +Z (pelvis con `inclinacion` 90). `angulo`, igual: la flexión de rodilla,
+      0 con las piernas estiradas; el rodillo, sobre el tendón de Aquiles.
+    - **prensa**: el suelo bajo el pliegue entre asiento y respaldo (a `alto`, 0,42; respaldo a
+      45°). `recorrido` por pose es la distancia, por el carril de 45°, del punto de la cadera (12 cm
+      sobre el pliegue y 6 por delante) a la cara de la plataforma: ~0,6 con las rodillas a 90°,
+      ~0,8 estiradas. Los pies apoyan en ella siguiendo a la espinilla con `tobillo.dorsiflexion`,
+      como en la plataforma del remo en polea.
+   La parte móvil se DECLARA por pose, como `rodar` o `vuelco`, y no se deduce de la rodilla: el
+   carro de la prensa lo empujan dos pies, y deducida del cuerpo la máquina iría siempre donde la
+   pierna y nadie cazaría una rodilla fuera del eje. A cambio el validador mira en cada fotograma
+   que el rodillo toque la mitad baja de la espinilla, o la plataforma el pie, de CADA pierna a menos
+   de 1,5 cm (`tolerancia_contacto`); sin declararlo. Los apoyos se declaran por superficie:
+   `{ "implemento": "maquina", "con": "asiento" }` y `"espalda"` en la extensión y la prensa,
+   `"pecho"` en el curl; se miden en la normal de cada una, y con `asiento` además la cadera tiene
+   que caer dentro de él. Las manos, a las asas con `brazos.ambos.objetivo: "asas"` (agarre neutro,
+   palmas hacia dentro, como las paralelas; `npm run agarre <id>` lo fija). Medidas por defecto
+   (`alto`, `ancho`, `largo_asiento`, `inclinacion`, `brazo`, `despegue`…) en `geometriaMaquina`;
+   la extensión está animada y comprobada, y curl y prensa solo probados en estático: al animarlos
+   se afinan sus números por defecto.
    `columna.flexion` se reparte 25/35/40 % entre lumbar y las dos torácicas; para doblar SOLO la
    parte alta hay `columna.flexion_alta` (se suma, rango en `RANGOS`). El hollow hold la necesita:
    con `flexion` sola, al curvar lo bastante para despegar los hombros la lumbar se iba con ellos.

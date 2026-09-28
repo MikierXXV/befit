@@ -1,0 +1,256 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Máquina de extensión de cuádriceps: el eje de la palanca está en el origen, a 0,57 m del suelo, y ahí caen las rodillas; el rodillo va sobre el empeine, justo encima del tobillo. `angulo` de la máquina = flexión de rodilla con el muslo horizontal, así que va con el mismo número que `rodilla.flexion` en cada pose y los dos recorren el mismo spline.",
+  "id": "extension-cuadriceps",
+  "duracion": 3.4,
+  "asimetria": 0,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral"
+  },
+  "cartel": {
+    "fase": 0.4
+  },
+  "implementos": {
+    "maquina": {
+      "tipo": "maquina",
+      "modelo": "extension",
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "angulo": 90,
+      "agarre_marco": {
+        "i": [
+          0.000758,
+          -0.707106,
+          0.000758,
+          -0.707106
+        ],
+        "d": [
+          0.000758,
+          0.707106,
+          0.000758,
+          0.707106
+        ]
+      }
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "maquina",
+      "tolerancia": 0.03,
+      "con": "asiento"
+    },
+    {
+      "implemento": "maquina",
+      "tolerancia": 0.03,
+      "con": "espalda"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.545,
+          -0.45
+        ],
+        "orientacion": {
+          "inclinacion": -10
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.4,
+            0,
+            -1
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 80,
+            "abduccion": 2
+          },
+          "rodilla": {
+            "flexion": 90
+          },
+          "tobillo": {
+            "dorsiflexion": 5
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "angulo": 90
+        }
+      }
+    },
+    {
+      "t": 0.4,
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.545,
+          -0.45
+        ],
+        "orientacion": {
+          "inclinacion": -10
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.4,
+            0,
+            -1
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 80,
+            "abduccion": 2
+          },
+          "rodilla": {
+            "flexion": 10
+          },
+          "tobillo": {
+            "dorsiflexion": 5
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "angulo": 10
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.545,
+          -0.45
+        ],
+        "orientacion": {
+          "inclinacion": -10
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.4,
+            0,
+            -1
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 80,
+            "abduccion": 2
+          },
+          "rodilla": {
+            "flexion": 10
+          },
+          "tobillo": {
+            "dorsiflexion": 5
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "angulo": 10
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.545,
+          -0.45
+        ],
+        "orientacion": {
+          "inclinacion": -10
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": 8
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.4,
+            0,
+            -1
+          ],
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "cadera": {
+            "flexion": 80,
+            "abduccion": 2
+          },
+          "rodilla": {
+            "flexion": 90
+          },
+          "tobillo": {
+            "dorsiflexion": 5
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "angulo": 90
+        }
+      }
+    }
+  ]
+}

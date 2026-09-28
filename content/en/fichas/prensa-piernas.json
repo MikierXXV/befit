@@ -1,0 +1,47 @@
+{
+  "id": "prensa-piernas",
+  "grupo_id": "sentadilla",
+  "orden": 9,
+  "nombre": "Leg press",
+  "resumen": "Seated in the machine with your back supported, you push a platform with your feet until your legs are almost straight and lower it under control. It works the quads and glutes without loading your back with a bar.",
+  "ejecucion": [
+    "Adjust the back pad so that, with your feet on the platform, your knees are bent to about 90° or a bit more.",
+    "Sit with your back and hips firmly against the back pad and place your feet on the platform hip-width apart, toes turned slightly out.",
+    "Push the platform to release the safety catches and hold the side handles.",
+    "Lower the platform by bending your knees, which follow the direction of your feet, as far as your hips stay on the seat, roughly with your knees at 90°.",
+    "Push with your whole foot until your legs are almost straight, without locking your knees.",
+    "When you finish, set the safety catches again before taking your feet off.",
+    "If your lower back lifts off the back pad as you go down, shorten the range."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "isquiotibiales",
+      "abdomen"
+    ]
+  },
+  "matices": "In a study of ten men comparing the squat, leg press and knee extension, the leg press produced about half the hamstring activity of the squat, and quadriceps activity peaked near full knee flexion, where compression between femur and tibia also peaked. No anterior cruciate ligament tension was measured; posterior cruciate ligament tension, however, was about twice that of the knee extension.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanics of the knee during closed kinetic chain and open kinetic chain exercises",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 1998",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9565938/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

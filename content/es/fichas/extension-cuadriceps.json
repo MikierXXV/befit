@@ -1,0 +1,48 @@
+{
+  "id": "extension-cuadriceps",
+  "grupo_id": "extension-rodilla",
+  "orden": 1,
+  "nombre": "Extensión de cuádriceps en máquina",
+  "resumen": "Sentado en la máquina, con el rodillo en la parte baja de la espinilla, se estiran las rodillas contra la resistencia y se bajan con control. Aísla el cuádriceps.",
+  "movimiento_id": "extension-cuadriceps",
+  "ejecucion": [
+    "Ajusta el respaldo para que las rodillas queden alineadas con el eje de la máquina, y el rodillo en la parte baja de la espinilla, justo por encima del tobillo.",
+    "Siéntate con la espalda apoyada y coge las asas laterales.",
+    "Estira las rodillas hasta casi extenderlas, sin despegar el muslo del asiento.",
+    "Baja con control hasta que las rodillas queden más o menos a 90°.",
+    "Si notas molestia en la rodilla, acorta el recorrido o baja el peso."
+  ],
+  "material": [
+    "maquina"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps"
+    ],
+    "sinergista": [],
+    "estabilizador": []
+  },
+  "matices": "En un estudio con diez hombres, la extensión de rodilla activó más el recto femoral y menos los vastos que la sentadilla o la prensa, y la actividad del cuádriceps fue máxima cerca de la extensión completa. Es el único de los tres ejercicios en que apareció tensión en el ligamento cruzado anterior; otro estudio la situó entre los 40° y la extensión completa, con un pico hacia los 14°, y por eso en rehabilitación de ese ligamento a veces se limita el último tramo. Un tercero, con veintidós hombres no entrenados, vio más crecimiento del recto femoral con la cadera flexionada a 40° (respaldo muy reclinado) que a 90° (sentado erguido), sin diferencia en el vasto lateral.",
+  "fuentes": [
+    {
+      "titulo": "Biomechanics of the knee during closed kinetic chain and open kinetic chain exercises",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 1998",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9565938/"
+    },
+    {
+      "titulo": "A comparison of tibiofemoral joint forces and electromyographic activity during open and closed kinetic chain exercises",
+      "autor": "Wilk et al., Am J Sports Med, 1996",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/8827313/"
+    },
+    {
+      "titulo": "The effects of hip flexion angle on quadriceps femoris muscle hypertrophy in the leg extension exercise",
+      "autor": "Larsen et al., J Sports Sci, 2025",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39699974/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

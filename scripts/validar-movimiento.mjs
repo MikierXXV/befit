@@ -20,6 +20,8 @@
  *  - autocolisión: ningún miembro metido más de 2,5 cm en otro que no es su vecino (antebrazo en
  *    la barriga, mano en el muslo); ver EL CUERPO QUE SE ATRAVIESA A SÍ MISMO;
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
+ *  - máquinas: sólidas pieza a pieza, apoyos por superficie (`con`), y la parte móvil —rodillo o
+ *    plataforma— tocando la espinilla o el pie en todo el ciclo;
  *  - equilibrio: la barra sobre el medio pie, cuando la ficha lo pide.
  *
  * Bloquea: sale con código 1 si hay un solo error. Un aviso que no bloquea acaba ignorándose.
@@ -27,7 +29,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { Quaternion, Vector3 } from 'three';
-import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, piezasMaquina, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
@@ -154,6 +156,9 @@ const BARRA_DENTRO_PENDIENTES = new Set([]);
  * se juntan arriba—; lo que se busca es que se metan.
  */
 const TOLERANCIA_IMPLEMENTOS = REGLAS.tolerancia_implementos ?? 0.01;
+/* La parte móvil de una máquina, tocando lo que la empuja: ver `contactoMaquina`. Aquí arriba y no
+   junto a ella por lo mismo que DIRECCIONES: el bucle principal corre antes de llegar allí. */
+const TOLERANCIA_CONTACTO = REGLAS.tolerancia_contacto ?? 0.015;
 // [radio, medio largo, centro en X], en metros; el mismo dibujo que `crearImplemento` del visor.
 const PIEZAS_CILINDRO = {
   mancuerna: [[0.016, 0.07, 0], [0.06, 0.04, -0.11], [0.06, 0.04, 0.11]],
@@ -347,7 +352,7 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
        * swing y en el peso muerto, y la barra del peso muerto, que no se declaraba `solido`, fue
        * justo la que se metía en los muslos sin que se mirase.
        */
-      if (!imp.solido && imp.tipo !== 'kettlebell') continue;
+      if (!imp.solido && imp.tipo !== 'kettlebell' && imp.tipo !== 'maquina') continue;
       // La barra no tiene holgura: 1,4 cm de radio no dan para meterse "un poco". El banco sí, porque
       // la espalda de verdad se hunde algo en el acolchado.
       // Los cilindros finos —barras y agarres de polea— van con holgura de 2 mm: con los 2 cm de
@@ -357,8 +362,9 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
        * metida en un antebrazo, y la bola es hierro, no acolchado: contra un muslo, tocar vale y
        * hundirse no.
        */
+      // La máquina lleva la holgura pieza a pieza (ver `profundidad`): acolchado y metal a la vez.
       const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' || imp.tipo === 'paralelas' ? 0.002
-        : imp.tipo === 'kettlebell' ? 0.005 : HOLGURA_SOLIDO;
+        : imp.tipo === 'kettlebell' ? 0.005 : imp.tipo === 'maquina' ? 0 : HOLGURA_SOLIDO;
       // Sin manos: su contacto con un implemento es el agarre o el apoyo, y se revisa en la hoja.
       const dentro = vertices.filter((v) => !v.mano && profundidad(imp, v) > holgura).length;
       if (dentro > 0) fallo(`el cuerpo atraviesa ${nombre}`, `${etiqueta} (${dentro} vértices)`);
@@ -404,6 +410,10 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       const imp = r.implementos[apoyo.implemento];
       if (imp.tipo === 'paralelas') {
         for (const msg of apoyoEnParalelas(imp, vertices, apoyo)) fallo(msg.texto, `${etiqueta} (${msg.cuanto})`);
+        continue;
+      }
+      if (imp.tipo === 'maquina') {
+        for (const msg of apoyoEnMaquina(imp, vertices, apoyo)) fallo(msg.texto, `${etiqueta} (${msg.cuanto})`);
         continue;
       }
       // El hueco es lo que queda entre la piel más baja y la superficie: el asiento, el respaldo o
@@ -453,6 +463,16 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       if (margen < 0.05) {
         fallo(`sentado fuera de ${nombre}`, `${etiqueta} (la cadera queda a ${(margen * 100).toFixed(0)} cm del borde)`);
       }
+    }
+
+    /*
+     * LA PARTE MÓVIL DE UNA MÁQUINA, EN CONTACTO CON LO QUE LA EMPUJA. Se mira siempre, sin tener que
+     * declararlo: una máquina guiada cuyo rodillo o plataforma no toca el cuerpo es una máquina que
+     * se mueve sola. Ver `contactoMaquina`.
+     */
+    for (const [nombre, imp] of Object.entries(r.implementos)) {
+      if (imp.tipo !== 'maquina') continue;
+      for (const msg of contactoMaquina(imp, vertices)) fallo(`${msg.texto} de ${nombre}`, `${etiqueta} (${msg.cuanto})`);
     }
 
     const eq = mov.comprobaciones?.equilibrio;
@@ -1010,6 +1030,21 @@ function profundidad(imp, v) {
     if (v.distanceTo(imp.posicion) > 0.45) return 0;
     return Math.max(0, ...cilindrosDe(imp).map((p) => hondoEnPieza(p, v)));
   }
+  if (imp.tipo === 'maquina') {
+    /*
+     * Cada pieza, caja o cilindro, con su holgura: 2 cm en lo acolchado —asiento, respaldo, rodillo—,
+     * que se hunde algo bajo el cuerpo como el banco, y 5 mm en el bastidor, que es metal como la
+     * kettlebell. Con una sola holgura para toda la máquina, o el rodillo marcaba la espinilla que
+     * empuja o una columna de acero dejaba meterse la pierna dos centímetros.
+     */
+    let hondo = 0;
+    for (const p of piezasMaquina(imp)) {
+      const alcance = p.forma === 'caja' ? p.medio.length() : Math.hypot(p.radio, p.medio_largo);
+      if (v.distanceTo(p.centro) > alcance) continue;
+      hondo = Math.max(hondo, hondoEnPiezaMaquina(p, v) - (p.material === 'acolchado' ? HOLGURA_SOLIDO : 0.005));
+    }
+    return hondo;
+  }
   if (imp.tipo === 'paralelas') {
     // Barras y postes, cilindros macizos: lo más hundido en cualquiera de ellos.
     return Math.max(0, ...cilindrosDe(imp).map((c) => hondoEnCilindro(c, v)));
@@ -1054,6 +1089,107 @@ function apoyoEnParalelas(imp, vertices, apoyo) {
   });
   const suelo = Math.min(...vertices.map((v) => v.y));
   if (suelo < 0.02) salida.push({ texto: `el cuerpo toca el suelo: no cuelga de ${apoyo.implemento}`, cuanto: `${(suelo * 100).toFixed(1)} cm` });
+  return salida;
+}
+
+/** Un punto en coordenadas de una pieza de máquina: centro en el origen y sin su giro. */
+function localMaquina(p, v) {
+  return v.clone().sub(p.centro).applyQuaternion(p.q.clone().invert());
+}
+
+/**
+ * Cuánto le falta a un punto para salir de una pieza de máquina (positivo: dentro), o, fuera, menos
+ * la distancia a ella. Con signo en los dos lados porque sirve para dos cosas: lo hundido (piel
+ * dentro) y el hueco (la parte móvil tocando el cuerpo).
+ */
+function hondoEnPiezaMaquina(p, v) {
+  const w = localMaquina(p, v);
+  if (p.forma === 'caja') {
+    const fuera = new Vector3(Math.max(0, Math.abs(w.x) - p.medio.x), Math.max(0, Math.abs(w.y) - p.medio.y), Math.max(0, Math.abs(w.z) - p.medio.z));
+    if (fuera.lengthSq() > 0) return -fuera.length();
+    return Math.min(p.medio.x - Math.abs(w.x), p.medio.y - Math.abs(w.y), p.medio.z - Math.abs(w.z));
+  }
+  const radial = Math.hypot(w.y, w.z);
+  const lado = radial - p.radio;
+  const tapa = Math.abs(w.x) - p.medio_largo;
+  if (lado > 0 || tapa > 0) return -Math.hypot(Math.max(0, lado), Math.max(0, tapa));
+  return Math.min(-lado, -tapa);
+}
+
+/**
+ * EL CUERPO APOYADO EN UNA MÁQUINA: el hueco entre la piel y la superficie que dice `con` —el
+ * asiento, el respaldo (`espalda`) o el banco del curl (`pecho`)—, medido en la normal de esa
+ * superficie, como en el respaldo del banco inclinado: medido en vertical, una espalda pegada a un
+ * respaldo a 45° salía a 40 cm. Y con `con: "asiento"`, además, la cadera DENTRO del asiento y no
+ * en su canto (ver SENTADO, PERO SENTADO EN EL BANCO).
+ */
+function apoyoEnMaquina(imp, vertices, apoyo) {
+  const con = apoyo.con ?? 'asiento';
+  const superficies = piezasMaquina(imp).filter((p) => p.superficie === con);
+  if (!superficies.length) return [{ texto: `${apoyo.implemento} no tiene superficie «${con}»`, cuanto: imp.modelo }];
+  let hueco = Infinity;
+  for (const p of superficies) {
+    for (const v of vertices) {
+      const w = localMaquina(p, v);
+      if (Math.abs(w.x) >= p.medio.x || Math.abs(w.z) >= p.medio.z) continue;
+      /*
+       * Por debajo, solo hasta atravesar el acolchado: lo que queda más hondo está DEBAJO de la
+       * superficie, no en ella. Con las rodillas a 90° en la extensión, la pantorrilla pasa bajo el
+       * borde del asiento, y con el límite de 25 cm del respaldo del banco salía «hueco −13,8 cm».
+       */
+      const h = w.y - p.medio.y;
+      if (h < 0.15 && h > -2 * p.medio.y - 0.02) hueco = Math.min(hueco, h);
+    }
+  }
+  const salida = [];
+  if (!(Math.abs(hueco) <= apoyo.tolerancia)) {
+    salida.push({ texto: `el cuerpo no descansa en ${con === 'asiento' ? 'el asiento' : `la superficie «${con}»`} de ${apoyo.implemento}`, cuanto: `hueco ${(hueco * 100).toFixed(1)} cm` });
+  }
+  if (con === 'asiento') {
+    const w = localMaquina(superficies[0], maniqui.esq.huesos.pelvis.getWorldPosition(new Vector3()));
+    const margen = superficies[0].medio.z - w.z;
+    if (margen < 0.05 || Math.abs(w.x) > superficies[0].medio.x) {
+      salida.push({ texto: `sentado fuera del asiento de ${apoyo.implemento}`, cuanto: `la cadera queda a ${(margen * 100).toFixed(0)} cm del borde` });
+    }
+  }
+  return salida;
+}
+
+/*
+ * LA PARTE MÓVIL TOCA LO QUE LA EMPUJA, en cada pierna y en todo el ciclo: el rodillo, la parte baja
+ * de la espinilla (de media espinilla al tobillo: «justo por encima del tobillo»), y la plataforma
+ * de la prensa, el pie. Que no se atraviesen ya lo mira la piel contra lo sólido; esto mira lo
+ * contrario, que no se separen. Con la parte móvil declarada por pose (ver `geometriaMaquina`), un
+ * `angulo` que no acompaña a la rodilla, o una rodilla que no cae en el eje, dejaba el rodillo
+ * flotando delante de la espinilla o resbalando hacia la rodilla, y sin esto nada lo decía.
+ *
+ * Tolerancia de 1,5 cm entre la piel y la superficie del rodillo o de la plataforma
+ * (TOLERANCIA_CONTACTO, arriba): la malla no se hunde en el acolchado, así que «tocar» es quedarse
+ * a menos de eso.
+ */
+function contactoMaquina(imp, vertices) {
+  const salida = [];
+  const h = maniqui.esq.huesos;
+  for (const p of piezasMaquina(imp).filter((x) => x.empuja)) {
+    for (const l of LADOS) {
+      const s = { i: 'L', d: 'R' }[l];
+      const rodilla = h[`pierna_${l}`].getWorldPosition(new Vector3());
+      const tobillo = h[`pie_${l}`].getWorldPosition(new Vector3());
+      const espinilla = tobillo.clone().sub(rodilla);
+      const L2 = espinilla.lengthSq();
+      const cuenta = p.nombre === 'plataforma'
+        ? (v) => v.hueso === `DEF-foot${s}` || v.hueso === `DEF-toe${s}`
+        : (v) => (v.hueso === `DEF-shin${s}` && v.clone().sub(rodilla).dot(espinilla) / L2 >= 0.5)
+          || (v.hueso === `DEF-foot${s}` && v.distanceTo(tobillo) < 0.07);
+      let hueco = Infinity;
+      for (const v of vertices) if (cuenta(v)) hueco = Math.min(hueco, -hondoEnPiezaMaquina(p, v));
+      if (!(hueco <= TOLERANCIA_CONTACTO)) {
+        const que = p.nombre === 'plataforma' ? `el pie ${{ i: 'izquierdo', d: 'derecho' }[l]} no apoya en la plataforma`
+          : `el ${p.nombre} no toca la espinilla ${{ i: 'izquierda', d: 'derecha' }[l]} junto al tobillo`;
+        salida.push({ texto: que, cuanto: `hueco ${(hueco * 100).toFixed(1)} cm` });
+      }
+    }
+  }
   return salida;
 }
 

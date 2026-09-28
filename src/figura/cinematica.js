@@ -413,7 +413,7 @@ function reflejar(m) {
 
 /** Punto en el mundo a partir de `[x, y, z]` relativo a algo: el mundo, la cadera o el hombro de ese lado. */
 function resolverPunto(esq, spec, lado, implementos, raiz) {
-  if (['barra', 'paralelas', 'kettlebell', 'cuernos'].includes(spec.objetivo)) {
+  if (['barra', 'paralelas', 'kettlebell', 'cuernos', 'asas'].includes(spec.objetivo)) {
     const barra = barraDeMano(spec, implementos, lado);
     if (!barra) throw new Error(`La mano va a "${spec.objetivo}", pero en esta pose no hay ${spec.objetivo}`);
     const A = ejeDe(barra);
@@ -1154,6 +1154,254 @@ export function asaKettlebell(imp, l, cuernos = false) {
   };
 }
 
+/**
+ * LAS MÁQUINAS GUIADAS: prensa de piernas, extensión de cuádriceps y curl femoral tumbado.
+ *
+ * UN TIPO, `maquina`, CON `modelo`, y no tres tipos. Las tres son lo mismo para quien las usa: una
+ * parte FIJA acolchada (asiento, respaldo, banco) sobre un bastidor de metal, una parte MÓVIL que
+ * empuja el cuerpo (el rodillo de una palanca, o el carro con la plataforma) y dos asas a los
+ * lados. Visor, cinemática y validador las tratan con el mismo código si cada modelo se reduce a
+ * una lista de PIEZAS —cajas y cilindros con su giro, su material, si se mueven y qué superficie
+ * de apoyo son—; con tres tipos, cada comprobación (piel dentro, apoyos, contacto, asas) se habría
+ * escrito tres veces, y la del banco inclinado ya enseñó que dos versiones de una forma acaban
+ * discrepando: el validador daba por apoyada una espalda que en pantalla quedaba a diez centímetros.
+ * Lo que cambia de un modelo a otro es solo la función que hace la lista.
+ *
+ * LA PARTE MÓVIL SE DECLARA POR POSE, como `rodar` en la barra o `vuelco` en la kettlebell, y no se
+ * deduce de la rodilla. Tres razones:
+ *  - el carro de la prensa lo empujan DOS pies, y no hay una articulación que diga dónde está;
+ *  - es un número y se interpola igual que los ángulos del cuerpo: con la rodilla sobre el eje y el
+ *    muslo quieto, `angulo` y `rodilla.flexion` recorren el mismo spline y el rodillo va pegado al
+ *    tobillo en todo el ciclo, no solo en las poses escritas;
+ *  - deducida del cuerpo, la máquina iría siempre donde está la pierna y el validador no podría
+ *    cazar una rodilla desalineada con el eje (el rodillo resbalaría por la espinilla sin que nada
+ *    lo dijera). Declarada, el validador comprueba que está EN CONTACTO con lo que la empuja.
+ *
+ * Por modelo, en `implementos.maquina` (el implemento se llama `maquina`, como la barra se llama
+ * `barra`), con `posicion` en el suelo y el maniquí mirando a +Z:
+ *
+ *  - `extension`: sentado. `posicion` es el suelo bajo el EJE de la palanca, que es donde tiene que
+ *    caer la rodilla. Asiento de `alto` (0,48) y `largo_asiento` (0,46, del respaldo al borde), que
+ *    acaba `hueco` (0,10) por detrás del eje; respaldo a `inclinacion` (80°) sobre la horizontal. El
+ *    eje queda a `alto_eje` (alto + 0,09: la rodilla de un muslo apoyado). `angulo` (por pose) es
+ *    la flexión de rodilla que acompaña la palanca con el muslo horizontal: 90 abajo, ~10 estirado.
+ *    El rodillo queda a `brazo` (0,36) del eje a lo largo de la espinilla y `despegue` (0,078) por
+ *    delante de ella: justo encima del tobillo, sobre el empeine.
+ *  - `curl_tumbado`: boca abajo, con la cabeza hacia +Z. `posicion` es el suelo bajo el eje; el
+ *    banco (`alto` 0,62, `largo` 1,2) empieza `hueco` (0,06) por delante del eje. `angulo` es la
+ *    flexión de rodilla con el muslo tumbado: 0 con las piernas estiradas. El rodillo, a `brazo`
+ *    (0,37) y `despegue` (0,097) por detrás de la espinilla: sobre el tendón de Aquiles.
+ *  - `prensa`: recostado en un respaldo a `inclinacion` (45°) con el carro subiendo por un carril a
+ *    45°. `posicion` es el suelo bajo el pliegue entre asiento y respaldo, que queda a `alto`
+ *    (0,42). `recorrido` (por pose) es la distancia, a lo largo del carril, del punto de la cadera
+ *    (0,12 sobre el pliegue y 0,06 por delante) a la cara de la plataforma: ~0,55 con las rodillas
+ *    a 90°, ~0,8 con las piernas casi estiradas.
+ *
+ * Las piezas van en coordenadas de la máquina: `centro`, `q` (su giro), y `medio` (medias medidas de
+ * una caja) o `radio` y `medio_largo` (un cilindro a lo largo de su X). `superficie`: el apoyo que
+ * es (`asiento`, `espalda`, `pecho`), medido sobre la cara +Y de la caja; `empuja`: la pieza móvil
+ * que tiene que tocar el cuerpo (el rodillo o la plataforma).
+ */
+export function geometriaMaquina(def = {}) {
+  const hacer = { extension: maquinaExtension, curl_tumbado: maquinaCurlTumbado, prensa: maquinaPrensa }[def.modelo];
+  if (!hacer) throw new Error(`Máquina: modelo desconocido (${def.modelo}); vale extension, curl_tumbado o prensa`);
+  return hacer(def);
+}
+
+const giroX = (grados) => new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0), grados * GRAD);
+const caja = (nombre, centro, medio, extra = {}) => ({ nombre, forma: 'caja', centro, medio, q: new Quaternion(), material: 'metal', ...extra });
+const cilindro = (nombre, centro, radio, medioLargo, extra = {}) => ({ nombre, forma: 'cilindro', centro, radio, medio_largo: medioLargo, q: new Quaternion(), material: 'metal', ...extra });
+/** Una caja que va de `a` a `b` (su Z local a lo largo del tramo), de `grueso` de sección. */
+function barraEntre(nombre, a, b, grueso, extra = {}) {
+  const d = b.clone().sub(a);
+  return caja(nombre, a.clone().add(b).multiplyScalar(0.5), new Vector3(grueso / 2, grueso / 2, d.length() / 2), {
+    q: new Quaternion().setFromUnitVectors(DELANTE, d.normalize()), ...extra,
+  });
+}
+
+/*
+ * La palanca con su rodillo, común a la extensión y al curl. `reposo` es dónde queda el centro del
+ * rodillo respecto al eje con `angulo` 0, y girar `angulo` alrededor de X es lo mismo que hace la
+ * espinilla al doblar la rodilla en los dos casos: en la extensión lleva la punta del pie de +Z
+ * hacia abajo, y en el curl, de −Z hacia arriba. La palanca va por fuera de la pierna IZQUIERDA
+ * (+X): la vista lateral mira desde la derecha, y ahí no tapa nada.
+ */
+function palancaConRodillo(eje, reposo, angulo, anchoAsiento) {
+  const xl = anchoAsiento / 2 + 0.07;
+  const centro = eje.clone().add(reposo.clone().applyQuaternion(giroX(angulo)));
+  const rodillo = { radio: 0.05, medio_largo: 0.18 };
+  return [
+    cilindro('cubo', new Vector3(xl, eje.y, eje.z), 0.045, 0.03, { lateral: true }),
+    barraEntre('palanca', new Vector3(xl, eje.y, eje.z), new Vector3(xl, centro.y, centro.z), 0.04, { movil: true, lateral: true }),
+    cilindro('eje_rodillo', new Vector3((xl - rodillo.medio_largo) / 2, centro.y, centro.z), 0.012, (xl + rodillo.medio_largo) / 2, { movil: true }),
+    cilindro('rodillo', centro, rodillo.radio, rodillo.medio_largo, { movil: true, material: 'acolchado', empuja: true }),
+  ];
+}
+
+/** Asas a cada lado, a lo largo de Z: la izquierda del maniquí, en +X. */
+function asasLaterales(x, y, z, medioLargo = 0.1) {
+  const asas = {};
+  const piezas = [];
+  for (const l of LADOS) {
+    const punto = new Vector3(SIGNO[l] * x, y, z);
+    asas[l] = { punto, eje: DELANTE.clone(), radio: 0.016 };
+    piezas.push(cilindro(`asa_${l}`, punto, 0.016, medioLargo, { q: CUARTO_Y_MAQUINA.clone(), lateral: true }));
+  }
+  return { asas, piezas };
+}
+// Lleva la X del cilindro a la Z: las asas van hacia delante. (La de las paralelas es la misma.)
+const CUARTO_Y_MAQUINA = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), -Math.PI / 2);
+
+function maquinaExtension(def) {
+  const alto = def.alto ?? 0.48;
+  const ancho = def.ancho ?? 0.36;
+  const largo = def.largo_asiento ?? 0.46;
+  const hueco = def.hueco ?? 0.1;
+  const altoEje = def.alto_eje ?? alto + 0.09;
+  const inclinacion = def.inclinacion ?? 80;
+  const largoRespaldo = def.largo_respaldo ?? 0.62;
+  const z0 = -hueco - largo;
+  const zc = -hueco - largo / 2;
+  const a = inclinacion * GRAD;
+  const d = new Vector3(0, Math.sin(a), -Math.cos(a));
+  const n = new Vector3(0, Math.cos(a), Math.sin(a));
+  const pivote = new Vector3(0, alto, z0);
+  const eje = new Vector3(0, altoEje, 0);
+  const xl = ancho / 2 + 0.07;
+  const { asas, piezas: piezasAsas } = asasLaterales(ancho / 2 + 0.06, alto + 0.04, zc + 0.04);
+  const apoyoRespaldo = pivote.clone().addScaledVector(d, largoRespaldo * 0.6).addScaledVector(n, -0.1);
+  return {
+    modelo: 'extension',
+    eje,
+    asas,
+    piezas: [
+      caja('asiento', new Vector3(0, alto - 0.04, zc), new Vector3(ancho / 2, 0.04, largo / 2), { material: 'acolchado', superficie: 'asiento' }),
+      caja('respaldo', pivote.clone().addScaledVector(d, largoRespaldo / 2).addScaledVector(n, -0.04), new Vector3(ancho / 2, 0.04, largoRespaldo / 2), {
+        q: giroX(inclinacion), material: 'acolchado', superficie: 'espalda',
+      }),
+      caja('base', new Vector3(0, (alto - 0.08) / 2, zc), new Vector3(0.05, (alto - 0.08) / 2, largo * 0.35)),
+      barraEntre('poste_respaldo', new Vector3(0, 0.03, apoyoRespaldo.z), apoyoRespaldo, 0.05),
+      /* Del pie del asiento a la columna de la palanca, por el suelo: primero hacia fuera bajo el
+         asiento y luego hacia delante por fuera de las piernas. Por delante del asiento, a lo ancho,
+         pasaba justo bajo los pies, y la punta del pie izquierdo se metía en él. */
+      caja('larguero', new Vector3(xl / 2, 0.025, zc), new Vector3(xl / 2 + 0.03, 0.025, 0.03)),
+      barraEntre('larguero_lateral', new Vector3(xl, 0.025, zc), new Vector3(xl, 0.025, 0), 0.05, { lateral: true }),
+      barraEntre('columna', new Vector3(xl, 0, 0), new Vector3(xl, altoEje - 0.045, 0), 0.06, { lateral: true }),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.06, zc + 0.04), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, zc + 0.04), 0.03, { lateral: true })),
+      ...piezasAsas,
+      ...palancaConRodillo(eje, new Vector3(0, def.despegue ?? 0.078, def.brazo ?? 0.36), def.angulo ?? 90, ancho),
+    ],
+  };
+}
+
+function maquinaCurlTumbado(def) {
+  const alto = def.alto ?? 0.62;
+  const ancho = def.ancho ?? 0.34;
+  const largo = def.largo ?? 1.2;
+  const hueco = def.hueco ?? 0.06;
+  const altoEje = def.alto_eje ?? alto + 0.1;
+  const eje = new Vector3(0, altoEje, 0);
+  const zc = hueco + largo / 2;
+  const xl = ancho / 2 + 0.07;
+  const { asas, piezas: piezasAsas } = asasLaterales(ancho / 2 + 0.06, alto - 0.1, hueco + largo - 0.14);
+  return {
+    modelo: 'curl_tumbado',
+    eje,
+    asas,
+    piezas: [
+      caja('banco', new Vector3(0, alto - 0.04, zc), new Vector3(ancho / 2, 0.04, largo / 2), { material: 'acolchado', superficie: 'pecho' }),
+      ...[-1, 1].map((s) => caja(`pata_${s}`, new Vector3(0, (alto - 0.08) / 2, zc + s * largo * 0.35), new Vector3(0.05, (alto - 0.08) / 2, 0.05))),
+      caja('larguero', new Vector3(0, 0.025, zc), new Vector3(0.04, 0.025, largo * 0.4)),
+      caja('travesano', new Vector3(xl / 2, 0.025, hueco + 0.05), new Vector3(xl / 2 + 0.03, 0.025, 0.03)),
+      barraEntre('columna', new Vector3(xl, 0, 0.02), new Vector3(xl, altoEje - 0.045, 0), 0.06, { lateral: true }),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.08, hueco + largo - 0.14), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto - 0.1, hueco + largo - 0.14), 0.03, { lateral: true })),
+      ...piezasAsas,
+      ...palancaConRodillo(eje, new Vector3(0, def.despegue ?? 0.097, -(def.brazo ?? 0.37)), def.angulo ?? 0, ancho),
+    ],
+  };
+}
+
+function maquinaPrensa(def) {
+  const alto = def.alto ?? 0.42;
+  const ancho = def.ancho ?? 0.4;
+  const inclinacion = def.inclinacion ?? 45;
+  const largoRespaldo = def.largo_respaldo ?? 0.75;
+  const largoAsiento = def.largo_asiento ?? 0.4;
+  const inclinacionAsiento = def.inclinacion_asiento ?? 15;
+  const pliegue = new Vector3(0, alto, 0);
+  const a = inclinacion * GRAD;
+  const d = new Vector3(0, Math.sin(a), -Math.cos(a));
+  const n = new Vector3(0, Math.cos(a), Math.sin(a));
+  const b = inclinacionAsiento * GRAD;
+  const s = new Vector3(0, Math.sin(b), Math.cos(b));
+  const ns = new Vector3(0, Math.cos(b), -Math.sin(b));
+  // El carril, a 45°, pasa por el punto de la cadera: es la línea por la que empujan las piernas.
+  const cadera = new Vector3(0, alto + 0.12, 0.06);
+  const u = new Vector3(0, Math.SQRT1_2, Math.SQRT1_2);
+  const recorrido = def.recorrido ?? 0.6;
+  const qCarro = giroX(-135); // la cara +Y de la plataforma mira a −u: hacia quien empuja
+  const { asas, piezas: piezasAsas } = asasLaterales(ancho / 2 + 0.06, alto + 0.04, 0.18);
+  const tope = cadera.clone().addScaledVector(u, 1.35);
+  return {
+    modelo: 'prensa',
+    eje: cadera,
+    asas,
+    piezas: [
+      caja('asiento', pliegue.clone().addScaledVector(s, largoAsiento / 2).addScaledVector(ns, -0.04), new Vector3(ancho / 2, 0.04, largoAsiento / 2), {
+        q: giroX(-inclinacionAsiento), material: 'acolchado', superficie: 'asiento',
+      }),
+      caja('respaldo', pliegue.clone().addScaledVector(d, largoRespaldo / 2).addScaledVector(n, -0.04), new Vector3(ancho / 2, 0.04, largoRespaldo / 2), {
+        q: giroX(inclinacion), material: 'acolchado', superficie: 'espalda',
+      }),
+      caja('base', new Vector3(0, 0.03, 0.35), new Vector3(0.3, 0.03, 0.95)),
+      caja('pie_asiento', new Vector3(0, (alto - 0.08) / 2, 0.05), new Vector3(0.06, (alto - 0.08) / 2, 0.12)),
+      barraEntre('pie_respaldo', new Vector3(0, 0.03, -0.35), pliegue.clone().addScaledVector(d, largoRespaldo * 0.55).addScaledVector(n, -0.08), 0.05),
+      ...[-1, 1].flatMap((sx) => [
+        barraEntre(`carril_${sx}`, cadera.clone().addScaledVector(u, 0.3).setX(sx * 0.45), tope.clone().setX(sx * 0.45), 0.05),
+        barraEntre(`pata_carril_${sx}`, new Vector3(sx * 0.45, 0.03, tope.z), tope.clone().setX(sx * 0.45), 0.05, { lateral: sx < 0 }),
+      ]),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.04, 0.18), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, 0.18), 0.03, { lateral: true })),
+      ...piezasAsas,
+      caja('plataforma', cadera.clone().addScaledVector(u, recorrido + 0.02), new Vector3(0.35, 0.02, 0.28), { q: qCarro, movil: true, empuja: true }),
+      caja('carro', cadera.clone().addScaledVector(u, recorrido + 0.1), new Vector3(0.43, 0.06, 0.28), { q: qCarro, movil: true }),
+    ],
+  };
+}
+
+/**
+ * Las piezas de una máquina YA COLOCADA, en el mundo (con `posicion` y `orientacion` del
+ * implemento). Se guardan en el propio implemento: el validador las pide para cada vértice de la
+ * piel, y el implemento se rehace en cada fotograma, así que la caché no se queda vieja.
+ */
+export function piezasMaquina(imp) {
+  if (imp.piezasMundo) return imp.piezasMundo;
+  const g = geometriaMaquina(imp);
+  const q = imp.orientacion ?? new Quaternion();
+  const enMundo = (p) => imp.posicion.clone().add(p.clone().applyQuaternion(q));
+  imp.piezasMundo = g.piezas.map((p) => ({ ...p, centro: enMundo(p.centro), q: q.clone().multiply(p.q) }));
+  imp.asasMundo = Object.fromEntries(LADOS.map((l) => [l, { ...g.asas[l], punto: enMundo(g.asas[l].punto), eje: g.asas[l].eje.clone().applyQuaternion(q) }]));
+  return imp.piezasMundo;
+}
+
+/*
+ * El asa de la máquina a la que va una mano, con la forma de una barra (ver `barraParalela`, que
+ * hace lo mismo con las paralelas): `posicion` ya es el punto del agarre, eje a lo largo del asa y
+ * agarre neutro, palmas hacia dentro. `npm run agarre` guarda el marco en la máquina.
+ */
+export function asaMaquina(imp, l) {
+  piezasMaquina(imp);
+  const asa = imp.asasMundo[l];
+  return {
+    tipo: 'asa',
+    posicion: asa.punto.clone(),
+    orientacion: new Quaternion().setFromUnitVectors(new Vector3(1, 0, 0), asa.eje),
+    agarre: 0,
+    radio: asa.radio,
+    palma_hacia: new Vector3(-SIGNO[l], 0, 0).applyQuaternion(imp.orientacion ?? new Quaternion()),
+    agarre_marco: imp.agarre_marco ? { [l]: imp.agarre_marco[l] } : undefined,
+  };
+}
+
 /*
  * La barra de las paralelas a la que va una mano, con la misma forma que la barra de siempre
  * (centro, orientación con su eje en la X local, `agarre`), para que la cinemática inversa, el
@@ -1196,6 +1444,8 @@ export function barraDeMano(m, implementos, l) {
   if (m?.objetivo === 'kettlebell' || m?.objetivo === 'cuernos') {
     return implementos.kettlebell ? asaKettlebell(implementos.kettlebell, l, m.objetivo === 'cuernos') : null;
   }
+  // Las asas laterales de una máquina: cada mano, la de su lado (ver `asaMaquina`).
+  if (m?.objetivo === 'asas') return implementos.maquina ? asaMaquina(implementos.maquina, l) : null;
   return null;
 }
 

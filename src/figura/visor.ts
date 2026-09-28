@@ -9,7 +9,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, poseEn, prepararEsqueleto } from './cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaMaquina, geometriaParalelas, poseEn, prepararEsqueleto } from './cinematica.js';
 
 export type Vista = 'frontal' | 'lateral' | 'tres_cuartos' | 'detalle';
 export const VISTAS: Vista[] = ['frontal', 'lateral', 'tres_cuartos'];
@@ -207,6 +207,7 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
       if (!malla) continue;
       malla.position.copy(estado.posicion);
       malla.quaternion.copy(estado.orientacion);
+      if (malla.userData.maquina) moverMaquina(malla, estado as unknown as Record<string, unknown>);
       estirarCable(malla, movimiento.implementos?.[nombre]?.ancla as number[] | undefined, estado.posicion);
     }
   }
@@ -444,6 +445,33 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
     const curva = new THREE.CatmullRomCurve3(asa as THREE.Vector3[]);
     const tubo = new THREE.Mesh(new THREE.TubeGeometry(curva, 48, radio, 14, false), metal);
     for (const m of [cuerpo, suela, tubo]) { m.castShadow = true; g.add(m); }
+  } else if (def.tipo === 'maquina') {
+    /*
+     * MÁQUINA GUIADA: una lista de cajas y cilindros que sale de `geometriaMaquina`, la misma que usan
+     * la cinemática para llevar las manos a las asas y el validador para saber dónde es sólida, dónde
+     * se apoya el cuerpo y dónde tiene que tocarlo la parte móvil. Ver allí cada modelo.
+     *
+     * Acolchado con el material del banco y bastidor de metal. Las piezas móviles (palanca y rodillo,
+     * o carro y plataforma) se recolocan en cada fotograma con `moverMaquina`. Las de un lado
+     * (`lateral`) se hacen translúcidas cuando quedan delante, como los discos: la columna y el asa
+     * derecha, en la vista lateral, taparían justo la cadera y la rodilla.
+     */
+    const cojin = material(COLOR.banco, 0.9, 0);
+    for (const p of geometriaMaquina(def).piezas as PiezaMaquina[]) {
+      const geo = p.forma === 'caja'
+        ? new THREE.BoxGeometry(p.medio!.x * 2, p.medio!.y * 2, p.medio!.z * 2)
+        : new THREE.CylinderGeometry(p.radio!, p.radio!, p.medio_largo! * 2, 24).rotateZ(Math.PI / 2);
+      // Un material por pieza: `despejar` cambia la opacidad de cada una por separado.
+      const m = new THREE.Mesh(geo, p.material === 'acolchado' ? cojin.clone() : metal.clone());
+      m.name = p.nombre;
+      m.position.copy(p.centro);
+      m.quaternion.copy(p.q);
+      m.castShadow = true;
+      m.receiveShadow = true;
+      m.userData.despejable = Boolean(p.lateral);
+      g.add(m);
+    }
+    g.userData.maquina = true;
   } else if (def.tipo === 'pared') {
     /*
      * Una pared es una caja de pie, y hace falta como tipo propio: usar un banco puesto vertical
@@ -458,6 +486,34 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
     g.add(muro);
   }
   return g;
+}
+
+interface PiezaMaquina {
+  nombre: string;
+  forma: 'caja' | 'cilindro';
+  centro: THREE.Vector3;
+  q: THREE.Quaternion;
+  medio?: THREE.Vector3;
+  radio?: number;
+  medio_largo?: number;
+  material: string;
+  movil?: boolean;
+  lateral?: boolean;
+}
+
+/**
+ * Recoloca las piezas móviles de una máquina con el `angulo` o el `recorrido` de este fotograma. Se
+ * rehace la lista entera —son veinte piezas, y es la misma cuenta que hace el validador— en vez de
+ * girar aquí la palanca a mano: una segunda versión del giro acabaría no coincidiendo con la suya.
+ */
+function moverMaquina(g: THREE.Object3D, estado: Record<string, unknown>) {
+  for (const p of geometriaMaquina(estado).piezas as PiezaMaquina[]) {
+    if (!p.movil) continue;
+    const m = g.getObjectByName(p.nombre);
+    if (!m) continue;
+    m.position.copy(p.centro);
+    m.quaternion.copy(p.q);
+  }
 }
 
 function liberar(raiz: THREE.Object3D) {
