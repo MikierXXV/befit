@@ -216,6 +216,26 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    (`alto`, `ancho`, `largo_asiento`, `inclinacion`, `brazo`, `despegue`…) en `geometriaMaquina`;
    la extensión está animada y comprobada, y curl y prensa solo probados en estático: al animarlos
    se afinan sus números por defecto.
+   El multipower (máquina Smith) es la `maquina` con `"modelo": "multipower"`, y su barra, la `barra`
+   de siempre (discos, agarre calibrado, `rodar`, «barra dentro de un miembro»), llevada por el
+   tronco con `relativo_a: "torax"` como en la sentadilla libre. No se hizo una barra dentro de la
+   máquina: una segunda barra se habría quedado atrás en la primera corrección de la de siempre. La
+   forma sale de `geometriaMaquina` (`maquinaMultipower`): dos guías a ±`separacion`/2 (1,2 m, por
+   fuera del agarre y por dentro de los discos), de `alto` 2,1 m e `inclinacion` en grados (0 por
+   defecto; positiva, arriba hacia +Z), un poste detrás de cada una (`fondo`, 0,1), travesaño
+   arriba, un pie por lado en el suelo (nada en medio, para el banco del press) y un tope de
+   seguridad por guía a `topes` metros (0,55; ponlo unos centímetros bajo el punto más bajo, como
+   dice la ficha). `posicion` es el suelo bajo el EJE DE LA BARRA, en el centro entre las guías. Los
+   carros siguen solos a la barra (`altura`, que calcula la cinemática), así que no se declara nada
+   por pose. Lo que NO se hace solo es que la barra vaya por las guías: la lleva el cuerpo, y el
+   validador mira en cada fotograma que su eje, a la altura de cada guía, quede a menos de 1 cm de
+   ella (`tolerancia_guia`: en vertical, sin ladearse), que los carros no bajen a los topes ni se
+   salgan por arriba, que la barra no se meta en postes, pies o travesaño, y que ninguna mano toque
+   el bastidor. Obligarla a ir por la guía habría escondido el fallo: con un tronco que se inclina
+   de más, la barra habría quedado flotando detrás de la espalda. Así que el tronco se ajusta pose a
+   pose para que la barra caiga en la misma Z (en la sentadilla, `pelvis.posicion` Z y
+   `inclinacion`), y sin `comprobaciones.equilibrio`: la máquina la equilibra. Las piezas del lado de
+   la cámara lateral (−X) son `despejable`.
    `columna.flexion` se reparte 25/35/40 % entre lumbar y las dos torácicas; para doblar SOLO la
    parte alta hay `columna.flexion_alta` (se suma, rango en `RANGOS`). El hollow hold la necesita:
    con `flexion` sola, al curvar lo bastante para despegar los hombros la lumbar se iba con ellos.

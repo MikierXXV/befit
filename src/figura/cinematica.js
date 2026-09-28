@@ -1206,8 +1206,8 @@ export function asaKettlebell(imp, l, cuernos = false) {
  * lateral la cadera en la de perfil).
  */
 export function geometriaMaquina(def = {}) {
-  const hacer = { extension: maquinaExtension, curl_tumbado: maquinaCurlTumbado, prensa: maquinaPrensa }[def.modelo];
-  if (!hacer) throw new Error(`Máquina: modelo desconocido (${def.modelo}); vale extension, curl_tumbado o prensa`);
+  const hacer = { extension: maquinaExtension, curl_tumbado: maquinaCurlTumbado, prensa: maquinaPrensa, multipower: maquinaMultipower }[def.modelo];
+  if (!hacer) throw new Error(`Máquina: modelo desconocido (${def.modelo}); vale extension, curl_tumbado, prensa o multipower`);
   return hacer(def);
 }
 
@@ -1392,6 +1392,82 @@ function maquinaPrensa(def) {
 }
 
 /**
+ * EL MULTIPOWER (máquina Smith): una barra olímpica que solo sube y baja por dos guías.
+ *
+ * ES UNA `maquina` MÁS, con `modelo: "multipower"`, y la barra es la `barra` de siempre, otro
+ * implemento. La barra no se rehace dentro de la máquina porque ya lo tiene todo —discos, agarre
+ * calibrado con `npm run agarre`, `rodar`, «barra dentro de un miembro», implemento contra
+ * implemento— y una segunda barra se habría quedado atrás en la primera corrección. Y el bastidor es
+ * una máquina porque es justo eso: piezas fijas de metal, sólidas, algunas `despejable`, y una parte
+ * móvil (los carros de las guías). Visor y validador ya saben de piezas; nada se escribe dos veces.
+ *
+ * QUÉ SE MUEVE: la barra la lleva el cuerpo, como en la sentadilla libre (`relativo_a: "torax"`), y
+ * los carros la siguen: `colocarImplementos` escribe en la máquina `altura`, lo que ha subido la
+ * barra por la guía desde el suelo. Al revés que en la prensa, aquí no se declara la parte móvil:
+ * ya está declarada, es la barra. Lo que el validador exige es que la barra no se salga de las
+ * guías —su eje, a la altura de cada guía, a menos de 1 cm de ella en todo el ciclo— y que no baje
+ * hasta los topes. Obligar a la barra a ir por la guía, en cambio, habría escondido justo el fallo:
+ * el tronco la habría dejado flotando detrás de la espalda o metida en el cuello sin que se viera.
+ *
+ * En coordenadas de la máquina, con el maniquí mirando a +Z: `posicion` es el suelo bajo el EJE DE
+ * LA BARRA, en el centro entre las guías. Las guías son dos cilindros de 1,8 cm de radio a
+ * ±`separacion`/2 (0,6 m: por fuera del agarre, que va a ±0,42 con la mano, y por dentro de los
+ * discos, que empiezan a 0,70), del suelo a `alto` (2,1 m) contados a lo largo de ellas, y con
+ * `inclinacion` en grados (0 por defecto; positiva, la parte de arriba hacia +Z). Detrás de cada
+ * guía, un poste (`fondo`, 0,1 m), unidos arriba por un travesaño; en el suelo, un pie a lo largo de
+ * Z bajo cada lado y nada en medio, que es donde irá el banco del press. `topes`: la altura de los
+ * topes de seguridad sobre las guías (0,55). Los carros (manguitos de 13 cm alrededor de cada guía,
+ * con su gancho) van centrados en la barra.
+ *
+ * Las piezas que tapan el cuerpo son `despejable`: las del lado derecho (−X), que es el de la cámara
+ * lateral. `guia` marca lo que la barra atraviesa por diseño (guías, carros y
+ * topes): el validador no las cuenta al buscar la barra metida en el bastidor.
+ */
+function maquinaMultipower(def) {
+  const separacion = def.separacion ?? 1.2;
+  const alto = def.alto ?? 2.1;
+  const inclinacion = def.inclinacion ?? 0;
+  const topes = def.topes ?? 0.55;
+  const fondo = def.fondo ?? 0.1;
+  const altura = def.altura ?? 1.4;
+  const u = new Vector3(0, Math.cos(inclinacion * GRAD), Math.sin(inclinacion * GRAD));
+  const radio = 0.018;
+  const carro = { radio: 0.036, medio_largo: 0.065 };
+  const tope = { radio: 0.034, medio_largo: 0.025 };
+  const suelo = 0.06;
+  // Un punto de la guía de un lado (o del poste, `detras` = fondo) a `s` metros por ella.
+  const en = (sx, s, detras = 0) => new Vector3(sx * separacion / 2, 0, -detras).addScaledVector(u, s);
+  // Un cilindro de `a` a `b`: su X local a lo largo del tramo, como los de la máquina.
+  const cilindroEntre = (nombre, a, b, r, extra = {}) => cilindro(nombre, a.clone().add(b).multiplyScalar(0.5), r, a.distanceTo(b) / 2, {
+    q: new Quaternion().setFromUnitVectors(X, b.clone().sub(a).normalize()), ...extra,
+  });
+  const piezas = [];
+  const guias = {};
+  for (const l of LADOS) {
+    const sx = SIGNO[l];
+    const despejable = sx < 0;
+    guias[l] = { base: en(sx, 0), u: u.clone() };
+    piezas.push(
+      cilindroEntre(`guia_${l}`, en(sx, suelo), en(sx, alto), radio, { guia: true, despejable }),
+      barraEntre(`poste_${l}`, en(sx, 0, fondo), en(sx, alto + 0.07, fondo), 0.07, { despejable }),
+      // Las dos piezas que sujetan la guía al poste, abajo y arriba.
+      ...[suelo + 0.04, alto - 0.03].map((s, n) => barraEntre(`soporte_${l}_${n}`, en(sx, s, 0.02), en(sx, s, fondo - 0.035), 0.03, { despejable })),
+      barraEntre(`pie_${l}`, new Vector3(sx * separacion / 2, suelo / 2, -0.6), new Vector3(sx * separacion / 2, suelo / 2, 0.55), suelo, { despejable }),
+      // El tope de seguridad: un collar en la guía, con su brazo al poste.
+      cilindroEntre(`tope_${l}`, en(sx, topes - tope.medio_largo), en(sx, topes + tope.medio_largo), tope.radio, { guia: true, despejable }),
+      barraEntre(`brazo_tope_${l}`, en(sx, topes, 0.03), en(sx, topes, fondo - 0.035), 0.025, { despejable }),
+      // El carro, centrado en la barra, y su gancho hacia delante.
+      cilindroEntre(`carro_${l}`, en(sx, altura - carro.medio_largo), en(sx, altura + carro.medio_largo), carro.radio, { guia: true, movil: true, despejable }),
+      barraEntre(`gancho_${l}`, en(sx, altura - 0.03, -0.03), en(sx, altura - 0.05, -0.08), 0.02, { movil: true, despejable }),
+    );
+  }
+  // El travesaño no se despeja: va por encima de la cabeza y no tapa nada, y despejado parpadeaba
+  // entre viñetas de tres cuartos (opaco arriba, translúcido abajo) según quedase más cerca o no.
+  piezas.push(barraEntre('travesano', en(-1, alto + 0.035, fondo).setX(-separacion / 2 - 0.035), en(1, alto + 0.035, fondo).setX(separacion / 2 + 0.035), 0.07));
+  return { modelo: 'multipower', guias, separacion, alto, topes, tope, carro, radio, piezas, asas: {} };
+}
+
+/**
  * Las piezas de una máquina YA COLOCADA, en el mundo (con `posicion` y `orientacion` del
  * implemento). Se guardan en el propio implemento: el validador las pide para cada vértice de la
  * piel, y el implemento se rehace en cada fotograma, así que la caché no se queda vieja.
@@ -1402,7 +1478,8 @@ export function piezasMaquina(imp) {
   const q = imp.orientacion ?? new Quaternion();
   const enMundo = (p) => imp.posicion.clone().add(p.clone().applyQuaternion(q));
   imp.piezasMundo = g.piezas.map((p) => ({ ...p, centro: enMundo(p.centro), q: q.clone().multiply(p.q) }));
-  imp.asasMundo = Object.fromEntries(LADOS.map((l) => [l, { ...g.asas[l], punto: enMundo(g.asas[l].punto), eje: g.asas[l].eje.clone().applyQuaternion(q) }]));
+  // El multipower no tiene asas: las manos van a la barra.
+  imp.asasMundo = Object.fromEntries(LADOS.filter((l) => g.asas[l]).map((l) => [l, { ...g.asas[l], punto: enMundo(g.asas[l].punto), eje: g.asas[l].eje.clone().applyQuaternion(q) }]));
   return imp.piezasMundo;
 }
 
@@ -1500,6 +1577,19 @@ function colocarImplementos(esq, pose, definicion, marcos) {
      */
     if (typeof estado.rodar === 'number') orientacion.multiply(eje(new Vector3(1, 0, 0), estado.rodar));
     salida[nombre] = { ...estado, posicion: pos, orientacion };
+  }
+  /*
+   * Los carros del multipower van donde está la barra: `altura` es lo que ha subido su centro por
+   * la guía desde el suelo. Se calcula aquí, con la barra ya colocada, y no se declara por pose: la
+   * barra ya es la parte móvil declarada. Que de verdad vaya POR las guías lo mira el validador.
+   */
+  for (const imp of Object.values(salida)) {
+    if (imp.tipo !== 'maquina' || imp.modelo !== 'multipower') continue;
+    const barra = salida[imp.barra ?? 'barra'];
+    if (!barra) continue;
+    const { guias } = geometriaMaquina(imp);
+    const u = guias.i.u.clone().applyQuaternion(imp.orientacion);
+    imp.altura = barra.posicion.clone().sub(imp.posicion).dot(u);
   }
   return salida;
 }

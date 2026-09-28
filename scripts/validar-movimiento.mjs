@@ -22,6 +22,8 @@
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
  *  - máquinas: sólidas pieza a pieza, apoyos por superficie (`con`), y la parte móvil —rodillo o
  *    plataforma— tocando la espinilla o el pie en todo el ciclo;
+ *  - multipower: la barra por sus guías (en vertical, sin salirse más de 1 cm), sin bajar a los
+ *    topes ni meterse en el bastidor, y las manos fuera de las guías;
  *  - equilibrio: la barra sobre el medio pie, cuando la ficha lo pide.
  *
  * Bloquea: sale con código 1 si hay un solo error. Un aviso que no bloquea acaba ignorándose.
@@ -29,7 +31,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { Quaternion, Vector3 } from 'three';
-import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, piezasMaquina, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaMaquina, geometriaParalelas, piezasMaquina, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
@@ -159,6 +161,9 @@ const TOLERANCIA_IMPLEMENTOS = REGLAS.tolerancia_implementos ?? 0.01;
 /* La parte móvil de una máquina, tocando lo que la empuja: ver `contactoMaquina`. Aquí arriba y no
    junto a ella por lo mismo que DIRECCIONES: el bucle principal corre antes de llegar allí. */
 const TOLERANCIA_CONTACTO = REGLAS.tolerancia_contacto ?? 0.015;
+/* La barra del multipower, en sus guías: ver `barraEnGuias`. Aquí arriba por lo mismo. */
+const TOLERANCIA_GUIA = REGLAS.tolerancia_guia ?? 0.01;
+const SIGNO_LADO = { i: 1, d: -1 };
 // [radio, medio largo, centro en X], en metros; el mismo dibujo que `crearImplemento` del visor.
 const PIEZAS_CILINDRO = {
   mancuerna: [[0.016, 0.07, 0], [0.06, 0.04, -0.11], [0.06, 0.04, 0.11]],
@@ -473,6 +478,16 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     for (const [nombre, imp] of Object.entries(r.implementos)) {
       if (imp.tipo !== 'maquina') continue;
       for (const msg of contactoMaquina(imp, vertices)) fallo(`${msg.texto} de ${nombre}`, `${etiqueta} (${msg.cuanto})`);
+    }
+
+    /*
+     * EL MULTIPOWER: LA BARRA VA POR SUS GUÍAS. La barra la lleva el cuerpo y la máquina solo pone
+     * las guías, así que nada obliga a que coincidan: se mira siempre, sin declararlo. Ver
+     * `barraEnGuias`.
+     */
+    for (const [nombre, imp] of Object.entries(r.implementos)) {
+      if (imp.tipo !== 'maquina' || imp.modelo !== 'multipower') continue;
+      for (const msg of barraEnGuias(imp, r.implementos, vertices)) fallo(`${msg.texto} de ${nombre}`, `${etiqueta} (${msg.cuanto})`);
     }
 
     const eq = mov.comprobaciones?.equilibrio;
@@ -1190,6 +1205,73 @@ function contactoMaquina(imp, vertices) {
       }
     }
   }
+  return salida;
+}
+
+/**
+ * LA BARRA DEL MULTIPOWER, POR SUS GUÍAS. En la máquina de verdad la barra no puede salirse: los
+ * carros la llevan en vertical. Aquí la lleva el tronco (`relativo_a: "torax"`, como en la sentadilla
+ * libre), y un tronco que se inclina de más la adelanta o la atrasa sin que en pantalla se note hasta
+ * que la barra cruza la guía por fuera del carro. Cuatro cosas, en cada fotograma:
+ *
+ *  - la barra en las guías: el punto de su eje a la distancia de cada guía (±`separacion`/2 desde su
+ *    centro) a menos de TOLERANCIA_GUIA (1 cm) de la línea de esa guía. Eso ya dice que no se mueve
+ *    en X ni en Z (con las guías rectas; con `inclinacion`, a lo largo de ellas) y que no se ladea:
+ *    una barra torcida no pasa por las dos guías a la vez;
+ *  - los carros, entre el tope de seguridad y el final de la guía: una barra que baja hasta los
+ *    topes es una repetición que acaba apoyada en ellos, no un movimiento;
+ *  - la barra —eje, manguitos y discos, como en UN IMPLEMENTO DENTRO DE OTRO— fuera del bastidor,
+ *    salvo las piezas `guia` (guías, carros y topes), que la barra atraviesa por diseño;
+ *  - las manos, fuera de todo el bastidor: la piel se mira sin ellas, porque agarran a propósito, y
+ *    una mano en la guía es un agarre más ancho de lo que la máquina deja.
+ */
+function barraEnGuias(imp, implementos, vertices) {
+  const salida = [];
+  const barra = implementos[imp.barra ?? 'barra'];
+  if (!barra) return [{ texto: `no hay barra «${imp.barra ?? 'barra'}» para las guías`, cuanto: 'falta el implemento' }];
+  const g = geometriaMaquina(imp);
+  const q = imp.orientacion ?? new Quaternion();
+  const eje = new Vector3(1, 0, 0).applyQuaternion(barra.orientacion ?? new Quaternion());
+  // El extremo de la barra hacia +X de la máquina es el de la guía izquierda.
+  const hacia = Math.sign(eje.dot(new Vector3(1, 0, 0).applyQuaternion(q))) || 1;
+  for (const l of LADOS) {
+    const base = imp.posicion.clone().add(g.guias[l].base.clone().applyQuaternion(q));
+    const u = g.guias[l].u.clone().applyQuaternion(q);
+    const punto = barra.posicion.clone().addScaledVector(eje, hacia * SIGNO_LADO[l] * g.separacion / 2);
+    const w = punto.clone().sub(base);
+    const s = w.dot(u);
+    const fuera = w.addScaledVector(u, -s).length();
+    const lado = { i: 'izquierda', d: 'derecha' }[l];
+    if (fuera > TOLERANCIA_GUIA) salida.push({ texto: `la barra se sale de la guía ${lado}`, cuanto: `${(fuera * 100).toFixed(1)} cm` });
+    const suelo = s - g.carro.medio_largo - (g.topes + g.tope.medio_largo);
+    if (suelo < 0) salida.push({ texto: `la barra baja hasta el tope de seguridad ${{ i: 'izquierdo', d: 'derecho' }[l]}`, cuanto: `${(-suelo * 100).toFixed(1)} cm por debajo` });
+    const techo = g.alto - (s + g.carro.medio_largo);
+    if (techo < 0) salida.push({ texto: `la barra se sale por arriba de la guía ${lado}`, cuanto: `${(-techo * 100).toFixed(1)} cm` });
+  }
+  const piezas = piezasMaquina(imp);
+  const fijas = piezas.filter((p) => !p.guia);
+  const alcance = (p) => (p.forma === 'caja' ? p.medio.length() : Math.hypot(p.radio, p.medio_largo));
+  const metidas = new Map();
+  for (const cil of cilindrosDe({ ...barra, tipo: 'barra' })) {
+    for (const p of fijas) {
+      if (cil.c.distanceTo(p.centro) > Math.hypot(cil.r, cil.h) + alcance(p)) continue;
+      sembrar(cil, (v) => {
+        const hondo = hondoEnPiezaMaquina(p, v);
+        if (hondo > TOLERANCIA_IMPLEMENTOS) metidas.set(p.nombre, Math.max(metidas.get(p.nombre) ?? 0, hondo));
+      });
+    }
+  }
+  for (const [pieza, hondo] of metidas) salida.push({ texto: `la barra se mete en ${pieza}`, cuanto: `${(hondo * 100).toFixed(1)} cm` });
+  const manos = new Map();
+  for (const v of vertices) {
+    if (!v.mano) continue;
+    for (const p of piezas) {
+      if (v.distanceTo(p.centro) > alcance(p)) continue;
+      const hondo = hondoEnPiezaMaquina(p, v);
+      if (hondo > 0.005) manos.set(p.nombre, Math.max(manos.get(p.nombre) ?? 0, hondo));
+    }
+  }
+  for (const [pieza, hondo] of manos) salida.push({ texto: `una mano atraviesa ${pieza}`, cuanto: `${(hondo * 100).toFixed(1)} cm` });
   return salida;
 }
 

@@ -1,0 +1,53 @@
+{
+  "id": "sentadilla-multipower",
+  "grupo_id": "sentadilla",
+  "orden": 10,
+  "nombre": "Sentadilla en multipower",
+  "resumen": "La sentadilla con la barra montada en unas guías que solo la dejan subir y bajar en vertical. La máquina equilibra la barra, así que permite cargar la sentadilla sin tener que controlar el equilibrio.",
+  "movimiento_id": "sentadilla-multipower",
+  "ejecucion": [
+    "Ajusta los topes de seguridad un poco por debajo del punto más bajo al que vayas a llegar.",
+    "Engancha la barra a la altura de los hombros. Colócate debajo con ella sobre los trapecios, nunca sobre el cuello, agárrala algo más abierto que los hombros y pon los pies a la anchura de los hombros, un poco por delante de la línea de la barra.",
+    "Estira las piernas para levantar la barra y gírala para soltarla de los ganchos, con el abdomen apretado.",
+    "Baja doblando cadera y rodillas, que siguen la dirección de los pies, con el pecho alto, hasta que los muslos queden más o menos paralelos al suelo.",
+    "Sube empujando el suelo con todo el pie hasta quedar de pie.",
+    "Al terminar, gira la barra para engancharla y asegúrate de que queda apoyada antes de salir de debajo."
+  ],
+  "material": [
+    "multipower"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "isquiotibiales"
+    ]
+  },
+  "matices": "En un estudio con seis personas, la sentadilla libre activó más que la de multipower el gemelo, el bíceps femoral y el vasto medial; en el vasto lateral, el tibial, los erectores y el abdomen no hubo diferencias. Otro, con cincuenta y nueve hombres, vio mejoras parecidas en fuerza y grosor muscular entrenando con una u otra, aunque el grupo del multipower mejoró más en su propio ejercicio que en los otros. Como la barra va guiada y los pies se adelantan, no es exactamente la misma técnica que la sentadilla libre, y lo que se gana en una no pasa del todo a la otra.",
+  "fuentes": [
+    {
+      "titulo": "A comparison of free weight squat to Smith machine squat using electromyography",
+      "autor": "Schwanbeck, Chilibeck y Binsted, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19855308/"
+    },
+    {
+      "titulo": "The short- and long-term effects of resistance training with different stability requirements",
+      "autor": "Saeterbakken et al., PLoS One, 2019",
+      "url": "https://doi.org/10.1371/journal.pone.0214302"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

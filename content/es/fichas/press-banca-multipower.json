@@ -1,0 +1,43 @@
+{
+  "id": "press-banca-multipower",
+  "grupo_id": "empuje-horizontal",
+  "orden": 12,
+  "nombre": "Press de banca en multipower",
+  "resumen": "El press de banca con la barra montada en unas guías que solo la dejan subir y bajar en vertical. La máquina equilibra la barra, tiene ganchos para dejarla a varias alturas y topes que la paran si fallas, así que es más fácil de hacer sin ayudante.",
+  "ejecucion": [
+    "Coloca un banco plano bajo la barra, de forma que baje sobre la parte media o baja del pecho, y ajusta los topes de seguridad para que la barra se pare justo por debajo del punto en que toca el pecho; compruébalo antes con la barra vacía.",
+    "Túmbate de forma que la barra quede sobre la parte media o baja del pecho, con los pies en el suelo y los omóplatos juntos, y cógela algo más abierta que los hombros, con las muñecas rectas.",
+    "Estira los brazos para levantar la barra y gírala para soltarla de los ganchos.",
+    "Bájala con control hasta rozar el pecho, con los codos a unos 45-60° del tronco.",
+    "Empuja hasta estirar los brazos, sin despegar la espalda ni los glúteos del banco.",
+    "Al terminar, gira la barra para engancharla y asegúrate de que queda apoyada antes de soltarla."
+  ],
+  "material": [
+    "multipower",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "pectoral",
+      "triceps",
+      "deltoides_anterior"
+    ],
+    "sinergista": [],
+    "estabilizador": [
+      "serrato"
+    ]
+  },
+  "matices": "En un estudio que comparó el press de banca libre y en multipower, el deltoides medio se activó más en el libre; el resumen no destaca diferencias en el deltoides anterior ni en el pectoral mayor. La trayectoria fija quita el trabajo de equilibrar la barra; a cambio, la barra sigue siempre la misma línea vertical, aunque no sea la que seguirías con una barra libre.",
+  "fuentes": [
+    {
+      "titulo": "A comparison of muscle activation between a Smith machine and free weight bench press",
+      "autor": "Schick et al., J Strength Cond Res, 2010",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20093960/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

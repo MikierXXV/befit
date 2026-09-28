@@ -96,9 +96,9 @@ await maniqui('hoy siguiente con descanso en marcha');
 // 5. Añadir uno desde el selector.
 await p.selectOption('[data-anadir]', 'dominadas');
 await maniqui('hoy añadido desde el selector');
-// 6. Catorce fichas seguidas: ¿aguanta el contexto WebGL? Con una por implemento nuevo de la etapa B
-// (el banco inclinable, las paralelas, la kettlebell y la máquina), para que «el maniquí se ve al abrirlo» cubra su geometría.
-for (const id of ['remo-barra', 'curl-martillo', 'sentadilla-bulgara', 'peso-muerto-rumano', 'elevaciones-laterales', 'jalon-pecho', 'plancha-lateral', 'press-militar', 'zancada-inversa', 'puente-gluteo', 'press-inclinado-mancuernas', 'fondos-paralelas', 'peso-muerto-kettlebell', 'extension-cuadriceps']) {
+// 6. Quince fichas seguidas: ¿aguanta el contexto WebGL? Con una por implemento nuevo de la etapa B
+// (el banco inclinable, las paralelas, la kettlebell, la máquina y el multipower), para que «el maniquí se ve al abrirlo» cubra su geometría.
+for (const id of ['remo-barra', 'curl-martillo', 'sentadilla-bulgara', 'peso-muerto-rumano', 'elevaciones-laterales', 'jalon-pecho', 'plancha-lateral', 'press-militar', 'zancada-inversa', 'puente-gluteo', 'press-inclinado-mancuernas', 'fondos-paralelas', 'peso-muerto-kettlebell', 'extension-cuadriceps', 'sentadilla-multipower']) {
   await p.goto(`${BASE}#/f/${id}`);
   await maniqui(`seguidas ${id}`);
 }

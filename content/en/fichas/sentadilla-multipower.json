@@ -1,0 +1,53 @@
+{
+  "id": "sentadilla-multipower",
+  "grupo_id": "sentadilla",
+  "orden": 10,
+  "nombre": "Smith machine squat",
+  "resumen": "The squat with the bar mounted on guides that only let it move straight up and down. The machine balances the bar, so it lets you load the squat without having to control the balance.",
+  "movimiento_id": "sentadilla-multipower",
+  "ejecucion": [
+    "Set the safety stops slightly below the lowest point you will reach.",
+    "Hook the bar at shoulder height. Step under it with the bar on your traps, never on your neck, grip it slightly wider than your shoulders, and place your feet shoulder-width apart, slightly in front of the line of the bar.",
+    "Straighten your legs to lift the bar and rotate it to release it from the hooks, abs braced.",
+    "Go down by bending hips and knees, which follow the direction of your feet, chest up, until your thighs are roughly parallel to the floor.",
+    "Stand up by pushing the floor with your whole foot.",
+    "When you finish, rotate the bar to hook it and make sure it is resting before you step out from under it."
+  ],
+  "material": [
+    "multipower"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "soleo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "abdomen",
+      "isquiotibiales"
+    ]
+  },
+  "matices": "In a study of six people, the free squat activated the gastrocnemius (calf), biceps femoris and vastus medialis more than the Smith machine squat; vastus lateralis, tibialis anterior, erectors and abs showed no difference. Another, in fifty-nine men, found similar gains in strength and muscle thickness training with either, although the Smith machine group improved more in its own exercise than in the others. Because the bar is guided and the feet go forward, it is not quite the same technique as the free squat, and gains in one do not fully carry over to the other.",
+  "fuentes": [
+    {
+      "titulo": "A comparison of free weight squat to Smith machine squat using electromyography",
+      "autor": "Schwanbeck, Chilibeck and Binsted, J Strength Cond Res, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19855308/"
+    },
+    {
+      "titulo": "The short- and long-term effects of resistance training with different stability requirements",
+      "autor": "Saeterbakken et al., PLoS One, 2019",
+      "url": "https://doi.org/10.1371/journal.pone.0214302"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
