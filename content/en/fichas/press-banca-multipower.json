@@ -4,6 +4,7 @@
   "orden": 12,
   "nombre": "Smith machine bench press",
   "resumen": "The bench press with the bar mounted on guides that only let it move straight up and down. The machine balances the bar, has hooks to rack it at several heights and stops that catch it if you fail, so it is easier to do without a spotter.",
+  "movimiento_id": "press-banca-multipower",
   "ejecucion": [
     "Place a flat bench under the bar so it comes down over the middle or lower chest, and set the safety stops so the bar stops just below the point where it touches your chest; check it first with the empty bar.",
     "Lie down so the bar sits over your middle or lower chest, feet on the floor and shoulder blades squeezed together, and grip it slightly wider than your shoulders, wrists straight.",

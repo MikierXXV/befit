@@ -168,7 +168,14 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   extensión de cuádriceps y curl femoral tumbado; grupos nuevos extensión y flexión de rodilla, y
   material «Máquina». Pendiente de mirar: la prensa baja a 85° y no a 90° (el tobillo no da más con la
   planta plana) y las asas apenas se ven en el primer plano.
-- ⬜ S · Multipower.
+- ✅ **S · Multipower:** una `maquina` con `modelo: "multipower"` (bastidor, guías, topes y carros
+  que siguen a la barra) y la barra de siempre; el validador comprueba que la barra va por las guías
+  (menos de 1 cm), que los carros no pasan de los topes y que nada choca con el bastidor. Sentadilla
+  y press de banca en multipower; material «Multipower / Smith machine». La revisión cazó un fallo de
+  seguridad en la ficha del press: decía «ojos bajo la barra», que con barra guiada la bajaría sobre
+  la cara.
+- ⬜ **Cierre de la etapa B:** rutinas «En casa sin material», «Solo mancuernas» y «Máquinas para
+  empezar», y repaso de las tres que hay. Después, la revisión final con Migue de la lista pendiente.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

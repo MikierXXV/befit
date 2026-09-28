@@ -4,6 +4,7 @@
   "orden": 12,
   "nombre": "Press de banca en multipower",
   "resumen": "El press de banca con la barra montada en unas guías que solo la dejan subir y bajar en vertical. La máquina equilibra la barra, tiene ganchos para dejarla a varias alturas y topes que la paran si fallas, así que es más fácil de hacer sin ayudante.",
+  "movimiento_id": "press-banca-multipower",
   "ejecucion": [
     "Coloca un banco plano bajo la barra, de forma que baje sobre la parte media o baja del pecho, y ajusta los topes de seguridad para que la barra se pare justo por debajo del punto en que toca el pecho; compruébalo antes con la barra vacía.",
     "Túmbate de forma que la barra quede sobre la parte media o baja del pecho, con los pies en el suelo y los omóplatos juntos, y cógela algo más abierta que los hombros, con las muñecas rectas.",
