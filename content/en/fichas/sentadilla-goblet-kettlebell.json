@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Kettlebell goblet squat",
   "resumen": "The goblet squat holding a kettlebell by the sides of the handle against the chest. As with the dumbbell goblet, the weight in front helps you go down with an upright torso.",
+  "movimiento_id": "sentadilla-goblet-kettlebell",
   "ejecucion": [
     "Hold the kettlebell by both sides of the handle, bell down, and keep it against your chest with your elbows pointing down.",
     "Stand with your feet slightly wider than your shoulders and your toes turned slightly out.",

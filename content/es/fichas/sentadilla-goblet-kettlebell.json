@@ -4,6 +4,7 @@
   "orden": 8,
   "nombre": "Sentadilla goblet con kettlebell",
   "resumen": "La sentadilla goblet sujetando una kettlebell por los lados del asa contra el pecho. Como la goblet con mancuerna, el peso delante ayuda a bajar con el tronco erguido.",
+  "movimiento_id": "sentadilla-goblet-kettlebell",
   "ejecucion": [
     "Coge la kettlebell por los dos lados del asa, con la bola hacia abajo, y pégala al pecho con los codos hacia abajo.",
     "Ponte de pie con los pies algo más abiertos que los hombros y las puntas un poco hacia fuera.",

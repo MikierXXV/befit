@@ -1,0 +1,361 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Lo valida scripts/validar-movimiento.mjs posando el maniquí fotograma a fotograma.",
+  "id": "press-hombro-kettlebell",
+  "duracion": 3,
+  "asimetria": 0.4,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "frontal",
+    "detalle": "mano_d"
+  },
+  "implementos": {
+    "kettlebell": {
+      "tipo": "kettlebell",
+      "en_mano": "d"
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "kettlebell": {
+          "vuelco": 120
+        }
+      },
+      "brazos": {
+        "i": {
+          "hombro": {
+            "abduccion": 14,
+            "flexion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.3
+        },
+        "d": {
+          "hombro": {
+            "abduccion": 18,
+            "flexion": 25,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 140
+          },
+          "pronacion": 0,
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.18,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "kettlebell": {
+          "vuelco": 120
+        }
+      },
+      "brazos": {
+        "i": {
+          "hombro": {
+            "abduccion": 16,
+            "flexion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.3
+        },
+        "d": {
+          "hombro": {
+            "abduccion": 70,
+            "flexion": 30,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 100
+          },
+          "pronacion": 20,
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "kettlebell": {
+          "vuelco": 120
+        }
+      },
+      "brazos": {
+        "i": {
+          "hombro": {
+            "abduccion": 18,
+            "flexion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.3
+        },
+        "d": {
+          "hombro": {
+            "abduccion": 180,
+            "flexion": 10,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 5
+          },
+          "pronacion": 60,
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 15,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 0.8,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "kettlebell": {
+          "vuelco": 120
+        }
+      },
+      "brazos": {
+        "i": {
+          "hombro": {
+            "abduccion": 16,
+            "flexion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.3
+        },
+        "d": {
+          "hombro": {
+            "abduccion": 70,
+            "flexion": 30,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 100
+          },
+          "pronacion": 20,
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.905,
+          -0.02
+        ]
+      },
+      "columna": {
+        "flexion": 2
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "implementos": {
+        "kettlebell": {
+          "vuelco": 120
+        }
+      },
+      "brazos": {
+        "i": {
+          "hombro": {
+            "abduccion": 14,
+            "flexion": 0,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 12
+          },
+          "cierre": 0.3
+        },
+        "d": {
+          "hombro": {
+            "abduccion": 18,
+            "flexion": 25,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 140
+          },
+          "pronacion": 0,
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": 0
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.11,
+            0.104,
+            -0.1
+          ],
+          "rodilla_hacia": [
+            0.2,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 8
+        }
+      }
+    }
+  ],
+  "cartel": {
+    "fase": 0.5
+  }
+}

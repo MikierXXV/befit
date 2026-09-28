@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "One-arm kettlebell shoulder press",
   "resumen": "Standing with a kettlebell in the rack position, resting on the forearm next to the shoulder, you press it overhead until the arm is straight. It works the shoulder and triceps, and the trunk has to resist a load on one side only.",
+  "movimiento_id": "press-hombro-kettlebell",
   "ejecucion": [
     "Lift the kettlebell from the floor to your shoulder with both hands, hinging at the hips with a straight back.",
     "Stand with your feet hip-width apart and the kettlebell in one hand in the rack position: handle in the palm, bell resting on the outside of the forearm and elbow tucked in.",

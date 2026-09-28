@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Press de hombro con kettlebell a una mano",
   "resumen": "De pie con una kettlebell en posición de rack, apoyada en el antebrazo junto al hombro, se empuja por encima de la cabeza hasta estirar el brazo. Trabaja hombro y tríceps, y el tronco tiene que resistir la carga de un solo lado.",
+  "movimiento_id": "press-hombro-kettlebell",
   "ejecucion": [
     "Sube la kettlebell desde el suelo hasta el hombro con las dos manos, llevando la cadera atrás y con la espalda recta.",
     "Ponte de pie con los pies a la anchura de la cadera y la kettlebell en una mano, en posición de rack: el asa en la palma, la bola apoyada en la parte de fuera del antebrazo y el codo pegado al cuerpo.",

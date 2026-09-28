@@ -4,6 +4,7 @@
   "orden": 11,
   "nombre": "Kettlebell swing",
   "resumen": "Holding a kettlebell with both hands, you hike it back between your legs with a hip hinge and drive it forward to chest height with a snap of the hips. An explosive exercise for the glutes and hamstrings.",
+  "movimiento_id": "swing-kettlebell",
   "ejecucion": [
     "Stand with your feet slightly wider than your hips and the kettlebell on the floor, a hand’s length in front of your feet.",
     "With a straight back, push your hips back, grip the handle with both hands and hike it back between your legs, like a football snap: the bell travels high, close to the groin, not down by the knees.",

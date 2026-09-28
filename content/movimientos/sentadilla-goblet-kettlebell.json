@@ -1,0 +1,294 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z.",
+  "id": "sentadilla-goblet-kettlebell",
+  "duracion": 3.2,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_i"
+  },
+  "implementos": {
+    "kettlebell": {
+      "tipo": "kettlebell",
+      "relativo_a": "torax",
+      "desplazamiento": [
+        0,
+        0.08,
+        0.25
+      ],
+      "agarre_marco": {
+        "i": [
+          0.491375,
+          -0.508479,
+          0.491375,
+          -0.508479
+        ],
+        "d": [
+          -0.508588,
+          0.491261,
+          -0.508588,
+          0.491261
+        ]
+      }
+    }
+  },
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          -0.03
+        ]
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "cuernos",
+          "codo_hacia": [
+            0.3,
+            -1,
+            -0.3
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 15,
+            "elevacion": -5
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.24,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.5,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 25
+        }
+      }
+    },
+    {
+      "t": 0.25,
+      "curva": "controlada",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.68,
+          -0.13
+        ],
+        "orientacion": {
+          "inclinacion": 12
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "cuernos",
+          "codo_hacia": [
+            0.3,
+            -0.916,
+            -0.501
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 15,
+            "elevacion": -5
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.24,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.5,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 25
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.36,
+          -0.19
+        ],
+        "orientacion": {
+          "inclinacion": 22
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -12
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "cuernos",
+          "codo_hacia": [
+            0.3,
+            -0.815,
+            -0.653
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 15,
+            "elevacion": -5
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.24,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.65,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 25
+        }
+      }
+    },
+    {
+      "t": 0.75,
+      "curva": "esfuerzo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.68,
+          -0.13
+        ],
+        "orientacion": {
+          "inclinacion": 12
+        }
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": -6
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "cuernos",
+          "codo_hacia": [
+            0.3,
+            -0.916,
+            -0.501
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 15,
+            "elevacion": -5
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.24,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.5,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 25
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.9,
+          -0.03
+        ]
+      },
+      "columna": {
+        "flexion": 4
+      },
+      "cuello": {
+        "flexion": 0
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "cuernos",
+          "codo_hacia": [
+            0.3,
+            -1,
+            -0.3
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "protraccion": 15,
+            "elevacion": -5
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.24,
+            0.104,
+            -0.08
+          ],
+          "rodilla_hacia": [
+            0.5,
+            0,
+            1
+          ],
+          "pie_plano": true,
+          "apertura": 25
+        }
+      }
+    }
+  ],
+  "$comment_agarre": "Por los cuernos (`objetivo: \"cuernos\"`), bola abajo y la kettlebell relativa al tórax, con el agarre fijado por `npm run agarre`. Sin fijar, la mano sale del antebrazo proyectado fuera del eje del cuerno, y el cuerno va inclinado hacia dentro casi como el antebrazo: con el codo abajo y el antebrazo vertical esa proyección casi se anula, la muñeca no converge y las manos acababan entre los cuernos, una dentro de la otra (1,7 cm) y los puños cerrados sobre el aire. Con el polo del codo [0,3, -1, -0,3] y el antebrazo a unos 38° de la vertical, los dedos apuntan adelante, la palma hacia dentro y el cuerno cae en la palma (a 0,8 cm antes de fijar). Por eso los antebrazos no van del todo verticales: más verticales, el agarre deducido se rompe.",
+  "$comment_pecho": "`desplazamiento` [0, 0,08, 0,25]: la bola queda a 2 cm del pecho en todo el ciclo, con el asa bajo la línea de los hombros. A 0,24 la bola ya tocaba el esternón; subirla a 0,10-0,12 empeoraba el agarre deducido (2,7-6 cm).",
+  "$comment_piernas": "Piernas, pelvis y ritmo, los de sentadilla-goblet (aprobada). El polo del codo gira con el tronco (12° y 22°) para que el brazo vaya rígido con él y el agarre no cambie."
+}

@@ -154,7 +154,14 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   `con: "manos"` comprueba que el cuerpo se sostiene sobre ellas. Fondos en paralelas y elevación de
   rodillas en paralelas. Material nuevo «Paralelas / Dip bars». Pendiente de mirar: en los fondos las
   piernas no van cruzadas y la mano cuelga de la barra más que apoyar el talón.
-- ⬜ Q · Kettlebell · R · Máquinas guiadas · S · Multipower.
+- ✅ **Q · Kettlebell:** `geometriaKettlebell()` compartida; se coge a una mano (`en_mano`, con `vuelco`
+  para el rack), a dos por el asa (`objetivo: "kettlebell"`) o por los cuernos (`objetivo:
+  "cuernos"`). Swing, peso muerto, press de hombro a una mano y sentadilla goblet con kettlebell.
+  Material nuevo «Kettlebell». Pendiente de mirar: en el swing la bola pasa a media altura del muslo y
+  no junto a la ingle (con los brazos rectos el maniquí no da para más), y en la goblet la kettlebell
+  queda algo baja y los antebrazos no llegan a verticales (límite de cómo se colocan las manos en los
+  cuernos).
+- ⬜ R · Máquinas guiadas · S · Multipower.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y
