@@ -1,0 +1,103 @@
+{
+  "id": "en-casa-sin-material",
+  "nombre": "At home, no equipment",
+  "resumen": "Three days a week alternating A and B at home, with nothing but the floor and a wall: squats, push-ups, bridges and core work. For getting started or for weeks without a gym.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Day A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-sin-peso",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "puente-gluteo",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "superman",
+          "series": 3,
+          "min": 20,
+          "max": 40
+        },
+        {
+          "ejercicio": "plancha-frontal",
+          "series": 3,
+          "min": 20,
+          "max": 45
+        }
+      ]
+    },
+    {
+      "nombre": "Day B",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-pared",
+          "series": 3,
+          "min": 30,
+          "max": 60
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "puente-una-pierna",
+          "series": 3,
+          "min": 8,
+          "max": 15
+        },
+        {
+          "ejercicio": "bicho-muerto",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "perro-pajaro",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "elevacion-talon-una-pierna",
+          "series": 3,
+          "min": 10,
+          "max": 20
+        }
+      ]
+    }
+  ],
+  "matices": "Without weights, progress comes differently: harder variations (from push-ups with hands on a table or wall to regular, then diamond; from two-leg to one-leg bridges) or longer holds in the timed exercises. A review found that muscle gain happens across a wide range of loads if sets are taken close to failure, so bodyweight works as long as each set gets close to failure within the range; once you pass the top, move to a harder variation. Without a bar or bands there is no way to train the back with a pulling movement; if you can, add a pull with equipment later. Reps for one-sided exercises are per side, and the numbers for the plank, superman and wall sit are seconds.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every and Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}

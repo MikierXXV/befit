@@ -1,0 +1,103 @@
+{
+  "id": "en-casa-sin-material",
+  "nombre": "En casa sin material",
+  "resumen": "Tres días por semana alternando A y B en casa, sin nada más que el suelo y una pared: sentadilla, flexiones, puentes y ejercicios de tronco. Para empezar a entrenar o para las semanas sin gimnasio.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Día A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-sin-peso",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "puente-gluteo",
+          "series": 3,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "superman",
+          "series": 3,
+          "min": 20,
+          "max": 40
+        },
+        {
+          "ejercicio": "plancha-frontal",
+          "series": 3,
+          "min": 20,
+          "max": 45
+        }
+      ]
+    },
+    {
+      "nombre": "Día B",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-pared",
+          "series": 3,
+          "min": 30,
+          "max": 60
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "puente-una-pierna",
+          "series": 3,
+          "min": 8,
+          "max": 15
+        },
+        {
+          "ejercicio": "bicho-muerto",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "perro-pajaro",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "elevacion-talon-una-pierna",
+          "series": 3,
+          "min": 10,
+          "max": 20
+        }
+      ]
+    }
+  ],
+  "matices": "Sin peso, la forma de progresar es otra: variantes más difíciles (de la flexión con las manos en una mesa o en la pared a la normal, y luego a la diamante; del puente a dos piernas al de una) o más tiempo en los ejercicios que se sostienen. Una revisión encontró que la ganancia muscular se consigue con un abanico amplio de cargas si las series se acercan al fallo, así que el propio cuerpo sirve mientras cada serie se acerque al fallo dentro del rango; si pasas del máximo, cambia a una variante más difícil. Sin barra ni gomas no hay forma de trabajar la espalda tirando; si puedes, añade más adelante un tirón con material. Las repeticiones de los ejercicios a un lado son por lado, y los números de la plancha, el superman y la sentadilla en pared son segundos.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn y Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every y Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}

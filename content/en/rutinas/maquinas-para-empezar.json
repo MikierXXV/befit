@@ -1,0 +1,103 @@
+{
+  "id": "maquinas-para-empezar",
+  "nombre": "Machines to get started",
+  "resumen": "Three days a week alternating A and B with machines and cables: leg press, leg extension and curl, pulldown, cable row, and Smith machine bench press and squat. Machines set the path, which simplifies technique when starting out.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Day A",
+      "ejercicios": [
+        {
+          "ejercicio": "prensa-piernas",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "press-banca-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "jalon-pecho",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-femoral-tumbado",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "jalon-triceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Day B",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "remo-polea-sentado",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "press-banca-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-femoral-tumbado",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "extension-cuadriceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "face-pull",
+          "series": 2,
+          "min": 12,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "In an eight-week study, biceps and quadriceps muscle thickness increased equally with machines and free weights; for strength, the machine group improved more on the machine bench press (13.9% vs 8.6%). Machines are therefore a reasonable way to start; moving to free weights later means learning their technique. Alternating A and B, each muscle is trained twice a week, which reviews link with slightly more gain than once. Adjust each machine before the first set: the seat and pads determine how the joint works.",
+  "fuentes": [
+    {
+      "titulo": "Effects of Training With Free Weights Versus Machines on Muscle Mass, Strength, Free Testosterone, and Free Cortisol Levels",
+      "autor": "Schwanbeck, Cornish, Barss and Chilibeck, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32358310/"
+    },
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    }
+  ]
+}

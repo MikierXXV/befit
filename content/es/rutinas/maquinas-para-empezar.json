@@ -1,0 +1,103 @@
+{
+  "id": "maquinas-para-empezar",
+  "nombre": "Máquinas para empezar",
+  "resumen": "Tres días por semana alternando A y B con máquinas y poleas: prensa, extensión y curl de pierna, jalón, remo en polea, y press de banca y sentadilla en multipower. Las máquinas marcan el recorrido, lo que simplifica la técnica al empezar.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Día A",
+      "ejercicios": [
+        {
+          "ejercicio": "prensa-piernas",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "press-banca-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "jalon-pecho",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-femoral-tumbado",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "jalon-triceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Día B",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "remo-polea-sentado",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "press-banca-multipower",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "curl-femoral-tumbado",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "extension-cuadriceps",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "face-pull",
+          "series": 2,
+          "min": 12,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "En un estudio de ocho semanas, el grosor muscular de bíceps y cuádriceps aumentó igual entrenando con máquinas que con pesos libres; en fuerza, el grupo de máquinas mejoró más en el press de banca en máquina (13,9 % frente a 8,6 %). Las máquinas son, por tanto, una forma razonable de empezar; pasar luego a los pesos libres pide aprender su técnica. Alternando A y B, cada músculo se trabaja dos veces por semana, que es lo que las revisiones asocian con algo más de ganancia que una sola vez. Ajusta cada máquina antes de la primera serie: el asiento y los rodillos determinan cómo trabaja la articulación.",
+  "fuentes": [
+    {
+      "titulo": "Effects of Training With Free Weights Versus Machines on Muscle Mass, Strength, Free Testosterone, and Free Cortisol Levels",
+      "autor": "Schwanbeck, Cornish, Barss y Chilibeck, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32358310/"
+    },
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn y Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    }
+  ]
+}

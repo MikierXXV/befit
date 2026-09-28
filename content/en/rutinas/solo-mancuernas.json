@@ -1,0 +1,109 @@
+{
+  "id": "solo-mancuernas",
+  "nombre": "Dumbbells only",
+  "resumen": "Three days a week alternating A and B with a pair of dumbbells and nothing else: squats, lunges, rows, presses and hinges. The chest is worked with push-ups, which need no bench.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Day A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-goblet",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "remo-mancuernas-dos",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "peso-muerto-rumano-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "elevaciones-laterales",
+          "series": 2,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "curl-mancuernas",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Day B",
+      "ejercicios": [
+        {
+          "ejercicio": "zancada-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "press-militar-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "remo-mancuernas-dos",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "sentadilla-sumo-mancuerna",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "curl-martillo",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "extension-triceps-arriba",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "Three days alternating A and B work legs, pushing and pulling in every session, and most muscles twice a week, which reviews link with slightly more gain than once. With dumbbells the limit is usually the weight available, but muscle gain happens across a wide range of loads if sets are taken close to failure: when reps go past the range, you can lower more slowly, pause at the bottom or move to the single-leg variation before needing heavier dumbbells.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn and Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every and Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}

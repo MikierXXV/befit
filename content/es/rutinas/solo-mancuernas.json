@@ -1,0 +1,109 @@
+{
+  "id": "solo-mancuernas",
+  "nombre": "Solo mancuernas",
+  "resumen": "Tres días por semana alternando A y B con un par de mancuernas y nada más: sentadillas, zancadas, remos, press y bisagra. El pecho se trabaja con flexiones, que no piden banco.",
+  "nivel": "inicial",
+  "frecuencia": 3,
+  "dias": [
+    {
+      "nombre": "Día A",
+      "ejercicios": [
+        {
+          "ejercicio": "sentadilla-goblet",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "flexiones",
+          "series": 3,
+          "min": 6,
+          "max": 15
+        },
+        {
+          "ejercicio": "remo-mancuernas-dos",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "peso-muerto-rumano-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "elevaciones-laterales",
+          "series": 2,
+          "min": 12,
+          "max": 20
+        },
+        {
+          "ejercicio": "curl-mancuernas",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "nombre": "Día B",
+      "ejercicios": [
+        {
+          "ejercicio": "zancada-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "press-militar-mancuernas",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "remo-mancuernas-dos",
+          "series": 3,
+          "min": 8,
+          "max": 12
+        },
+        {
+          "ejercicio": "sentadilla-sumo-mancuerna",
+          "series": 3,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "curl-martillo",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        },
+        {
+          "ejercicio": "extension-triceps-arriba",
+          "series": 2,
+          "min": 10,
+          "max": 15
+        }
+      ]
+    }
+  ],
+  "matices": "Tres días alternando A y B trabajan piernas, empuje y tirón en cada sesión, y la mayoría de los músculos dos veces por semana, que es lo que las revisiones asocian con algo más de ganancia que una sola vez. Con mancuernas el límite suele ser el peso disponible, pero la ganancia muscular se consigue con un abanico amplio de cargas si las series se acercan al fallo: cuando las repeticiones superan el rango, se puede bajar más despacio, hacer pausas abajo o pasar a la variante a una pierna antes de necesitar mancuernas más pesadas.",
+  "fuentes": [
+    {
+      "titulo": "Progression models in resistance training for healthy adults",
+      "autor": "American College of Sports Medicine, 2009",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19204579/"
+    },
+    {
+      "titulo": "Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis",
+      "autor": "Schoenfeld, Ogborn y Krieger, 2016",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+    },
+    {
+      "titulo": "Loading Recommendations for Muscle Strength, Hypertrophy, and Local Endurance: A Re-Examination of the Repetition Continuum",
+      "autor": "Schoenfeld, Grgic, Van Every y Plotkin, 2021",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33671664/"
+    }
+  ]
+}
