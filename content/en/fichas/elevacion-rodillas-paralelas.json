@@ -4,6 +4,7 @@
   "orden": 13,
   "nombre": "Parallel bar knee raise",
   "resumen": "Supported on straight arms on parallel bars, legs hanging, you raise the knees towards the chest, curling the pelvis up. An abdominal exercise without hanging from your hands.",
+  "movimiento_id": "elevacion-rodillas-paralelas",
   "ejecucion": [
     "Get up on the bars stepping up or with a small jump and support yourself on straight arms, shoulders down, away from your ears.",
     "Let your legs hang, together and relaxed.",

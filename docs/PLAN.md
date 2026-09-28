@@ -149,7 +149,12 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   inclinadas, curl inclinado y remo con pecho apoyado. El validador compara ya un implemento con
   otro: las mancuernas de las aperturas iban una dentro de la otra y no saltaba nada. El rack de la
   barra no se dibuja (no hay implemento); en el remo con pecho apoyado se va a horcajadas del asiento.
-- ⬜ P · Paralelas · Q · Kettlebell · R · Máquinas guiadas · S · Multipower.
+- ✅ **P · Paralelas:** `geometriaParalelas()` compartida por visor, cinemática y validador; cada mano
+  va a la barra de su lado con `objetivo: "paralelas"` y agarre neutro calibrado, y un apoyo nuevo
+  `con: "manos"` comprueba que el cuerpo se sostiene sobre ellas. Fondos en paralelas y elevación de
+  rodillas en paralelas. Material nuevo «Paralelas / Dip bars». Pendiente de mirar: en los fondos las
+  piernas no van cruzadas y la mano cuelga de la barra más que apoyar el talón.
+- ⬜ Q · Kettlebell · R · Máquinas guiadas · S · Multipower.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

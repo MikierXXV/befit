@@ -4,6 +4,7 @@
   "orden": 13,
   "nombre": "Elevación de rodillas en paralelas",
   "resumen": "Apoyado con los brazos estirados en unas paralelas, con las piernas colgando, se suben las rodillas hacia el pecho enrollando la pelvis. Un ejercicio de abdomen sin colgarse de las manos.",
+  "movimiento_id": "elevacion-rodillas-paralelas",
   "ejecucion": [
     "Sube a las paralelas desde un escalón o con un pequeño salto y quédate apoyado con los brazos estirados y los hombros bajos, lejos de las orejas.",
     "Deja las piernas colgando, juntas y relajadas.",
