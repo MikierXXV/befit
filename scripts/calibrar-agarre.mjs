@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fija el agarre de los movimientos con barra (o paralelas): escribe en cada uno la orientación de la mano
+ * Fija el agarre de los movimientos con barra (o paralelas, o kettlebell a dos manos): escribe en cada uno la orientación de la mano
  * RESPECTO A LA BARRA, tomada de su primer fotograma.
  *
  *   node scripts/calibrar-agarre.mjs                 # todos los que van con barra
@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Quaternion } from 'three';
-import { aplicarPose, barraParalela, poseEn, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, barraDeMano, poseEn, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui } from './lib/maniqui-node.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -41,8 +41,14 @@ for (const id of ids) {
    * implemento `paralelas`, relativo a esa barra (ver `barraParalela` en la cinemática).
    */
   const va = (objetivo) => mov.poses.some((p) => ['ambos', 'i', 'd'].some((k) => p.brazos?.[k]?.objetivo === objetivo));
-  const nombre = mov.implementos?.barra && va('barra') ? 'barra'
-    : mov.implementos?.paralelas && va('paralelas') ? 'paralelas' : null;
+  /*
+   * Y la kettlebell cogida con las dos manos, por el asa (`objetivo: "kettlebell"`) o por los cuernos
+   * (`"cuernos"`): el marco se guarda en la kettlebell, relativo al asa o al cuerno de cada mano.
+   * Un movimiento, una forma de cogerla: el marco es uno.
+   */
+  const objetivo = ['barra', 'paralelas', 'kettlebell', 'cuernos']
+    .find((o) => mov.implementos?.[o === 'cuernos' ? 'kettlebell' : o] && va(o));
+  const nombre = objetivo === 'cuernos' ? 'kettlebell' : objetivo;
   // Solo los que tienen una barra a la que van las manos: lo que se lleva EN la mano ya va con ella.
   if (!nombre) continue;
   const barra = mov.implementos[nombre];
@@ -53,9 +59,8 @@ for (const id of ids) {
    */
   delete barra.agarre_marco;
   const r = aplicarPose(esq, poseEn(mov, 0), mov);
-  const orientacionDe = (l) => (nombre === 'paralelas'
-    ? barraParalela(r.implementos.paralelas, l).orientacion
-    : r.implementos.barra.orientacion).clone();
+  // La misma barra que agarra la cinemática: la de siempre, la paralela de su lado, el asa o el cuerno.
+  const orientacionDe = (l) => barraDeMano({ objetivo }, r.implementos, l).orientacion.clone();
 
   const marco = {};
   for (const l of LADOS) {

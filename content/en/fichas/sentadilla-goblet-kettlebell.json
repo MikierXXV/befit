@@ -1,0 +1,49 @@
+{
+  "id": "sentadilla-goblet-kettlebell",
+  "grupo_id": "sentadilla",
+  "orden": 8,
+  "nombre": "Kettlebell goblet squat",
+  "resumen": "The goblet squat holding a kettlebell by the sides of the handle against the chest. As with the dumbbell goblet, the weight in front helps you go down with an upright torso.",
+  "ejecucion": [
+    "Hold the kettlebell by both sides of the handle, bell down, and keep it against your chest with your elbows pointing down.",
+    "Stand with your feet slightly wider than your shoulders and your toes turned slightly out.",
+    "Go down by pushing your hips back and down, chest up and elbows inside your knees, as far as you can keep your back straight and your heels down.",
+    "Stand up by pushing the floor with your whole foot.",
+    "If the kettlebell drifts away from your chest or your torso leans a lot, lower the weight."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "trapecio_medio",
+      "deltoides_anterior",
+      "antebrazo"
+    ]
+  },
+  "matices": "We have found no study measuring the kettlebell goblet squat itself. It is the same goblet squat with another implement: the handle lets you hold it by both sides and, as with the dumbbell goblet, the load in front usually helps keep the torso more upright, though few studies measure it.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub and Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

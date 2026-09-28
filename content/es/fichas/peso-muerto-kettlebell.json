@@ -1,0 +1,48 @@
+{
+  "id": "peso-muerto-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 12,
+  "nombre": "Peso muerto con kettlebell",
+  "resumen": "Con una kettlebell en el suelo entre los pies, se coge con las dos manos por el asa y se levanta hasta quedar de pie, con una bisagra de cadera. Una forma sencilla de aprender el peso muerto.",
+  "movimiento_id": "peso-muerto-kettlebell",
+  "ejecucion": [
+    "Ponte de pie con los pies a la anchura de la cadera o algo más y la kettlebell en el suelo entre los pies, a la altura del medio pie.",
+    "Lleva la cadera atrás y dobla algo las rodillas, con la espalda recta, hasta coger el asa con las dos manos y los brazos estirados.",
+    "Aprieta el abdomen y sube empujando el suelo con los pies y llevando la cadera adelante, hasta quedar de pie con la kettlebell colgando entre las piernas.",
+    "Baja por el mismo camino, cadera atrás primero, hasta apoyarla en el suelo.",
+    "Si tienes que redondear la espalda para llegar al asa, dobla más las rodillas o pon la kettlebell sobre un escalón."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "cuadriceps",
+      "erectores",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el peso muerto con kettlebell en sí. Es un gesto de bisagra parecido al peso muerto con barra, con la carga entre las piernas en vez de delante, y se suele usar para aprender el gesto antes del peso muerto con barra o del swing. Los roles de aquí describen el gesto, no una medición.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

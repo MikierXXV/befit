@@ -16,7 +16,7 @@
  * donde mira. Un segmento posado es W = F · N, donde N es su neutra y F el marco acumulado.
  */
 
-import { Matrix4, Quaternion, Vector3 } from 'three';
+import { CatmullRomCurve3, Matrix4, Quaternion, Vector3 } from 'three';
 
 const GRAD = Math.PI / 180;
 
@@ -380,7 +380,7 @@ export function aplicarPose(esq, pose, definicion = {}) {
     const dondeAgarra = barra
       ? barra.posicion.clone().addScaledVector(ejeDe(barra), SIGNO[l] * (barra.agarre ?? 0.4))
       : (llevado?.punto ? llevado.punto.clone() : null);
-    cerrarMano(esq, l, m?.cierre ?? 0, agarrado, dondeAgarra, barra?.radio);
+    cerrarMano(esq, l, m?.cierre ?? 0, agarrado, dondeAgarra, barra?.radio ?? llevado?.radio);
   }
 
   // La mancuerna va en la mano, así que se coloca cuando la mano ya está.
@@ -388,7 +388,7 @@ export function aplicarPose(esq, pose, definicion = {}) {
     if (imp.en_mano && imp.eje) {
       imp.posicion = imp.punto;
       // El eje del cilindro se modela en X, así que basta con llevarlo al eje del mango.
-      imp.orientacion = new Quaternion().setFromUnitVectors(new Vector3(1, 0, 0), imp.eje);
+      imp.orientacion = imp.marco ?? new Quaternion().setFromUnitVectors(new Vector3(1, 0, 0), imp.eje);
     }
   }
 
@@ -413,7 +413,7 @@ function reflejar(m) {
 
 /** Punto en el mundo a partir de `[x, y, z]` relativo a algo: el mundo, la cadera o el hombro de ese lado. */
 function resolverPunto(esq, spec, lado, implementos, raiz) {
-  if (spec.objetivo === 'barra' || spec.objetivo === 'paralelas') {
+  if (['barra', 'paralelas', 'kettlebell', 'cuernos'].includes(spec.objetivo)) {
     const barra = barraDeMano(spec, implementos, lado);
     if (!barra) throw new Error(`La mano va a "${spec.objetivo}", pero en esta pose no hay ${spec.objetivo}`);
     const A = ejeDe(barra);
@@ -697,6 +697,20 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     enMano.punto = posicion(huesos[`mano_${l}`])
       .addScaledVector(largo, AVANCE_AGARRE)
       .addScaledVector(palma, hondoAgarre(m.cierre ?? 0.8));
+    if (enMano.tipo === 'kettlebell') {
+      /*
+       * LA KETTLEBELL NO ES SIMÉTRICA ALREDEDOR DEL MANGO, y una mancuerna sí: con el eje del mango
+       * basta para colocar una mancuerna, pero la kettlebell necesita saber además hacia dónde cae
+       * la bola. `vuelco`, en grados y por pose (se interpola), la gira alrededor del asa desde
+       * «colgando», en la prolongación de la mano (0), hacia el DORSO: a 90 queda detrás de los
+       * nudillos, y en el rack y el press, más allá, descansando sobre el antebrazo.
+       */
+      const vuelco = (enMano.vuelco ?? 0) * GRAD;
+      const haciaBola = largo.clone().multiplyScalar(Math.cos(vuelco)).addScaledVector(palma, -Math.sin(vuelco));
+      const ejeAsa = perpendicular(ejeMango, haciaBola) ?? ejeMango;
+      enMano.marco = mapearBase(new Vector3(1, 0, 0), new Vector3(0, 1, 0), ejeAsa, haciaBola.negate());
+      enMano.radio = geometriaKettlebell(enMano).radio;
+    }
   } else {
     /*
      * LA MANO LIBRE: GIRA CON EL ANTEBRAZO Y SE DOBLA POR LA MUÑECA.
@@ -1057,6 +1071,89 @@ export function geometriaParalelas(def) {
   };
 }
 
+/**
+ * LA FORMA DE UNA KETTLEBELL, en metros y en coordenadas de la propia kettlebell. Como el banco y las
+ * paralelas: la usan el visor para dibujarla, la cinemática para saber dónde se agarra y el
+ * validador para saber dónde es sólida.
+ *
+ * EL ORIGEN ES EL CENTRO DEL ASA, en el eje del tramo recto de arriba, que es lo que se agarra; ese
+ * tramo va a lo largo de X, y la bola cuelga hacia −Y. Así la kettlebell se trata como una barra
+ * corta: `posicion` es el punto que agarran las manos (el mismo convenio que la barra, cuyo origen
+ * es su eje), y `rodar` la balancea alrededor del asa, que es justo lo que hace en un swing. Por eso
+ * apoyada en el suelo `posicion[1]` no es 0 sino `alto` (0,285 m): lo que queda del suelo al asa.
+ *
+ * Las medidas son las de una de 16 kg: bola de 21 cm de diámetro con la base aplanada (se apoya en
+ * un círculo de unos 11 cm, no en un punto), y un asa de 3,3 cm de grosor cuyos cuernos salen de la
+ * parte alta de la bola, se abren hasta dejar 20 cm de hueco por dentro y cierran arriba en el tramo
+ * recto, a 15 cm de donde salen. El hueco entre la bola y el asa, 7 cm, es el que deja pasar los
+ * dedos.
+ *
+ * El asa es una curva, y se da ya muestreada (`asa`, una polilínea en el plano XY): el visor le pone
+ * un tubo encima y el validador la trata como una cadena de cilindros. Si el visor suavizase por su
+ * cuenta unos puntos de control, el tubo que se ve y el que se valida serían dos.
+ *
+ * `cuernos`: dónde se coge con una mano a cada lado (la goblet): el punto del codo del asa, donde el
+ * cuerno dobla hacia el tramo recto, y la dirección del tubo ahí. La izquierda del maniquí, en +X.
+ */
+export function geometriaKettlebell(def = {}) {
+  // La forma no cambia de una kettlebell a otra, y esto se pide varias veces por mano y fotograma.
+  formaKettlebell ??= formarKettlebell();
+  return { ...formaKettlebell, agarre: def.agarre ?? 0.045 };
+}
+let formaKettlebell = null;
+function formarKettlebell() {
+  const radio = 0.0165;
+  const bola = { y: -0.195, radio: 0.105 };
+  // La base aplanada: la bola cortada 9 cm por debajo de su centro.
+  const base = bola.y - 0.09;
+  /*
+   * Puntos de control de medio asa (la izquierda, +X), de la raíz del cuerno —metida un poco en la
+   * bola, para que no quede una rendija— al centro del tramo recto. El otro medio es su espejo.
+   */
+  const control = [
+    [0.07, bola.y + 0.07], [0.098, bola.y + 0.115], [0.115, bola.y + 0.155],
+    [0.109, -0.028], [0.08, -0.002], [0.05, 0], [0, 0],
+  ];
+  const medio = new CatmullRomCurve3(control.map(([x, y]) => new Vector3(x, y, 0)), false, 'centripetal')
+    .getPoints(12);
+  const asa = [...medio.map((p) => new Vector3(-p.x, p.y, 0)), ...medio.slice(0, -1).reverse()];
+  const cuernos = Object.fromEntries(LADOS.map((l) => {
+    const s = SIGNO[l];
+    // El codo: donde el cuerno ya sube casi recto y empieza a doblar hacia el centro.
+    const a = new Vector3(s * 0.112, -0.05, 0);
+    const b = new Vector3(s * 0.094, -0.016, 0);
+    return [l, { punto: a.clone().lerp(b, 0.5), direccion: b.clone().sub(a).normalize() }];
+  }));
+  return { radio, bola, base, alto: -base, asa, cuernos };
+}
+
+/*
+ * El asa de la kettlebell como barra de una mano: la forma que esperan la cinemática inversa, el
+ * cierre de la mano y el agarre fijado (ver `barraParalela`, que hace lo mismo con las paralelas).
+ *
+ *  - por el ASA (`objetivo: "kettlebell"`): la kettlebell misma, que ya tiene el origen en el asa y
+ *    el eje en X; cada mano, a `agarre` metros del centro (4,5 cm: las dos juntas, lado a lado,
+ *    que es como se coge para un swing o un peso muerto);
+ *  - por los CUERNOS (`objetivo: "cuernos"`): el cuerno de SU lado, con la palma hacia dentro, como
+ *    en las paralelas. Deducida de la muñeca, la palma salía hacia fuera.
+ */
+const X = new Vector3(1, 0, 0);
+export function asaKettlebell(imp, l, cuernos = false) {
+  const g = geometriaKettlebell(imp);
+  const q = imp.orientacion ?? new Quaternion();
+  if (!cuernos) return { ...imp, agarre: g.agarre, radio: g.radio };
+  const c = g.cuernos[l];
+  return {
+    tipo: 'cuerno',
+    posicion: imp.posicion.clone().add(c.punto.clone().applyQuaternion(q)),
+    orientacion: q.clone().multiply(new Quaternion().setFromUnitVectors(X, c.direccion)),
+    agarre: 0,
+    radio: g.radio,
+    palma_hacia: new Vector3(-SIGNO[l], 0, 0).applyQuaternion(q),
+    agarre_marco: imp.agarre_marco ? { [l]: imp.agarre_marco[l] } : undefined,
+  };
+}
+
 /*
  * La barra de las paralelas a la que va una mano, con la misma forma que la barra de siempre
  * (centro, orientación con su eje en la X local, `agarre`), para que la cinemática inversa, el
@@ -1095,6 +1192,10 @@ export function barraParalela(imp, l) {
 export function barraDeMano(m, implementos, l) {
   if (m?.objetivo === 'barra') return implementos.barra ?? null;
   if (m?.objetivo === 'paralelas') return implementos.paralelas ? barraParalela(implementos.paralelas, l) : null;
+  // La kettlebell se llama `kettlebell` en el movimiento, como la barra se llama `barra`.
+  if (m?.objetivo === 'kettlebell' || m?.objetivo === 'cuernos') {
+    return implementos.kettlebell ? asaKettlebell(implementos.kettlebell, l, m.objetivo === 'cuernos') : null;
+  }
   return null;
 }
 

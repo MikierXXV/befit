@@ -9,7 +9,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { aplicarPose, geometriaBanco, geometriaParalelas, poseEn, prepararEsqueleto } from './cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, poseEn, prepararEsqueleto } from './cinematica.js';
 
 export type Vista = 'frontal' | 'lateral' | 'tres_cuartos' | 'detalle';
 export const VISTAS: Vista[] = ['frontal', 'lateral', 'tres_cuartos'];
@@ -423,6 +423,27 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
       poste.castShadow = true;
       g.add(poste);
     }
+  } else if (def.tipo === 'kettlebell') {
+    /*
+     * KETTLEBELL: una bola con la base aplanada y un asa en arco encima. La forma sale de
+     * `geometriaKettlebell`, la misma que usan la cinemática para llevar las manos al asa o a los
+     * cuernos y el validador para saber dónde es sólida: ver allí qué es cada medida y por qué el
+     * origen está en el asa y no en el suelo.
+     */
+    const { radio, bola, base, asa } = geometriaKettlebell(def);
+    const hierro = material(COLOR.disco, 0.8, 0);
+    // La esfera, abierta por abajo donde la corta la base (el ángulo se cuenta desde el polo de arriba).
+    const corte = Math.acos((base - bola.y) / bola.radio);
+    const cuerpo = new THREE.Mesh(new THREE.SphereGeometry(bola.radio, 32, 20, 0, Math.PI * 2, 0, corte), hierro);
+    cuerpo.position.y = bola.y;
+    const suela = new THREE.Mesh(
+      new THREE.CircleGeometry(bola.radio * Math.sin(corte), 32).rotateX(Math.PI / 2),
+      hierro,
+    );
+    suela.position.y = base;
+    const curva = new THREE.CatmullRomCurve3(asa as THREE.Vector3[]);
+    const tubo = new THREE.Mesh(new THREE.TubeGeometry(curva, 48, radio, 14, false), metal);
+    for (const m of [cuerpo, suela, tubo]) { m.castShadow = true; g.add(m); }
   } else if (def.tipo === 'pared') {
     /*
      * Una pared es una caja de pie, y hace falta como tipo propio: usar un banco puesto vertical

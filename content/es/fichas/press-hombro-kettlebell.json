@@ -1,0 +1,54 @@
+{
+  "id": "press-hombro-kettlebell",
+  "grupo_id": "empuje-vertical",
+  "orden": 7,
+  "nombre": "Press de hombro con kettlebell a una mano",
+  "resumen": "De pie con una kettlebell en posición de rack, apoyada en el antebrazo junto al hombro, se empuja por encima de la cabeza hasta estirar el brazo. Trabaja hombro y tríceps, y el tronco tiene que resistir la carga de un solo lado.",
+  "ejecucion": [
+    "Sube la kettlebell desde el suelo hasta el hombro con las dos manos, llevando la cadera atrás y con la espalda recta.",
+    "Ponte de pie con los pies a la anchura de la cadera y la kettlebell en una mano, en posición de rack: el asa en la palma, la bola apoyada en la parte de fuera del antebrazo y el codo pegado al cuerpo.",
+    "Aprieta el abdomen y los glúteos, y mantén el otro brazo relajado o extendido para equilibrarte.",
+    "Empuja la kettlebell hacia arriba hasta estirar el brazo, con el bíceps junto a la oreja y la muñeca recta, sin inclinar el tronco hacia el otro lado.",
+    "Baja con control hasta la posición de rack y repite; al terminar, cambia de brazo.",
+    "Si tienes que arquear la espalda o inclinarte para subirla, baja el peso.",
+    "Al terminar, bájala con las dos manos hasta el suelo con la espalda recta."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "antebrazo",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "En un estudio con veinte personas que comparó el press con kettlebell y con mancuerna, sentados y con el mismo peso, no hubo diferencias significativas en la actividad de los músculos del hombro y la espalda (con kettlebell salió algo más alta en todos salvo el trapecio superior, pero sin llegar a ser una diferencia significativa). Es un estudio preliminar y los autores piden más investigación. Otro, con veintiocho jugadores de béisbol, vio más actividad del deltoides medio con mancuerna que con la kettlebell boca abajo, aunque no frente a la kettlebell normal; más trapecio inferior con mancuerna que con kettlebell, y más serrato con la kettlebell boca abajo. La kettlebell tiene su peso por debajo y detrás de la mano, y eso cambia cómo se equilibra.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of shoulder-complex muscles performing overhead presses with dumbbell, kettlebell, and bottom-up kettlebell",
+      "autor": "Busch, Sarver y Comstock, J Bodyw Mov Ther, 2024",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38432822/"
+    },
+    {
+      "titulo": "The Effect of the Weight and Type of Equipment on Shoulder and Back Muscle Activity in Surface Electromyography during the Overhead Press-Preliminary Report",
+      "autor": "Błażkiewicz y Hadamus, Sensors, 2022",
+      "url": "https://doi.org/10.3390/s22249762"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "sentadilla-goblet-kettlebell",
+  "grupo_id": "sentadilla",
+  "orden": 8,
+  "nombre": "Sentadilla goblet con kettlebell",
+  "resumen": "La sentadilla goblet sujetando una kettlebell por los lados del asa contra el pecho. Como la goblet con mancuerna, el peso delante ayuda a bajar con el tronco erguido.",
+  "ejecucion": [
+    "Coge la kettlebell por los dos lados del asa, con la bola hacia abajo, y pégala al pecho con los codos hacia abajo.",
+    "Ponte de pie con los pies algo más abiertos que los hombros y las puntas un poco hacia fuera.",
+    "Baja llevando la cadera atrás y abajo, con el pecho alto y los codos por dentro de las rodillas, hasta donde mantengas la espalda recta y los talones apoyados.",
+    "Sube empujando el suelo con todo el pie hasta quedar de pie.",
+    "Si la kettlebell se separa del pecho o el tronco se inclina mucho, baja el peso."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "erectores",
+      "trapecio_medio",
+      "deltoides_anterior",
+      "antebrazo"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan la sentadilla goblet con kettlebell en sí. Es la misma sentadilla goblet con otro implemento: el asa permite cogerla por los dos lados y, como en la goblet con mancuerna, la carga delante suele ayudar a mantener el tronco más erguido, aunque hay pocos estudios que lo midan.",
+  "fuentes": [
+    {
+      "titulo": "A Biomechanical Review of the Squat Exercise: Implications for Clinical Practice",
+      "autor": "Straub y Powers, Int J Sports Phys Ther, 2024",
+      "url": "https://doi.org/10.26603/001c.94600"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

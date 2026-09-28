@@ -1,0 +1,54 @@
+{
+  "id": "press-hombro-kettlebell",
+  "grupo_id": "empuje-vertical",
+  "orden": 7,
+  "nombre": "One-arm kettlebell shoulder press",
+  "resumen": "Standing with a kettlebell in the rack position, resting on the forearm next to the shoulder, you press it overhead until the arm is straight. It works the shoulder and triceps, and the trunk has to resist a load on one side only.",
+  "ejecucion": [
+    "Lift the kettlebell from the floor to your shoulder with both hands, hinging at the hips with a straight back.",
+    "Stand with your feet hip-width apart and the kettlebell in one hand in the rack position: handle in the palm, bell resting on the outside of the forearm and elbow tucked in.",
+    "Brace your abs and glutes, and keep the other arm relaxed or out to the side for balance.",
+    "Press the kettlebell up until your arm is straight, biceps by your ear and wrist straight, without leaning your torso to the other side.",
+    "Lower under control back to the rack and repeat; when you finish, switch arms.",
+    "If you have to arch your back or lean to press it, lower the weight.",
+    "When you finish, lower it to the floor with both hands and a straight back."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "deltoides_anterior",
+      "deltoides_lateral"
+    ],
+    "sinergista": [
+      "triceps",
+      "trapecio_superior",
+      "serrato"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "antebrazo",
+      "gluteo_mayor"
+    ]
+  },
+  "matices": "In a study of twenty people comparing seated kettlebell and dumbbell presses at the same weight, there were no significant differences in shoulder and back muscle activity (slightly higher with the kettlebell in every muscle except the upper trapezius, but not significantly). It is a preliminary study and the authors call for more research. Another, in twenty-eight baseball players, found more middle deltoid activity with a dumbbell than with a bottom-up kettlebell, though not compared with a regular kettlebell; more lower trapezius with a dumbbell than a kettlebell, and more serratus with the kettlebell held bottom-up. The kettlebell’s weight sits below and behind the hand, which changes how it balances.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of shoulder-complex muscles performing overhead presses with dumbbell, kettlebell, and bottom-up kettlebell",
+      "autor": "Busch, Sarver and Comstock, J Bodyw Mov Ther, 2024",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38432822/"
+    },
+    {
+      "titulo": "The Effect of the Weight and Type of Equipment on Shoulder and Back Muscle Activity in Surface Electromyography during the Overhead Press-Preliminary Report",
+      "autor": "Błażkiewicz and Hadamus, Sensors, 2022",
+      "url": "https://doi.org/10.3390/s22249762"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

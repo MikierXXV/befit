@@ -15,7 +15,8 @@
  *  - rangos articulares (RANGOS en cinematica.js);
  *  - piel: ningún vértice bajo el suelo ni dentro de un implemento sólido;
  *  - barras: ninguna barra ni agarre de polea atravesando un miembro por dentro;
- *  - implementos: ninguna mancuerna o barra metida más de 1 cm en otra, ni en el banco;
+ *  - implementos: ninguna mancuerna, barra o kettlebell metida más de 1 cm en otra, ni en el banco,
+ *    y ninguna kettlebell bajo el suelo;
  *  - autocolisión: ningún miembro metido más de 2,5 cm en otro que no es su vecino (antebrazo en
  *    la barriga, mano en el muslo); ver EL CUERPO QUE SE ATRAVIESA A SÍ MISMO;
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
@@ -26,7 +27,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { Quaternion, Vector3 } from 'three';
-import { aplicarPose, geometriaBanco, geometriaParalelas, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaKettlebell, geometriaParalelas, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
@@ -158,6 +159,11 @@ const PIEZAS_CILINDRO = {
   mancuerna: [[0.016, 0.07, 0], [0.06, 0.04, -0.11], [0.06, 0.04, 0.11]],
   barra: [[0.014, 1.1, 0], ...[-1, 1].flatMap((s) => [[0.025, 0.21, s * 0.88], [0.225, 0.0225, s * 0.72], [0.19, 0.0175, s * 0.765]])],
 };
+/** Direcciones repartidas por la esfera (las 26 de un cubo), para sembrar la bola de una kettlebell.
+ * Aquí arriba y no junto a `sembrar`: el bucle principal corre antes de llegar a esa línea. */
+const DIRECCIONES = [-1, 0, 1].flatMap((x) => [-1, 0, 1].flatMap((y) => [-1, 0, 1].map((z) => new Vector3(x, y, z))))
+  .filter((d) => d.lengthSq() > 0).map((d) => d.normalize());
+
 /*
  * TEMPORAL, como las otras dos: movimientos con un implemento metido en otro que aún no se han
  * corregido. Avisan sin bloquear; al arreglar uno se quita de aquí.
@@ -336,12 +342,23 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
     if (suelo < -HOLGURA_SUELO) fallo('el cuerpo atraviesa el suelo', `${etiqueta} (${(suelo * 100).toFixed(1)} cm)`);
 
     for (const [nombre, imp] of Object.entries(r.implementos)) {
-      if (!imp.solido) continue;
+      /*
+       * La kettlebell es sólida siempre, sin tener que declararlo: pasa entre las piernas en el
+       * swing y en el peso muerto, y la barra del peso muerto, que no se declaraba `solido`, fue
+       * justo la que se metía en los muslos sin que se mirase.
+       */
+      if (!imp.solido && imp.tipo !== 'kettlebell') continue;
       // La barra no tiene holgura: 1,4 cm de radio no dan para meterse "un poco". El banco sí, porque
       // la espalda de verdad se hunde algo en el acolchado.
       // Los cilindros finos —barras y agarres de polea— van con holgura de 2 mm: con los 2 cm de
       // un banco, una mano cerrada sobre una barra de 28 mm no tocaría nunca.
-      const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' || imp.tipo === 'paralelas' ? 0.002 : HOLGURA_SOLIDO;
+      /*
+       * La kettlebell, con 5 mm: los 2 cm del banco no dejarían ver nunca un asa de 1,65 cm de radio
+       * metida en un antebrazo, y la bola es hierro, no acolchado: contra un muslo, tocar vale y
+       * hundirse no.
+       */
+      const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' || imp.tipo === 'paralelas' ? 0.002
+        : imp.tipo === 'kettlebell' ? 0.005 : HOLGURA_SOLIDO;
       // Sin manos: su contacto con un implemento es el agarre o el apoyo, y se revisa en la hoja.
       const dentro = vertices.filter((v) => !v.mano && profundidad(imp, v) > holgura).length;
       if (dentro > 0) fallo(`el cuerpo atraviesa ${nombre}`, `${etiqueta} (${dentro} vértices)`);
@@ -354,6 +371,18 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
         if (BARRA_DENTRO_PENDIENTES.has(id)) avisos.push([msg, donde, dentro.metida, etiqueta]);
         else fallo(msg, donde);
       }
+    }
+
+    /*
+     * Y la kettlebell, sobre el suelo: se apoya en él al principio y al final del peso muerto, y un
+     * `posicion` escrito medio centímetro corto la hundía sin que nada lo dijera, porque el suelo
+     * solo se miraba contra la piel.
+     */
+    for (const [nombre, imp] of Object.entries(r.implementos)) {
+      if (imp.tipo !== 'kettlebell') continue;
+      let fondo = Infinity;
+      for (const p of cilindrosDe(imp)) sembrar(p, (v) => { fondo = Math.min(fondo, v.y); });
+      if (fondo < -0.005) fallo(`${nombre} atraviesa el suelo`, `${etiqueta} (${(fondo * 100).toFixed(1)} cm)`);
     }
 
     for (const choque of implementosMetidos(r.implementos)) {
@@ -494,6 +523,13 @@ function ejesDeBarra(imp) {
       const c = imp.posicion.clone().add(new Vector3(b.x, b.y, 0).applyQuaternion(q));
       return [c.clone().addScaledVector(u, -g.largo / 2), c.clone().addScaledVector(u, g.largo / 2)];
     });
+  }
+  if (imp.tipo === 'kettlebell') {
+    // El asa, tramo a tramo: un tubo de 1,65 cm de radio que cruzase un antebrazo por el medio no
+    // dejaría ni un vértice de piel dentro, igual que la barra. La bola no hace falta: es más gorda
+    // que cualquier miembro, y lo que la atraviese deja piel dentro de ella.
+    const tramos = cilindrosDe(imp).filter((p) => !p.bola);
+    return tramos.map((p) => [p.c.clone().addScaledVector(p.u, -p.h), p.c.clone().addScaledVector(p.u, p.h)]);
   }
   if (!(imp.tipo.startsWith('barra') || imp.tipo === 'polea')) return [];
   const medio = imp.tipo === 'polea' ? ((imp.ancho ?? 1.1) / 2) : 1.1;
@@ -818,7 +854,7 @@ function masCercanos(a0, a1, b0, b1) {
  */
 function implementosMetidos(implementos) {
   const salida = [];
-  const lista = Object.entries(implementos).filter(([, imp]) => PIEZAS_CILINDRO[imp.tipo] || imp.tipo === 'paralelas' || imp.tipo === 'banco');
+  const lista = Object.entries(implementos).filter(([, imp]) => PIEZAS_CILINDRO[imp.tipo] || ['paralelas', 'banco', 'kettlebell'].includes(imp.tipo));
   for (let a = 0; a < lista.length; a += 1) {
     for (let b = a + 1; b < lista.length; b += 1) {
       let [[na, ia], [nb, ib]] = [lista[a], lista[b]];
@@ -835,8 +871,8 @@ function implementosMetidos(implementos) {
         for (const p of piezasA) {
           for (const q of cilindrosDe(ib)) {
             if (p.c.distanceTo(q.c) > Math.hypot(p.r, p.h) + Math.hypot(q.r, q.h)) continue;
-            sembrar(p, (v) => { metida = Math.max(metida, hondoEnCilindro(q, v)); });
-            sembrar(q, (v) => { metida = Math.max(metida, hondoEnCilindro(p, v)); });
+            sembrar(p, (v) => { metida = Math.max(metida, hondoEnPieza(q, v)); });
+            sembrar(q, (v) => { metida = Math.max(metida, hondoEnPieza(p, v)); });
           }
         }
       }
@@ -860,6 +896,27 @@ function cilindrosDe(imp) {
       ...g.postes.map((p) => ({ r: p.radio, h: (g.alto - g.radio) / 2, u: arriba, c: enMundo(p.x, (g.alto - g.radio) / 2, p.z) })),
     ];
   }
+  if (imp.tipo === 'kettlebell') {
+    /*
+     * El asa, un cilindro por tramo de la polilínea de `geometriaKettlebell` (la misma que dibuja el
+     * visor), y la bola, una pieza propia: una esfera cortada por la base, con `u` hacia arriba de
+     * la kettlebell y `corte`, lo que baja la base desde el centro.
+     */
+    // Una vez por fotograma: `profundidad` la pide para cada vértice de la piel.
+    if (imp.piezas) return imp.piezas;
+    const g = geometriaKettlebell(imp);
+    const q = imp.orientacion ?? new Quaternion();
+    const enMundo = (p) => imp.posicion.clone().add(p.clone().applyQuaternion(q));
+    const tramos = g.asa.slice(1).map((b, n) => {
+      const a0 = enMundo(g.asa[n]);
+      const a1 = enMundo(b);
+      const largo = a1.distanceTo(a0);
+      return { r: g.radio, h: largo / 2, u: a1.clone().sub(a0).divideScalar(largo), c: a0.lerp(a1, 0.5) };
+    });
+    const bola = { bola: true, r: g.bola.radio, h: 0, corte: g.bola.y - g.base, u: new Vector3(0, 1, 0).applyQuaternion(q), c: enMundo(new Vector3(0, g.bola.y, 0)) };
+    imp.piezas = [...tramos, bola];
+    return imp.piezas;
+  }
   const u = new Vector3(1, 0, 0).applyQuaternion(imp.orientacion ?? new Quaternion());
   return PIEZAS_CILINDRO[imp.tipo].map(([r, h, x]) => ({ r, h, u, c: imp.posicion.clone().addScaledVector(u, x) }));
 }
@@ -872,8 +929,29 @@ function hondoEnCilindro(cil, v) {
   return Math.min(cil.r - radial, cil.h - Math.abs(a));
 }
 
+/** Cuánto le falta a un punto para salir de una pieza: un cilindro o la bola de una kettlebell. */
+function hondoEnPieza(pieza, v) {
+  if (!pieza.bola) return hondoEnCilindro(pieza, v);
+  const w = v.clone().sub(pieza.c);
+  return Math.min(pieza.r - w.length(), w.dot(pieza.u) + pieza.corte);
+}
+
 /** Llama a `cada` con puntos repartidos por el volumen del cilindro: anillos cada 2 cm por el eje. */
 function sembrar(cil, cada) {
+  if (cil.bola) {
+    // La bola: el centro y dos capas, a medio radio y en la piel, sin pasar de la base.
+    const v = new Vector3();
+    cada(v.copy(cil.c));
+    for (const radio of [cil.r / 2, cil.r]) {
+      for (const d of DIRECCIONES) {
+        v.copy(cil.c).addScaledVector(d, radio);
+        const bajo = v.clone().sub(cil.c).dot(cil.u) + cil.corte;
+        if (bajo < 0) v.addScaledVector(cil.u, -bajo);
+        cada(v);
+      }
+    }
+    return;
+  }
   const perp = Math.abs(cil.u.y) < 0.9 ? new Vector3(0, 1, 0) : new Vector3(0, 0, 1);
   const e1 = perp.cross(cil.u).normalize();
   const e2 = cil.u.clone().cross(e1);
@@ -926,6 +1004,11 @@ function profundidad(imp, v) {
     const dz = imp.grosor / 2 - Math.abs(v.z - imp.posicion.z);
     const dy = imp.posicion.y + imp.alto - v.y;
     return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
+  }
+  if (imp.tipo === 'kettlebell') {
+    // La bola y cada tramo del asa: lo más hundido en cualquiera de ellos. Lejos, ni se mira.
+    if (v.distanceTo(imp.posicion) > 0.45) return 0;
+    return Math.max(0, ...cilindrosDe(imp).map((p) => hondoEnPieza(p, v)));
   }
   if (imp.tipo === 'paralelas') {
     // Barras y postes, cilindros macizos: lo más hundido en cualquiera de ellos.

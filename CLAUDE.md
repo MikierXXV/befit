@@ -160,6 +160,27 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    apoyo `{ "implemento": "paralelas", "con": "manos" }` mira que cada mano esté sobre su barra y que
    NADA toque el suelo: en unos fondos se cuelga de las manos, así que si los pies llegan al suelo
    hay que subir las paralelas.
+   Una kettlebell es el implemento `kettlebell`: bola de 21 cm con la base aplanada y asa en arco
+   de 3,3 cm de grosor y 20 cm de hueco por dentro. La forma sale de `geometriaKettlebell`
+   (`cinematica.js`), la misma para visor, cinemática y validador. OJO: su origen es el CENTRO DEL
+   ASA (el tramo recto de arriba, a lo largo de X), no el suelo, y la bola cuelga hacia −Y; así se
+   trata como una barra corta. Apoyada en el suelo, `posicion[1]` es su `alto`, 0,285 m, y `rodar`
+   la balancea alrededor del asa (el swing). Se coge de tres formas, una por movimiento:
+    - **A una mano** (colgando, rack, press): `"en_mano": "i" | "d"`, como una mancuerna; la palma
+      se gira con `pronacion`. Como no es simétrica alrededor del mango, `vuelco` en grados (por
+      pose, se interpola) dice hacia dónde cae la bola: 0 colgando en la prolongación de la mano,
+      90 detrás de los nudillos, más allá sobre el antebrazo (rack y press).
+    - **A dos manos por el asa** (peso muerto, swing): el implemento se llama `kettlebell` y cada
+      mano va con `objetivo: "kettlebell"`, lado a lado a `agarre` metros del centro (0,045).
+      `npm run agarre <id>` lo fija como en una barra.
+    - **Por los cuernos** (goblet): `objetivo: "cuernos"`, cada mano al codo del asa de su lado,
+      palma hacia dentro, como las paralelas; la kettlebell, `relativo_a: "torax"`. También se fija
+      con `npm run agarre <id>` (el marco es uno: no se mezclan asa y cuernos en un movimiento).
+   El validador la toma por sólida siempre, sin `solido` (la bola y cada tramo del asa, con 5 mm de
+   holgura y sin contar las manos): piel dentro, asa atravesando un miembro, kettlebell contra otro
+   implemento y kettlebell bajo el suelo. Con las manos juntas delante de la ingle, los brazos se
+   meten en el tronco: `escapula.protraccion` 20 y el codo hacia fuera (`codo_hacia: [1, 0, 0]`),
+   como la sentadilla sumo con mancuerna.
    `columna.flexion` se reparte 25/35/40 % entre lumbar y las dos torácicas; para doblar SOLO la
    parte alta hay `columna.flexion_alta` (se suma, rango en `RANGOS`). El hollow hold la necesita:
    con `flexion` sola, al curvar lo bastante para despegar los hombros la lumbar se iba con ellos.

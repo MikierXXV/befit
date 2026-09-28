@@ -1,0 +1,54 @@
+{
+  "id": "swing-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 11,
+  "nombre": "Swing con kettlebell",
+  "resumen": "Con una kettlebell cogida con las dos manos, se lleva hacia atrás entre las piernas con una bisagra de cadera y se lanza hacia delante hasta la altura del pecho con un golpe de cadera. Un ejercicio explosivo de glúteo e isquiotibiales.",
+  "ejecucion": [
+    "Ponte de pie con los pies algo más abiertos que la cadera y la kettlebell en el suelo, un palmo por delante de los pies.",
+    "Con la espalda recta, lleva la cadera atrás, coge el asa con las dos manos y lánzala hacia atrás entre las piernas, como si pasaras un balón hacia atrás entre ellas: la kettlebell pasa alta, cerca de la ingle, no a la altura de las rodillas.",
+    "Extiende la cadera de golpe, apretando los glúteos, para que la kettlebell suba hacia delante con los brazos estirados hasta la altura del pecho. Los brazos no la levantan: solo la guían.",
+    "Arriba, quédate recto como en una plancha, con abdomen y glúteos apretados, sin echar los hombros atrás ni arquear la espalda.",
+    "Deja que caiga y, cuando los antebrazos toquen los muslos, vuelve a llevar la cadera atrás para el siguiente swing.",
+    "Al terminar, deja que pierda impulso y apóyala en el suelo por delante de ti con la espalda recta.",
+    "Si notas que la espalda se redondea abajo o que tiras con los brazos, baja el peso o practica antes el peso muerto con kettlebell."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "oblicuos",
+      "antebrazo",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "En un estudio con siete hombres y una kettlebell de 16 kg, el swing llevó los glúteos a un 80 % de su contracción máxima y los extensores lumbares a un 50 %, en pulsos rápidos de activación y relajación, con unos 3200 N de compresión lumbar. Los autores señalan que muchos le atribuyen haber mejorado su espalda, pero a algunos les molesta. Otro estudio, con veintitrés personas, vio que el bíceps femoral alcanza su pico de activación antes que los glúteos, y una relación moderada entre la longitud de los flexores de la cadera y la activación del glúteo mayor.",
+  "fuentes": [
+    {
+      "titulo": "Kettlebell swing, snatch, and bottoms-up carry: back and hip muscle activation, motion, and low back loads",
+      "autor": "McGill y Marshall, J Strength Cond Res, 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21997449/"
+    },
+    {
+      "titulo": "EMG Analysis and Sagittal Plane Kinematics of the Two-Handed and Single-Handed Kettlebell Swing: A Descriptive Study",
+      "autor": "Van Gelder et al., Int J Sports Phys Ther, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26618061/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

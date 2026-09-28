@@ -1,0 +1,54 @@
+{
+  "id": "swing-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 11,
+  "nombre": "Kettlebell swing",
+  "resumen": "Holding a kettlebell with both hands, you hike it back between your legs with a hip hinge and drive it forward to chest height with a snap of the hips. An explosive exercise for the glutes and hamstrings.",
+  "ejecucion": [
+    "Stand with your feet slightly wider than your hips and the kettlebell on the floor, a hand’s length in front of your feet.",
+    "With a straight back, push your hips back, grip the handle with both hands and hike it back between your legs, like a football snap: the bell travels high, close to the groin, not down by the knees.",
+    "Drive your hips forward hard, squeezing your glutes, so the kettlebell swings forward on straight arms up to chest height. Your arms do not lift it: they only guide it.",
+    "At the top, stand tall as in a plank, abs and glutes tight, without leaning back or arching your lower back.",
+    "Let it fall and, when your forearms touch your thighs, push your hips back again for the next swing.",
+    "When you finish, let it lose momentum and set it on the floor in front of you with a straight back.",
+    "If your back rounds at the bottom or you are pulling with your arms, lower the weight or practise the kettlebell deadlift first."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "oblicuos",
+      "antebrazo",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "In a study of seven men with a 16 kg kettlebell, the swing took the glutes to 80 % of their maximal contraction and the low back extensors to 50 %, in rapid pulses of activation and relaxation, with about 3,200 N of low back compression. The authors note that many credit it with improving their back, but a few find it irritating. Another study, in twenty-three people, found that the biceps femoris reaches peak activation before the glutes, and a moderate correlation between hip flexor length and gluteus maximus activation.",
+  "fuentes": [
+    {
+      "titulo": "Kettlebell swing, snatch, and bottoms-up carry: back and hip muscle activation, motion, and low back loads",
+      "autor": "McGill and Marshall, J Strength Cond Res, 2012",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21997449/"
+    },
+    {
+      "titulo": "EMG Analysis and Sagittal Plane Kinematics of the Two-Handed and Single-Handed Kettlebell Swing: A Descriptive Study",
+      "autor": "Van Gelder et al., Int J Sports Phys Ther, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26618061/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

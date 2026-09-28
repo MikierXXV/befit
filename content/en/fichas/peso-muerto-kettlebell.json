@@ -1,0 +1,48 @@
+{
+  "id": "peso-muerto-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 12,
+  "nombre": "Kettlebell deadlift",
+  "resumen": "With a kettlebell on the floor between your feet, you grip the handle with both hands and stand up with it, using a hip hinge. A simple way to learn the deadlift.",
+  "movimiento_id": "peso-muerto-kettlebell",
+  "ejecucion": [
+    "Stand with your feet hip-width or slightly wider and the kettlebell on the floor between your feet, level with the middle of your foot.",
+    "Push your hips back and bend your knees a little, with a straight back, until you can grip the handle with both hands and straight arms.",
+    "Brace your abs and stand up by pushing the floor away and driving your hips forward, until you are upright with the kettlebell hanging between your legs.",
+    "Lower along the same path, hips back first, until it rests on the floor.",
+    "If you have to round your back to reach the handle, bend your knees more or put the kettlebell on a step."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "cuadriceps",
+      "erectores",
+      "aductores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "We have found no study measuring the kettlebell deadlift itself. It is a hinge similar to the barbell deadlift, with the load between the legs rather than in front, and it is usually used to learn the movement before the barbell deadlift or the swing. The roles here describe the movement, not a measurement.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano and Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
