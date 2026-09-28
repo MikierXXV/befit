@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fija el agarre de los movimientos con barra: escribe en cada uno la orientación de la mano
+ * Fija el agarre de los movimientos con barra (o paralelas): escribe en cada uno la orientación de la mano
  * RESPECTO A LA BARRA, tomada de su primer fotograma.
  *
  *   node scripts/calibrar-agarre.mjs                 # todos los que van con barra
@@ -20,7 +20,7 @@ import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Quaternion } from 'three';
-import { aplicarPose, poseEn, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, barraParalela, poseEn, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui } from './lib/maniqui-node.mjs';
 
 const RAIZ = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -36,9 +36,16 @@ let hechos = 0;
 for (const id of ids) {
   const ruta = join(DIR, `${id}.json`);
   const mov = JSON.parse(readFileSync(ruta, 'utf8'));
-  const barra = mov.implementos?.barra;
+  /*
+   * Las paralelas se calibran igual, cada mano contra la barra de SU lado: el marco se guarda en el
+   * implemento `paralelas`, relativo a esa barra (ver `barraParalela` en la cinemática).
+   */
+  const va = (objetivo) => mov.poses.some((p) => ['ambos', 'i', 'd'].some((k) => p.brazos?.[k]?.objetivo === objetivo));
+  const nombre = mov.implementos?.barra && va('barra') ? 'barra'
+    : mov.implementos?.paralelas && va('paralelas') ? 'paralelas' : null;
   // Solo los que tienen una barra a la que van las manos: lo que se lleva EN la mano ya va con ella.
-  if (!barra || !mov.poses.some((p) => p.brazos?.ambos?.objetivo === 'barra' || p.brazos?.i?.objetivo === 'barra')) continue;
+  if (!nombre) continue;
+  const barra = mov.implementos[nombre];
 
   /*
    * Se calibra SIN el marco puesto: si ya hubiera uno, se estaría copiando a sí mismo y el
@@ -46,14 +53,16 @@ for (const id of ids) {
    */
   delete barra.agarre_marco;
   const r = aplicarPose(esq, poseEn(mov, 0), mov);
-  const orientacionBarra = r.implementos.barra.orientacion.clone();
+  const orientacionDe = (l) => (nombre === 'paralelas'
+    ? barraParalela(r.implementos.paralelas, l).orientacion
+    : r.implementos.barra.orientacion).clone();
 
   const marco = {};
   for (const l of LADOS) {
     const hueso = esq.huesos[`mano_${l}`];
     // El marco de la mano es W · N⁻¹; relativo a la barra, la orientación de esta por delante.
     const F = hueso.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(hueso).clone().invert());
-    const relativo = orientacionBarra.clone().invert().multiply(F);
+    const relativo = orientacionDe(l).invert().multiply(F);
     marco[l] = [relativo.x, relativo.y, relativo.z, relativo.w].map((n) => Number(n.toFixed(6)));
   }
 

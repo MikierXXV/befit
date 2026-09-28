@@ -9,7 +9,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
-import { aplicarPose, geometriaBanco, poseEn, prepararEsqueleto } from './cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaParalelas, poseEn, prepararEsqueleto } from './cinematica.js';
 
 export type Vista = 'frontal' | 'lateral' | 'tres_cuartos' | 'detalle';
 export const VISTAS: Vista[] = ['frontal', 'lateral', 'tres_cuartos'];
@@ -403,6 +403,26 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
       piezas.push(tabla, poste, larguero);
     }
     for (const m of piezas) { m.castShadow = true; m.receiveShadow = true; g.add(m); }
+  } else if (def.tipo === 'paralelas') {
+    /*
+     * PARALELAS: dos barras a lo largo de Z sobre cuatro postes. La forma sale de
+     * `geometriaParalelas`, la misma que usan la cinemática para llevar cada mano a su barra y el
+     * validador para saber dónde son sólidas: ver allí qué es cada medida.
+     */
+    const { radio, alto, largo, barras, postes } = geometriaParalelas(def);
+    for (const b of Object.values(barras) as Array<{ x: number; y: number }>) {
+      const barra = new THREE.Mesh(new THREE.CylinderGeometry(radio, radio, largo, 24).rotateX(Math.PI / 2), metal);
+      barra.position.set(b.x, b.y, 0);
+      barra.castShadow = true;
+      g.add(barra);
+    }
+    for (const p of postes as Array<{ x: number; z: number; radio: number }>) {
+      // Del suelo a la cara de abajo de la barra: si asomara por encima, la mano lo agarraría.
+      const poste = new THREE.Mesh(new THREE.CylinderGeometry(p.radio, p.radio, alto - radio, 16), metal);
+      poste.position.set(p.x, (alto - radio) / 2, p.z);
+      poste.castShadow = true;
+      g.add(poste);
+    }
   } else if (def.tipo === 'pared') {
     /*
      * Una pared es una caja de pie, y hace falta como tipo propio: usar un banco puesto vertical

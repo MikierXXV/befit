@@ -1,0 +1,46 @@
+{
+  "id": "fondos-paralelas",
+  "grupo_id": "extension-codo",
+  "orden": 6,
+  "nombre": "Parallel bar dips",
+  "resumen": "Supported on straight arms on two parallel bars, the body lowers by bending the elbows and comes back up. It works the triceps and chest with your own body weight.",
+  "movimiento_id": "fondos-paralelas",
+  "ejecucion": [
+    "Get up on the bars stepping up or with a small jump, grip them with your palms facing in and support yourself on straight arms, shoulders down, away from your ears.",
+    "Bend your knees slightly or cross them behind you, and lean your torso slightly forward.",
+    "Lower slowly by bending your elbows, which go back rather than flaring out, keeping your shoulders away from your ears, until your upper arms are roughly parallel to the floor.",
+    "Push until your arms are straight without snapping your elbows into lockout.",
+    "If you feel discomfort at the front of your shoulder going down, shorten the range; if you cannot do a single rep, start with bench dips."
+  ],
+  "material": [
+    "paralelas"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "triceps",
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "dorsal"
+    ]
+  },
+  "matices": "In a study of thirteen men experienced in dips comparing the bench, bars and rings, mean peak triceps activity was higher on the bars than on the bench (1.04 vs 0.83 mV, about the same as on rings), and the authors present bar dips as a suitable progression from the bench because of those higher peaks. Leaning forward is the usual way to load the chest more, but that detail was not measured in the study. The authors note their findings matter most when prescribing dips to people with a history of shoulder pain or injury; shortening the range is the usual precaution. Since it works the chest as well as the triceps, it is worth resting a little longer than for the rest of the group.",
+  "fuentes": [
+    {
+      "titulo": "Bench, Bar, and Ring Dips: Do Kinematics and Muscle Activity Differ?",
+      "autor": "McKenzie et al., Int J Environ Res Public Health, 2022",
+      "url": "https://doi.org/10.3390/ijerph192013211"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

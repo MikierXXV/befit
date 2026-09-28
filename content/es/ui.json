@@ -71,7 +71,8 @@
       "banco": "Banco",
       "rack": "Soporte",
       "polea": "Polea",
-      "ninguno": "Sin material"
+      "ninguno": "Sin material",
+      "paralelas": "Paralelas"
     },
     "saltar": "Saltar a los resultados",
     "filtros": "Filtros",

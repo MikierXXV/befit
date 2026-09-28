@@ -1,0 +1,45 @@
+{
+  "id": "elevacion-rodillas-paralelas",
+  "grupo_id": "core",
+  "orden": 13,
+  "nombre": "Elevación de rodillas en paralelas",
+  "resumen": "Apoyado con los brazos estirados en unas paralelas, con las piernas colgando, se suben las rodillas hacia el pecho enrollando la pelvis. Un ejercicio de abdomen sin colgarse de las manos.",
+  "ejecucion": [
+    "Sube a las paralelas desde un escalón o con un pequeño salto y quédate apoyado con los brazos estirados y los hombros bajos, lejos de las orejas.",
+    "Deja las piernas colgando, juntas y relajadas.",
+    "Sube las rodillas hacia el pecho y, al final, enrolla la pelvis hacia arriba, sin balancearte.",
+    "Baja con control hasta que las piernas vuelvan a colgar, sin arquear la zona lumbar.",
+    "Si te balanceas o notas los hombros cargados, sube menos las rodillas o haz menos repeticiones."
+  ],
+  "material": [
+    "paralelas"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "triceps",
+      "serrato"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan la elevación de rodillas en paralelas en sí. En un análisis de ejercicios abdominales, la elevación de rodillas colgado con correas fue de las que más activaron el recto del abdomen y los oblicuos. El movimiento de piernas y pelvis es parecido, pero no sabemos si activa el abdomen igual. Que lo que más cuente sea el final, cuando la pelvis se enrolla, es la explicación habitual, sacada del gesto y no de una medición.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

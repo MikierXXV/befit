@@ -1,0 +1,45 @@
+{
+  "id": "elevacion-rodillas-paralelas",
+  "grupo_id": "core",
+  "orden": 13,
+  "nombre": "Parallel bar knee raise",
+  "resumen": "Supported on straight arms on parallel bars, legs hanging, you raise the knees towards the chest, curling the pelvis up. An abdominal exercise without hanging from your hands.",
+  "ejecucion": [
+    "Get up on the bars stepping up or with a small jump and support yourself on straight arms, shoulders down, away from your ears.",
+    "Let your legs hang, together and relaxed.",
+    "Raise your knees towards your chest and, at the end, curl your pelvis up, without swinging.",
+    "Lower under control until your legs hang again, without arching your lower back.",
+    "If you swing or feel your shoulders straining, raise your knees less high or do fewer reps."
+  ],
+  "material": [
+    "paralelas"
+  ],
+  "nivel": "intermedio",
+  "musculos": {
+    "principal": [
+      "abdomen",
+      "flexores_cadera"
+    ],
+    "sinergista": [
+      "oblicuos",
+      "cuadriceps"
+    ],
+    "estabilizador": [
+      "dorsal",
+      "triceps",
+      "serrato"
+    ]
+  },
+  "matices": "We have found no study measuring the parallel bar knee raise itself. In an analysis of abdominal exercises, the hanging knee-up with straps was among those that most activated the rectus abdominis and obliques. The leg and pelvis movement is similar, but we do not know whether it works the abs the same way. That the end, when the pelvis curls, counts most is the usual explanation, drawn from the movement rather than from a measurement.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic analysis of traditional and nontraditional abdominal exercises: implications for rehabilitation and training",
+      "autor": "Escamilla et al., Phys Ther, 2006",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16649890/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -373,14 +373,14 @@ export function aplicarPose(esq, pose, definicion = {}) {
      */
     const m = miembro(pose.brazos, l);
     const llevado = Object.values(implementos).find((i) => i.en_mano === l);
-    const agarrado = m?.objetivo === 'barra' && implementos.barra ? ejeDe(implementos.barra)
-      : (llevado?.eje ? llevado.eje.clone() : null);
+    const barra = barraDeMano(m, implementos, l);
+    const agarrado = barra ? ejeDe(barra) : (llevado?.eje ? llevado.eje.clone() : null);
     /* Y dónde está: el pulgar apunta ahí. Para la barra, el punto del agarre de esta mano; para lo
        que se lleva en la mano, el hueco del puño que ya calculó `posarBrazo`. */
-    const dondeAgarra = m?.objetivo === 'barra' && implementos.barra
-      ? implementos.barra.posicion.clone().addScaledVector(ejeDe(implementos.barra), SIGNO[l] * (implementos.barra.agarre ?? 0.4))
+    const dondeAgarra = barra
+      ? barra.posicion.clone().addScaledVector(ejeDe(barra), SIGNO[l] * (barra.agarre ?? 0.4))
       : (llevado?.punto ? llevado.punto.clone() : null);
-    cerrarMano(esq, l, m?.cierre ?? 0, agarrado, dondeAgarra);
+    cerrarMano(esq, l, m?.cierre ?? 0, agarrado, dondeAgarra, barra?.radio);
   }
 
   // La mancuerna va en la mano, así que se coloca cuando la mano ya está.
@@ -413,9 +413,9 @@ function reflejar(m) {
 
 /** Punto en el mundo a partir de `[x, y, z]` relativo a algo: el mundo, la cadera o el hombro de ese lado. */
 function resolverPunto(esq, spec, lado, implementos, raiz) {
-  if (spec.objetivo === 'barra') {
-    const barra = implementos.barra;
-    if (!barra) throw new Error('La mano va a "barra", pero en esta pose no hay barra');
+  if (spec.objetivo === 'barra' || spec.objetivo === 'paralelas') {
+    const barra = barraDeMano(spec, implementos, lado);
+    if (!barra) throw new Error(`La mano va a "${spec.objetivo}", pero en esta pose no hay ${spec.objetivo}`);
     const A = ejeDe(barra);
     const agarre = barra.posicion.clone().addScaledVector(A, SIGNO[lado] * (barra.agarre ?? 0.4));
     // La muñeca queda a un radio de barra más medio grosor de palma del EJE, y del lado por el que
@@ -488,7 +488,8 @@ function marcoAgarre(muneca, imp, Fantebrazo, l) {
   }
 
   const A = ejeDe(imp);
-  const radial = perpendicular(imp.posicion.clone().sub(muneca), A);
+  // Con `palma_hacia` (las paralelas) la palma se pide; si no, mira a la barra desde la muñeca.
+  const radial = perpendicular(imp.palma_hacia ?? imp.posicion.clone().sub(muneca), A);
   if (!radial) return Fantebrazo;
   // El eje largo de la mano es el antebrazo sin la parte que va a lo largo de la barra. Si el
   // antebrazo apunta justo a lo largo de ella no queda nada, y entonces manda la dirección radial.
@@ -529,8 +530,8 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
      * de dónde esté la muñeca, se repite. Converge en dos vueltas; se hacen tres porque son cuatro
      * multiplicaciones de cuaternión y no aparecen en ningún perfil.
      */
-    if (m.objetivo === 'barra' && implementos.barra) {
-      const barra = implementos.barra;
+    const barra = barraDeMano(m, implementos, l);
+    if (barra) {
       const A = ejeDe(barra);
       const agarre = barra.posicion.clone().addScaledVector(A, SIGNO[l] * (barra.agarre ?? 0.4));
       for (let vuelta = 0; vuelta < 3; vuelta += 1) {
@@ -553,7 +554,7 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
          */
         const objetivo = agarre.clone()
           .addScaledVector(largo, -AVANCE_AGARRE)
-          .addScaledVector(palma, -hondoAgarre(m.cierre ?? 0.8));
+          .addScaledVector(palma, -(hondoAgarre(m.cierre ?? 0.8) + (barra.radio ?? RADIO_BARRA) - RADIO_BARRA));
         /*
          * Y UNA MANO NO LLEGA MÁS LEJOS QUE SU BRAZO.
          *
@@ -645,8 +646,8 @@ function posarBrazo(esq, pose, l, Ftorax, implementos, anotar, avisos) {
     }
     const antebrazo = ABAJO.clone().applyQuaternion(Fantebrazo);
     anotar(l, 'muneca.extension', Math.acos(Math.max(-1, Math.min(1, antebrazo.dot(DELANTE.clone().applyQuaternion(rumbo))))) / GRAD);
-  } else if (m.objetivo === 'barra' && implementos.barra) {
-    orientar(esq, huesos[`mano_${l}`], marcoAgarre(posicion(huesos[`mano_${l}`]), implementos.barra, Fantebrazo, l));
+  } else if (barraDeMano(m, implementos, l)) {
+    orientar(esq, huesos[`mano_${l}`], marcoAgarre(posicion(huesos[`mano_${l}`]), barraDeMano(m, implementos, l), Fantebrazo, l));
   } else if (enMano) {
     /*
      * MANDA LA PALMA, Y EL MANGO SE DEDUCE DE ELLA.
@@ -860,7 +861,7 @@ const CURVA_DEDOS = { falange: [55, 70, 40], pulgar: [20, 24, 16] };
  * la palma, alrededor de la perpendicular a su propio hueso y a la normal de la palma. Suponer la X
  * del hueso, como se hacía antes, valía para una mano y abría el pulgar de la otra hacia fuera.
  */
-function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
+function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre, radio = RADIO_BARRA) {
   if (!cierre) return;
   const mano = esq.huesos[`mano_${l}`];
   const marcoMano = mano.getWorldQuaternion(new Quaternion()).multiply(esq.neutra.get(mano).clone().invert());
@@ -936,7 +937,7 @@ function cerrarMano(esq, l, cierre, ejeAgarre, puntoAgarre) {
       if (ejeAgarre) {
         const sobreEje = destinoPulgar.clone().addScaledVector(ejeAgarre, base.clone().sub(destinoPulgar).dot(ejeAgarre));
         const haciaFuera = base.clone().sub(sobreEje);
-        if (haciaFuera.lengthSq() > 1e-8) destino = sobreEje.addScaledVector(haciaFuera.normalize(), RADIO_BARRA + 0.012);
+        if (haciaFuera.lengthSq() > 1e-8) destino = sobreEje.addScaledVector(haciaFuera.normalize(), radio + 0.012);
       }
       const deseada = destino.sub(base);
       if (deseada.lengthSq() > 1e-8) {
@@ -1026,6 +1027,75 @@ export function geometriaBanco(def) {
       macizo: 0.25,
     },
   };
+}
+
+/**
+ * LA FORMA DE UNAS PARALELAS, en metros y en coordenadas del propio implemento (origen en
+ * `posicion`, en el suelo, en el centro entre las dos barras). Como `geometriaBanco`: la usan el
+ * visor para dibujarlas, la cinemática para saber adónde va cada mano y el validador para saber
+ * dónde son sólidas. Si cada uno se hiciera la suya, la mano podría cerrarse en una barra que en
+ * pantalla está dos centímetros más allá.
+ *
+ * Dos barras a lo largo de Z —hacia donde mira el maniquí— a `alto` del suelo (1,3 m por defecto),
+ * con `separacion` entre ejes (0,52) y `largo` (1 m), y un poste bajo cada extremo. La barra `i`
+ * queda a la izquierda del maniquí (+X), como sus huesos .L. Grosor de 4,5 cm de diámetro: la de
+ * unas paralelas es bastante más gorda que una olímpica, y con el radio de 1,4 cm de la barra la
+ * mano se veía cerrada sobre un alambre.
+ */
+export function geometriaParalelas(def) {
+  const separacion = def.separacion ?? 0.52;
+  const alto = def.alto ?? 1.3;
+  const largo = def.largo ?? 1;
+  const radio = def.radio ?? 0.0225;
+  return {
+    radio,
+    alto,
+    largo,
+    barras: Object.fromEntries(LADOS.map((l) => [l, { x: SIGNO[l] * separacion / 2, y: alto }])),
+    // Postes: cilindros verticales del suelo a la barra, un poco hacia dentro de cada extremo.
+    postes: LADOS.flatMap((l) => [-1, 1].map((s) => ({ x: SIGNO[l] * separacion / 2, z: s * (largo / 2 - 0.08), radio: 0.025 }))),
+  };
+}
+
+/*
+ * La barra de las paralelas a la que va una mano, con la misma forma que la barra de siempre
+ * (centro, orientación con su eje en la X local, `agarre`), para que la cinemática inversa, el
+ * cierre de la mano y el agarre fijado la traten igual que una barra: se escribieron y se
+ * corrigieron para ella, y una segunda versión para las paralelas se habría quedado atrás.
+ *
+ *  - `posicion` es ya el punto del agarre, así que `agarre` vale 0. Dónde agarra a lo largo de la
+ *    barra lo dice el `agarre` de las paralelas: metros desde su centro hacia delante (+Z).
+ *  - la orientación lleva la X a la Z de las paralelas: un cuarto de vuelta alrededor de Y.
+ *  - `palma_hacia`: agarre NEUTRO, palmas hacia dentro. Sin esto la palma sale de dónde queda la
+ *    muñeca respecto a la barra, y con los hombros más juntos que las barras la muñeca cae por
+ *    dentro: la palma miraba hacia fuera, el pulgar hacia atrás y el antebrazo retorcido.
+ *  - `agarre_marco` es el de esa mano, que `npm run agarre` guarda en las paralelas.
+ */
+const CUARTO_Y = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), -Math.PI / 2);
+export function barraParalela(imp, l) {
+  const g = geometriaParalelas(imp);
+  const orientacion = (imp.orientacion ?? new Quaternion()).clone().multiply(CUARTO_Y);
+  const b = g.barras[l];
+  return {
+    tipo: 'paralela',
+    posicion: imp.posicion.clone().add(new Vector3(b.x, b.y, imp.agarre ?? 0).applyQuaternion(imp.orientacion ?? new Quaternion())),
+    orientacion,
+    agarre: 0,
+    radio: g.radio,
+    palma_hacia: new Vector3(-SIGNO[l], 0, 0).applyQuaternion(imp.orientacion ?? new Quaternion()),
+    agarre_marco: imp.agarre_marco ? { [l]: imp.agarre_marco[l] } : undefined,
+  };
+}
+
+/**
+ * La barra que agarra una mano, si va a una: `objetivo: "barra"` es la barra de siempre, y
+ * `objetivo: "paralelas"`, la barra de las paralelas de SU lado (la izquierda a la de +X). El lado
+ * no se escribe: con las manos cruzadas no hay fondos que valgan.
+ */
+export function barraDeMano(m, implementos, l) {
+  if (m?.objetivo === 'barra') return implementos.barra ?? null;
+  if (m?.objetivo === 'paralelas') return implementos.paralelas ? barraParalela(implementos.paralelas, l) : null;
+  return null;
 }
 
 function colocarImplementos(esq, pose, definicion, marcos) {

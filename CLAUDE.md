@@ -146,6 +146,20 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    remo iba con los pies en el suelo y las rodillas a 90° «porque no había plataforma», y no se
    parecía a la máquina. El pie sobre ella NO lleva `pie_plano` (lo pone plano en el suelo): sigue a
    la espinilla con `tobillo.dorsiflexion` hasta que la planta queda vertical.
+   Unas paralelas son el implemento `paralelas`: dos barras a lo largo de Z (hacia donde mira el
+   maniquí) sobre cuatro postes, con `posicion` en el suelo en el centro entre ellas, `alto` (1,3 m
+   por defecto), `separacion` entre ejes (0,52), `largo` (1 m) y barras de 4,5 cm de grosor. La forma
+   sale de `geometriaParalelas` (`cinematica.js`), la misma para el visor, la cinemática y el
+   validador. Cada mano va a la barra de SU lado con `brazos.<lado>.objetivo: "paralelas"` (vale con
+   `ambos`; la izquierda, a la de +X), y `agarre` en las paralelas dice dónde agarran, en metros
+   desde el centro de la barra hacia delante. El agarre es neutro, palmas hacia dentro: la
+   cinemática lo pide así, porque deducido de la muñeca, con los hombros más juntos que las barras,
+   la palma salía hacia fuera. `npm run agarre <id>` lo fija igual que en una barra (guarda
+   `agarre_marco` en las paralelas, relativo a la barra de cada mano). El validador toma barras y
+   postes por cilindros sólidos (piel, barra dentro de un miembro, implemento dentro de otro), y el
+   apoyo `{ "implemento": "paralelas", "con": "manos" }` mira que cada mano esté sobre su barra y que
+   NADA toque el suelo: en unos fondos se cuelga de las manos, así que si los pies llegan al suelo
+   hay que subir las paralelas.
    `columna.flexion` se reparte 25/35/40 % entre lumbar y las dos torácicas; para doblar SOLO la
    parte alta hay `columna.flexion_alta` (se suma, rango en `RANGOS`). El hollow hold la necesita:
    con `flexion` sola, al curvar lo bastante para despegar los hombros la lumbar se iba con ellos.

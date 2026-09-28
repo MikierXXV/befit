@@ -1,0 +1,46 @@
+{
+  "id": "fondos-paralelas",
+  "grupo_id": "extension-codo",
+  "orden": 6,
+  "nombre": "Fondos en paralelas",
+  "resumen": "Apoyado con los brazos estirados sobre dos barras paralelas, el cuerpo baja doblando los codos y vuelve a subir. Trabaja tríceps y pectoral con el propio peso.",
+  "movimiento_id": "fondos-paralelas",
+  "ejecucion": [
+    "Sube a las paralelas desde un escalón o con un pequeño salto, cógelas con las palmas hacia dentro y quédate apoyado con los brazos estirados y los hombros bajos, lejos de las orejas.",
+    "Dobla un poco las rodillas o crúzalas por detrás, e inclina el tronco ligeramente hacia delante.",
+    "Baja despacio doblando los codos, que van hacia atrás y no se abren, manteniendo los hombros lejos de las orejas, hasta que los brazos queden más o menos paralelos al suelo.",
+    "Empuja hasta estirar los brazos sin bloquear los codos de golpe.",
+    "Si notas molestia en la parte delantera del hombro al bajar, acorta el recorrido; si no puedes hacer ninguna repetición, empieza por los fondos en banco."
+  ],
+  "material": [
+    "paralelas"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "triceps",
+      "pectoral"
+    ],
+    "sinergista": [
+      "deltoides_anterior"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "serrato",
+      "dorsal"
+    ]
+  },
+  "matices": "En un estudio con trece hombres con experiencia en fondos que comparó el banco, las paralelas y las anillas, el pico medio del tríceps fue más alto en paralelas que en banco (1,04 frente a 0,83 mV, casi igual que en anillas), y los autores las presentan como una progresión adecuada desde el banco por esos picos más altos. Inclinar el tronco adelante es la forma habitual de cargar más el pectoral, pero ese matiz no lo midió el estudio. Los autores señalan que sus resultados importan sobre todo al prescribir fondos a personas con antecedentes de dolor o lesión de hombro; acortar el recorrido es la precaución habitual. Al trabajar el pectoral además del tríceps, conviene descansar algo más que en el resto del grupo.",
+  "fuentes": [
+    {
+      "titulo": "Bench, Bar, and Ring Dips: Do Kinematics and Muscle Activity Differ?",
+      "autor": "McKenzie et al., Int J Environ Res Public Health, 2022",
+      "url": "https://doi.org/10.3390/ijerph192013211"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

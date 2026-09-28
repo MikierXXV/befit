@@ -26,7 +26,7 @@
 
 import { readdirSync, readFileSync } from 'node:fs';
 import { Quaternion, Vector3 } from 'three';
-import { aplicarPose, geometriaBanco, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
+import { aplicarPose, geometriaBanco, geometriaParalelas, poseEn, RANGOS, CURVAS_VALIDAS, LADOS } from '../src/figura/cinematica.js';
 import { cargarManiqui, verticesPosados, verticesDeHuesos } from './lib/maniqui-node.mjs';
 
 /**
@@ -341,7 +341,7 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
       // la espalda de verdad se hunde algo en el acolchado.
       // Los cilindros finos —barras y agarres de polea— van con holgura de 2 mm: con los 2 cm de
       // un banco, una mano cerrada sobre una barra de 28 mm no tocaría nunca.
-      const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' ? 0.002 : HOLGURA_SOLIDO;
+      const holgura = imp.tipo.startsWith('barra') || imp.tipo === 'polea' || imp.tipo === 'paralelas' ? 0.002 : HOLGURA_SOLIDO;
       // Sin manos: su contacto con un implemento es el agarre o el apoyo, y se revisa en la hoja.
       const dentro = vertices.filter((v) => !v.mano && profundidad(imp, v) > holgura).length;
       if (dentro > 0) fallo(`el cuerpo atraviesa ${nombre}`, `${etiqueta} (${dentro} vértices)`);
@@ -373,6 +373,10 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
 
     for (const apoyo of mov.apoyos ?? []) {
       const imp = r.implementos[apoyo.implemento];
+      if (imp.tipo === 'paralelas') {
+        for (const msg of apoyoEnParalelas(imp, vertices, apoyo)) fallo(msg.texto, `${etiqueta} (${msg.cuanto})`);
+        continue;
+      }
       // El hueco es lo que queda entre la piel más baja y la superficie: el asiento, el respaldo o
       // las dos, según `con` (ver `zonaDeApoyo`).
       const zona = zonaDeApoyo(imp, apoyo.con);
@@ -468,11 +472,38 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
  */
 function barraDentro(imp, pielDe) {
   const salida = [];
-  if (!(imp.tipo.startsWith('barra') || imp.tipo === 'polea')) return salida;
+  for (const [b0, b1] of ejesDeBarra(imp)) {
+    for (const dentro of ejeDentro(b0, b1, pielDe)) {
+      // Una sola vez por miembro: las dos barras de las paralelas no se meten en el mismo brazo.
+      if (!salida.some((s) => s.miembro === dentro.miembro)) salida.push(dentro);
+    }
+  }
+  return salida;
+}
+
+/**
+ * Los ejes de las barras de un implemento, como segmentos en el mundo: uno para una barra o el
+ * agarre de una polea, dos para las paralelas (una por lado, a lo largo de Z); ninguno para lo demás.
+ */
+function ejesDeBarra(imp) {
+  if (imp.tipo === 'paralelas') {
+    const g = geometriaParalelas(imp);
+    const q = imp.orientacion ?? new Quaternion();
+    const u = new Vector3(0, 0, 1).applyQuaternion(q);
+    return Object.values(g.barras).map((b) => {
+      const c = imp.posicion.clone().add(new Vector3(b.x, b.y, 0).applyQuaternion(q));
+      return [c.clone().addScaledVector(u, -g.largo / 2), c.clone().addScaledVector(u, g.largo / 2)];
+    });
+  }
+  if (!(imp.tipo.startsWith('barra') || imp.tipo === 'polea')) return [];
   const medio = imp.tipo === 'polea' ? ((imp.ancho ?? 1.1) / 2) : 1.1;
   const eje = new Vector3(1, 0, 0).applyQuaternion(imp.orientacion ?? { x: 0, y: 0, z: 0, w: 1 });
-  const b0 = imp.posicion.clone().addScaledVector(eje, -medio);
-  const b1 = imp.posicion.clone().addScaledVector(eje, medio);
+  return [[imp.posicion.clone().addScaledVector(eje, -medio), imp.posicion.clone().addScaledVector(eje, medio)]];
+}
+
+/** Los miembros que el eje b0-b1 atraviesa por dentro, y cuánto. */
+function ejeDentro(b0, b1, pielDe) {
+  const salida = [];
   for (const seg of SEGMENTOS) {
     if (seg.bola) {
       const dentro = bolaDentro(pielDe(seg), b0, b1);
@@ -787,7 +818,7 @@ function masCercanos(a0, a1, b0, b1) {
  */
 function implementosMetidos(implementos) {
   const salida = [];
-  const lista = Object.entries(implementos).filter(([, imp]) => PIEZAS_CILINDRO[imp.tipo] || imp.tipo === 'banco');
+  const lista = Object.entries(implementos).filter(([, imp]) => PIEZAS_CILINDRO[imp.tipo] || imp.tipo === 'paralelas' || imp.tipo === 'banco');
   for (let a = 0; a < lista.length; a += 1) {
     for (let b = a + 1; b < lista.length; b += 1) {
       let [[na, ia], [nb, ib]] = [lista[a], lista[b]];
@@ -817,6 +848,18 @@ function implementosMetidos(implementos) {
 
 /** Las piezas de un implemento como cilindros en el mundo: centro `c`, eje `u`, radio y medio largo. */
 function cilindrosDe(imp) {
+  if (imp.tipo === 'paralelas') {
+    // Las dos barras a lo largo de Z y los cuatro postes de pie, como los dibuja el visor.
+    const g = geometriaParalelas(imp);
+    const q = imp.orientacion ?? new Quaternion();
+    const enMundo = (x, y, z) => imp.posicion.clone().add(new Vector3(x, y, z).applyQuaternion(q));
+    const largoZ = new Vector3(0, 0, 1).applyQuaternion(q);
+    const arriba = new Vector3(0, 1, 0).applyQuaternion(q);
+    return [
+      ...Object.values(g.barras).map((b) => ({ r: g.radio, h: g.largo / 2, u: largoZ, c: enMundo(b.x, b.y, 0) })),
+      ...g.postes.map((p) => ({ r: p.radio, h: (g.alto - g.radio) / 2, u: arriba, c: enMundo(p.x, (g.alto - g.radio) / 2, p.z) })),
+    ];
+  }
   const u = new Vector3(1, 0, 0).applyQuaternion(imp.orientacion ?? new Quaternion());
   return PIEZAS_CILINDRO[imp.tipo].map(([r, h, x]) => ({ r, h, u, c: imp.posicion.clone().addScaledVector(u, x) }));
 }
@@ -884,6 +927,10 @@ function profundidad(imp, v) {
     const dy = imp.posicion.y + imp.alto - v.y;
     return Math.max(0, Math.min(dx, dy, dz, v.y - imp.posicion.y));
   }
+  if (imp.tipo === 'paralelas') {
+    // Barras y postes, cilindros macizos: lo más hundido en cualquiera de ellos.
+    return Math.max(0, ...cilindrosDe(imp).map((c) => hondoEnCilindro(c, v)));
+  }
   if (imp.tipo === 'barra' || imp.tipo === 'barra_fija' || imp.tipo === 'polea') {
     // Cilindro a lo largo de X. El medio ancho sale del implemento cuando lo declara —el agarre de
     // una polea mide 20 cm, no 2,2 m— para no dar por buena una mano metida en el aire de al lado.
@@ -893,6 +940,38 @@ function profundidad(imp, v) {
     return Math.max(0, 0.014 - d);
   }
   return 0;
+}
+
+/**
+ * EL CUERPO EN APOYO SOBRE LAS MANOS, en las paralelas. Dos cosas, y las dos hacen falta:
+ *
+ *  - cada mano, en su barra: la piel de la mano a menos de `tolerancia` de la superficie de la
+ *    barra de su lado. La cinemática ya lleva la muñeca ahí, pero si la barra queda fuera de
+ *    alcance la acerca y solo avisa; esto dice además que la mano está SOBRE la barra;
+ *  - nada más toca el suelo. En unos fondos el cuerpo cuelga de las manos: con las paralelas bajas,
+ *    las rodillas dobladas dejaban los pies apoyados y parecía una sentadilla con las manos en alto.
+ */
+function apoyoEnParalelas(imp, vertices, apoyo) {
+  const salida = [];
+  const ejes = ejesDeBarra(imp);
+  const { radio } = geometriaParalelas(imp);
+  LADOS.forEach((l, n) => {
+    const s = { i: 'L', d: 'R' }[l];
+    const [b0, b1] = ejes[n];
+    let hueco = Infinity;
+    for (const v of vertices) {
+      if (!v.mano || !v.hueso.endsWith(s)) continue;
+      const eje = b1.clone().sub(b0);
+      const t = Math.min(1, Math.max(0, v.clone().sub(b0).dot(eje) / eje.lengthSq()));
+      hueco = Math.min(hueco, v.distanceTo(b0.clone().addScaledVector(eje, t)) - radio);
+    }
+    if (!(hueco <= apoyo.tolerancia)) {
+      salida.push({ texto: `la mano ${{ i: 'izquierda', d: 'derecha' }[l]} no apoya en su barra de ${apoyo.implemento}`, cuanto: `hueco ${(hueco * 100).toFixed(1)} cm` });
+    }
+  });
+  const suelo = Math.min(...vertices.map((v) => v.y));
+  if (suelo < 0.02) salida.push({ texto: `el cuerpo toca el suelo: no cuelga de ${apoyo.implemento}`, cuanto: `${(suelo * 100).toFixed(1)} cm` });
+  return salida;
 }
 
 /**
