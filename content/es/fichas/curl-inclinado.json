@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Curl inclinado con mancuernas",
   "resumen": "Sentado en un banco inclinado hacia atrás, con los brazos colgando por detrás del tronco, se suben las mancuernas doblando los codos. El hombro queda atrás y el bíceps trabaja estirado.",
+  "movimiento_id": "curl-inclinado",
   "ejecucion": [
     "Ajusta el respaldo a unos 45-60° y siéntate con la espalda apoyada y una mancuerna en cada mano.",
     "Deja colgar los brazos estirados hacia el suelo, por detrás de la línea del tronco, con las palmas hacia delante.",

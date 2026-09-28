@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Incline barbell press",
   "resumen": "The bench press with the back rest inclined to about 30°: the bar comes down to the upper chest. It shifts some of the work towards the upper chest and the shoulder.",
+  "movimiento_id": "press-inclinado-barra",
   "ejecucion": [
     "Set the back rest to about 30° and the safety pins just below where the bar touches your chest, or have someone spot you: getting stuck under the bar is the serious accident in this lift.",
     "Sit with your back against the back rest, shoulder blades squeezed together against it and feet on the floor, and grip the bar slightly wider than your shoulders, wrists straight.",

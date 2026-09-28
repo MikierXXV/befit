@@ -21,7 +21,7 @@
       "pelvis": { "posicion": [0, 0.505, -0.1], "orientacion": { "inclinacion": -52 } },
       "columna": { "flexion": -3 },
       "cuello": { "flexion": -8 },
-      "brazos": { "ambos": { "objetivo": [0.17, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
+      "brazos": { "ambos": { "objetivo": [0.19, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
       "piernas": { "ambos": { "objetivo": [0.25, 0.104, 0.32], "rodilla_hacia": [0.3, 1, 0.4], "pie_plano": true, "apertura": 15 } }
     },
     {
@@ -37,7 +37,7 @@
       "pelvis": { "posicion": [0, 0.505, -0.1], "orientacion": { "inclinacion": -52 } },
       "columna": { "flexion": -3 },
       "cuello": { "flexion": -8 },
-      "brazos": { "ambos": { "objetivo": [0.17, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
+      "brazos": { "ambos": { "objetivo": [0.19, 1.33, -0.47], "codo_hacia": [1, -1, 0.3], "cierre": 1 } },
       "piernas": { "ambos": { "objetivo": [0.25, 0.104, 0.32], "rodilla_hacia": [0.3, 1, 0.4], "pie_plano": true, "apertura": 15 } }
     }
   ]

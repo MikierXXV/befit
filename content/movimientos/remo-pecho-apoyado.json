@@ -1,0 +1,217 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros. Banco con respaldo a 40°: el respaldo sube hacia −Z desde el borde trasero del asiento, así que el maniquí se gira (giro 180) y se tumba boca abajo con el pecho en él, a horcajadas del asiento y con los pies en el suelo.",
+  "id": "remo-pecho-apoyado",
+  "duracion": 3.2,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "inclinacion": 40,
+      "largo_asiento": 0.38,
+      "largo_respaldo": 0.85,
+      "ancho": 0.3,
+      "alto": 0.45,
+      "solido": true
+    },
+    "mancuerna_i": {
+      "tipo": "mancuerna",
+      "en_mano": "i",
+      "solido": true
+    },
+    "mancuerna_d": {
+      "tipo": "mancuerna",
+      "en_mano": "d",
+      "solido": true
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "pecho"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "esfuerzo",
+      "etiqueta": "estirado",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.788,
+          -0.298
+        ],
+        "orientacion": {
+          "giro": 180,
+          "inclinacion": 52
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -15
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 50,
+            "abduccion": 14,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 6
+          },
+          "escapula": {
+            "elevacion": -4,
+            "protraccion": 15
+          },
+          "pronacion": 0,
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            -0.3,
+            0.104,
+            0.1
+          ],
+          "rodilla_hacia": [
+            -0.6,
+            0,
+            -1
+          ],
+          "pie_plano": true,
+          "apertura": 20
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "controlada",
+      "etiqueta": "contraido",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.788,
+          -0.298
+        ],
+        "orientacion": {
+          "giro": 180,
+          "inclinacion": 52
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -15
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": -10,
+            "abduccion": 30,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 100
+          },
+          "escapula": {
+            "elevacion": 0,
+            "protraccion": -15
+          },
+          "pronacion": 0,
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            -0.3,
+            0.104,
+            0.1
+          ],
+          "rodilla_hacia": [
+            -0.6,
+            0,
+            -1
+          ],
+          "pie_plano": true,
+          "apertura": 20
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.788,
+          -0.298
+        ],
+        "orientacion": {
+          "giro": 180,
+          "inclinacion": 52
+        }
+      },
+      "columna": {
+        "flexion": 0
+      },
+      "cuello": {
+        "flexion": -15
+      },
+      "brazos": {
+        "ambos": {
+          "hombro": {
+            "flexion": 50,
+            "abduccion": 14,
+            "rotacion": 0
+          },
+          "codo": {
+            "flexion": 6
+          },
+          "escapula": {
+            "elevacion": -4,
+            "protraccion": 15
+          },
+          "pronacion": 0,
+          "cierre": 0.9
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            -0.3,
+            0.104,
+            0.1
+          ],
+          "rodilla_hacia": [
+            -0.6,
+            0,
+            -1
+          ],
+          "pie_plano": true,
+          "apertura": 20
+        }
+      }
+    }
+  ]
+}

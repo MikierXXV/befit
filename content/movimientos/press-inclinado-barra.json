@@ -1,0 +1,240 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Banco con respaldo a 30°: el asiento centrado en posicion y el respaldo subiendo hacia −Z desde su borde trasero. El rack no se dibuja: no hay implemento de soporte en el módulo.",
+  "id": "press-inclinado-barra",
+  "duracion": 3.2,
+  "asimetria": 0.5,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "tres_cuartos",
+    "detalle": "mano_i"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "banco": {
+      "tipo": "banco",
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "inclinacion": 30,
+      "largo_asiento": 0.38,
+      "largo_respaldo": 0.85,
+      "ancho": 0.3,
+      "alto": 0.45,
+      "solido": true
+    },
+    "barra": {
+      "tipo": "barra",
+      "posicion": [
+        0,
+        1.3,
+        -0.5
+      ],
+      "agarre": 0.3,
+      "solido": true,
+      "agarre_marco": {
+        "i": [
+          -0.705676,
+          0.044967,
+          0.705676,
+          -0.044967
+        ],
+        "d": [
+          -0.705617,
+          -0.045869,
+          -0.705618,
+          -0.045869
+        ]
+      }
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "asiento"
+    },
+    {
+      "implemento": "banco",
+      "tolerancia": 0.02,
+      "con": "espalda"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.505,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": -57
+        }
+      },
+      "columna": {
+        "flexion": -3
+      },
+      "cuello": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.3,
+            -0.5
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.3
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.25,
+            0.104,
+            0.32
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.4
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.505,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": -57
+        }
+      },
+      "columna": {
+        "flexion": -3
+      },
+      "cuello": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            0.907,
+            -0.419
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.5
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.25,
+            0.104,
+            0.32
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.4
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.505,
+          -0.1
+        ],
+        "orientacion": {
+          "inclinacion": -57
+        }
+      },
+      "columna": {
+        "flexion": -3
+      },
+      "cuello": {
+        "flexion": -8
+      },
+      "implementos": {
+        "barra": {
+          "posicion": [
+            0,
+            1.3,
+            -0.5
+          ]
+        }
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "barra",
+          "codo_hacia": [
+            1,
+            -1,
+            0.3
+          ],
+          "cierre": 0.8
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.25,
+            0.104,
+            0.32
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0.4
+          ],
+          "pie_plano": true,
+          "apertura": 15
+        }
+      }
+    }
+  ]
+}

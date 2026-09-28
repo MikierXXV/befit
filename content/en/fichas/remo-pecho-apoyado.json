@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Chest-supported row",
   "resumen": "Lying face down on an inclined bench, you row two dumbbells towards the hips with the elbows going back. The supported chest takes the load off the lower back.",
+  "movimiento_id": "remo-pecho-apoyado",
   "ejecucion": [
     "Set the back rest to about 30-45° and lie face down with your chest supported at the top and your feet on the floor, with a dumbbell on the floor at each side of the bench, so you can pick them up once lying down.",
     "Let a dumbbell hang in each hand with straight arms and palms facing each other.",

@@ -15,6 +15,7 @@
  *  - rangos articulares (RANGOS en cinematica.js);
  *  - piel: ningún vértice bajo el suelo ni dentro de un implemento sólido;
  *  - barras: ninguna barra ni agarre de polea atravesando un miembro por dentro;
+ *  - implementos: ninguna mancuerna o barra metida más de 1 cm en otra, ni en el banco;
  *  - autocolisión: ningún miembro metido más de 2,5 cm en otro que no es su vecino (antebrazo en
  *    la barriga, mano en el muslo); ver EL CUERPO QUE SE ATRAVIESA A SÍ MISMO;
  *  - apoyos: si la ficha dice que el cuerpo descansa en el banco, que descanse;
@@ -127,6 +128,41 @@ const SEGMENTOS = [
  * informa, pero no bloquea. Al arreglar uno, se quita de aquí; la lista tiene que acabar vacía.
  */
 const BARRA_DENTRO_PENDIENTES = new Set([]);
+
+/*
+ * UN IMPLEMENTO DENTRO DE OTRO.
+ *
+ * Lo de arriba mira el cuerpo contra los implementos, pero nada miraba un implemento contra otro:
+ * en las aperturas inclinadas, arriba, las dos mancuernas iban una dentro de la otra —5,3 cm entre
+ * ejes con discos de 6 cm de radio— con el validador en verde, y se vio en la hoja.
+ *
+ * Mancuernas y barras son cilindros a lo largo de su eje X, pieza a pieza como las dibuja el visor
+ * (`crearImplemento`): la mancuerna, un mango de 1,6 cm de radio y 14 de largo y dos discos de 6 cm
+ * de radio y 8 de largo a ±11 cm; la barra, la barra de 2,2 m, los manguitos y los dos discos de
+ * cada lado. Se siembran puntos por el volumen de cada pieza (anillos cada 2 cm a lo largo del eje,
+ * en el centro, a medio radio y en el borde) y se mide cuánto se mete el más hondo en la otra: en
+ * un cilindro, lo que le falta para salir por el lado o por la tapa, lo menor; en el banco, su
+ * `profundidad`, la misma de la piel. Se mira en los dos sentidos, y antes, si las esferas que
+ * envuelven las dos piezas ni se tocan, no se siembra nada: casi todos los fotogramas acaban ahí.
+ *
+ * Mide el punto más hondo, no lo que habría que separarlas, así que se queda corto: las dos
+ * mancuernas de las aperturas daban unos 4 cm, cuando separarlas pedía 6,7. Para cazar el fallo
+ * basta; no se pasa nunca.
+ *
+ * Tolerancia de 1 cm. Dos discos que se tocan dan 0, y tocarse está bien —las mancuernas del press
+ * se juntan arriba—; lo que se busca es que se metan.
+ */
+const TOLERANCIA_IMPLEMENTOS = REGLAS.tolerancia_implementos ?? 0.01;
+// [radio, medio largo, centro en X], en metros; el mismo dibujo que `crearImplemento` del visor.
+const PIEZAS_CILINDRO = {
+  mancuerna: [[0.016, 0.07, 0], [0.06, 0.04, -0.11], [0.06, 0.04, 0.11]],
+  barra: [[0.014, 1.1, 0], ...[-1, 1].flatMap((s) => [[0.025, 0.21, s * 0.88], [0.225, 0.0225, s * 0.72], [0.19, 0.0175, s * 0.765]])],
+};
+/*
+ * TEMPORAL, como las otras dos: movimientos con un implemento metido en otro que aún no se han
+ * corregido. Avisan sin bloquear; al arreglar uno se quita de aquí.
+ */
+const IMPLEMENTOS_PENDIENTES = new Set([]);
 
 /*
  * EL CUERPO QUE SE ATRAVIESA A SÍ MISMO.
@@ -318,6 +354,12 @@ for (const fichero of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
         if (BARRA_DENTRO_PENDIENTES.has(id)) avisos.push([msg, donde, dentro.metida, etiqueta]);
         else fallo(msg, donde);
       }
+    }
+
+    for (const choque of implementosMetidos(r.implementos)) {
+      const donde = `${etiqueta} (${(choque.metida * 100).toFixed(1)} cm)`;
+      if (IMPLEMENTOS_PENDIENTES.has(id)) avisos.push([choque.msg, donde, choque.metida, etiqueta]);
+      else fallo(choque.msg, donde);
     }
 
     for (const choque of autocolision(vertices)) {
@@ -737,6 +779,73 @@ function masCercanos(a0, a1, b0, b1) {
     s = Math.min(1, Math.max(0, (t * b - d) / a));
   }
   return { p: a0.clone().addScaledVector(u, s), q: b0.clone().addScaledVector(v, t), s };
+}
+
+/**
+ * Las parejas de implementos metidas una en otra más de TOLERANCIA_IMPLEMENTOS. Ver UN IMPLEMENTO
+ * DENTRO DE OTRO, arriba.
+ */
+function implementosMetidos(implementos) {
+  const salida = [];
+  const lista = Object.entries(implementos).filter(([, imp]) => PIEZAS_CILINDRO[imp.tipo] || imp.tipo === 'banco');
+  for (let a = 0; a < lista.length; a += 1) {
+    for (let b = a + 1; b < lista.length; b += 1) {
+      let [[na, ia], [nb, ib]] = [lista[a], lista[b]];
+      if (ia.tipo === 'banco' && ib.tipo === 'banco') continue;
+      if (ia.tipo === 'banco') [[na, ia], [nb, ib]] = [[nb, ib], [na, ia]];
+      const piezasA = cilindrosDe(ia);
+      let metida = 0;
+      if (ib.tipo === 'banco') {
+        // Solo lo que cae sobre el ancho del banco: de los 2,2 m de la barra, casi nada, y así no se
+        // rehace la geometría del banco en miles de puntos que quedan a un lado.
+        const medio = ib.ancho / 2;
+        for (const p of piezasA) sembrar(p, (v) => { if (Math.abs(v.x - ib.posicion.x) < medio) metida = Math.max(metida, profundidad(ib, v)); });
+      } else {
+        for (const p of piezasA) {
+          for (const q of cilindrosDe(ib)) {
+            if (p.c.distanceTo(q.c) > Math.hypot(p.r, p.h) + Math.hypot(q.r, q.h)) continue;
+            sembrar(p, (v) => { metida = Math.max(metida, hondoEnCilindro(q, v)); });
+            sembrar(q, (v) => { metida = Math.max(metida, hondoEnCilindro(p, v)); });
+          }
+        }
+      }
+      if (metida > TOLERANCIA_IMPLEMENTOS) salida.push({ msg: `${na} metida en ${nb}`, metida });
+    }
+  }
+  return salida;
+}
+
+/** Las piezas de un implemento como cilindros en el mundo: centro `c`, eje `u`, radio y medio largo. */
+function cilindrosDe(imp) {
+  const u = new Vector3(1, 0, 0).applyQuaternion(imp.orientacion ?? new Quaternion());
+  return PIEZAS_CILINDRO[imp.tipo].map(([r, h, x]) => ({ r, h, u, c: imp.posicion.clone().addScaledVector(u, x) }));
+}
+
+/** Cuánto le falta a un punto para salir del cilindro, por el lado o por la tapa (≤ 0: fuera). */
+function hondoEnCilindro(cil, v) {
+  const w = v.clone().sub(cil.c);
+  const a = w.dot(cil.u);
+  const radial = Math.sqrt(Math.max(0, w.lengthSq() - a * a));
+  return Math.min(cil.r - radial, cil.h - Math.abs(a));
+}
+
+/** Llama a `cada` con puntos repartidos por el volumen del cilindro: anillos cada 2 cm por el eje. */
+function sembrar(cil, cada) {
+  const perp = Math.abs(cil.u.y) < 0.9 ? new Vector3(0, 1, 0) : new Vector3(0, 0, 1);
+  const e1 = perp.cross(cil.u).normalize();
+  const e2 = cil.u.clone().cross(e1);
+  const anillos = Math.max(3, Math.ceil((2 * cil.h) / 0.02) + 1);
+  const v = new Vector3();
+  for (let n = 0; n < anillos; n += 1) {
+    const a = -cil.h + (2 * cil.h * n) / (anillos - 1);
+    cada(v.copy(cil.c).addScaledVector(cil.u, a));
+    for (const radio of [cil.r / 2, cil.r]) {
+      for (let k = 0; k < 12; k += 1) {
+        const ang = (k * Math.PI) / 6;
+        cada(v.copy(cil.c).addScaledVector(cil.u, a).addScaledVector(e1, radio * Math.cos(ang)).addScaledVector(e2, radio * Math.sin(ang)));
+      }
+    }
+  }
 }
 
 /** Pone palabras a un aviso de la cinemática, que informa con datos. */

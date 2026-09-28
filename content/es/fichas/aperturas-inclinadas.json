@@ -4,6 +4,7 @@
   "orden": 11,
   "nombre": "Aperturas inclinadas con mancuernas",
   "resumen": "En un banco inclinado unos 30°, las mancuernas se abren en arco hacia los lados con los codos algo doblados y vuelven a juntarse sobre el pecho alto. Un ejercicio de aislamiento del pectoral.",
+  "movimiento_id": "aperturas-inclinadas",
   "ejecucion": [
     "Siéntate con una mancuerna en cada mano apoyada en los muslos y túmbate llevándolas al pecho antes de estirar los brazos.",
     "Ajusta el respaldo a unos 30° y túmbate con una mancuerna en cada mano, con los brazos estirados sobre el pecho alto y las palmas enfrentadas.",

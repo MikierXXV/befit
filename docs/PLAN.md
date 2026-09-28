@@ -138,8 +138,18 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   peso. El motor no engancha nada al tobillo, así que la tobillera es un agarre de polea posado en
   cada pose junto al tobillo; si cambia la pierna, hay que moverla a mano (se midió: 6-7 cm fijos).
   Queda para la revisión: la tobillera se ve como una anilla con cable, sin la correa.
-- ⬜ Cierre de la etapa A: rutinas «En casa sin material» y «Solo mancuernas», y repaso de las tres
-  que hay.
+- ⬜ Rutinas (decidido con Migue: al final de la etapa B, todas juntas): «En casa sin material»,
+  «Solo mancuernas» y «Máquinas para empezar», y el repaso de las tres que hay.
+
+### Etapa B · implementos nuevos
+
+- ✅ **O · Banco inclinable:** `inclinacion` en el banco (asiento más respaldo), con la geometría en
+  `geometriaBanco()` de la cinemática para que visor y validador no discrepen, y apoyos en el
+  respaldo (`con: "espalda"` o `"pecho"`). Press inclinado con barra y con mancuernas, aperturas
+  inclinadas, curl inclinado y remo con pecho apoyado. El validador compara ya un implemento con
+  otro: las mancuernas de las aperturas iban una dentro de la otra y no saltaba nada. El rack de la
+  barra no se dibuja (no hay implemento); en el remo con pecho apoyado se va a horcajadas del asiento.
+- ⬜ P · Paralelas · Q · Kettlebell · R · Máquinas guiadas · S · Multipower.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

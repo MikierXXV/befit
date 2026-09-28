@@ -4,6 +4,7 @@
   "orden": 11,
   "nombre": "Incline dumbbell fly",
   "resumen": "On a bench inclined to about 30°, the dumbbells open in an arc to the sides with the elbows slightly bent and come back together over the upper chest. An isolation exercise for the chest.",
+  "movimiento_id": "aperturas-inclinadas",
   "ejecucion": [
     "Sit with a dumbbell on each thigh and lie back, bringing them to your chest before straightening your arms.",
     "Set the back rest to about 30° and lie back with a dumbbell in each hand, arms straight over your upper chest and palms facing each other.",

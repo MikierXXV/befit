@@ -99,6 +99,9 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    2,5 cm), y una mano dentro de la otra o del antebrazo contrario (más de 1,5 cm, porque una
    falange mide menos de 2). Lo cazó Migue a ojo en el remo en polea y en la rotación rusa, y
    después en las manos solapadas de la rusa. Los pendientes van en `AUTOCOLISION_PENDIENTES`.
+   Y un implemento dentro de otro: mancuerna contra mancuerna, contra la barra o contra el banco,
+   más de 1 cm (tocarse vale). Las mancuernas de las aperturas inclinadas iban una dentro de la otra
+   arriba y solo se vio en la hoja. Los pendientes, en `IMPLEMENTOS_PENDIENTES`.
 4. `npm run hoja` y **mirar la hoja**. El validador sabe si una rodilla pasa de 155°; no sabe si el
    ejercicio parece lo que dice ser.
 5. Si las manos van a una barra, `npm run agarre` DESPUÉS de mirar la hoja: congela la orientación

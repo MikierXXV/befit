@@ -4,6 +4,7 @@
   "orden": 7,
   "nombre": "Incline dumbbell curl",
   "resumen": "Sitting on a bench reclined backwards, with the arms hanging behind the torso, you curl the dumbbells up. The shoulder stays back and the biceps works in a stretched position.",
+  "movimiento_id": "curl-inclinado",
   "ejecucion": [
     "Set the back rest to about 45-60° and sit with your back supported and a dumbbell in each hand.",
     "Let your straight arms hang towards the floor, behind the line of your torso, palms facing forward.",
