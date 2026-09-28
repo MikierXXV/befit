@@ -4,6 +4,7 @@
   "orden": 1,
   "nombre": "Lying leg curl",
   "resumen": "Lying face down in the machine with the pad above your heels, you bend your knees bringing your heels towards your glutes and lower them under control. It isolates the hamstrings.",
+  "movimiento_id": "curl-femoral-tumbado",
   "ejecucion": [
     "Lie face down with your knees just off the edge of the bench, lined up with the machine’s pivot, and the pad on your lower calves, above your heels.",
     "Hold the handles and keep your hips on the bench.",

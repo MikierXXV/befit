@@ -1,0 +1,232 @@
+{
+  "$comment": "Ángulos en grados y posiciones en metros, con el maniquí mirando a +Z. Prensa a 45°: la máquina tiene el pliegue entre asiento y respaldo en el origen, a 0,42 m. El ciclo empieza arriba (piernas casi estiradas, rodillas a ~18°), baja controlado hasta las rodillas a ~85° y la cadera a ~128° y sube con esfuerzo. La pelvis no se mueve en todo el ciclo: es la técnica que pide la ficha (la cadera no se despega) y deja el pie como único punto que viaja. Los pies van con `objetivo` y el carro con `recorrido`: los dos se escriben desde el mismo punto del carril, así que recorren el mismo spline y el pie no se separa de la plataforma entre poses.",
+  "id": "prensa-piernas",
+  "duracion": 3.6,
+  "asimetria": 0,
+  "respiracion": {
+    "amplitud": 0.004,
+    "ciclos": 1
+  },
+  "camara": {
+    "vista": "lateral",
+    "detalle": "mano_d"
+  },
+  "cartel": {
+    "fase": 0.5
+  },
+  "implementos": {
+    "maquina": {
+      "tipo": "maquina",
+      "modelo": "prensa",
+      "posicion": [
+        0,
+        0,
+        0
+      ],
+      "recorrido": 1.002,
+      "agarre_marco": {
+        "i": [
+          -0.126806,
+          -0.695644,
+          -0.126806,
+          -0.695644
+        ],
+        "d": [
+          -0.126806,
+          0.695644,
+          -0.126806,
+          0.695644
+        ]
+      }
+    }
+  },
+  "apoyos": [
+    {
+      "implemento": "maquina",
+      "tolerancia": 0.03,
+      "con": "asiento"
+    },
+    {
+      "implemento": "maquina",
+      "tolerancia": 0.03,
+      "con": "espalda"
+    }
+  ],
+  "poses": [
+    {
+      "t": 0,
+      "curva": "controlada",
+      "etiqueta": "arriba",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.508,
+          0.124
+        ],
+        "orientacion": {
+          "inclinacion": -51
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.5,
+            -0.3,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -10,
+            "protraccion": 10
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            1.09,
+            0.764
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0
+          ],
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "recorrido": 1.002
+        }
+      }
+    },
+    {
+      "t": 0.5,
+      "curva": "esfuerzo",
+      "etiqueta": "abajo",
+      "pelvis": {
+        "posicion": [
+          0,
+          0.508,
+          0.124
+        ],
+        "orientacion": {
+          "inclinacion": -51
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.5,
+            -0.3,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -10,
+            "protraccion": 10
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            0.988,
+            0.573
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0
+          ],
+          "tobillo": {
+            "dorsiflexion": 40
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "recorrido": 0.794
+        }
+      }
+    },
+    {
+      "t": 1,
+      "pelvis": {
+        "posicion": [
+          0,
+          0.508,
+          0.124
+        ],
+        "orientacion": {
+          "inclinacion": -51
+        }
+      },
+      "columna": {
+        "flexion": 6
+      },
+      "cuello": {
+        "flexion": 10
+      },
+      "brazos": {
+        "ambos": {
+          "objetivo": "asas",
+          "codo_hacia": [
+            0.5,
+            -0.3,
+            -1
+          ],
+          "cierre": 0.9,
+          "escapula": {
+            "elevacion": -10,
+            "protraccion": 10
+          }
+        }
+      },
+      "piernas": {
+        "ambos": {
+          "objetivo": [
+            0.13,
+            1.09,
+            0.764
+          ],
+          "rodilla_hacia": [
+            0.3,
+            1,
+            0
+          ],
+          "tobillo": {
+            "dorsiflexion": 14
+          }
+        }
+      },
+      "implementos": {
+        "maquina": {
+          "recorrido": 1.002
+        }
+      }
+    }
+  ],
+  "$comment_planta": "La planta apoya plana contra la plataforma en todo el ciclo porque la dorsiflexión va por pose: 14° arriba y 40° abajo, que es el tope del tobillo (RANGOS). Con la plataforma perpendicular al carril, la planta plana pide dorsiflexión + elevación de la espinilla ≈ 48-50°; abajo la espinilla queda casi horizontal y no cabe más. Por eso el punto bajo es rodilla a ~85° y no 90: con 90 la espinilla baja de la horizontal y el talón se despega (o los dedos entran en la plataforma). Medido entre poses cada 0,05: talón y dedos a la misma distancia de la plataforma con menos de 0,6 cm de diferencia, y el hueco entre 0 y 1,2 cm.",
+  "$comment_pelvis": "La pelvis va 6° más reclinada que el respaldo (inclinación −51) y la columna flexiona 6 para devolver el tronco al respaldo. Sin esos 6°, el muslo no sube lo bastante para que la espinilla quede horizontal abajo sin pasar la cadera de 130°. Posición en el pliegue: 0,5 cm sobre el asiento y sobre el respaldo.",
+  "$comment_manos": "Las asas quedan junto al asiento; con el tronco reclinado los hombros se van atrás y el brazo no llegaba por 7 cm. Con la pelvis bien metida en el pliegue faltaba 1-2 mm, y la escápula deprimida (-10) y adelantada (10) lo resuelve con el codo un poco doblado."
+}

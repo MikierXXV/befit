@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Prensa de piernas",
   "resumen": "Sentado en la máquina con la espalda apoyada, se empuja con los pies una plataforma hasta casi estirar las piernas y se baja con control. Trabaja cuádriceps y glúteo sin cargar la espalda con una barra.",
+  "movimiento_id": "prensa-piernas",
   "ejecucion": [
     "Ajusta el respaldo para que, con los pies en la plataforma, las rodillas queden dobladas a unos 90° o algo más.",
     "Siéntate con la espalda y la cadera bien apoyadas en el respaldo y pon los pies en la plataforma a la anchura de la cadera, con las puntas un poco hacia fuera.",

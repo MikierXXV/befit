@@ -1200,7 +1200,10 @@ export function asaKettlebell(imp, l, cuernos = false) {
  * Las piezas van en coordenadas de la máquina: `centro`, `q` (su giro), y `medio` (medias medidas de
  * una caja) o `radio` y `medio_largo` (un cilindro a lo largo de su X). `superficie`: el apoyo que
  * es (`asiento`, `espalda`, `pecho`), medido sobre la cara +Y de la caja; `empuja`: la pieza móvil
- * que tiene que tocar el cuerpo (el rodillo o la plataforma).
+ * que tiene que tocar el cuerpo (el rodillo o la plataforma); `despejable`: el visor la hace
+ * translúcida cuando queda entre la cámara y el cuerpo (antes se llamaba `lateral`, pero la
+ * plataforma de la prensa, en el centro, tapaba el tronco en la vista frontal igual que una columna
+ * lateral la cadera en la de perfil).
  */
 export function geometriaMaquina(def = {}) {
   const hacer = { extension: maquinaExtension, curl_tumbado: maquinaCurlTumbado, prensa: maquinaPrensa }[def.modelo];
@@ -1231,8 +1234,8 @@ function palancaConRodillo(eje, reposo, angulo, anchoAsiento) {
   const centro = eje.clone().add(reposo.clone().applyQuaternion(giroX(angulo)));
   const rodillo = { radio: 0.05, medio_largo: 0.18 };
   return [
-    cilindro('cubo', new Vector3(xl, eje.y, eje.z), 0.045, 0.03, { lateral: true }),
-    barraEntre('palanca', new Vector3(xl, eje.y, eje.z), new Vector3(xl, centro.y, centro.z), 0.04, { movil: true, lateral: true }),
+    cilindro('cubo', new Vector3(xl, eje.y, eje.z), 0.045, 0.03, { despejable: true }),
+    barraEntre('palanca', new Vector3(xl, eje.y, eje.z), new Vector3(xl, centro.y, centro.z), 0.04, { movil: true, despejable: true }),
     cilindro('eje_rodillo', new Vector3((xl - rodillo.medio_largo) / 2, centro.y, centro.z), 0.012, (xl + rodillo.medio_largo) / 2, { movil: true }),
     cilindro('rodillo', centro, rodillo.radio, rodillo.medio_largo, { movil: true, material: 'acolchado', empuja: true }),
   ];
@@ -1245,7 +1248,7 @@ function asasLaterales(x, y, z, medioLargo = 0.1) {
   for (const l of LADOS) {
     const punto = new Vector3(SIGNO[l] * x, y, z);
     asas[l] = { punto, eje: DELANTE.clone(), radio: 0.016 };
-    piezas.push(cilindro(`asa_${l}`, punto, 0.016, medioLargo, { q: CUARTO_Y_MAQUINA.clone(), lateral: true }));
+    piezas.push(cilindro(`asa_${l}`, punto, 0.016, medioLargo, { q: CUARTO_Y_MAQUINA.clone(), despejable: true }));
   }
   return { asas, piezas };
 }
@@ -1285,9 +1288,9 @@ function maquinaExtension(def) {
          asiento y luego hacia delante por fuera de las piernas. Por delante del asiento, a lo ancho,
          pasaba justo bajo los pies, y la punta del pie izquierdo se metía en él. */
       caja('larguero', new Vector3(xl / 2, 0.025, zc), new Vector3(xl / 2 + 0.03, 0.025, 0.03)),
-      barraEntre('larguero_lateral', new Vector3(xl, 0.025, zc), new Vector3(xl, 0.025, 0), 0.05, { lateral: true }),
-      barraEntre('columna', new Vector3(xl, 0, 0), new Vector3(xl, altoEje - 0.045, 0), 0.06, { lateral: true }),
-      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.06, zc + 0.04), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, zc + 0.04), 0.03, { lateral: true })),
+      barraEntre('larguero_lateral', new Vector3(xl, 0.025, zc), new Vector3(xl, 0.025, 0), 0.05, { despejable: true }),
+      barraEntre('columna', new Vector3(xl, 0, 0), new Vector3(xl, altoEje - 0.045, 0), 0.06, { despejable: true }),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.06, zc + 0.04), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, zc + 0.04), 0.03, { despejable: true })),
       ...piezasAsas,
       ...palancaConRodillo(eje, new Vector3(0, def.despegue ?? 0.078, def.brazo ?? 0.36), def.angulo ?? 90, ancho),
     ],
@@ -1313,8 +1316,8 @@ function maquinaCurlTumbado(def) {
       ...[-1, 1].map((s) => caja(`pata_${s}`, new Vector3(0, (alto - 0.08) / 2, zc + s * largo * 0.35), new Vector3(0.05, (alto - 0.08) / 2, 0.05))),
       caja('larguero', new Vector3(0, 0.025, zc), new Vector3(0.04, 0.025, largo * 0.4)),
       caja('travesano', new Vector3(xl / 2, 0.025, hueco + 0.05), new Vector3(xl / 2 + 0.03, 0.025, 0.03)),
-      barraEntre('columna', new Vector3(xl, 0, 0.02), new Vector3(xl, altoEje - 0.045, 0), 0.06, { lateral: true }),
-      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.08, hueco + largo - 0.14), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto - 0.1, hueco + largo - 0.14), 0.03, { lateral: true })),
+      barraEntre('columna', new Vector3(xl, 0, 0.02), new Vector3(xl, altoEje - 0.045, 0), 0.06, { despejable: true }),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.08, hueco + largo - 0.14), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto - 0.1, hueco + largo - 0.14), 0.03, { despejable: true })),
       ...piezasAsas,
       ...palancaConRodillo(eje, new Vector3(0, def.despegue ?? 0.097, -(def.brazo ?? 0.37)), def.angulo ?? 0, ancho),
     ],
@@ -1342,6 +1345,10 @@ function maquinaPrensa(def) {
   const qCarro = giroX(-135); // la cara +Y de la plataforma mira a −u: hacia quien empuja
   const { asas, piezas: piezasAsas } = asasLaterales(ancho / 2 + 0.06, alto + 0.04, 0.18);
   const tope = cadera.clone().addScaledVector(u, 1.35);
+  const xCarril = 0.45;
+  const grosorPlaca = 0.035;
+  // A lo largo de la placa, hacia arriba: la Z local de la plataforma girada con `qCarro`.
+  const arribaPlaca = new Vector3(0, 0, 1).applyQuaternion(qCarro);
   return {
     modelo: 'prensa',
     eje: cadera,
@@ -1356,14 +1363,30 @@ function maquinaPrensa(def) {
       caja('base', new Vector3(0, 0.03, 0.35), new Vector3(0.3, 0.03, 0.95)),
       caja('pie_asiento', new Vector3(0, (alto - 0.08) / 2, 0.05), new Vector3(0.06, (alto - 0.08) / 2, 0.12)),
       barraEntre('pie_respaldo', new Vector3(0, 0.03, -0.35), pliegue.clone().addScaledVector(d, largoRespaldo * 0.55).addScaledVector(n, -0.08), 0.05),
+      /* Los carriles, del lado de la cámara lateral (−X), se despejan: cruzaban por delante de
+         muslos y espinillas en toda la vista lateral, y era lo único que se veía de las piernas. */
       ...[-1, 1].flatMap((sx) => [
-        barraEntre(`carril_${sx}`, cadera.clone().addScaledVector(u, 0.3).setX(sx * 0.45), tope.clone().setX(sx * 0.45), 0.05),
-        barraEntre(`pata_carril_${sx}`, new Vector3(sx * 0.45, 0.03, tope.z), tope.clone().setX(sx * 0.45), 0.05, { lateral: sx < 0 }),
+        barraEntre(`carril_${sx}`, cadera.clone().addScaledVector(u, 0.3).setX(sx * xCarril), tope.clone().setX(sx * xCarril), 0.05, { despejable: sx < 0 }),
+        barraEntre(`pata_carril_${sx}`, new Vector3(sx * xCarril, 0.03, tope.z), tope.clone().setX(sx * xCarril), 0.05, { despejable: sx < 0 }),
       ]),
-      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.04, 0.18), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, 0.18), 0.03, { lateral: true })),
+      ...LADOS.map((l) => barraEntre(`soporte_asa_${l}`, new Vector3(SIGNO[l] * (ancho / 2 - 0.02), alto - 0.04, 0.18), new Vector3(SIGNO[l] * (ancho / 2 + 0.06), alto + 0.04, 0.18), 0.03, { despejable: true })),
       ...piezasAsas,
-      caja('plataforma', cadera.clone().addScaledVector(u, recorrido + 0.02), new Vector3(0.35, 0.02, 0.28), { q: qCarro, movil: true, empuja: true }),
-      caja('carro', cadera.clone().addScaledVector(u, recorrido + 0.1), new Vector3(0.43, 0.06, 0.28), { q: qCarro, movil: true }),
+      /* La plataforma es una PLACA de 60×45 cm y 3,5 de grueso, y el carro, un bastidor de dos
+         travesaños finos detrás de ella con un patín en cada carril. Antes eran dos cajas macizas
+         (70×56 cm, y el carro de 86 cm de ancho y 12 de grueso): de frente tapaban casi todo el
+         cuerpo, y de lado y de tres cuartos eran un cubo negro que escondía los pies. La cara de la
+         placa sigue a `recorrido` del punto de la cadera, que es lo que mide el contacto. La placa
+         y los travesaños se despejan cuando quedan delante del cuerpo (la vista frontal los tiene
+         entre la cámara y el tronco); los patines del lado de la cámara lateral, también. */
+      caja('plataforma', cadera.clone().addScaledVector(u, recorrido + grosorPlaca / 2), new Vector3(0.3, grosorPlaca / 2, 0.225), {
+        q: qCarro, movil: true, empuja: true, despejable: true,
+      }),
+      ...[-1, 1].map((sz) => caja(`travesano_carro_${sz}`, cadera.clone().addScaledVector(u, recorrido + grosorPlaca + 0.015).addScaledVector(arribaPlaca, sz * 0.16), new Vector3(xCarril, 0.015, 0.015), {
+        q: qCarro, movil: true, despejable: true,
+      })),
+      ...[-1, 1].map((sx) => caja(`patin_carro_${sx}`, cadera.clone().addScaledVector(u, recorrido + grosorPlaca + 0.015).setX(sx * xCarril), new Vector3(0.035, 0.035, 0.19), {
+        q: qCarro, movil: true, despejable: sx < 0,
+      })),
     ],
   };
 }

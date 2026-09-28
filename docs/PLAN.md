@@ -161,7 +161,14 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   no junto a la ingle (con los brazos rectos el maniquí no da para más), y en la goblet la kettlebell
   queda algo baja y los antebrazos no llegan a verticales (límite de cómo se colocan las manos en los
   cuernos).
-- ⬜ R · Máquinas guiadas · S · Multipower.
+- ✅ **R · Máquinas guiadas:** un tipo `maquina` con `modelo` (prensa, extensión, curl tumbado);
+  `geometriaMaquina()` compartida, la parte móvil declarada por pose (`angulo` o `recorrido`) y una
+  comprobación de contacto rodillo/plataforma con la pierna. Las piezas que quedan delante del cuerpo
+  se vuelven translúcidas (`despejable`): la prensa tapaba al maniquí entero. Prensa de piernas,
+  extensión de cuádriceps y curl femoral tumbado; grupos nuevos extensión y flexión de rodilla, y
+  material «Máquina». Pendiente de mirar: la prensa baja a 85° y no a 90° (el tobillo no da más con la
+  planta plana) y las asas apenas se ven en el primer plano.
+- ⬜ S · Multipower.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

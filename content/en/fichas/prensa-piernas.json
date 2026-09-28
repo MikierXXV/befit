@@ -4,6 +4,7 @@
   "orden": 9,
   "nombre": "Leg press",
   "resumen": "Seated in the machine with your back supported, you push a platform with your feet until your legs are almost straight and lower it under control. It works the quads and glutes without loading your back with a bar.",
+  "movimiento_id": "prensa-piernas",
   "ejecucion": [
     "Adjust the back pad so that, with your feet on the platform, your knees are bent to about 90° or a bit more.",
     "Sit with your back and hips firmly against the back pad and place your feet on the platform hip-width apart, toes turned slightly out.",

@@ -4,6 +4,7 @@
   "orden": 1,
   "nombre": "Curl femoral tumbado",
   "resumen": "Tumbado boca abajo en la máquina, con el rodillo por encima de los talones, se doblan las rodillas llevando los talones hacia los glúteos y se bajan con control. Aísla los isquiotibiales.",
+  "movimiento_id": "curl-femoral-tumbado",
   "ejecucion": [
     "Túmbate boca abajo con las rodillas justo por fuera del borde del banco, alineadas con el eje de la máquina, y el rodillo sobre la parte baja de las pantorrillas, por encima de los talones.",
     "Coge las asas y apoya la cadera en el banco.",

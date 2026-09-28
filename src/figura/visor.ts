@@ -452,9 +452,10 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
      * se apoya el cuerpo y dónde tiene que tocarlo la parte móvil. Ver allí cada modelo.
      *
      * Acolchado con el material del banco y bastidor de metal. Las piezas móviles (palanca y rodillo,
-     * o carro y plataforma) se recolocan en cada fotograma con `moverMaquina`. Las de un lado
-     * (`lateral`) se hacen translúcidas cuando quedan delante, como los discos: la columna y el asa
-     * derecha, en la vista lateral, taparían justo la cadera y la rodilla.
+     * o carro y plataforma) se recolocan en cada fotograma con `moverMaquina`. Las `despejable` se
+     * hacen translúcidas cuando quedan delante, como los discos: la columna y el asa derecha, en la
+     * vista lateral, taparían justo la cadera y la rodilla; el carril de la prensa, los muslos; y
+     * su plataforma, en la frontal, el tronco entero.
      */
     const cojin = material(COLOR.banco, 0.9, 0);
     for (const p of geometriaMaquina(def).piezas as PiezaMaquina[]) {
@@ -468,7 +469,7 @@ function crearImplemento(def: { tipo: string; [k: string]: unknown }): THREE.Obj
       m.quaternion.copy(p.q);
       m.castShadow = true;
       m.receiveShadow = true;
-      m.userData.despejable = Boolean(p.lateral);
+      m.userData.despejable = Boolean(p.despejable);
       g.add(m);
     }
     g.userData.maquina = true;
@@ -498,7 +499,7 @@ interface PiezaMaquina {
   medio_largo?: number;
   material: string;
   movil?: boolean;
-  lateral?: boolean;
+  despejable?: boolean;
 }
 
 /**
