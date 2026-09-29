@@ -1,0 +1,47 @@
+{
+  "id": "zancada-kettlebell",
+  "grupo_id": "zancada",
+  "orden": 6,
+  "nombre": "Kettlebell reverse lunge",
+  "resumen": "The backward lunge holding a kettlebell in the goblet position, against the chest. Holding the weight in front usually makes it easier to keep the torso upright.",
+  "movimiento_id": "zancada-kettlebell",
+  "ejecucion": [
+    "Hold the kettlebell by both sides of the handle, bell down, and keep it against your chest with your elbows pointing down.",
+    "Standing with your feet hip-width apart, take a long step back with one leg.",
+    "Lower until your back knee is close to the floor, front knee over the foot and torso upright.",
+    "Push through your front foot to bring your feet back together, and alternate legs or finish the set on one.",
+    "If you lose balance stepping back, shorten the step or hold on to something with one hand."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "In a study of nineteen men, the loaded lunge activated the leg muscles more than the unloaded one, and the abstract found no differences between loading devices (it mentions barbell, dumbbells and kettlebell, although its description of the lunge conditions does not include the kettlebell). The lunge also activated the quadriceps and hamstrings more than the squat.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Loading Devices on Muscle Activation in Squat and Lunge",
+      "autor": "Wu et al., J Sport Rehabil, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30676181/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

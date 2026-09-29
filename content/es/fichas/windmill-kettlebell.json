@@ -1,0 +1,43 @@
+{
+  "id": "windmill-kettlebell",
+  "grupo_id": "core",
+  "orden": 15,
+  "nombre": "Molino con kettlebell",
+  "resumen": "De pie con la kettlebell arriba en una mano y el brazo estirado, se inclina el tronco hacia el lado contrario llevando la otra mano al pie, sin dejar de mirar la kettlebell. Trabaja oblicuos, cadera y estabilidad del hombro.",
+  "movimiento_id": "windmill-kettlebell",
+  "ejecucion": [
+    "Lleva la kettlebell al hombro con un clean o con las dos manos y empújala por encima de la cabeza, con el brazo estirado; pon los pies algo más abiertos que la cadera, con las puntas giradas unos 45° hacia el lado contrario a la kettlebell.",
+    "Mira la kettlebell y lleva la cadera hacia el lado de la kettlebell mientras el tronco se inclina hacia el otro lado.",
+    "Baja la mano libre por la cara interna de la pierna del lado libre, sin redondear la espalda, hasta donde llegues, idealmente hasta el pie; la pierna del lado de la kettlebell queda estirada y el brazo de arriba, siempre vertical.",
+    "Vuelve a subir con la cadera hasta quedar de pie; al terminar, cambia de lado.",
+    "Empieza sin peso o con uno muy ligero: si el brazo de arriba se inclina o el hombro molesta, no hay que cargar.",
+    "Al terminar, baja la kettlebell al hombro y luego al suelo con las dos manos."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "gluteo_medio"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "gluteo_mayor"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "deltoides_lateral",
+      "serrato",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el molino con kettlebell. El hombro tiene que sostener la carga arriba mientras el tronco se inclina y la cadera se mueve, así que exige movilidad y estabilidad; por eso aquí lo situamos después del press y del turkish get-up.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

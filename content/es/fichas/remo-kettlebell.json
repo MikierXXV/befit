@@ -1,0 +1,47 @@
+{
+  "id": "remo-kettlebell",
+  "grupo_id": "tiron-horizontal",
+  "orden": 10,
+  "nombre": "Remo con kettlebell a una mano",
+  "resumen": "Con una rodilla y una mano apoyadas en un banco, se tira de una kettlebell hacia la cadera con el codo pegado al cuerpo. Como el remo con mancuerna, con el peso colgando por debajo de la mano.",
+  "movimiento_id": "remo-kettlebell",
+  "ejecucion": [
+    "Apoya en el banco la rodilla y la mano del mismo lado, con la espalda recta y casi paralela al suelo, y el otro pie en el suelo.",
+    "Coge la kettlebell del suelo con la mano libre, con la palma hacia el cuerpo, y déjala colgar con el brazo estirado.",
+    "Tira llevando el codo hacia atrás, pegado al cuerpo, hasta que la kettlebell llegue a la altura de la cadera.",
+    "Baja con control hasta estirar el brazo; al terminar la serie, cambia de lado.",
+    "Si el tronco gira para subirla, baja el peso."
+  ],
+  "material": [
+    "kettlebell",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "oblicuos"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el remo con kettlebell en sí. Es el mismo gesto que el remo con mancuerna a una mano, y la diferencia principal es que el peso cuelga por debajo del asa en vez de quedar a los lados de la mano.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

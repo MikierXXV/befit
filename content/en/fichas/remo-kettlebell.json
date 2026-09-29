@@ -1,0 +1,47 @@
+{
+  "id": "remo-kettlebell",
+  "grupo_id": "tiron-horizontal",
+  "orden": 10,
+  "nombre": "One-arm kettlebell row",
+  "resumen": "With one knee and one hand on a bench, you row a kettlebell towards your hip with the elbow close to the body. Like the dumbbell row, with the weight hanging below the hand.",
+  "movimiento_id": "remo-kettlebell",
+  "ejecucion": [
+    "Rest the knee and hand of the same side on the bench, back straight and almost parallel to the floor, and the other foot on the floor.",
+    "Pick up the kettlebell with your free hand, palm facing your body, and let it hang with a straight arm.",
+    "Row by driving your elbow back, close to your body, until the kettlebell reaches hip height.",
+    "Lower under control until your arm is straight; when the set is done, switch sides.",
+    "If your torso rotates to lift it, lower the weight."
+  ],
+  "material": [
+    "kettlebell",
+    "banco"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "dorsal",
+      "trapecio_medio"
+    ],
+    "sinergista": [
+      "deltoides_posterior",
+      "biceps",
+      "antebrazo"
+    ],
+    "estabilizador": [
+      "erectores",
+      "oblicuos"
+    ]
+  },
+  "matices": "We have found no study measuring the kettlebell row itself. It is the same movement as the one-arm dumbbell row, the main difference being that the weight hangs below the handle instead of sitting on either side of the hand.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic Analysis of Latissimus Dorsi Activation During Common Resistance Training Exercises: A Narrative Review",
+      "autor": "Di Fonza et al., J Funct Morphol Kinesiol, 2026",
+      "url": "https://doi.org/10.3390/jfmk11030315"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

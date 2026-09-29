@@ -1,0 +1,50 @@
+{
+  "id": "clean-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 13,
+  "nombre": "One-arm kettlebell clean",
+  "resumen": "With a hip snap you bring the kettlebell from between your legs to the rack position, resting on the forearm next to the shoulder. It is the step before the press and the snatch.",
+  "movimiento_id": "clean-kettlebell",
+  "ejecucion": [
+    "Stand with the kettlebell on the floor between your feet and slightly in front, and grip it with one hand.",
+    "Push your hips back with a straight back and hike it back between your legs, as in the swing.",
+    "Drive your hips forward hard and, with your elbow close to your body, guide the kettlebell up close to the body, rotating your hand to catch it in the rack without it hitting your forearm.",
+    "In the rack, the elbow is tucked in, the wrist straight and the bell resting on the outside of the forearm.",
+    "To return, let the kettlebell drop between your legs pushing your hips back and repeat; when you finish, switch hands.",
+    "If the kettlebell hits your forearm, keep it closer to your body on the way up."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "trapecio_superior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "antebrazo",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "In a study of fourteen trained people comparing the one-arm swing, snatch and clean, the clean activated the opposite external oblique more than the swing, and the swing activated the vastus lateralis more than the clean. The authors conclude that all three work the whole body but demand different things of each muscle, and that they are not redundant.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographical Comparison of Muscle Activation Patterns Across Three Commonly Performed Kettlebell Exercises",
+      "autor": "Lyons et al., J Strength Cond Res, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28394829/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

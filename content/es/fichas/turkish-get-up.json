@@ -1,0 +1,52 @@
+{
+  "id": "turkish-get-up",
+  "grupo_id": "core",
+  "orden": 14,
+  "nombre": "Turkish get-up",
+  "resumen": "Desde tumbado boca arriba y con la kettlebell sujeta arriba con el brazo estirado, se levanta uno del suelo paso a paso hasta quedar de pie, y se vuelve por el mismo camino. Trabaja hombro y tronco a la vez.",
+  "movimiento_id": "turkish-get-up",
+  "ejecucion": [
+    "Túmbate de lado junto a la kettlebell, cógela con las dos manos, rueda boca arriba con ella pegada al pecho y súbela con las dos manos hasta estirar el brazo.",
+    "Túmbate boca arriba con la kettlebell en una mano, el brazo estirado hacia el techo, el codo bloqueado y la muñeca recta; la rodilla del mismo lado doblada y el pie apoyado, y el otro brazo y la otra pierna en el suelo, abiertos.",
+    "Sin dejar de mirar la kettlebell, incorpórate sobre el codo contrario y después sobre la mano.",
+    "Levanta la cadera y pasa la pierna estirada por debajo del cuerpo hasta apoyar la rodilla en el suelo, detrás de la mano.",
+    "Endereza el tronco quedando de rodillas y ponte de pie como en una zancada, con el brazo siempre vertical.",
+    "Vuelve al suelo deshaciendo los mismos pasos en orden inverso; ya tumbado, baja la kettlebell al pecho con las dos manos y rueda de lado para dejarla en el suelo. Al terminar, cambia de lado.",
+    "Aprende primero cada paso sin peso o con un zapato en equilibrio sobre el puño: si el brazo se inclina, la carga cae."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "triceps"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "serrato",
+      "trapecio_superior",
+      "deltoides_lateral",
+      "antebrazo"
+    ]
+  },
+  "matices": "En un estudio con doce personas con al menos un año de práctica, los hombros trabajaron sobre todo en el paso de tumbado a apoyado en el codo y en el de pasar la pierna por debajo. Los músculos del lado de la kettlebell trabajaron más cuando el otro brazo no ayudaba a sostener el cuerpo, y los autores destacan que conviene entrenar tanto la subida como la bajada.",
+  "fuentes": [
+    {
+      "titulo": "A descriptive analysis of shoulder muscle activities during individual stages of the Turkish Get-Up exercise",
+      "autor": "St-Onge et al., J Bodyw Mov Ther, 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30691756/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

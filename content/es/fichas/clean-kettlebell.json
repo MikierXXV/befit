@@ -1,0 +1,50 @@
+{
+  "id": "clean-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 13,
+  "nombre": "Clean con kettlebell a una mano",
+  "resumen": "Con un golpe de cadera se lleva la kettlebell desde entre las piernas hasta la posición de rack, apoyada en el antebrazo junto al hombro. Es el paso previo al press y al snatch.",
+  "movimiento_id": "clean-kettlebell",
+  "ejecucion": [
+    "Ponte de pie con la kettlebell en el suelo, entre los pies y algo por delante, y cógela con una mano.",
+    "Lleva la cadera atrás con la espalda recta y lánzala hacia atrás entre las piernas, como en el swing.",
+    "Extiende la cadera de golpe y, con el codo pegado al cuerpo, guía la kettlebell hacia arriba cerca del cuerpo, girando la mano para recibirla en el rack sin que golpee el antebrazo.",
+    "En el rack, el codo va pegado al costado, la muñeca recta y la bola apoyada en la parte de fuera del antebrazo.",
+    "Para volver, deja caer la kettlebell entre las piernas llevando la cadera atrás y repite; al terminar, cambia de mano.",
+    "Si la kettlebell te golpea el antebrazo, mantenla más pegada al cuerpo al subir."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "trapecio_superior",
+      "biceps"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "antebrazo",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "En un estudio con catorce personas entrenadas que comparó el swing, el snatch y el clean a una mano, el clean activó más el oblicuo externo del lado contrario que el swing, y el swing más el vasto lateral que el clean. Los autores concluyen que los tres trabajan todo el cuerpo pero exigen distinto a cada músculo, y que no son redundantes.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographical Comparison of Muscle Activation Patterns Across Three Commonly Performed Kettlebell Exercises",
+      "autor": "Lyons et al., J Strength Cond Res, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28394829/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

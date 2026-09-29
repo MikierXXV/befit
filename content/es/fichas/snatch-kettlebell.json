@@ -1,0 +1,58 @@
+{
+  "id": "snatch-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 15,
+  "nombre": "Snatch con kettlebell",
+  "resumen": "Con un solo golpe de cadera se lleva la kettlebell desde entre las piernas hasta arriba, con el brazo estirado sobre la cabeza. Uno de los ejercicios balísticos más técnicos con kettlebell.",
+  "movimiento_id": "snatch-kettlebell",
+  "ejecucion": [
+    "Aprende antes el swing a una mano y el clean: el snatch los combina.",
+    "Con los pies algo más abiertos que la cadera y la kettlebell un palmo por delante, coge el asa con una mano, lleva la cadera atrás y lanza la kettlebell hacia atrás entre las piernas.",
+    "Extiende la cadera de golpe y guía la kettlebell hacia arriba cerca del cuerpo; cuando pase la altura del pecho, mete la mano por el asa para recibirla arriba sin que golpee el antebrazo.",
+    "Arriba, el brazo queda estirado junto a la oreja, con la bola apoyada en el dorso del antebrazo y el cuerpo recto.",
+    "Para bajar, deja caer la kettlebell por delante, cerca del cuerpo, y lleva la cadera atrás solo cuando el brazo llegue al cuerpo; al terminar, cambia de mano.",
+    "Si la kettlebell golpea el antebrazo o el brazo no llega estirado arriba, practica antes el clean y el press.",
+    "Si pierdes el control arriba, no intentes salvarla: suéltala y apártate. Deja espacio libre alrededor.",
+    "Al terminar, deja que pierda impulso y apóyala en el suelo con la espalda recta."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "erectores",
+      "trapecio_superior",
+      "triceps"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "En un estudio con doce hombres entrenados que hicieron snatches con una kettlebell de 24 kg durante seis minutos, en el momento de máxima aceleración la fuerza sobre la kettlebell fue de unos 800-900 N, y la fuerza contra el suelo llegó a unos 1.750 N, repartida de forma distinta entre las piernas a lo largo de la repetición; la fuerza aplicada máxima bajó a lo largo de los seis minutos. En otro, el snatch activó más el oblicuo externo del lado contrario y menos los erectores que el swing a una mano.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographical Comparison of Muscle Activation Patterns Across Three Commonly Performed Kettlebell Exercises",
+      "autor": "Lyons et al., J Strength Cond Res, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28394829/"
+    },
+    {
+      "titulo": "External kinetics of the kettlebell snatch in amateur lifters",
+      "autor": "Ross et al., PeerJ, 2017",
+      "url": "https://doi.org/10.7717/peerj.3111"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

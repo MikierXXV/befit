@@ -174,8 +174,15 @@ ejercicio en paralelo, cada uno en su worktree, y se revisa la hoja antes de pub
   y press de banca en multipower; material «Multipower / Smith machine». La revisión cazó un fallo de
   seguridad en la ficha del press: decía «ojos bajo la barra», que con barra guiada la bajaría sobre
   la cara.
-- ⬜ **Cierre de la etapa B:** rutinas «En casa sin material», «Solo mancuernas» y «Máquinas para
-  empezar», y repaso de las tres que hay. Después, la revisión final con Migue de la lista pendiente.
+- ✅ **Rutinas:** «En casa sin material», «Solo mancuernas» y «Máquinas para empezar», y en «Torso y
+  pierna» el hip thrust ocupa el sitio del puente de glúteo.
+- ✅ **T · Más kettlebell (pedido por Migue):** remo a una mano, clean, swing a una mano, snatch,
+  zancada inversa goblet, peso muerto sumo, turkish get-up y molino. El cartel puede encuadrarse
+  solo por su fase (`cartel.encuadre: "fase"`): el del get-up salía vacío. Pendiente de mirar: en el
+  get-up la rodilla baja por delante de la mano y no hay «limpiaparabrisas» de la pierna; en el
+  molino la mano llega a la espinilla y no al pie, y de perfil se parece a una bisagra (la columna no
+  gira más de 45°).
+- ⬜ Revisión final con Migue de la lista pendiente.
 - ✅ **Repaso de las hojas J–M:** el remo Pendlay estaba mal (la barra atravesaba los muslos y se
   quedaba en las rodillas, con la cadera baja y los muslos casi horizontales) y se rehízo con la
   cadera alta y atrás; el rumano con mancuernas bajaba a 84° con la espalda y la cabeza colgando, y

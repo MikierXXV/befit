@@ -1,0 +1,54 @@
+{
+  "id": "swing-kettlebell-una-mano",
+  "grupo_id": "bisagra-cadera",
+  "orden": 14,
+  "nombre": "One-arm kettlebell swing",
+  "resumen": "The swing with one hand on the handle: the same hip snap, but the trunk has to resist the rotation caused by the load on one side.",
+  "movimiento_id": "swing-kettlebell-una-mano",
+  "ejecucion": [
+    "Stand with your feet slightly wider than your hips and the kettlebell on the floor, a hand’s length in front, and grip it with one hand.",
+    "With a straight back, push your hips back and hike it back between your legs; the bell travels high, close to the groin.",
+    "Drive your hips forward hard so it swings up on a straight arm to chest height, shoulders square, without your torso rotating towards the kettlebell.",
+    "At the top, stand tall as in a plank, without leaning back; let it fall and repeat.",
+    "When you finish, let it lose momentum and set it down with a straight back; switch hands.",
+    "If your torso rotates or your back rounds at the bottom, go back to the two-handed swing."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "intermedio",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "erectores",
+      "gluteo_medio"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "antebrazo",
+      "deltoides_anterior"
+    ]
+  },
+  "matices": "In a study of fourteen trained people, the one-arm swing activated the erectors more than the snatch and the vastus lateralis more than the clean. Another, in twenty-three people, measured two-handed and one-arm swings together and found gluteus maximus (around 75 %) and biceps femoris (79 %) activation of their maximum. With one hand, the load on one side also forces you to resist trunk rotation.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographical Comparison of Muscle Activation Patterns Across Three Commonly Performed Kettlebell Exercises",
+      "autor": "Lyons et al., J Strength Cond Res, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28394829/"
+    },
+    {
+      "titulo": "EMG Analysis and Sagittal Plane Kinematics of the Two-Handed and Single-Handed Kettlebell Swing: A Descriptive Study",
+      "autor": "Van Gelder et al., Int J Sports Phys Ther, 2015",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26618061/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

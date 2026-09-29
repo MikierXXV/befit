@@ -1,0 +1,53 @@
+{
+  "id": "peso-muerto-sumo-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 16,
+  "nombre": "Kettlebell sumo deadlift",
+  "resumen": "With the feet wide and the toes turned out, you lift a kettlebell off the floor from between your feet, both hands on the handle. The torso is more upright than in the regular deadlift.",
+  "movimiento_id": "peso-muerto-sumo-kettlebell",
+  "ejecucion": [
+    "Stand with your feet well wider than your shoulders, toes turned out and the kettlebell on the floor between your feet.",
+    "Go down with your hips back and knees out, following your feet, chest up, until you can grip the handle with both hands and straight arms.",
+    "Stand up by pushing the floor away and driving your hips forward until you are upright, the kettlebell hanging between your legs.",
+    "Lower along the same path until it rests on the floor.",
+    "If your knees cave in as you stand up, narrow your stance slightly or lower the weight."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "cuadriceps"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "We have found no study measuring the kettlebell sumo deadlift itself. A review of the deadlift and its variations found that, overall, the erectors and quadriceps are more active than the gluteus maximus and biceps femoris, although it does not single out the kettlebell sumo; and a study comparing the barbell sumo and conventional deadlifts found no difference in the adductors. The roles here describe the movement, not a measurement.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano and Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

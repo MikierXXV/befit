@@ -1,0 +1,43 @@
+{
+  "id": "windmill-kettlebell",
+  "grupo_id": "core",
+  "orden": 15,
+  "nombre": "Kettlebell windmill",
+  "resumen": "Standing with the kettlebell held overhead on a straight arm, you lean the torso to the opposite side, bringing the other hand to the foot, eyes on the kettlebell. It works the obliques, the hips and shoulder stability.",
+  "movimiento_id": "windmill-kettlebell",
+  "ejecucion": [
+    "Clean the kettlebell or bring it to your shoulder with both hands, then press it overhead with a straight arm; set your feet slightly wider than your hips, toes turned about 45° away from the kettlebell side.",
+    "Look at the kettlebell and push your hips towards the kettlebell side as your torso leans to the other side.",
+    "Slide your free hand down the inside of the free-side leg, without rounding your back, as far as you can, ideally to your foot; the leg on the kettlebell side stays straight and the top arm always vertical.",
+    "Come back up with your hips until you are standing; when you finish, switch sides.",
+    "Start without weight or with a very light one: if the top arm tilts or the shoulder hurts, do not load it.",
+    "When you finish, lower the kettlebell to your shoulder, then to the floor with both hands."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "gluteo_medio"
+    ],
+    "sinergista": [
+      "isquiotibiales",
+      "gluteo_mayor"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "deltoides_lateral",
+      "serrato",
+      "trapecio_superior"
+    ]
+  },
+  "matices": "We have found no study measuring the kettlebell windmill. The shoulder has to hold the load overhead while the torso leans and the hips move, so it demands mobility and stability; that is why we place it after the press and the Turkish get-up.",
+  "fuentes": [
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

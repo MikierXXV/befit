@@ -242,7 +242,10 @@ Pasó: un cartel corregido seguía saliendo mal en el catálogo tres capturas se
    Las `etiqueta` de las poses son los rótulos de la línea de tiempo: solo en los hitos, no en las
    poses de paso, y sin repetir la misma dos veces seguidas. Si dos caen cerca, la ficha las reparte
    en dos filas; `npm run etapas` avisa si ni así caben.
-6. `npm run carteles` para el cartel del catálogo.
+6. `npm run carteles` para el cartel del catálogo. Si el movimiento cruza mucho espacio (el turkish
+   get-up va de tumbado a de pie), el cartel encuadrado por el ciclo entero deja al maniquí diminuto
+   y el generador lo da por vacío: se pone `"cartel": { "fase": …, "encuadre": "fase" }` y el cartel
+   se encuadra solo por esa pose. La ficha sigue encuadrando el ciclo, para que la cámara no se mueva.
 7. Los pasos de `ejecucion` son también la alternativa para quien no ve el maniquí: tienen que
    bastar por sí solos.
 

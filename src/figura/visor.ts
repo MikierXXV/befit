@@ -26,7 +26,7 @@ export interface Movimiento {
   /* En qué punto del ciclo se le ve mejor, para la imagen fija del catálogo. Por defecto el
      principio, que es lo que vale para casi todos; pero hay movimientos cuyo primer fotograma no
      dice nada —el press Pallof empieza con las manos pegadas al pecho, igual que estar de pie—. */
-  cartel?: { fase?: number };
+  cartel?: { fase?: number; encuadre?: 'ciclo' | 'fase' };
   duracion: number;
   camara: { vista: Vista; detalle?: string; proporcion?: string };
   implementos?: Record<string, { tipo: string; [k: string]: unknown }>;
@@ -150,8 +150,16 @@ export async function crearVisor(lienzo: HTMLCanvasElement) {
   let medio = new THREE.Vector3(0.5, 0.9, 0.5);
   function medirCiclo(mov: Movimiento) {
     const caja = new THREE.Box3();
-    for (let n = 0; n < 8; n += 1) {
-      posar(n / 8);
+    /*
+     * El cartel de un movimiento que cruza mucho espacio se encuadra solo por su fase. El turkish
+     * get-up va de tumbado a de pie con la kettlebell arriba: encuadrado por el ciclo entero, el
+     * maniquí ocupaba el 2 % del cartel y el generador lo daba por vacío. Solo en el cartel: en la
+     * ficha la cámara sigue quieta todo el ciclo, que es lo que evita que se mueva al animar.
+     */
+    const soloFase = paraCartel && mov.cartel?.encuadre === 'fase';
+    const fases = soloFase ? [mov.cartel?.fase ?? 0] : Array.from({ length: 8 }, (_, n) => n / 8);
+    for (const f of fases) {
+      posar(f);
       modelo.updateMatrixWorld(true);
       modelo.traverse((o) => {
         if (!(o instanceof THREE.SkinnedMesh)) return;

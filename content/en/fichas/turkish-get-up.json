@@ -1,0 +1,52 @@
+{
+  "id": "turkish-get-up",
+  "grupo_id": "core",
+  "orden": 14,
+  "nombre": "Turkish get-up",
+  "resumen": "From lying on your back with the kettlebell held up on a straight arm, you get up from the floor step by step until you are standing, and go back the same way. It works the shoulder and trunk together.",
+  "movimiento_id": "turkish-get-up",
+  "ejecucion": [
+    "Lie on your side next to the kettlebell, grip it with both hands, roll onto your back holding it against your chest and press it up with both hands until your arm is straight.",
+    "Lie on your back with the kettlebell in one hand, arm straight towards the ceiling, elbow locked and wrist straight; the knee on that side bent and foot flat, and the other arm and leg on the floor, out to the side.",
+    "Keeping your eyes on the kettlebell, come up onto the opposite elbow and then onto the hand.",
+    "Lift your hips and sweep the straight leg under your body until your knee rests on the floor behind your hand.",
+    "Straighten your torso into a kneeling position and stand up as in a lunge, arm always vertical.",
+    "Return to the floor reversing the same steps in order; once lying down, bring the kettlebell to your chest with both hands and roll onto your side to set it down. When you finish, switch sides.",
+    "Learn each step first without weight or with a shoe balanced on your fist: if the arm tilts, the load falls."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "oblicuos",
+      "abdomen"
+    ],
+    "sinergista": [
+      "gluteo_mayor",
+      "cuadriceps",
+      "triceps"
+    ],
+    "estabilizador": [
+      "deltoides_anterior",
+      "serrato",
+      "trapecio_superior",
+      "deltoides_lateral",
+      "antebrazo"
+    ]
+  },
+  "matices": "In a study of twelve people with at least a year of practice, the shoulders worked hardest in the step from lying to the elbow and in the leg sweep. The muscles on the kettlebell side worked more when the other arm was not helping to support the body, and the authors stress training both the way up and the way down.",
+  "fuentes": [
+    {
+      "titulo": "A descriptive analysis of shoulder muscle activities during individual stages of the Turkish Get-Up exercise",
+      "autor": "St-Onge et al., J Bodyw Mov Ther, 2019",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30691756/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

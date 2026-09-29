@@ -1,0 +1,58 @@
+{
+  "id": "snatch-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 15,
+  "nombre": "Kettlebell snatch",
+  "resumen": "With a single hip snap you take the kettlebell from between your legs all the way overhead, arm straight. One of the most technical ballistic kettlebell exercises.",
+  "movimiento_id": "snatch-kettlebell",
+  "ejecucion": [
+    "Learn the one-arm swing and the clean first: the snatch combines them.",
+    "With your feet slightly wider than your hips and the kettlebell a hand’s length in front, grip the handle with one hand, push your hips back and hike the kettlebell back between your legs.",
+    "Drive your hips forward hard and guide the kettlebell up close to the body; as it passes chest height, punch your hand through the handle to catch it overhead without it hitting your forearm.",
+    "At the top, your arm is straight by your ear, with the bell resting on the back of your forearm and your body straight.",
+    "To lower, let the kettlebell drop in front, close to your body, and push your hips back only when your arm reaches your body; when you finish, switch hands.",
+    "If the kettlebell hits your forearm or your arm does not end up straight overhead, practise the clean and the press first.",
+    "If you lose control overhead, don’t try to save it: let go and step away. Keep the area around you clear.",
+    "When you finish, let it lose momentum and set it down with a straight back."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "avanzado",
+  "descanso": 120,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "isquiotibiales"
+    ],
+    "sinergista": [
+      "deltoides_anterior",
+      "erectores",
+      "trapecio_superior",
+      "triceps"
+    ],
+    "estabilizador": [
+      "oblicuos",
+      "abdomen",
+      "serrato",
+      "antebrazo"
+    ]
+  },
+  "matices": "In a study of twelve trained men doing snatches with a 24 kg kettlebell for six minutes, at peak acceleration the force on the kettlebell was about 800-900 N, and the ground force reached about 1,750 N, spread differently between the legs through the repetition; peak applied force dropped over the six minutes. In another, the snatch activated the opposite external oblique more and the erectors less than the one-arm swing.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographical Comparison of Muscle Activation Patterns Across Three Commonly Performed Kettlebell Exercises",
+      "autor": "Lyons et al., J Strength Cond Res, 2017",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28394829/"
+    },
+    {
+      "titulo": "External kinetics of the kettlebell snatch in amateur lifters",
+      "autor": "Ross et al., PeerJ, 2017",
+      "url": "https://doi.org/10.7717/peerj.3111"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4th ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

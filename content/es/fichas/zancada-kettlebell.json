@@ -1,0 +1,47 @@
+{
+  "id": "zancada-kettlebell",
+  "grupo_id": "zancada",
+  "orden": 6,
+  "nombre": "Zancada inversa con kettlebell",
+  "resumen": "La zancada hacia atrás sosteniendo una kettlebell en posición goblet, contra el pecho. Llevar el peso delante suele facilitar mantener el tronco erguido.",
+  "movimiento_id": "zancada-kettlebell",
+  "ejecucion": [
+    "Coge la kettlebell por los dos lados del asa, con la bola hacia abajo, y pégala al pecho con los codos hacia abajo.",
+    "De pie con los pies a la anchura de la cadera, da un paso largo hacia atrás con una pierna.",
+    "Baja hasta que la rodilla de atrás quede cerca del suelo, con la rodilla de delante sobre el pie y el tronco recto.",
+    "Empuja con el pie de delante para volver a juntar los pies, y alterna las piernas o termina la serie con una.",
+    "Si pierdes el equilibrio al dar el paso atrás, acórtalo o apóyate en algo con una mano."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "musculos": {
+    "principal": [
+      "cuadriceps",
+      "gluteo_mayor"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "soleo"
+    ],
+    "estabilizador": [
+      "gluteo_medio",
+      "abdomen",
+      "erectores"
+    ]
+  },
+  "matices": "En un estudio con diecinueve hombres, la zancada con carga activó los músculos de la pierna más que sin carga, y el resumen no encontró diferencias entre implementos (menciona barra, mancuernas y kettlebell, aunque al describir las condiciones de la zancada no incluye la kettlebell). La zancada activó también más el cuádriceps y los isquiotibiales que la sentadilla.",
+  "fuentes": [
+    {
+      "titulo": "Effect of Loading Devices on Muscle Activation in Squat and Lunge",
+      "autor": "Wu et al., J Sport Rehabil, 2020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30676181/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "id": "peso-muerto-sumo-kettlebell",
+  "grupo_id": "bisagra-cadera",
+  "orden": 16,
+  "nombre": "Peso muerto sumo con kettlebell",
+  "resumen": "Con los pies muy abiertos y las puntas hacia fuera, se levanta una kettlebell del suelo, entre los pies, con las dos manos en el asa. El tronco va más erguido que en el peso muerto normal.",
+  "movimiento_id": "peso-muerto-sumo-kettlebell",
+  "ejecucion": [
+    "Ponte de pie con los pies bastante más abiertos que los hombros, las puntas hacia fuera y la kettlebell en el suelo, entre los pies.",
+    "Baja con la cadera atrás y las rodillas hacia fuera, siguiendo a los pies, con el pecho alto, hasta coger el asa con las dos manos y los brazos estirados.",
+    "Sube empujando el suelo y llevando la cadera adelante hasta quedar de pie, con la kettlebell colgando entre las piernas.",
+    "Baja por el mismo camino hasta apoyarla en el suelo.",
+    "Si las rodillas se van hacia dentro al subir, cierra un poco los pies o baja el peso."
+  ],
+  "material": [
+    "kettlebell"
+  ],
+  "nivel": "inicial",
+  "descanso": 90,
+  "musculos": {
+    "principal": [
+      "gluteo_mayor",
+      "cuadriceps"
+    ],
+    "sinergista": [
+      "aductores",
+      "isquiotibiales",
+      "erectores"
+    ],
+    "estabilizador": [
+      "abdomen",
+      "antebrazo",
+      "trapecio_medio"
+    ]
+  },
+  "matices": "No hemos encontrado estudios que midan el peso muerto sumo con kettlebell en sí. Una revisión sobre el peso muerto y sus variantes encontró que, en conjunto, los erectores y el cuádriceps se activan más que el glúteo mayor y el bíceps femoral, aunque no separa el sumo con kettlebell; y un estudio que comparó el sumo con barra y el convencional no vio diferencias en los aductores. Los roles de aquí describen el gesto, no una medición.",
+  "fuentes": [
+    {
+      "titulo": "Electromyographic activity in deadlift exercise and its variants. A systematic review",
+      "autor": "Martín-Fuentes, Oliva-Lozano y Muyor, PLOS ONE, 2020",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0229507"
+    },
+    {
+      "titulo": "An electromyographic analysis of sumo and conventional style deadlifts",
+      "autor": "Escamilla et al., Med Sci Sports Exerc, 2002",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11932579/"
+    },
+    {
+      "titulo": "Essentials of Strength Training and Conditioning (4.ª ed.)",
+      "autor": "National Strength and Conditioning Association"
+    }
+  ]
+}
