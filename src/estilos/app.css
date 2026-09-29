@@ -741,6 +741,7 @@ html { scroll-padding-top: calc(var(--alto-barra) + var(--e3)); }
 
 .vacio { display: grid; justify-items: start; gap: var(--e4); padding-block: var(--e8); color: var(--texto-secundario); }
 .vacio p { margin: 0; max-width: var(--medida-corta); }
+.vacio .fila { display: flex; flex-wrap: wrap; gap: var(--e3); }
 
 /*
  * El pie. Va en TODAS las pantallas, no solo en el catálogo: a una ficha se llega por enlace
@@ -1405,3 +1406,119 @@ body.con-descanso { padding-bottom: 7.5rem; }
   .favorito { width: 48px; min-height: 48px; }
   .quitar { min-height: 36px; }
 }
+
+/* ---------------------------------------------------------------- calendario -- */
+
+/* `.agenda` y no `.calendario`: ese nombre ya lo tiene la cuadrícula de días de «Progreso», y
+   compartirlo le pasaba su rejilla de 26 columnas a esta vista entera. */
+
+.agenda { max-width: var(--medida-texto); padding-block: var(--e6) 0; }
+.agenda h2 { font-size: var(--t-medio); margin-bottom: var(--e3); }
+.agenda .ayuda { color: var(--texto-secundario); font-size: var(--t-pequeno); }
+
+/*
+ * La barra: semana o mes, las flechas con el periodo en medio, y volver a hoy. En el móvil van en
+ * dos filas; en una sola, el título quedaba de 5 rem y el rango de fechas partía en tres líneas.
+ */
+.cal-barra { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e3); margin-bottom: var(--e4); }
+.cal-modo { display: flex; gap: var(--e2); }
+.cal-modo [aria-current] { border-color: var(--accion); font-weight: var(--peso-semibold); }
+.cal-paso { display: flex; align-items: center; gap: var(--e2); flex: 1 1 100%; order: 3; }
+.cal-titulo { flex: 1; margin: 0; text-align: center; font-size: var(--t-base) !important; }
+.cal-titulo::first-letter { text-transform: uppercase; }
+.cal-barra > .boton { margin-left: auto; }
+@media (min-width: 40rem) { .cal-paso { flex: 1 1 auto; order: 0; } }
+
+.cal-semana { list-style: none; margin: 0 0 var(--e8); padding: 0; display: grid; gap: var(--e3); }
+.cal-dia {
+  display: grid;
+  gap: var(--e2);
+  padding: var(--e3) var(--e4);
+  border: 1px solid var(--separador);
+  border-left-width: 4px;
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+}
+.cal-dia[aria-current] { border-color: var(--borde-interactivo); }
+.cal-dia[data-estado='descanso'] { background: transparent; }
+.cal-dia[data-pasado][data-estado='descanso'] { opacity: 0.7; }
+.cal-dia-cabeza { display: flex; justify-content: space-between; align-items: baseline; gap: var(--e3); }
+.cal-dia-cabeza h3 { margin: 0; font-size: var(--t-base); }
+/* En bloque en línea: `::first-letter` no se aplica a un elemento en línea, y salía «lunes». */
+.cal-dia-cabeza .dia-semana { display: inline-block; }
+.cal-dia-cabeza .dia-semana::first-letter { text-transform: uppercase; }
+.cal-dia-cabeza .dia-numero { margin-left: var(--e2); color: var(--texto-secundario); font-weight: 400; }
+.cal-estado { color: var(--texto-secundario); font-size: var(--t-micro); text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+.cal-plan { margin: 0; }
+.cal-plan .rutina { color: var(--texto-secundario); }
+.cal-cambio {
+  margin-right: var(--e2);
+  text-transform: none;
+  letter-spacing: normal;
+  padding: 0 var(--e2);
+  border: 1px solid var(--separador);
+  border-radius: 999px;
+  color: var(--texto-secundario);
+  font-size: var(--t-micro);
+}
+.cal-ejercicios { margin: 0; padding-left: var(--e4); color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.cal-ejercicios[data-hechos] { color: var(--texto); }
+.cal-ejercicios .cuantas { color: var(--texto-secundario); font-variant-numeric: tabular-nums; }
+.cal-dia > .boton { justify-self: start; }
+.cal-cambiar summary { cursor: pointer; color: var(--texto-secundario); font-size: var(--t-pequeno); width: fit-content; }
+.cal-cambiar .campo { margin-top: var(--e2); }
+
+/*
+ * El estado se marca con el borde izquierdo en la semana y con un punto en el mes, SIEMPRE junto a
+ * su palabra («Hecho», «No hecho»). Los puntos se distinguen por FORMA y no solo por tono —lleno,
+ * medio, raya, aro—: en la primera versión «toca entrenar» y «entreno libre» eran dos grises que no
+ * se distinguían. El naranja de la acción queda para lo hecho, que es el avance.
+ */
+.cal-dia[data-estado='completo'] { --estado: var(--accion); }
+.cal-dia[data-estado='parcial'] { --estado: color-mix(in oklab, var(--accion) 50%, var(--separador)); }
+.cal-dia[data-estado='libre'] { --estado: var(--texto); }
+.cal-dia[data-estado='futuro'] { --estado: var(--borde-interactivo); }
+.cal-dia { border-left-color: var(--estado, var(--separador)); }
+
+.cal-mes { display: grid; gap: var(--e1); margin-bottom: var(--e4); }
+.cal-mes-fila { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--e1); }
+.cal-mes-cabeza { color: var(--texto-secundario); font-size: var(--t-micro); text-align: center; text-transform: uppercase; }
+.cal-mes-cabeza abbr { text-decoration: none; }
+.cal-celda {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: var(--e1);
+  min-height: 3.25rem;
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+.cal-celda:hover { border-color: var(--borde-interactivo); }
+.cal-celda[data-fuera] { opacity: 0.4; }
+.cal-celda[aria-current] { border-color: var(--accion); font-weight: var(--peso-semibold); }
+.punto-estado { width: 0.5rem; height: 0.5rem; border-radius: 50%; }
+[data-estado='completo'] > .punto-estado, .punto-estado[data-estado='completo'] { background: var(--accion); }
+[data-estado='parcial'] > .punto-estado, .punto-estado[data-estado='parcial'] {
+  background: linear-gradient(90deg, var(--accion) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--accion);
+}
+[data-estado='nulo'] > .punto-estado, .punto-estado[data-estado='nulo'] {
+  /* Una raya: lo que faltó. El margen la deja a la altura del centro de los puntos. */
+  height: 2px;
+  margin-block: calc((0.5rem - 2px) / 2);
+  border-radius: 1px;
+  background: var(--texto-secundario);
+}
+[data-estado='futuro'] > .punto-estado, .punto-estado[data-estado='futuro'] { box-shadow: inset 0 0 0 1.5px var(--texto-secundario); }
+[data-estado='libre'] > .punto-estado, .punto-estado[data-estado='libre'] { background: var(--texto); }
+.cal-leyenda { list-style: none; margin: 0 0 var(--e8); padding: 0; display: flex; flex-wrap: wrap; gap: var(--e2) var(--e4); color: var(--texto-secundario); font-size: var(--t-pequeno); }
+.cal-leyenda li { display: flex; align-items: center; gap: var(--e2); }
+
+.tu-semana { margin-bottom: var(--e8); }
+.tu-semana > .campo { max-width: 24rem; margin-bottom: var(--e4); }
+.semana-dias { list-style: none; margin: 0 0 var(--e4); padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: var(--e3); }
+.semana-dias label::first-letter { text-transform: uppercase; }

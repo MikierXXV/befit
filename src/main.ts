@@ -21,6 +21,7 @@ import { alCambiarRuta, enlace, irA, rutaActual, type Ruta } from './app/rutas';
 import { alCambiarTema, cambiarTema, temaActual } from './app/tema';
 import { ICONOS } from './app/iconos';
 import { t } from './app/textos';
+import { montarCalendario } from './app/vistas/calendario';
 import { montarDatos } from './app/vistas/datos';
 import { fechaDeHoy, montarHoy } from './app/vistas/hoy';
 import { montarProgreso } from './app/vistas/progreso';
@@ -504,6 +505,7 @@ function cabecera(ruta: Ruta): string {
       <nav aria-label="${t('ui.navegacion')}">
         <a href="${enlace({ vista: 'hoy', filtros: {} })}" ${actual(ruta.vista === 'hoy')}>${t('hoy.titulo')}</a>
         <a href="${enlace({ vista: 'rutinas', filtros: {} })}" ${actual(ruta.vista === 'rutinas' || ruta.vista === 'rutina')}>${t('rutinas.titulo')}</a>
+        <a class="solo-amplio" href="${enlace({ vista: 'calendario', filtros: {} })}" ${actual(ruta.vista === 'calendario')}>${t('calendario.titulo')}</a>
         <a class="solo-amplio" href="${enlace({ vista: 'progreso', filtros: {} })}" ${actual(ruta.vista === 'progreso')}>${t('progreso.titulo')}</a>
         <!--
           En el móvil, favoritos se queda en la estrella. El nombre va en aria-label, con la cuenta, y
@@ -529,6 +531,7 @@ function cabecera(ruta: Ruta): string {
       </div>
       <div class="menu-app" id="menu-app" hidden>
         <ul>
+          <li><a href="${enlace({ vista: 'calendario', filtros: {} })}" ${actual(ruta.vista === 'calendario')}>${ICONOS.calendario}<span>${t('calendario.titulo')}</span></a></li>
           <li><a href="${enlace({ vista: 'progreso', filtros: {} })}" ${actual(ruta.vista === 'progreso')}>${ICONOS.progreso}<span>${t('progreso.titulo')}</span></a></li>
           <li><a href="${enlace({ vista: 'datos', filtros: {} })}" ${actual(ruta.vista === 'datos')}>${ICONOS.documento}<span>${t('datos.titulo')}</span></a></li>
           <li><button type="button" data-accion="idioma">${ICONOS.idioma}<span>${t('ui.otro_idioma')}</span></button></li>
@@ -641,6 +644,10 @@ function pintarVista(ruta: Ruta): void {
     ponerPortada(t('progreso.titulo'), t('progreso.entradilla'));
     sitio.innerHTML = `<div class="progreso"></div>${aviso()}`;
     montarProgreso(sitio.querySelector<HTMLElement>('.progreso')!);
+  } else if (ruta.vista === 'calendario') {
+    ponerPortada(t('calendario.titulo'), t('calendario.entradilla'));
+    sitio.innerHTML = `<div class="agenda"></div>${aviso()}`;
+    montarCalendario(sitio.querySelector<HTMLElement>('.agenda')!, ruta);
   } else if (ruta.vista === 'rutinas') {
     ponerPortada(t('rutinas.titulo'), t('rutinas.entradilla'));
     sitio.innerHTML = `<div class="rutinas"></div>${aviso()}`;

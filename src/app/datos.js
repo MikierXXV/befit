@@ -12,6 +12,7 @@
  * cual, y el compilador lo lee igual gracias a `allowJs` y a `@ts-check`.
  */
 
+import { calendarioVacio, fusionarCalendario, normalizarCalendario } from './calendario.js';
 import { normalizarPlan, normalizarRutina } from './rutinas.js';
 
 /** Sube cuando cambie la forma de los datos, y con ella una migración en `migrar()`. */
@@ -38,11 +39,12 @@ export const VERSION = 1;
  *   ejercicio. Solo los que ha cambiado: el resto sale del contenido.
  * @property {import('./rutinas.js').Rutina[]} rutinas  Las del visitante. Las de inicio son contenido.
  * @property {import('./rutinas.js').Plan | null} plan  El día de rutina elegido para hoy, si hay.
+ * @property {import('./calendario.js').Calendario} calendario  La semana planificada y sus cambios.
  */
 
 /** @returns {Datos} */
 export function vacio() {
-  return { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null };
+  return { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null, calendario: calendarioVacio() };
 }
 
 const esTexto = (/** @type {unknown} */ x) => typeof x === 'string' && x.length > 0;
@@ -92,6 +94,7 @@ export function migrar(crudo, favoritosViejos) {
     datos.descansos = normalizarDescansos(origen.descansos);
     if (Array.isArray(origen.rutinas)) datos.rutinas = unicasPorId(origen.rutinas.map(normalizarRutina).filter(esRutina));
     datos.plan = normalizarPlan(origen.plan);
+    datos.calendario = normalizarCalendario(origen.calendario);
   } else if (Array.isArray(favoritosViejos)) {
     datos.favoritos = unicos(favoritosViejos.filter(esTexto));
   }
@@ -158,6 +161,8 @@ export function fusionar(actuales, importados) {
       rutinas: [...actuales.rutinas, ...rutinasNuevas],
       // El plan no viaja: es lo que se eligió hacer hoy EN ESTE móvil.
       plan: actuales.plan,
+      // El calendario sí viaja —es un plan de semanas, no de hoy—, pero manda el de este móvil.
+      calendario: fusionarCalendario(actuales.calendario, importados.calendario),
     },
     nuevosFavoritos: favoritos.length - actuales.favoritos.length,
     nuevasSeries: nuevas.length,

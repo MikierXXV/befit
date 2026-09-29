@@ -345,6 +345,38 @@
     "favoritos": "Favoritos",
     "sin_resultados": "Ningún ejercicio coincide con la búsqueda."
   },
+  "calendario": {
+    "titulo": "Calendario",
+    "entradilla": "Qué toca cada día y qué has hecho. Planifica la semana una vez y se repite sola.",
+    "vista": "Vista del calendario",
+    "semana": "Semana",
+    "mes": "Mes",
+    "anterior_semana": "Semana anterior",
+    "siguiente_semana": "Semana siguiente",
+    "anterior_mes": "Mes anterior",
+    "siguiente_mes": "Mes siguiente",
+    "volver_hoy": "Hoy",
+    "rango": "{desde} – {hasta}",
+    "estado": {
+      "completo": "Hecho",
+      "parcial": "A medias",
+      "nulo": "No hecho",
+      "libre": "Entreno libre",
+      "futuro": "Toca entrenar",
+      "descanso": "Descanso"
+    },
+    "cambiado": "Cambiado",
+    "ir_hoy": "Ir a «Hoy»",
+    "cambiar": "Cambiar este día",
+    "como_semana": "Como en tu semana",
+    "tu_semana": "Tu semana",
+    "sin_semana": "Aún no has planificado la semana. Elige una rutina y se repartirán sus días; después puedes mover cada uno. Se repite cada semana, y el día que toca aparece solo en «Hoy».",
+    "ayuda_semana": "Se repite cada semana, y el día que toca aparece solo en «Hoy». Para mover un día suelto, cámbialo en su fecha.",
+    "rutina": "Rutina",
+    "elige_rutina": "Elige una rutina",
+    "quitar": "Quitar la planificación",
+    "planificar": "Planificar en el calendario"
+  },
   "pie": {
     "derechos": "© {anio} befit",
     "creditos": "Maniquí 3D de Quaternius (CC0) · Mapa muscular de body-muscles (Apache 2.0) · Tipografías Inter y Newsreader (SIL OFL)"

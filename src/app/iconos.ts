@@ -23,6 +23,8 @@ export const ICONOS = {
   luna: svg('<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/>'),
   /** Tres barras que suben: el progreso. */
   progreso: svg('<path d="M5 20v-6M12 20V9M19 20V4"/><path d="M3 20h18"/>'),
+  /** Una hoja de calendario con sus dos anillas: el calendario. */
+  calendario: svg('<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>'),
   /** Tres rayas: el menú con lo que no cabe en la barra del móvil. */
   menu: svg('<path d="M4 7h16M4 12h16M4 17h16"/>'),
   /** Aspa: cerrar el menú. */

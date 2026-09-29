@@ -11,10 +11,12 @@
  */
 
 export interface Ruta {
-  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos' | 'hoy' | 'rutinas' | 'rutina' | 'progreso';
+  vista: 'catalogo' | 'ficha' | 'favoritos' | 'datos' | 'hoy' | 'rutinas' | 'rutina' | 'progreso' | 'calendario';
   id?: string;
   /** En una rutina del visitante: su pantalla de edición. */
   editar?: boolean;
+  /** En el calendario: la semana (por defecto) o el mes entero. La fecha va en `id`. */
+  modo?: 'semana' | 'mes';
   /** Una rutina que llega por enlace, en el formato de `aEnlace()`. */
   compartida?: string;
   busqueda?: string;
@@ -40,6 +42,9 @@ export function rutaActual(): Ruta {
   if (partes[0] === 'hoy') return { vista: 'hoy', id: partes[1], filtros };
   if (partes[0] === 'rutinas') return { vista: 'rutinas', filtros };
   if (partes[0] === 'progreso') return { vista: 'progreso', filtros };
+  if (partes[0] === 'calendario') {
+    return { vista: 'calendario', modo: partes[1] === 'mes' ? 'mes' : 'semana', id: partes[2], filtros };
+  }
   if (partes[0] === 'rutina' && partes[1] === 'compartida') return { vista: 'rutina', compartida: parametros.get('r') ?? '', filtros };
   if (partes[0] === 'rutina' && partes[1]) return { vista: 'rutina', id: partes[1], editar: partes[2] === 'editar', filtros };
   if (partes[0] === 'favoritos') {
@@ -58,6 +63,7 @@ export function enlace(ruta: Partial<Ruta> & { vista: Ruta['vista'] }): string {
   const camino = ruta.vista === 'ficha' ? `f/${ruta.id}`
     : ruta.vista === 'hoy' && ruta.id ? `hoy/${ruta.id}`
     : ruta.vista === 'rutina' ? `rutina/${ruta.id}${ruta.editar ? '/editar' : ''}`
+    : ruta.vista === 'calendario' && (ruta.id || ruta.modo === 'mes') ? `calendario/${ruta.modo ?? 'semana'}${ruta.id ? `/${ruta.id}` : ''}`
     : ruta.vista === 'catalogo' ? '' : ruta.vista;
   return `#/${camino}${consulta ? `?${consulta}` : ''}`;
 }

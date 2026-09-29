@@ -13,7 +13,7 @@ import { VERSION, fusionar, leerExportado, limpiar, migrar, normalizarDescansos,
 const serie = (id, extra = {}) => ({ id, ejercicio: 'sentadilla-barra', fecha: '2026-09-24', creada: 1, reps: 8, peso: 60, ...extra });
 
 test('sin nada guardado, empieza vacío y en la versión actual', () => {
-  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null });
+  assert.deepEqual(migrar(null), { version: VERSION, favoritos: [], series: [], descansos: {}, rutinas: [], plan: null, calendario: { semana: null, cambios: {} } });
 });
 
 test('los favoritos de la versión vieja no se pierden al cambiar de clave', () => {

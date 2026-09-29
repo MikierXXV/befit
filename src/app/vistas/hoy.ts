@@ -146,7 +146,10 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
       </section>` : `
       <div class="vacio">
         <p>${t('hoy.vacio')}</p>
-        <a class="boton" href="${enlace({ vista: 'rutinas', filtros: {} })}">${t('hoy.seguir_rutina')}</a>
+        <div class="fila">
+          <a class="boton" href="${enlace({ vista: 'rutinas', filtros: {} })}">${t('hoy.seguir_rutina')}</a>
+          <a class="boton" href="${enlace({ vista: 'calendario', filtros: {} })}">${t('calendario.titulo')}</a>
+        </div>
         ${favoritos().length ? `
           <p>${t('hoy.desde_favoritos')}</p>
           <ul class="atajos">${favoritos().map((id) => fichaPorId(id)).filter((f): f is Ficha => !!f)

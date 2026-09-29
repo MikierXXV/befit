@@ -48,7 +48,10 @@ export function montarListaRutinas(el: HTMLElement): void {
             <span class="detalle">${plural('rutinas.dias', r.dias.length)} · ${plural('rutinas.ejercicios', ejerciciosDe(r))}</span>
           </a></li>`).join('')}
         </ul>` : `<p class="ayuda">${t('rutinas.sin_propias')}</p>`}
-      <button type="button" class="boton" data-nueva>${t('rutinas.nueva')}</button>
+      <div class="fila">
+        <button type="button" class="boton" data-nueva>${t('rutinas.nueva')}</button>
+        <a class="boton" href="${enlace({ vista: 'calendario', filtros: {} })}">${t('calendario.planificar')}</a>
+      </div>
     </section>
     <section>
       <h2>${t('rutinas.de_inicio')}</h2>

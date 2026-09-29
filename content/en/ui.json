@@ -341,6 +341,38 @@
     "favoritos": "Favourites",
     "sin_resultados": "No exercise matches your search."
   },
+  "calendario": {
+    "titulo": "Calendar",
+    "entradilla": "What is due each day and what you have done. Plan your week once and it repeats itself.",
+    "vista": "Calendar view",
+    "semana": "Week",
+    "mes": "Month",
+    "anterior_semana": "Previous week",
+    "siguiente_semana": "Next week",
+    "anterior_mes": "Previous month",
+    "siguiente_mes": "Next month",
+    "volver_hoy": "Today",
+    "rango": "{desde} – {hasta}",
+    "estado": {
+      "completo": "Done",
+      "parcial": "Partly done",
+      "nulo": "Missed",
+      "libre": "Free session",
+      "futuro": "Training day",
+      "descanso": "Rest"
+    },
+    "cambiado": "Changed",
+    "ir_hoy": "Go to “Today”",
+    "cambiar": "Change this day",
+    "como_semana": "As in your week",
+    "tu_semana": "Your week",
+    "sin_semana": "You have not planned your week yet. Pick a routine and its days will be spread out; you can then move each one. It repeats every week, and the day that is due shows up in “Today” on its own.",
+    "ayuda_semana": "It repeats every week, and the day that is due shows up in “Today” on its own. To move a single day, change it on its date.",
+    "rutina": "Routine",
+    "elige_rutina": "Pick a routine",
+    "quitar": "Remove the plan",
+    "planificar": "Plan it in the calendar"
+  },
   "pie": {
     "derechos": "© {anio} befit",
     "creditos": "3D figure by Quaternius (CC0) · Muscle map from body-muscles (Apache 2.0) · Inter and Newsreader typefaces (SIL OFL)"
