@@ -1023,6 +1023,128 @@ body.con-descanso { padding-bottom: 7.5rem; }
 }
 .ejercicios-hoy a { flex-wrap: wrap; row-gap: 0; padding-block: var(--e2); }
 .anadir { display: grid; gap: var(--e1); margin-bottom: var(--e8); font-size: var(--t-pequeno); color: var(--texto-secundario); }
+.abrir-elegir { justify-self: start; }
+
+/*
+ * EL SELECTOR DE EJERCICIOS CON CARTELES (vistas/elegir-ejercicio.ts).
+ *
+ * En el móvil, una hoja que sube desde abajo y ocupa casi toda la pantalla: se elige con el pulgar
+ * entre series. En escritorio, una ventana centrada. La cabeza —título, búsqueda y grupos— se
+ * queda quieta y solo se desplazan los carteles: con la búsqueda arriba desplazándose, había que
+ * volver arriba para cambiar de grupo.
+ */
+.elegir {
+  display: none;
+  padding: 0;
+  border: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+}
+.elegir[open] {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: auto 0 0 0;
+  width: 100%;
+  max-width: none;
+  height: 92svh;
+  max-height: 92svh;
+  margin: 0;
+  border-radius: var(--radio-grande) var(--radio-grande) 0 0;
+}
+.elegir::backdrop { background: rgba(0, 0, 0, 0.6); }
+@media (min-width: 48rem) {
+  .elegir[open] {
+    inset: 0;
+    width: min(64rem, 100% - var(--e8));
+    height: min(52rem, 100svh - var(--e12));
+    margin: auto;
+    border-radius: var(--radio-grande);
+  }
+}
+.elegir-cabeza {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--e3);
+  padding: var(--e4) var(--e4) var(--e3);
+  border-bottom: 1px solid var(--separador);
+}
+.elegir-cabeza h2 { margin: 0; font-size: var(--t-medio); }
+.elegir-cabeza input {
+  grid-column: 1 / -1;
+  min-height: 44px;
+  padding: 0 var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-medio);
+  background: var(--fondo-elevado);
+  color: var(--texto);
+  font: inherit;
+}
+/* Los grupos en una sola fila que se desplaza de lado: en dos o tres filas se comían la mitad de
+   la hoja en el móvil antes del primer cartel. */
+.elegir-chips {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: var(--e2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding-bottom: var(--e1);
+}
+.elegir-chips .chip {
+  flex: none;
+  min-height: 36px;
+  padding: 0 var(--e3);
+  border: 1px solid var(--separador);
+  border-radius: var(--radio-pildora);
+  background: var(--fondo-elevado);
+  color: var(--texto-secundario);
+  font: inherit;
+  font-size: var(--t-pequeno);
+  white-space: nowrap;
+  cursor: pointer;
+}
+.elegir-chips .chip[aria-pressed='true'] {
+  border-color: var(--texto);
+  background: var(--texto);
+  color: var(--fondo);
+}
+.elegir-cuerpo {
+  flex: 1;
+  /* Separación con gap y no con margen entre secciones: al filtrar, las secciones escondidas
+     seguían empujando la primera visible con su margen y quedaba un hueco arriba. */
+  display: grid;
+  align-content: start;
+  gap: var(--e6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--e4);
+}
+.elegir-seccion h3 {
+  margin: 0 0 var(--e3);
+  color: var(--texto-secundario);
+  font-size: var(--t-pequeno);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+/* Carteles más pequeños que en el catálogo: aquí se busca uno conocido, no se descubre. Tres por
+   fila en el móvil. */
+.elegir .rejilla { grid-template-columns: repeat(auto-fill, minmax(min(100%, 6rem), 1fr)); gap: var(--e3); }
+@media (min-width: 40rem) {
+  .elegir .rejilla { grid-template-columns: repeat(auto-fill, minmax(min(100%, 9rem), 1fr)); }
+}
+.elegir .tarjeta .etiqueta-grupo { display: none; }
+.elegir .tarjeta .nombre { font-size: var(--t-micro); padding: var(--e2) var(--e2) 0; }
+.elegir .tarjeta a { padding-bottom: var(--e2); }
+/* En escritorio caben todos los grupos: en una fila que se desplaza, la mitad quedaban fuera de la
+   vista sin que nada dijera que había más. */
+@media (min-width: 48rem) {
+  .elegir-chips { flex-wrap: wrap; overflow-x: visible; }
+}
+.elegir-vacio { color: var(--texto-secundario); }
+
 .anadir select {
   min-height: 44px;
   padding: 0 var(--e3);

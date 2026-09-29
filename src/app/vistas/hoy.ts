@@ -12,13 +12,14 @@
 
 import { datos } from '../almacen';
 import { ejerciciosDelDia, hoy, volumen } from '../calculos.js';
-import { FICHAS, GRUPOS, fichaPorId, proporcionDe, type Ficha } from '../contenido';
+import { fichaPorId, proporcionDe, type Ficha } from '../contenido';
 import { favoritos } from '../favoritos';
 import { dejarPlan, planDeHoy } from '../mis-rutinas';
 import { mantenerEncendida } from '../pantalla';
 import { progreso } from '../rutinas.js';
 import { enlace, irA } from '../rutas';
 import { t } from '../textos';
+import { conectarElegir, elegirEjercicio } from './elegir-ejercicio';
 import { montarRegistro } from './registro';
 import { textoObjetivo, textoRango } from './rutinas';
 
@@ -64,18 +65,11 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
     ?? fichaPorId(ultimoTocado() ?? '');
 
   /*
-   * Añadir un ejercicio es un <select> agrupado por patrón, no un buscador: con cincuenta ejercicios
-   * cabe, el móvil lo abre con su propia rueda —grande y cómoda con una mano— y no hay que escribir.
+   * Añadir un ejercicio abre los carteles del catálogo (elegir-ejercicio.ts). Fue un <select>
+   * agrupado por patrón: con cincuenta ejercicios valía, con más de cien era una rueda de nombres.
    */
-  const selector = (): string => `
-    <label class="anadir">
-      <span>${t('hoy.anadir')}</span>
-      <select data-anadir>
-        <option value="">${t('hoy.elegir')}</option>
-        ${GRUPOS.map((g) => `<optgroup label="${escapar(g.nombre)}">${FICHAS.filter((f) => f.grupo_id === g.id)
-          .map((f) => `<option value="${f.id}">${escapar(f.nombre)}</option>`).join('')}</optgroup>`).join('')}
-      </select>
-    </label>`;
+  const selector = (): string =>
+    `<div class="anadir">${elegirEjercicio((id) => enlace({ vista: 'hoy', id, filtros: {} }))}</div>`;
 
   function cabeza(): string {
     const dia = delDia();
@@ -166,10 +160,7 @@ export function montarHoy(el: HTMLElement, opciones: OpcionesHoy): { destruir():
     }
   });
 
-  el.addEventListener('change', (e) => {
-    const campo = e.target as HTMLSelectElement;
-    if (campo.matches('[data-anadir]') && campo.value) irA({ vista: 'hoy', id: campo.value, filtros: {} });
-  });
+  conectarElegir(el);
 
   if (activo) {
     montarRegistro(el.querySelector<HTMLElement>('.registro')!, activo, { compacto: true, alCambiar: pintarCabeza });

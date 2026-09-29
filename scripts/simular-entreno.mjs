@@ -93,8 +93,10 @@ const reps = p.locator('.registro input[name=reps]');
 if (await reps.count()) { await reps.fill('10'); await p.locator('.registro .anotar button[type=submit]').tap(); }
 await p.locator('.ejercicios-hoy a').nth(4).tap();
 await maniqui('hoy siguiente con descanso en marcha');
-// 5. Añadir uno desde el selector.
-await p.selectOption('[data-anadir]', 'dominadas');
+// 5. Añadir uno desde el selector de carteles: abrirlo, buscar y tocar el cartel.
+await p.locator('[data-abrir-elegir]').tap();
+await p.locator('[data-buscar-elegir]').fill('domin');
+await p.locator('[data-elegir-ejercicio="dominadas"]').first().tap();
 await maniqui('hoy añadido desde el selector');
 // 6. Quince fichas seguidas: ¿aguanta el contexto WebGL? Con una por implemento nuevo de la etapa B
 // (el banco inclinable, las paralelas, la kettlebell, la máquina y el multipower), para que «el maniquí se ve al abrirlo» cubra su geometría.

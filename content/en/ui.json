@@ -334,7 +334,12 @@
     "dejar_plan": "Drop the plan",
     "objetivo": "Target: {objetivo}",
     "seguir_rutina": "Follow a routine",
-    "ver_progreso": "See your progress"
+    "ver_progreso": "See your progress",
+    "buscar": "Search exercises",
+    "filtrar": "Filter by group",
+    "todos": "All",
+    "favoritos": "Favourites",
+    "sin_resultados": "No exercise matches your search."
   },
   "pie": {
     "derechos": "© {anio} befit",

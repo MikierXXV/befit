@@ -338,7 +338,12 @@
     "dejar_plan": "Dejar el plan",
     "objetivo": "Objetivo: {objetivo}",
     "seguir_rutina": "Seguir una rutina",
-    "ver_progreso": "Ver tu progreso"
+    "ver_progreso": "Ver tu progreso",
+    "buscar": "Buscar ejercicio",
+    "filtrar": "Filtrar por grupo",
+    "todos": "Todos",
+    "favoritos": "Favoritos",
+    "sin_resultados": "Ningún ejercicio coincide con la búsqueda."
   },
   "pie": {
     "derechos": "© {anio} befit",
